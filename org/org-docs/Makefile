@@ -1,37 +1,43 @@
+# dirs and shell setting
 MYHOME = ../../
 ORG = $(MYHOME)/org/
 SITE = $(MYHOME)/docs/
 DIR = ./org-docs/
 SHELL = zsh
 
+# my documents
 self: index.html
-	rm -f index.html
-	make index.html
 
 deploy: index.html
 	mkdir -p $(SITE)/$(DIR)
-	cp *.html $(SITE)/$(DIR)
+	cp -p *.html $(SITE)/$(DIR)
 
 .SUFFIXES: .org .html .ob
 .org.html: ../../info/common-header.org contents.org 
-	~/bin/org2html $<
+	$(HOME)/bin/org2html $<
 
 .ob.org:
-	~/COMM/bin/babel_expand_include.rb $< > $@
+	$(HOME)/COMM/bin/babel_expand_include.rb $< > $@
 	org_tangle $@
 
-index.html: index.org 
+DOCS = card-display cis-programming-lects cutter memos module poker software-test tdd-card-display-simple what-is-tdd
 
-all:
-	make index.html
-	(cd card-display; make)
-	(cd tdd-card-display-simple; make)
-	(cd what-is-tdd; make)
-	(cd memos; make)
 
+make-all:$(DOCS)
+	make
+	for d in $(DOCS); \
+	do \
+		(echo $$d; cd $$d; make) \
+	done
+
+deploy-all:
+	make deploy
+	for d in $(DOCS); \
+	do \
+		(echo $$d; cd $$d; make deploy) \
+	done
 
 .PHONY: clean
 clean:
 	rm *.html
 	rm */*.html
-

@@ -30,7 +30,7 @@ Card sa = card_new(SPADE, ACE);
    
    これにより，テストが書けます:
    
-   #+BEGIN_SRC 
+   #+BEGIN_SRC c
 Card sa = card_new(SPADE, ACE);
 cut_assert( card_suit(sa)==SPADE );
 cut_assert( card_no(sa)==ACE );

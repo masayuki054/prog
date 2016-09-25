@@ -1,6 +1,4 @@
-#+include: resume.org
-
-#+include: response.org
+#+include: plan.org
 
 #+include: emacs.org
 

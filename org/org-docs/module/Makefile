@@ -1,6 +1,6 @@
 MYHOME = $(HOME)/COMM/Lects/prog/prog2016/
 ORG = $(MYHOME)/org/
-SITE = $(MYHOME)/docs/
+SITE = $(MYHOME)/site/
 DIR = ./org-docs/cutter/
 SHELL = zsh
 

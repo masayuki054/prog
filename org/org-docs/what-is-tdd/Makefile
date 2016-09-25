@@ -1,7 +1,7 @@
-MYHOME = $(HOME)/COMM/Lects/prog/prog2016/
+MYHOME = $
 ORG = $(MYHOME)/org/
 SITE = $(MYHOME)/docs/
-DIR = ./org-docs/cutter/
+DIR = ./org-docs/what-is-tdd/
 SHELL = zsh
 
 all: index.html

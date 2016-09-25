@@ -1,5 +1,5 @@
 all: babel
-	rm index.html
+	rm -f index.html
 	make index.html
 
 .SUFFIXES: .org .html .ob

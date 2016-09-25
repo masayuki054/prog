@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<title>ソフトウェア構成論 CardDisplayのテスト駆動開発</title>
-<!-- 2016-01-26 火 11:05 -->
+<!-- 2016-09-25 日 18:51 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>ソフトウェア構成論 CardDisplayのテスト駆動開発</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<meta  name="author" content="masayuki suzuki@cis.iwate-u.ac.jp" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -58,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -145,6 +151,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -153,165 +181,165 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">はじめに</a></li>
-<li><a href="#sec-2">ディレクトリ構成</a></li>
-<li><a href="#sec-3">Makefileを作る</a></li>
-<li><a href="#sec-4">開発を機能に分ける</a></li>
-<li><a href="#sec-5">機能のテスト駆動開発 (概論)</a></li>
-<li><a href="#sec-6">スーツを数値にする機能のテストと実装</a>
+<li><a href="#orgheadline1">はじめに</a></li>
+<li><a href="#orgheadline2">ディレクトリ構成</a></li>
+<li><a href="#orgheadline3">Makefileを作る</a></li>
+<li><a href="#orgheadline4">開発を機能に分ける</a></li>
+<li><a href="#orgheadline5">機能のテスト駆動開発 (概論)</a></li>
+<li><a href="#orgheadline6">スーツを数値にする機能のテストと実装</a>
 <ul>
-<li><a href="#sec-6-1">テスト作成</a></li>
-<li><a href="#sec-6-2">test/Makefileの作成</a></li>
-<li><a href="#sec-6-3">最初の make</a></li>
-<li><a href="#sec-6-4">cutterによるテスト</a></li>
-<li><a href="#sec-6-5">テストのビルド</a></li>
-<li><a href="#sec-6-6">card_suit_new_from_string の実装</a>
+<li><a href="#orgheadline7">テスト作成</a></li>
+<li><a href="#orgheadline8">test/Makefileの作成</a></li>
+<li><a href="#orgheadline9">最初の make</a></li>
+<li><a href="#orgheadline10">cutterによるテスト</a></li>
+<li><a href="#orgheadline11">テストのビルド</a></li>
+<li><a href="#orgheadline12">card_suit_new_from_string の実装</a>
 <ul>
-<li><a href="#sec-6-6-1">src/card.h の作成 <code>card/card.h</code></a></li>
-<li><a href="#sec-6-6-2">test/test_card.cの変更</a></li>
-<li><a href="#sec-6-6-3">test/Makefileの変更</a></li>
-<li><a href="#sec-6-6-4">src/card.c の作成</a></li>
-<li><a href="#sec-6-6-5">src/Makefile</a></li>
-<li><a href="#sec-6-6-6">テスト test/test_card.so のビルド</a></li>
+<li><a href="#orgheadline13">src/card.h の作成 <code>card/card.h</code></a></li>
+<li><a href="#orgheadline14">test/test_card.cの変更</a></li>
+<li><a href="#orgheadline15">test/Makefileの変更</a></li>
+<li><a href="#orgheadline16">src/card.c の作成</a></li>
+<li><a href="#orgheadline17">src/Makefile</a></li>
+<li><a href="#orgheadline18">テスト test/test_card.so のビルド</a></li>
 </ul>
 </li>
-<li><a href="#sec-6-7">テスト</a></li>
-<li><a href="#sec-6-8">テストと再設計</a></li>
+<li><a href="#orgheadline19">テスト</a></li>
+<li><a href="#orgheadline20">テストと再設計</a></li>
 </ul>
 </li>
-<li><a href="#sec-7">トランプ番号を数値に</a>
+<li><a href="#orgheadline34">トランプ番号を数値に</a>
 <ul>
-<li><a href="#sec-7-1">トランプ番号を数値に</a>
+<li><a href="#orgheadline21">トランプ番号を数値に</a>
 <ul>
-<li><a href="#sec-7-1-1">機能とテストの追加</a>
+<li><a href="#orgheadline22">機能とテストの追加</a>
 <ul>
-<li><a href="#sec-7-1-1-1">test/Makefileの更新</a></li>
-<li><a href="#sec-7-1-1-2">test/test_card.o の更新</a></li>
-<li><a href="#sec-7-1-1-3">テスト (test/test_card.so) のビルド</a></li>
+<li><a href="#orgheadline23">test/Makefileの更新</a></li>
+<li><a href="#orgheadline24">test/test_card.o の更新</a></li>
+<li><a href="#orgheadline25">テスト (test/test_card.so) のビルド</a></li>
 </ul>
 </li>
-<li><a href="#sec-7-1-2">card_no_new_from_string の実装</a>
+<li><a href="#orgheadline26">card_no_new_from_string の実装</a>
 <ul>
-<li><a href="#sec-7-1-2-1">src/card.h の更新</a></li>
-<li><a href="#sec-7-1-2-2">test/test_card.cの変更</a></li>
-<li><a href="#sec-7-1-2-3">card_no_new_from_string の実装 (src/card.c の更新)</a></li>
-<li><a href="#sec-7-1-2-4">src/Makefile</a></li>
-<li><a href="#sec-7-1-2-5">テスト test/test_card.so の再ビルド</a></li>
+<li><a href="#orgheadline27">src/card.h の更新</a></li>
+<li><a href="#orgheadline28">test/test_card.cの変更</a></li>
+<li><a href="#orgheadline29">card_no_new_from_string の実装 (src/card.c の更新)</a></li>
+<li><a href="#orgheadline30">src/Makefile</a></li>
+<li><a href="#orgheadline31">テスト test/test_card.so の再ビルド</a></li>
 </ul>
 </li>
-<li><a href="#sec-7-1-3">テスト</a>
+<li><a href="#orgheadline32">テスト</a>
 <ul>
-<li><a href="#sec-7-1-3-1">テストと再設計</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-8">トランプ・カードを作成</a>
-<ul>
-<li><a href="#sec-8-1">機能の追加とテストの作成</a>
-<ul>
-<li><a href="#sec-8-1-1">card_new のテストを書く</a></li>
-<li><a href="#sec-8-1-2">card_new, card_suit, card_no のインタフェースを決める</a></li>
-<li><a href="#sec-8-1-3">Card型を定義する</a></li>
-<li><a href="#sec-8-1-4">テスト全体プログラムの確認</a></li>
-<li><a href="#sec-8-1-5">test/Makefile の確認</a></li>
-<li><a href="#sec-8-1-6">test/test_card.o の作成</a></li>
-</ul>
-</li>
-<li><a href="#sec-8-2">card_new の実装</a>
-<ul>
-<li><a href="#sec-8-2-1">card/card.h の更新</a></li>
-<li><a href="#sec-8-2-2">card_new の実装 (src/card.cの更新)</a></li>
-<li><a href="#sec-8-2-3">card_suit の実装 (src/card.cの更新)</a></li>
-<li><a href="#sec-8-2-4">card_no の実装 (src/card.cの更新)</a></li>
-<li><a href="#sec-8-2-5">src/card.c 全体</a></li>
-<li><a href="#sec-8-2-6">src/Makefile</a></li>
-<li><a href="#sec-8-2-7">src/card.o の作成</a></li>
-<li><a href="#sec-8-2-8">src/libcard.a の作成</a></li>
-</ul>
-</li>
-<li><a href="#sec-8-3">テスト</a>
-<ul>
-<li><a href="#sec-8-3-1">test/test_card.so のビルド</a></li>
-<li><a href="#sec-8-3-2">テストの実行</a></li>
-<li><a href="#sec-8-3-3">テストと再設計</a></li>
+<li><a href="#orgheadline33">テストと再設計</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-9">トランプ・カードを文字列に</a>
-<ul>
-<li><a href="#sec-9-1">設計</a>
-<ul>
-<li><a href="#sec-9-1-1">機能の名前と構造</a></li>
-<li><a href="#sec-9-1-2">関数の引数と戻り値の型 (APIの設計)</a></li>
 </ul>
 </li>
-<li><a href="#sec-9-2">テストによる開発</a></li>
+<li><a href="#orgheadline55">トランプ・カードを作成</a>
+<ul>
+<li><a href="#orgheadline35">機能の追加とテストの作成</a>
+<ul>
+<li><a href="#orgheadline36">card_new のテストを書く</a></li>
+<li><a href="#orgheadline37">card_new, card_suit, card_no のインタフェースを決める</a></li>
+<li><a href="#orgheadline38">Card型を定義する</a></li>
+<li><a href="#orgheadline39">テスト全体プログラムの確認</a></li>
+<li><a href="#orgheadline40">test/Makefile の確認</a></li>
+<li><a href="#orgheadline41">test/test_card.o の作成</a></li>
 </ul>
 </li>
-<li><a href="#sec-10">トランプ・カードを文字列に</a>
+<li><a href="#orgheadline42">card_new の実装</a>
 <ul>
-<li><a href="#sec-10-1">機能の追加とテストの作成</a>
-<ul>
-<li><a href="#sec-10-1-1">card_to_string のテストを書く</a></li>
-<li><a href="#sec-10-1-2">card_to_string のインタフェースを決める</a></li>
-<li><a href="#sec-10-1-3">テスト全体プログラムの確認</a></li>
-<li><a href="#sec-10-1-4">test/Makefile の確認</a></li>
-<li><a href="#sec-10-1-5">test/test_card.o の作成</a></li>
+<li><a href="#orgheadline43">card/card.h の更新</a></li>
+<li><a href="#orgheadline44">card_new の実装 (src/card.cの更新)</a></li>
+<li><a href="#orgheadline45">card_suit の実装 (src/card.cの更新)</a></li>
+<li><a href="#orgheadline46">card_no の実装 (src/card.cの更新)</a></li>
+<li><a href="#orgheadline47">src/card.c 全体</a></li>
+<li><a href="#orgheadline48">src/Makefile</a></li>
+<li><a href="#orgheadline49">src/card.o の作成</a></li>
+<li><a href="#orgheadline50">src/libcard.a の作成</a></li>
 </ul>
 </li>
-<li><a href="#sec-10-2">card_to_string の実装</a>
+<li><a href="#orgheadline54">テスト</a>
 <ul>
-<li><a href="#sec-10-2-1">card/card.h の更新</a></li>
-<li><a href="#sec-10-2-2">card_to_string の実装 (src/card.cの更新)</a></li>
-<li><a href="#sec-10-2-3">src/card.c 全体</a></li>
-<li><a href="#sec-10-2-4">src/Makefile</a></li>
-<li><a href="#sec-10-2-5">src/card.o の作成</a></li>
-<li><a href="#sec-10-2-6">src/libcard.a の作成</a></li>
-</ul>
-</li>
-<li><a href="#sec-10-3">テスト</a>
-<ul>
-<li><a href="#sec-10-3-1">test/test_card.so のビルド</a></li>
-<li><a href="#sec-10-3-2">テストの実行</a></li>
-<li><a href="#sec-10-3-3">テストと再設計</a></li>
+<li><a href="#orgheadline51">test/test_card.so のビルド</a></li>
+<li><a href="#orgheadline52">テストの実行</a></li>
+<li><a href="#orgheadline53">テストと再設計</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-11">card_display_simple 問題の解の作成</a></li>
-<li><a href="#sec-12">card_display_multi</a></li>
-<li><a href="#sec-13">card_display_sort</a>
+<li><a href="#orgheadline56">トランプ・カードを文字列に</a>
 <ul>
-<li><a href="#sec-13-1">Doing checks <code>[1/3]</code></a></li>
-<li><a href="#sec-13-2">複数のカードをソートする機能</a></li>
-<li><a href="#sec-13-3">機能の追加とテストの作成</a>
+<li><a href="#orgheadline57">設計</a>
 <ul>
-<li><a href="#sec-13-3-1">cards_sort のテストを書く</a></li>
-<li><a href="#sec-13-3-2">テスト全体プログラムの確認</a></li>
-<li><a href="#sec-13-3-3">test/Makefile の確認</a></li>
-<li><a href="#sec-13-3-4">test/test_sort.o の作成</a></li>
+<li><a href="#orgheadline58">機能の名前と構造</a></li>
+<li><a href="#orgheadline59">関数の引数と戻り値の型 (APIの設計)</a></li>
 </ul>
 </li>
-<li><a href="#sec-13-4">cards_sort，card_compare の実装</a>
-<ul>
-<li><a href="#sec-13-4-1">card/card.h の更新</a></li>
-<li><a href="#sec-13-4-2">cards_sort の実装 (src/cards.cの作成)</a></li>
-<li><a href="#sec-13-4-3">card_compare の実装</a></li>
-<li><a href="#sec-13-4-4">cards.c の確認</a></li>
-<li><a href="#sec-13-4-5">src/Makefile</a></li>
-<li><a href="#sec-13-4-6">src/cards.o の作成</a></li>
-<li><a href="#sec-13-4-7">src/libcard.a の作成</a></li>
+<li><a href="#orgheadline60">テストによる開発</a></li>
 </ul>
 </li>
-<li><a href="#sec-13-5">テスト</a>
+<li><a href="#orgheadline78">トランプ・カードを文字列に</a>
 <ul>
-<li><a href="#sec-13-5-1">test/test_sort.so のビルド</a></li>
-<li><a href="#sec-13-5-2">テストの実行</a></li>
-<li><a href="#sec-13-5-3">テストと再設計</a></li>
+<li><a href="#orgheadline61">機能の追加とテストの作成</a>
+<ul>
+<li><a href="#orgheadline62">card_to_string のテストを書く</a></li>
+<li><a href="#orgheadline63">card_to_string のインタフェースを決める</a></li>
+<li><a href="#orgheadline64">テスト全体プログラムの確認</a></li>
+<li><a href="#orgheadline65">test/Makefile の確認</a></li>
+<li><a href="#orgheadline66">test/test_card.o の作成</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline67">card_to_string の実装</a>
+<ul>
+<li><a href="#orgheadline68">card/card.h の更新</a></li>
+<li><a href="#orgheadline69">card_to_string の実装 (src/card.cの更新)</a></li>
+<li><a href="#orgheadline70">src/card.c 全体</a></li>
+<li><a href="#orgheadline71">src/Makefile</a></li>
+<li><a href="#orgheadline72">src/card.o の作成</a></li>
+<li><a href="#orgheadline73">src/libcard.a の作成</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline77">テスト</a>
+<ul>
+<li><a href="#orgheadline74">test/test_card.so のビルド</a></li>
+<li><a href="#orgheadline75">テストの実行</a></li>
+<li><a href="#orgheadline76">テストと再設計</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline79">card_display_simple 問題の解の作成</a></li>
+<li><a href="#orgheadline80">card_display_multi</a></li>
+<li><a href="#orgheadline100">card_display_sort</a>
+<ul>
+<li><a href="#orgheadline81">Doing checks <code>[1/3]</code></a></li>
+<li><a href="#orgheadline82">複数のカードをソートする機能</a></li>
+<li><a href="#orgheadline83">機能の追加とテストの作成</a>
+<ul>
+<li><a href="#orgheadline84">cards_sort のテストを書く</a></li>
+<li><a href="#orgheadline85">テスト全体プログラムの確認</a></li>
+<li><a href="#orgheadline86">test/Makefile の確認</a></li>
+<li><a href="#orgheadline87">test/test_sort.o の作成</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline88">cards_sort，card_compare の実装</a>
+<ul>
+<li><a href="#orgheadline89">card/card.h の更新</a></li>
+<li><a href="#orgheadline90">cards_sort の実装 (src/cards.cの作成)</a></li>
+<li><a href="#orgheadline91">card_compare の実装</a></li>
+<li><a href="#orgheadline92">cards.c の確認</a></li>
+<li><a href="#orgheadline93">src/Makefile</a></li>
+<li><a href="#orgheadline94">src/cards.o の作成</a></li>
+<li><a href="#orgheadline95">src/libcard.a の作成</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline99">テスト</a>
+<ul>
+<li><a href="#orgheadline96">test/test_sort.so のビルド</a></li>
+<li><a href="#orgheadline97">テストの実行</a></li>
+<li><a href="#orgheadline98">テストと再設計</a></li>
 </ul>
 </li>
 </ul>
@@ -331,9 +359,9 @@ for the JavaScript code in this tag.
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">はじめに</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">はじめに</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 テスト駆動開発の例として，card_display_simple問題を
 テスト駆動開発してましょう。
@@ -351,9 +379,9 @@ card_display_sort 問題を，テスト駆動開発してましょう。
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">ディレクトリ構成</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">ディレクトリ構成</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 まず、プログラムを作成するためのディレクトリを用意する。ディレクトリは
 simple/ とする。
@@ -392,9 +420,9 @@ simple/ --+- src/  ソースファイル用ディレクトリ
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Makefileを作る</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Makefileを作る</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 simple/ ディレクトリに Makefileを作成します。
 目的は二つ，カードのテストをすることと，ディレクトリ配下をきれいにするこ
@@ -470,9 +498,9 @@ make
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">開発を機能に分ける</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">開発を機能に分ける</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 さて次は，card_display_simpleを，機能に分け，機能をテストしな
 がら開発します。(<a href="card-display/">card-display/</a>)
@@ -483,16 +511,11 @@ make
 </p>
 
 <ol class="org-ol">
-<li>スーツを数値にする機能，
-</li>
-<li>トランプ番号を数値にする機能，
-</li>
-<li>トランプ・カード型を表す機能，
-</li>
-<li>スーツと番号からトランプカードを作成する機能
-</li>
-<li>トランプ・カードを文字列で表す機能。
-</li>
+<li>スーツを数値にする機能，</li>
+<li>トランプ番号を数値にする機能，</li>
+<li>トランプ・カード型を表す機能，</li>
+<li>スーツと番号からトランプカードを作成する機能</li>
+<li>トランプ・カードを文字列で表す機能。</li>
 </ol>
 
 
@@ -509,9 +532,9 @@ make
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">機能のテスト駆動開発 (概論)</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">機能のテスト駆動開発 (概論)</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 これらの機能をひとつづつ確かめながら開発を進めるのが，テスト駆動開
 発です。具体的な開発を進める前に，おおまかな流れを説明します。
@@ -522,68 +545,74 @@ make
 </p>
 
 <dl class="org-dl">
-<dt> Makefileの作成 </dt><dd>テストと実装をビルドし，テストを実行するための
+<dt>Makefileの作成</dt><dd><p>
+テストと実装をビルドし，テストを実行するための
 Makefile を書く。
+</p>
 
 <p>
 ./Makefile には src/, test/ でビルドするルールを書き，
 cutter によりテストを実行する規則を書く。
-</p>
-</dd>
+</p></dd>
 
-<dt> test/Makefileの作成 </dt><dd>テストをビルドするための規則を書く。
+<dt>test/Makefileの作成</dt><dd><p>
+テストをビルドするための規則を書く。
+</p>
 
 <p>
 test/Makefile に test_card.c から test_card.so を作成し，
 cutter によるテストの実行するための規則を書く。
-</p>
-</dd>
+</p></dd>
 
-<dt> 機能テストの作成 </dt><dd>機能が正しく働くことを確かめるテスト (プログラム) を書く。このこ
+<dt>機能テストの作成</dt><dd><p>
+機能が正しく働くことを確かめるテスト (プログラム) を書く。このこ
 とにより，*機能の使い方*を決める。
+</p>
 
 <p>
 test/test_card.c に上の5つの機能テストを作成していく。
+</p></dd>
+
+<dt>テスト(のみ)のビルド</dt><dd>ビルドし，コンパイル・エラーが取れ，確かめ
+る機能の関数のみが未定義の状態にする。</dd>
+
+<dt>src/Makefile</dt><dd><p>
+機能の実装をビルドするための規則を書く。
 </p>
-</dd>
-
-<dt> テスト(のみ)のビルド </dt><dd>ビルドし，コンパイル・エラーが取れ，確かめ
-る機能の関数のみが未定義の状態にする。
-</dd>
-
-<dt> src/Makefile </dt><dd>機能の実装をビルドするための規則を書く。
 
 <p>
 src/Makefile に card.c, card.h から libcard.a を
 作成する規則を書く。
-</p>
-</dd>
+</p></dd>
 
-<dt> インタフェースの決定 </dt><dd>確かめる機能の関数を使うために必要最小限
+<dt>インタフェースの決定</dt><dd><p>
+確かめる機能の関数を使うために必要最小限
 のインタフェースを決める。
+</p>
 
 <p>
 test/test_card.c から取り出し，src/card.h に書く。
-</p>
-</dd>
+</p></dd>
 
-<dt> 機能の実装 </dt><dd>インタフェースに従がい，機能を関数として実装する。
+<dt>機能の実装</dt><dd><p>
+インタフェースに従がい，機能を関数として実装する。
+</p>
 
 <p>
 src/card.c を作成する。
-</p>
-</dd>
+</p></dd>
 
-<dt> 機能の提供 </dt><dd>実装をビルドし，ライブラリとヘッダファイルで機能を提
+<dt>機能の提供</dt><dd><p>
+実装をビルドし，ライブラリとヘッダファイルで機能を提
 供する。
+</p>
 
 <p>
 src/Makefile にルールを書き，
 src/libcard.aを作成する。
-</p>
-</dd>
+</p></dd>
 
-<dt> テストのビルドと実行 </dt><dd></dd>
+<dt>テストのビルドと実行</dt><dd></dd>
 </dl>
 
 <p>
@@ -592,9 +621,9 @@ src/libcard.aを作成する。
 </div>
 </div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">スーツを数値にする機能のテストと実装</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">スーツを数値にする機能のテストと実装</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
 まず最初は，文字列で表されたスーツを，プログラム内部での数値に変換す
 る機能のテストです。
@@ -605,9 +634,9 @@ src/libcard.aを作成する。
 </p>
 </div>
 
-<div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1">テスト作成</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">テスト作成</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <p>
 テストは，test/test_card.c に作成します。
 </p>
@@ -662,7 +691,7 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c" id="suit_new_e_suit">enum e_Suit {CLUB=1, DIAMOND, HEART, SPADE};
+<pre class="src src-c" id="orgsrcblock1">enum e_Suit {CLUB=1, DIAMOND, HEART, SPADE};
 </pre>
 </div>
 <p>
@@ -684,8 +713,7 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <ul class="org-ul">
 <li>テスト・フレームワークとして cutter を使うので，必要な宣言をインク
-ルードする:
-</li>
+ルードする:</li>
 </ul>
 
 <div class="org-src-container">
@@ -697,8 +725,7 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <ul class="org-ul">
 <li>テストを関数にする。cutterからの要請で，関数名は test_ で始まる
-名前で，型は，void (void) です:
-</li>
+名前で，型は，void (void) です:</li>
 </ul>
 
 <div class="org-src-container">
@@ -741,9 +768,9 @@ test_card_suit_new_from_string(void)
 </div>
 </div>
 
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2">test/Makefileの作成</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">test/Makefileの作成</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <p>
 test/Makefile は，とりあえず，test_card.c をコンパイルするこ
 とです:
@@ -803,9 +830,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-sec-6-3" class="outline-3">
-<h3 id="sec-6-3">最初の make</h3>
-<div class="outline-text-3" id="text-6-3">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">最初の make</h3>
+<div class="outline-text-3" id="text-orgheadline9">
 <p>
 test/{test_card.c, Makefile}ができたので，make してみましょう:
 </p>
@@ -863,9 +890,9 @@ test_card_suit_new_from_string が定義されているのがわかります。
 </div>
 </div>
 
-<div id="outline-container-sec-6-4" class="outline-3">
-<h3 id="sec-6-4">cutterによるテスト</h3>
-<div class="outline-text-3" id="text-6-4">
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">cutterによるテスト</h3>
+<div class="outline-text-3" id="text-orgheadline10">
 <p>
 cutter でテストしてみましょう:
 </p>
@@ -890,9 +917,9 @@ test(s)が0と表示されているので， test_card.oはテストとして認
 </div>
 </div>
 
-<div id="outline-container-sec-6-5" class="outline-3">
-<h3 id="sec-6-5">テストのビルド</h3>
-<div class="outline-text-3" id="text-6-5">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">テストのビルド</h3>
+<div class="outline-text-3" id="text-orgheadline11">
 <p>
 cutter は，test_ で始まる動的ライブラリをテストと認めます。なので動的ライ
 ブラリを作ります。そのために test/Makefileに規則を追加します:
@@ -979,28 +1006,23 @@ card_suit_new_from_string関数がまだ実装されていないため，みつ�
 </div>
 </div>
 
-<div id="outline-container-sec-6-6" class="outline-3">
-<h3 id="sec-6-6">card_suit_new_from_string の実装</h3>
-<div class="outline-text-3" id="text-6-6">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">card_suit_new_from_string の実装</h3>
+<div class="outline-text-3" id="text-orgheadline12">
 <p>
 さて次は，機能 card_suit_new_from_string の実装です。
 以下のように実装しましょう:
 </p>
 <ul class="org-ul">
 <li>test/test_card.c を作成するときに決めたインタフェースをとりだし，
-src/card.hを作成する。
-</li>
+src/card.hを作成する。</li>
 <li>test/test_card.c の対応部分は # include &lt;card.h&gt; とする。
 <ul class="org-ul">
-<li>test/Makefile も変更する
-</li>
-</ul>
-</li>
-<li>src/card.hを遵守し，src/card.c を作成する。
-</li>
+<li>test/Makefile も変更する</li>
+</ul></li>
+<li>src/card.hを遵守し，src/card.c を作成する。</li>
 <li>提供する機能を入れた src/libcard.a を作成する，Makefileを作成す
-る
-</li>
+る</li>
 </ul>
 
 <p>
@@ -1008,9 +1030,9 @@ src/card.hを作成する。
 </p>
 </div>
 
-<div id="outline-container-sec-6-6-1" class="outline-4">
-<h4 id="sec-6-6-1">src/card.h の作成 <code>card/card.h</code></h4>
-<div class="outline-text-4" id="text-6-6-1">
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13">src/card.h の作成 <code>card/card.h</code></h4>
+<div class="outline-text-4" id="text-orgheadline13">
 <p>
 test/test_card.c から card_suit_new_from_string に関する宣言を取り出し， 
 src/card.h にします。
@@ -1027,9 +1049,9 @@ enum e_Suit card_suit_new_from_string(char *);
 </div>
 </div>
 
-<div id="outline-container-sec-6-6-2" class="outline-4">
-<h4 id="sec-6-6-2">test/test_card.cの変更</h4>
-<div class="outline-text-4" id="text-6-6-2">
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14">test/test_card.cの変更</h4>
+<div class="outline-text-4" id="text-orgheadline14">
 <p>
 インタフェースの定義を，src/card.h に移し，定義の責任を src/ に移
 します。test/ は，責任者の定義に従うという意味で，ヘッダファイル
@@ -1084,9 +1106,9 @@ test_card_suit_new_from_string(void)
 </div>
 </div>
 
-<div id="outline-container-sec-6-6-3" class="outline-4">
-<h4 id="sec-6-6-3">test/Makefileの変更</h4>
-<div class="outline-text-4" id="text-6-6-3">
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15">test/Makefileの変更</h4>
+<div class="outline-text-4" id="text-orgheadline15">
 <p>
 src/card.hがインクルードできるようにインクルードパスをコンパイラに
 指示します。具体的には，CFLAGSを以下のように書き換えます:
@@ -1104,9 +1126,9 @@ src/card.hがインクルードできるようにインクルードパスをコ�
 </div>
 </div>
 
-<div id="outline-container-sec-6-6-4" class="outline-4">
-<h4 id="sec-6-6-4">src/card.c の作成</h4>
-<div class="outline-text-4" id="text-6-6-4">
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16">src/card.c の作成</h4>
+<div class="outline-text-4" id="text-orgheadline16">
 <p>
 src/card.h に書かれている API を守って，card_suit_new_from_string
 関数を実装します。
@@ -1141,9 +1163,9 @@ card_suit_new_from_string(char *suit_str)
 </div>
 </div>
 
-<div id="outline-container-sec-6-6-5" class="outline-4">
-<h4 id="sec-6-6-5">src/Makefile</h4>
-<div class="outline-text-4" id="text-6-6-5">
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17">src/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline17">
 <p>
 src/card.c をコンパイルし，src/libcard.a を作成する規則を追加しま
 しょう:
@@ -1218,9 +1240,9 @@ card.o:
 </div>
 </div>
 
-<div id="outline-container-sec-6-6-6" class="outline-4">
-<h4 id="sec-6-6-6">テスト test/test_card.so のビルド</h4>
-<div class="outline-text-4" id="text-6-6-6">
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18">テスト test/test_card.so のビルド</h4>
+<div class="outline-text-4" id="text-orgheadline18">
 <p>
 src/libcard.a ができたので，次は test/test_card.so に libcard.a を取り
 込むようにmakeの規則を書き換えます:
@@ -1281,9 +1303,9 @@ test/test_card.so はできあがるはずです。
 </div>
 </div>
 
-<div id="outline-container-sec-6-7" class="outline-3">
-<h3 id="sec-6-7">テスト</h3>
-<div class="outline-text-3" id="text-6-7">
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19">テスト</h3>
+<div class="outline-text-3" id="text-orgheadline19">
 <p>
 テストと実装が終わり，テストをビルドするためのMakefileは完成してい
 ます。テストするために simple/ で make してみましょう:
@@ -1323,19 +1345,16 @@ Finished in 0.000464 seconds (total: 0.000066 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-6-8" class="outline-3">
-<h3 id="sec-6-8">テストと再設計</h3>
-<div class="outline-text-3" id="text-6-8">
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20">テストと再設計</h3>
+<div class="outline-text-3" id="text-orgheadline20">
 <p>
 テストが通らなかった時，下記の場合が考えられます：
 </p>
 <ul class="org-ul">
-<li>要求自体が間違っていた
-</li>
-<li>要求に対する設計が間違っていた
-</li>
-<li>要求・設計に対する実装が間違っていた
-</li>
+<li>要求自体が間違っていた</li>
+<li>要求に対する設計が間違っていた</li>
+<li>要求・設計に対する実装が間違っていた</li>
 </ul>
 
 <p>
@@ -1345,34 +1364,25 @@ Finished in 0.000464 seconds (total: 0.000066 seconds)
 <ul class="org-ul">
 <li>要求が間違っている場合 (テストの作り直し)
 <ul class="org-ul">
-<li>test/test_card.c の変更
-</li>
+<li>test/test_card.c の変更</li>
 <li>src/card.h の変更，それに伴ない
 <ul class="org-ul">
-<li>test/test_card.c, src/card.c の変更
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>test/test_card.c, src/card.c の変更</li>
+</ul></li>
+</ul></li>
 
 <li>設計が間違っている場合 (インタフェースの見直し)
 <ul class="org-ul">
 <li>src/card.h の変更，それに伴ない
 <ul class="org-ul">
-<li>test/test_card.c, src/card.c の変更
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>test/test_card.c, src/card.c の変更</li>
+</ul></li>
+</ul></li>
 
 <li>実装が間違っている場合 (実装のみの見直し)
 <ul class="org-ul">
-<li>src/card.c のみの変更
-</li>
-</ul>
-</li>
+<li>src/card.c のみの変更</li>
+</ul></li>
 </ul>
 
 <p>
@@ -1382,21 +1392,21 @@ Finished in 0.000464 seconds (total: 0.000066 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">トランプ番号を数値に</h2>
-<div class="outline-text-2" id="text-7">
-</div><div id="outline-container-sec-7-1" class="outline-3">
-<h3 id="sec-7-1">トランプ番号を数値に</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-orgheadline34" class="outline-2">
+<h2 id="orgheadline34">トランプ番号を数値に</h2>
+<div class="outline-text-2" id="text-orgheadline34">
+</div><div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21">トランプ番号を数値に</h3>
+<div class="outline-text-3" id="text-orgheadline21">
 <p>
 次は，文字列で表された番号を，プログラム内部での数値に変換す
 る機能のテストです。
 </p>
 </div>
 
-<div id="outline-container-sec-7-1-1" class="outline-4">
-<h4 id="sec-7-1-1">機能とテストの追加</h4>
-<div class="outline-text-4" id="text-7-1-1">
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22">機能とテストの追加</h4>
+<div class="outline-text-4" id="text-orgheadline22">
 <p>
 番号のテストは，test/test_card.c に追加作成することにします。
 </p>
@@ -1518,18 +1528,18 @@ test_card_no_new_from_string(void)
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-1-1" class="outline-5">
-<h5 id="sec-7-1-1-1">test/Makefileの更新</h5>
-<div class="outline-text-5" id="text-7-1-1-1">
+<div id="outline-container-orgheadline23" class="outline-5">
+<h5 id="orgheadline23">test/Makefileの更新</h5>
+<div class="outline-text-5" id="text-orgheadline23">
 <p>
 test/Makefile の目的は変わっていませんので，更新の必要はありません。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-1-2" class="outline-5">
-<h5 id="sec-7-1-1-2">test/test_card.o の更新</h5>
-<div class="outline-text-5" id="text-7-1-1-2">
+<div id="outline-container-orgheadline24" class="outline-5">
+<h5 id="orgheadline24">test/test_card.o の更新</h5>
+<div class="outline-text-5" id="text-orgheadline24">
 <p>
 test/ で makeしてみましょう。
 </p>
@@ -1598,9 +1608,9 @@ test_card_no_new_from_string が定義されているのがわかります。
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-1-3" class="outline-5">
-<h5 id="sec-7-1-1-3">テスト (test/test_card.so) のビルド</h5>
-<div class="outline-text-5" id="text-7-1-1-3">
+<div id="outline-container-orgheadline25" class="outline-5">
+<h5 id="orgheadline25">テスト (test/test_card.so) のビルド</h5>
+<div class="outline-text-5" id="text-orgheadline25">
 <p>
 つづいて，test/test_card.so を作りましょう:
 </p>
@@ -1620,9 +1630,9 @@ gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --l
 </div>
 
 
-<div id="outline-container-sec-7-1-2" class="outline-4">
-<h4 id="sec-7-1-2">card_no_new_from_string の実装</h4>
-<div class="outline-text-4" id="text-7-1-2">
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26">card_no_new_from_string の実装</h4>
+<div class="outline-text-4" id="text-orgheadline26">
 <p>
 さて次は，機能 card_no_new_from_string の実装です。
 以下のように実装しましょう:
@@ -1630,19 +1640,15 @@ gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --l
 
 <ul class="org-ul">
 <li>test/test_card.c を作成するときに決めたインタフェースをとりだし，
-src/card.hに追加する。
-</li>
+src/card.hに追加する。</li>
 
 <li>test/test_card.c の対応部分は # include &lt;card.h&gt; に含まれることに
-なる。
-</li>
+なる。</li>
 
-<li>src/card.hを遵守し，src/card.c に機能(関数)を追加する。
-</li>
+<li>src/card.hを遵守し，src/card.c に機能(関数)を追加する。</li>
 
 <li>提供する機能を入れた src/libcard.a を作成する，Makefileを作成す
-る
-</li>
+る</li>
 </ul>
 
 <p>
@@ -1650,9 +1656,9 @@ src/card.hに追加する。
 </p>
 </div>
 
-<div id="outline-container-sec-7-1-2-1" class="outline-5">
-<h5 id="sec-7-1-2-1">src/card.h の更新</h5>
-<div class="outline-text-5" id="text-7-1-2-1">
+<div id="outline-container-orgheadline27" class="outline-5">
+<h5 id="orgheadline27">src/card.h の更新</h5>
+<div class="outline-text-5" id="text-orgheadline27">
 <p>
 test/test_card.c で宣言した card_no_new_from_string に関する
 インタフェースの定義を，src/card.h に移し，定義の責任を src/ に移
@@ -1680,9 +1686,9 @@ enum e_No card_no_new_from_string(char *);
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-2-2" class="outline-5">
-<h5 id="sec-7-1-2-2">test/test_card.cの変更</h5>
-<div class="outline-text-5" id="text-7-1-2-2">
+<div id="outline-container-orgheadline28" class="outline-5">
+<h5 id="orgheadline28">test/test_card.cの変更</h5>
+<div class="outline-text-5" id="text-orgheadline28">
 <p>
 test/test_card.c から card_no_new_from_string に関する宣言を消しま
 す。
@@ -1719,17 +1725,16 @@ test_card_no_new_from_string(void)
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-2-3" class="outline-5">
-<h5 id="sec-7-1-2-3">card_no_new_from_string の実装 (src/card.c の更新)</h5>
-<div class="outline-text-5" id="text-7-1-2-3">
+<div id="outline-container-orgheadline29" class="outline-5">
+<h5 id="orgheadline29">card_no_new_from_string の実装 (src/card.c の更新)</h5>
+<div class="outline-text-5" id="text-orgheadline29">
 <p>
 番号を表す文字列から，内部番号にする関数 card_no_new_from_string
 を実装します.
 </p>
 
 <ul class="org-ul">
-<li>src/card.h 中の，下記インタフェースの宣言
-</li>
+<li>src/card.h 中の，下記インタフェースの宣言</li>
 </ul>
 
 <div class="org-src-container">
@@ -1767,8 +1772,7 @@ card_no_new_from_string(char *no_str)
 
 <ul class="org-ul">
 <li>整数値文字列を整数にするためのライブラリ関数 int atoi(char *) を使
-います:
-</li>
+います:</li>
 </ul>
 
 <div class="org-src-container">
@@ -1779,8 +1783,7 @@ card_no_new_from_string(char *no_str)
 
 <ul class="org-ul">
 <li>1~13 の数値を，2~14 の数値に変換し，おかしな値がないかチェックし
-ます
-</li>
+ます</li>
 </ul>
 
 <div class="org-src-container">
@@ -1837,9 +1840,9 @@ card_no_new_from_string(char *no_str)
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-2-4" class="outline-5">
-<h5 id="sec-7-1-2-4">src/Makefile</h5>
-<div class="outline-text-5" id="text-7-1-2-4">
+<div id="outline-container-orgheadline30" class="outline-5">
+<h5 id="orgheadline30">src/Makefile</h5>
+<div class="outline-text-5" id="text-orgheadline30">
 <p>
 src/card.h と src/card.c から src/card.o を作成し，src/card.o から
 src/libcard.a を作成するルールに変更はありません。
@@ -1911,9 +1914,9 @@ T card_no_new_from_string， T card_suit_new_from_string で関数が定
 </div>
 </div>
 
-<div id="outline-container-sec-7-1-2-5" class="outline-5">
-<h5 id="sec-7-1-2-5">テスト test/test_card.so の再ビルド</h5>
-<div class="outline-text-5" id="text-7-1-2-5">
+<div id="outline-container-orgheadline31" class="outline-5">
+<h5 id="orgheadline31">テスト test/test_card.so の再ビルド</h5>
+<div class="outline-text-5" id="text-orgheadline31">
 <p>
 src/libcard.a が更新できたので，次は libcard.a をリンクし直して，
 test/test_card.so を更新します。
@@ -1937,9 +1940,9 @@ gcc -o test_card.so &#x2013;shared test_card.o -L../src/ -lcard `pkg-config cutt
 </div>
 
 
-<div id="outline-container-sec-7-1-3" class="outline-4">
-<h4 id="sec-7-1-3">テスト</h4>
-<div class="outline-text-4" id="text-7-1-3">
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32">テスト</h4>
+<div class="outline-text-4" id="text-orgheadline32">
 <p>
 機能の実装が終り，テストもビルドできました。
 </p>
@@ -1990,22 +1993,18 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 </div>
 
 
-<div id="outline-container-sec-7-1-3-1" class="outline-5">
-<h5 id="sec-7-1-3-1">テストと再設計</h5>
-<div class="outline-text-5" id="text-7-1-3-1">
+<div id="outline-container-orgheadline33" class="outline-5">
+<h5 id="orgheadline33">テストと再設計</h5>
+<div class="outline-text-5" id="text-orgheadline33">
 <p>
 この節でおこなったこと:
 </p>
 
 <ul class="org-ul">
-<li>新たな機能の要求 card_no_new_from_string があり，
-</li>
-<li>test/test_card.c に新らしいテスト関数を作成し，
-</li>
-<li>src/card.h に新たな機能のインターフェイス宣言を付け加え，
-</li>
-<li>src/card.c にその機能の実装を付け加えた
-</li>
+<li>新たな機能の要求 card_no_new_from_string があり，</li>
+<li>test/test_card.c に新らしいテスト関数を作成し，</li>
+<li>src/card.h に新たな機能のインターフェイス宣言を付け加え，</li>
+<li>src/card.c にその機能の実装を付け加えた</li>
 </ul>
 </div>
 </div>
@@ -2013,14 +2012,12 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">トランプ・カードを作成</h2>
-<div class="outline-text-2" id="text-8">
-</div>
-
-<div id="outline-container-sec-8-1" class="outline-3">
-<h3 id="sec-8-1">機能の追加とテストの作成</h3>
-<div class="outline-text-3" id="text-8-1">
+<div id="outline-container-orgheadline55" class="outline-2">
+<h2 id="orgheadline55">トランプ・カードを作成</h2>
+<div class="outline-text-2" id="text-orgheadline55">
+</div><div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35">機能の追加とテストの作成</h3>
+<div class="outline-text-3" id="text-orgheadline35">
 <p>
 カードを作る機能のテストは，test/test_card.c に追加作成します。
 </p>
@@ -2031,9 +2028,9 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 </p>
 </div>
 
-<div id="outline-container-sec-8-1-1" class="outline-4">
-<h4 id="sec-8-1-1">card_new のテストを書く</h4>
-<div class="outline-text-4" id="text-8-1-1">
+<div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36">card_new のテストを書く</h4>
+<div class="outline-text-4" id="text-orgheadline36">
 <p>
 機能の名前を card_new とし, card_newが満たすテストを書きます:
 </p>
@@ -2048,12 +2045,9 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 次のような事が分かります:
 </p>
 <ul class="org-ul">
-<li>Card型が必要である，
-</li>
-<li>スーツと番号を与え，
-</li>
-<li>Card型の値が返る。
-</li>
+<li>Card型が必要である，</li>
+<li>スーツと番号を与え，</li>
+<li>Card型の値が返る。</li>
 </ul>
 
 <p>
@@ -2072,11 +2066,13 @@ enum e_No card_no(Card);
 これにより，テストが書けます:
 </p>
 
-<pre class="example">
-Card sa = card_new(SPADE, ACE);
+<div class="org-src-container">
+
+<pre class="src src-c">Card sa = card_new(SPADE, ACE);
 cut_assert( card_suit(sa)==SPADE );
 cut_assert( card_no(sa)==ACE );
 </pre>
+</div>
 
 <p>
 スペードのACEを作り，つくられたカードのスーツと番号が正しいか，確
@@ -2104,9 +2100,9 @@ test_card_new(void)
 </div>
 </div>
 
-<div id="outline-container-sec-8-1-2" class="outline-4">
-<h4 id="sec-8-1-2">card_new, card_suit, card_no のインタフェースを決める</h4>
-<div class="outline-text-4" id="text-8-1-2">
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37">card_new, card_suit, card_no のインタフェースを決める</h4>
+<div class="outline-text-4" id="text-orgheadline37">
 <p>
 card_new を関数の形で書けたので，関数の型を決めます。
 </p>
@@ -2125,18 +2121,16 @@ Card card_new(enum e_Suit, enum e_No);
 </div>
 </div>
 
-<div id="outline-container-sec-8-1-3" class="outline-4">
-<h4 id="sec-8-1-3">Card型を定義する</h4>
-<div class="outline-text-4" id="text-8-1-3">
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38">Card型を定義する</h4>
+<div class="outline-text-4" id="text-orgheadline38">
 <p>
 Card 型を定義しましょう。Card型は次の情報を持ちます:
 </p>
 
 <ul class="org-ul">
-<li>スーツを表す enum e_Suit 型の数値
-</li>
-<li>番号を表す enum e_No 型の数値
-</li>
+<li>スーツを表す enum e_Suit 型の数値</li>
+<li>番号を表す enum e_No 型の数値</li>
 </ul>
 
 <p>
@@ -2173,9 +2167,9 @@ struct _Card 型を Card 型として定義し，Card が
 </div>
 </div>
 
-<div id="outline-container-sec-8-1-4" class="outline-4">
-<h4 id="sec-8-1-4">テスト全体プログラムの確認</h4>
-<div class="outline-text-4" id="text-8-1-4">
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39">テスト全体プログラムの確認</h4>
+<div class="outline-text-4" id="text-orgheadline39">
 <p>
 test/test_card.cは次のようになります:
 </p>
@@ -2185,7 +2179,19 @@ test/test_card.cは次のようになります:
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 void
 test_card_suit_new_from_string(void)
 {
@@ -2206,7 +2212,21 @@ test_card_no_new_from_string(void)
   cut_assert(card_no_new_from_string("11")==JACK);
   cut_assert(card_no_new_from_string("10")==10);
 }
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -2217,7 +2237,22 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 void
 test_card_new(void)
 {
@@ -2235,10 +2270,37 @@ test_card_new(void)
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
@@ -2248,9 +2310,9 @@ enum e_No card_no_new_from_string(char *);
 </div>
 </div>
 
-<div id="outline-container-sec-8-1-5" class="outline-4">
-<h4 id="sec-8-1-5">test/Makefile の確認</h4>
-<div class="outline-text-4" id="text-8-1-5">
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40">test/Makefile の確認</h4>
+<div class="outline-text-4" id="text-orgheadline40">
 <p>
 test/Makefile の目的は変わっていませんので，Makefile の更新の必要はありません。
 </p>
@@ -2258,6 +2320,19 @@ test/Makefile の目的は変わっていませんので，Makefile の更新の
 <div class="org-src-container">
 
 <pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+# test/Makefile
 .PHONY: clean
 CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
 LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
@@ -2280,9 +2355,9 @@ card_new はまだ未実装ですが，test/test_card.o は作成できます。
 </div>
 </div>
 
-<div id="outline-container-sec-8-1-6" class="outline-4">
-<h4 id="sec-8-1-6">test/test_card.o の作成</h4>
-<div class="outline-text-4" id="text-8-1-6">
+<div id="outline-container-orgheadline41" class="outline-4">
+<h4 id="orgheadline41">test/test_card.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline41">
 <div class="org-src-container">
 
 <pre class="src src-sh"># ~/progs/card_display/simple/test
@@ -2354,9 +2429,9 @@ test_card_new が定義されているのがわかります。
 </div>
 </div>
 
-<div id="outline-container-sec-8-2" class="outline-3">
-<h3 id="sec-8-2">card_new の実装</h3>
-<div class="outline-text-3" id="text-8-2">
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42">card_new の実装</h3>
+<div class="outline-text-3" id="text-orgheadline42">
 <p>
 さて次は，機能 card_new の実装です。
 手順は，card_no_new_from_string を実装したときと同様です:
@@ -2364,12 +2439,9 @@ test_card_new が定義されているのがわかります。
 
 <ul class="org-ul">
 <li>test/test_card.c を作成するときに決めたインタフェースをとりだし，
-src/card.h に移す。
-</li>
-<li>src/card.hを遵守し，src/card.c に機能を追加実装する。
-</li>
-<li>提供する機能を入れた src/libcard.a を作成する
-</li>
+src/card.h に移す。</li>
+<li>src/card.hを遵守し，src/card.c に機能を追加実装する。</li>
+<li>提供する機能を入れた src/libcard.a を作成する</li>
 </ul>
 
 <p>
@@ -2377,9 +2449,9 @@ src/{card.h，libcard.a} で機能を提供する
 </p>
 </div>
 
-<div id="outline-container-sec-8-2-1" class="outline-4">
-<h4 id="sec-8-2-1">card/card.h の更新</h4>
-<div class="outline-text-4" id="text-8-2-1">
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43">card/card.h の更新</h4>
+<div class="outline-text-4" id="text-orgheadline43">
 <p>
 test/test_card.c から card_new等に関するインタフェース宣言を，
 src/card.h に移します。
@@ -2393,10 +2465,18 @@ src/card.h に移します。
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
@@ -2406,7 +2486,54 @@ struct _Card {
   enum e_Suit suit;
   enum e_No no;
 };
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
 typedef struct _Card Card;
 
 enum e_Suit card_suit(Card);
@@ -2423,6 +2550,9 @@ test/test_card.c は次のようになります：
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
 void
 test_card_suit_new_from_string(void)
@@ -2433,7 +2563,26 @@ test_card_suit_new_from_string(void)
   cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
   cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
 }
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 void
 test_card_no_new_from_string(void)
 {
@@ -2455,22 +2604,30 @@ test_card_new(void)
     cut_assert(card_no(sa)==ACE);
   }
 }
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-2" class="outline-4">
-<h4 id="sec-8-2-2">card_new の実装 (src/card.cの更新)</h4>
-<div class="outline-text-4" id="text-8-2-2">
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44">card_new の実装 (src/card.cの更新)</h4>
+<div class="outline-text-4" id="text-orgheadline44">
 <p>
 card_new関数への要求は
 </p>
 <ul class="org-ul">
-<li>スーツの内部表現と数字の内部表現から，
-</li>
-<li>カードを表すデータを作る
-</li>
+<li>スーツの内部表現と数字の内部表現から，</li>
+<li>カードを表すデータを作る</li>
 </ul>
 
 <p>
@@ -2488,20 +2645,28 @@ card_new(enum e_Suit suit, enum e_No no)
   new.no = no;
   return new;
 }
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-3" class="outline-4">
-<h4 id="sec-8-2-3">card_suit の実装 (src/card.cの更新)</h4>
-<div class="outline-text-4" id="text-8-2-3">
+<div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45">card_suit の実装 (src/card.cの更新)</h4>
+<div class="outline-text-4" id="text-orgheadline45">
 <p>
 要求は：
 </p>
 <ul class="org-ul">
-<li>カードデータからそのスーツが分かること
-</li>
+<li>カードデータからそのスーツが分かること</li>
 </ul>
 
 <p>
@@ -2515,20 +2680,24 @@ card_suit(Card c)
 {
   return c.suit;
 }
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-4" class="outline-4">
-<h4 id="sec-8-2-4">card_no の実装 (src/card.cの更新)</h4>
-<div class="outline-text-4" id="text-8-2-4">
+<div id="outline-container-orgheadline46" class="outline-4">
+<h4 id="orgheadline46">card_no の実装 (src/card.cの更新)</h4>
+<div class="outline-text-4" id="text-orgheadline46">
 <p>
 要求は：
 </p>
 <ul class="org-ul">
-<li>カードデータからその数字が分かること
-</li>
+<li>カードデータからその数字が分かること</li>
 </ul>
 
 <p>
@@ -2541,14 +2710,19 @@ card_no(Card c)
 {
   return c.no;
 }
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-5" class="outline-4">
-<h4 id="sec-8-2-5">src/card.c 全体</h4>
-<div class="outline-text-4" id="text-8-2-5">
+<div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47">src/card.c 全体</h4>
+<div class="outline-text-4" id="text-orgheadline47">
 <p>
 ここまでの，src/card.c を示しておきます:
 </p>
@@ -2560,7 +2734,25 @@ card_no(Card c)
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
 # include &lt;card.h&gt;
+// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
 
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
 enum e_Suit
 card_suit_new_from_string(char *suit_str)
 {
@@ -2588,7 +2780,29 @@ card_no_new_from_string(char *no_str)
     };
   return (enum e_No)no;
 }
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
 
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO &amp;&amp; ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No)no;
+}
+
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
 Card
 card_new(enum e_Suit suit, enum e_No no)
 {
@@ -2604,7 +2818,17 @@ card_suit(Card c)
 {
   return c.suit;
 }
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
 
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
 enum e_No
 card_no(Card c)
 {
@@ -2615,9 +2839,9 @@ card_no(Card c)
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-6" class="outline-4">
-<h4 id="sec-8-2-6">src/Makefile</h4>
-<div class="outline-text-4" id="text-8-2-6">
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48">src/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline48">
 <p>
 src/Makefileに変更はありません。
 </p>
@@ -2637,14 +2861,29 @@ card.o: card.c card.h
 
 clean: 
 	rm -f *.o *.so *~ \#* *.gch
+
+# src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-7" class="outline-4">
-<h4 id="sec-8-2-7">src/card.o の作成</h4>
-<div class="outline-text-4" id="text-8-2-7">
+<div id="outline-container-orgheadline49" class="outline-4">
+<h4 id="orgheadline49">src/card.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline49">
 <p>
 src/card.o を make し, ソースコードにエラーがないか確かめます:
 </p>
@@ -2667,9 +2906,9 @@ src/card.o ができれば文法や宣言の食い違いはなくなったこと
 </div>
 </div>
 
-<div id="outline-container-sec-8-2-8" class="outline-4">
-<h4 id="sec-8-2-8">src/libcard.a の作成</h4>
-<div class="outline-text-4" id="text-8-2-8">
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50">src/libcard.a の作成</h4>
+<div class="outline-text-4" id="text-orgheadline50">
 <p>
 src/card.o ができれば，次は， src/libcard.a を make します。
 </p>
@@ -2722,12 +2961,12 @@ src/libcard.a が更新できたので，次はtest_card.so を更新します�
 </div>
 </div>
 
-<div id="outline-container-sec-8-3" class="outline-3">
-<h3 id="sec-8-3">テスト</h3>
-<div class="outline-text-3" id="text-8-3">
-</div><div id="outline-container-sec-8-3-1" class="outline-4">
-<h4 id="sec-8-3-1">test/test_card.so のビルド</h4>
-<div class="outline-text-4" id="text-8-3-1">
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54">テスト</h3>
+<div class="outline-text-3" id="text-orgheadline54">
+</div><div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51">test/test_card.so のビルド</h4>
+<div class="outline-text-4" id="text-orgheadline51">
 <p>
 src/libcard.a が更新されているので，test/test_card.so を作り直しま
 す。
@@ -2757,9 +2996,9 @@ test/test_card.so ができればテストの実行に移ります。
 </div>
 </div>
 
-<div id="outline-container-sec-8-3-2" class="outline-4">
-<h4 id="sec-8-3-2">テストの実行</h4>
-<div class="outline-text-4" id="text-8-3-2">
+<div id="outline-container-orgheadline52" class="outline-4">
+<h4 id="orgheadline52">テストの実行</h4>
+<div class="outline-text-4" id="text-orgheadline52">
 <p>
 テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
 めるためにテストする:
@@ -2786,9 +3025,9 @@ Finished in 0.001173 seconds (total: 0.000259 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-8-3-3" class="outline-4">
-<h4 id="sec-8-3-3">テストと再設計</h4>
-<div class="outline-text-4" id="text-8-3-3">
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53">テストと再設計</h4>
+<div class="outline-text-4" id="text-orgheadline53">
 <p>
 テストが成功すれば，テストによる開発の1サイクルが完結したことにな
 ります。
@@ -2809,74 +3048,65 @@ Finished in 0.001173 seconds (total: 0.000259 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">トランプ・カードを文字列に</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-orgheadline56" class="outline-2">
+<h2 id="orgheadline56">トランプ・カードを文字列に</h2>
+<div class="outline-text-2" id="text-orgheadline56">
 <p>
 自分でやってみましょう。
 </p>
 </div>
 
-<div id="outline-container-sec-9-1" class="outline-3">
-<h3 id="sec-9-1">設計</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57">設計</h3>
+<div class="outline-text-3" id="text-orgheadline57">
 <p>
 要求は，カードの内部表現を文字列にすること
 </p>
 
 <ul class="org-ul">
-<li>2文字からなるの文字列とする
-</li>
-<li>スーツは 'S', 'H', 'D', 'C',  1文字
-</li>
-<li>数は 'A','K','Q','J','0','9','8','7','6','5','4','3','2'，1文字
-</li>
+<li>2文字からなるの文字列とする</li>
+<li>スーツは 'S', 'H', 'D', 'C',  1文字</li>
+<li>数は 'A','K','Q','J','0','9','8','7','6','5','4','3','2'，1文字</li>
 </ul>
 
 <p>
 処理
 </p>
 <ul class="org-ul">
-<li>スーツや番号を添字に配列を参照するのも一つの方法
-</li>
+<li>スーツや番号を添字に配列を参照するのも一つの方法</li>
 </ul>
 </div>
 
-<div id="outline-container-sec-9-1-1" class="outline-4">
-<h4 id="sec-9-1-1">機能の名前と構造</h4>
-<div class="outline-text-4" id="text-9-1-1">
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58">機能の名前と構造</h4>
+<div class="outline-text-4" id="text-orgheadline58">
 <p>
 card_to_string カードを文字列にする機能
 </p>
 <ul class="org-ul">
-<li>card_suit_to_string  スーツを1文字にする機能
-</li>
-<li>card_no_to_string 番号を1文字にする機能
-</li>
+<li>card_suit_to_string  スーツを1文字にする機能</li>
+<li>card_no_to_string 番号を1文字にする機能</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-9-1-2" class="outline-4">
-<h4 id="sec-9-1-2">関数の引数と戻り値の型 (APIの設計)</h4>
-<div class="outline-text-4" id="text-9-1-2">
+<div id="outline-container-orgheadline59" class="outline-4">
+<h4 id="orgheadline59">関数の引数と戻り値の型 (APIの設計)</h4>
+<div class="outline-text-4" id="text-orgheadline59">
 <ul class="org-ul">
 <li>char *card_to_string(Card);
 <ul class="org-ul">
-<li>char *card_suit_to_string(int suit);
-</li>
-<li>char *card_no_to_string(int no);
-</li>
-</ul>
-</li>
+<li>char *card_suit_to_string(int suit);</li>
+<li>char *card_no_to_string(int no);</li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-9-2" class="outline-3">
-<h3 id="sec-9-2">テストによる開発</h3>
-<div class="outline-text-3" id="text-9-2">
+<div id="outline-container-orgheadline60" class="outline-3">
+<h3 id="orgheadline60">テストによる開発</h3>
+<div class="outline-text-3" id="text-orgheadline60">
 <p>
 card_no_new_from_string や card_new の開発をまねして，
 テストによる開発を行って下さい。
@@ -2890,14 +3120,12 @@ card_no_new_from_string や card_new の開発をまねして，
 </div>
 </div>
 
-<div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">トランプ・カードを文字列に</h2>
-<div class="outline-text-2" id="text-10">
-</div>
-
-<div id="outline-container-sec-10-1" class="outline-3">
-<h3 id="sec-10-1">機能の追加とテストの作成</h3>
-<div class="outline-text-3" id="text-10-1">
+<div id="outline-container-orgheadline78" class="outline-2">
+<h2 id="orgheadline78">トランプ・カードを文字列に</h2>
+<div class="outline-text-2" id="text-orgheadline78">
+</div><div id="outline-container-orgheadline61" class="outline-3">
+<h3 id="orgheadline61">機能の追加とテストの作成</h3>
+<div class="outline-text-3" id="text-orgheadline61">
 <p>
 テストは，test/test_card.c に追加作成します。
 </p>
@@ -2908,9 +3136,9 @@ card_no_new_from_string や card_new の開発をまねして，
 </p>
 </div>
 
-<div id="outline-container-sec-10-1-1" class="outline-4">
-<h4 id="sec-10-1-1">card_to_string のテストを書く</h4>
-<div class="outline-text-4" id="text-10-1-1">
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62">card_to_string のテストを書く</h4>
+<div class="outline-text-4" id="text-orgheadline62">
 <p>
 機能の名前を card_to_string とし, card_to_stringが満たすテストを書きます:
 </p>
@@ -2939,14 +3167,26 @@ test_card_to_string(void)
     cut_assert(strcmp(card_to_string(sa), "SA")==0);
   }
 }
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-2" class="outline-4">
-<h4 id="sec-10-1-2">card_to_string のインタフェースを決める</h4>
-<div class="outline-text-4" id="text-10-1-2">
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63">card_to_string のインタフェースを決める</h4>
+<div class="outline-text-4" id="text-orgheadline63">
 <p>
 card_to_string を関数の形で書けたので，関数の型を決めます。
 </p>
@@ -2958,14 +3198,15 @@ card_to_string を関数の形で書けたので，関数の型を決めます�
 <div class="org-src-container">
 
 <pre class="src src-c">char *card_to_string(Card);
+char *card_to_string(Card);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-3" class="outline-4">
-<h4 id="sec-10-1-3">テスト全体プログラムの確認</h4>
-<div class="outline-text-4" id="text-10-1-3">
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64">テスト全体プログラムの確認</h4>
+<div class="outline-text-4" id="text-orgheadline64">
 <p>
 test/test_card.cは次のようになります:
 </p>
@@ -2973,6 +3214,9 @@ test/test_card.cは次のようになります:
 <div class="org-src-container">
 
 <pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
 
@@ -2985,7 +3229,26 @@ test_card_suit_new_from_string(void)
   cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
   cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
 }
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 void
 test_card_no_new_from_string(void)
 {
@@ -3007,8 +3270,31 @@ test_card_new(void)
     cut_assert(card_no(sa)==ACE);
   }
 }
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 
 char *card_to_string(Card);
+char *card_to_string(Card);
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
 
 
 void
@@ -3028,7 +3314,11 @@ test_card_to_string(void)
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
 
@@ -3036,7 +3326,15 @@ enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
 enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -3047,14 +3345,57 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-4" class="outline-4">
-<h4 id="sec-10-1-4">test/Makefile の確認</h4>
-<div class="outline-text-4" id="text-10-1-4">
+<div id="outline-container-orgheadline65" class="outline-4">
+<h4 id="orgheadline65">test/Makefile の確認</h4>
+<div class="outline-text-4" id="text-orgheadline65">
 <p>
 test/Makefile の目的は変わっていませんので，Makefile の更新の必要はありません。
 </p>
@@ -3062,6 +3403,19 @@ test/Makefile の目的は変わっていませんので，Makefile の更新の
 <div class="org-src-container">
 
 <pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+# test/Makefile
 .PHONY: clean
 CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
 LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
@@ -3084,9 +3438,9 @@ card_to_string はまだ未実装ですが，test/test_card.o は作成できま
 </div>
 </div>
 
-<div id="outline-container-sec-10-1-5" class="outline-4">
-<h4 id="sec-10-1-5">test/test_card.o の作成</h4>
-<div class="outline-text-4" id="text-10-1-5">
+<div id="outline-container-orgheadline66" class="outline-4">
+<h4 id="orgheadline66">test/test_card.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline66">
 <div class="org-src-container">
 
 <pre class="src src-sh"># ~/progs/card_display/simple/test
@@ -3162,9 +3516,9 @@ test_card_to_string が定義されているのがわかります。
 </div>
 </div>
 
-<div id="outline-container-sec-10-2" class="outline-3">
-<h3 id="sec-10-2">card_to_string の実装</h3>
-<div class="outline-text-3" id="text-10-2">
+<div id="outline-container-orgheadline67" class="outline-3">
+<h3 id="orgheadline67">card_to_string の実装</h3>
+<div class="outline-text-3" id="text-orgheadline67">
 <p>
 さて次は，機能 card_to_string の実装です。
 手順は，card_newを実装したときと同様です:
@@ -3172,12 +3526,9 @@ test_card_to_string が定義されているのがわかります。
 
 <ul class="org-ul">
 <li>test/test_card.c を作成するときに決めたインタフェースをとりだし，
-src/card.h に移す。
-</li>
-<li>src/card.hを遵守し，src/card.c に機能を追加実装する。
-</li>
-<li>提供する機能を入れた src/libcard.a を作成する
-</li>
+src/card.h に移す。</li>
+<li>src/card.hを遵守し，src/card.c に機能を追加実装する。</li>
+<li>提供する機能を入れた src/libcard.a を作成する</li>
 </ul>
 
 <p>
@@ -3185,9 +3536,9 @@ src/{card.h，libcard.a} で機能を提供する
 </p>
 </div>
 
-<div id="outline-container-sec-10-2-1" class="outline-4">
-<h4 id="sec-10-2-1">card/card.h の更新</h4>
-<div class="outline-text-4" id="text-10-2-1">
+<div id="outline-container-orgheadline68" class="outline-4">
+<h4 id="orgheadline68">card/card.h の更新</h4>
+<div class="outline-text-4" id="text-orgheadline68">
 <p>
 test/test_card.c から card_to_string等に関するインタフェース宣言を，
 src/card.h に移します。
@@ -3201,7 +3552,11 @@ src/card.h に移します。
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
 
@@ -3209,7 +3564,15 @@ enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
 enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -3220,7 +3583,54 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
+char *card_to_string(Card);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
 char *card_to_string(Card);
 </pre>
 </div>
@@ -3233,7 +3643,19 @@ test/test_card.c は次のようになります：
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 void
 test_card_suit_new_from_string(void)
 {
@@ -3254,7 +3676,27 @@ test_card_no_new_from_string(void)
   cut_assert(card_no_new_from_string("11")==JACK);
   cut_assert(card_no_new_from_string("10")==10);
 }
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 void
 test_card_new(void)
 {
@@ -3277,39 +3719,61 @@ test_card_to_string(void)
     cut_assert(strcmp(card_to_string(sa), "SA")==0);
   }
 }
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-2" class="outline-4">
-<h4 id="sec-10-2-2">card_to_string の実装 (src/card.cの更新)</h4>
-<div class="outline-text-4" id="text-10-2-2">
+<div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69">card_to_string の実装 (src/card.cの更新)</h4>
+<div class="outline-text-4" id="text-orgheadline69">
 <p>
 card_to_string関数への要求を下記のように分解します:
 </p>
 
 <ul class="org-ul">
-<li>スーツの内部表現を 'C', 'D', 'H', 'S' の文字へ
+<li><p>
+スーツの内部表現を 'C', 'D', 'H', 'S' の文字へ
+</p>
 
 <p>
 この機能を card_suit_to_char という関数で表します.
 </p>
 
 <ul class="org-ul">
-<li>型は，char card_suit_to_char(enum e_Suit)
+<li><p>
+型は，char card_suit_to_char(enum e_Suit)
+</p>
 
 <p>
 実装は，
-</p>
-</li>
-</ul>
-</li>
+</p></li>
+</ul></li>
 </ul>
 
 <div class="org-src-container">
 
 <pre class="src src-c">static char SuitChars[] =
+  {'*', 'C', 'D', 'H', 'S'};
+char 
+card_suit_to_char(enum e_Suit suit)
+{
+  return SuitChars[suit];
+}
+
+static char SuitChars[] =
   {'*', 'C', 'D', 'H', 'S'};
 char 
 card_suit_to_char(enum e_Suit suit)
@@ -3326,8 +3790,7 @@ card_suit_to_char(enum e_Suit suit)
 
 <ul class="org-ul">
 <li>番号の内部表現を，2~9 の間に数値は，'2'~'9'へ，
-10~14 は '0','J','Q','K','A' 
-</li>
+10~14 は '0','J','Q','K','A'</li>
 </ul>
 
 <p>
@@ -3336,8 +3799,7 @@ card_suit_to_char(enum e_Suit suit)
 
 <ul class="org-ul">
 <li>型は，char card_no_to_char(enum e_No)。
-実装は，
-</li>
+実装は，</li>
 </ul>
 
 <div class="org-src-container">
@@ -3350,13 +3812,22 @@ card_no_to_char(enum e_No no)
 {
   return NoChars[no];
 }
+
+
+static char NoChars[] =
+  {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
+   '0', 'J', 'Q', 'K', 'A'};
+char
+card_no_to_char(enum e_No no)
+{
+  return NoChars[no];
+}
 </pre>
 </div>
 
 <ul class="org-ul">
 <li>スーツを表す文字と番号を表す文字をあわせて，2文字からなる文字列
-にする
-</li>
+にする</li>
 </ul>
 
 <p>
@@ -3380,14 +3851,30 @@ card_to_string(Card c)
 
   return s;
 }
+
+char card_suit_to_char(enum e_Suit);
+char card_no_to_char(enum e_No);
+char *
+card_to_string(Card c)
+{
+  char suit = card_suit_to_char(card_suit(c));
+  char no = card_no_to_char(card_no(c));
+  char *s = (char *) malloc(3);
+
+  s[0] = suit;
+  s[1] = no;
+  s[2] = '\0';
+
+  return s;
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-3" class="outline-4">
-<h4 id="sec-10-2-3">src/card.c 全体</h4>
-<div class="outline-text-4" id="text-10-2-3">
+<div id="outline-container-orgheadline70" class="outline-4">
+<h4 id="orgheadline70">src/card.c 全体</h4>
+<div class="outline-text-4" id="text-orgheadline70">
 <p>
 ここまでの，src/card.c を示しておきます:
 </p>
@@ -3399,7 +3886,25 @@ card_to_string(Card c)
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
 # include &lt;card.h&gt;
+// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
 
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
 enum e_Suit
 card_suit_new_from_string(char *suit_str)
 {
@@ -3427,7 +3932,29 @@ card_no_new_from_string(char *no_str)
     };
   return (enum e_No)no;
 }
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
 
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO &amp;&amp; ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No)no;
+}
+
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
 Card
 card_new(enum e_Suit suit, enum e_No no)
 {
@@ -3443,13 +3970,39 @@ card_suit(Card c)
 {
   return c.suit;
 }
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
 
 enum e_No
 card_no(Card c)
 {
   return c.no;
 }
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
 
+
+char card_suit_to_char(enum e_Suit);
+char card_no_to_char(enum e_No);
+char *
+card_to_string(Card c)
+{
+  char suit = card_suit_to_char(card_suit(c));
+  char no = card_no_to_char(card_no(c));
+  char *s = (char *) malloc(3);
+
+  s[0] = suit;
+  s[1] = no;
+  s[2] = '\0';
+
+  return s;
+}
 
 char card_suit_to_char(enum e_Suit);
 char card_no_to_char(enum e_No);
@@ -3476,6 +4029,24 @@ card_suit_to_char(enum e_Suit suit)
   return SuitChars[suit];
 }
 
+static char SuitChars[] =
+  {'*', 'C', 'D', 'H', 'S'};
+char 
+card_suit_to_char(enum e_Suit suit)
+{
+  return SuitChars[suit];
+}
+
+
+static char NoChars[] =
+  {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
+   '0', 'J', 'Q', 'K', 'A'};
+char
+card_no_to_char(enum e_No no)
+{
+  return NoChars[no];
+}
+
 
 static char NoChars[] =
   {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -3490,9 +4061,9 @@ card_no_to_char(enum e_No no)
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-4" class="outline-4">
-<h4 id="sec-10-2-4">src/Makefile</h4>
-<div class="outline-text-4" id="text-10-2-4">
+<div id="outline-container-orgheadline71" class="outline-4">
+<h4 id="orgheadline71">src/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline71">
 <p>
 src/Makefileに変更はありません。
 </p>
@@ -3512,14 +4083,29 @@ card.o: card.c card.h
 
 clean: 
 	rm -f *.o *.so *~ \#* *.gch
+
+# src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-5" class="outline-4">
-<h4 id="sec-10-2-5">src/card.o の作成</h4>
-<div class="outline-text-4" id="text-10-2-5">
+<div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72">src/card.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline72">
 <p>
 src/card.o を make し, ソースコードにエラーがないか確かめます:
 </p>
@@ -3542,9 +4128,9 @@ src/card.o ができれば文法や宣言の食い違いはなくなったこと
 </div>
 </div>
 
-<div id="outline-container-sec-10-2-6" class="outline-4">
-<h4 id="sec-10-2-6">src/libcard.a の作成</h4>
-<div class="outline-text-4" id="text-10-2-6">
+<div id="outline-container-orgheadline73" class="outline-4">
+<h4 id="orgheadline73">src/libcard.a の作成</h4>
+<div class="outline-text-4" id="text-orgheadline73">
 <p>
 src/card.o ができれば，次は， src/libcard.a を make します。
 </p>
@@ -3603,12 +4189,12 @@ src/libcard.a が更新できたので，次はtest_card.so を更新します�
 </div>
 </div>
 
-<div id="outline-container-sec-10-3" class="outline-3">
-<h3 id="sec-10-3">テスト</h3>
-<div class="outline-text-3" id="text-10-3">
-</div><div id="outline-container-sec-10-3-1" class="outline-4">
-<h4 id="sec-10-3-1">test/test_card.so のビルド</h4>
-<div class="outline-text-4" id="text-10-3-1">
+<div id="outline-container-orgheadline77" class="outline-3">
+<h3 id="orgheadline77">テスト</h3>
+<div class="outline-text-3" id="text-orgheadline77">
+</div><div id="outline-container-orgheadline74" class="outline-4">
+<h4 id="orgheadline74">test/test_card.so のビルド</h4>
+<div class="outline-text-4" id="text-orgheadline74">
 <p>
 src/libcard.a が更新されているので，test/test_card.so を作り直しま
 す。
@@ -3639,9 +4225,9 @@ test/test_card.so ができればテストの実行に移ります。
 </div>
 </div>
 
-<div id="outline-container-sec-10-3-2" class="outline-4">
-<h4 id="sec-10-3-2">テストの実行</h4>
-<div class="outline-text-4" id="text-10-3-2">
+<div id="outline-container-orgheadline75" class="outline-4">
+<h4 id="orgheadline75">テストの実行</h4>
+<div class="outline-text-4" id="text-orgheadline75">
 <p>
 テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
 めるためにテストする:
@@ -3669,9 +4255,9 @@ Finished in 0.001416 seconds (total: 0.000282 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-10-3-3" class="outline-4">
-<h4 id="sec-10-3-3">テストと再設計</h4>
-<div class="outline-text-4" id="text-10-3-3">
+<div id="outline-container-orgheadline76" class="outline-4">
+<h4 id="orgheadline76">テストと再設計</h4>
+<div class="outline-text-4" id="text-orgheadline76">
 <p>
 テストが成功すれば，テストによる開発の1サイクルが完結したことにな
 ります。
@@ -3692,58 +4278,49 @@ Finished in 0.001416 seconds (total: 0.000282 seconds)
 </div>
 </div>
 
-<div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">card_display_simple 問題の解の作成</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-orgheadline79" class="outline-2">
+<h2 id="orgheadline79">card_display_simple 問題の解の作成</h2>
+<div class="outline-text-2" id="text-orgheadline79">
 <ul class="org-ul">
-<li>~/progs/card_display/simple/ に，
-</li>
+<li>~/progs/card_display/simple/ に，</li>
 
-<li>作成した src/libcard.a を利用し，
-</li>
+<li>作成した src/libcard.a を利用し，</li>
 
-<li>card_display_simple.c を作成し，
-</li>
+<li>card_display_simple.c を作成し，</li>
 
 <li>Makefile を書き換えて, card_display_simple をビルドできるように，
-してください。
-</li>
+してください。</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">card_display_multi</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-orgheadline80" class="outline-2">
+<h2 id="orgheadline80">card_display_multi</h2>
+<div class="outline-text-2" id="text-orgheadline80">
 <p>
-Card cards<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>; を使ってみる。
+Card cards\[5\]; を使ってみる。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">card_display_sort</h2>
-<div class="outline-text-2" id="text-13">
-</div>
-
-<div id="outline-container-sec-13-1" class="outline-3">
-<h3 id="sec-13-1">Doing checks <code>[1/3]</code></h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-orgheadline100" class="outline-2">
+<h2 id="orgheadline100">card_display_sort</h2>
+<div class="outline-text-2" id="text-orgheadline100">
+</div><div id="outline-container-orgheadline81" class="outline-3">
+<h3 id="orgheadline81">Doing checks <code>[1/3]</code></h3>
+<div class="outline-text-3" id="text-orgheadline81">
 <ul class="org-ul">
-<li><code>[X]</code> document structure check
-</li>
-<li><code>[&#xa0;]</code> tangle check
-</li>
-<li><code>[&#xa0;]</code> shell check
-</li>
+<li class="on"><code>[X]</code> document structure check</li>
+<li class="off"><code>[&#xa0;]</code> tangle check</li>
+<li class="off"><code>[&#xa0;]</code> shell check</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-13-2" class="outline-3">
-<h3 id="sec-13-2">複数のカードをソートする機能</h3>
-<div class="outline-text-3" id="text-13-2">
+<div id="outline-container-orgheadline82" class="outline-3">
+<h3 id="orgheadline82">複数のカードをソートする機能</h3>
+<div class="outline-text-3" id="text-orgheadline82">
 <p>
 複数のカードを <b>Card型配列へのポインタ</b> で表すことにする:
 </p>
@@ -3774,33 +4351,37 @@ cards_sort が何を返すかを考える:
 
 
 <ul class="org-ul">
-<li>cards_sort は関数である:
+<li><p>
+cards_sort は関数である:
+</p>
 
 <pre class="example">
 cards_sort()
-</pre>
-</li>
+</pre></li>
 
-<li>複数のカードをもらう:
+<li><p>
+複数のカードをもらう:
+</p>
 
 <pre class="example">
 cards_sort(Card *)
-</pre>
-</li>
+</pre></li>
 
-<li>複数のカードの枚数ももらう:
+<li><p>
+複数のカードの枚数ももらう:
+</p>
 
 <pre class="example">
 cards_sort(Card *, int)
-</pre>
-</li>
+</pre></li>
 
-<li>返す値は， (ソートした) 複数のカード:
+<li><p>
+返す値は， (ソートした) 複数のカード:
+</p>
 
 <pre class="example">
 Card *cards_sort(Card *, int)
-</pre>
-</li>
+</pre></li>
 </ul>
 
 <p>
@@ -3810,22 +4391,23 @@ Card *cards_sort(Card *, int)
 <div class="org-src-container">
 
 <pre class="src src-c">Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-13-3" class="outline-3">
-<h3 id="sec-13-3">機能の追加とテストの作成</h3>
-<div class="outline-text-3" id="text-13-3">
+<div id="outline-container-orgheadline83" class="outline-3">
+<h3 id="orgheadline83">機能の追加とテストの作成</h3>
+<div class="outline-text-3" id="text-orgheadline83">
 <p>
 カードを作る機能のテストは，test/test_sort.c を新たに作成することにします。
 </p>
 </div>
 
-<div id="outline-container-sec-13-3-1" class="outline-4">
-<h4 id="sec-13-3-1">cards_sort のテストを書く</h4>
-<div class="outline-text-4" id="text-13-3-1">
+<div id="outline-container-orgheadline84" class="outline-4">
+<h4 id="orgheadline84">cards_sort のテストを書く</h4>
+<div class="outline-text-4" id="text-orgheadline84">
 <p>
 機能の名前を cards_sort とし, cards_sortが満たすテストを書きます。
 </p>
@@ -3925,29 +4507,31 @@ card_compare のインタフェースと機能を決めましょう：
 
 <ul class="org-ul">
 <li>card_compare は，2枚のカードを与え，それが等しいか大きいか小さい
-かを0，1，-1で返す関数とします：
-</li>
+かを0，1，-1で返す関数とします：</li>
 
-<li>card_compare は関数:
+<li><p>
+card_compare は関数:
+</p>
 
 <pre class="example">
 card_compare()
-</pre>
-</li>
+</pre></li>
 
-<li>二枚のカードをもらって:
+<li><p>
+二枚のカードをもらって:
+</p>
 
 <pre class="example">
 card_compare(Card, Card)
-</pre>
-</li>
+</pre></li>
 
-<li>1,0,-1 の整数値を返す
+<li><p>
+1,0,-1 の整数値を返す
+</p>
 
 <pre class="example">
 int card_compare(Card, Card)
-</pre>
-</li>
+</pre></li>
 </ul>
 
 <p>
@@ -3957,6 +4541,7 @@ card_compare の宣言は次となります:
 <div class="org-src-container">
 
 <pre class="src src-c">int card_compare(Card, Card);
+int card_compare(Card, Card);
 </pre>
 </div>
 
@@ -3980,9 +4565,9 @@ card_compare の宣言は次となります:
 </div>
 </div>
 
-<div id="outline-container-sec-13-3-2" class="outline-4">
-<h4 id="sec-13-3-2">テスト全体プログラムの確認</h4>
-<div class="outline-text-4" id="text-13-3-2">
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85">テスト全体プログラムの確認</h4>
+<div class="outline-text-4" id="text-orgheadline85">
 <p>
 test/test_sort.cは次のようになります:
 </p>
@@ -3993,6 +4578,8 @@ test/test_sort.cは次のようになります:
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
 int card_compare(Card, Card);
+int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
 Card *cards_sort(Card *, int);
 void
 test_cards_sort(void)
@@ -4032,9 +4619,9 @@ test_cards_sort(void)
 </div>
 </div>
 
-<div id="outline-container-sec-13-3-3" class="outline-4">
-<h4 id="sec-13-3-3">test/Makefile の確認</h4>
-<div class="outline-text-4" id="text-13-3-3">
+<div id="outline-container-orgheadline86" class="outline-4">
+<h4 id="orgheadline86">test/Makefile の確認</h4>
+<div class="outline-text-4" id="text-orgheadline86">
 <p>
 test_sort.c を用意したことで，
 test/Makefile の目的は変わりました。Makefile を更新します:
@@ -4063,14 +4650,35 @@ test_sort.o: test_sort.c
 
 clean:
 	rm -f *.o *.so *~ \#* *.gch
+# test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+all: test_card.so test_sort.so
+
+test_card.so: test_card.o 
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+test_sort.so: test_sort.o 
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_sort.o: test_sort.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-13-3-4" class="outline-4">
-<h4 id="sec-13-3-4">test/test_sort.o の作成</h4>
-<div class="outline-text-4" id="text-13-3-4">
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87">test/test_sort.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline87">
 <div class="org-src-container">
 
 <pre class="src src-sh"># ~/progs/card_display/simple/test
@@ -4107,9 +4715,9 @@ cards_sortが未定義で，test_cards_sort が定義されているのがわか
 </div>
 </div>
 
-<div id="outline-container-sec-13-4" class="outline-3">
-<h3 id="sec-13-4">cards_sort，card_compare の実装</h3>
-<div class="outline-text-3" id="text-13-4">
+<div id="outline-container-orgheadline88" class="outline-3">
+<h3 id="orgheadline88">cards_sort，card_compare の実装</h3>
+<div class="outline-text-3" id="text-orgheadline88">
 <p>
 さて次は，機能 cards_sort, card_compare の実装です。
 </p>
@@ -4120,12 +4728,9 @@ cards_sortが未定義で，test_cards_sort が定義されているのがわか
 
 <ul class="org-ul">
 <li>test/test_sort.c を作成するときに決めたインタフェースをとりだし，
-src/card.h に移す。
-</li>
-<li>src/card.hを遵守し，*src/cards.c* に機能を追加実装する。
-</li>
-<li>提供する機能を入れた src/libcard.a を作成する
-</li>
+src/card.h に移す。</li>
+<li>src/card.hを遵守し，*src/cards.c* に機能を追加実装する。</li>
+<li>提供する機能を入れた src/libcard.a を作成する</li>
 </ul>
 
 <p>
@@ -4133,9 +4738,9 @@ src/{card.h，libcard.a} で機能を提供する
 </p>
 </div>
 
-<div id="outline-container-sec-13-4-1" class="outline-4">
-<h4 id="sec-13-4-1">card/card.h の更新</h4>
-<div class="outline-text-4" id="text-13-4-1">
+<div id="outline-container-orgheadline89" class="outline-4">
+<h4 id="orgheadline89">card/card.h の更新</h4>
+<div class="outline-text-4" id="text-orgheadline89">
 <p>
 test/test_card.c から cards_sort等に関するインタフェース宣言を，
 src/card.h に移します。
@@ -4149,7 +4754,11 @@ src/card.h に移します。
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
 
@@ -4157,7 +4766,15 @@ enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
 enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -4168,10 +4785,64 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
 char *card_to_string(Card);
 
 int card_compare(Card, Card);
+int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
+char *card_to_string(Card);
+
+int card_compare(Card, Card);
+int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
 Card *cards_sort(Card *, int);
 </pre>
 </div>
@@ -4182,9 +4853,9 @@ test/test_sort.c からは削除してください。
 </div>
 </div>
 
-<div id="outline-container-sec-13-4-2" class="outline-4">
-<h4 id="sec-13-4-2">cards_sort の実装 (src/cards.cの作成)</h4>
-<div class="outline-text-4" id="text-13-4-2">
+<div id="outline-container-orgheadline90" class="outline-4">
+<h4 id="orgheadline90">cards_sort の実装 (src/cards.cの作成)</h4>
+<div class="outline-text-4" id="text-orgheadline90">
 <p>
 cards_sort関数の使い方は決まっています。
 </p>
@@ -4192,6 +4863,7 @@ cards_sort関数の使い方は決まっています。
 <div class="org-src-container">
 
 <pre class="src src-c">Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
 </pre>
 </div>
 
@@ -4239,9 +4911,9 @@ cards_sort(Card *cards, int no_of_cards)
 </div>
 </div>
 
-<div id="outline-container-sec-13-4-3" class="outline-4">
-<h4 id="sec-13-4-3">card_compare の実装</h4>
-<div class="outline-text-4" id="text-13-4-3">
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91">card_compare の実装</h4>
+<div class="outline-text-4" id="text-orgheadline91">
 <p>
 card_compare の使い方も決まっています:
 </p>
@@ -4249,6 +4921,7 @@ card_compare の使い方も決まっています:
 <div class="org-src-container">
 
 <pre class="src src-c">int card_compare(Card, Card);
+int card_compare(Card, Card);
 </pre>
 </div>
 
@@ -4276,12 +4949,17 @@ card_compare(Card a, Card b)
 </div>
 </div>
 
-<div id="outline-container-sec-13-4-4" class="outline-4">
-<h4 id="sec-13-4-4">cards.c の確認</h4>
-<div class="outline-text-4" id="text-13-4-4">
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92">cards.c の確認</h4>
+<div class="outline-text-4" id="text-orgheadline92">
 <div class="org-src-container">
 
 <pre class="src src-c">// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
+// src/card.c
 # include &lt;stdio.h&gt;
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
@@ -4330,9 +5008,9 @@ cards_sort(Card *cards, int no_of_cards)
 </div>
 </div>
 
-<div id="outline-container-sec-13-4-5" class="outline-4">
-<h4 id="sec-13-4-5">src/Makefile</h4>
-<div class="outline-text-4" id="text-13-4-5">
+<div id="outline-container-orgheadline93" class="outline-4">
+<h4 id="orgheadline93">src/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline93">
 <p>
 src/Makefileには，src/cards.o を作成する規則が追加になり，
 libcard.a を作る時，cards.o も取り込むように規則を変更します:
@@ -4358,14 +5036,33 @@ cards.o: cards.c card.h
 
 clean: 
 	rm -f *.o *.so *~ \#* *.gch
+
+# src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o cards.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+# (2015.12.08) cards.o: cards.o card.h 
+cards.o: cards.c card.h 
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-13-4-6" class="outline-4">
-<h4 id="sec-13-4-6">src/cards.o の作成</h4>
-<div class="outline-text-4" id="text-13-4-6">
+<div id="outline-container-orgheadline94" class="outline-4">
+<h4 id="orgheadline94">src/cards.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline94">
 <p>
 src/cards.o を make し, ソースコードにエラーがないか確かめます:
 </p>
@@ -4384,9 +5081,9 @@ src/cards.o ができれば文法や宣言の食い違いはなくなったこ�
 </div>
 </div>
 
-<div id="outline-container-sec-13-4-7" class="outline-4">
-<h4 id="sec-13-4-7">src/libcard.a の作成</h4>
-<div class="outline-text-4" id="text-13-4-7">
+<div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95">src/libcard.a の作成</h4>
+<div class="outline-text-4" id="text-orgheadline95">
 <p>
 src/cards.o ができれば，次は， src/libcard.a を make します。
 </p>
@@ -4420,12 +5117,12 @@ src/libcard.a が更新できたので，次はtest_card.so を更新します�
 </div>
 </div>
 
-<div id="outline-container-sec-13-5" class="outline-3">
-<h3 id="sec-13-5">テスト</h3>
-<div class="outline-text-3" id="text-13-5">
-</div><div id="outline-container-sec-13-5-1" class="outline-4">
-<h4 id="sec-13-5-1">test/test_sort.so のビルド</h4>
-<div class="outline-text-4" id="text-13-5-1">
+<div id="outline-container-orgheadline99" class="outline-3">
+<h3 id="orgheadline99">テスト</h3>
+<div class="outline-text-3" id="text-orgheadline99">
+</div><div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96">test/test_sort.so のビルド</h4>
+<div class="outline-text-4" id="text-orgheadline96">
 <p>
 test/test_sort.so を作り直します。
 </p>
@@ -4448,9 +5145,9 @@ test/test_card.so ができればテストの実行に移ります。
 </div>
 </div>
 
-<div id="outline-container-sec-13-5-2" class="outline-4">
-<h4 id="sec-13-5-2">テストの実行</h4>
-<div class="outline-text-4" id="text-13-5-2">
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97">テストの実行</h4>
+<div class="outline-text-4" id="text-orgheadline97">
 <p>
 テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
 めるためにテストする:
@@ -4465,9 +5162,9 @@ cutter -v v test
 </div>
 </div>
 
-<div id="outline-container-sec-13-5-3" class="outline-4">
-<h4 id="sec-13-5-3">テストと再設計</h4>
-<div class="outline-text-4" id="text-13-5-3">
+<div id="outline-container-orgheadline98" class="outline-4">
+<h4 id="orgheadline98">テストと再設計</h4>
+<div class="outline-text-4" id="text-orgheadline98">
 <p>
 テストが成功すれば，テストによる開発の1サイクルが完結したことにな
 ります。
@@ -4487,19 +5184,10 @@ cutter -v v test
 </div>
 </div>
 </div>
-<div id="footnotes">
-<h2 class="footnotes">&#33050;&#27880;: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
-
-
 </div>
-</div></div>
 <div id="postamble" class="status">
-<p class="author">&#33879;&#32773;: suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-01-26 火 11:05</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="author">&#33879;&#32773;: masayuki suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-09-25 日 18:51</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

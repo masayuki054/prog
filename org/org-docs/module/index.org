@@ -1,0 +1,7 @@
+# Time-stamp: <2016-09-25 12:27:57 m>
+#+SETUPFILE: ~/COMM/public_html/org-html-theme/index-sos-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+
+#+TITLE: Cutterの使い方
+
+#+include: cutter.org :minlevel 1

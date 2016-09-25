@@ -1,4 +1,4 @@
-# Time-stamp: <2015-12-10 21:09:31 m>
+# Time-stamp: <2016-09-25 23:09:21 m>
 #+startup: overview
 
 * はじめに
@@ -145,10 +145,9 @@
   - Makefile を書き換えて, card_display_simple をビルドできるように，
     してください。
 
-
 * card_display_multi
 
-  Card cards[5]; を使ってみる。
+  Card cards\[5\]; を使ってみる。
 
 * card_display_sort 
 #+include: cards_sort.org

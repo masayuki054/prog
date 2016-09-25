@@ -1,29 +1,63 @@
+* Makefile for org-docs
+** directories and shell setting
+#+BEGIN_SRC makefile :tangle Makefile
+# dirs and shell setting
+MYHOME = ../../
+ORG = $(MYHOME)/org/
+SITE = $(MYHOME)/docs/
+DIR = ./org-docs/
+SHELL = zsh
+#+END_SRC
+
+** self document 
+#+BEGIN_SRC makefile :tangle Makefile
+# my documents
+self: index.html
+
+deploy: index.html
+	mkdir -p $(SITE)/$(DIR)
+	cp -p *.html $(SITE)/$(DIR)
+
+.SUFFIXES: .org .html .ob
+.org.html: ../../info/common-header.org contents.org 
+	$(HOME)/bin/org2html $<
+
+.ob.org:
+	$(HOME)/COMM/bin/babel_expand_include.rb $< > $@
+	org_tangle $@
+#+END_SRC
+
+** subdirectories
 #+BEGIN_SRC makefile :tangle Makefile
 
-subdirs = card-display tdd-card-display-simple what-is-tdd memos
-Docs = index.org emacs-setup.org oo.org ruby_begin.org 
-
-all:
-	make index.html
-	(cd card-display; make)
-	(cd tdd-card-display-simple; make)
-	(cd what-is-tdd; make)
-	(cd memos; make)
+DOCS = card-display cis-programming-lects cutter memos module poker software-test tdd-card-display-simple what-is-tdd
 
 
-.SUFFIXES: .org .html
-.org.html: ../info/common-header.org contents.org 
-	org2html $<
+make-all:$(DOCS)
+	make
+	for d in $(DOCS); \
+	do \
+		(echo $$d; cd $$d; make) \
+	done
 
-index.html:
+deploy-all:
+	make deploy
+	for d in $(DOCS); \
+	do \
+		(echo $$d; cd $$d; make deploy) \
+	done
 
+#+END_SRC
+
+** clean
+
+#+BEGIN_SRC makefile :tangle Makefile
 .PHONY: clean
 clean:
 	rm *.html
 	rm */*.html
-
-
 #+END_SRC
+
 
 
 

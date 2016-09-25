@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
 <head>
-<!-- 2016-09-25 日 23:16 -->
+<!-- 2016-09-25 日 23:31 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>ソフトウェア構成論 1回目</title>
@@ -159,23 +159,18 @@ for the JavaScript code in this tag.
 <h2>&#30446;&#27425;</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline8">講義のまとめ.01</a>
+<li><a href="#orgheadline1">講義紹介 <code>[0/3]</code></a></li>
+<li><a href="#orgheadline5">はじまり</a>
 <ul>
-<li><a href="#orgheadline1">Done 講義紹介</a></li>
-<li><a href="#orgheadline2">Doing 講義の目的など</a></li>
-<li><a href="#orgheadline3">Doing ~/progs のはじまり</a></li>
-<li><a href="#orgheadline4">Doing ~/progs 目的</a></li>
-<li><a href="#orgheadline5">Doing 講義内容へのpath</a></li>
-<li><a href="#orgheadline6">Todo プログラミング関連の講義と演習</a></li>
-<li><a href="#orgheadline7">Doing テストとテストによる開発とは</a></li>
+<li><a href="#orgheadline2">~/progs の作成 <code>[/]</code></a></li>
+<li><a href="#orgheadline3">emacs org-mode+babel やる？</a></li>
+<li><a href="#orgheadline4">講義内容へのpath <code>[/]</code></a></li>
 </ul>
 </li>
-<li><a href="#orgheadline11">レスポンス.01</a>
-<ul>
-<li><a href="#orgheadline9">カード</a></li>
-<li><a href="#orgheadline10">suzuki から</a></li>
-</ul>
-</li>
+<li><a href="#orgheadline6">プログラミング関連の講義と演習</a></li>
+<li><a href="#orgheadline7">テストとテストによる開発とは <code>[0/2]</code></a></li>
+<li><a href="#orgheadline8">card_display問題 <code>[/]</code></a></li>
+<li><a href="#orgheadline9">card_display問題のテストによる開発 <code>[0/7]</code></a></li>
 </ul>
 </div>
 </div>
@@ -191,312 +186,241 @@ for the JavaScript code in this tag.
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
 </p>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">講義のまとめ.01</h2>
-<div class="outline-text-2" id="text-orgheadline8">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">Done 講義紹介</h3>
-<div class="outline-text-3" id="text-orgheadline1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">講義紹介 <code>[0/3]</code></h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">サイト</a> ((<a href="file:///users/home/masayuki/lects/prog/site/index.html">cis-org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/index.html">s-org</a>)) の説明</li>
-</ul>
-
-<p>
-#+BEGIN_src org
- 見にくいとの意見があったので，全面的に書き換えました。
- いろんなページに行き易くしたつもりです。また意見ください。
-#+END_SRC org
-</p>
+<li class="trans"><code>[-]</code> site <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">prog.http</a> ((<a href="file:///users/home/masayuki/lects/prog/site/index.html">cis-org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/index.html">s-org</a>)) <code>[1/3]</code>
 
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi">wiki</a> に，講義情報と昨年度以前の講義内容がある。ポーカーゲーム開発
-は，まだこの中に。過去の講義でやったことが入っている。補助的に使う。</li>
-
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs">講義用ドキュメント</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/">cis-org</a>, <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs">s-org</a>)) 講義で用いるドキュメント類，
-教科書の代わりです。</li>
-
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects">毎回の講義</a> ((<a href="file:///users/home/masayuki/lects/prog/site/lects/">cis-org</a>, <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects">s-org</a>)) 毎回の講義 計画・行動・纏め</li>
-
-<li>自己紹介と休講のこと 10/16~10/20 までネンリンピック山口。10/20 は
-休講です。</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">Doing 講義の目的など</h3>
-<div class="outline-text-3" id="text-orgheadline2">
-<div class="org-src-container">
-
-<pre class="src src-org">下記について，考え，体験すること:
-- ソフトウェアの設計方法
-- ソフトウェアの開発方法
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">Doing ~/progs のはじまり</h3>
-<div class="outline-text-3" id="text-orgheadline3">
-<ul class="org-ul">
-<li>講義用のディレクトリ <a href="file:///users/home/masayuki/progs">file:///users/home/masayuki/progs</a> を作成しました。 
-<ul class="org-ul">
-<li>emacs を使ってディレクトリを閲覧しました。
-<ul class="org-ul">
-<li>emacs の <a href="emacs.html#dired">emacs#dired</a> が便利です。</li>
-</ul></li>
-</ul></li>
-
-<li><a href="file:///users/home/masayuki/progs/README.html">file:///users/home/masayuki/progs/README.html</a> を作成し, ディレクトリの使用目的を書きま
-した。最初の開発ドキュメントです。</li>
-
-<li>emacsについて使いながら説明
-<a href="emacs.html#Top">emacs</a> を読みましょう
-<ul class="org-ul">
-<li><a href="emacs.html#Files">emacs#Files</a></li>
-<li><a href="emacs.html#Buffers">emacs#Buffers</a></li>
-<li><a href="emacs.html#Windows">emacs#Windows</a></li>
-<li><a href="emacs.html#Frames">emacs#Frames</a></li>
-</ul></li>
-<li>emacs org-modeの紹介と説明
-<ul class="org-ul">
-<li><a href="org.html#Top">org</a></li>
-</ul></li>
-</ul>
-
-<div class="org-src-container">
-
-<pre class="src src-org">説明, 早すぎたみたいですが，先生と同じ操作をすることに専念せず，
-やる事を言葉にして理解し，その目的を理解してください。
-
-emacs を使ってやったことは基本的なことです。今まで，見たり聞いたり興味をもったりしなかったのなぁ。
-
-マニュアルの見出しとか，概念とか，調べてみるといいと思う。
-
-info:emacs が見られませんでしたが，/usr/share/info/emacs-24/にあります。
-の elisp:Info-directory-list が壊れていたためでした。
-生さんのは大丈夫でしょうか？
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">Doing ~/progs 目的</h3>
-<div class="outline-text-3" id="text-orgheadline4">
-<dl class="org-dl">
-<dt>lects/</dt><dd>毎回の講義のめもを置きましょう</dd>
-
-<dt>card_display/</dt><dd>カード表示問題の開発用</dd>
-
-<dt>cutter/</dt><dd>テスト体験</dd>
-
-<dt>game/</dt><dd>ポーカーゲーム開発用</dd>
-</dl>
-</div>
-</div>
-
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">Doing 講義内容へのpath</h3>
-<div class="outline-text-3" id="text-orgheadline5">
-<ul class="org-ul">
-<li>先生の ~/progs は，<a href="file:///users/home/masayuki/progs/">file:///users/home/masayuki/progs/</a> お手本にしてください。</li>
-<li>講義ページや資料は，<a href="file:///users/home/masayuki/lects/prog">file:///users/home/masayuki/lects/prog</a> の下にあります。emacs
-の org-mode を使って見てください。</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Todo プログラミング関連の講義と演習</h3>
-<div class="outline-text-3" id="text-orgheadline6">
-<p>
-既習の講義を，<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連演習@cis</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/cis-programming-lects/">cis-org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/cis-programming-lects">s-org</a>)) にまとめまし
-た。
-</p>
-
-<ul class="org-ul">
-<li>構造体は重要です。データをまとめて，名前がつけられるからです。</li>
-<li>関数は重要です。処理をまとめて，名前がつけられるからです。</li>
-</ul>
-
-<p>
-下記のことが重要です。(詳しくは後で)
-</p>
-<ul class="org-ul">
-<li>重要なプログラムの構成要素 
-<ul class="org-ul">
-<li>関数と抽象化，情報隠蔽</li>
-<li>ヘッダファイルの役割，インタフェース遵守</li>
-<li>名前と実体の管理</li>
-</ul></li>
-
-<li>コンパイル過程のこと (説明は後で)
-<ul class="org-ul">
-<li>include</li>
-<li>gcc</li>
-<li>.o (オブジェクト・ファイル)</li>
-<li>.a (静的ライブラリ), .so(動的ライブラリ)</li>
-<li>ld (ローダ，リンケージ・エディタ)</li>
-<li>a.out (実行プログラム)</li>
-</ul></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">Doing テストとテストによる開発とは</h3>
-<div class="outline-text-3" id="text-orgheadline7">
-<p>
-テストについて簡単に説明しました。
+<li class="on"><code>[X]</code> <p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi">wiki</a> 
 </p>
 
 <p>
-ソフトウェア工学，ソフトウェア開発過程，ソフトウェアの正しさとか簡
-単にふれました。
+過去の講義でやったことが入っている。補助的に使う。
+</p></li>
+
+<li class="off"><code>[&#xa0;]</code> <p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs">講義用ドキュメント</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/">cis-org</a>, <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs">s-org</a>))
 </p>
 
 <p>
-詳しくは次週
-</p>
+講義で用いるドキュメント類
+</p></li>
+
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects">毎回の講義</a> ((<a href="file:///users/home/masayuki/lects/prog/site/lects/">cis-org</a>, <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects">s-org</a>))</li>
+</ul></li>
+</ul>
+
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 講義の目的など <code>[0/1]</code>
+
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> <p>
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd">テストによる開発とは</a>
+emacs org-mode+babel 
 </p>
 
 <p>
-ソフトウェアの機能とは何か，機能が正しいか確かられるか，考えてみ
-ましょう。
+文芸的プログラミング
 </p></li>
+</ul></li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter/">cutterの使い方</a> テストの体験。先輩が学生時代に開発を始めたソ
-フトウェアです。サイトにいってどんなものか概観しました。</li>
+<li class="off"><code>[&#xa0;]</code> 自己紹介と休講のこと</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">はじまり</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">~/progs の作成 <code>[/]</code></h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 講義用のディレクトリを作成します：</li>
+</ul>
+
+<p>
++BEGIN_SRC sh :dir ~/ :results output data
+ [~/]
+d ~/
+kdir -p progs
+d progs
+kdir -p lects cutter card_display game/{card,deck,hand,poker}
+s -R
++END_SRC
+</p>
+
+<p>
++RESULTS:
++begin_example
+</p>
+<pre class="example">
+</pre>
+<p>
+ard_display
+utter
+ame
+ects
+</p>
+
+<p>
+/card_display:
+</p>
+
+<p>
+/cutter:
+</p>
+
+<p>
+/game:
+card,deck,hand,poker}
+</p>
+
+<p>
+/game/{card,deck,hand,poker}:
+</p>
+
+<p>
+/lects:
++end_example
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ~/progs/README.org を作成します:</li>
+</ul>
+
+<p>
++BEGIN_SRC org :tangle ~/progs/README.org
++title: ~/progs/README.org
+ィレクトリの使用目的:
+</p>
+
+<p>
+./lects: 毎回の講義のめもを置きましょう
+</p>
+
+<p>
+./card_display: カード表示問題の開発用
+</p>
+
+<p>
+./cutter: テスト用
+</p>
+
+<p>
+./game: ポーカーゲーム開発用
+</p>
+<ul class="org-ul">
+<li>./game/card: カードモジュール</li>
+<li>./game/deck: 山モジュール</li>
+<li>./game/hand: 手札モジュール</li>
+<li>./game/poker: ポーカーモジュール</li>
+</ul>
+
+<p>
++END_SRC
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">emacs org-mode+babel やる？</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+((<a href="Emacs.html#Top">Emacs</a>)), ((<a href="org-mode.html#Top">org-mode</a>))
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">講義内容へのpath <code>[/]</code></h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <a href="file:///users/home/masayuki/lects/prog">file:///users/home/masayuki/lects/prog</a> の下に，講義資料があります。</li>
+<li class="off"><code>[&#xa0;]</code> <a href="file:///users/home/masayuki/progs">file:///users/home/masayuki/progs</a> がお手本です。</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">レスポンス.01</h2>
-<div class="outline-text-2" id="text-orgheadline11">
-</div><div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">カード</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">プログラミング関連の講義と演習</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2015/card-01.pdf">card-01.pdf</a> 
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連演習@cis</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/cis-programming-lects/">cis-org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/cis-programming-lects">s-org</a>)) 振り返りましょう.
+</p>
+
+<p>
+下記のことが重要です。
 </p>
 
 <ul class="org-ul">
-<li>早すぎる。</li>
+<li class="off"><code>[&#xa0;]</code> 重要なプログラムの構成要素 <code>[0/3]</code>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 関数と抽象化，情報隠蔽</li>
+<li class="off"><code>[&#xa0;]</code> ヘッダファイルの役割，インタフェース遵守</li>
+<li class="off"><code>[&#xa0;]</code> 名前と実体の管理</li>
+</ul></li>
 
-<li>つまづくと追いつけない。</li>
-
-<li>しゃべるだけではだめ，書いてください。</li>
-<li>ページが醜い，リンク飛びすぎ</li>
-<li>むずかしい。</li>
-<li>emacs 覚えなきゃ</li>
+<li class="off"><code>[&#xa0;]</code> コンパイル過程のこと <code>[0/6]</code>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> include</li>
+<li class="off"><code>[&#xa0;]</code> gcc</li>
+<li class="off"><code>[&#xa0;]</code> .o (オブジェクト・ファイル)</li>
+<li class="off"><code>[&#xa0;]</code> .a (静的ライブラリ), .so(動的ライブラリ)</li>
+<li class="off"><code>[&#xa0;]</code> ld (ローダ，リンケージ・エディタ)</li>
+<li class="off"><code>[&#xa0;]</code> a.out (実行プログラム)</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">suzuki から</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">テストとテストによる開発とは <code>[0/2]</code></h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <ul class="org-ul">
-<li>早すぎる。
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd">テストによる開発とは</a></li>
 
-<ul class="org-ul">
-<li>初回は，方向づけだったので，理解できたかは確認しませんでした。</li>
-</ul></li>
-</ul>
-
-
-<ul class="org-ul">
-<li>つまづくと追いつけない。
-
-<ul class="org-ul">
-<li>作業のあとは，時間を取るよう気をつけます。時間がたりないときは，声
-をかけて下さい。</li>
-</ul></li>
-
-<li>しゃべるだけではだめ，書いてください。
-
-<ul class="org-ul">
-<li>はい。
-
-<ul class="org-ul">
-<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。</li>
-<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。</li>
-<li>具体的な作業については，指示を書いたつもりでしたが，ぜんぜん不足
-だったみたいですね。注意します。</li>
-<li>Linux システム，シェル，emacs, emacs org-mode などに
-ついてはメモを作りましょうか。</li>
-<li><p>
-板書はできないので，講義中に emacs でメモを書きたいと思います。
-気がついたら，~suzuki/progs/lects/のあたりに書こうと思います。
-</p>
-
-<p>
-今日の講義の補足にまとめましょう。
-</p></li>
-</ul></li>
-</ul></li>
-
-<li>ページが醜い。リンク飛びすぎ。
-
-<ul class="org-ul">
-<li>renewal しました。</li>
-
-<li>なるべくリンク少なくしました。</li>
-</ul></li>
-
-<li><p>
-むずかしい。
-</p>
-
-<p>
-むずかしいのではなくて，知らないことが多いのです。
-</p>
-
-<p>
-そして，プログラミングが上手になるためには，多くのことを知らなくては
-いけません。
-</p>
-
-<p>
-今は，どんなことを知らなくてはいけないのかを知り，すこしづつ憶えてい
-きましょう。
-</p>
-
-<p>
-本当に，難かしいのは，設計とか，開発管理とか，など，体験を通してしか
-学べない事柄だと思います。
-</p></li>
-
-<li><p>
-emacs 覚えなきゃ
-</p>
-
-<p>
-はい是非。人生の伴侶になります。
-</p></li>
-
-<li><p>
-org-mode 便利そう
-</p>
-
-<p>
-それはもうほんとうに。もっと早く知りたかった。
-</p></li>
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter/">cutterの使い方</a> テストの体験</li>
 </ul>
 </div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">card_display問題 <code>[/]</code></h2>
+<div class="outline-text-2" id="text-orgheadline8">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/">カード表示問題の始まり</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">card_display問題のテストによる開発 <code>[0/7]</code></h2>
+<div class="outline-text-2" id="text-orgheadline9">
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple">CardDisplaySimple問題のテストによる開発</a>
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
+<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
+<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">&#33879;&#32773;: masayuki suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-09-25 日 23:16</p>
+<p class="date">Created: 2016-09-25 日 23:31</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

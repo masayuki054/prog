@@ -1,6 +1,6 @@
-MYHOME = ~/COMM/Lects/prog/prog2016/
+MYHOME = ../../
 ORG = $(MYHOME)/org/
-SITE = $(MYHOME)/site/
+SITE = $(MYHOME)/docs/
 DIR = ./org-docs/
 SHELL = zsh
 
@@ -11,7 +11,6 @@ self: index.html
 deploy: index.html
 	mkdir -p $(SITE)/$(DIR)
 	cp *.html $(SITE)/$(DIR)
-
 
 .SUFFIXES: .org .html .ob
 .org.html: ../../info/common-header.org contents.org 

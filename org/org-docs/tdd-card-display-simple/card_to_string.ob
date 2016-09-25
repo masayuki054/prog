@@ -1,0 +1,343 @@
+# * トランプ・カードを文字列に
+#+babel_include: Makefile.org
+#+babel_include: card.h.org
+#+babel_include: test_card.c.org
+#+babel_include: card.c.org
+
+#+BEGIN_SRC sh :exports none
+mkdir -p babel/simple/card_to_string/src babel/simple/card_to_string/test
+rm -f babel/simple/card_to_string/src babel/simple/card_to_string/*
+rm -f babel/simple/card_to_string/src babel/simple/card_to_string/src/*
+rm -f babel/simple/card_to_string/src babel/simple/card_to_string/test/*
+#+END_SRC
+
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_to_string/Makefile :exports none
+<<Makefile>>
+#+END_SRC
+
+** 機能の追加とテストの作成
+   
+   テストは，test/test_card.c に追加作成します。
+   
+   設計については，[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2][card_display_simple問題への解法]] も参考にしてくださ
+   い。
+   
+*** card_to_string のテストを書く
+    
+    機能の名前を card_to_string とし, card_to_stringが満たすテストを書きます:
+    
+    #+BEGIN_SRC c
+
+Card sa = card_new(SPADE, ACE);
+
+strcmp(card_to_string(sa), "SA")==0;
+
+    #+END_SRC
+
+    テスト関数にします。
+   
+   #+BEGIN_SRC c :noweb yes
+
+<<test_card.c#card_to_string>>
+
+   #+END_SRC
+   
+*** card_to_string のインタフェースを決める
+    
+    card_to_string を関数の形で書けたので，関数の型を決めます。
+    
+    戻り値の型は char *，与える引数はカードなので:
+    
+    #+BEGIN_SRC c :noweb yes
+
+<<card.h#card_to_string>>
+
+    #+END_SRC
+    
+*** テスト全体プログラムの確認
+
+    test/test_card.cは次のようになります:
+    
+    #+BEGIN_SRC c :tangle babel/simple/card_to_string/test/test_card.0.c :noweb yes
+<<test_card.c#include>>
+
+<<test_card.c#suit_new>>
+
+<<test_card.c#no_new>>
+
+<<test_card.c#card_new>>
+
+<<card.h#card_to_string>>
+
+<<test_card.c#card_to_string>>
+
+    #+END_SRC
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_to_string/src/card.h-card_new
+<<card.h-card_new>>
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/card_to_string/src/ :exports none
+cp card.h-card_new card.h
+#+END_SRC
+
+#+RESULTS:
+
+*** test/Makefile の確認
+
+    test/Makefile の目的は変わっていませんので，Makefile の更新の必要はありません。
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_to_string/test/Makefile
+<<test/Makefile>>
+#+END_SRC
+
+    test/test_card.c には card_to_string に関するテスト関数が加わっています。
+    card_to_string はまだ未実装ですが，test/test_card.o は作成できます。
+    
+*** test/test_card.o の作成
+    
+    #+BEGIN_SRC sh :exports none :dir babel/simple/card_to_string/test
+cp test_card.0.c test_card.c
+
+    #+END_SRC
+    
+    #+RESULTS:
+    
+    #+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/test :exports both
+# ~/progs/card_display/simple/test
+make test_card.o
+    #+END_SRC
+    
+    test_card.o ができれば，ひとまず，成功です。
+    
+    できない時は，test_card.c に間違いがあるか，Makefile に間違いがあ
+    ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+    う。
+    
+    成功したら，test/test_card.o の中身を見てみましょう:
+    
+    #+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/test :exports both
+# ~/progs/card_display/simple/test
+nm test_card.o
+    #+END_SRC
+
+    card_to_stringが未定義で，
+    test_card_to_string が定義されているのがわかります。
+    
+** card_to_string の実装
+   
+   さて次は，機能 card_to_string の実装です。
+   手順は，card_newを実装したときと同様です:
+   
+   - test/test_card.c を作成するときに決めたインタフェースをとりだし，
+     src/card.h に移す。
+   - src/card.hを遵守し，src/card.c に機能を追加実装する。
+   - 提供する機能を入れた src/libcard.a を作成する
+     
+   src/{card.h，libcard.a} で機能を提供する
+   
+*** card/card.h の更新
+    
+    test/test_card.c から card_to_string等に関するインタフェース宣言を，
+    src/card.h に移します。
+    
+    ここまでで，src/card.h は次のようになります:
+    
+#+BEGIN_SRC c :tangle babel/simple/card_to_string/src/card.h-card_to_string :noweb yes
+<<card.h-card_to_string>>
+#+END_SRC
+#+BEGIN_SRC sh :dir babel/simple/card_to_string/src :exports none
+cp card.h-card_to_string card.h
+#+END_SRC
+
+#+RESULTS:
+
+    test/test_card.c は次のようになります：
+
+    #+BEGIN_SRC c :tangle babel/simple/card_to_string/test/test_card.1.c :noweb yes
+<<test_card.c#include>>
+
+<<test_card.c#suit_new>>
+
+<<test_card.c#no_new>>
+
+<<test_card.c#card_new>>
+
+<<test_card.c#card_to_string>>
+
+    #+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/card_to_string/test :exports none
+cp test_card.1.c test_card.c
+#+END_SRC
+
+#+RESULTS:
+    
+*** card_to_string の実装 (src/card.cの更新)
+    
+    card_to_string関数への要求を下記のように分解します:
+
+    - スーツの内部表現を 'C', 'D', 'H', 'S' の文字へ
+
+      この機能を card_suit_to_char という関数で表します.
+
+      - 型は，char card_suit_to_char(enum e_Suit)
+
+	実装は，
+
+#+BEGIN_SRC c :noweb yes
+<<card.c#card_suit_to_char>>
+#+END_SRC
+
+      スーツの文字型の配列を定義しています。0に相当するスーツ文字はな
+      いので，'*' にしています。
+
+      - 番号の内部表現を，2~9 の間に数値は，'2'~'9'へ，
+        10~14 は '0','J','Q','K','A' 
+
+      この機能を card_no_to_char という関数で表します.
+
+      - 型は，char card_no_to_char(enum e_No)。
+	実装は，
+
+#+BEGIN_SRC c :noweb yes
+<<card.c#card_no_to_char>>
+#+END_SRC
+
+    - スーツを表す文字と番号を表す文字をあわせて，2文字からなる文字列
+      にする
+
+    実装は次のようになるでしょう:
+   
+#+BEGIN_SRC c :noweb yes
+<<card.c#card_to_string>>
+#+END_SRC
+
+*** src/card.c 全体
+
+    ここまでの，src/card.c を示しておきます:
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_to_string/src/card.c
+<<card.c#include>>
+
+<<card.c#suit_new>>
+
+<<card.c#no_new>>
+
+<<card.c#card_new>>
+
+<<card.c#card_suit>>
+
+<<card.c#card_no>>
+
+<<card.c#card_to_string>>
+
+<<card.c#card_suit_to_char>>
+
+<<card.c#card_no_to_char>>
+
+#+END_SRC
+
+*** src/Makefile
+
+    src/Makefileに変更はありません。
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_to_string/src/Makefile
+<<src/Makefile>>
+#+END_SRC
+
+*** src/card.o の作成
+
+    src/card.o を make し, ソースコードにエラーがないか確かめます:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/src :exports both
+# ~/progs/card_display/simple/src
+make card.o
+#+END_SRC
+
+#+RESULTS:
+: gcc card.c -g -c -fPIC -I. 
+
+    src/card.o ができれば文法や宣言の食い違いはなくなったことになりま
+    す。
+
+*** src/libcard.a の作成
+
+    src/card.o ができれば，次は， src/libcard.a を make します。
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/src :exports both
+# ~/progs/card_display/simple/src
+make libcard.a
+#+END_SRC
+
+#+RESULTS:
+: rm -f libcard.a
+: ar r libcard.a card.o
+
+    Makefile が正しければ，これは成功するはずです。
+
+    libcard.a の中身を確かめてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/src :exports both
+# ~/progs/card_display/simple/src
+nm libcard.a
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+
+card.o:
+                 U _GLOBAL_OFFSET_TABLE_
+                 U atoi
+00000000000000e6 T card_new
+000000000000010f T card_no
+000000000000008b T card_no_new_from_string
+0000000000000102 T card_suit
+0000000000000000 T card_suit_new_from_string
+                 U fprintf
+                 U stderr
+                 U strcmp
+#+end_example
+
+    src/libcard.a が更新できたので，次はtest_card.so を更新します。    
+
+** テスト
+
+*** test/test_card.so のビルド
+
+    src/libcard.a が更新されているので，test/test_card.so を作り直しま
+    す。
+    
+#+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/test :exports both
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+#+END_SRC
+
+
+    test/test_card.so ができればテストの実行に移ります。
+
+    できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。
+
+*** テストの実行
+
+    テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+    めるためにテストする:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_to_string/ :exports both
+# ~/progs/card_display/simple
+cutter -v v test
+#+END_SRC
+
+*** テストと再設計
+
+    テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+    ります。
+
+    テストが失敗した場合は，test/test_card.c, src/{card.h, card.c} を
+    修正していくことになります。
+
+    ソースコードを修正した後は，Makefileに間違いがなけれ
+    ば，~/progs/card_display/simpleで make すれば，全自動でテストまで
+    実行してくれます。テストが成功するまで繰り返してください。
+

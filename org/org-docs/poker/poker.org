@@ -1,0 +1,77 @@
+* ゲームモジュール
+
+** 機能、設計，実装
+    http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?ゲームモジュール
+
+*** ゲームの説明からゲームに関する部分を取り出す
+   
+     - (5人のプレーヤーに) 手札を配り，
+
+     - 2回までの，(5人のプレーヤーの)手札の交換後，
+
+     - (5人のプレーヤーの手札役を判定し)
+
+     - (5人のプレーヤーの)手札役の強い順に，プレーヤ名を表示する
+
+*** poker モジュールの機能
+    - ゲームの流れを作る
+      - 手札を配る 
+      - 手札の何枚かを交換する 
+      - 役の判定 
+      - 表示 
+    - プレーヤーを管理する 
+      - 手札 
+      - 名前 
+    
+
+*** poker モジュールの機能の名前
+    - ゲームの流れを作る poker()
+      - 手札を配る  poker_deal()
+      - 手札の何枚かを交換する  poker_exchange()
+      - 役の判定  poker_judge()
+      - 表示  poker_display()
+    - プレーヤーを管理する Player
+      - 手札 .hand
+      - 名前 .name
+    
+
+*** poker モジュールの機能のインタフェース
+
+    - ゲームの流れを作る void poker(void)
+      - 手札を配る  void poker_deal(void)
+      - 手札の何枚かを交換する  void poker_exchange(void)
+      - 役の判定  poker_judge(void)
+      - 表示  poker_display(void)
+
+    - プレーヤーを管理する Player players[NO_PLAYERS]
+      - 手札 .hand
+      - 名前 .name
+    
+** ~/progs/game/poker が開発ディレクトリ
+
+   ここからは，テストを書かずに，実行プログラムを作っていきましょう。
+
+   - game/poker/poker.h
+     - Player の宣言
+     - pokerの機能を表す関数の宣言
+     
+   - game/poker/poker.c  
+     - main
+     - poker_init
+     - poker_deal
+     - poker_exchange
+     - poker_judge
+     - poker_display
+     
+   - game/poker/Makefile
+     - pokerプログラムを作成することが目的
+
+** ~/progs/game/Makefile
+
+   各モジュールの管理方法を Makefile に書きましょう。
+     
+   
+
+
+
+

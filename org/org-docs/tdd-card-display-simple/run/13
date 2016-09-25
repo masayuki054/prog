@@ -1,0 +1,2 @@
+# ~/progs/CardDisplay/simple/src
+make clean; make libcard.a

@@ -1,0 +1,16 @@
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+OPTIONS: H:6 toc:nil num:nil ^:{}
+#+include: contents.org 
+#+TITLE: include/bigblow を試す
+* わかったこと
+  - title は追加される
+    - ので，common-header で主タイトル，そのドキュメントでサブタイトル
+      を指定することに，した。<2015-10-11 Sun>
+
+  - include のレベルはファイルごとにリセットされない。
+    空の top-level header を入れることにする
+* 
+#+include: c1.org
+
+* 
+#+include: c2.org

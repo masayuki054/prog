@@ -1,0 +1,14 @@
+#+include: ~/COMM/public_html/org-html-theme/index-readtheorg-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+OPTIONS: H:6 toc:nil num:nil
+#+include: contents.org 
+
+#+TITLE: include/bigblow を試す
+* わかったこと
+
+include 
+* include c1
+#+include: c1.org
+
+* include c2
+#+include: c2.org

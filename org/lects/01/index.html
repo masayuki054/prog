@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ソフトウェア構成論 1回目</title>
+<!-- 2016-01-26 火 11:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 1回目</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">講義のまとめ.01</a>
+<ul>
+<li><a href="#sec-1-1">Done 講義紹介</a></li>
+<li><a href="#sec-1-2">Doing 講義の目的など</a></li>
+<li><a href="#sec-1-3">Doing ~/progs のはじまり</a></li>
+<li><a href="#sec-1-4">Doing ~/progs 目的</a></li>
+<li><a href="#sec-1-5">Doing 講義内容へのpath</a></li>
+<li><a href="#sec-1-6">Todo プログラミング関連の講義と演習</a></li>
+<li><a href="#sec-1-7">Doing テストとテストによる開発とは</a>
+<ul>
+<li><a href="#sec-1-7-1">レスポンス.01</a>
+<ul>
+<li><a href="#sec-1-7-1-1">カード</a></li>
+<li><a href="#sec-1-7-1-2">suzuki から</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフト
+ウェア構成論</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a>
+/  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義
+ドキュメント</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">ポー
+カーゲームの開発</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html">repos</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">講義のまとめ.01</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Done 講義紹介</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">サイト</a> ((<a href="file:///home/staff/suzuki/lects/prog/site/index.html">cis-org</a> <a href="file:///home/staff/suzuki/COMM/Lects/prog/site/index.html">s-org</a>)) の説明
+</li>
+</ul>
+
+<p>
+#+BEGIN_src org
+ 見にくいとの意見があったので，全面的に書き換えました。
+ いろんなページに行き易くしたつもりです。また意見ください。
+#+END_SRC org
+</p>
+
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi">wiki</a> に，講義情報と昨年度以前の講義内容がある。ポーカーゲーム開発
+は，まだこの中に。過去の講義でやったことが入っている。補助的に使う。
+</li>
+
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs">講義用ドキュメント</a> ((<a href="file:///home/staff/suzuki/lects/prog/site/org-docs/">cis-org</a>, <a href="file:///home/staff/suzuki/COMM/Lects/prog/site/org-docs">s-org</a>)) 講義で用いるドキュメント類，
+教科書の代わりです。
+</li>
+
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects">毎回の講義</a> ((<a href="file:///home/staff/suzuki/lects/prog/site/lects/">cis-org</a>, <a href="file:///home/staff/suzuki/COMM/Lects/prog/site/lects">s-org</a>)) 毎回の講義 計画・行動・纏め
+</li>
+
+<li>自己紹介と休講のこと 10/16~10/20 までネンリンピック山口。10/20 は
+休講です。
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Doing 講義の目的など</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+
+<pre class="src src-org">下記について，考え，体験すること:
+- ソフトウェアの設計方法
+- ソフトウェアの開発方法
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Doing ~/progs のはじまり</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>講義用のディレクトリ <a href="file:///home/staff/suzuki/progs">file:///home/staff/suzuki/progs</a> を作成しました。 
+<ul class="org-ul">
+<li>emacs を使ってディレクトリを閲覧しました。
+<ul class="org-ul">
+<li>emacs の <a href="emacs#dired">emacs#dired</a> が便利です。
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li><a href="file:///home/staff/suzuki/progs/README.html">file:///home/staff/suzuki/progs/README.html</a> を作成し, ディレクトリの使用目的を書きま
+した。最初の開発ドキュメントです。
+</li>
+
+<li>emacsについて使いながら説明
+<a href="emacs">emacs</a> を読みましょう
+<ul class="org-ul">
+<li><a href="emacs#Files">emacs#Files</a>
+</li>
+<li><a href="emacs#Buffers">emacs#Buffers</a>
+</li>
+<li><a href="emacs#Windows">emacs#Windows</a>
+</li>
+<li><a href="emacs#Frames">emacs#Frames</a>
+</li>
+</ul>
+</li>
+<li>emacs org-modeの紹介と説明
+<ul class="org-ul">
+<li><a href="org">org</a>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-org">説明, 早すぎたみたいですが，先生と同じ操作をすることに専念せず，
+やる事を言葉にして理解し，その目的を理解してください。
+
+emacs を使ってやったことは基本的なことです。今まで，見たり聞いたり興味をもったりしなかったのなぁ。
+
+マニュアルの見出しとか，概念とか，調べてみるといいと思う。
+
+info:emacs が見られませんでしたが，/usr/share/info/emacs-24/にあります。
+の elisp:Info-directory-list が壊れていたためでした。
+生さんのは大丈夫でしょうか？
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Doing ~/progs 目的</h3>
+<div class="outline-text-3" id="text-1-4">
+<dl class="org-dl">
+<dt> lects/ </dt><dd>毎回の講義のめもを置きましょう
+</dd>
+
+<dt> card_display/ </dt><dd>カード表示問題の開発用
+</dd>
+
+<dt> cutter/ </dt><dd>テスト体験
+</dd>
+
+<dt> game/ </dt><dd>ポーカーゲーム開発用
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">Doing 講義内容へのpath</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>先生の ~/progs は，<a href="file:///home/staff/suzuki/progs/">file:///home/staff/suzuki/progs/</a> お手本にしてください。
+</li>
+<li>講義ページや資料は，<a href="file:///home/staff/suzuki/lects/prog">file:///home/staff/suzuki/lects/prog</a> の下にあります。emacs
+の org-mode を使って見てください。
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6">Todo プログラミング関連の講義と演習</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+既習の講義を，<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連演習@cis</a> ((<a href="file:///home/staff/suzuki/lects/prog/site/org-docs/cis-programming-lects/">cis-org</a> <a href="file:///home/staff/suzuki/COMM/Lects/prog/site/org-docs/cis-programming-lects">s-org</a>)) にまとめまし
+た。
+</p>
+
+<ul class="org-ul">
+<li>構造体は重要です。データをまとめて，名前がつけられるからです。
+</li>
+<li>関数は重要です。処理をまとめて，名前がつけられるからです。
+</li>
+</ul>
+
+<p>
+下記のことが重要です。(詳しくは後で)
+</p>
+<ul class="org-ul">
+<li>重要なプログラムの構成要素 
+<ul class="org-ul">
+<li>関数と抽象化，情報隠蔽
+</li>
+<li>ヘッダファイルの役割，インタフェース遵守
+</li>
+<li>名前と実体の管理
+</li>
+</ul>
+</li>
+
+<li>コンパイル過程のこと (説明は後で)
+<ul class="org-ul">
+<li>include
+</li>
+<li>gcc
+</li>
+<li>.o (オブジェクト・ファイル)
+</li>
+<li>.a (静的ライブラリ), .so(動的ライブラリ)
+</li>
+<li>ld (ローダ，リンケージ・エディタ)
+</li>
+<li>a.out (実行プログラム)
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7">Doing テストとテストによる開発とは</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+テストについて簡単に説明しました。
+</p>
+
+<p>
+ソフトウェア工学，ソフトウェア開発過程，ソフトウェアの正しさとか簡
+単にふれました。
+</p>
+
+<p>
+詳しくは次週
+</p>
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd">テストによる開発とは</a>
+
+<p>
+ソフトウェアの機能とは何か，機能が正しいか確かられるか，考えてみ
+ましょう。
+</p>
+</li>
+
+<li><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter/">cutterの使い方</a> テストの体験。先輩が学生時代に開発を始めたソ
+フトウェアです。サイトにいってどんなものか概観しました。
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1">レスポンス.01</h4>
+<div class="outline-text-4" id="text-1-7-1">
+</div><div id="outline-container-sec-1-7-1-1" class="outline-5">
+<h5 id="sec-1-7-1-1">カード</h5>
+<div class="outline-text-5" id="text-1-7-1-1">
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2015/card-01.pdf">card-01.pdf</a> 
+</p>
+
+<ul class="org-ul">
+<li>早すぎる。
+</li>
+
+<li>つまづくと追いつけない。
+</li>
+
+<li>しゃべるだけではだめ，書いてください。
+</li>
+<li>ページが醜い，リンク飛びすぎ
+</li>
+<li>むずかしい。
+</li>
+<li>emacs 覚えなきゃ
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7-1-2" class="outline-5">
+<h5 id="sec-1-7-1-2">suzuki から</h5>
+<div class="outline-text-5" id="text-1-7-1-2">
+<ul class="org-ul">
+<li>早すぎる。
+
+<ul class="org-ul">
+<li>初回は，方向づけだったので，理解できたかは確認しませんでした。
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>つまづくと追いつけない。
+
+<ul class="org-ul">
+<li>作業のあとは，時間を取るよう気をつけます。時間がたりないときは，声
+をかけて下さい。
+</li>
+</ul>
+</li>
+
+<li>しゃべるだけではだめ，書いてください。
+
+<ul class="org-ul">
+<li>はい。
+
+<ul class="org-ul">
+<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。
+</li>
+<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。
+</li>
+<li>具体的な作業については，指示を書いたつもりでしたが，ぜんぜん不足
+だったみたいですね。注意します。
+</li>
+<li>Linux システム，<i>シェル</i>，<i>emacs</i>, <i>emacs org-mode</i> などに
+ついてはメモを作りましょうか。
+</li>
+<li>板書はできないので，講義中に emacs でメモを書きたいと思います。
+気がついたら，~suzuki/progs/lects/のあたりに書こうと思います。
+
+<p>
+今日の講義の補足にまとめましょう。
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>ページが醜い。リンク飛びすぎ。
+
+<ul class="org-ul">
+<li>renewal しました。
+</li>
+
+<li>なるべくリンク少なくしました。
+</li>
+</ul>
+</li>
+
+<li>むずかしい。
+
+<p>
+むずかしいのではなくて，知らないことが多いのです。
+</p>
+
+<p>
+そして，プログラミングが上手になるためには，多くのことを知らなくては
+いけません。
+</p>
+
+<p>
+今は，どんなことを知らなくてはいけないのかを知り，すこしづつ憶えてい
+きましょう。
+</p>
+
+<p>
+本当に，難かしいのは，設計とか，開発管理とか，など，体験を通してしか
+学べない事柄だと思います。
+</p>
+</li>
+
+<li>emacs 覚えなきゃ
+
+<p>
+はい是非。人生の伴侶になります。
+</p>
+</li>
+
+<li>org-mode 便利そう
+
+<p>
+それはもうほんとうに。もっと早く知りたかった。
+</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-01-26 火 11:03</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

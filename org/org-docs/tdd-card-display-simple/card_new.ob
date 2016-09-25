@@ -1,0 +1,434 @@
+# * トランプ・カードを作成
+#+babel_include: Makefile.org
+#+babel_include: card.h.org
+#+babel_include: test_card.c.org
+#+babel_include: card.c.org
+
+#+BEGIN_SRC sh :exports none
+mkdir -p babel/simple/card_new/src babel/simple/card_new/test
+#+END_SRC
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_new/Makefile :exports none
+<<Makefile>>
+#+END_SRC
+
+** 機能の追加とテストの作成
+   
+   カードを作る機能のテストは，test/test_card.c に追加作成します。
+   
+   設計については，[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2][card_display_simple問題への解法]] も参考にしてくださ
+   い。
+   
+*** card_new のテストを書く
+    
+    機能の名前を card_new とし, card_newが満たすテストを書きます:
+    
+    #+BEGIN_SRC c
+Card sa = card_new(SPADE, ACE);
+    #+END_SRC
+    
+    次のような事が分かります:
+   - Card型が必要である，
+   - スーツと番号を与え，
+   - Card型の値が返る。
+     
+   これだけではテストにならないので，スーツと番号を取り出す機能を合わ
+   せて，追加します。
+   
+   #+BEGIN_SRC c
+ enum e_Suit card_suit(Card);
+ enum e_No card_no(Card);
+   #+END_SRC
+   
+   これにより，テストが書けます:
+   
+   #+BEGIN_SRC 
+Card sa = card_new(SPADE, ACE);
+cut_assert( card_suit(sa)==SPADE );
+cut_assert( card_no(sa)==ACE );
+   #+END_SRC
+   
+   スペードのACEを作り，つくられたカードのスーツと番号が正しいか，確
+   かめています。
+   
+   Card型が定義できれば，これでよさそうです。
+   
+   #+BEGIN_SRC c 
+void
+test_card_new(void)
+{
+  cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert( card_suit(sa)==SPADE );
+    cut_assert( card_no(sa)==ACE );
+  }
+}
+
+   #+END_SRC
+   
+*** card_new, card_suit, card_no のインタフェースを決める
+    
+    card_new を関数の形で書けたので，関数の型を決めます。
+    
+    戻り値の型は Card，与える引数はスーツと番号の内部表現なので:
+    
+    #+BEGIN_SRC c 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+    #+END_SRC
+    
+*** Card型を定義する
+    
+    Card 型を定義しましょう。Card型は次の情報を持ちます:
+    
+    - スーツを表す enum e_Suit 型の数値
+    - 番号を表す enum e_No 型の数値
+      
+    これを構造体で表します:
+    
+    #+BEGIN_SRC c
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+    #+END_SRC
+    
+    ですね。
+    
+    これを型にします。
+    
+    #+BEGIN_SRC c
+
+typdef struct _Card Card;
+
+    #+END_SRC
+    
+    struct _Card 型を Card 型として定義し，Card が
+    構造体であることを意識せずに使うことができます。
+    
+*** テスト全体プログラムの確認
+
+    test/test_card.cは次のようになります:
+    
+    #+BEGIN_SRC c :tangle babel/simple/card_new/test/test_card.0.c :noweb yes
+<<test_card.c#include>>
+
+<<test_card.c#suit_new>>
+
+<<test_card.c#no_new>>
+
+<<card.h#card_struct>>
+
+<<card.h#Card>>
+
+<<test_card.c#card_new>>
+
+    #+END_SRC
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_new/src/card.h-no_new
+<<card.h-no_new>>
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/card_new/src/ :exports none
+cp card.h-no_new card.h
+#+END_SRC
+
+#+RESULTS:
+
+*** test/Makefile の確認
+
+    test/Makefile の目的は変わっていませんので，Makefile の更新の必要はありません。
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_new/test/Makefile
+<<test/Makefile>>
+#+END_SRC
+
+    test/test_card.c には card_new に関するテスト関数が加わっています。
+    card_new はまだ未実装ですが，test/test_card.o は作成できます。
+    
+*** test/test_card.o の作成
+    
+    #+BEGIN_SRC sh :exports none :dir babel/simple/card_new/test
+cp test_card.0.c test_card.c
+
+    #+END_SRC
+    
+    #+RESULTS:
+    
+    #+BEGIN_SRC sh :results output :dir babel/simple/card_new/test :exports both
+# ~/progs/card_display/simple/test
+make test_card.o
+    #+END_SRC
+    
+    #+RESULTS:
+    : gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+
+    test_card.o ができれば，ひとまず，成功です。
+    
+    できない時は，test_card.c に間違いがあるか，Makefile に間違いがあ
+    ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+    う。
+    
+    成功したら，test/test_card.o の中身を見てみましょう:
+    
+    #+BEGIN_SRC sh :results output :dir babel/simple/card_new/test :exports both
+# ~/progs/card_display/simple/test
+nm test_card.o
+    #+END_SRC
+
+    #+RESULTS:
+    #+begin_example
+		     U _GLOBAL_OFFSET_TABLE_
+    00000000000004c0 r __PRETTY_FUNCTION__.3255
+    00000000000004e0 r __PRETTY_FUNCTION__.3271
+    00000000000004fd r __PRETTY_FUNCTION__.3302
+		     U _setjmp
+		     U card_new
+		     U card_no
+		     U card_no_new_from_string
+		     U card_suit
+		     U card_suit_new_from_string
+		     U cut_assert_helper
+		     U cut_assert_true_helper
+		     U cut_test_context_current_peek
+		     U cut_test_context_finish_user_message_jump
+		     U cut_test_context_get_have_current_result
+		     U cut_test_context_get_jump_buffer
+		     U cut_test_context_in_user_message_jump
+		     U cut_test_context_long_jump
+		     U cut_test_context_pop_backtrace
+		     U cut_test_context_process_current_result
+		     U cut_test_context_push_backtrace
+		     U cut_test_context_set_jump_buffer
+		     U cut_test_context_set_user_message
+		     U cut_test_context_start_user_message_jump
+    0000000000000a1b T test_card_new
+    0000000000000482 T test_card_no_new_from_string
+    0000000000000000 T test_card_suit_new_from_string
+#+end_example
+
+    
+    card_newが未定義で，
+    test_card_new が定義されているのがわかります。
+    
+** card_new の実装
+   
+   さて次は，機能 card_new の実装です。
+   手順は，card_no_new_from_string を実装したときと同様です:
+   
+   - test/test_card.c を作成するときに決めたインタフェースをとりだし，
+     src/card.h に移す。
+   - src/card.hを遵守し，src/card.c に機能を追加実装する。
+   - 提供する機能を入れた src/libcard.a を作成する
+     
+   src/{card.h，libcard.a} で機能を提供する
+   
+*** card/card.h の更新
+    
+    test/test_card.c から card_new等に関するインタフェース宣言を，
+    src/card.h に移します。
+    
+    ここまでで，src/card.h は次のようになります:
+    
+#+BEGIN_SRC c :tangle babel/simple/card_new/src/card.h-card_new :noweb yes
+<<card.h-card_new>>
+#+END_SRC
+#+BEGIN_SRC sh :dir babel/simple/card_new/src :exports none
+cp card.h-card_new card.h
+#+END_SRC
+
+#+RESULTS:
+
+    test/test_card.c は次のようになります：
+
+    #+BEGIN_SRC c :tangle babel/simple/card_new/test/test_card.1.c :noweb yes
+<<test_card.c#include>>
+
+<<test_card.c#suit_new>>
+
+<<test_card.c#no_new>>
+
+<<test_card.c#card_new>>
+
+    #+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/card_new/test :exports none
+cp test_card.1.c test_card.c
+#+END_SRC
+
+#+RESULTS:
+
+    
+*** card_new の実装 (src/card.cの更新)
+    
+    card_new関数への要求は
+    - スーツの内部表現と数字の内部表現から，
+    - カードを表すデータを作る
+
+    ことでしたから，実装は次のようになるでしょう:
+   
+#+BEGIN_SRC c :noweb yes
+<<card.c#card_new>>
+#+END_SRC
+
+*** card_suit の実装 (src/card.cの更新)    
+    
+    要求は：
+    - カードデータからそのスーツが分かること
+
+    でしたから，
+
+#+BEGIN_SRC c :noweb yes
+<<card.c#card_suit>>   
+#+END_SRC
+
+*** card_no の実装 (src/card.cの更新)    
+    
+    要求は：
+    - カードデータからその数字が分かること
+    
+    でしたから，
+#+BEGIN_SRC c :noweb yes
+<<card.c#card_no>>
+#+END_SRC
+
+*** src/card.c 全体
+
+    ここまでの，src/card.c を示しておきます:
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_new/src/card.c
+<<card.c#include>>
+
+<<card.c#suit_new>>
+
+<<card.c#no_new>>
+
+<<card.c#card_new>>
+
+<<card.c#card_suit>>
+
+<<card.c#card_no>>
+
+#+END_SRC
+
+*** src/Makefile
+
+    src/Makefileに変更はありません。
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_new/src/Makefile
+<<src/Makefile>>
+#+END_SRC
+
+*** src/card.o の作成
+
+    src/card.o を make し, ソースコードにエラーがないか確かめます:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_new/src :exports both
+# ~/progs/card_display/simple/src
+make card.o
+#+END_SRC
+
+#+RESULTS:
+: gcc card.c -g -c -fPIC -I. 
+
+    src/card.o ができれば文法や宣言の食い違いはなくなったことになりま
+    す。
+
+*** src/libcard.a の作成
+
+    src/card.o ができれば，次は， src/libcard.a を make します。
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_new/src :exports both
+# ~/progs/card_display/simple/src
+make libcard.a
+#+END_SRC
+
+#+RESULTS:
+: rm -f libcard.a
+: ar r libcard.a card.o
+
+    Makefile が正しければ，これは成功するはずです。
+
+    libcard.a の中身を確かめてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_new/src :exports both
+# ~/progs/card_display/simple/src
+nm libcard.a
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+
+card.o:
+                 U _GLOBAL_OFFSET_TABLE_
+                 U atoi
+00000000000000e6 T card_new
+000000000000010f T card_no
+000000000000008b T card_no_new_from_string
+0000000000000102 T card_suit
+0000000000000000 T card_suit_new_from_string
+                 U fprintf
+                 U stderr
+                 U strcmp
+#+end_example
+
+    src/libcard.a が更新できたので，次はtest_card.so を更新します。    
+
+** テスト
+
+*** test/test_card.so のビルド
+
+    src/libcard.a が更新されているので，test/test_card.so を作り直しま
+    す。
+    
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/test :exports both
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+#+END_SRC
+
+#+RESULTS:
+: rm -f *.o *.so *~ \#* *.gch
+: gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+: gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+
+    test/test_card.so ができればテストの実行に移ります。
+
+    できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。
+
+*** テストの実行
+
+    テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+    めるためにテストする:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_new/ :exports both
+# ~/progs/card_display/simple
+cutter -v v test
+#+END_SRC
+
+#+RESULTS:
+: test_card:
+:   test_card_no_new_from_string:				.: (0.000136)
+:   test_card_suit_new_from_string:			.: (0.000079)
+:   test_card_new:					.: (0.000044)
+: 
+: Finished in 0.001173 seconds (total: 0.000259 seconds)
+: 
+: 3 test(s), 11 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+: 100% passed
+
+*** テストと再設計
+
+    テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+    ります。
+
+    テストが失敗した場合は，test/test_card.c, src/{card.h, card.c} を
+    修正していくことになります。
+
+    ソースコードを修正した後は，Makefileに間違いがなけれ
+    ば，~/progs/card_display/simpleで make すれば，全自動でテストまで
+    実行してくれます。テストが成功するまで繰り返してください。
+

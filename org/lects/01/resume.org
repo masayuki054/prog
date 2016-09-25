@@ -1,0 +1,114 @@
+* 講義のまとめ.01
+** Done 講義紹介
+  CLOSED: [2015-10-11 日 02:06]
+
+ - [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][サイト]] (([[~suzuki/lects/prog/site/index.org][cis-org]] [[~/COMM/Lects/prog/site/index.org][s-org]])) の説明
+
+#+BEGIN_src org
+ 見にくいとの意見があったので，全面的に書き換えました。
+ いろんなページに行き易くしたつもりです。また意見ください。
+#+END_SRC org
+
+ - [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][wiki]] に，講義情報と昨年度以前の講義内容がある。ポーカーゲーム開発
+   は，まだこの中に。過去の講義でやったことが入っている。補助的に使う。
+
+ - [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs][講義用ドキュメント]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/][cis-org]], [[file+emacs:~/COMM/Lects/prog/site/org-docs][s-org]])) 講義で用いるドキュメント類，
+   教科書の代わりです。
+
+ - [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects][毎回の講義]] (([[file+emacs:~suzuki/lects/prog/site/lects/][cis-org]], [[file+emacs:~/COMM/Lects/prog/site/lects][s-org]])) 毎回の講義 計画・行動・纏め
+
+ - 自己紹介と休講のこと 10/16~10/20 までネンリンピック山口。10/20 は
+   休講です。
+
+** Doing 講義の目的など
+
+#+BEGIN_SRC org
+下記について，考え，体験すること:
+- ソフトウェアの設計方法
+- ソフトウェアの開発方法
+#+END_SRC
+
+** Doing ~/progs のはじまり
+  - 講義用のディレクトリ file:~/progs を作成しました。 
+    - emacs を使ってディレクトリを閲覧しました。
+      - emacs の info:emacs#dired が便利です。
+      
+  - file:~/progs/README.org を作成し, ディレクトリの使用目的を書きま
+    した。最初の開発ドキュメントです。
+
+  - emacsについて使いながら説明
+    info:emacs を読みましょう
+    - info:emacs#Files
+    - info:emacs#Buffers
+    - info:emacs#Windows
+    - info:emacs#Frames
+  - emacs org-modeの紹介と説明
+    - info:org
+
+#+BEGIN_SRC org
+説明, 早すぎたみたいですが，先生と同じ操作をすることに専念せず，
+やる事を言葉にして理解し，その目的を理解してください。
+
+emacs を使ってやったことは基本的なことです。今まで，見たり聞いたり興味をもったりしなかったのなぁ。
+
+マニュアルの見出しとか，概念とか，調べてみるといいと思う。
+
+info:emacs が見られませんでしたが，/usr/share/info/emacs-24/にあります。
+の elisp:Info-directory-list が壊れていたためでした。
+生さんのは大丈夫でしょうか？
+
+#+END_SRC
+
+** Doing ~/progs 目的
+
+   - lects/ :: 毎回の講義のめもを置きましょう
+
+   - card_display/ :: カード表示問題の開発用
+
+   - cutter/ :: テスト体験
+
+   - game/ :: ポーカーゲーム開発用
+
+** Doing 講義内容へのpath
+
+   - 先生の ~/progs は，file:~suzuki/progs/ お手本にしてください。
+   - 講義ページや資料は，file:~suzuki/lects/prog の下にあります。emacs
+     の org-mode を使って見てください。
+
+** Todo プログラミング関連の講義と演習
+
+   既習の講義を，[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cis-programming-lects/][cis-org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cis-programming-lects][s-org]])) にまとめまし
+   た。
+
+   - 構造体は重要です。データをまとめて，名前がつけられるからです。
+   - 関数は重要です。処理をまとめて，名前がつけられるからです。
+
+   下記のことが重要です。(詳しくは後で)
+   - 重要なプログラムの構成要素 
+     - 関数と抽象化，情報隠蔽
+     - ヘッダファイルの役割，インタフェース遵守
+     - 名前と実体の管理
+
+   - コンパイル過程のこと (説明は後で)
+     - include
+     - gcc
+     - .o (オブジェクト・ファイル)
+     - .a (静的ライブラリ), .so(動的ライブラリ)
+     - ld (ローダ，リンケージ・エディタ)
+     - a.out (実行プログラム)
+
+** Doing テストとテストによる開発とは
+
+    テストについて簡単に説明しました。
+
+    ソフトウェア工学，ソフトウェア開発過程，ソフトウェアの正しさとか簡
+    単にふれました。
+
+    詳しくは次週
+     - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd][テストによる開発とは]]
+
+       ソフトウェアの機能とは何か，機能が正しいか確かられるか，考えてみ
+       ましょう。
+    
+     - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter/][cutterの使い方]] テストの体験。先輩が学生時代に開発を始めたソ
+       フトウェアです。サイトにいってどんなものか概観しました。

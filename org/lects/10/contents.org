@@ -1,0 +1,12 @@
+#+title: 内容
+
+* 10回目のまとめ
+# error +include: resume.org
+
+* レスポンス・カード.10 2015.01.12
+#+include: response.org
+
+* 講義予定
+# error +include: plan.org :minlevel 2
+
+

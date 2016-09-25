@@ -1,0 +1,128 @@
+** 講義紹介 [0/3]
+
+  - [-] site [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][prog.http]] (([[~suzuki/lects/prog/site/index.org][cis-org]] [[~/COMM/Lects/prog/site/index.org][s-org]])) [1/3]
+
+    - [X]  [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][wiki]] 
+
+      過去の講義でやったことが入っている。補助的に使う。
+
+    - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs][講義用ドキュメント]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/][cis-org]], [[file+emacs:~/COMM/Lects/prog/site/org-docs][s-org]]))
+
+      講義で用いるドキュメント類
+
+    - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects][毎回の講義]] (([[file+emacs:~suzuki/lects/prog/site/lects/][cis-org]], [[file+emacs:~/COMM/Lects/prog/site/lects][s-org]])) 
+
+
+  - [ ] 講義の目的など [0/1]
+
+    - [ ] emacs org-mode+babel 
+
+      文芸的プログラミング
+
+  - [ ] 自己紹介と休講のこと
+
+** はじまり
+
+***  ~/progs の作成 [/]
+    
+    - [ ] 講義用のディレクトリを作成します：
+   
++BEGIN_SRC sh :dir ~/ :results output data
+ [~/]
+d ~/
+kdir -p progs
+d progs
+kdir -p lects cutter card_display game/{card,deck,hand,poker}
+s -R
++END_SRC
+
++RESULTS:
++begin_example
+:
+ard_display
+utter
+ame
+ects
+
+/card_display:
+
+/cutter:
+
+/game:
+card,deck,hand,poker}
+
+/game/{card,deck,hand,poker}:
+
+/lects:
++end_example
+
+    - [ ] ~/progs/README.org を作成します:
+
++BEGIN_SRC org :tangle ~/progs/README.org
++title: ~/progs/README.org
+ィレクトリの使用目的:
+
+ ./lects: 毎回の講義のめもを置きましょう
+
+ ./card_display: カード表示問題の開発用
+
+ ./cutter: テスト用
+
+ ./game: ポーカーゲーム開発用
+ - ./game/card: カードモジュール
+ - ./game/deck: 山モジュール
+ - ./game/hand: 手札モジュール
+ - ./game/poker: ポーカーモジュール
+
++END_SRC
+
+
+*** emacs org-mode+babel やる？
+
+    (([[info:Emacs]])), ((info:org-mode))
+
+
+*** 講義内容へのpath [/]
+
+    - [ ] file:~suzuki/lects/prog の下に，講義資料があります。
+    - [ ] file:~suzuki/progs がお手本です。
+
+** プログラミング関連の講義と演習
+
+   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cis-programming-lects/][cis-org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cis-programming-lects][s-org]])) 振り返りましょう.
+
+   下記のことが重要です。
+
+   - [ ] 重要なプログラムの構成要素 [0/3]
+     - [ ] 関数と抽象化，情報隠蔽
+     - [ ] ヘッダファイルの役割，インタフェース遵守
+     - [ ] 名前と実体の管理
+
+   - [ ] コンパイル過程のこと [0/6]
+     - [ ] include
+     - [ ] gcc
+     - [ ] .o (オブジェクト・ファイル)
+     - [ ] .a (静的ライブラリ), .so(動的ライブラリ)
+     - [ ] ld (ローダ，リンケージ・エディタ)
+     - [ ] a.out (実行プログラム)
+
+** テストとテストによる開発とは [0/2]
+
+    - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd][テストによる開発とは]]
+   
+    - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter/][cutterの使い方]] テストの体験
+
+** card_display問題 [/]
+
+   - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/][カード表示問題の始まり]]
+
+** card_display問題のテストによる開発 [0/7]
+    [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple][CardDisplaySimple問題のテストによる開発]]
+    - [ ] test_card_suit_new_from_string
+    - [ ] test_card_no_new_from_string
+    - [ ] test_card_new, suit, no
+    - [ ] test_card_no_to_string
+    - [ ] test_card_suit_to_string
+    - [ ] test_card_to_string
+    - [ ] card_display_single
+

@@ -1,0 +1,2 @@
+# ~/progs/CardDisplay/simple/test/
+make clean; make test_card.so

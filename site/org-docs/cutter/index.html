@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<!-- 2016-09-25 日 13:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>ソフトウェア構成論 Cutterの使い方</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="masayuki suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 Cutterの使い方</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">cutter</a></li>
+<li><a href="#orgheadline2">テスト・ファイルの作成</a></li>
+<li><a href="#orgheadline4">テストのビルド</a>
+<ul>
+<li><a href="#orgheadline3">Makefile</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline11">テストのビルドへの補足説明</a>
+<ul>
+<li><a href="#orgheadline5">コンパイラへの指示</a>
+<ul>
+<li><a href="#orgheadline6">include パス</a></li>
+<li><a href="#orgheadline7">ライブラリとライブラリ・パス</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline8">ヘッダファイルやライブラリファイルの場所</a></li>
+<li><a href="#orgheadline9">オブジェクト・ファイルのこと</a></li>
+<li><a href="#orgheadline10">ライブラリ・ファイルのこと</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline12">テストの実行</a>
+<ul>
+<li><a href="#orgheadline13">テスト結果 (成功)</a></li>
+<li><a href="#orgheadline14">テスト結果 (失敗)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフト
+ウェア構成論</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a>
+/  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義
+ドキュメント</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">ポー
+カーゲームの開発</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html">repos</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">cutter</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+cutter は C/C++ 言語用の単体テストフレームワークです。
+</p>
+
+<p>
+<a href="http://cutter.sourceforge.net/reference/ja/readme.html">はじめに: Cutterリファレンスマニュアル - Cutter</a> をざっと読んでみましょう。使いながら覚えましょう。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">テスト・ファイルの作成</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+cutterで*テスト*を行なうためには，テスト用ディレクトリを作成し，テ
+スト用ディレクトリの中に，*テスト*を作成します。
+</p>
+
+<p>
+cutterでのテストは，ディレクトリの中の，test_ で始まるtest_*.so と
+いう名前のテストファイル(達)です。
+</p>
+
+<p>
+テストファイルを作成するため，test_*.c にソースプログラムを書き，コ
+ンパイルして，test_*.so を作成します。
+</p>
+
+<p>
+ここでは，~/progs/cutter/test がテスト用ディレクトリ，
+~/progs/cutter/test/test_first.c がテストのソースファイルです。
+テスト test_first.so を作成することが目的で，そのためにMakefileを容
+易します。
+</p>
+
+<p>
+まず，テスト用ディレクトリを作成します。
+次のコマンドで行います:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># [~/progs] % 
+mkdir -p cutter/test
+</pre>
+</div>
+
+<p>
+テストファイルを作成するため，ソースプログラム
+(cutter/test/test_first.c) を作成します：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// ~/progs/cutter/test/test_first.c
+#include &lt;cutter.h&gt;
+#include &lt;string.h&gt;
+
+static int condition = 0;
+
+void
+cut_setup (void)
+{
+    /* 初期化用コード */
+    condition = 1;
+}
+
+void
+cut_teardown (void)
+{
+    /* 後片付け用コード */
+    condition = 0;
+}
+
+void
+test_condition(void)
+{
+    cut_set_message("conditionの値はcut_setup()で1に設定されているはず");
+    cut_assert(condition==1);
+}
+
+void
+test_strcmp(void)
+{
+    cut_set_message("同じ文字列に対し，strcmpは0を返すはず");
+    cut_assert(strcmp("string", "string")==0);
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>cutter.h をインクルードし， cutter が提供する機能のインタフェース
+を受け入れます。</li>
+
+<li>string.h をインクルードし，テストしたい文字列機能のインタフェース
+を受け入れます。</li>
+
+<li>テストに使う変数 condition を宣言します。</li>
+
+<li>cut_setup と cut_teardown 関数は，各テストの前後に呼ばれる初期化
+と後処理のための関数です。ここでは，conditionの値を設定，クリアしています。</li>
+
+<li><p>
+test_ で始まる関数がテストを行なうテスト関数です。
+</p>
+
+<p>
+テスト関数は，テストのための*表明*を含みます。表明とは，機能が正し
+いときに真となる論理式のことです。
+</p>
+
+<p>
+cutterでの表明は，cut_assert で
+始まる関数に，表明をあらわす論理値を与える呼び出しで書きます。
+</p></li>
+
+<li>cut_assert(condition==1) は，conditionの値が1であることを確かめる
+ための表明です。</li>
+
+<li><p>
+cut_assert(strcmp("string", "string")==0) は，strcmp 関数が0を
+返すことを確かめるための表明です。
+</p>
+
+<p>
+cut_assert関数は，その値が真ならテスト成功として，偽ならテスト失
+敗として，振舞います。
+</p></li>
+
+<li>cut_set_message("message")は　表明が失敗した場合に表示するメッ
+セージを指定します。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">テストのビルド</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Makefile</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+テストをビルド(作成)するために，makeを使います。Makefileの書き方は，
+</p>
+
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE#f623ebec">prog2::make</a> を見て，思い出して下さい。
+</p>
+
+<p>
+テストディレクトリの中に Makefile を作成します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-makefile"># ~/progs/cutter/test/Makefile
+CFLAGS = -fPIC `pkg-config cutter --cflags`
+LDFLAGS = `pkg-config cutter --libs`
+
+test_first.so: test_first.o
+	gcc -o $@ -shared $&lt; $(LDFLAGS)
+
+test_first.o: test_first.c
+	gcc -c $&lt; $(CFLAGS)
+
+.PHONY: clean
+clean:
+	rm -f *.o *.so
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+CFLAGS にはコンパイラへの指示を書きます。   
+</p>
+
+<p>
+`pkg-config cutter &#x2013;cflags` と書くのは，
+</p>
+
+<p>
+'-I /usr/include/cutter'と書くのと同等です。
+</p>
+
+<p>
+'-I' はインクルードパスの指定です。cutter.h のあるディレクトリを指定しています。
+</p></li>
+</ul>
+
+
+<ul class="org-ul">
+<li>LDFLAGS にはローダへの指示を書きます。'-lcutter' はライブラリパス
+にある libcutter.a または libcutter.so を意味します。利用環境では，
+/usr/lib/libcutter.soになります。</li>
+
+<li>test_first.so がビルドのターゲットです。-share オプションで，共有ライブラリにします。
+main関数は必要ありません。</li>
+
+<li>test_first.c をコンパイルしオブジェクト・ファイル test_first.o を
+作ります。このとき CFLAGS変数で，cutter.h の在処を指定しています。</li>
+</ul>
+
+<p>
+make してテストをビルドしましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># [~/progs/cutter/test] %
+ make
+</pre>
+</div>
+
+<pre class="example">
+gcc -c test_first.c -fPIC `pkg-config cutter --cflags`
+gcc -o test_first.so -shared test_first.o `pkg-config cutter --libs`
+</pre>
+
+<p>
+上記のコマンドが成功すれば，test_first.so が出来上がっています。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">テストのビルドへの補足説明</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+</div><div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">コンパイラへの指示</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+Makefile 中の記述への補足です:
+</p>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">include パス</h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<div class="org-src-container">
+
+<pre class="src src-sh"># 次のコマンドを実行してみてください
+pkg-config cutter --cflags
+</pre>
+</div>
+
+<pre class="example">
+-I/usr/include/cutter  
+</pre>
+
+<p>
+この結果を，Cコンパイラのオプションで指定すると，インクルード・パ
+スに~/usr/include/cutter~ を加えることになり，cutter.h がインクルー
+ドできることになります。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">ライブラリとライブラリ・パス</h4>
+<div class="outline-text-4" id="text-orgheadline7">
+<div class="org-src-container">
+
+<pre class="src src-sh"># 次のコマンドを実行してみてください
+# cutter を使うために必要なライブラリの情報がわかります。
+pkg-config cutter --libs
+</pre>
+</div>
+
+<pre class="example">
+-lcutter  
+</pre>
+
+<ul class="org-ul">
+<li>この結果を，Cコンパイラ(実はローダ)のオプションで指定すると，ライ
+ブラリに libcutter.so を加えることになります。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">ヘッダファイルやライブラリファイルの場所</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+cutter.h や libcutter.so の在処を調べてみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># 次のコマンドを実行してみてください
+# cutter.h がある場所がわかります。
+locate cutter.h
+</pre>
+</div>
+
+<p>
+&lt;cutter.h&gt; は /usr/include/cutter/cutter.h ですね。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># 次のコマンドを実行してみてください
+# libcutter.so がある場所がわかります。
+locate libcutter.so
+</pre>
+</div>
+
+<p>
+-lcutter で指定した libcutter.so は /usr/lib/libbutter.so です。
+/usr/lib はシステムの通常のライブラリを置く場所です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">オブジェクト・ファイルのこと</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-sh"># [~/progs/cutter/test] % 
+# test_first.o の中に何があるか調べましょう。
+# 次のコマンドを実行してください。e
+
+nm test_first.o
+</pre>
+</div>
+
+<pre class="example">
+000000000000036d s L_.str
+00000000000003ad s L_.str1
+00000000000003d0 s L_.str2
+00000000000003eb s L_.str3
+00000000000003f8 s L_.str4
+0000000000000440 s L_.str5
+000000000000046c s L_.str6
+0000000000000473 s L_.str7
+00000000000003ba s L___PRETTY_FUNCTION__.test_condition
+000000000000042d s L___PRETTY_FUNCTION__.test_strcmp
+                 U ___stack_chk_fail
+                 U ___stack_chk_guard
+00000000000005d0 b _condition
+                 U _cut_assert_helper
+0000000000000000 T _cut_setup
+0000000000000010 T _cut_teardown
+                 U _cut_test_context_current_peek
+                 U _cut_test_context_finish_user_message_jump
+                 U _cut_test_context_get_have_current_result
+                 U _cut_test_context_get_jump_buffer
+                 U _cut_test_context_in_user_message_jump
+                 U _cut_test_context_long_jump
+                 U _cut_test_context_pop_backtrace
+                 U _cut_test_context_process_current_result
+                 U _cut_test_context_push_backtrace
+                 U _cut_test_context_set_jump_buffer
+                 U _cut_test_context_set_user_message
+                 U _cut_test_context_start_user_message_jump
+                 U _setjmp
+                 U _strcmp
+0000000000000020 T _test_condition
+00000000000001b0 T _test_strcmp
+</pre>
+
+<p>
+test_first.o に入っている変数や関数，参照している関数情報などですね:
+</p>
+<ul class="org-ul">
+<li>T は定義されている関数です</li>
+<li>U は参照している関数です</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">ライブラリ・ファイルのこと</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<p>
+test_first.so をいろいろ調べてみましょう.
+</p>
+
+<p>
+まずは，test_first.so が使用しているライブラリを調べてみます。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># [~/progs/cutter/test] % 
+# test_first.soが使う動的ライブラリを表示するため，
+# 次のコマンドを実行してください
+
+ldd test_first.so
+</pre>
+</div>
+
+<pre class="example">
+linux-vdso.so.1 =&gt;  (0x00007fff1f595000)
+libcutter.so.0 =&gt; /usr/lib/libcutter.so.0 (0x00007fc59afa4000)
+libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc59abdf000)
+libgmodule-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007fc59a9da000)
+libgio-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007fc59a667000)
+libgobject-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007fc59a416000)
+libglib-2.0.so.0 =&gt; /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007fc59a10d000)
+libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc599eef000)
+/lib64/ld-linux-x86-64.so.2 (0x00007fc59b456000)
+libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc599ceb000)
+libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.1 (0x00007fc599ad1000)
+libselinux.so.1 =&gt; /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fc5998ae000)
+libresolv.so.2 =&gt; /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007fc599693000)
+libffi.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libffi.so.6 (0x00007fc59948a000)
+libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007fc59924c000)
+</pre>
+
+<p>
+つぎに test_first.so の中に何が入っているか調べてみます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># [~/progs/cutter/test] % 
+# test_first.soで定義された，または参照している関数を表示するため，
+# 次のコマンドを実行してください
+
+nm test_first.so
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12">テストの実行</h2>
+<div class="outline-text-2" id="text-orgheadline12">
+<p>
+作成したテストを実行します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># [~/progs/cutter/] %
+# test/ ディレクトリ中のテストを cutter で実行するために，
+# 次のコマンドを実行してください
+cutter -v v test/
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">test_first:
+  test_condition:                                       .: (0.000125)
+  test_strcmp:                                          .: (0.000044)
+
+Finished in 0.001260 seconds (total: 0.000169 seconds)
+
+2 test(s), 2 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+</pre>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13">テスト結果 (成功)</h3>
+<div class="outline-text-3" id="text-orgheadline13">
+<pre class="example">
+test_first:
+  test_condition:					.: (0.000062)
+  test_strcmp:						.: (0.000025)
+
+Finished in 0.000775 seconds (total: 0.000087 seconds)
+
+2 test(s), 2 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+</pre>
+
+<p>
+上のテスト結果の出力を要約すると:
+</p>
+<blockquote>
+<p>
+テストファイル test_first にある，ふたつのテスト関数 test_condition,
+test_strcmp の中，ふたつの表明を実行し，失敗はありませんでした。
+</p>
+</blockquote>
+<p>
+詳しい結果の見方については，<a href="http://cutter.sourceforge.net/reference/ja/readme.html">はじめに: Cutterリファレンスマニュアル - Cutter</a> を読んでください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14">テスト結果 (失敗)</h3>
+<div class="outline-text-3" id="text-orgheadline14">
+<p>
+cut_assert の中の式を変えて，失敗する場合も試してみましょう。
+</p>
+
+<pre class="example">
+test_first:
+  test_condition:					F
+=============================================================================================================================================================
+Failure: test_condition
+conditionの値はcut_setup()で1に設定されているはず
+expected: &lt;condition==0&gt; is neither FALSE nor NULL
+test_first.c:25: test_condition(): cut_assert(condition==0, )
+=============================================================================================================================================================
+: (0.000219)
+  test_strcmp:						F
+=============================================================================================================================================================
+Failure: test_strcmp
+同じ文字列に対し，strcmpは0を返すはず
+expected: &lt;strcmp("string", "string")==1&gt; is neither FALSE nor NULL
+test_first.c:32: test_strcmp(): cut_assert(strcmp("string", "string")==1, )
+=============================================================================================================================================================
+: (0.000096)
+
+Finished in 0.000879 seconds (total: 0.000315 seconds)
+
+2 test(s), 0 assertion(s), 2 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+0% passed
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: masayuki suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-09-25 日 13:06</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

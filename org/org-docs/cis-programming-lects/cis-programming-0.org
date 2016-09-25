@@ -1,0 +1,15 @@
+* プログラム言語入門の資料
+平成26年度 教材と今後の授業予定
+-  第1回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-01.pdf][Emacsの復習]]
+-  第2回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-02.pdf][Mewの復習と発展]]
+-  第3回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-03.pdf][Emacsの発展]]
+-  第4回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-04.pdf][コマンドの復習]]
+-  第5回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-05.pdf][コマンドの発展]]
+-  第6回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-06.pdf][正規表現の基礎]]
+-  第7回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-07.pdf][制御構文とシェルスクリプトの基礎]]
+-  第e回 [[http://www.kono.cis.iwate-u.ac.jp/%7Ehirayama/local/pnyumon/2014/note-14.pdf][Processing 6 (オブジェクト指向プログラミングの入り口)]]
+
+疑問質問は[[http://wiki.eecs.iwate-u.ac.jp/%7Elect/jkiso/hiki.cgi][Wikiページ]]にどうぞ。
+
+
+

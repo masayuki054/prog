@@ -1,0 +1,3 @@
+Card sa = card_new(SPADE, ACE);
+cut_assert( card_suit(sa)==SPADE );
+cut_assert( card_no(sa)==ACE );

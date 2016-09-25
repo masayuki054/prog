@@ -1,0 +1,40 @@
+* Cardモジュール
+
+  card_display 問題をやったことで，カードの機能はほぼ
+  できています。
+
+  libcard.a がモジュールの本体で，
+  card.h がインタフェースとなります。
+  
+  pokerゲームの開発は，~/progs/game/の下で行いますので，
+  ~/progs/card_display/simple/ を
+  ~/progs/game/card/にコピーしてください。
+
+#+BEGIN_SRC sh :dir ~/progs/card_display/simple :results output
+# ~/progs/card_display/simple
+mkdir  ~/progs/game/card/
+cp -Rp * ~/progs/game/card/
+cd ~/progs/game/card/
+
+#+END_SRC
+
+#+RESULTS:
+: Makefile
+: src
+: test
+
+#+BEGIN_SRC sh :dir ~/progs/card_display/simple :results output
+make clean
+make
+#+END_SRC
+
+#+RESULTS:
+
+  もし，Makefile 等にディレクトリに依存する内容があれば，書き換えて下
+  さい。
+
+  移動・変更後，card のすべてのテストが成功することを確かめましょう。
+
+  これでカードモジュールの開発は，一旦，終了です。
+
+

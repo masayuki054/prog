@@ -1,0 +1,34 @@
+#+setupfile: ~/COMM/public_html/org-html-theme/index-sos-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+TITLE: top
+* 今日の講義 (1回目，2016.10.04)
+
+#+include: lects/01/plan.org
+
+* サイトマップ
+#+include: lects/contents.org :minlevel 2
+
+#+include: org-docs/contents.org :minlevel 2
+
+#+include: info/links.org :minlevel 1
+
+* サイトの木構造
+  
+#+include: info/site-tree.org :minlevel 2
+
+* emacs+org-mode+babel
+
+  emacs org-modeで開くための情報
+
+  開発 file:~suzuki/progs
+
+  Web file:~suzuki/lects/site/prog/site
+  - 講義 ::   file:~suzuki/lects/prog/site/lects
+  - ドキュメント :: file:~suzuki/lects/prog/site/org-docs
+
+* 過去の講義
+
+** 2014ー>2015
+
+- [[http://wiki.cis.iwate-u.ac.jp/~suzuki/Lects/prog/prog-2015.html][ソフトウェア構成論2014->2015]] (([[file+emacs:~suzuki/lects/prog/site/prog-2015.org][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/prog-2015.org][@s-org]]))
+

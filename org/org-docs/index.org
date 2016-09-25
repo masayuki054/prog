@@ -1,0 +1,7 @@
+# Time-stamp: <2016-09-25 13:22:48 m>
+#+SETUPFILE: ~/COMM/public_html/org-html-theme/index-sos-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+TITLE: 講義ドキュメント
+
+#+include: contents.org
+

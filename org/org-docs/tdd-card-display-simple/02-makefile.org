@@ -1,0 +1,60 @@
+# * Makefileを作る
+
+  simple/ ディレクトリに Makefileを作成します。
+  目的は二つ，カードのテストをすることと，ディレクトリ配下をきれいにするこ
+  とです。
+
+#+begin_src makefile :tangle babel/simple/setup/Makefile
+
+# ~/progs/card_display/simple/Makefile
+.PHONY: clean card_test
+
+card_test:
+	(cd src; make)
+	(cd test; make)	
+	cutter -v v test/
+
+clean:
+	(cd src; make clean)
+	(cd test; make clean)
+	rm -f *.o *.so *~ \#* .gch
+
+#+end_src
+
+  src/Makefileを作ります。まずの目的は，src/ディレクトリをきれいにすることで
+  す:
+  
+#+BEGIN_SRC makefile :tangle babel/simple/setup/src/Makefile
+
+# src/Makefile
+.PHONY: clean 
+  
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+
+#+END_SRC
+
+  test/Makefileを作ります: 同様にまずの目的は，test/ディレクトリをきれ
+  いにすることです:
+
+#+BEGIN_SRC makefile :tangle babel/simple/setup/test/Makefile
+# test/Makefile
+.PHONY: clean 
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+
+#+END_SRC
+
+  では，Makefile が正しく書けているか確かめるために make してみましょう。
+  
+#+BEGIN_SRC sh :results output :dir babel/simple/setup
+# ~/progs/card_display/simple/
+make
+#+END_SRC
+
+  それぞれのディレクトリで make clean して，空のテストをします:
+  
+  最初のテストは，成功です。開発とテストに必要なディレクトリ，Makefile を
+  作成し，空のテストを行いました。
+

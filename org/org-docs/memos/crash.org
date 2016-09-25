@@ -1,0 +1,104 @@
+* Todo test_sort() がクラッシュする原因
+  SCHEDULED: <2015-12-15 火>
+
+Card *cards に値を入れずに，cards_sort に渡したのが原因です。
+
+#+begin_src c
+// test/test_sort.c
+# include <cutter.h>
+# include <card.h>
+void
+test_cards_sort(void)
+{
+    Card test_cards[5];
+    {
+      test_cards[0] = card_new(SPADE,ACE);
+      test_cards[1] = card_new(HEART,ACE);
+      test_cards[2] = card_new(CLUB,2);
+      test_cards[3] = card_new(DIAMOND,10);
+      test_cards[4] = card_new(SPADE,2);
+    }
+
+    Card expected_cards[5];
+    {
+      expected_cards[4] = card_new(SPADE,ACE);
+      expected_cards[3] = card_new(HEART,ACE);
+      expected_cards[2] = card_new(DIAMOND,10);
+      expected_cards[1] = card_new(SPADE,2);
+      expected_cards[0] = card_new(CLUB,2);
+    }
+
+  Card *cards, *sorted_cards;
+  {
+    // cards = test_cards; // 2015.12.08 fixed
+    sorted_cards = cards_sort(cards, 5);
+  }
+
+  int i;
+  for (i=0; i<5; i++)
+    {
+      cut_assert(card_compare(expected_cards[i], sorted_cards[i])==0 );
+    }
+}
+
+#+END_SRC
+
+gcc のオプションに， -Wall を付てコンパイルしてみてください。
+
+
+#+begin_example 
+-*- mode: compilation; default-directory: "~/progs/card_display/simple/test/" -*-
+Compilation started at Tue Dec 15 10:16:19
+
+make 
+gcc -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src test_card.c
+gcc -o test_card.so -shared test_card.o -L../src -lcard `pkg-config cutter --libs`
+gcc -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src test_sort.c
+test_sort.c: In function ‘test_cards_sort’:
+test_sort.c:8:10: warning: variable ‘test_cards’ set but not used [-Wunused-but-set-variable]
+     Card test_cards[5];
+          ^
+test_sort.c:29:18: warning: ‘cards’ is used uninitialized in this function [-Wuninitialized]
+     sorted_cards = cards_sort(cards, 5);
+                  ^
+gcc -o test_sort.so -shared test_sort.o -L../src -lcard `pkg-config cutter --libs`
+
+Compilation finished at Tue Dec 15 10:16:19
+#+end_example
+
+Warning (警告)は，致命的なエラーではなく，一応コンパイルは通り，.o が
+できます。文法的には正しいということです。
+
+Warning を無視すると意味的(実行時)におかしくなります。
+
+
+上の警告の意味は:
+
+- test_cardss は set されているが，not used であること
+
+- cards は uninitialized であること
+
+実行時，
+
+- cards は，オート変数で，割り当てられたメモリの内容そのままになります。
+
+- cards の値は cards_sort に渡り，cards_sort関数は，それが Card * なの
+  で，その先の Card を使おうとしますが，
+
+  - そこがデータ領域でなければ, Segment Fault (例外) が起ります。
+  - そこがデータ領域だった場合は，もっと悪いことに，処理続き，
+    おこしな振舞をすることになります。
+
+** 教訓
+
+- gcc のオプションに，-Wall を付てコンパイルし, Warning をチェックする
+  こと
+
+  - 以前は，-Wall がデフォルトだったと思います。現システムでもそうだと
+    思いこんでいました。
+
+
+** お願い
+
+card_display/simple/ 配下の，Makefile の CFLAGS 変数の値に， -g -Wall
+を付け加えてください。

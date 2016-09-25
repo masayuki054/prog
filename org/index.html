@@ -1,0 +1,3786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<!-- 2016-09-25 日 10:52 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>ソフトウェア構成論 top</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="masayuki suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 top</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline10">今日の講義 (1回目，2016.10.04)</a>
+<ul>
+<li><a href="#orgheadline1">講義紹介 <code>[0/3]</code></a></li>
+<li><a href="#orgheadline5">はじまり</a>
+<ul>
+<li><a href="#orgheadline2">~/progs の作成 <code>[/]</code></a></li>
+<li><a href="#orgheadline3">emacs org-mode+babel やる？</a></li>
+<li><a href="#orgheadline4">講義内容へのpath <code>[/]</code></a></li>
+</ul>
+</li>
+<li><a href="#orgheadline6">プログラミング関連の講義と演習</a></li>
+<li><a href="#orgheadline7">テストとテストによる開発とは <code>[0/2]</code></a></li>
+<li><a href="#orgheadline8">card_display問題 <code>[/]</code></a></li>
+<li><a href="#orgheadline9">card_display問題のテストによる開発 <code>[0/7]</code></a></li>
+</ul>
+</li>
+<li><a href="#orgheadline184">サイトマップ</a>
+<ul>
+<li><a href="#orgheadline65">おしらせ</a>
+<ul>
+<li><a href="#orgheadline11"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-18 木&gt; </span></span> 3回目の未提出扱いのレポートについて</a></li>
+<li><a href="#orgheadline12"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-18 木&gt; </span></span> 1,2,3 回目のレポートの再提出について</a></li>
+<li><a href="#orgheadline13"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 最終レポートのお知らせ (2/9から変更あり)</a></li>
+<li><a href="#orgheadline14"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> hand_dev.org，card・deck・hand モジュールを集めました。</a>
+<ul>
+<li><a href="#orgheadline15">内容</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline16"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 着席端末について</a></li>
+<li><a href="#orgheadline17"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第1回目レポートについて 再回収者の評価をしました。</a></li>
+<li><a href="#orgheadline18"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第2回目レポート 再回収者の評価をしました。</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline19">課題</a></li>
+<li><a href="#orgheadline20">提出物と場所</a></li>
+<li><a href="#orgheadline21">提出期限</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline22"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第3回目レポート 再提出希望者</a></li>
+<li><a href="#orgheadline23"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第2回目レポート 再提出希望者</a></li>
+<li><a href="#orgheadline24"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-09 火&gt; </span></span> 最終レポートのお知らせ</a></li>
+<li><a href="#orgheadline25"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 講義のサイトはネットで見ることができますよ。</a></li>
+<li><a href="#orgheadline26"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> card・deck・hand モジュールを集めます</a></li>
+<li><a href="#orgheadline27"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> hand_dev.org を集めます。</a></li>
+<li><a href="#orgheadline28"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 着席端末について</a></li>
+<li><a href="#orgheadline29"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 第2回目レポートについて</a>
+<ul>
+<li><a href="#orgheadline30">期限遅れ提出希望者の確認です。</a>
+<ul>
+<li><a href="#orgheadline31">課題</a></li>
+<li><a href="#orgheadline32">提出物と場所</a></li>
+<li><a href="#orgheadline33">提出期限</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline34"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 第1回目レポート再提出者, 再々提出者は確認お願いします</a>
+<ul>
+<li><a href="#orgheadline35">レポート閲覧評価用 org ドキュメント</a>
+<ul>
+<li><a href="#orgheadline36">評価成績について</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline37">レポート回収ディレクトリ</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline38"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-26 火&gt; </span></span> 着席端末について</a></li>
+<li><a href="#orgheadline39"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-26 火&gt; </span></span> 第2回目レポートについて</a>
+<ul>
+<li><a href="#orgheadline40">期限遅れ提出希望者の確認です。</a>
+<ul>
+<li><a href="#orgheadline41">課題</a></li>
+<li><a href="#orgheadline42">提出物と場所</a></li>
+<li><a href="#orgheadline43">提出期限</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline44"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-26 火&gt; </span></span> 第1回目レポート再提出者</a>
+<ul>
+<li><a href="#orgheadline45">レポート閲覧評価用 org ドキュメント</a>
+<ul>
+<li><a href="#orgheadline46">評価成績について</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline47">レポート回収ディレクトリ</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline48"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-19 火&gt; </span></span> card/deck モジュールの開発状況の確認</a></li>
+<li><a href="#orgheadline53"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-19 火&gt; </span></span> 第2回目レポートを集め，評価しました。</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline49">課題</a></li>
+<li><a href="#orgheadline50">評価</a></li>
+<li><a href="#orgheadline51">回収場所</a></li>
+<li><a href="#orgheadline52">評価後の感想</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline54"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-19 火&gt; </span></span> 第1回目レポート再評価します。</a>
+<ul>
+<li><a href="#orgheadline55">再提出希望の人</a></li>
+<li><a href="#orgheadline56">未回収の人？</a></li>
+<li><a href="#orgheadline57">Done レポート閲覧評価用 org ドキュメント</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline58"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-12 火&gt;  </span></span>  第2回目レポート回収</a></li>
+<li><a href="#orgheadline62"><span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-22 火&gt;  </span></span>  第2回目レポート出題</a>
+<ul>
+<li><a href="#orgheadline59">課題</a></li>
+<li><a href="#orgheadline60">提出物と場所</a></li>
+<li><a href="#orgheadline61">提出期限</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline63"><span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-22 火&gt; </span></span> 冬休みに，deck の機能の開発をおこなってください。</a></li>
+<li><a href="#orgheadline64"><span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-21 月&gt; </span></span> 1回目のレポートの*再*提出者</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline81">講義記録</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline66">15回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline67">14回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline68">13回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline69">12回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline70">11回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline71">10回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline72">9回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline73">8回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline74">7回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline75">6回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline76">5回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline77">4回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline78">3回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline79">2回目 (cis.org s.org)</a></li>
+<li><a href="#orgheadline80">1回目 (cis.org s-org)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline119">講義補足</a>
+<ul>
+<li><a href="#orgheadline82">補足</a></li>
+<li><a href="#orgheadline87">講義への補足</a></li>
+<li><a href="#orgheadline83">講義への補足 2016-01-19</a>
+<ul>
+<li><a href="#orgheadline88">handモジュール開発文書の作成</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline98">Hand モジュールの開発 2016/02/02</a>
+<ul>
+<li><a href="#orgheadline97">01/26の説明への変更</a>
+<ul>
+<li><a href="#orgheadline89">インタフェースの変更</a></li>
+<li><a href="#orgheadline90">judge 機能を独立に</a>
+<ul>
+<li><a href="#orgheadline91">ファイルの追加</a></li>
+<li><a href="#orgheadline92">Makefileの変更</a></li>
+<li><a href="#orgheadline93">ペアの計算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline102">Hand モジュールの開発 2016/01/26</a>
+<ul>
+<li><a href="#orgheadline99">おことわり</a></li>
+<li><a href="#orgheadline100">Deckモジュール開発からHandモジュール開発へ</a>
+<ul>
+<li><a href="#orgheadline101">先生のDeck開発文書のcopy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline84">講義への補足 2016-01-12</a>
+<ul>
+<li><a href="#orgheadline103">講義いままで，これから</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline104">講義の眺望 @ prog.org</a>
+<ul>
+<li><a href="#orgheadline105">機能とテスト</a></li>
+<li><a href="#orgheadline106">機能とモジュール</a></li>
+<li><a href="#orgheadline107">テスト駆動開発</a></li>
+<li><a href="#orgheadline108">カード表示問題とテスト駆動開発</a></li>
+<li><a href="#orgheadline114">ポーカーゲーム開発</a>
+<ul>
+<li><a href="#orgheadline109">Card</a></li>
+<li><a href="#orgheadline110">Deck</a></li>
+<li><a href="#orgheadline111">Hand</a></li>
+<li><a href="#orgheadline112">Player</a></li>
+<li><a href="#orgheadline113">Poker</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline115">開発の構造</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline116">card_display_simple問題の開発木構造</a></li>
+<li><a href="#orgheadline117">deck モジュールの開発木構造</a>
+<ul>
+<li><a href="#orgheadline118">deck/src/Makefile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline120">game/deck/src/Makefileの説明</a>
+<ul>
+<li><a href="#orgheadline121">全体</a></li>
+<li><a href="#orgheadline130">各部分の説明</a>
+<ul>
+<li><a href="#orgheadline122"></a></li>
+<li><a href="#orgheadline123">gameプロジェクトの決まりを変数で表す</a></li>
+<li><a href="#orgheadline124">Cコンパイラへの指示</a></li>
+<li><a href="#orgheadline125">ローダへの指示</a></li>
+<li><a href="#orgheadline126">libdeck.a の作成規則</a></li>
+<li><a href="#orgheadline127">deck モジュールの提供規則</a></li>
+<li><a href="#orgheadline128">deck ソースプログラムのコンパイル</a></li>
+<li><a href="#orgheadline129">src ディレクトの掃除</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline85">講義への補足 2015-12-22</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline133">Makefile (card_display/simple)</a>
+<ul>
+<li><a href="#orgheadline131">src/Makefile</a></li>
+<li><a href="#orgheadline132">test/Makefile</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline134">card/deck 用 Makefile との違い</a>
+<ul>
+<li><a href="#orgheadline135">card_display/simple/src/Makefile と game/card/src/Makefile の違い</a></li>
+<li><a href="#orgheadline136">card_display/simple/test/Makefile と game/card/test/Makefile の違い</a></li>
+<li><a href="#orgheadline137">game/card/src/Makefile と game/deck/src/Makefile の違い</a></li>
+<li><a href="#orgheadline138">game/card/test/Makefile と game/deck/test/Makefile の違い</a></li>
+<li><a href="#orgheadline139">講義への補足</a>
+<ul>
+<li><a href="#orgheadline86">ghc問題</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline160">説明</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline140">抽象化</a></li>
+<li><a href="#orgheadline141">情報隠蔽</a></li>
+<li><a href="#orgheadline142">関数の意味</a>
+<ul>
+<li><a href="#orgheadline143">関数と抽象化</a></li>
+<li><a href="#orgheadline144">関数の内と外の間の壁</a></li>
+<li><a href="#orgheadline145">動作</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline146">シンプルであること (by George Whitesides)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline159">昔のガイダンス</a>
+<ul>
+<li><a href="#orgheadline151">動機付け</a>
+<ul>
+<li><a href="#orgheadline147">プログラムがかけるようになりたい</a></li>
+<li><a href="#orgheadline148">面白いプログラムがかきたい</a></li>
+<li><a href="#orgheadline149">正しいプログラムを書きたい</a></li>
+<li><a href="#orgheadline150">大規模なプログラム開発ができるようになりたい</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline158">プログラム開発の肝</a>
+<ul>
+<li><a href="#orgheadline152">プログラムの構成要素とその働きを理解すること</a></li>
+<li><a href="#orgheadline153">データの表現ができること</a></li>
+<li><a href="#orgheadline154">関数の働きを理解すること</a></li>
+<li><a href="#orgheadline155">名前の見せ方・隠し方を理解すること</a></li>
+<li><a href="#orgheadline156">コンパイル，リンク，実行</a></li>
+<li><a href="#orgheadline157">デバッグ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline163">今日のemacs</a>
+<ul>
+<li><a href="#orgheadline161">コマンド</a></li>
+<li><a href="#orgheadline162">話題</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline164">今日のorg</a></li>
+<li><a href="#orgheadline165">講義内容へのpath</a></li>
+<li><a href="#orgheadline178">技術的なこと</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline173">モジュール関連技術</a>
+<ul>
+<li><a href="#orgheadline172">モジュールとは部品</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline174">C-programming</a></li>
+<li><a href="#orgheadline175">emacs org-mode</a></li>
+<li><a href="#orgheadline176">emacs</a></li>
+<li><a href="#orgheadline177">emacs org-mode+babel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline181">文書の書き方，見え方などへの補足説明</a>
+<ul>
+<li>
+<ul>
+<li><a href="#orgheadline179">ページ内容の折り畳みと展開</a></li>
+<li><a href="#orgheadline180">title((cis.org s.org))</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline182">documents (site/org-docs)</a></li>
+<li><a href="#orgheadline183">memos (site/org-docs/memos)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline185">関連サイト</a></li>
+<li><a href="#orgheadline186">サイトの木構造</a></li>
+<li><a href="#orgheadline187">emacs+org-mode+babel</a></li>
+<li><a href="#orgheadline189">過去の講義</a>
+<ul>
+<li><a href="#orgheadline188">2014ー&gt;2015</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフト
+ウェア構成論</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a>
+/  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義
+ドキュメント</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">ポー
+カーゲームの開発</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html">repos</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
+</p>
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">今日の講義 (1回目，2016.10.04)</h2>
+<div class="outline-text-2" id="text-orgheadline10">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1">講義紹介 <code>[0/3]</code></h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<ul class="org-ul">
+<li class="trans"><code>[-]</code> site <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">prog.http</a> ((<a href="file:///users/home/masayuki/lects/prog/site/index.html">cis-org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/index.html">s-org</a>)) <code>[1/3]</code>
+
+<ul class="org-ul">
+<li class="on"><code>[X]</code> <p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi">wiki</a> 
+</p>
+
+<p>
+過去の講義でやったことが入っている。補助的に使う。
+</p></li>
+
+<li class="off"><code>[&#xa0;]</code> <p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs">講義用ドキュメント</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/">cis-org</a>, <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs">s-org</a>))
+</p>
+
+<p>
+講義で用いるドキュメント類
+</p></li>
+
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects">毎回の講義</a> ((<a href="file:///users/home/masayuki/lects/prog/site/lects/">cis-org</a>, <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects">s-org</a>))</li>
+</ul></li>
+</ul>
+
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 講義の目的など <code>[0/1]</code>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <p>
+emacs org-mode+babel 
+</p>
+
+<p>
+文芸的プログラミング
+</p></li>
+</ul></li>
+
+<li class="off"><code>[&#xa0;]</code> 自己紹介と休講のこと</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">はじまり</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+</div><div id="outline-container-orgheadline2" class="outline-4">
+<h4 id="orgheadline2">~/progs の作成 <code>[/]</code></h4>
+<div class="outline-text-4" id="text-orgheadline2">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 講義用のディレクトリを作成します：</li>
+</ul>
+
+<p>
++BEGIN_SRC sh :dir ~/ :results output data
+ [~/]
+d ~/
+kdir -p progs
+d progs
+kdir -p lects cutter card_display game/{card,deck,hand,poker}
+s -R
++END_SRC
+</p>
+
+<p>
++RESULTS:
++begin_example
+</p>
+<pre class="example">
+</pre>
+<p>
+ard_display
+utter
+ame
+ects
+</p>
+
+<p>
+/card_display:
+</p>
+
+<p>
+/cutter:
+</p>
+
+<p>
+/game:
+card,deck,hand,poker}
+</p>
+
+<p>
+/game/{card,deck,hand,poker}:
+</p>
+
+<p>
+/lects:
++end_example
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ~/progs/README.org を作成します:</li>
+</ul>
+
+<p>
++BEGIN_SRC org :tangle ~/progs/README.org
++title: ~/progs/README.org
+ィレクトリの使用目的:
+</p>
+
+<p>
+./lects: 毎回の講義のめもを置きましょう
+</p>
+
+<p>
+./card_display: カード表示問題の開発用
+</p>
+
+<p>
+./cutter: テスト用
+</p>
+
+<p>
+./game: ポーカーゲーム開発用
+</p>
+<ul class="org-ul">
+<li>./game/card: カードモジュール</li>
+<li>./game/deck: 山モジュール</li>
+<li>./game/hand: 手札モジュール</li>
+<li>./game/poker: ポーカーモジュール</li>
+</ul>
+
+<p>
++END_SRC
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">emacs org-mode+babel やる？</h4>
+<div class="outline-text-4" id="text-orgheadline3">
+<p>
+((<a href="Emacs.html#Top">Emacs</a>)), ((<a href="org-mode.html#Top">org-mode</a>))
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">講義内容へのpath <code>[/]</code></h4>
+<div class="outline-text-4" id="text-orgheadline4">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <a href="file:///users/home/masayuki/lects/prog">file:///users/home/masayuki/lects/prog</a> の下に，講義資料があります。</li>
+<li class="off"><code>[&#xa0;]</code> <a href="file:///users/home/masayuki/progs">file:///users/home/masayuki/progs</a> がお手本です。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">プログラミング関連の講義と演習</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連演習@cis</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/cis-programming-lects/">cis-org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/cis-programming-lects">s-org</a>)) 振り返りましょう.
+</p>
+
+<p>
+下記のことが重要です。
+</p>
+
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 重要なプログラムの構成要素 <code>[0/3]</code>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> 関数と抽象化，情報隠蔽</li>
+<li class="off"><code>[&#xa0;]</code> ヘッダファイルの役割，インタフェース遵守</li>
+<li class="off"><code>[&#xa0;]</code> 名前と実体の管理</li>
+</ul></li>
+
+<li class="off"><code>[&#xa0;]</code> コンパイル過程のこと <code>[0/6]</code>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> include</li>
+<li class="off"><code>[&#xa0;]</code> gcc</li>
+<li class="off"><code>[&#xa0;]</code> .o (オブジェクト・ファイル)</li>
+<li class="off"><code>[&#xa0;]</code> .a (静的ライブラリ), .so(動的ライブラリ)</li>
+<li class="off"><code>[&#xa0;]</code> ld (ローダ，リンケージ・エディタ)</li>
+<li class="off"><code>[&#xa0;]</code> a.out (実行プログラム)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">テストとテストによる開発とは <code>[0/2]</code></h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd">テストによる開発とは</a></li>
+
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter/">cutterの使い方</a> テストの体験</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">card_display問題 <code>[/]</code></h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/">カード表示問題の始まり</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">card_display問題のテストによる開発 <code>[0/7]</code></h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple">CardDisplaySimple問題のテストによる開発</a>
+</p>
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
+<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
+<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
+<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline184" class="outline-2">
+<h2 id="orgheadline184">サイトマップ</h2>
+<div class="outline-text-2" id="text-orgheadline184">
+</div><div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65">おしらせ</h3>
+<div class="outline-text-3" id="text-orgheadline65">
+</div><div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-18 木&gt; </span></span> 3回目の未提出扱いのレポートについて</h4>
+<div class="outline-text-4" id="text-orgheadline11">
+<p>
+h26j071, h26j027, h26j088, h26j106, h26j128 の hand_dev.org 未提出
+</p>
+
+<ul class="org-ul">
+<li>h26j071
+<ul class="org-ul">
+<li>ファイルは存在するが，中身は0</li>
+</ul></li>
+
+<li>h26j072
+<ul class="org-ul">
+<li>hand-dev.org だった。評価しました。</li>
+</ul></li>
+
+<li>h26j088
+<ul class="org-ul">
+<li>hand_dec.org だった。評価しました。</li>
+</ul></li>
+
+<li>h26j106
+<ul class="org-ul">
+<li>hamd_dev.org だった。評価しました。</li>
+</ul></li>
+
+<li>h26j128
+<ul class="org-ul">
+<li>hand-dev.org だった。評価しました。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-18 木&gt; </span></span> 1,2,3 回目のレポートの再提出について</h4>
+<div class="outline-text-4" id="text-orgheadline12">
+<p>
+1回目の再提出者
+</p>
+
+<pre class="example">
+@login_1_5 = [
+  'h26j006', 'h26j033', 'h26j039', 'h26j068'
+]
+</pre>
+
+
+<p>
+2回目の再提出者
+</p>
+<pre class="example">
+@login_2_3 = [
+   'h26j006', 'h26j087', 'h26j093', 'h26j121'
+]
+</pre>
+
+<p>
+3回目の再提出者
+</p>
+<pre class="example">
+@login_3_2 = [
+  'h26j006', 'h26j025', 'h26j033', 'h26j039', 'h26j041',
+  'h26j061', 'h26j064', 'h26j068', 'h26j071', 'h26j072',
+  'h26j076', 'h26j084', 'h26j087', 'h26j092', 'h26j093',
+  'h26j100', 'h26j103', 'h26j119', 'h26j121', 'h26j126'
+]
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 最終レポートのお知らせ (2/9から変更あり)</h4>
+<div class="outline-text-4" id="text-orgheadline13">
+<p>
+2/19 〆切 
+</p>
+
+<p>
+提出するもの
+</p>
+<ul class="org-ul">
+<li><p>
+~/progs/game で以下のことができること
+</p>
+<ul class="org-ul">
+<li>(cd ~/progs/game; make clean) 
+<ul class="org-ul">
+<li>card, deck, hand, lib, include の中を clean する</li>
+</ul></li>
+<li>(cd ~/progs/game; make build) 
+<ul class="org-ul">
+<li>必要なヘッダファイル，ライブラリをインストールし，</li>
+<li>poker/poker をつくる</li>
+</ul></li>
+</ul>
+<p>
+この3種類の make の結果を ~/progs/game/Make.out という名前のファ
+イルに保存しておいてください。やり方は下記です:
+</p></li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">script Make.out # Make.outへの記録開始
+
+cd ~/progs/game
+make clean ; make build
+poker/poker  # ゲームの実行
+# ゲームをおこなう
+# ゲームを終わる
+
+exit
+</pre>
+</div>
+
+<p>
+以上で，script ~ exit までの入出力が，Make.out に記録されています。
+二度やるときは，Make.out を一旦消してから，再度やってください。
+</p>
+
+
+<ul class="org-ul">
+<li><p>
+poker モジュールの開発についてのレポート
+</p>
+<ul class="org-ul">
+<li>card,deck,handの開発と何が違がうか</li>
+</ul>
+<p>
+~/progs/reports/4/poker_dev.org
+</p></li>
+
+<li><p>
+講義のまとめ
+</p>
+<ul class="org-ul">
+<li>何を学び，行ない，何を得たか</li>
+<li>意見・感想</li>
+</ul>
+<p>
+~/progs/reports/4/progs.org
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> hand_dev.org，card・deck・hand モジュールを集めました。</h4>
+<div class="outline-text-4" id="text-orgheadline14">
+<p>
+確認用ファイル   
+</p>
+<ul class="org-ul">
+<li>~suzuki/progs/collected_srcs/3/自分のログイン名/</li>
+<li>~suzuki/progs/collected_reports/3/自分のログイン名/hand_dev.org</li>
+<li>~suzuki/progs/reports/3/report-3.org</li>
+</ul>
+
+<p>
+評価は， ~suzuki/progs/reports/3/reports-3.org を Emacs で見てください。
+</p>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-5">
+<h5 id="orgheadline15">内容</h5>
+<div class="outline-text-5" id="text-orgheadline15">
+<ul class="org-ul">
+<li>hand モジュールのテスト駆動開発についてまとめてください。</li>
+
+<li>意見・感想を添えて下さい。</li>
+
+<li>~/progs/reports/3/hand_dev.org に提出してください。</li>
+
+<li>締め切りは，2/8 とします。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 着席端末について</h4>
+<div class="outline-text-4" id="text-orgheadline16">
+<p>
+端末室では，先週と同じ席に座わって下さい。
+先々週集めた，進行状況の確認のためです。
+先週・先々週欠席した人は申し出てください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第1回目レポートについて 再回収者の評価をしました。</h4>
+<div class="outline-text-4" id="text-orgheadline17">
+<p>
+~suzuki/progs/reports/1/reports-1-4.org を Emacs で見てください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第2回目レポート 再回収者の評価をしました。</h4>
+<div class="outline-text-4" id="text-orgheadline18">
+<p>
+下記の人，再回収し，評価しました。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">@logins = ["h26j031"，"h26j041", "h26j083", "h26j090", "h26j093", "h26j110"]
+</pre>
+</div>
+
+<p>
+~suzuki/progs/reports/2/reports-2-2.org を見てください。
+</p>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-6">
+<h6 id="orgheadline19">課題</h6>
+<div class="outline-text-6" id="text-orgheadline19">
+<ul class="org-ul">
+<li>~/progs/game</li>
+
+<li>deckモジュールの機能について，各機能のインタフェースを決め，決めた理由・
+過程を, 箇条書きで，まとめてください。</li>
+
+<li>講義への意見・要望・感想，その他講義に関することなんでも。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-6">
+<h6 id="orgheadline20">提出物と場所</h6>
+<div class="outline-text-6" id="text-orgheadline20">
+<ul class="org-ul">
+<li>~/progs/game</li>
+<li>~/progs/reports/2/deck_spec.org</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-6">
+<h6 id="orgheadline21">提出期限</h6>
+<div class="outline-text-6" id="text-orgheadline21">
+<ul class="org-ul">
+<li>01/12 (火) 15:00</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第3回目レポート 再提出希望者</h4>
+<div class="outline-text-4" id="text-orgheadline22">
+<div class="org-src-container">
+
+<pre class="src src-ruby">@login = [
+  'h26j077', 'h26j080', 'h26j088', 'h26j092', 'h26j093'
+]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-16 火&gt; </span></span> 第2回目レポート 再提出希望者</h4>
+<div class="outline-text-4" id="text-orgheadline23">
+<div class="org-src-container">
+
+<pre class="src src-ruby">@login = [
+  'h26j121'
+]
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-09 火&gt; </span></span> 最終レポートのお知らせ</h4>
+<div class="outline-text-4" id="text-orgheadline24">
+<p>
+2/19 〆切
+</p>
+
+<p>
+提出するもの
+</p>
+<ul class="org-ul">
+<li>~/progs/game で以下のことができること
+<ul class="org-ul">
+<li>(cd ~/progs/game; make clean) 
+<ul class="org-ul">
+<li>card, deck, hand, lib, include の中を clean する</li>
+</ul></li>
+<li>(cd ~/progs/game; make build) 
+<ul class="org-ul">
+<li>必要なヘッダファイル，ライブラリをインストールし，</li>
+<li>poker/poker をつくる</li>
+</ul></li>
+<li>(cd ~/progs/game; make run)
+<ul class="org-ul">
+<li>pokerゲームのデモを走らせる</li>
+</ul></li>
+</ul></li>
+
+<li><p>
+poker モジュールの開発についてのレポート
+</p>
+<ul class="org-ul">
+<li>card,deck,handの開発と何が違がうか</li>
+</ul>
+<p>
+~/progs/reports/4/poker_dev.org
+</p></li>
+
+<li><p>
+講義のまとめ
+</p>
+<ul class="org-ul">
+<li>何を学び，行ない，何を得たか</li>
+<li>意見・感想</li>
+</ul>
+<p>
+~/progs/reports/4/progs.org
+</p></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 講義のサイトはネットで見ることができますよ。</h4>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> card・deck・hand モジュールを集めます</h4>
+<div class="outline-text-4" id="text-orgheadline26">
+<p>
+来週講義前 11:00 a.m. 頃に ~/progs/game/  を集めます。
+hand モジュールまで，完成させて下さい。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> hand_dev.org を集めます。</h4>
+<div class="outline-text-4" id="text-orgheadline27">
+<ul class="org-ul">
+<li>hand モジュールのテスト駆動開発についてまとめてください。</li>
+
+<li>意見・感想を添えて下さい。</li>
+
+<li>~/progs/reports/3/hand_dev.org に提出してください。</li>
+
+<li>締め切りは，2/8 とします。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 着席端末について</h4>
+<div class="outline-text-4" id="text-orgheadline28">
+<p>
+今後，端末室で，先週と同じ席に座わって下さい。
+先々週集めた，進行状況の確認のためです。
+</p>
+
+<p>
+先週・先々週欠席した人は申し出てください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-4">
+<h4 id="orgheadline29"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 第2回目レポートについて</h4>
+<div class="outline-text-4" id="text-orgheadline29">
+<p>
+自分成績を確認してください。不満の人，再提出したい人は，申し出てくださ
+い。  
+</p>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-5">
+<h5 id="orgheadline30">期限遅れ提出希望者の確認です。</h5>
+<div class="outline-text-5" id="text-orgheadline30">
+<div class="org-src-container">
+
+<pre class="src src-ruby">@logins = ["h26j031"，"h26j041", "h26j083", "h26j090"]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-6">
+<h6 id="orgheadline31">課題</h6>
+<div class="outline-text-6" id="text-orgheadline31">
+<ul class="org-ul">
+<li>~/progs/game</li>
+
+<li>deckモジュールの機能について，各機能のインタフェースを決め，決めた理由・
+過程を, 箇条書きで，まとめてください。</li>
+
+<li>講義への意見・要望・感想，その他講義に関することなんでも。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-6">
+<h6 id="orgheadline32">提出物と場所</h6>
+<div class="outline-text-6" id="text-orgheadline32">
+<ul class="org-ul">
+<li>~/progs/game</li>
+<li>~/progs/reports/2/deck_spec.org</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline33" class="outline-6">
+<h6 id="orgheadline33">提出期限</h6>
+<div class="outline-text-6" id="text-orgheadline33">
+<ul class="org-ul">
+<li>01/12 (火) 15:00</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 第1回目レポート再提出者, 再々提出者は確認お願いします</h4>
+<div class="outline-text-4" id="text-orgheadline34">
+<p>
+下記の再提出・再々提出希望者について再回収しました。
+新らしいレポートが回収されているか確認お願いします。成績評価は，確認後になります。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">@logins = [                                                                                                                                                          
+"h26j009", "h26j011", "h26j015", "h26j031", "h26j032",
+"h26j033", "h26j034", "h26j038", "h26j039", "h26j041",
+"h26j047", "h26j071", "h26j076", "h26j077", "h26j081",
+"h26j088", "h26j090", "h26j092", "h26j093", "h26j103",                                                                                                       
+"h26j126"
+]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline35" class="outline-5">
+<h5 id="orgheadline35">レポート閲覧評価用 org ドキュメント</h5>
+<div class="outline-text-5" id="text-orgheadline35">
+<ul class="org-ul">
+<li>~suzuki/progs/reports/1/report-1.org    
+<ul class="org-ul">
+<li>emacs org-mode で書いてあります。</li>
+<li>評価とコメントが書いてあります。</li>
+</ul></li>
+</ul>
+
+<p>
+再提出・再々提出希望者
+</p>
+<ul class="org-ul">
+<li>~suzuki/progs/reports/1/report-1-4.org    
+<ul class="org-ul">
+<li>emacs org-mode で書いてあります。</li>
+<li>評価とコメントはまだです。</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline36" class="outline-6">
+<h6 id="orgheadline36">評価成績について</h6>
+<div class="outline-text-6" id="text-orgheadline36">
+<ul class="org-ul">
+<li>成績が d の項目は，再提出してください。</li>
+
+<li>成績に不満の人は，申し出てください。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline37" class="outline-5">
+<h5 id="orgheadline37">レポート回収ディレクトリ</h5>
+<div class="outline-text-5" id="text-orgheadline37">
+<p>
+評価に使ったレポートとプログラムです:
+</p>
+<ul class="org-ul">
+<li>~suzuki/progs/collected_reports/1/</li>
+<li>~suzuki/progs/collected_srcs/1/</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-26 火&gt; </span></span> 着席端末について</h4>
+<div class="outline-text-4" id="text-orgheadline38">
+<p>
+今後，端末室で，先週と同じ席に座わって下さい。
+先週集めた，進行状況の確認のためです。
+</p>
+
+<p>
+先週欠席した人は申し出てください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-26 火&gt; </span></span> 第2回目レポートについて</h4>
+<div class="outline-text-4" id="text-orgheadline39">
+<p>
+自分の成績を確認してください。不満の人は，申し出てください。
+</p>
+</div>
+
+<div id="outline-container-orgheadline40" class="outline-5">
+<h5 id="orgheadline40">期限遅れ提出希望者の確認です。</h5>
+<div class="outline-text-5" id="text-orgheadline40">
+<div class="org-src-container">
+
+<pre class="src src-ruby">@logins = ["h26j061"]
+</pre>
+</div>
+
+<p>
+他にもいますか？
+</p>
+</div>
+
+<div id="outline-container-orgheadline41" class="outline-6">
+<h6 id="orgheadline41">課題</h6>
+<div class="outline-text-6" id="text-orgheadline41">
+<ul class="org-ul">
+<li>~/progs/game</li>
+
+<li>deckモジュールの機能について，各機能のインタフェースを決め，決めた理由・
+過程を, 箇条書きで，まとめてください。</li>
+
+<li>講義への意見・要望・感想，その他講義に関することなんでも。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline42" class="outline-6">
+<h6 id="orgheadline42">提出物と場所</h6>
+<div class="outline-text-6" id="text-orgheadline42">
+<ul class="org-ul">
+<li>~/progs/game</li>
+<li>~/progs/reports/2/deck_spec.org</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline43" class="outline-6">
+<h6 id="orgheadline43">提出期限</h6>
+<div class="outline-text-6" id="text-orgheadline43">
+<ul class="org-ul">
+<li>01/12 (火) 15:00</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-26 火&gt; </span></span> 第1回目レポート再提出者</h4>
+<div class="outline-text-4" id="text-orgheadline44">
+<p>
+下記の再提出希望者は，新らしいレポートが回収されているか確認お願いし
+ます。成績評価は，確認後になります。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">@login = ["h26j009", "h26j015", "h26j031", "h26j034", "h26j038",
+  "h26j047", "h26j076", "h26j077", "h26j088",
+  "h26j092", "h26j093", "h26j0126"]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-5">
+<h5 id="orgheadline45">レポート閲覧評価用 org ドキュメント</h5>
+<div class="outline-text-5" id="text-orgheadline45">
+<ul class="org-ul">
+<li>~suzuki/progs/reports/1/reports.org    
+<ul class="org-ul">
+<li>emacs org-mode で書いてあります。</li>
+<li>評価とコメントが書いてあります。</li>
+</ul></li>
+
+<li>ブラウザで見る人は， <a href="file://~suzuki/progs/reports/1/reports.html">file://~suzuki/progs/reports/1/reports.html</a>
+       を開いてください。</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline46" class="outline-6">
+<h6 id="orgheadline46">評価成績について</h6>
+<div class="outline-text-6" id="text-orgheadline46">
+<ul class="org-ul">
+<li>成績が d の項目は，再提出してください。</li>
+
+<li>成績に不満の人は，申し出てください。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline47" class="outline-5">
+<h5 id="orgheadline47">レポート回収ディレクトリ</h5>
+<div class="outline-text-5" id="text-orgheadline47">
+<p>
+評価に使ったレポートとプログラムです:
+</p>
+<ul class="org-ul">
+<li>~suzuki/progs/collected_reports/1/</li>
+<li>~suzuki/progs/collected_srcs/1/</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-19 火&gt; </span></span> card/deck モジュールの開発状況の確認</h4>
+<div class="outline-text-4" id="text-orgheadline48">
+<p>
+モジュールの開発状況をTAさんに確認してもらいます。
+</p>
+
+<p>
+Card
+</p>
+<ul class="org-ul">
+<li>[s] 全ての機能の開発とテストが終了している。</li>
+<li>[a] 機能の開発とテストが進行中，自分でやれる。</li>
+<li>[b] 機能の開発とテストが進行中，相談しながらやりたい。</li>
+<li>[c] 自分でできない。</li>
+</ul>
+
+<p>
+Deck
+</p>
+<ul class="org-ul">
+<li>[s] 全ての機能の開発とテストが終了している。</li>
+<li>[a] 機能の開発とテストが進行中，自分でやれる。</li>
+<li>[b] 機能の開発とテストが進行中，相談しながらやりたい。</li>
+<li>[c] 自分でできない。</li>
+</ul>
+
+<p>
+講義中に，TAさんに確認してもらってください。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-19 火&gt; </span></span> 第2回目レポートを集め，評価しました。</h4>
+<div class="outline-text-4" id="text-orgheadline53">
+</div><div id="outline-container-orgheadline49" class="outline-6">
+<h6 id="orgheadline49">課題</h6>
+<div class="outline-text-6" id="text-orgheadline49">
+<ul class="org-ul">
+<li>deckモジュールの機能について，各機能のインタフェースを決め，決めた理由・
+過程を, 箇条書きで，まとめてください。</li>
+
+<li>講義への意見・要望・感想，その他講義に関することなんでも。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline50" class="outline-6">
+<h6 id="orgheadline50">評価</h6>
+<div class="outline-text-6" id="text-orgheadline50">
+<ul class="org-ul">
+<li>~suzuki/progs/reports/2/reports-2.org</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline51" class="outline-6">
+<h6 id="orgheadline51">回収場所</h6>
+<div class="outline-text-6" id="text-orgheadline51">
+<ul class="org-ul">
+<li>~suzuki/progs/collected_reports/2</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline52" class="outline-6">
+<h6 id="orgheadline52">評価後の感想</h6>
+<div class="outline-text-6" id="text-orgheadline52">
+<ul class="org-ul">
+<li>ほとんどの人が理解できていると思います。何をしたらいいのかわから
+ない人は，いなくなったと思います。</li>
+
+<li>インタフェース設計には，慣れが必要です。なんども自分で考え，その後で，他
+の人のものを参考にすると，上達が早いです。</li>
+
+<li>開発プロセスを暗記する必要はありません。実際の開発にあたり，いろ
+いろなものを参考にしながらでも，より実現に近づける自信ができれば
+いいと思います。</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-19 火&gt; </span></span> 第1回目レポート再評価します。</h4>
+<div class="outline-text-4" id="text-orgheadline54">
+<p>
+まだ再提出希望していない人は，今日申しでてください。
+</p>
+
+<p>
+未回収だった人はいますか？ 今日，今日申しでてください。
+</p>
+</div>
+
+<div id="outline-container-orgheadline55" class="outline-5">
+<h5 id="orgheadline55">再提出希望の人</h5>
+<div class="outline-text-5" id="text-orgheadline55">
+<ul class="org-ul">
+<li>h26j032, h26j032, h26j041, h26j071, h26j081</li>
+<li>h26j103</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline56" class="outline-5">
+<h5 id="orgheadline56">未回収の人？</h5>
+<div class="outline-text-5" id="text-orgheadline56">
+<ul class="org-ul">
+<li>h26j011</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline57" class="outline-5">
+<h5 id="orgheadline57">Done レポート閲覧評価用 org ドキュメント</h5>
+<div class="outline-text-5" id="text-orgheadline57">
+<ul class="org-ul">
+<li>~suzuki/progs/reports/1/reports.org    
+<ul class="org-ul">
+<li>emacs org-mode で書いてあります。</li>
+<li>評価とコメントが書いてあります。</li>
+</ul></li>
+
+<li>ブラウザで見る人は， <a href="file://~suzuki/progs/reports/1/reports.html">file://~suzuki/progs/reports/1/reports.html</a>
+       を開いてください。</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline58" class="outline-4">
+<h4 id="orgheadline58"><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-01-12 火&gt;  </span></span>  第2回目レポート回収</h4>
+<div class="outline-text-4" id="text-orgheadline58">
+<p>
+2016-01-12 (火) 夕方に，  第2回目レポートを回収します。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62"><span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-22 火&gt;  </span></span>  第2回目レポート出題</h4>
+<div class="outline-text-4" id="text-orgheadline62">
+</div><div id="outline-container-orgheadline59" class="outline-5">
+<h5 id="orgheadline59">課題</h5>
+<div class="outline-text-5" id="text-orgheadline59">
+<ul class="org-ul">
+<li>deckモジュールの機能について，各機能のインタフェースを決め，決めた理由・
+過程を, 箇条書きで，まとめてください。</li>
+
+<li>講義への意見・要望・感想，その他講義に関することなんでも。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline60" class="outline-5">
+<h5 id="orgheadline60">提出物と場所</h5>
+<div class="outline-text-5" id="text-orgheadline60">
+<ul class="org-ul">
+<li>~/progs/game</li>
+<li>~/progs/reports/2/deck_spec.org</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline61" class="outline-5">
+<h5 id="orgheadline61">提出期限</h5>
+<div class="outline-text-5" id="text-orgheadline61">
+<ul class="org-ul">
+<li>01/12 (火) 15:00</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-22 火&gt; </span></span> 冬休みに，deck の機能の開発をおこなってください。</h4>
+</div>
+
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64"><span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-21 月&gt; </span></span> 1回目のレポートの*再*提出者</h4>
+<div class="outline-text-4" id="text-orgheadline64">
+<p>
+@logins = ["h26j083", "h26j103", "h26j041"]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline81" class="outline-3">
+<h3 id="orgheadline81">講義記録</h3>
+<div class="outline-text-3" id="text-orgheadline81">
+</div><div id="outline-container-orgheadline66" class="outline-5">
+<h5 id="orgheadline66"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/15">15回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/15/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/15/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline67" class="outline-5">
+<h5 id="orgheadline67"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/14">14回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/14/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/14/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline68" class="outline-5">
+<h5 id="orgheadline68"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/13">13回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/13/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/13/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline69" class="outline-5">
+<h5 id="orgheadline69"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/12">12回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/12/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/12/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline70" class="outline-5">
+<h5 id="orgheadline70"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/11">11回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/11/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/11/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline71" class="outline-5">
+<h5 id="orgheadline71"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/10">10回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/10/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/10/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline72" class="outline-5">
+<h5 id="orgheadline72"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/09">9回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/09/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/09/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline73" class="outline-5">
+<h5 id="orgheadline73"><a href="//wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/08">8回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/08/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/08/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline74" class="outline-5">
+<h5 id="orgheadline74"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/07">7回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/07/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/07/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline75" class="outline-5">
+<h5 id="orgheadline75"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/06">6回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/06/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/06/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline76" class="outline-5">
+<h5 id="orgheadline76"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/05">5回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/05/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/05/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline77" class="outline-5">
+<h5 id="orgheadline77"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/04">4回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/04/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/04/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline78" class="outline-5">
+<h5 id="orgheadline78"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/03">3回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/03/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/03/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline79" class="outline-5">
+<h5 id="orgheadline79"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/02">2回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/02/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/02/">s.org</a>)</h5>
+</div>
+<div id="outline-container-orgheadline80" class="outline-5">
+<h5 id="orgheadline80"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/01">1回目</a> (<a href="file:///users/home/masayuki/lects/prog/site/lects/01/">cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/01/">s-org</a>)</h5>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline119" class="outline-3">
+<h3 id="orgheadline119">講義補足</h3>
+<div class="outline-text-3" id="text-orgheadline119">
+</div><div id="outline-container-orgheadline82" class="outline-4">
+<h4 id="orgheadline82">補足</h4>
+<div class="outline-text-4" id="text-orgheadline82">
+<p>
+ここは，その日の講義に必要な補足的な説明や情報を置くところです。
+講義中にも書くかもしれませんし，以前の講義のためのものも残っています。
+書き溜めていけたらと思います。
+</p>
+
+
+<p>
+最近書き加えた内容です:
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87">講義への補足</h4>
+<div class="outline-text-4" id="text-orgheadline87">
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02 火&gt; </span></span> 「handモジュール開発文書の作成」に追記しました。</li>
+
+<li><a href="#orgheadline83">講義への補足 2016-01-19</a> handモジュールの開発について</li>
+
+<li><a href="#orgheadline84">講義への補足 2016-01-12</a> deckモジュールの開発について</li>
+
+<li><a href="#orgheadline84">講義への補足 2016-01-12</a>
+
+<ul class="org-ul">
+<li>講義いままで，これから</li>
+
+<li>card_display_simple 問題の開発構造木</li>
+
+<li>deck モジュールの開発構造木</li>
+
+<li>deck/src/Makefile の解説</li>
+</ul></li>
+</ul>
+
+
+<ul class="org-ul">
+<li><a href="#orgheadline85">講義への補足 2015-12-22</a>
+
+<ul class="org-ul">
+<li>Makefile と diff</li>
+</ul></li>
+
+<li><a href="#orgheadline86">ghc問題</a> <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span></li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgheadline83" class="outline-4">
+<h4 id="orgheadline83">講義への補足 2016-01-19</h4>
+<div class="outline-text-4" id="text-orgheadline83">
+</div><div id="outline-container-orgheadline88" class="outline-5">
+<h5 id="orgheadline88">handモジュール開発文書の作成</h5>
+</div>
+</div>
+<div id="outline-container-orgheadline98" class="outline-4">
+<h4 id="orgheadline98">Hand モジュールの開発 2016/02/02</h4>
+<div class="outline-text-4" id="text-orgheadline98">
+</div><div id="outline-container-orgheadline97" class="outline-5">
+<h5 id="orgheadline97">01/26の説明への変更</h5>
+<div class="outline-text-5" id="text-orgheadline97">
+</div><div id="outline-container-orgheadline89" class="outline-6">
+<h6 id="orgheadline89">インタフェースの変更</h6>
+<div class="outline-text-6" id="text-orgheadline89">
+<p>
+先週名前を決めましたが，しっくりこないので，変更したいです:
+</p>
+
+<ul class="org-ul">
+<li><p>
+<code>hand_card</code> を追加
+</p>
+<pre class="example">
+Card hand_card(Hand, int);
+</pre></li>
+
+<li><code>hand_calc</code> <code>&gt; =hand_judge</code> 名前の変更</li>
+<li><code>poker_hand_to_string</code> =&gt; =hand_pokerhand_to_string = 名前の変更</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline90" class="outline-6">
+<h6 id="orgheadline90">judge 機能を独立に</h6>
+<div class="outline-text-6" id="text-orgheadline90">
+<p>
+役判定に関する機能を纏めることにしました。
+hand.c の中に全ての関数を詰め込まず，
+judge.c の中に役判定関係の関数を纏めることにします。
+</p>
+
+<p>
+モジュール内の * 機能(関数) * を，*ファイル単位* に纏めるというこ
+とです。
+</p>
+</div>
+
+<div id="outline-container-orgheadline91" class="outline-7">
+<h7 id="orgheadline91">ファイルの追加</h7>
+<div class="outline-text-7" id="text-orgheadline91">
+<ul class="org-ul">
+<li>src/judge.c
+<ul class="org-ul">
+<li>PokerHand hand_judge(Hand)
+<ul class="org-ul">
+<li>int hand_calc_pairs(Hand)</li>
+<li>bool hand_is_straight(Hand)</li>
+<li>bool hand_is_flush(Hand)</li>
+</ul></li>
+<li>char *hand_pokerhand_to_string(PokerHand)</li>
+</ul></li>
+
+<li>test/test_judge.c
+<ul class="org-ul">
+<li>void test_hand_judge()</li>
+<li>void test_hand_pokerhand_to_string()</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline92" class="outline-7">
+<h7 id="orgheadline92">Makefileの変更</h7>
+<div class="outline-text-7" id="text-orgheadline92">
+<p>
+これに伴ない，src/, test/ の Makefile に変更が必要です。
+</p>
+
+<p>
+まず自分でMakefileを変更してみてください。
+後で，お手本を見せます。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline93" class="outline-7">
+<h7 id="orgheadline93">ペアの計算</h7>
+<div class="outline-text-7" id="text-orgheadline93">
+<ul class="org-ul">
+<li>ある一枚のカードについて，</li>
+<li>そのカード自身を含め，5枚の手札について，</li>
+<li>同じ数のカードが，何枚あるか，</li>
+</ul>
+
+<p>
+を計算し，その値でペアの数を判別できます。
+</p>
+
+<p>
+それがどうして正しいかは，下記の２次元の表で考えるとよくわかりま
+す：
+</p>
+</div>
+
+
+<ul class="org-ul"><li><a id="orgheadline94"></a>Highcardの場合は5<br  /><div class="outline-text-8" id="text-orgheadline94">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">&#xa0;</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+
+
+<li><a id="orgheadline95"></a>ThreeCardsの場合は11<br  /><div class="outline-text-8" id="text-orgheadline95">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">&#xa0;</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+
+
+<li><a id="orgheadline96"></a>Fullehouseの場合は13<br  /><div class="outline-text-8" id="text-orgheadline96">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">&#xa0;</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+</div></li></ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102">Hand モジュールの開発 2016/01/26</h4>
+<div class="outline-text-4" id="text-orgheadline102">
+</div><div id="outline-container-orgheadline99" class="outline-5">
+<h5 id="orgheadline99">おことわり</h5>
+<div class="outline-text-5" id="text-orgheadline99">
+<p>
+時間が足りなく，この文書はまだ書きかけです。
+講義中に，書きながら進めたいと思います。
+</p>
+
+<p>
+この文書は，下記にあります：
+</p>
+
+<ul class="org-ul">
+<li>~suzuki/lects/prog/lects/supplyments/hand_dev.org</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline100" class="outline-5">
+<h5 id="orgheadline100">Deckモジュール開発からHandモジュール開発へ</h5>
+<div class="outline-text-5" id="text-orgheadline100">
+<p>
+先生のDeck開発文書を元に，自分のHand開発文書を作ってみましょう。
+文書を作ることが目的ではなく，開発を理解することが目的です。
+</p>
+
+<p>
+Deckの開発と，同じ所，違がう所を理解しましょう。
+</p>
+
+<p>
+文書は，emacs org-mode を使って書いてあります。皆さんが，org-mode
+を使うことは必須ではありません。
+</p>
+
+<p>
+最終的に，自分のHand開発文書ができると，うれしいと思います。
+</p>
+</div>
+
+<div id="outline-container-orgheadline101" class="outline-6">
+<h6 id="orgheadline101">先生のDeck開発文書のcopy</h6>
+<div class="outline-text-6" id="text-orgheadline101">
+<p>
+先生のpoker開発文書を全てcopyします:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">cd ~/progs/game/
+</pre>
+</div>
+
+<p>
+開発ドキュメント用ディレクトリの作成：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ~/progs/game/doc
+</pre>
+</div>
+
+<p>
+先生のディレクトリをまるごとコピー：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">cd ~/progs/game/doc
+cp -Rp ~suzuki/lects/prog/org-docs/poker poker-dev
+</pre>
+</div>
+
+<p>
+先生の poker/ ディレクトリを，~/progs/game/doc/poker-dev (ぽーかー
+の開発の意)にコピー。
+</p>
+
+<p>
+poker-dev/deck.org を元に，自分の hand-dev.org を作りましょう。
+</p>
+
+<p>
+あとは，講義時間中に。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline84" class="outline-4">
+<h4 id="orgheadline84">講義への補足 2016-01-12</h4>
+<div class="outline-text-4" id="text-orgheadline84">
+</div><div id="outline-container-orgheadline103" class="outline-5">
+<h5 id="orgheadline103">講義いままで，これから</h5>
+</div>
+</div>
+
+<div id="outline-container-orgheadline104" class="outline-4">
+<h4 id="orgheadline104">講義の眺望 @ prog.org</h4>
+<div class="outline-text-4" id="text-orgheadline104">
+<p>
+2015.10回目 今迄やってきた事，これからやる事の意味
+</p>
+</div>
+
+<div id="outline-container-orgheadline105" class="outline-5">
+<h5 id="orgheadline105">機能とテスト</h5>
+<div class="outline-text-5" id="text-orgheadline105">
+<ul class="org-ul">
+<li>プログラムを考える単位，関数</li>
+
+<li>正しさを考える単位，関数</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline106" class="outline-5">
+<h5 id="orgheadline106">機能とモジュール</h5>
+<div class="outline-text-5" id="text-orgheadline106">
+<ul class="org-ul">
+<li>機能の集まり</li>
+
+<li>プログラム群を扱う</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline107" class="outline-5">
+<h5 id="orgheadline107">テスト駆動開発</h5>
+<div class="outline-text-5" id="text-orgheadline107">
+<ul class="org-ul">
+<li>関数単位の開発</li>
+
+<li>反復的な開発</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline108" class="outline-5">
+<h5 id="orgheadline108">カード表示問題とテスト駆動開発</h5>
+<div class="outline-text-5" id="text-orgheadline108">
+<ul class="org-ul">
+<li>問題の解法のための機能作り</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline114" class="outline-5">
+<h5 id="orgheadline114">ポーカーゲーム開発</h5>
+<div class="outline-text-5" id="text-orgheadline114">
+</div><div id="outline-container-orgheadline109" class="outline-6">
+<h6 id="orgheadline109">Card</h6>
+<div class="outline-text-6" id="text-orgheadline109">
+<ul class="org-ul">
+<li>機能の集まりとしての module</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline110" class="outline-6">
+<h6 id="orgheadline110">Deck</h6>
+<div class="outline-text-6" id="text-orgheadline110">
+<ul class="org-ul">
+<li>module 設計</li>
+
+<li>機能の設計</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline111" class="outline-6">
+<h6 id="orgheadline111">Hand</h6>
+<div class="outline-text-6" id="text-orgheadline111">
+<ul class="org-ul">
+<li>module 設計</li>
+
+<li>機能の設計</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline112" class="outline-6">
+<h6 id="orgheadline112">Player</h6>
+</div>
+
+<div id="outline-container-orgheadline113" class="outline-6">
+<h6 id="orgheadline113">Poker</h6>
+<div class="outline-text-6" id="text-orgheadline113">
+<ul class="org-ul">
+<li>機能の組み合わせと利用</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline115" class="outline-5">
+<h5 id="orgheadline115">開発の構造</h5>
+</div>
+</div>
+
+<div id="outline-container-orgheadline116" class="outline-4">
+<h4 id="orgheadline116">card_display_simple問題の開発木構造</h4>
+<div class="outline-text-4" id="text-orgheadline116">
+
+<div id="orgparagraph1" class="figure">
+<p><a href="card_display_simple.png" alt="card_display/simple" title="card_display/simple"><img src="card_display_simple.png" alt="card_display/simple" title="card_display/simple" /></a>
+</p>
+<p><span class="figure-number">&#22259;1: </span> card_display_simple 問題と card モジュール開発</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline117" class="outline-4">
+<h4 id="orgheadline117">deck モジュールの開発木構造</h4>
+<div class="outline-text-4" id="text-orgheadline117">
+
+<div id="orgparagraph2" class="figure">
+<p><a href="deck_dev.png" alt="deck module" title="deck module"><img src="deck_dev.png" alt="deck module" title="deck module" /></a>
+</p>
+<p><span class="figure-number">&#22259;2: </span> game開発とcardモジュール/deckモジュール</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline118" class="outline-5">
+<h5 id="orgheadline118">deck/src/Makefile</h5>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline120" class="outline-3">
+<h3 id="orgheadline120">game/deck/src/Makefileの説明</h3>
+<div class="outline-text-3" id="text-orgheadline120">
+<p>
+game/deck/src/Makefile について説明します:
+</p>
+</div>
+
+<div id="outline-container-orgheadline121" class="outline-4">
+<h4 id="orgheadline121">全体</h4>
+<div class="outline-text-4" id="text-orgheadline121">
+<div class="org-src-container">
+
+<pre class="src src-c">.PHONY: clean install
+
+PROJ_HOME=/home/staff/suzuki/progs/game
+
+PROJ_INCLUDE=${PROJ_HOME}/include
+PROJ_LIB=${PROJ_HOME}/lib
+
+CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
+
+LDFLAGS = -lc
+
+libdeck.a: deck.o 
+	rm -f $@
+	ar r $@ $^
+
+install: libdeck.a deck.h
+	cp libdeck.a ${PROJ_LIB}
+	cp deck.h ${PROJ_INCLUDE}
+
+deck.o: deck.c deck.h
+	gcc $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline130" class="outline-4">
+<h4 id="orgheadline130">各部分の説明</h4>
+<div class="outline-text-4" id="text-orgheadline130">
+</div><div id="outline-container-orgheadline122" class="outline-5">
+<h5 id="orgheadline122"></h5>
+<div class="outline-text-5" id="text-orgheadline122">
+<div class="org-src-container">
+
+<pre class="src src-c">.PHONY: clean install
+</pre>
+</div>
+<ul class="org-ul">
+<li>.PHONYは， ターゲット (ここでは，clean と install) が実物(ファイル等）
+でないことを宣言</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline123" class="outline-5">
+<h5 id="orgheadline123">gameプロジェクトの決まりを変数で表す</h5>
+<div class="outline-text-5" id="text-orgheadline123">
+<div class="org-src-container">
+
+<pre class="src src-c">PROJ_HOME=/home/staff/suzuki/progs/game
+</pre>
+</div>
+<ul class="org-ul">
+<li>変数への代入文
+<dl class="org-dl">
+<dt>PROJ_HOME</dt><dd>game プロジェクトのホームディレクトリを表す make の変数</dd>
+<dt>(no term)</dt><dd>PROJ_HOME の値を，文字列 「/home/staff/suzuki/progs/game」にする</dd>
+</dl></li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-c">PROJ_INCLUDE=${PROJ_HOME}/include
+PROJ_LIB=${PROJ_HOME}/lib
+</pre>
+</div>
+<ul class="org-ul">
+<li>変数の値が表すこと
+<dl class="org-dl">
+<dt>PROJ_INCLUDE</dt><dd>game プロジェクトのヘッダ・ファイルの保存ディレクト
+リ。</dd>
+<dt>PROJ_LIB</dt><dd>game プロジェクトのライブラリ・ファイルの保存ディレク
+トリ。</dd>
+</dl></li>
+
+<li>${PROJ_HOME} の意味
+変数 PROJ_HOME の値の参照</li>
+</ul>
+
+<p>
+#+END_SRC  
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline124" class="outline-5">
+<h5 id="orgheadline124">Cコンパイラへの指示</h5>
+<div class="outline-text-5" id="text-orgheadline124">
+<div class="org-src-container">
+
+<pre class="src src-c">CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
+</pre>
+</div>
+<ul class="org-ul">
+<li>CFLAGS は変数。Cコンパイラの翻訳過程 (ソース・プログラムをオブジェク
+ト・プログラムに翻訳するまで)への指示を文字列で保持する:
+<dl class="org-dl">
+<dt>-g</dt><dd>名前の情報を残す</dd>
+<dt>-c</dt><dd></dd>
+
+<dt>-Wall</dt><dd>warnning を表示する</dd>
+<dt>-fPIC</dt><dd></dd>
+
+<dt>-I.</dt><dd>C コンパイラの include パスに，. (カレント・ディレクトリ) を追加する</dd>
+<dt>-I${PROJ_INCLUDE}</dt><dd>C コンパイラの include パスに，プロジェクトの
+ヘッダ・ファイルの保存ディレクトリを追加する</dd>
+</dl></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline125" class="outline-5">
+<h5 id="orgheadline125">ローダへの指示</h5>
+<div class="outline-text-5" id="text-orgheadline125">
+<div class="org-src-container">
+
+<pre class="src src-c">LDFLAGS = -lc
+</pre>
+</div>
+<ul class="org-ul">
+<li>LDFLAGS は変数。ローダのリンク過程 (オブジェクト・プログラムからライ
+ブラリ，実行プログラムに結合まで)への指示を文字列で保持する:
+
+<dl class="org-dl">
+<dt>-lc</dt><dd>ライブラリのロードパスにある，libc.[a,so] をリンクする</dd>
+</dl></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline126" class="outline-5">
+<h5 id="orgheadline126">libdeck.a の作成規則</h5>
+<div class="outline-text-5" id="text-orgheadline126">
+<div class="org-src-container">
+
+<pre class="src src-c">libdeck.a: deck.o 
+	rm -f $@
+	ar r $@ $^
+</pre>
+</div>
+<ul class="org-ul">
+<li>libdeck.a の更新時刻が deck.o のそれより古ければ，以下のコマンド行を
+実行する (ことで，libdeck.a を作成する)。
+<dl class="org-dl">
+<dt>rm -f $@</dt><dd><ul class="org-ul">
+<li>$@ は作成規則中のターゲット(この場合, libdeck.a) をあらわす変数</li>
+<li>rm -f ファイルの消去コマンド。-f は force の意。</li>
+</ul></dd>
+<dt>ar r $@ $^</dt><dd><ul class="org-ul">
+<li>$^ は作成規則中のソース全てをあらわす変数</li>
+<li>ar r で ライブラリ・ファイルを作成する</li>
+</ul></dd>
+</dl></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline127" class="outline-5">
+<h5 id="orgheadline127">deck モジュールの提供規則</h5>
+<div class="outline-text-5" id="text-orgheadline127">
+<p>
+game プロジェクトの決まりに従がい，ライブラリ・ファイルとヘッダ・ファ
+イルを所定の場所に置く:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">install: libdeck.a deck.h
+	cp libdeck.a ${PROJ_LIB}
+	cp deck.h ${PROJ_INCLUDE}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline128" class="outline-5">
+<h5 id="orgheadline128">deck ソースプログラムのコンパイル</h5>
+<div class="outline-text-5" id="text-orgheadline128">
+<div class="org-src-container">
+
+<pre class="src src-c">deck.o: deck.c deck.h
+	gcc $&lt; $(CFLAGS)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline129" class="outline-5">
+<h5 id="orgheadline129">src ディレクトの掃除</h5>
+<div class="outline-text-5" id="text-orgheadline129">
+<div class="org-src-container">
+
+<pre class="src src-c">clean:
+	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85">講義への補足 2015-12-22</h4>
+</div>
+</div>
+
+<div id="outline-container-orgheadline133" class="outline-3">
+<h3 id="orgheadline133">Makefile (card_display/simple)</h3>
+<div class="outline-text-3" id="text-orgheadline133">
+</div><div id="outline-container-orgheadline131" class="outline-4">
+<h4 id="orgheadline131">src/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline131">
+<div class="org-src-container">
+
+<pre class="src src-c"># ~/progs/card_display/simple/src/Makefile
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I .
+LDFLAGS = -lc
+
+libcard.a: card.o cards.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+cards.o: cards.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline132" class="outline-4">
+<h4 id="orgheadline132">test/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline132">
+<div class="org-src-container">
+
+<pre class="src src-c">.PHONY: clean
+CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src
+LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
+
+all: test_card.so test_sort.so
+
+test_card.so: test_card.o
+	gcc -o $@ -shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c        
+	gcc $(CFLAGS) $&lt;
+
+
+test_sort.so: test_sort.o
+	gcc -o $@ -shared $^ $(LDFLAGS)
+
+test_sort.o: test_sort.c        
+	gcc $(CFLAGS) $&lt;
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline134" class="outline-3">
+<h3 id="orgheadline134">card/deck 用 Makefile との違い</h3>
+<div class="outline-text-3" id="text-orgheadline134">
+<p>
+まず，card_display/simple，game/card， game/deck のMakefileの違いを
+見せます。
+</p>
+
+<p>
+二つのファイルの差を見るには，diff コマンド，meld コマンド，emacs の
+diff 関連コマンド等が，使えます。
+</p>
+</div>
+
+<div id="outline-container-orgheadline135" class="outline-4">
+<h4 id="orgheadline135">card_display/simple/src/Makefile と game/card/src/Makefile の違い</h4>
+<div class="outline-text-4" id="text-orgheadline135">
+<p>
+次の diff コマンドにより差分が取得できます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/card_display/simple/src/Makefile  ~/progs/game/card/src/Makefile
+</pre>
+</div>
+
+<pre class="example">
+1a2,6
+&gt; 
+&gt; PROJ_HOME=~/progs/game
+&gt; PROJ_INCLUDE=${PROJ_HOME}/include
+&gt; PROJ_LIB=${PROJ_HOME}/lib
+&gt; 
+4a10,13
+&gt; install: libcard.a card.h
+&gt; 	cp libcard.a ${PROJ_LIB}
+&gt; 	cp card.h ${PROJ_INCLUDE}
+&gt; 
+16c25
+&lt; 	rm -f *.o *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+
+<p>
+diffの出力結果の見方と，Makefileに於けるその意味を解説します:
+</p>
+
+<pre class="example">
+1a2,6
+</pre>
+
+<p>
+1a2,6：
+</p>
+<ul class="org-ul">
+<li>1 は ~/progs/card_display/simple/src/Makefileの1行目</li>
+<li>a は append</li>
+<li>2,6 ~/progs/game/card/src/Makefileの2~6行目です</li>
+</ul>
+<pre class="example">
+&gt;
+&gt; PROJ_HOME=/home/staff/suzuki/progs/game
+&gt; PROJ_INCLUDE=${PROJ_HOME}/include
+&gt; PROJ_LIB=${PROJ_HOME}/lib
+&gt;
+</pre>
+<ul class="org-ul">
+<li>この内容は，game プロジェクトのディレクトリと，その下にあるヘッダ
+ファイルとライブラリファイルの置き場所を, Makefile の変数に代入し
+ているものです。</li>
+</ul>
+
+<pre class="example">
+4a10,13
+</pre>
+<ul class="org-ul">
+<li>同様に，4行目の後に次の行が加えられています。</li>
+</ul>
+
+<pre class="example">
+&gt; install: libcard.a card.h
+&gt; 	cp libcard.a ${PROJ_LIB}
+&gt; 	cp card.h ${PROJ_INCLUDE}
+&gt;
+</pre>
+
+<p>
+これは，新たなルールを加わえています。
+</p>
+<ul class="org-ul">
+<li>libcard.a をプロジェクトのライブラリ・ディレクトリにコピーし，</li>
+<li>card.h をプロジェクトのインクルード・ディレクトリにコピーします。</li>
+</ul>
+
+<pre class="example">
+16c25
+</pre>
+
+<ul class="org-ul">
+<li>16行目を25行目に変更を意味します。</li>
+</ul>
+
+<pre class="example">
+&lt; 	rm -f *.o *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+
+<ul class="org-ul">
+<li>*.a (静的ライブラリ)も消去するように変更されています。</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline136" class="outline-4">
+<h4 id="orgheadline136">card_display/simple/test/Makefile と game/card/test/Makefile の違い</h4>
+<div class="outline-text-4" id="text-orgheadline136">
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/card_display/simple/test/Makefile  ~/progs/game/card/test/Makefile
+</pre>
+</div>
+
+<pre class="example">
+1a2,6
+&gt; 
+&gt; PROJ_HOME=~/progs/game
+&gt; PROJ_INCLUDE=${PROJ_HOME}/include
+&gt; PROJ_LIBE=${PROJ_HOME}/lib
+&gt; 
+21c26
+&lt; 	rm -f *.o *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline137" class="outline-4">
+<h4 id="orgheadline137">game/card/src/Makefile と game/deck/src/Makefile の違い</h4>
+<div class="outline-text-4" id="text-orgheadline137">
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/game/card/src/Makefile  ~/progs/game/deck/src/Makefile
+</pre>
+</div>
+
+<pre class="example">
+1c1
+&lt; .PHONY: clean
+---
+&gt; .PHONY: clean install
+7c7
+&lt; CFLAGS = -g -c -fPIC -I .
+---
+&gt; CFLAGS = -g -c -Wall -fPIC -I . -I${PROJ_INCLUDE}
+10,12c10,12
+&lt; install: libcard.a card.h
+&lt; 	cp libcard.a ${PROJ_LIB}
+&lt; 	cp card.h ${PROJ_INCLUDE}
+---
+&gt; install: libdeck.a deck.h
+&gt; 	cp libdeck.a ${PROJ_LIB}
+&gt; 	cp deck.h ${PROJ_INCLUDE}
+14c14
+&lt; libcard.a: card.o cards.o
+---
+&gt; libdeck.a: deck.o 
+18,21c18
+&lt; card.o: card.c card.h
+&lt; 	gcc $&lt; $(CFLAGS)
+&lt; 
+&lt; cards.o: cards.c card.h
+---
+&gt; deck.o: deck.c deck.h
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline138" class="outline-4">
+<h4 id="orgheadline138">game/card/test/Makefile と game/deck/test/Makefile の違い</h4>
+<div class="outline-text-4" id="text-orgheadline138">
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/game/card/test/Makefile  ~/progs/game/deck/test/Makefile
+</pre>
+</div>
+
+
+<pre class="example">
+0a1
+&gt; # deck/test/Makefile
+3c4
+&lt; PROJ_HOME=~/progs/game
+---
+&gt; PROJ_HOME=/home/staff/suzuki/progs/game
+5c6
+&lt; PROJ_LIBE=${PROJ_HOME}/lib
+---
+&gt; PROJ_LIB=${PROJ_HOME}/lib
+7,8c8,9
+&lt; CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src
+&lt; LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
+---
+&gt; CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src -I${PROJ_INCLUDE}
+&gt; LDFLAGS = -L../src -ldeck `pkg-config cutter --libs` -L${PROJ_LIB} -lcard
+10c11
+&lt; all: test_card.so test_sort.so
+---
+&gt; all: test_deck.so
+12c13
+&lt; test_card.so: test_card.o
+---
+&gt; test_deck.so: test_deck.o
+15,22c16
+&lt; test_card.o: test_card.c 	
+&lt; 	gcc $(CFLAGS) $&lt;
+&lt; 
+&lt; 
+&lt; test_sort.so: test_sort.o
+&lt; 	gcc -o $@ -shared $^ $(LDFLAGS)
+&lt; 
+&lt; test_sort.o: test_sort.c 	
+---
+&gt; test_deck.o: test_deck.c 	
+26c20
+&lt; 	rm -f *.o *.a *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline139" class="outline-4">
+<h4 id="orgheadline139">講義への補足</h4>
+<div class="outline-text-4" id="text-orgheadline139">
+</div><div id="outline-container-orgheadline86" class="outline-5">
+<h5 id="orgheadline86">ghc問題</h5>
+<div class="outline-text-5" id="text-orgheadline86">
+<ul class="org-ul">
+<li>しらなかった事実
+
+<ul class="org-ul">
+<li><p>
+card.h をコンパイルすると，card.gch が作られる
+card.gch が存在すると，card.h は読まれず，card.gch 
+が使われる。
+</p>
+
+<p>
+<a href="https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html">Precompiled Headers - Using the GNU Compiler Collection (GCC)</a>
+</p>
+
+<ul class="org-ul">
+<li>s-: は，文法チェックだけされると考えていた</li>
+</ul></li>
+
+<li><p>
+ヘッダファイルをあらかじめコンパイルすると，Cソースのコンパイ
+ル時間が大幅に短くなる(ことがある)
+</p>
+
+<p>
+<a href="http://marupeke296.com/CPP_No14_PrecompiledHeader.html">その14 ドキドキしないプリコンパイル済みヘッダ</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+今から考えると，もっともだと思うが，今迄は，チェック以外意味
+がないと考えていた。
+</p>
+
+<p>
+card.gch って，コンパイラ内部のデータ構造のメモリダンプだよ.
+</p></li>
+</ul></li>
+</ul></li>
+
+<li>Makefile の小さなミス
+
+<ul class="org-ul">
+<li>gcc -c $^  =&gt; gcc -c card.h card.c となって，card.gch が <b>毎
+回</b> 作られていた。ので，問題は発生していなかった。</li>
+</ul></li>
+
+<li>小さなミスの修正が招く大きな混乱
+
+<ul class="org-ul">
+<li>card.ghc を消さずに，Makefile のミスを修正した。以後，card.h
+はコンパイル時に読まれず，いくら card.h を修正しても状況は変わ
+らなくなった。</li>
+</ul></li>
+</ul>
+
+<p>
+すみませんでした。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline160" class="outline-4">
+<h4 id="orgheadline160">説明</h4>
+<div class="outline-text-4" id="text-orgheadline160">
+</div><div id="outline-container-orgheadline140" class="outline-6">
+<h6 id="orgheadline140">抽象化</h6>
+<div class="outline-text-6" id="text-orgheadline140">
+<ul class="org-ul">
+<li>複雑な操作をまとめ，名前をつけること。</li>
+<li>関数，構造体，型定義などを使う。</li>
+
+<li id="参考"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/commons/abstraction.html">抽象化とは</a></li>
+</ul>
+<p>
+((<a href="file:///users/home/masayuki/lects/commons/abstraction.html">@cis.org</a>
+<a href="file:///users/home/masayuki/COMM/Lects/commons/site/abstraction.html">@s.org</a>))
+</p>
+
+<p>
+wikipedia等で調べてください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline141" class="outline-6">
+<h6 id="orgheadline141">情報隠蔽</h6>
+<div class="outline-text-6" id="text-orgheadline141">
+<ul class="org-ul">
+<li>(モジュール)内部の情報を外部から守ること。
+<ul class="org-ul">
+<li>内部と外部の間に壁を作り，外部から直接内部にアクセスできなくす
+る。</li>
+<li>決められた手段を通して，内部の情報を公開する。</li>
+</ul></li>
+</ul>
+
+<p>
+wikipedia等で調べてください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline142" class="outline-6">
+<h6 id="orgheadline142">関数の意味</h6>
+<div class="outline-text-6" id="text-orgheadline142">
+</div>
+
+<div id="outline-container-orgheadline143" class="outline-7">
+<h7 id="orgheadline143">関数と抽象化</h7>
+<div class="outline-text-7" id="text-orgheadline143">
+<p>
+一連の処理に名前を付る。処理への入力を定め，変数とする。一連の処
+理が作りだす値を定める。
+</p>
+
+<p>
+一連の処理は，名前で呼び出せ，値を渡すと，処理した結果が返ってく
+る。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline144" class="outline-7">
+<h7 id="orgheadline144">関数の内と外の間の壁</h7>
+<div class="outline-text-7" id="text-orgheadline144">
+<p>
+ソースプログラムを書いている時，
+大域変数は，すべての関数から見えるが，
+関数内で定義した変数は，他の関数から見えない。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline145" class="outline-7">
+<h7 id="orgheadline145">動作</h7>
+<div class="outline-text-7" id="text-orgheadline145">
+<ul class="org-ul">
+<li>関数を呼び出した時，どんなことが起こるのか
+<ul class="org-ul">
+<li>実引数*値*を引数をスタックに積み，</li>
+<li>戻るための情報をスタックに積み，</li>
+<li>関数ヘジャンプする
+<ul class="org-ul">
+<li>関数からもどってくる</li>
+</ul></li>
+<li>戻り値がスタックに積まれている</li>
+</ul></li>
+
+<li>関数が呼び出され時，どんなことが起こるのか
+<ul class="org-ul">
+<li>仮引数に値が入れらて飛んでくる</li>
+<li>計算する</li>
+<li>戻り値をスタックに入れて，スタックにある戻るための情報
+にしたがって，ジャンプする</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline146" class="outline-6">
+<h6 id="orgheadline146">シンプルであること (by George Whitesides)</h6>
+<div class="outline-text-6" id="text-orgheadline146">
+<ul class="org-ul">
+<li>予測可能</li>
+<li>扱いやすい</li>
+<li>構成要素として機能すること</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline159" class="outline-5">
+<h5 id="orgheadline159">昔のガイダンス</h5>
+<div class="outline-text-5" id="text-orgheadline159">
+</div><div id="outline-container-orgheadline151" class="outline-6">
+<h6 id="orgheadline151">動機付け</h6>
+<div class="outline-text-6" id="text-orgheadline151">
+</div><div id="outline-container-orgheadline147" class="outline-7">
+<h7 id="orgheadline147">プログラムがかけるようになりたい</h7>
+<div class="outline-text-7" id="text-orgheadline147">
+<ul class="org-ul">
+<li>プログラムが思うようにかけるようになりたい</li>
+<li>プログラムが正確にかけるようになりたい</li>
+<li>プログラムが素早くかけるようになりたい</li>
+<li>きれいなプログラムがかけるようになりたい</li>
+<li>簡潔なプログラムが書けるようになりたい</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline148" class="outline-7">
+<h7 id="orgheadline148">面白いプログラムがかきたい</h7>
+<div class="outline-text-7" id="text-orgheadline148">
+<ul class="org-ul">
+<li>思っていることをプログラムできる力が欲しい</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline149" class="outline-7">
+<h7 id="orgheadline149">正しいプログラムを書きたい</h7>
+<div class="outline-text-7" id="text-orgheadline149">
+<ul class="org-ul">
+<li>プログラムの正しさがわかる力が欲しい</li>
+<li>プログラムをデバッグする力が欲しい</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline150" class="outline-7">
+<h7 id="orgheadline150">大規模なプログラム開発ができるようになりたい</h7>
+<div class="outline-text-7" id="text-orgheadline150">
+<ul class="org-ul">
+<li>わかりやすいプログラム</li>
+<li>協同作業しやすいプログラム</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline158" class="outline-6">
+<h6 id="orgheadline158">プログラム開発の肝</h6>
+<div class="outline-text-6" id="text-orgheadline158">
+</div><div id="outline-container-orgheadline152" class="outline-7">
+<h7 id="orgheadline152">プログラムの構成要素とその働きを理解すること</h7>
+<div class="outline-text-7" id="text-orgheadline152">
+<ul class="org-ul">
+<li>定数と変数</li>
+<li>式</li>
+<li>変数と代入による状態変化</li>
+<li>文と時間進行</li>
+<li>条件分岐と繰り返し</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline153" class="outline-7">
+<h7 id="orgheadline153">データの表現ができること</h7>
+<div class="outline-text-7" id="text-orgheadline153">
+<ul class="org-ul">
+<li>値（定数）と型</li>
+<li>構造体と型定義による値と型の拡張</li>
+<li>変数と配列</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline154" class="outline-7">
+<h7 id="orgheadline154">関数の働きを理解すること</h7>
+<div class="outline-text-7" id="text-orgheadline154">
+<ul class="org-ul">
+<li>関数によるまとめ（抽象)
+<ul class="org-ul">
+<li>関数の宣言</li>
+<li>関数の利用</li>
+<li>関数の提供</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline155" class="outline-7">
+<h7 id="orgheadline155">名前の見せ方・隠し方を理解すること</h7>
+<div class="outline-text-7" id="text-orgheadline155">
+<ul class="org-ul">
+<li>変数とスコープ</li>
+<li>関数とスコープ</li>
+<li>関数とリンク</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline156" class="outline-7">
+<h7 id="orgheadline156">コンパイル，リンク，実行</h7>
+</div>
+
+<div id="outline-container-orgheadline157" class="outline-7">
+<h7 id="orgheadline157">デバッグ</h7>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline163" class="outline-4">
+<h4 id="orgheadline163">今日のemacs</h4>
+<div class="outline-text-4" id="text-orgheadline163">
+</div><div id="outline-container-orgheadline161" class="outline-5">
+<h5 id="orgheadline161">コマンド</h5>
+<div class="outline-text-5" id="text-orgheadline161">
+<ul class="org-ul">
+<li><p>
+<a href="buffer.html#Top">buffer</a>
+</p>
+<pre class="example">
+C-x b
+C-x C-b
+C-x 2
+C-x 3
+C-x 1
+C-x 0
+C-x o
+</pre></li>
+
+<li><p>
+<a href="file.html#Top">file</a>
+</p>
+<pre class="example">
+C-x C-f
+C-x 4 f
+M-x find-file-read-only
+C-x 4 r
+C-x C-r
+C-x C-s
+C-x C-w  
+</pre></li>
+
+<li><p>
+<a href="frame.html#Top">frame</a>
+</p>
+<pre class="example">
+C-x 5
+C-x 5 0
+C-x 5 o
+</pre></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline162" class="outline-5">
+<h5 id="orgheadline162">話題</h5>
+<div class="outline-text-5" id="text-orgheadline162">
+<ul class="org-ul">
+<li>elscreen バッファのタブ化</li>
+<li>org-mode</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline164" class="outline-4">
+<h4 id="orgheadline164">今日のorg</h4>
+<div class="outline-text-4" id="text-orgheadline164">
+<p>
+-<a href="org.html#DocumentStructure">org#DocumentStructure</a>
+</p>
+<ul class="org-ul">
+<li>見出し</li>
+<li>箇条書き</li>
+<li>文芸的プログラミング</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline165" class="outline-4">
+<h4 id="orgheadline165">講義内容へのpath</h4>
+<div class="outline-text-4" id="text-orgheadline165">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> ~suzuki/lects/prog/ の下に，講義資料があります。</li>
+<li class="off"><code>[&#xa0;]</code> ~suzuki/progs が先生の開発ディレクトリで，お手本のつもりです。</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline178" class="outline-4">
+<h4 id="orgheadline178">技術的なこと</h4>
+<div class="outline-text-4" id="text-orgheadline178">
+</div><div id="outline-container-orgheadline173" class="outline-6">
+<h6 id="orgheadline173">モジュール関連技術</h6>
+<div class="outline-text-6" id="text-orgheadline173">
+</div><div id="outline-container-orgheadline172" class="outline-7">
+<h7 id="orgheadline172">モジュールとは部品</h7>
+<div class="outline-text-7" id="text-orgheadline172">
+</div><ul class="org-ul"><li><a id="orgheadline166"></a>モジュール<br  /><div class="outline-text-8" id="text-orgheadline166">
+<p>
+部品の入れ物
+</p>
+<ul class="org-ul">
+<li>部品を実現する仕組み</li>
+<li>部品を提供する仕組み</li>
+</ul>
+</div></li>
+<li><a id="orgheadline167"></a>部品，<br  /><div class="outline-text-8" id="text-orgheadline167">
+<ul class="org-ul">
+<li>ある機能の実体</li>
+</ul>
+</div></li>
+
+<li><a id="orgheadline168"></a>インタフェース<br  /><div class="outline-text-8" id="text-orgheadline168">
+<ul class="org-ul">
+<li>部品の利用に関する決まり
+<ul class="org-ul">
+<li>利用環境での決まり</li>
+<li>機能ごとの決まり</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="orgheadline169"></a>部品の利用<br  /><div class="outline-text-8" id="text-orgheadline169">
+<ul class="org-ul">
+<li>その実装をしらずに，</li>
+<li>インターフェイスの呼び出しのみを通して，</li>
+<li>自分のプログラムから利用できる</li>
+</ul>
+</div></li>
+
+<li><a id="orgheadline170"></a>部品の提供<br  /><div class="outline-text-8" id="text-orgheadline170">
+<ul class="org-ul">
+<li>インターフェイスを守り</li>
+<li>ある独立した機能を実現し，</li>
+<li>他の人に機能を提供する</li>
+</ul>
+</div></li>
+
+<li><a id="orgheadline171"></a>Ubuntu/C言語を使ったモジュールプログラミング<br  /><div class="outline-text-8" id="text-orgheadline171">
+<ul class="org-ul">
+<li>利用側
+<ul class="org-ul">
+<li>あるライブラリの機能（関数）を見つけ，</li>
+<li>man やヘッダファイルを見て，APIを知る</li>
+<li>ヘッダファイルをインクルードし，
+インターフェイスを守っていることを，
+コンパイラに検査してもらう</li>
+<li>自分のプログラムに，ライブラリの関数をリンクする</li>
+<li>プログラムをプロセスとして実行する</li>
+</ul></li>
+
+<li>提供側
+<ul class="org-ul">
+<li>ヘッダファイルを作成し</li>
+<li>ヘッダファイルをインクルードし，</li>
+<li>機能を関数として実装し，</li>
+<li>ヘッダファイルのAPIを遵守する</li>
+<li>オブジェクトファイルあるいはライブラリとして提供する</li>
+</ul></li>
+</ul>
+<p>
+　　
+</p>
+</div></li></ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline174" class="outline-6">
+<h6 id="orgheadline174">C-programming</h6>
+</div>
+
+<div id="outline-container-orgheadline175" class="outline-6">
+<h6 id="orgheadline175">emacs org-mode</h6>
+<div class="outline-text-6" id="text-orgheadline175">
+<p>
+ファイルに .org 拡張子をつけることで，emacs で開くと，org-mode に
+なります。org-mode は文書を構造的に扱えます。強力です。
+</p>
+
+<p>
+org-mode links
+</p>
+<ul class="org-ul">
+<li><a href="http://orgmode.org/ja">http://orgmode.org/ja</a></li>
+<li><a href="https://github.com/org-mode-doc-ja/org-ja/blob/master/README.org">org-ja/README.org at master · org-mode-doc-ja/org-ja</a></li>
+<li><a href="http://d.hatena.ne.jp/tamura70/20100203/org">Emacs org-modeを使ってみる: (1) インストール - 屯遁のパズルとプログラミングの日記</a></li>
+<li>info <a href="emacs.html#org"><a href="emacs.html#org">emacs#org</a></a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline176" class="outline-6">
+<h6 id="orgheadline176">emacs</h6>
+<div class="outline-text-6" id="text-orgheadline176">
+<ul class="org-ul">
+<li>emacs の使い方は，~suzuki/progs/lects/Emacs.org, org-mode の使い
+方は, ~suzuki/progs/lects/Org.org に書いていこうと思っています。</li>
+
+<li>emacs links
+<ul class="org-ul">
+<li><a href="http://emacs-jp.github.io/beginner.html">Emacs for Beginners - Emacs JP</a>  - <a href="emacs.html#Top">emacs</a> Emacs info</li>
+<li><a href="http://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html#SEC_Top">GNU Emacsマニュアル:(古いが日本語)</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline177" class="outline-6">
+<h6 id="orgheadline177">emacs org-mode+babel</h6>
+<div class="outline-text-6" id="text-orgheadline177">
+<p>
+emacs org-mode の中に，文芸的プログラミングでき機能があります。説
+明を書きながら，ソースコードも書け，実行でき，出力を文書に取り込めるも
+のです。
+</p>
+
+<p>
+Cやシェル・スクリプトがその mode で書け，コンパイルや実行を行えま
+す。例えば，下記のように:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">#+BEGIN_SRC c :tangle ./src/exmaple.c
+int main(void) {}
+#+END_SRC
+
+#+BEGIN_SRC sh :dir ./src
+cc example.c
+#+END_SRC
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline181" class="outline-4">
+<h4 id="orgheadline181">文書の書き方，見え方などへの補足説明</h4>
+<div class="outline-text-4" id="text-orgheadline181">
+</div><div id="outline-container-orgheadline179" class="outline-6">
+<h6 id="orgheadline179">ページ内容の折り畳みと展開</h6>
+<div class="outline-text-6" id="text-orgheadline179">
+<p>
+ページ右上に [Collapse all] [Expand all] があるページは，見出し単
+位で折り畳みと展開が可能です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline180" class="outline-6">
+<h6 id="orgheadline180">title((cis.org s.org))</h6>
+<div class="outline-text-6" id="text-orgheadline180">
+<p>
+「title((cis.org s.org)) 」という表示は，三つのリンクから成ってい
+ます。titleは, httpリンクです。cis.orgは講義環境で emacs org-mode
+で開くときに使うファイル・リンクです。s.org は鈴木の個人環境用のファ
+イル・リンクです。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline182" class="outline-3">
+<h3 id="orgheadline182">documents (site/org-docs)</h3>
+<div class="outline-text-3" id="text-orgheadline182">
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programmin-lects/">プログラム関連講義</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/cis-programmin-lects/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/cis-programmin-lects/">@s.org</a>))</li>
+
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd/">テストによる開発とは</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/what-is-tdd/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/what-is-tdd/">@s.org</a>))
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter">cutterの使い方</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/cutter">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/cutter">@s.org</a>))</li>
+</ul></li>
+
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/">カード表示問題の始まり</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/card-display/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/card-display/">@s.org</a>))
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple/">カード表示問題_simpleのテストによる開発</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/tdd-card-display-simple/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/">@s.org</a>))</li>
+</ul></li>
+
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">モジュール開発によるポーカーゲームの作成</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/poker/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/poker/">@s.org</a>))</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline183" class="outline-3">
+<h3 id="orgheadline183">memos (site/org-docs/memos)</h3>
+<div class="outline-text-3" id="text-orgheadline183">
+<p>
+中途半端で，かきなぐりで，すみません。
+</p>
+
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/memos/">講義メモ</a> ((<a href="file:///users/home/masayuki/lects/prog/org-docs/memos/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/memos/">@s.org</a>))</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline185" class="outline-2">
+<h2 id="orgheadline185">関連サイト</h2>
+<div class="outline-text-2" id="text-orgheadline185">
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連講義</a> ((<a href="file:///users/home/masayuki/lects/prog/site/org-docs/cis-programming-lects/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/cis-programming-lects/">@s.org</a>))</li>
+<li><a href="http://svn.cis.iwate-u.ac.jp/svn/prog">svn開発用リポジトリ</a> subversion</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi">wiki</a> 講義情報，お知らせ，昔の講義の進行状況など</li>
+<li>学生用<a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog-note-05.cgi">ノート用Wiki</a></li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/suzuki">鈴木の講義</a> ((<a href="file:///users/home/masayuki/lects/suzuki/site/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/suzuki/">@s.org</a>))</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline186" class="outline-2">
+<h2 id="orgheadline186">サイトの木構造</h2>
+<div class="outline-text-2" id="text-orgheadline186">
+<pre class="example">
+site
++-ChangeLog
++-Makefile
++-bin
++-index.html
++-index.org
++-info-+-000GTD.org
+|      +-2015
+|      +-Makefile
+|      +-common-header.html
+|      +-common-header.org
+|      +-contents.org
+|      +-footnote.org
+|      +-links.org
+|      +-map.html
+|      +-map.org
+|      +-opening.html
+|      +-opening.org
+|      +-org-link-make.org
+|      +-prog-2015.html
+|      +-prog-2015.org
+|      +-ta.html
+|      +-ta.org
++-lects-+-01-+-Makefile
+|       |    +-contents.org
+|       |    +-emacs.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-02-+-Makefile
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-03-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-04-+-Makefile
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-05-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.html
+|       |    +-resume.org
+|       +-06-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.html
+|       |    +-resume.org
+|       +-07-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.org
+|       +-08-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.org
+|       +-GTD.org
+|       +-Makefile
+|       +-contents.org
+|       +-index.html
+|       +-index.org
++-links.org
++-org-docs-+-#contents.html#
+|          +-Makefile
+|          +-Makefile.org
+|          +-card-display-+-Makefile
+|          |              +-card-display-multi.org
+|          |              +-card-display-problem.org
+|          |              +-card-display-simple-design.org
+|          |              +-card-display-sort.html
+|          |              +-card-display-sort.org
+|          |              +-index.html
+|          |              +-index.org
+|          +-cis-programming-lects-+-cis-programming-0.org
+|          |                       +-cis-programming-1.org
+|          |                       +-cis-programming-2.org
+|          |                       +-index.html
+|          |                       +-index.org
+|          +-contents.html
+|          +-contents.org
+|          +-cutter-+-#cutter-doc.html#
+|          |        +-babel-+-cutter-+-test-+-Makefile
+|          |        |                       +-test-first.c
+|          |        |                       +-test_first.c
+|          |        |                       +-test_first.o
+|          |        |                       +-test_first.so
+|          |        +-cutter.org
+|          |        +-index.html
+|          |        +-index.org
+|          |        +-test
+|          +-index.html
+|          +-index.org
+|          +-memos-+-c.org
+|          |       +-card-module.org
+|          |       +-dot_example1.png
+|          |       +-emacs.org
+|          |       +-env.org
+|          |       +-glib.org
+|          |       +-graphviz.html
+|          |       +-graphviz.org
+|          |       +-images-+-dot_example.png -Tpng
+|          |       +-index.html
+|          |       +-index.org
+|          |       +-module.org
+|          |       +-prog.org
+|          |       +-progs.org
+|          |       +-shell.org
+|          |       +-svn-fix.org
+|          |       +-svn.org
+|          |       +-vc.org
+|          +-module.org
+|          +-poker-+-Makefile
+|          |       +-card.org
+|          |       +-contents.org
+|          |       +-deck.org
+|          |       +-game-+-card-+-src
+|          |       |      |      +-test
+|          |       |      +-deck-+-src
+|          |       |      |      +-test
+|          |       |      +-hand-+-src
+|          |       |      |      +-test
+|          |       |      +-poker-+-src
+|          |       |              +-test
+|          |       +-hand.org
+|          |       +-index.html
+|          |       +-index.org
+|          |       +-poker.org
+|          |       +-story.org
+|          |       +-wiki.org
+|          +-tdd-card-display-simple-+-01-directory.org
+|          |                         +-02-makefile.org
+|          |                         +-Makefile
+|          |                         +-Makefile.org
+|          |                         +-babel-+-simple-+-card_new-+-#Makefile#
+|          |                         |                |          +-Makefile
+|          |                         |                |          +-card_new.org
+|          |                         |                |          +-src-+-Makefile
+|          |                         |                |          |     +-card.0.h
+|          |                         |                |          |     +-card.c
+|          |                         |                |          |     +-card.h
+|          |                         |                |          |     +-card.h-card_new
+|          |                         |                |          |     +-card.h-no_new
+|          |                         |                |          |     +-card.o
+|          |                         |                |          |     +-libcard.a
+|          |                         |                |          +-test-+-Makefile
+|          |                         |                |                 +-test_card.0.c
+|          |                         |                |                 +-test_card.1.c
+|          |                         |                |                 +-test_card.c
+|          |                         |                |                 +-test_card.c.1
+|          |                         |                |                 +-test_card.o
+|          |                         |                |                 +-test_card.so
+|          |                         |                +-card_to_string-+-Makefile
+|          |                         |                |                +-src-+-Makefile
+|          |                         |                |                |     +-card.c
+|          |                         |                |                |     +-card.h
+|          |                         |                |                |     +-card.h-card_new
+|          |                         |                |                |     +-card.h-card_to_string
+|          |                         |                |                |     +-card.o
+|          |                         |                |                |     +-libcard.a
+|          |                         |                |                +-test-+-Makefile
+|          |                         |                |                       +-test_card.0.c
+|          |                         |                |                       +-test_card.1.c
+|          |                         |                |                       +-test_card.c
+|          |                         |                |                       +-test_card.o
+|          |                         |                |                       +-test_card.so
+|          |                         |                +-cards_sort-+-Makefile
+|          |                         |                |            +-src-+-#card.c#
+|          |                         |                |            |     +-Makefile
+|          |                         |                |            |     +-Makefile.cards
+|          |                         |                |            |     +-card.c
+|          |                         |                |            |     +-card.h
+|          |                         |                |            |     +-card.h-card_new
+|          |                         |                |            |     +-card.h-cards_sort
+|          |                         |                |            |     +-card.o
+|          |                         |                |            |     +-cards.c
+|          |                         |                |            |     +-cards.o
+|          |                         |                |            |     +-libcard.a
+|          |                         |                |            +-test-+-Makefile
+|          |                         |                |                   +-test_card.c
+|          |                         |                |                   +-test_card.o
+|          |                         |                |                   +-test_card.so
+|          |                         |                |                   +-test_sort.0.c
+|          |                         |                |                   +-test_sort.1.c
+|          |                         |                |                   +-test_sort.c
+|          |                         |                |                   +-test_sort.o
+|          |                         |                |                   +-test_sort.so
+|          |                         |                +-no_new-+-Makefile
+|          |                         |                |        +-src-+-Makefile
+|          |                         |                |        |     +-card.c
+|          |                         |                |        |     +-card.c.0
+|          |                         |                |        |     +-card.h
+|          |                         |                |        |     +-card.h.0
+|          |                         |                |        |     +-card.o
+|          |                         |                |        |     +-libcard.a
+|          |                         |                |        +-test-+-Makefile
+|          |                         |                |               +-t.c
+|          |                         |                |               +-test_card.1.c
+|          |                         |                |               +-test_card.c
+|          |                         |                |               +-test_card.c.0
+|          |                         |                |               +-test_card.c.1
+|          |                         |                |               +-test_card.o
+|          |                         |                |               +-test_card.so
+|          |                         |                +-setup-+-Makefile
+|          |                         |                |       +-src-+-Makefile
+|          |                         |                |       +-test-+-Makefile
+|          |                         |                +-suit_new-+-Makefile
+|          |                         |                           +-src-+-Makefile
+|          |                         |                           |     +-Makefile.2
+|          |                         |                           |     +-card.1.c
+|          |                         |                           |     +-card.c
+|          |                         |                           |     +-card.c.0
+|          |                         |                           |     +-card.h
+|          |                         |                           |     +-card.o
+|          |                         |                           |     +-libcard.a
+|          |                         |                           +-test-+-Makefile
+|          |                         |                                  +-Makefile.1
+|          |                         |                                  +-Makefile.2
+|          |                         |                                  +-Makefile.3
+|          |                         |                                  +-test_card.1.c
+|          |                         |                                  +-test_card.2.c
+|          |                         |                                  +-test_card.c
+|          |                         |                                  +-test_card.o
+|          |                         +-babel.export-+-simple-+-card_new-+-src-+-card.h
+|          |                         |                       |          +-test-+-test_card.c
+|          |                         |                       |                 +-test_card.c.1
+|          |                         |                       +-card_to_string-+-src
+|          |                         |                       |                +-test
+|          |                         |                       +-no_new-+-Makefile
+|          |                         |                       |        +-src-+-Makefile
+|          |                         |                       |        |     +-card.c
+|          |                         |                       |        |     +-card.c.0
+|          |                         |                       |        |     +-card.h
+|          |                         |                       |        |     +-card.h.0
+|          |                         |                       |        +-test-+-Makefile
+|          |                         |                       |               +-test_card.1.c
+|          |                         |                       |               +-test_card.c
+|          |                         |                       |               +-test_card.c.0
+|          |                         |                       |               +-test_card.c.1
+|          |                         |                       +-setup-+-Makefile
+|          |                         |                       |       +-src-+-Makefile
+|          |                         |                       |       +-test-+-Makefile
+|          |                         |                       +-suit_new-+-Makefile
+|          |                         |                                  +-src-+-Makefile
+|          |                         |                                  |     +-Makefile.2
+|          |                         |                                  |     +-card.1.c
+|          |                         |                                  |     +-card.c
+|          |                         |                                  |     +-card.h
+|          |                         |                                  +-test-+-Makefile
+|          |                         |                                         +-Makefile.1
+|          |                         |                                         +-Makefile.2
+|          |                         |                                         +-Makefile.3
+|          |                         |                                         +-test_card.1.c
+|          |                         |                                         +-test_card.2.c
+|          |                         |                                         +-test_card.c
+|          |                         +-card.c.org
+|          |                         +-card.h.org
+|          |                         +-card_new.ob
+|          |                         +-card_new.org
+|          |                         +-card_sort.c.org
+|          |                         +-card_to_string.ob
+|          |                         +-card_to_string.org
+|          |                         +-cards.c.org
+|          |                         +-cards_sort.c.org
+|          |                         +-cards_sort.ob
+|          |                         +-cards_sort.org
+|          |                         +-contents.org
+|          |                         +-index.html
+|          |                         +-index.ob
+|          |                         +-index.org
+|          |                         +-no_new.org
+|          |                         +-suit_new.org
+|          |                         +-tdd-card.html
+|          |                         +-tdd-card.org
+|          |                         +-test_card.c.org
+|          |                         +-test_cards.c.org
+|          |                         +-test_sort.c.org
+|          +-what-is-tdd-+-index.html
+|                        +-index.org
+|                        +-what-is-tdd.org
++-ta.tex
++-working-+-c1.org
+          +-c2.org
+          +-contents.org
+          +-index-bigblow.html
+          +-index-bigblow.org
+          +-index-readtheorg.html
+          +-index-readtheorg.org
+          +-index.html
+          +-index.org
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline187" class="outline-2">
+<h2 id="orgheadline187">emacs+org-mode+babel</h2>
+<div class="outline-text-2" id="text-orgheadline187">
+<p>
+emacs org-modeで開くための情報
+</p>
+
+<p>
+開発 <a href="file:///users/home/masayuki/progs">file:///users/home/masayuki/progs</a>
+</p>
+
+<p>
+Web <a href="file:///users/home/masayuki/lects/site/prog/site">file:///users/home/masayuki/lects/site/prog/site</a>
+</p>
+<dl class="org-dl">
+<dt>講義</dt><dd><a href="file:///users/home/masayuki/lects/prog/site/lects">file:///users/home/masayuki/lects/prog/site/lects</a></dd>
+<dt>ドキュメント</dt><dd><a href="file:///users/home/masayuki/lects/prog/site/org-docs">file:///users/home/masayuki/lects/prog/site/org-docs</a></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgheadline189" class="outline-2">
+<h2 id="orgheadline189">過去の講義</h2>
+<div class="outline-text-2" id="text-orgheadline189">
+</div><div id="outline-container-orgheadline188" class="outline-3">
+<h3 id="orgheadline188">2014ー&gt;2015</h3>
+<div class="outline-text-3" id="text-orgheadline188">
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Lects/prog/prog-2015.html">ソフトウェア構成論2014-&gt;2015</a> ((<a href="file:///users/home/masayuki/lects/prog/site/prog-2015.html">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/prog-2015.html">@s-org</a>))</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: masayuki suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-09-25 日 10:52</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

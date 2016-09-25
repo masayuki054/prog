@@ -1,0 +1,32 @@
+* emacs 
+  [[http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs.html][日本語マニュアル]]
+
+   - emacs の中でコンパイル
+     : M-x compile 
+       C-a C-k gcc -c -I . calc_d_sin.c
+     
+   - 開いている先生のファイルを自分のディレクトリに保存する
+     : C-x C-w ~/progs/calc_d_sin.c
+
+   - emacs の中から先生のファイルを開く
+     : C-x C-f ~suzuki/progs/suzuki/.... 
+
+   - ファイルとバッファ
+     : C-x C-f ファイルを開きバッファへ
+     : C-x C-s バッファをファイルへセーブ
+     : C-x C-w バッファを別のファイルへ書く
+
+   - ウィンドウ
+     http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_17.html
+
+     : C-x 2, C-x 3 横や縦に分ける
+     : C-x o 別のウィンドウへ
+     : C-x 0 ウィンドウを消す
+     : C-x C-b バッファの一覧を表示する
+
+
+   - 別のフレーム
+     http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_18.html#SEC177
+     : C-x 5 2 開く
+     : C-x 5 o 行き来する
+     : C-x 5 0 閉じる

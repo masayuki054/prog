@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ソフトウェア構成論 2014-&gt;2015 ソフトウェア構成論</title>
+<!-- 2015-11-10 火 04:54 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 2014-&gt;2015 ソフトウェア構成論</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">2014年度後半を振り返って</a>
+<ul>
+<li><a href="#sec-1-1">講義内容</a>
+<ul>
+<li><a href="#sec-1-1-1">CardDisplay プロジェクト</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">成績評価</a></li>
+<li><a href="#sec-1-3">講義時間</a></li>
+<li><a href="#sec-1-4">反省</a></li>
+</ul>
+</li>
+<li><a href="#sec-2"><span class="todo Doing">Doing</span> ドキュメントの見直し</a>
+<ul>
+<li><a href="#sec-2-1">旧 CardDisplay プロジェクト</a>
+<ul>
+<li><a href="#sec-2-1-1">progress <code>[/]</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3"><span class="todo Doing">Doing</span> 講義内容の検討</a>
+<ul>
+<li><a href="#sec-3-1">導入をやろう</a></li>
+<li><a href="#sec-3-2">背景</a></li>
+<li><a href="#sec-3-3">プログラミング入門，プログラム演習I, II をふりかえる</a></li>
+<li><a href="#sec-3-4">未経験なこと</a></li>
+<li><a href="#sec-3-5">導入</a>
+<ul>
+<li><a href="#sec-3-5-1">CardDisplay問題とテスト駆動開発</a>
+<ul>
+<li><a href="#sec-3-5-1-1">問題と設計</a></li>
+<li><a href="#sec-3-5-1-2">目的</a></li>
+<li><a href="#sec-3-5-1-3">テスト駆動開発</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4"><span class="todo Doing">Doing</span> 講義のドキュメント化</a></li>
+<li><a href="#sec-5"><span class="done Cancel">Cancel</span> 全 wiki_page へのリンクをorg化</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフトウェア構成論</a> / <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a> /  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義ドキュメント</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">2014年度後半を振り返って</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">講義内容</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">CardDisplay プロジェクト</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+全6~7回かかってしまったが，内容的には成功と思う
+</p>
+
+<p>
+学生達には取っ付きにくかったようだが，しょうがない。必然。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">成績評価</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+各自のレポートを見るために，report-view.org を作成した
+</p>
+
+<p>
+レスポンスカードをスキャンし，見せた
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">講義時間</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+14:30 定時で講義は終了。以後作業を見守る。TAも3:00まで。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">反省</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>図を綺麗に
+</li>
+</ul>
+
+<p>
+‐ ソースプログラムに穴をあけたらよかったかも
+</p>
+
+<p>
+‐ レポートの書き方に注意を与えよう
+</p>
+
+<ul class="org-ul">
+<li>emacs-org の使い方を説明しよう
+</li>
+</ul>
+
+<p>
+‐ 席とログイン名の対応，特徴を
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="todo Doing">Doing</span> ドキュメントの見直し</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+org-html-theme/bigblow を用いた文書作成
+</p>
+
+<ul class="org-ul">
+<li>rd記法を取り除き，全面的にorg記法に書き換える
+</li>
+<li>collapse/expand できることを利用しよう
+</li>
+<li>ソースコードを表示する
+</li>
+</ul>
+
+<p>
+各orgファイルには
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">旧 CardDisplay プロジェクト</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1">progress <code>[/]</code></h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> card_display.org
+</li>
+<li><code>[&#xa0;]</code> card_display_simple.org
+</li>
+<li><code>[&#xa0;]</code> card_display_multi.org
+</li>
+<li><code>[&#xa0;]</code> card_display_compile_and_make.org
+</li>
+<li><code>[&#xa0;]</code> card_display_sort.org
+</li>
+<li><code>[&#xa0;]</code> card_display_image.org
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="todo Doing">Doing</span> 講義内容の検討</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">導入をやろう</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>ライブラリを使ったプログラム
+</li>
+<li>機能，要求，実現，提供，利用，テスト，開発，駆動開発
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">背景</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E5%B7%A5%E5%AD%A6">ソフトウェア工学 - Wikipedia</a> ソフトウェアを上手に開発するために
+</li>
+
+<li><a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E9%96%8B%E7%99%BA%E5%B7%A5%E7%A8%8B">ソフトウェア開発工程 - Wikipedia</a> 反復型とテスト
+</li>
+
+<li><a href="http://www.logos.t.u-tokyo.ac.jp/~tau/lecture/computer_software/gen/slides/2-correctness.pdf">コンピュータソフトウェア - 2-correctness.pdf</a> プログラムの正しさとは
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">プログラミング入門，プログラム演習I, II をふりかえる</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+cis-programming-lects
+</p>
+<ul class="org-ul">
+<li><a href="file://./cis-programming-0.html">プログラミング入門</a>
+</li>
+<li><a href="file://./cis-programming-1.html">プログラム演習I</a>
+</li>
+<li><a href="file://./cis-programming-2.html">プログラム演習II</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">未経験なこと</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>設計をしていない
+</li>
+<li>開発を経験していない
+</li>
+</ul>
+
+<p>
+設計と開発を経験しよう
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">導入</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+what_is_tdd
+</p>
+
+<ul class="org-ul">
+<li>ライブラリを使ったプログラムの意味
+</li>
+
+<li>テスト駆動開発とは 
+<ul class="org-ul">
+<li>機能，要求，実現，提供，利用，テスト，開発，テスト駆動開発 とは？
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1">CardDisplay問題とテスト駆動開発</h4>
+<div class="outline-text-4" id="text-3-5-1">
+</div><div id="outline-container-sec-3-5-1-1" class="outline-5">
+<h5 id="sec-3-5-1-1">問題と設計</h5>
+<div class="outline-text-5" id="text-3-5-1-1">
+<p>
+org-doc/card-display/card_display.org
+org-doc/card-display/card_display_.org
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5-1-2" class="outline-5">
+<h5 id="sec-3-5-1-2">目的</h5>
+<div class="outline-text-5" id="text-3-5-1-2">
+<p>
+簡単なプログラム開発サイクルを経験する
+</p>
+
+<ul class="org-ul">
+<li>カードの印刷のためのカードの機能の実現
+</li>
+<li>要求と実装の変更、
+</li>
+<li>部品化，カードモジュールの作成
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5-1-3" class="outline-5">
+<h5 id="sec-3-5-1-3">テスト駆動開発</h5>
+<div class="outline-text-5" id="text-3-5-1-3">
+<ul class="org-ul">
+<li>card_display_simple問題のテスト駆動開発 
+</li>
+<li>card_sisplay_multi問題のテスト駆動開発
+</li>
+<li>card_sisplay_sort問題のテスト駆動開発
+</li>
+<li>カードモジュールへ
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="todo Doing">Doing</span> 講義のドキュメント化</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+講義のドキュメント化がまだ終わっていません。確認のためのチェックリストです:
+</p>
+
+<ul class="org-ul">
+<li><code>[X]</code> Makefile
+</li>
+
+<li><code>[X]</code> index.org
+</li>
+
+<li>HTML化 <code>[4/6]</code>
+<ul class="org-ul">
+<li><code>[X]</code> cis-programming-lects/
+</li>
+<li><code>[X]</code> <a href="cutter/">cutter/</a>
+</li>
+<li><code>[X]</code> what-is-tdd <code>[2/2]</code>
+<ul class="org-ul">
+<li><code>[X]</code> slideshare のプレゼン
+</li>
+<li><code>[X]</code> qiita の文書
+</li>
+</ul>
+</li>
+<li><code>[X]</code> card-display/
+</li>
+<li><code>[-]</code> tdd-card-display-simple <code>[1/7]</code>
+<ul class="org-ul">
+<li><code>[X]</code> test_card_suit_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_no_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_single
+</li>
+</ul>
+</li>
+<li><code>[&#xa0;]</code> poker
+</li>
+<li><code>[&#xa0;]</code> memos
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #483d8b;">pwd</span>
+ls ../../org-docs/memos
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> module.org
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="done Cancel">Cancel</span> 全 wiki_page へのリンクをorg化</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2015-11-10 火 04:54</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+.PHONY: clean install
+
+PROJ_HOME=/home/staff/suzuki/progs/game
+
+PROJ_INCLUDE=${PROJ_HOME}/include
+PROJ_LIB=${PROJ_HOME}/lib
+
+CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
+
+LDFLAGS = -lc
+
+libdeck.a: deck.o 
+	rm -f $@
+	ar r $@ $^
+
+install: libdeck.a deck.h
+	cp libdeck.a ${PROJ_LIB}
+	cp deck.h ${PROJ_INCLUDE}
+
+deck.o: deck.c deck.h
+	gcc $< $(CFLAGS)
+
+clean:
+	rm -f *.o *.a *.so *~ \#* *.gch

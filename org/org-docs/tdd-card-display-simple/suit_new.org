@@ -1,0 +1,625 @@
+# * スーツを数値にする機能のテストと実装
+
+#+BEGIN_SRC sh :exports none 
+mkdir -p babel/simple/suit_new/src babel/simple/suit_new/test
+rm -f babel/simple/suit_new/src/* babel/simple/suit_new/test/*
+cp -Rp babel/simple/setup/Makefile babel/simple/suit_new/Makefile
+cp -Rp babel/simple/setup/src/Makefile babel/simple/suit_new/src/Makefile
+cp -Rp babel/simple/setup/test/Makefile babel/simple/suit_new/test/Makefile
+#+END_SRC
+
+#+RESULTS:
+
+  まず最初は，文字列で表されたスーツを，プログラム内部での数値に変換す
+  る機能のテストです。
+
+  あわせてテスト等のビルドのためMakefileを作成していきます。
+   
+** テスト作成
+
+    テストは，test/test_card.c に作成します。
+
+    機能の名前を card_suit_new_from_string とし,
+    card_suit_new_from_string のAPIを決めるため，
+    card_suit_new_from_string が満たすテストを書きます:
+     
+#+BEGIN_SRC c 
+// test/test_card.c
+  cut_assert(card_suit_new_from_string("SPADE")==SPADE);
+#+END_SRC
+
+    cut_assert は引数の値が真ならばテスト成功，偽ならばテスト失敗
+    とする cutter の機能です。失敗のときは，情報を提供してくれます。
+
+    card_suit_new_from_stringを関数の形で書けたので，関数の型を決めま
+    す。
+
+    戻り値の型は int，与える引数はスーツを示す文字列なので:
+
+#+BEGIN_SRC c
+  int card_suit_new_from_string(char *);
+#+END_SRC
+
+    そして，cutterが提供する機能を使うためのインタフェースをインクルー
+    ドします:
+
+#+BEGIN_SRC c
+# include <cutter.h>
+#+END_SRC
+
+    テストに使う定数は，列挙型 ([[https://ja.wikipedia.org/wiki/%E5%88%97%E6%8C%99%E5%9E%8B][列挙型 - Wikipedia]]) で書いてみます:
+
+#+name: suit_new_e_suit
+#+BEGIN_SRC c
+
+  enum e_Suit {CLUB=1, DIAMOND, HEART, SPADE};
+
+#+END_SRC
+    まだ列挙型を使かったことがないかもしれませんが，便利なので憶えましょ
+    う。これは，define で定義する次のコードと似ています:
+#+BEGIN_SRC c
+
+  # define SPADE 4
+  # define HEART 3
+  # define DIAMOND 2
+  # define CLUB 1
+
+#+END_SRC
+
+    次に，テストに必要なことを記述します:
+
+    - テスト・フレームワークとして cutter を使うので，必要な宣言をインク
+      ルードする:
+
+#+BEGIN_SRC c 
+
+// test/test_card.c
+# include <cutter.h>
+
+#+END_SRC
+
+    - テストを関数にする。cutterからの要請で，関数名は test_ で始まる
+      名前で，型は，void (void) です:
+
+#+BEGIN_SRC c
+
+// test/test_card.c
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+}
+#+END_SRC
+
+    これだけです。
+
+    ここまでで，test/test_card.c の中身は:
+
+#+BEGIN_SRC c :tangle babel/simple/suit_new/test/test_card.1.c
+// test/test_card.c
+# include <cutter.h>
+
+enum e_Suit {CLUB=1, DIAMOND, HEART, SPADE};
+
+enum e_Suit card_suit_new_from_string(char *);
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+}
+#+END_SRC
+
+#+BEGIN_SRC sh :exports none :dir babel/simple/suit_new/test
+cp test_card.1.c test_card.c
+#+END_SRC
+
+#+RESULTS:
+
+** test/Makefileの作成
+
+   test/Makefile は，とりあえず，test_card.c をコンパイルするこ
+   とです:
+
+   Makefileに次のように規則を書き加えます:
+
+#+BEGIN_SRC makefile
+
+# test/Makefile
+test_card.o: test_card.c
+	gcc -c $<
+
+#+END_SRC
+
+    test_card.c がインクルードしている cutter.h がどこにあるのかは，次
+    のコマンドを実行するとわかります:
+
+#+BEGIN_SRC sh :results output :exports both
+# ~/progs/CardDisplay/simple/
+pkg-config cutter --cflags
+#+END_SRC
+
+#+RESULTS:
+: -I/usr/include/cutter  
+
+
+    cutter.hをインクルードするためのコンパイラへの指示が出力されていま
+    す。
+
+    これをMakefileに記述します:
+
+#+BEGIN_SRC makefile :tangle babel/simple/suit_new/test/Makefile.1
+# test/Makefile
+.PHONY: clean 
+CFLAGS = -fPIC `pkg-config cutter --cflags`
+
+test_card.o: test_card.c
+	gcc -c $< $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+
+#+END_SRC
+
+#+BEGIN_SRC sh :exports none :dir babel/simple/suit_new/test
+cp Makefile.1 Makefile
+#+END_SRC
+
+#+RESULTS:
+
+
+** 最初の make
+
+   test/{test_card.c, Makefile}ができたので，make してみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/test :exports both
+
+# ~/progs/card_display/simple/test
+make clean
+make test_card.o
+
+#+END_SRC
+
+#+RESULTS:
+: rm -f *.o *.so *~ \#* *.gch
+: gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+
+   コンパイルが成功し，test/test_card.o ができていれば，
+   test/test_card.o の中身を見てみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/test :exports both
+# ~/progs/card_display/simple/test
+nm test_card.o
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+                 U _GLOBAL_OFFSET_TABLE_
+0000000000000200 r __PRETTY_FUNCTION__.3239
+                 U _setjmp
+                 U card_suit_new_from_string
+                 U cut_assert_helper
+                 U cut_test_context_current_peek
+                 U cut_test_context_finish_user_message_jump
+                 U cut_test_context_get_have_current_result
+                 U cut_test_context_get_jump_buffer
+                 U cut_test_context_in_user_message_jump
+                 U cut_test_context_long_jump
+                 U cut_test_context_pop_backtrace
+                 U cut_test_context_process_current_result
+                 U cut_test_context_push_backtrace
+                 U cut_test_context_set_jump_buffer
+                 U cut_test_context_set_user_message
+                 U cut_test_context_start_user_message_jump
+0000000000000000 T test_card_suit_new_from_string
+#+end_example
+
+   card_suit_from_string, cut_assert が未定義で，
+   test_card_suit_new_from_string が定義されているのがわかります。
+
+** cutterによるテスト
+
+   cutter でテストしてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/ :exports both
+cutter -v v test
+#+END_SRC
+
+#+RESULTS:
+: 
+: Finished in 0.000062 seconds (total: 0.000000 seconds)
+: 
+: 0 test(s), 0 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+: 0% passed
+
+   test(s)が0と表示されているので， test_card.oはテストとして認識され
+   ていないことが分かります。
+
+** テストのビルド
+
+   cutter は，test_ で始まる動的ライブラリをテストと認めます。なので動的ライ
+   ブラリを作ります。そのために test/Makefileに規則を追加します:
+
+#+BEGIN_SRC Makefile
+
+# test/Makefile
+
+CFLAGS = -fPIC `pkg-config cutter --cflags` 
+LDFLAGS = `pkg-config --libs cutter`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+#+END_SRC
+
+    gcc に対するオプション -fPIC とか --shared は動的ライブラリを作る
+    ためのものです。
+    
+    ここまでで test/Makefile 全体は下記のようになります:
+    
+#+BEGIN_SRC makefile :tangle babel/simple/suit_new/test/Makefile.2
+# test/Makefile (2)
+.PHONY: clean
+CFLAGS = -fPIC `pkg-config cutter --cflags` 
+LDFLAGS = `pkg-config --libs cutter`
+
+test_card.so: test_card.o	
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $< $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/suit_new/test :exports none
+cp Makefile.2 Makefile
+
+#+END_SRC
+
+#+RESULTS:
+
+    .soは動的ライブラリを示す拡張子で，gccへのオプション --shared が動
+    的ライブラリの作成を意味しています。
+
+    変数LDFLAGSに，ローダへの指示を格納します。pkg-configは，システム
+    に組み込まれたパッケージの設定を見るためのコマンドで，--libs は，
+    ライブラリとして使う場合のローダへの指示を出力してくれます:
+
+#+BEGIN_SRC sh :results output
+pkg-config --libs cutter
+#+END_SRC
+
+#+RESULTS:
+: -lcutter  
+
+    シェルコマンド中では，コマンドを``で括ることで，そのコマンドの実行
+    結果をその場所に埋め込むことを意味します。
+
+    変数LDFLAGS中の `pkg-config --libs cutter`は，gcc コマンド 
+    中で参照されることで，cutterライブラリをリンクするため指示を埋め込
+    むことができます。
+
+    では，makeしてテストをビルドしてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/test :exports none
+
+# ~/progs/card_display/simple/test
+make test_card.so
+
+#+END_SRC
+
+#+RESULTS:
+: Undefined symbols card_suit_new_from_string, referenced from:
+:      _test_card_suit_new_from_string in test_card.o
+:      (maybe you meant: _test_card_suit_new_from_string)
+
+
+    card_suit_new_from_string関数がまだ実装されていないため，みつから
+    ない旨のエラーが出て，test_card.so を作るための make は失敗します。
+    が，前進しています。cutterが提供する関数への参照は全て解決され，ま
+    だ未実装の card_suit_new_from_string のみ未解決となっていることを
+    理解してください。
+
+** card_suit_new_from_string の実装
+
+   さて次は，機能 card_suit_new_from_string の実装です。
+   以下のように実装しましょう:
+   - test/test_card.c を作成するときに決めたインタフェースをとりだし，
+     src/card.hを作成する。
+   - test/test_card.c の対応部分は # include <card.h> とする。
+     - test/Makefile も変更する
+   - src/card.hを遵守し，src/card.c を作成する。
+   - 提供する機能を入れた src/libcard.a を作成する，Makefileを作成す
+     る
+
+   *src/{card.h，libcard.a} で機能を提供します*
+
+*** src/card.h の作成 =card/card.h=
+
+    test/test_card.c から card_suit_new_from_string に関する宣言を取り出し， 
+    src/card.h にします。
+
+#+BEGIN_SRC c :tangle babel/simple/suit_new/src/card.h
+// src/card.h
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+
+enum e_Suit card_suit_new_from_string(char *);
+#+END_SRC
+
+*** test/test_card.cの変更
+
+    インタフェースの定義を，src/card.h に移し，定義の責任を src/ に移
+    します。test/ は，責任者の定義に従うという意味で，ヘッダファイル
+    をインクルードします:
+
+#+BEGIN_SRC c
+// test/test_card.c
+# include <card.h>
+
+#+END_SRC    
+
+    <card.h> は， コンパイラのインクルード・パス上の card.h という名前
+    のファイルを意味します。今 test/test_card.c にとって，<card.h> は
+    ../src/card.h を意味します。ですが，次のように書いてはいけません:
+
+#+BEGIN_SRC c
+# include "../src/card.h"
+
+#+END_SRC    
+
+    test/test_card.c は，下記のようになります:
+
+#+BEGIN_SRC c :tangle babel/simple/suit_new/test/test_card.2.c
+// test/test_card.c
+# include <cutter.h>
+# include <card.h>
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert(card_suit_new_from_string("HEART")==HEART);
+  cut_assert(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert(card_suit_new_from_string("CLUB")==CLUB);
+}
+#+END_SRC
+
+    ここで，説明を簡略化するため，HEART, DIAMOND, CLUB のテストも追加してしま
+    いましたが，本来はひとつテストが通ってから，増やしていくべきです。
+
+#+BEGIN_SRC sh :exports none :dir babel/simple/suit_new/test
+cp test_card.2.c test_card.c
+#+END_SRC
+
+#+RESULTS:
+
+*** test/Makefileの変更
+
+    src/card.hがインクルードできるようにインクルードパスをコンパイラに
+    指示します。具体的には，CFLAGSを以下のように書き換えます:
+
+#+BEGIN_SRC make
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+#+END_SRC    
+
+    変更後，makeして，以前と同じ状態であることを確かめておきましょう。
+
+*** src/card.c の作成
+
+    src/card.h に書かれている API を守って，card_suit_new_from_string
+    関数を実装します。
+
+    取り敢えず，与えられた文字列 suit_str と，スーツ文字列を比較して判
+    定することにします。
+
+#+BEGIN_SRC c :tangle babel/simple/suit_new/src/card.1.c
+// src/card.c
+# include <string.h>
+# include <card.h>
+
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB", suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND", suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART", suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE", suit_str)==0)
+    return SPADE;
+  return 0;
+}
+#+END_SRC
+
+#+BEGIN_SRC sh :exports none :dir babel/simple/suit_new/src
+cp card.1.c card.c
+#+END_SRC
+
+#+RESULTS:
+
+*** src/Makefile
+
+    src/card.c をコンパイルし，src/libcard.a を作成する規則を追加しま
+    しょう:
+
+#+BEGIN_SRC makefile :tangle babel/simple/suit_new/src/Makefile.2
+# src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $< $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/suit_new/src :exports none
+cp Makefile.2 Makefile
+
+#+END_SRC
+
+#+RESULTS:
+
+  ビルドしてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/src :exports both
+# ~/progs/card_display/simple/src
+make clean
+make libcard.a
+
+#+END_SRC
+
+#+RESULTS:
+: rm -f *.o *.so *~ \#* *.gch
+: gcc card.c -g -c -fPIC -I. 
+: rm -f libcard.a
+: ar r libcard.a card.o
+
+  src/card.h と src/card.c に文法上のエラーや宣言上の食い違いがなけれ
+  あば，card.o ができているはずです。
+
+  card.o ができて，Makefile に間違いがなければ libcard.a もできている
+  はずです。
+
+  libcard.a の中身を確かめて，card_suit_new_from_string 関数が入ってい
+  るか，確かめてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/src :exports both
+# ~/progs/card_display/simple/src
+nm libcard.a
+
+#+END_SRC
+
+#+RESULTS:
+: 
+: card.o:
+:                  U _GLOBAL_OFFSET_TABLE_
+: 0000000000000000 T card_suit_new_from_string
+:                  U strcmp
+
+*** テスト test/test_card.so のビルド
+
+    src/libcard.a ができたので，次は test/test_card.so に libcard.a を取り
+    込むようにmakeの規則を書き換えます:
+
+#+BEGIN_SRC makefile
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+#+END_SRC
+
+    test/Makefileは下記のようになります:
+
+#+BEGIN_SRC makefile :tangle babel/simple/suit_new/test/Makefile.3
+# test/Makefile (3) 
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $< $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC sh :exports none :dir babel/simple/suit_new/test
+cp Makefile.3 Makefile
+#+END_SRC
+
+#+RESULTS:
+
+    make し，src/libcard.a を取り込んだ test/test_card.so を作成します:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/test
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+#+END_SRC
+
+#+RESULTS:
+: rm -f *.o *.so *~ \#* *.gch
+: gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+: gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+
+    make の結果中の下記ライン出力中に，
+: gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+    
+    -L../src/ -lcard `pkg-config cutter --libs`　が含まれていれば，
+    test/test_card.so はできあがるはずです。
+
+** テスト
+   テストと実装が終わり，テストをビルドするためのMakefileは完成してい
+   ます。テストするために simple/ で make してみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/suit_new/ :exports both
+# ~/progs/card_display/simple
+make
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+(cd src; make)
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/suit_new/src' に入ります
+make[1]: `libcard.a' は更新済みです
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/suit_new/src' から出ます
+(cd test; make)	
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/suit_new/test' に入ります
+make[1]: `test_card.so' は更新済みです
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/suit_new/test' から出ます
+cutter -v v test/
+test_card:
+  test_card_suit_new_from_string:			.: (0.000066)
+
+Finished in 0.000464 seconds (total: 0.000066 seconds)
+
+1 test(s), 4 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+#+end_example
+
+   これからは，機能が要求を満たすことを確かめるためにテストし，テスト
+   が失敗した場合は，test/test_card.c, src/{card.h, card.c} を修正
+   していくことになります。
+
+** テストと再設計
+
+   テストが通らなかった時，下記の場合が考えられます：
+   - 要求自体が間違っていた
+   - 要求に対する設計が間違っていた
+   - 要求・設計に対する実装が間違っていた
+
+   それぞれどの箇所を見直すか考えてみましょう:
+
+   - 要求が間違っている場合 (テストの作り直し)
+     - test/test_card.c の変更
+     - src/card.h の変更，それに伴ない
+       - test/test_card.c, src/card.c の変更
+     
+   - 設計が間違っている場合 (インタフェースの見直し)
+     - src/card.h の変更，それに伴ない
+       - test/test_card.c, src/card.c の変更
+
+   - 実装が間違っている場合 (実装のみの見直し)
+     - src/card.c のみの変更
+
+   適切に対処しましょう。
+
+
+

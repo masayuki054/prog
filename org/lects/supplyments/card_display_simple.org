@@ -1,0 +1,13 @@
+* card_display_simple問題の開発木構造
+
+# #+name: card_display/simple/1
+# #+ATTR_HTML: :alt card_display/simple :title card_display/simple :align center :size 10%
+# 1 [[./card_display_simple.png]]
+
+
+#+name: card_display/simple/2
+#+caption: card_display_simple 問題と card モジュール開発
+#+ATTR_HTML: :alt card_display/simple :title card_display/simple
+[[file:card_display_simple.png][file:card_display_simple.png]]
+
+

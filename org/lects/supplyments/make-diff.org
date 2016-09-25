@@ -1,0 +1,245 @@
+* Makefile (card_display/simple)
+** src/Makefile
+#+BEGIN_SRC c
+# ~/progs/card_display/simple/src/Makefile
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I .
+LDFLAGS = -lc
+
+libcard.a: card.o cards.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $< $(CFLAGS)
+
+cards.o: cards.c card.h
+	gcc $< $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+#+END_SRC
+
+** test/Makefile
+#+BEGIN_SRC c
+.PHONY: clean
+CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src
+LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
+
+all: test_card.so test_sort.so
+
+test_card.so: test_card.o
+	gcc -o $@ -shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c 	
+	gcc $(CFLAGS) $<
+
+
+test_sort.so: test_sort.o
+	gcc -o $@ -shared $^ $(LDFLAGS)
+
+test_sort.o: test_sort.c 	
+	gcc $(CFLAGS) $<
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+#+END_SRC
+
+
+* card/deck 用 Makefile との違い
+  
+  まず，card_display/simple，game/card， game/deck のMakefileの違いを
+  見せます。
+
+  二つのファイルの差を見るには，diff コマンド，meld コマンド，emacs の
+  diff 関連コマンド等が，使えます。
+
+** card_display/simple/src/Makefile と game/card/src/Makefile の違い
+
+   次の diff コマンドにより差分が取得できます:
+
+#+BEGIN_SRC sh  :results output example
+#~suzuki/progs/game/make-diff
+diff ~/progs/card_display/simple/src/Makefile  ~/progs/game/card/src/Makefile
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+1a2,6
+> 
+> PROJ_HOME=~/progs/game
+> PROJ_INCLUDE=${PROJ_HOME}/include
+> PROJ_LIB=${PROJ_HOME}/lib
+> 
+4a10,13
+> install: libcard.a card.h
+> 	cp libcard.a ${PROJ_LIB}
+> 	cp card.h ${PROJ_INCLUDE}
+> 
+16c25
+< 	rm -f *.o *.so *~ \#* *.gch
+---
+> 	rm -f *.o *.a *.so *~ \#* *.gch
+
+#+END_EXAMPLE
+
+   diffの出力結果の見方と，Makefileに於けるその意味を解説します:
+
+#+BEGIN_EXAMPLE
+1a2,6
+#+END_EXAMPLE
+
+   1a2,6：
+   - 1 は ~/progs/card_display/simple/src/Makefileの1行目
+   - a は append 
+   - 2,6 ~/progs/game/card/src/Makefileの2~6行目です
+#+BEGIN_EXAMPLE
+>
+> PROJ_HOME=/home/staff/suzuki/progs/game
+> PROJ_INCLUDE=${PROJ_HOME}/include
+> PROJ_LIB=${PROJ_HOME}/lib
+>
+#+END_EXAMPLE
+   - この内容は，game プロジェクトのディレクトリと，その下にあるヘッダ
+     ファイルとライブラリファイルの置き場所を, Makefile の変数に代入し
+     ているものです。
+
+#+BEGIN_EXAMPLE
+4a10,13
+#+END_EXAMPLE
+   - 同様に，4行目の後に次の行が加えられています。
+
+#+BEGIN_EXAMPLE
+> install: libcard.a card.h
+> 	cp libcard.a ${PROJ_LIB}
+> 	cp card.h ${PROJ_INCLUDE}
+> 
+#+END_EXAMPLE
+
+   これは，新たなルールを加わえています。
+   - libcard.a をプロジェクトのライブラリ・ディレクトリにコピーし，
+   - card.h をプロジェクトのインクルード・ディレクトリにコピーします。
+
+#+BEGIN_EXAMPLE
+16c25
+#+END_EXAMPLE
+
+   - 16行目を25行目に変更を意味します。
+
+#+BEGIN_EXAMPLE
+< 	rm -f *.o *.so *~ \#* *.gch
+---
+> 	rm -f *.o *.a *.so *~ \#* *.gch
+#+END_EXAMPLE
+
+   - *.a (静的ライブラリ)も消去するように変更されています。
+
+
+** card_display/simple/test/Makefile と game/card/test/Makefile の違い
+
+#+BEGIN_SRC sh  :results output example
+#~suzuki/progs/game/make-diff
+diff ~/progs/card_display/simple/test/Makefile  ~/progs/game/card/test/Makefile
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+1a2,6
+> 
+> PROJ_HOME=~/progs/game
+> PROJ_INCLUDE=${PROJ_HOME}/include
+> PROJ_LIBE=${PROJ_HOME}/lib
+> 
+21c26
+< 	rm -f *.o *.so *~ \#* *.gch
+---
+> 	rm -f *.o *.a *.so *~ \#* *.gch
+
+#+END_EXAMPLE
+   
+** game/card/src/Makefile と game/deck/src/Makefile の違い
+
+#+BEGIN_SRC sh  :results output example
+#~suzuki/progs/game/make-diff
+diff ~/progs/game/card/src/Makefile  ~/progs/game/deck/src/Makefile
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+1c1
+< .PHONY: clean
+---
+> .PHONY: clean install
+7c7
+< CFLAGS = -g -c -fPIC -I .
+---
+> CFLAGS = -g -c -Wall -fPIC -I . -I${PROJ_INCLUDE}
+10,12c10,12
+< install: libcard.a card.h
+< 	cp libcard.a ${PROJ_LIB}
+< 	cp card.h ${PROJ_INCLUDE}
+---
+> install: libdeck.a deck.h
+> 	cp libdeck.a ${PROJ_LIB}
+> 	cp deck.h ${PROJ_INCLUDE}
+14c14
+< libcard.a: card.o cards.o
+---
+> libdeck.a: deck.o 
+18,21c18
+< card.o: card.c card.h
+< 	gcc $< $(CFLAGS)
+< 
+< cards.o: cards.c card.h
+---
+> deck.o: deck.c deck.h
+
+#+END_EXAMPLE
+** game/card/test/Makefile と game/deck/test/Makefile の違い
+
+#+BEGIN_SRC sh  :results output example
+#~suzuki/progs/game/make-diff
+diff ~/progs/game/card/test/Makefile  ~/progs/game/deck/test/Makefile
+#+END_SRC
+
+
+#+BEGIN_EXAMPLE
+0a1
+> # deck/test/Makefile
+3c4
+< PROJ_HOME=~/progs/game
+---
+> PROJ_HOME=/home/staff/suzuki/progs/game
+5c6
+< PROJ_LIBE=${PROJ_HOME}/lib
+---
+> PROJ_LIB=${PROJ_HOME}/lib
+7,8c8,9
+< CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src
+< LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
+---
+> CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src -I${PROJ_INCLUDE}
+> LDFLAGS = -L../src -ldeck `pkg-config cutter --libs` -L${PROJ_LIB} -lcard
+10c11
+< all: test_card.so test_sort.so
+---
+> all: test_deck.so
+12c13
+< test_card.so: test_card.o
+---
+> test_deck.so: test_deck.o
+15,22c16
+< test_card.o: test_card.c 	
+< 	gcc $(CFLAGS) $<
+< 
+< 
+< test_sort.so: test_sort.o
+< 	gcc -o $@ -shared $^ $(LDFLAGS)
+< 
+< test_sort.o: test_sort.c 	
+---
+> test_deck.o: test_deck.c 	
+26c20
+< 	rm -f *.o *.a *.so *~ \#* *.gch
+---
+> 	rm -f *.o *.so *~ \#* *.gch
+
+#+END_EXAMPLE
+

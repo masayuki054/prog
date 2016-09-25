@@ -1,0 +1,64 @@
+* graphviz
+#+BEGIN_SRC sh
+mkdir dots
+#+END_SRC
+
+#+RESULTS:
+
+#+begin_src dot :file dots/dot_example.png 
+  digraph sample {
+    node [shape=box, width=1];
+    a [label="Node A"];
+    b [label="Node B"];
+    c [label="Node C"];
+    d [label="Node D"];
+    a -> b [label=" A-B "];
+    b -> c [label=" B-C "];
+    d -> c [label=" C-D ", dir=back];
+    a -> d [style=dashed];
+    {rank=same; a; b}
+    {rank=same; c; d}
+  }
+#+end_src
+
+#+begin_src dot :file director.png :cmdline -Kdot -Tpng
+digraph {
+#  graph [fontname="MS Gothic"];
+#  node [fontname="MS Gothic"];
+#  edge [fontname="MS Gothic"];
+  label = "テスト駆動開発の一サイクル";
+  "simple"  ->   "src/" 
+  "simple"  ->   "test/"
+  "simple" ->    "Makefile" [label="test/test_card.c"];
+  "src/"-> "card.h" [label="src/card.h"];
+  "src/" -> "card.c" [label="src/card.c"];
+  "src/" -> "Makefile (src)" 
+  "Makefile (src)" -> "card.o"
+  "card.o" -> "libcard.a"
+  "test/" -> "test_card.c"
+  "test/" -> "Makefile (test)"
+  "Makefile (test)" -> "test_card.o"
+  "test_card.o" -> "test_card.so"
+}
+#+end_src
+
+#+RESULTS:
+[[file:director.png]]
+
+#+begin_src dot :file dots/test_cycle.png :cmdline -Kdot -Tpng
+digraph {
+#  graph [fontname="MS Gothic"];
+#  node [fontname="MS Gothic"];
+#  edge [fontname="MS Gothic"];
+  label = "テスト駆動開発の一サイクル";
+  "新らしい機能"  ->   "テストを書く" [label="設計する"];
+  "テストを書く" -> "機能を実装する" [label="インタフェースを決める"];
+  "テストを成功させる" -> "機能を実装する"  [dir=back];
+   "新らしい機能" -> "テストを成功させる"  [label="refactoring",dir=back];
+}
+#+end_src
+
+#+RESULTS:
+[[file:dots/test_cycle.png]]
+
+

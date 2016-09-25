@@ -1,0 +1,31 @@
+#+setupfile: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+TITLE: memos
+
+#+include: crash.org :minlevel 3
+
+#+include: org-babel.org :minlevel 3
+
+#+include: c.org :minlevel 3
+
+#+include:  card-module.org :minlevel 3
+
+#+include:  emacs.org :minlevel 3
+
+#+include:  env.org :minlevel 3
+
+#+include:  module.org :minlevel 3
+
+#+include:  prog.org :minlevel 3
+
+#+include:  progs.org :minlevel 3
+
+#+include:  shell.org :minlevel 3
+
+#+include:  svn-fix.org :minlevel 3
+
+#+include:  svn.org :minlevel 3
+
+#+include:  vc.org :minlevel 3
+
+

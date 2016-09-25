@@ -1,0 +1,192 @@
+#+TITLE ソフトウェア構成論
+#+AUTHOR masayuki
+#+LANGUAGE ja
+#+EMAIL suzuki@cis.iwate-u.ac.jp
+#+STYLE: <link rel="stylesheet" type="text/css" href="../theme/ruby-blue.css" />
+#+OPTION ^:nil toc:nil num:nil
+
+* ソフトウェア構成論
+** 道具達の使い方
+
+     [[file:./c.org][C言語]]
+
+     [[file:./compiler.org][コンパイラ]]
+
+     [[file:./emacs.org][emacs]] が使えるように
+     - org-mode が使えると便利かも
+
+     [[http://wiki.cis.iwate-u.ac.jp/svn/prog][サブバージョンのリポジトリ]]
+     - [[file:./subversion.org][バージョン管理]] できるようになりましょう
+
+     [[file:./shell.org][シェル]]
+
+     [[file:./make.org][make]]
+     
+     [[file://~suzuki/prog/][開発ディレクトリ]]
+
+     : ((% cd; ln -s ~suzuki/prog/h17j15 progs %))
+   
+
+** 自前の関数を作り，利用する
+
+*** 度が使えるsin関数を作る
+
+    - sin 関数の変更拡張を行い
+    - 新たな関数（ライブラリ）の提供
+    - 新たな関数を使って実行プログラムを作る
+
+**** ライブラリの sin を調べる
+     
+     sin 関数の素性とは？
+
+     : # include <math.h>
+     : double sin(double)
+
+**** 引数を度で渡すと，sin関数値を計算する関数
+
+***** 名前と引数の型と結果の型を決める
+
+      : double d_sin(double)
+      
+***** この決まりごとをヘッダファイルに書いておく
+      file:./d_sin.h
+      : 
+
+***** file:./d_sin.c に関数の振る舞いをプログラムする
+
+      決まりごと
+
+      : # include <d_sin.h> // あらかじめ決めた素性を読み込む
+      :
+      : double d_sin(double x) // あらかじめ決めた素性を読み込む
+      : {
+      :   double result;
+      : 
+      :    sin関数を使った計算，
+      :    結果をresult に代入
+      :
+      :   return result;
+      : }
+
+      
+***** d_sin.c をコンパイルしてみる
+
+      コンパイラが文句を言わず，
+      オブジェクトファイル d_sin.o が正しくできれば，
+      取り合えず目標達成
+
+      - ((% gcc d_sin.c %)) ?
+ 
+      - ((% gcc -c d_sin.c %)) ?
+
+      - ((% gcc -c -I . d_sin.c %))
+
+
+**** 角度を入力したらそのsin値を計算するプログラムを書く
+
+***** file:./calc_sin.c
+
+      - d_sin.h が 関数の素性
+	: # include <d_sin.h>
+
+***** sin(deg_to_rad(atof(argv[1]))) の計算
+
+***** コンパイルして calc_d_sin.o を作る
+
+      : ((% gcc -c calc_d_sin.c %))
+
+      : ((% nm calc_d_sin.o %)) 
+
+      
+***** d_sin.o と calc_d_sin.o （とライブラリ)をリンクして，実行プログラムを作る
+      
+      : ((% gcc calc_d_sin.o d_sin.o -lm -o calc_d_sin %))
+
+     
+**** make
+
+     どうやって目的のプログラムを作るのかを，
+     段階的に記述する
+
+     http://lagendra.s.kanazawa-u.ac.jp/ogurisu/manuals/make-intro/index.html
+
+***** 実行プログラムを作成するまでにおこなったコマンド
+
+      - d_sin.h を設計し，d_sin.c に実装を記述
+      - : ((% gcc -c -I . d_sin.c %))
+      - d_sin.o ができる
+
+      - d_sin.h に従って，calc_d_sin.c を記述
+      - : ((% cc -c -I . calc_d_sin.c %))
+      - calc_d_sin.o ができる
+
+      - d_sin.o とcalc_d_sin.o を結合し，実行プログラムを作成
+      - : ((% cc -o calc_d_sin calc_d_sin.o d_sin.o -lm %))
+      - 実行プログラム calc_d_sin ができる
+
+***** Makefile にこれらを記述
+
+      file:~/.Makefile
+
+      : all: calc_d_sin
+      :         echo 'all done'
+      :         touch all
+
+      - allファイルを作るには，
+	- まず calc_d_sin をつくる
+	- その後に，((% echo 'all done' %)) コマンドを実行し，
+	- ((% touch all %)) で，allファイルができる
+
+        コマンドが実行されるのは以下の時
+        - all がないか，
+	- callc_d_sin ファイルより更新日付が古いか
+
+      : d_sin.o: d_sin.h d_sin.c
+      :         gcc -c -I . d_sin.c
+
+      : calc_d_sin.o: d_sin.h calc_d_sin.c
+      :         gcc -c -I . calc_d_sin.c
+
+      : calc_d_sin: calc_d_sin.o d_sin.o
+      :         gcc -o calc_d_sin calc_d_sin.o d_sin.o -lm 
+	  
+      
+**** バージョン管理
+
+     リポジトリの中に自分のディレクトリを作る
+     : ((% svn mkdir http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/hXXjYYY %))
+
+     作業用ディレクトリ（ワーキングコピー）にチェックアウトする
+
+     : ((% cd; ln -s ~suzuki/prog/hXXjYYY progs %))
+     : ((% cd progs %))
+     : ((% svn co http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/hXXjYYY . %))
+
+     (svn) 管理情報を見る
+
+     : ((% svn info %))
+
+     READMEというファイルを作成し，何か情報を書く
+     : ((% emacs README %))
+     
+     READMEの履歴管理を始める
+     : ((% svn add README %))
+
+     ワーキングコピーの状態を確かめる
+     : ((% svn st %))
+     
+     ワーキングコピーをリポジトリに反映させる（コミット）
+     : ((% svn ci -m 'hXXjYY はじめました' %))
+
+     ログを見る
+     : ((% svn log %))
+
+     
+
+
+
+
+
+     
+	
+     

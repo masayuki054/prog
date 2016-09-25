@@ -1,0 +1,10 @@
+#+title: 内容
+* 9回目のまとめ
+#+include: resume.org :minlevel 2
+* レスポンスカード.9 2015.12.22
+#+include: response.org
+
+
+
+
+

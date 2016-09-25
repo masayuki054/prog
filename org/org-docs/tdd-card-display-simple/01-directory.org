@@ -1,0 +1,47 @@
+#+comment:* ディレクトリ構成
+
+まず、プログラムを作成するためのディレクトリを用意する。ディレクトリは
+simple/ とする。
+
+#+BEGIN_SRC sh :exports none
+
+# directory の初期化
+rm -rf babel/simple
+mkdir -p babel/simple/setup/src babel/simple/setup/test
+mkdir -p babel/simple/suit_new/src babel/simple/suit_new/test
+mkdir -p babel/simple/no_new/src babel/simple/no_new/test
+mkdir -p babel/simple/card_new/src babel/simple/card_new/test
+mkdir -p babel/simple/card_to_string/src babel/simple/card_to_string/test
+
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC sh :dir ~/
+# ~/
+mkdir -p ~/progs/card_display/simple
+cd ~/progs/card_display/simple
+pwd
+#+END_SRC
+
+#+RESULTS:
+: /users/home/masayuki/progs/card_display/simple
+
+続いて、simple/ ディレクトリ以下に，プログラム用ディレクトリ src/，テストプログラム用
+ディレクトリ test/ を作成する。
+
+#+begin_src sh :dir ~/progs/card_display/simple
+# ~/progs/card_display/simple
+mkdir -p src test
+#+end_src
+
+#+RESULTS:
+
+つまり、ディレクトリ構成は以下のようになる。
+
+#+BEGIN_EXAMPLE
+    simple/ --+- src/  ソースファイル用ディレクトリ
+              |
+              +- test/ テストプログラム用ディレクトリ
+#+END_EXAMPLE
+

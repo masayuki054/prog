@@ -1,0 +1,9 @@
+#+TITLE: title
+#+AUTHOR: masayuki
+#+LANGUAGE: ja
+#+EMAIL: suzuki@cis.iwate-u.ac.jp
+#+OPTIONS: H:6 toc:t num:2 ^:{}
+#+PROPERTY: header-args :padline no
+#+SETUPFILE: ~/COMM/public_html/org-html-theme/setup/theme-bigblow.setup
+
+#+include: cutter.org :minlevel 1

@@ -1,0 +1,255 @@
+# origin: COMM/Lects/prog/srcs/CardDisplay/card_display_simple.org
+# Time-stamp: <2015-12-05 17:41:57 m>
+
+* card_display_simple 問題
+
+   コマンドラインからトランプカードの札種（スーツ）と番号を指定すると，
+
+   そのトランプカード（を表す文字列）を表示するプログラムを作成する
+
+* プログラムの設計
+
+** 設計方針
+
+   もっとも難しく，大切なこと。*構造化プログラミング*とか，*抽象データ型*とか，
+   *オブジェクト指向設計*とか，いろいろある。
+
+   学問分野としては，ソフトウェア工学。
+
+   プログラムを正しく設計作成できるように，*プログラムの証明*という考
+   え方がある。
+
+   *モジュール*と*モジュール化*という考え方が基本（だと思う）。
+   
+** card_display_simple の設計
+
+    設計し易いよう，部分に分ける
+    - 全体の処理処理を，入力，処理，出力に分割し，
+    - 分割できるように，いったん内部データ化する
+      - 入力は，文字列をカード型のデータにすること
+      - 出力は，その逆
+    
+    データを主に考えると，まとめやすいことが多い
+    - トランプ・カードが主役
+
+** 入力と出力例と内部トランプ表現
+
+  |---------------+--------------------------------------+------|
+  | 入力値        | プログラム内部表現                   | 出力 |
+  |---------------+--------------------------------------+------|
+  | "heart" "10"  | "heart”を表す整数値3 "10" を表す10  | "H0" |
+  | "spade" "13"  | "spade”を表す整数値4 "13" を表す13  | "SK" |
+  | "diamond" "1" | "diamond”を表す整数値2 "1" を表す14 | "DA" |
+  | "club" "1"    | "club”を表す整数値1 "2" を表す2     | "C2" |
+  |---------------+--------------------------------------+------|
+
+** スーツ入力文字列からスーツ内部表現へ 
+
+   要求
+   - スーツの強さ S>H>D>C
+
+   処理
+   - 入力文字列から整数への変換
+
+     |-----------+---|
+     | "spade"   | 4 |
+     | "heart"   | 3 |
+     | "diamond" | 2 |
+     | "club"    | 1 |
+     |-----------+---|
+
+** カードの数から内部表現へ
+
+    要求(ポーカの場合)
+    - A>K>Q>J>10>9>8>7>6>5>4>3>2
+    
+    処理
+    - "1"は14に，
+    - 残りはそのまま文字列を整数へ
+
+** カードを作る
+
+   要求
+   - スーツの内部表現と数字の内部表現から，
+   - カードを表すデータを作る
+   - カードデータからそのスーツが分かること
+   - カードデータからその数字が分かること
+
+** カードの内部表現を文字列へ
+
+    設計
+    - 2文字からなるの文字列
+    - スーツは 'S', 'H', 'D', 'C',  1文字
+    - 数は 'A','K','Q','J','0','9','8','7','6','5','4','3','2'，1文字
+
+    処理
+    - スーツや数を添字に配列を参照する
+
+** 関数の名前
+
+   この講義では，基本，対象とするデータの型，データの属性，データの処理を下線でつな
+   げて命名することにする。
+
+   名前づけの一貫性と分かり易さが大切。
+
+*** スーツ入力文字列からスーツ内部表現へ 
+    card_suit_new_from_string
+
+*** カードの数から内部表現へ
+    card_no_new_from_string
+
+*** カードを作る
+    card_new
+
+    カードはその属性としてスーツ(suit)と番号(no)をもつ
+
+    - カードデータからそのスーツが分かること
+      
+      card_suit
+
+    - カードデータからその数字が分かること
+
+      card_no
+
+*** カードの内部表現を文字列へ
+    card_to_string
+    - card_suit_to_string
+    - card_no_to_string
+
+      
+** 関数の引数と戻り値の型 (APIの設計)
+    - int card_suit_new_from_string(char *);
+    - int card_no_new_from_string(char *);
+    - Card card_new(int suit, int no);
+      - int card_suit(Card);
+      - int card_no(Card);
+    - char *card_to_string(Card);
+      - char *card_suit_to_string(int suit);
+      - char *card_no_to_string(int no);
+
+
+* card_display_simple 問題のテストによる開発
+
+  前章の設計を頭に入れて，プログラムの開発にとりかかりましょう。
+
+  テストによる開発に関しては別ドキュメントにしましたので，
+  [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple/][カード表示問題_simpleのテストによる開発]] (([[file+emacs:~suzuki/lects/prog/org-docs/tdd-card-display-simple/][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/][@s.org]])) こちらを読んでください。
+
+
+** テストによる開発から設計へのフィードバック
+
+   スーツと番号のデータ構造に設計上の下記の変更がありました:
+   
+  : enum e_Suit card_suit_new_from_string (char *)
+  : enum e_No card_no_new_from_string (char *)
+
+** card_display_simple の解
+
+   このプログラムの作成はレポート問題の一部になりましたので，
+   自分で考えて，作成してください。
+  
+# * card_display_multi 
+
+card_display_multi の解の例
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <card.h>
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+  
+  for(i=0; i<argc; i++)
+    {
+      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+			  card_no_new_from_string(argv[i]++));
+      no_cards++;
+    }
+  for(i=0; i<no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+#+END_SRC
+
+上記プログラムで，下記の部分はカードの構造が見え，生々しい気がします:
+#+BEGIN_SRC c
+      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+			  card_no_new_from_string(argv[i]++));
+#+END_SRC
+
+card_to_stringと同じレベルで反対の機能 card_new_from_string がいい設計
+かもしれません。
+
+: Card card_new_from_string(char *suit_str, char *no_str);
+
+を定義すれば，プログラム全体は下記のようになります:
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <card.h>
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+  
+  for(i=0; i<argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+  for(i=0; i<no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+#+END_SRC
+
+こうすることで，入力 (card_new_from_string) と 出力 (card_to_string)
+が対称的になり，
+
+この設計変更を受け入れれば，card_new_from_string を開発することになり
+ます。
+
+* card_display_sort (準備中@<2015-12-01 火>)
+
+** 複数のカードをソートする機能
+
+一枚のカードの機能をもとに，
+
+:  Card * cards_sort(Card *，int)
+
+を開発しましょう。
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <card.h>
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+  
+  for(i=0; i<argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+
+  card_cards_sort(cards);
+  
+  for(i=0; i<no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+#+END_SRC

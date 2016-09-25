@@ -1,0 +1,6 @@
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+

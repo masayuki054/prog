@@ -1,0 +1,8 @@
+#+title: 内容
+* 8回目のまとめ
+#+include: resume.org :minlevel 2
+* レスポンスカード.8 2015.12.15
+#+include: response.org
+
+
+

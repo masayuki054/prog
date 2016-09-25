@@ -1,0 +1,513 @@
+* トランプ番号を数値に
+
+#+BEGIN_SRC sh :exports none
+mkdir -p babel/simple/no_new/src babel/simple/no_new/test
+cp -Rp babel/simple/suit_new/Makefile babel/simple/no_new/
+cp -Rp babel/simple/suit_new/src/card.h babel/simple/no_new/src/card.h
+cp -Rp babel/simple/suit_new/src/card.c babel/simple/no_new/src/card.c
+cp -Rp babel/simple/suit_new/src/libcard.a babel/simple/no_new/src/libcard.a
+cp -Rp babel/simple/suit_new/src/Makefile babel/simple/no_new/src/Makefile
+cp -Rp babel/simple/suit_new/test/test_card.c babel/simple/no_new/test/test_card.c
+cp -Rp babel/simple/suit_new/test/Makefile babel/simple/no_new/test/Makefile
+cp babel/simple/no_new/src/libcard.a ~/progs/card_display/simple/src/
+
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC sh :exports none :dir babel/simple/no_new
+\rm -f test/test_card.o test/test_card.so
+rm -f src/card.o
+
+#+END_SRC
+
+#+RESULTS:
+
+  次は，文字列で表された番号を，プログラム内部での数値に変換す
+  る機能のテストです。
+   
+** 機能とテストの追加
+
+    番号のテストは，test/test_card.c に追加作成することにします。
+
+    機能の名前を card_no_new_from_string とし,
+    card_no_new_from_string を呼び出してみます：
+
+#+BEGIN_SRC c
+// test/test_card.c
+
+  card_no_new_from_string("13")==KING;
+
+#+END_SRC
+
+    よさそうです。card_no_new_from_stringを関数の形で書けたので，テス
+    トを書きます:
+
+#+BEGIN_SRC c 
+// test/test_card.c
+
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+
+#+END_SRC
+
+    card_no_new_from_string 関数の型を決めます。
+
+    戻り値の型は enum e_No，与える引数は番号を示す文字列なので:
+
+#+BEGIN_SRC c
+// test/test_card.c
+
+  enum e_No card_no_new_from_string(char *);
+
+#+END_SRC
+
+    テストに使う定数は，列挙型で書いてみます:
+
+#+BEGIN_SRC c
+// test/test_card.c
+
+  enum e_No {JACK=11, QUEEN, KING, ACE};
+
+#+END_SRC
+
+    テストを関数にします。
+
+#+BEGIN_SRC c
+// test/test_card.c
+
+void
+test_card_suit_no_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+#+END_SRC
+
+    ここまでで，test/test_card.c の中身は:
+
+#+BEGIN_SRC c :tangle babel/simple/no_new/test/test_card.1.c
+// test/test_card.c
+# include <cutter.h>
+# include <card.h>
+
+enum e_No {JACK=11, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("スーツから数値への変換のテスト");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert(card_suit_new_from_string("HEART")==HEART);
+  cut_assert(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/no_new/test :exports none
+# 先生だけのコード
+cp test_card.1.c test_card.c
+#+END_SRC
+
+#+RESULTS:
+
+*** test/Makefileの更新
+
+   test/Makefile の目的は変わっていませんので，更新の必要はありません。
+
+*** test/test_card.o の更新
+
+   test/ で makeしてみましょう。
+
+   まずは，test/test_card.o の作成です:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/test :exports both
+# ~/progs/card_display/simple/test
+make test_card.o
+#+END_SRC
+
+#+RESULTS:
+: gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+
+   test_card.o ができれば，ひとまず，成功です。
+   
+   できない時は，test_card.c に間違いがあるか，Makefile に間違いがあり
+   ます。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+   う。
+
+   成功したら，test/test_card.o の中身を見て確認しましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/test :exports both
+
+# ~/progs/card_display/simple/test
+nm test_card.o
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+                 U _GLOBAL_OFFSET_TABLE_
+0000000000000200 r __PRETTY_FUNCTION__.3239
+                 U _setjmp
+                 U card_suit_new_from_string
+                 U cut_assert_helper
+                 U cut_test_context_current_peek
+                 U cut_test_context_finish_user_message_jump
+\\                 U cut_test_context_get_have_current_result
+                 U cut_test_context_get_jump_buffer
+                 U cut_test_context_in_user_message_jump
+                 U cut_test_context_long_jump
+                 U cut_test_context_pop_backtrace
+                 U cut_test_context_process_current_result
+                 U cut_test_context_push_backtrace
+                 U cut_test_context_set_jump_buffer
+                 U cut_test_context_set_user_message
+                 U cut_test_context_start_user_message_jump
+0000000000000000 T test_card_suit_new_from_string
+#+end_example
+
+   card_no_from_stringが未定義で，
+   test_card_no_new_from_string が定義されているのがわかります。
+   
+*** テスト (test/test_card.so) のビルド
+
+   つづいて，test/test_card.so を作りましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/test :exports both
+
+# ~/progs/card_display/simple/test
+make test_card.so
+
+#+END_SRC
+
+#+RESULTS:
+: gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+
+
+** card_no_new_from_string の実装
+
+   さて次は，機能 card_no_new_from_string の実装です。
+   以下のように実装しましょう:
+
+   - test/test_card.c を作成するときに決めたインタフェースをとりだし，
+     src/card.hに追加する。
+  
+   - test/test_card.c の対応部分は # include <card.h> に含まれることに
+     なる。
+  
+   - src/card.hを遵守し，src/card.c に機能(関数)を追加する。
+
+   - 提供する機能を入れた src/libcard.a を作成する，Makefileを作成す
+     る
+
+   *src/{card.h，libcard.a} で機能を提供します*
+
+*** src/card.h の更新
+
+    test/test_card.c で宣言した card_no_new_from_string に関する
+    インタフェースの定義を，src/card.h に移し，定義の責任を src/ に移
+    します。
+
+    enum e_No の値も TWO~ACEまでにします.
+
+#+BEGIN_SRC c :tangle babel/simple/no_new/src/card.h.0
+// src/card.h (追加)
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+
+enum e_No card_no_new_from_string(char *);
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/no_new/src :exports none
+cp card.h.0 card.h
+
+#+END_SRC
+
+#+RESULTS:
+
+*** test/test_card.cの変更
+
+    test/test_card.c から card_no_new_from_string に関する宣言を消しま
+    す。
+
+#+BEGIN_SRC c :tangle babel/simple/no_new/test/test_card.c.1
+// test/test_card.c.1
+# include <cutter.h>
+# include <card.h>
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+
+#+END_SRC
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/ :exports none
+# 先生だけのコード
+(cp test/test_card.c.1 test/test_card.c)
+#+END_SRC
+
+#+RESULTS:
+
+*** card_no_new_from_string の実装 (src/card.c の更新)
+
+    番号を表す文字列から，内部番号にする関数 card_no_new_from_string
+    を実装します.
+
+    - src/card.h 中の，下記インタフェースの宣言
+
+#+BEGIN_SRC C
+
+// src/card.h
+enum e_No card_no_new_from_string(char *);
+
+#+END_SRC
+
+      から入口と出口コードを書きます.
+
+      引数に名前をつけ， 戻り値の型を指定し，戻り値をリターンするコード
+      を書きます:
+
+#+BEGIN_SRC c
+
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no;
+
+  return (enum e_No) no;
+}
+
+#+END_SRC
+
+   番号を表す文字列から数値を計算するコードは，例えば，つぎのように
+   なります。
+
+   - 整数値文字列を整数にするためのライブラリ関数 int atoi(char *) を使
+     います:
+
+#+BEGIN_SRC c
+  int no = atoi(no_str);
+#+END_SRC
+
+   - 1~13 の数値を，2~14 の数値に変換し，おかしな値がないかチェックし
+     ます
+
+#+BEGIN_SRC c
+  if (no==1)  no = ACE;
+
+  if ( no < TWO || ACE < no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+
+#+END_SRC
+
+   全体を合わせて:
+    
+#+BEGIN_SRC c :tangle babel/simple/no_new/src/card.c.0
+
+// src/card.c
+# include <stdio.h>
+# include <string.h>
+# include <card.h>
+
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
+
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
+
+  if (no==1)  no = ACE;
+
+  if ( no < TWO || ACE < no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No) no;
+}
+
+#+END_SRC
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/ :exports none
+# 先生だけのコード
+(cp src/card.c.0 src/card.c)
+#+END_SRC
+
+#+RESULTS:
+
+*** src/Makefile
+
+    src/card.h と src/card.c から src/card.o を作成し，src/card.o から
+    src/libcard.a を作成するルールに変更はありません。
+
+    なので，Makefileにルール変更はありません。
+    
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/src :exports both
+# ~/progs/card_display/simple/src
+make card.o
+#+END_SRC
+
+#+RESULTS:
+: gcc card.c -g -c -fPIC -I. 
+
+    実装コードに間違いがなければ， src/card.o ができて成功します。
+
+    src/card.o ができない場合，src/card.c に間違いあるか，Makefile に
+    間違いがあります。エラー箇所を特定し，エラーを取り除いてください。
+
+    src/card.o ができれば， src/libcard.a を作成します:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/src
+# ~/progs/CardDisplay/simple/src
+make libcard.a
+#+END_SRC
+
+#+RESULTS:
+: rm -f libcard.a
+: ar r libcard.a card.o
+
+    Makefileが正しければ，これは成功します。libcard.a の中身を確かめてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/src :exports both
+# ~/progs/CardDisplay/simple/src
+nm libcard.a
+#+END_SRC
+
+#+RESULTS:
+: 
+: card.o:
+:                  U _GLOBAL_OFFSET_TABLE_
+:                  U atoi
+: 000000000000008b T card_no_new_from_string
+: 0000000000000000 T card_suit_new_from_string
+:                  U fprintf
+:                  U stderr
+:                  U strcmp
+
+
+    T card_no_new_from_string， T card_suit_new_from_string で関数が定
+    義されているのがわかります。
+
+*** テスト test/test_card.so の再ビルド
+
+    src/libcard.a が更新できたので，次は libcard.a をリンクし直して，
+    test/test_card.so を更新します。
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/test :exports both
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+#+END_SRC
+
+#+RESULTS:
+rm -f *.o *.so *~ \#* *.gch
+gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+
+
+** テスト
+
+   機能の実装が終り，テストもビルドできました。
+
+   これからは，機能が要求を満たすことを確かめるためにテストし，テスト
+   が失敗した場合は，test/test_card.c, src/{card.h, card.c} を修正
+   していくことになります。
+
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/ :exports both
+# ~/progs/card_display/simple
+make
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+(cd src; make)
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/src' に入ります
+make[1]: `libcard.a' は更新済みです
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/src' から出ます
+(cd test; make)	
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/test' に入ります
+make[1]: `test_card.so' は更新済みです
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/test' から出ます
+cutter -v v test/
+test_card:
+  test_card_no_new_from_string:				.: (0.000075)
+  test_card_suit_new_from_string:			.: (0.000038)
+
+Finished in 0.000531 seconds (total: 0.000113 seconds)
+
+2 test(s), 9 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+#+end_example
+
+   となればテスト成功です。
+
+   失敗した場合，失敗した関数を特定し，原因がテスト側
+   (test/test_card.c) なのか， 実装側 (src/card.c) なのか，
+   インタフェース (src/card.h) なのか，特定してし，
+   失敗の原因を取り 除いてください。
+   
+
+*** テストと再設計
+
+   この節でおこなったこと:
+
+   - 新たな機能の要求 card_no_new_from_string があり，
+   - test/test_card.c に新らしいテスト関数を作成し，
+   - src/card.h に新たな機能のインターフェイス宣言を付け加え，
+   - src/card.c にその機能の実装を付け加えた

@@ -1,0 +1,2 @@
+# ~/progs/card_display/simple/test
+make test_card.o

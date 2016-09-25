@@ -1,0 +1,29 @@
+#+BEGIN_SRC makefile :tangle Makefile
+
+subdirs = card-display tdd-card-display-simple what-is-tdd memos
+Docs = index.org emacs-setup.org oo.org ruby_begin.org 
+
+all:
+	make index.html
+	(cd card-display; make)
+	(cd tdd-card-display-simple; make)
+	(cd what-is-tdd; make)
+	(cd memos; make)
+
+
+.SUFFIXES: .org .html
+.org.html: ../info/common-header.org contents.org 
+	org2html $<
+
+index.html:
+
+.PHONY: clean
+clean:
+	rm *.html
+	rm */*.html
+
+
+#+END_SRC
+
+
+

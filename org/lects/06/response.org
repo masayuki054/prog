@@ -1,0 +1,12 @@
+
+** カード
+
+   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2015/card-06.pdf][card-06.pdf]]
+
+** 感想
+   - むずかしい
+   - レポートができそうにない
+   
+** 要望
+
+

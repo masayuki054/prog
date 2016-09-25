@@ -1,0 +1,15 @@
+
+** Done lects/supplyments/の作成
+   CLOSED: [2015-12-22 火 07:13]
+   講義の補足内容を置く予定
+
+** Done lects/supplyments.org, supplyments-contents.orgの作成
+   CLOSED: [2015-12-22 火 07:13]
+   講義の補足内容を置く予定
+
+** Done lects/supplyments/make-diff.org を作成
+   CLOSED: [2015-12-22 火 07:13]
+   diff の使い方，見方
+   makefile の違いから意味を知る
+
+  

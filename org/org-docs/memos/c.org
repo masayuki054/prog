@@ -1,0 +1,32 @@
+* C言語あれこれ
+
+** 共有ライブラリーを解剖する
+
+   [[http://www.ibm.com/developerworks/jp/linux/library/l-shlibs/][共有ライブラリーを解剖する]]
+
+** ライブラリの作り方
+   - 動的ライブラリ 作り方
+     [[http://d.hatena.ne.jp/sleepy_yoshi/20090510/p1][gccを用いたCの共有ライブラリの作り方 - 睡眠不足？！]]
+
+     CFLAGS = -fPIC
+     LDFLAGS = --shared
+
+   - 静的ライブラリ 作り方
+     [[http://qiita.com/edo_m18/items/b9765ff3313d5a13f82f][共有ライブラリと静的ライブラリを整理する - Qiita]]
+
+     ar r
+
+** Cコンパイラのオプション
+
+   : -I<include_path>, C_INCLUDE_PATH環境変数
+   : -L<library_path>, LIBRARY_PATH環境変数
+   : -l<libname>, 
+ 
+** ヘッダファイルを二回インクルードしない
+
+   : # pragma once
+
+
+
+
+

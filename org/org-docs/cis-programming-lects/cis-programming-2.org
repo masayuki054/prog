@@ -1,0 +1,82 @@
+# # Time-stamp: <2015-09-30 19:39:01 m>
+
+* プログラム言語及び演習II 実施順
+  
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?1%E5%9B%9E%E7%9B%AE][1回目]] -- 7 ポインタ
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?2%E5%9B%9E%E7%9B%AE][2回目]] -- 8.1 配列の基本，8.2 配列とアドレス, 8.3 多次元配列
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?3%E5%9B%9E%E7%9B%AE][3回目]] -- 8.4 文字と文字列，8.5 文字配列，8.6 文字の入力
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?4%E5%9B%9E%E7%9B%AE][4回目]] -- 8.6 文字の入力, 8.7 文字列の加工, 8.8 文字列ポインタを配列
+  にする，8.9 コマンド・ライン引数，
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?5%E5%9B%9E%E7%9B%AE][5回目]] -- 8.10 関数に配列を渡す，9.1 構造体の宣言，9.2 構造体メンバ
+  へのアクセス方法，9.3 構造体の配列
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?6%E5%9B%9E%E7%9B%AE][6回目]] -- ポインタの復習
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?7%E5%9B%9E%E7%9B%AE][7回目]] -- 9.4 構造体へのポインタ, 9.5 新しい型を定義する，9.6 メンバ
+  に同じ型へのポインタを持つ構造体, 9.7 共用体
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?8%E5%9B%9E%E7%9B%AE][8回目]] -- 10 ファイル入出力
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?9%E5%9B%9E%E7%9B%AE][9回目]] -- 10 ファイル入出力 (ランダムアクセス)
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE][a回目]] -- 11 高度なプロラミング，11.1 ポインタを返す関数， 11.2 関数
+  へのポインタ，11.3 可変個の引数を持つ関数, 11.4 メモリの動的確保，
+  11.5 確保領域の大きさを変更する
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?11%E5%9B%9E%E7%9B%AE][b回目]] -- 11.6 分割コンパイル，ヘッダファイル
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE][c回目]] -- 11.7 プリプロセッサ, make
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?13%E5%9B%9E%E7%9B%AE][d回目]] -- 応用プログラミング
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?14%E5%9B%9E%E7%9B%AE][e回目]] -- 応用プログラミング
+
+
+* プログラム言語及び演習II 項目順
+
+** 配列
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?2%E5%9B%9E%E7%9B%AE][2回目]] -- 8.1 配列の基本，8.2 配列とアドレス, 8.3 多次元配列
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?3%E5%9B%9E%E7%9B%AE][3回目]] -- 8.4 文字と文字列，8.5 文字配列，8.6 文字の入力
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?4%E5%9B%9E%E7%9B%AE][4回目]] -- 8.6 文字の入力, 8.7 文字列の加工, 8.8 文字列ポインタを配列
+  にする，8.9 コマンド・ライン引数，
+
+
+** 構造体
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?5%E5%9B%9E%E7%9B%AE][5回目]] -- 8.10 関数に配列を渡す，9.1 構造体の宣言，9.2 構造体メンバ
+  へのアクセス方法，9.3 構造体の配列
+
+
+** ポインタ
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?1%E5%9B%9E%E7%9B%AE][1回目]] -- 7 ポインタ
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?6%E5%9B%9E%E7%9B%AE][6回目]] -- ポインタの復習
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE][a回目]] -- 11.1 ポインタを返す関数， 11.2 関数
+  へのポインタ，11.3 可変個の引数を持つ関数, 
+
+
+** 型の定義
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?7%E5%9B%9E%E7%9B%AE][7回目]] -- 9.4 構造体へのポインタ, 9.5 新しい型を定義する，9.6 メンバ
+  に同じ型へのポインタを持つ構造体, 9.7 共用体
+
+
+** ファイル入出力
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?8%E5%9B%9E%E7%9B%AE][8回目]] -- 10 ファイル入出力
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?9%E5%9B%9E%E7%9B%AE][9回目]] -- 10 ファイル入出力 (ランダムアクセス)
+
+
+** 動的メモリ確保
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE][a回目]] -- 11.4 メモリの動的確保，11.5 確保領域の大きさを変更する
+
+
+** 分割コンパイル
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?11%E5%9B%9E%E7%9B%AE][b回目]] -- 11.6 分割コンパイル，ヘッダファイル
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE][c回目]] -- 11.7 プリプロセッサ,
+
+
+** make
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE][c回目]] -- make
+
+
+** 実践的なデータ処理プログラム
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?13%E5%9B%9E%E7%9B%AE][d回目]] -- 応用プログラミング
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog2/pukiwiki/index.php?14%E5%9B%9E%E7%9B%AE][e回目]] -- 応用プログラミング
+
+

@@ -1,0 +1,15 @@
+* shell
+** ディレクトリ
+   : ((% cd %))
+   : ((% cd ~/ %))
+   : ((% cd ~suzuki/ %))
+
+   : ((% mkdir hoge/hage %))
+   : ((% ls -R %))
+
+** ファイル
+   : ((% mv a b %))
+   : ((% rm a %))
+   : ((% touch a %))
+
+   

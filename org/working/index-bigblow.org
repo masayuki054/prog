@@ -1,0 +1,20 @@
+#+include: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+OPTIONS: H:6 toc:nil num:nil
+#+include: contents.org 
+#+TITLE: include/bigblow を試す
+* わかったこと
+  - title は追加される
+    - ので，common-header で主タイトル，そのドキュメントでサブタイトル
+      を指定することに，した。<2015-10-11 Sun>
+  - 
+
+
+
+
+include 
+* 
+#+include: c1.org
+
+* 
+#+include: c2.org

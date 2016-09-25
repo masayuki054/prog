@@ -1,0 +1,70 @@
+* card_display_multi 
+
+card_display_multi の解の例
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <card.h>
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+  
+  for(i=0; i<argc; i++)
+    {
+      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+			  card_no_new_from_string(argv[i]++));
+      no_cards++;
+    }
+  for(i=0; i<no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+#+END_SRC
+
+上記プログラムで，下記の部分はカードの構造が見え，生々しい気がします:
+#+BEGIN_SRC c
+      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+			  card_no_new_from_string(argv[i]++));
+#+END_SRC
+
+card_to_stringと同じレベルで反対の機能 card_new_from_string がいい設計
+かもしれません。
+
+: Card card_new_from_string(char *suit_str, char *no_str);
+
+を定義すれば，プログラム全体は下記のようになります:
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <card.h>
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+  
+  for(i=0; i<argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+  for(i=0; i<no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+#+END_SRC
+
+こうすることで，入力 (card_new_from_string) と 出力 (card_to_string)
+が対称的になり，
+
+この設計変更を受け入れれば，card_new_from_string を開発することになり
+ます。
+

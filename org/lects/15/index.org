@@ -1,0 +1,10 @@
+#+setupfile: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+TITLE: 15回目とその後
+
+#+include: contents.org
+
+
+
+
+

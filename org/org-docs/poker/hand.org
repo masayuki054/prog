@@ -1,0 +1,342 @@
+* 手札について考える
+
+** 手札の機能
+
+   [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E6%89%8B%E6%9C%AD%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E8%A8%AD%E8%A8%88][Prog Wikky - 手札モジュールの設計]] も参考にしてください。
+ 
+*** ゲームの説明から手札に関する部分を取り出す
+   
+     - 手札(5枚のカード) を配り，
+       - 山から引いたカードを (ここは手札には関係ないが)
+       - 手札に入れ，
+       - 手札をソートする
+
+     - 2回までの手札の交換後，
+       - 手札のカードを引き，
+       - そのカードを捨て，
+       - 山から引いたカードを (ここは手札には関係ないが)
+       - 手札に入れ，
+       - 手札をソートする
+
+     - 手札役の強い順にプレーヤ名を表示する 
+       - 手札の *役* 判定
+       - プレーヤーは関係なし
+
+    手札に関する説明に出てくる「もの」達は，「役」以外既知のもの。
+
+    「役」をどう扱うかは，要検討。
+
+
+*** 手札モジュールの機能
+
+    モジュールはポーカーの手札(という概念／機能) を提供する． 
+
+    それは以下：
+    - 手札は5枚のカードの集まり．
+    - 手札に一枚加える
+    - 手札から選んだ一枚を引き抜く
+    - 手札のソート
+    - 手札の役を計算する
+
+    入出力に関する機能
+    - 手札の表示
+    - 役の名前
+
+    これで，必要充分なのか，足りないのか，余計なものがあるのか考えます
+    が，テスト駆動開発では，仕様の変更を恐れず，開発を進めながら，考え
+    ていきます。
+
+** 機能の設計
+
+*** 機能の名前
+
+    先ず，機能の説明から，その機能に名前をつけましょう。
+
+    今回の開発では，主体と操作を結合して名前を決めることにしています。
+
+**** 手札を作ることに関する機能達
+
+手札はこのモジュールの主体である *もの*。
+*もの* はデータ構造となり， 型 (または実体(変数)) となります。
+
+手札の英語名は，hand。
+これがモジュールを纏める主体となります。 hand を*モジュールの名前*とし
+ます。
+
+操作には，主体が手札であることを表す hand_ を付けることにしています。
+
+- 手札 - *Hand*
+  - 手札は最大5枚のカードの集まり。
+
+- 空の手札を作る - *hand_new*
+  - 主体 ： 手札 hand
+  - 操作 ： 空の手札を作る new
+
+- 手札の枚数を計算する - *hand_size*
+  - 主体 ： 手札 hand
+  - 操作 ： 手札の枚数 size
+
+**** 手札に一枚加える/引く機能達
+
+- 手札に一枚加える - *hand_add*
+  - 主体 ： 手札 hand
+  - 操作 ： カードを加える add
+
+- 手札から選んだ一枚を引き抜く - *hand_draw*
+  - 主体 ： 手札 hand
+  - 操作 ： カードを引く draw
+
+**** 手札の全カードを扱う機能達
+
+- 手札のソート - *hand_sort*
+  - 主体 ： 手札 hand
+  - 操作 ： 手札をソート sort
+
+
+- 手札を文字列に - *hand_to_string*
+  - 主体 ： 手札 hand
+  - 操作 ： 手札を文字列に (convert_)to_string. 長いし，曖昧性がないの
+    で，convert_を省略します。
+
+**** 役に関する機能達
+
+役の英語訳は，poker hand.
+役は手札に関する付加情報と考え，モジュールを構成する主体とは考えなかっ
+た。
+
+- 手札の役を計算する - *hand_calc*
+  - 主体 ： 手札 hand
+  - 操作 ： 役の計算 calc
+
+    下請けの関数として，が考えられるが，今は詳細として，隠しておき，
+    hand_calc のテスト駆動開発の時に，検討しましょう:
+    - hand_is_straight -- 手札はストレートか？
+    - hand_is_flush -- 手札はフラッシュか？
+    - hand_calc_pairs -- ペアを計算する
+
+- 役 *PokerHand* (物)
+  - 役のこと，いくつか具体的な役の名前の集まり
+  - なので型
+  - 型は capital words で表すので，_P_oker_H_and.
+
+
+- 役を文字列に - *hand_pokerhand_to_string*
+  - 主体 ： hand? 
+  - 操作 ： 役を文字列に pokerhand_to_string
+    
+
+*** インタフェースを考える (deckと同じ)
+
+    機能が操作の場合
+    - 機能は箱，箱への入力と，箱からの出力を考える
+    - 入力と出力が何であるか決める
+
+    機能が物の場合
+    - 機能は箱，箱の中身を考える。
+    - 何からできているかを決める
+ 
+*** 機能のインタフェース
+
+    主体，操作から機能の名前は決まっています。あとは，対象物と，操作の
+    結果の型を洗いだしていきます。
+
+**** 手札
+
+     手札とは
+     - カードと枚数からなる。したがって，手札は構造体。
+     - ゲーム中，手札は，いくつも存在する。変数ではなく，型となる。型
+       名は，最初の一文字を大文字で表す (capital word) ことにしていま
+       す。 Hand とします。
+     - 構造体の中身は，テスト駆動開発時の機能の実装を行なうときに，考
+       えることにします。
+
+     これらのことから，Hand は下記のようにC言語の宣言で書くことができま
+     す: 
+
+      #+BEGIN_SRC c
+      typedef struct _Hand Hand;
+      #+END_SRC
+
+**** hand_new 
+
+空の手札を作る     
+
+
+- 主体 ： 手札 hand
+- 操作 ： 空の手札を作る new
+- 対象物 ： なし
+- 結果 ： Hand
+
+#+BEGIN_SRC c
+
+Hand hand_new(void);
+
+#+END_SRC
+
+**** hand_size 
+手札の枚数を計算する
+- 主体 ： 手札 hand
+- 操作 ： 手札の枚数 size
+- 対象物 ： 手札
+- 結果 ： 枚数 int
+
+#+BEGIN_SRC c
+
+int hand_size(Hand);
+
+#+END_SRC
+
+**** hand_add
+手札に一枚カードを加える
+- 主体 ： 手札 hand
+- 操作 ： カードを加える add
+- 対象物 ： 手札に，カードを (Hand, Card)
+- 結果 ： 一枚カードが付加えられた手札 Hand
+
+#+BEGIN_SRC c
+
+Hand hand_add (Hand, Card);
+
+#+END_SRC
+
+**** hand_draw
+手札から選んだ一枚を引き抜く
+- 主体 ： 手札 hand
+- 操作 ： カードを引く draw
+- 対象物 ： 手札から，指定したカードを (Hand, どの手札か)
+- 結果 ： 一枚カードが引かれた手札 Hand
+
+#+BEGIN_SRC c
+
+Hand hand_draw (Hand, int);
+
+#+END_SRC
+
+**** hand_sort
+手札の5枚のカードをソート
+- 主体 ： 手札 hand
+- 操作 ： 手札の全カードをソート sort
+- 対象物 ： 手札 (Hand)
+- 結果 ： ソートされた手札 Hand
+
+#+BEGIN_SRC c
+
+Hand hand_sort(Hand);
+
+#+END_SRC
+
+**** hand_to_string
+手札を文字列に
+- 主体 ： 手札 hand
+- 操作 ： 手札を表す文字列を作る to_string
+- 対象物 ： 手札 (Hand)
+- 結果 ： 文字列 char *
+
+#+BEGIN_SRC c
+
+char *hand_to_string(Hand);
+
+#+END_SRC
+
+**** hand_calc
+手札の役を計算する
+- 主体 ： 手札 hand
+- 操作 ： 手札のソート sort
+- 対象物 ： 手札 (Hand)
+- 結果 ： 役 PokerHand
+
+#+BEGIN_SRC c
+
+PokerHand hand_calc(Hand);
+
+#+END_SRC
+
+**** PokerHand (物)
+役(値)の集まり
+
+- HighCards, OnePair, TwoPairs, ThreeCards, Straight, Flush,
+  FullHouse, FourCards, StraightFlush
+
+#+BEGIN_SRC c
+
+enum PokerHand { HighCards, OnePair, TwoPairs, ThreeCards, Straight, Flush,
+		 FullHouse, FourCards, StraightFlush };
+
+#+END_SRC
+
+**** poker_hand_to_string
+役値を文字列に
+- 主体 ： 手札 hand
+- 操作 ： 役を表す文字列を作る pokerhand_to_string
+- 対象物 ： 役 (PokerHand)
+- 結果 ： 文字列 char *
+
+#+BEGIN_SRC c
+
+char *hand_pokerhand_to_string (PokerHand);
+
+#+END_SRC
+
+
+* 開発の決まり (deckとほぼ同じ)
+
+** 開発ディレクトリ
+
+   ~/progs/game/hand/{./, src/, test/} が開発に必要なディレクトリです。
+
+
+** 開発リポジトリ
+
+   hand の内容は，来週の講義後，アップします。
+
+** 他のモジュールを利用するための決まり
+
+   deckと同じ
+
+** Makefileの準備
+
+   - hand/Makefile
+     - deck/Makefile がそのまま使えるはずですよね。
+
+   - hand/test/Makefile
+     - deck/test/Makefile の deck を hand に置き換えれば，そのまま使え
+       そうです。
+
+   - hand/src/Makefile
+     - deck/src/Makefile の deck を hand に置き換えれば，そのまま使え
+       そうです。
+
+   確かめながら，それぞれの Makefile を作成してください。
+       
+** テスト駆動開発の一サイクルのテンプレート 
+
+   deckとほぼ同じ
+
+
+* 手札のテスト駆動開発
+
+  deck モジュールを参考に，一つづつテスト駆動開発してみましょう。
+
+  一つづつ機能ができ，集まって hand の機能群 (モジュール)になり，
+
+  モジュール群の開発が徐々に行なわれ，手札の操作，役判定ができ，だんだ
+  んゲームができそうな雰囲気がでてくるはずです。
+  
+  開発については，レポートにします。
+
+* 作成された手札モジュールの解説
+
+#+include: hand-srcs.org :minlevel 3
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,36 @@
+* card_display_sort (準備中@<2015-12-01 火>)
+
+
+** 複数のカードをソートする機能
+
+一枚のカードの機能をもとに，
+
+:  Card * cards_sort(Card *，int)
+
+を開発しましょう。
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <card.h>
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+  
+  for(i=0; i<argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+
+  cards_sort(cards);
+  
+  for(i=0; i<no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+#+END_SRC

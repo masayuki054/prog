@@ -1,0 +1,22 @@
+* ソフトウェア構成論の受講の準備
+** 開発ディレクトリ
+   ~/progs
+   ~/progs/{Reports,Game,Card_Display}
+
+** Wiki
+   - htp://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi をブックマーク
+   - {cis prog} Google検索
+
+   Wikiの見方
+   
+** C言語
+   
+** 開発環境
+*** Emacs
+*** make
+*** GCC
+*** シェルとスクリプト
+*** 
+** 連絡方法
+   - suzuki@cis.iwate-u.ac.jp
+   - 6

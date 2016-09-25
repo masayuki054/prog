@@ -1,0 +1,2258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ソフトウェア構成論 講義への補足</title>
+<!-- 2016-02-02 火 13:28 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 講義への補足</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">補足</a></li>
+<li><a href="#sec-2">講義への補足</a></li>
+<li><a href="#sec-3">講義への補足 2016-01-19</a>
+<ul>
+<li><a href="#sec-3-1">handモジュール開発文書の作成</a>
+<ul>
+<li><a href="#sec-3-1-1">Hand モジュールの開発 2016/02/02</a>
+<ul>
+<li><a href="#sec-3-1-1-1">01/26の説明への変更</a>
+<ul>
+<li><a href="#sec-3-1-1-1-1">インタフェースの変更</a></li>
+<li><a href="#sec-3-1-1-1-2">judge 機能を独立に</a>
+<ul>
+<li><a href="#sec-3-1-1-1-2-1">ファイルの追加</a></li>
+<li><a href="#sec-3-1-1-1-2-2">Makefileの変更</a></li>
+<li><a href="#sec-3-1-1-1-2-3">ペアの計算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3-1-2">Hand モジュールの開発 2016/01/26</a>
+<ul>
+<li><a href="#sec-3-1-2-1">おことわり</a></li>
+<li><a href="#sec-3-1-2-2">Deckモジュール開発からHandモジュール開発へ</a>
+<ul>
+<li><a href="#sec-3-1-2-2-1">先生のDeck開発文書のcopy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">講義への補足 2016-01-12</a>
+<ul>
+<li><a href="#sec-4-1">講義いままで，これから</a>
+<ul>
+<li><a href="#sec-4-1-1">講義の眺望 @ prog.org</a>
+<ul>
+<li><a href="#sec-4-1-1-1">機能とテスト</a></li>
+<li><a href="#sec-4-1-1-2">機能とモジュール</a></li>
+<li><a href="#sec-4-1-1-3">テスト駆動開発</a></li>
+<li><a href="#sec-4-1-1-4">カード表示問題とテスト駆動開発</a></li>
+<li><a href="#sec-4-1-1-5">ポーカーゲーム開発</a>
+<ul>
+<li><a href="#sec-4-1-1-5-1">Card</a></li>
+<li><a href="#sec-4-1-1-5-2">Deck</a></li>
+<li><a href="#sec-4-1-1-5-3">Hand</a></li>
+<li><a href="#sec-4-1-1-5-4">Player</a></li>
+<li><a href="#sec-4-1-1-5-5">Poker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4-2">開発の構造</a>
+<ul>
+<li><a href="#sec-4-2-1">card_display_simple問題の開発木構造</a></li>
+<li><a href="#sec-4-2-2">deck モジュールの開発木構造</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">deck/src/Makefile</a></li>
+<li><a href="#sec-4-4">game/deck/src/Makefileの説明</a>
+<ul>
+<li><a href="#sec-4-4-1">全体</a></li>
+<li><a href="#sec-4-4-2">各部分の説明</a>
+<ul>
+<li><a href="#sec-4-4-2-1"></a></li>
+<li><a href="#sec-4-4-2-2">gameプロジェクトの決まりを変数で表す</a></li>
+<li><a href="#sec-4-4-2-3">Cコンパイラへの指示</a></li>
+<li><a href="#sec-4-4-2-4">ローダへの指示</a></li>
+<li><a href="#sec-4-4-2-5">libdeck.a の作成規則</a></li>
+<li><a href="#sec-4-4-2-6">deck モジュールの提供規則</a></li>
+<li><a href="#sec-4-4-2-7">deck ソースプログラムのコンパイル</a></li>
+<li><a href="#sec-4-4-2-8">src ディレクトの掃除</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">講義への補足 2015-12-22</a>
+<ul>
+<li><a href="#sec-5-1">Makefile (card_display/simple)</a>
+<ul>
+<li><a href="#sec-5-1-1">src/Makefile</a></li>
+<li><a href="#sec-5-1-2">test/Makefile</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-2">card/deck 用 Makefile との違い</a>
+<ul>
+<li><a href="#sec-5-2-1">card_display/simple/src/Makefile と game/card/src/Makefile の違い</a></li>
+<li><a href="#sec-5-2-2">card_display/simple/test/Makefile と game/card/test/Makefile の違い</a></li>
+<li><a href="#sec-5-2-3">game/card/src/Makefile と game/deck/src/Makefile の違い</a></li>
+<li><a href="#sec-5-2-4">game/card/test/Makefile と game/deck/test/Makefile の違い</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-6">講義への補足</a>
+<ul>
+<li><a href="#sec-6-1">ghc問題</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">説明</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-7-0-1">抽象化</a></li>
+<li><a href="#sec-7-0-2">情報隠蔽</a></li>
+<li><a href="#sec-7-0-3">関数の意味</a>
+<ul>
+<li><a href="#sec-7-0-3-1">関数と抽象化</a></li>
+<li><a href="#sec-7-0-3-2">関数の内と外の間の壁</a></li>
+<li><a href="#sec-7-0-3-3">動作</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-0-4">シンプルであること (by George Whitesides)</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-1">昔のガイダンス</a>
+<ul>
+<li><a href="#sec-7-1-1">動機付け</a>
+<ul>
+<li><a href="#sec-7-1-1-1">プログラムがかけるようになりたい</a></li>
+<li><a href="#sec-7-1-1-2">面白いプログラムがかきたい</a></li>
+<li><a href="#sec-7-1-1-3">正しいプログラムを書きたい</a></li>
+<li><a href="#sec-7-1-1-4">大規模なプログラム開発ができるようになりたい</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-1-2">プログラム開発の肝</a>
+<ul>
+<li><a href="#sec-7-1-2-1">プログラムの構成要素とその働きを理解すること</a></li>
+<li><a href="#sec-7-1-2-2">データの表現ができること</a></li>
+<li><a href="#sec-7-1-2-3">関数の働きを理解すること</a></li>
+<li><a href="#sec-7-1-2-4">名前の見せ方・隠し方を理解すること</a></li>
+<li><a href="#sec-7-1-2-5">コンパイル，リンク，実行</a></li>
+<li><a href="#sec-7-1-2-6">デバッグ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-8">今日のemacs</a>
+<ul>
+<li><a href="#sec-8-1">コマンド</a></li>
+<li><a href="#sec-8-2">話題</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">今日のorg</a></li>
+<li><a href="#sec-10">講義内容へのpath</a></li>
+<li><a href="#sec-11">技術的なこと</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-11-0-1">モジュール関連技術</a>
+<ul>
+<li><a href="#sec-11-0-1-1">モジュールとは部品</a>
+<ul>
+<li><a href="#sec-11-0-1-1-1">モジュール</a></li>
+<li><a href="#sec-11-0-1-1-2">部品，</a></li>
+<li><a href="#sec-11-0-1-1-3">インタフェース</a></li>
+<li><a href="#sec-11-0-1-1-4">部品の利用</a></li>
+<li><a href="#sec-11-0-1-1-5">部品の提供</a></li>
+<li><a href="#sec-11-0-1-1-6">Ubuntu/C言語を使ったモジュールプログラミング</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-11-0-2">C-programming</a></li>
+<li><a href="#sec-11-0-3">emacs org-mode</a></li>
+<li><a href="#sec-11-0-4">emacs</a></li>
+<li><a href="#sec-11-0-5">emacs org-mode+babel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-12">文書の書き方，見え方などへの補足説明</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-12-0-1">ページ内容の折り畳みと展開</a></li>
+<li><a href="#sec-12-0-2">title((cis.org s.org))</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフト
+ウェア構成論</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a>
+/  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義
+ドキュメント</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">ポー
+カーゲームの開発</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html">repos</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">補足</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+ここは，その日の講義に必要な補足的な説明や情報を置くところです。
+講義中にも書くかもしれませんし，以前の講義のためのものも残っています。
+書き溜めていけたらと思います。
+</p>
+
+
+<p>
+最近書き加えた内容です:
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">講義への補足</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-02-02&gt;</span></span> 「handモジュール開発文書の作成」に追記しました。
+</li>
+
+<li><a href="#sec-3">講義への補足 2016-01-19</a> handモジュールの開発について
+</li>
+
+<li><a href="#sec-4">講義への補足 2016-01-12</a> deckモジュールの開発について
+</li>
+
+<li><a href="#sec-4">講義への補足 2016-01-12</a>
+
+<ul class="org-ul">
+<li>講義いままで，これから
+</li>
+
+<li>card_display_simple 問題の開発構造木
+</li>
+
+<li>deck モジュールの開発構造木
+</li>
+
+<li>deck/src/Makefile の解説
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li><a href="#sec-5">講義への補足 2015-12-22</a>
+
+<ul class="org-ul">
+<li>Makefile と diff
+</li>
+</ul>
+</li>
+
+<li><a href="#sec-6-1">ghc問題</a> <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">講義への補足 2016-01-19</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">handモジュール開発文書の作成</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">Hand モジュールの開発 2016/02/02</h4>
+<div class="outline-text-4" id="text-3-1-1">
+</div><div id="outline-container-sec-3-1-1-1" class="outline-5">
+<h5 id="sec-3-1-1-1">01/26の説明への変更</h5>
+<div class="outline-text-5" id="text-3-1-1-1">
+</div><div id="outline-container-sec-3-1-1-1-1" class="outline-6">
+<h6 id="sec-3-1-1-1-1">インタフェースの変更</h6>
+<div class="outline-text-6" id="text-3-1-1-1-1">
+<p>
+先週名前を決めましたが，しっくりこないので，変更したいです:
+</p>
+
+<ul class="org-ul">
+<li><code>hand_card</code> を追加
+<pre class="example">
+Card hand_card(Hand, int);
+</pre>
+</li>
+
+<li><code>hand_calc</code> <code>&gt; =hand_judge</code> 名前の変更
+</li>
+<li><code>poker_hand_to_string</code> =&gt; =hand_pokerhand_to_string = 名前の変更
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-1-1-2" class="outline-6">
+<h6 id="sec-3-1-1-1-2">judge 機能を独立に</h6>
+<div class="outline-text-6" id="text-3-1-1-1-2">
+<p>
+役判定に関する機能を纏めることにしました。
+hand.c の中に全ての関数を詰め込まず，
+judge.c の中に役判定関係の関数を纏めることにします。
+</p>
+
+<p>
+モジュール内の * 機能(関数) * を，*ファイル単位* に纏めるというこ
+とです。
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-1-1-2-1" class="outline-7">
+<h7 id="sec-3-1-1-1-2-1">ファイルの追加</h7>
+<div class="outline-text-7" id="text-3-1-1-1-2-1">
+<ul class="org-ul">
+<li>src/judge.c
+<ul class="org-ul">
+<li>PokerHand hand_judge(Hand)
+<ul class="org-ul">
+<li>int hand_calc_pairs(Hand)
+</li>
+<li>bool hand_is_straight(Hand)
+</li>
+<li>bool hand_is_flush(Hand)
+</li>
+</ul>
+</li>
+<li>char *hand_pokerhand_to_string(PokerHand)
+</li>
+</ul>
+</li>
+
+<li>test/test_judge.c
+<ul class="org-ul">
+<li>void test_hand_judge()
+</li>
+<li>void test_hand_pokerhand_to_string()
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-1-1-1-2-2" class="outline-7">
+<h7 id="sec-3-1-1-1-2-2">Makefileの変更</h7>
+<div class="outline-text-7" id="text-3-1-1-1-2-2">
+<p>
+これに伴ない，src/, test/ の Makefile に変更が必要です。
+</p>
+
+<p>
+まず自分でMakefileを変更してみてください。
+後で，お手本を見せます。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-1-1-2-3" class="outline-7">
+<h7 id="sec-3-1-1-1-2-3">ペアの計算</h7>
+<div class="outline-text-7" id="text-3-1-1-1-2-3">
+<ul class="org-ul">
+<li>ある一枚のカードについて，
+</li>
+<li>そのカード自身を含め，5枚の手札について，
+</li>
+<li>同じ数のカードが，何枚あるか，
+</li>
+</ul>
+
+<p>
+を計算し，その値でペアの数を判別できます。
+</p>
+
+<p>
+それがどうして正しいかは，下記の２次元の表で考えるとよくわかりま
+す：
+</p>
+</div>
+
+
+<ul class="org-ul"><li><a id="sec-3-1-1-1-2-3-1" name="sec-3-1-1-1-2-3-1"></a>Highcardの場合は5<br  /><div class="outline-text-8" id="text-3-1-1-1-2-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="right">1</th>
+<th scope="col" class="right">2</th>
+<th scope="col" class="right">3</th>
+<th scope="col" class="right">4</th>
+<th scope="col" class="right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">2</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">3</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">4</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">5</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+
+<li><a id="sec-3-1-1-1-2-3-2" name="sec-3-1-1-1-2-3-2"></a>ThreeCardsの場合は11<br  /><div class="outline-text-8" id="text-3-1-1-1-2-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="right">1</th>
+<th scope="col" class="right">2</th>
+<th scope="col" class="right">3</th>
+<th scope="col" class="right">4</th>
+<th scope="col" class="right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">2</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">3</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">4</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">5</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+
+<li><a id="sec-3-1-1-1-2-3-3" name="sec-3-1-1-1-2-3-3"></a>Fullehouseの場合は13<br  /><div class="outline-text-8" id="text-3-1-1-1-2-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="right">1</th>
+<th scope="col" class="right">2</th>
+<th scope="col" class="right">3</th>
+<th scope="col" class="right">4</th>
+<th scope="col" class="right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">2</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">3</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">4</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="right">5</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li></ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2">Hand モジュールの開発 2016/01/26</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div><div id="outline-container-sec-3-1-2-1" class="outline-5">
+<h5 id="sec-3-1-2-1">おことわり</h5>
+<div class="outline-text-5" id="text-3-1-2-1">
+<p>
+時間が足りなく，この文書はまだ書きかけです。
+講義中に，書きながら進めたいと思います。
+</p>
+
+<p>
+この文書は，下記にあります：
+</p>
+
+<ul class="org-ul">
+<li>~suzuki/lects/prog/lects/supplyments/hand_dev.org 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2-2" class="outline-5">
+<h5 id="sec-3-1-2-2">Deckモジュール開発からHandモジュール開発へ</h5>
+<div class="outline-text-5" id="text-3-1-2-2">
+<p>
+先生のDeck開発文書を元に，自分のHand開発文書を作ってみましょう。
+文書を作ることが目的ではなく，開発を理解することが目的です。
+</p>
+
+<p>
+Deckの開発と，同じ所，違がう所を理解しましょう。
+</p>
+
+<p>
+文書は，emacs org-mode を使って書いてあります。皆さんが，org-mode
+を使うことは必須ではありません。
+</p>
+
+<p>
+最終的に，自分のHand開発文書ができると，うれしいと思います。
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-2-2-1" class="outline-6">
+<h6 id="sec-3-1-2-2-1">先生のDeck開発文書のcopy</h6>
+<div class="outline-text-6" id="text-3-1-2-2-1">
+<p>
+先生のpoker開発文書を全てcopyします:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">cd ~/progs/game/
+</pre>
+</div>
+
+<p>
+開発ドキュメント用ディレクトリの作成：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">mkdir -p ~/progs/game/doc
+</pre>
+</div>
+
+<p>
+先生のディレクトリをまるごとコピー：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">cd ~/progs/game/doc
+cp -Rp ~suzuki/lects/prog/org-docs/poker poker-dev
+</pre>
+</div>
+
+<p>
+先生の poker/ ディレクトリを，~/progs/game/doc/poker-dev (ぽーかー
+の開発の意)にコピー。
+</p>
+
+<p>
+poker-dev/deck.org を元に，自分の hand-dev.org を作りましょう。
+</p>
+
+<p>
+あとは，講義時間中に。
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">講義への補足 2016-01-12</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">講義いままで，これから</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1">講義の眺望 @ prog.org</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+2015.10回目 今迄やってきた事，これからやる事の意味
+</p>
+</div>
+
+<div id="outline-container-sec-4-1-1-1" class="outline-5">
+<h5 id="sec-4-1-1-1">機能とテスト</h5>
+<div class="outline-text-5" id="text-4-1-1-1">
+<ul class="org-ul">
+<li>プログラムを考える単位，関数
+</li>
+
+<li>正しさを考える単位，関数
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-2" class="outline-5">
+<h5 id="sec-4-1-1-2">機能とモジュール</h5>
+<div class="outline-text-5" id="text-4-1-1-2">
+<ul class="org-ul">
+<li>機能の集まり
+</li>
+
+<li>プログラム群を扱う
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-3" class="outline-5">
+<h5 id="sec-4-1-1-3">テスト駆動開発</h5>
+<div class="outline-text-5" id="text-4-1-1-3">
+<ul class="org-ul">
+<li>関数単位の開発
+</li>
+
+<li>反復的な開発
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-4" class="outline-5">
+<h5 id="sec-4-1-1-4">カード表示問題とテスト駆動開発</h5>
+<div class="outline-text-5" id="text-4-1-1-4">
+<ul class="org-ul">
+<li>問題の解法のための機能作り
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-5" class="outline-5">
+<h5 id="sec-4-1-1-5">ポーカーゲーム開発</h5>
+<div class="outline-text-5" id="text-4-1-1-5">
+</div><div id="outline-container-sec-4-1-1-5-1" class="outline-6">
+<h6 id="sec-4-1-1-5-1">Card</h6>
+<div class="outline-text-6" id="text-4-1-1-5-1">
+<ul class="org-ul">
+<li>機能の集まりとしての module
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-5-2" class="outline-6">
+<h6 id="sec-4-1-1-5-2">Deck</h6>
+<div class="outline-text-6" id="text-4-1-1-5-2">
+<ul class="org-ul">
+<li>module 設計
+</li>
+
+<li>機能の設計
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-5-3" class="outline-6">
+<h6 id="sec-4-1-1-5-3">Hand</h6>
+<div class="outline-text-6" id="text-4-1-1-5-3">
+<ul class="org-ul">
+<li>module 設計
+</li>
+
+<li>機能の設計
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-1-1-5-4" class="outline-6">
+<h6 id="sec-4-1-1-5-4">Player</h6>
+</div>
+
+<div id="outline-container-sec-4-1-1-5-5" class="outline-6">
+<h6 id="sec-4-1-1-5-5">Poker</h6>
+<div class="outline-text-6" id="text-4-1-1-5-5">
+<ul class="org-ul">
+<li>機能の組み合わせと利用
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">開発の構造</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1">card_display_simple問題の開発木構造</h4>
+<div class="outline-text-4" id="text-4-2-1">
+
+<div id="card_display/simple/2" class="figure">
+<p><a href="card_display_simple.png" alt="card_display/simple" title="card_display/simple"><img src="card_display_simple.png" alt="card_display/simple" title="card_display/simple" /></a>
+</p>
+<p><span class="figure-number">&#22259;1: </span> card_display_simple 問題と card モジュール開発</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2">deck モジュールの開発木構造</h4>
+<div class="outline-text-4" id="text-4-2-2">
+
+<div id="deck_module" class="figure">
+<p><a href="deck_dev.png" alt="deck module" title="deck module"><img src="deck_dev.png" alt="deck module" title="deck module" /></a>
+</p>
+<p><span class="figure-number">&#22259;2: </span> game開発とcardモジュール/deckモジュール</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">deck/src/Makefile</h3>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">game/deck/src/Makefileの説明</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+game/deck/src/Makefile について説明します:
+</p>
+</div>
+
+<div id="outline-container-sec-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1">全体</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<div class="org-src-container">
+
+<pre class="src src-c">.PHONY: clean install
+
+PROJ_HOME=/home/staff/suzuki/progs/game
+
+PROJ_INCLUDE=${PROJ_HOME}/include
+PROJ_LIB=${PROJ_HOME}/lib
+
+CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
+
+LDFLAGS = -lc
+
+libdeck.a: deck.o 
+	rm -f $@
+	ar r $@ $^
+
+install: libdeck.a deck.h
+	cp libdeck.a ${PROJ_LIB}
+	cp deck.h ${PROJ_INCLUDE}
+
+deck.o: deck.c deck.h
+	gcc $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2">各部分の説明</h4>
+<div class="outline-text-4" id="text-4-4-2">
+</div><div id="outline-container-sec-4-4-2-1" class="outline-5">
+<h5 id="sec-4-4-2-1"></h5>
+<div class="outline-text-5" id="text-4-4-2-1">
+<div class="org-src-container">
+
+<pre class="src src-c">.PHONY: clean install
+</pre>
+</div>
+<ul class="org-ul">
+<li>.PHONYは， ターゲット (ここでは，clean と install) が実物(ファイル等）
+でないことを宣言
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2-2" class="outline-5">
+<h5 id="sec-4-4-2-2">gameプロジェクトの決まりを変数で表す</h5>
+<div class="outline-text-5" id="text-4-4-2-2">
+<div class="org-src-container">
+
+<pre class="src src-c">PROJ_HOME=/home/staff/suzuki/progs/game
+</pre>
+</div>
+<ul class="org-ul">
+<li>変数への代入文
+<dl class="org-dl">
+<dt> PROJ_HOME </dt><dd>game プロジェクトのホームディレクトリを表す make の変数
+</dd>
+<dt> (no term) </dt><dd>PROJ_HOME の値を，文字列 「/home/staff/suzuki/progs/game」にする
+</dd>
+</dl>
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-c">PROJ_INCLUDE=${PROJ_HOME}/include
+PROJ_LIB=${PROJ_HOME}/lib
+</pre>
+</div>
+<ul class="org-ul">
+<li>変数の値が表すこと
+<dl class="org-dl">
+<dt> PROJ_INCLUDE </dt><dd>game プロジェクトのヘッダ・ファイルの保存ディレクト
+リ。 
+</dd>
+<dt> PROJ_LIB </dt><dd>game プロジェクトのライブラリ・ファイルの保存ディレク
+トリ。
+</dd>
+</dl>
+</li>
+
+<li>${PROJ_HOME} の意味
+変数 PROJ_HOME の値の参照
+</li>
+</ul>
+
+<p>
+#+END_SRC  
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2-3" class="outline-5">
+<h5 id="sec-4-4-2-3">Cコンパイラへの指示</h5>
+<div class="outline-text-5" id="text-4-4-2-3">
+<div class="org-src-container">
+
+<pre class="src src-c">CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
+</pre>
+</div>
+<ul class="org-ul">
+<li>CFLAGS は変数。Cコンパイラの翻訳過程 (ソース・プログラムをオブジェク
+ト・プログラムに翻訳するまで)への指示を文字列で保持する:
+<dl class="org-dl">
+<dt> -g </dt><dd>名前の情報を残す
+</dd>
+<dt> -c </dt><dd></dd>
+<dt> -Wall </dt><dd>warnning を表示する
+</dd>
+<dt> -fPIC </dt><dd></dd>
+<dt> -I. </dt><dd>C コンパイラの include パスに，. (カレント・ディレクトリ) を追加する
+</dd>
+<dt> -I${PROJ_INCLUDE} </dt><dd>C コンパイラの include パスに，プロジェクトの
+ヘッダ・ファイルの保存ディレクトリを追加する
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2-4" class="outline-5">
+<h5 id="sec-4-4-2-4">ローダへの指示</h5>
+<div class="outline-text-5" id="text-4-4-2-4">
+<div class="org-src-container">
+
+<pre class="src src-c">LDFLAGS = -lc
+</pre>
+</div>
+<ul class="org-ul">
+<li>LDFLAGS は変数。ローダのリンク過程 (オブジェクト・プログラムからライ
+ブラリ，実行プログラムに結合まで)への指示を文字列で保持する:
+
+<dl class="org-dl">
+<dt> -lc </dt><dd>ライブラリのロードパスにある，libc.[a,so] をリンクする
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2-5" class="outline-5">
+<h5 id="sec-4-4-2-5">libdeck.a の作成規則</h5>
+<div class="outline-text-5" id="text-4-4-2-5">
+<div class="org-src-container">
+
+<pre class="src src-c">libdeck.a: deck.o 
+	rm -f $@
+	ar r $@ $^
+</pre>
+</div>
+<ul class="org-ul">
+<li>libdeck.a の更新時刻が deck.o のそれより古ければ，以下のコマンド行を
+実行する (ことで，libdeck.a を作成する)。
+<dl class="org-dl">
+<dt> rm -f $@ </dt><dd><ul class="org-ul">
+<li>$@ は作成規則中のターゲット(この場合, libdeck.a) をあらわす変数
+</li>
+<li>rm -f ファイルの消去コマンド。-f は force の意。
+</li>
+</ul>
+</dd>
+<dt> ar r $@ $^ </dt><dd><ul class="org-ul">
+<li>$^ は作成規則中のソース全てをあらわす変数
+</li>
+<li>ar r で ライブラリ・ファイルを作成する
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-4-2-6" class="outline-5">
+<h5 id="sec-4-4-2-6">deck モジュールの提供規則</h5>
+<div class="outline-text-5" id="text-4-4-2-6">
+<p>
+game プロジェクトの決まりに従がい，ライブラリ・ファイルとヘッダ・ファ
+イルを所定の場所に置く:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">install: libdeck.a deck.h
+	cp libdeck.a ${PROJ_LIB}
+	cp deck.h ${PROJ_INCLUDE}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2-7" class="outline-5">
+<h5 id="sec-4-4-2-7">deck ソースプログラムのコンパイル</h5>
+<div class="outline-text-5" id="text-4-4-2-7">
+<div class="org-src-container">
+
+<pre class="src src-c">deck.o: deck.c deck.h
+	gcc $&lt; $(CFLAGS)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-2-8" class="outline-5">
+<h5 id="sec-4-4-2-8">src ディレクトの掃除</h5>
+<div class="outline-text-5" id="text-4-4-2-8">
+<div class="org-src-container">
+
+<pre class="src src-c">clean:
+	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">講義への補足 2015-12-22</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Makefile (card_display/simple)</h3>
+<div class="outline-text-3" id="text-5-1">
+</div><div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1">src/Makefile</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<div class="org-src-container">
+
+<pre class="src src-c"># ~/progs/card_display/simple/src/Makefile
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I .
+LDFLAGS = -lc
+
+libcard.a: card.o cards.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+cards.o: cards.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2">test/Makefile</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<div class="org-src-container">
+
+<pre class="src src-c">.PHONY: clean
+CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src
+LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
+
+all: test_card.so test_sort.so
+
+test_card.so: test_card.o
+	gcc -o $@ -shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c        
+	gcc $(CFLAGS) $&lt;
+
+
+test_sort.so: test_sort.o
+	gcc -o $@ -shared $^ $(LDFLAGS)
+
+test_sort.o: test_sort.c        
+	gcc $(CFLAGS) $&lt;
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">card/deck 用 Makefile との違い</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+まず，card_display/simple，game/card， game/deck のMakefileの違いを
+見せます。
+</p>
+
+<p>
+二つのファイルの差を見るには，diff コマンド，meld コマンド，emacs の
+diff 関連コマンド等が，使えます。
+</p>
+</div>
+
+<div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1">card_display/simple/src/Makefile と game/card/src/Makefile の違い</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+次の diff コマンドにより差分が取得できます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/card_display/simple/src/Makefile  ~/progs/game/card/src/Makefile
+</pre>
+</div>
+
+<pre class="example">
+1a2,6
+&gt; 
+&gt; PROJ_HOME=~/progs/game
+&gt; PROJ_INCLUDE=${PROJ_HOME}/include
+&gt; PROJ_LIB=${PROJ_HOME}/lib
+&gt; 
+4a10,13
+&gt; install: libcard.a card.h
+&gt; 	cp libcard.a ${PROJ_LIB}
+&gt; 	cp card.h ${PROJ_INCLUDE}
+&gt; 
+16c25
+&lt; 	rm -f *.o *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+
+<p>
+diffの出力結果の見方と，Makefileに於けるその意味を解説します:
+</p>
+
+<pre class="example">
+1a2,6
+</pre>
+
+<p>
+1a2,6：
+</p>
+<ul class="org-ul">
+<li>1 は ~/progs/card_display/simple/src/Makefileの1行目
+</li>
+<li>a は append 
+</li>
+<li>2,6 ~/progs/game/card/src/Makefileの2~6行目です
+</li>
+</ul>
+<pre class="example">
+&gt;
+&gt; PROJ_HOME=/home/staff/suzuki/progs/game
+&gt; PROJ_INCLUDE=${PROJ_HOME}/include
+&gt; PROJ_LIB=${PROJ_HOME}/lib
+&gt;
+</pre>
+<ul class="org-ul">
+<li>この内容は，game プロジェクトのディレクトリと，その下にあるヘッダ
+ファイルとライブラリファイルの置き場所を, Makefile の変数に代入し
+ているものです。
+</li>
+</ul>
+
+<pre class="example">
+4a10,13
+</pre>
+<ul class="org-ul">
+<li>同様に，4行目の後に次の行が加えられています。
+</li>
+</ul>
+
+<pre class="example">
+&gt; install: libcard.a card.h
+&gt; 	cp libcard.a ${PROJ_LIB}
+&gt; 	cp card.h ${PROJ_INCLUDE}
+&gt;
+</pre>
+
+<p>
+これは，新たなルールを加わえています。
+</p>
+<ul class="org-ul">
+<li>libcard.a をプロジェクトのライブラリ・ディレクトリにコピーし，
+</li>
+<li>card.h をプロジェクトのインクルード・ディレクトリにコピーします。
+</li>
+</ul>
+
+<pre class="example">
+16c25
+</pre>
+
+<ul class="org-ul">
+<li>16行目を25行目に変更を意味します。
+</li>
+</ul>
+
+<pre class="example">
+&lt; 	rm -f *.o *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+
+<ul class="org-ul">
+<li>*.a (静的ライブラリ)も消去するように変更されています。
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2">card_display/simple/test/Makefile と game/card/test/Makefile の違い</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/card_display/simple/test/Makefile  ~/progs/game/card/test/Makefile
+</pre>
+</div>
+
+<pre class="example">
+1a2,6
+&gt; 
+&gt; PROJ_HOME=~/progs/game
+&gt; PROJ_INCLUDE=${PROJ_HOME}/include
+&gt; PROJ_LIBE=${PROJ_HOME}/lib
+&gt; 
+21c26
+&lt; 	rm -f *.o *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.a *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-3" class="outline-4">
+<h4 id="sec-5-2-3">game/card/src/Makefile と game/deck/src/Makefile の違い</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/game/card/src/Makefile  ~/progs/game/deck/src/Makefile
+</pre>
+</div>
+
+<pre class="example">
+1c1
+&lt; .PHONY: clean
+---
+&gt; .PHONY: clean install
+7c7
+&lt; CFLAGS = -g -c -fPIC -I .
+---
+&gt; CFLAGS = -g -c -Wall -fPIC -I . -I${PROJ_INCLUDE}
+10,12c10,12
+&lt; install: libcard.a card.h
+&lt; 	cp libcard.a ${PROJ_LIB}
+&lt; 	cp card.h ${PROJ_INCLUDE}
+---
+&gt; install: libdeck.a deck.h
+&gt; 	cp libdeck.a ${PROJ_LIB}
+&gt; 	cp deck.h ${PROJ_INCLUDE}
+14c14
+&lt; libcard.a: card.o cards.o
+---
+&gt; libdeck.a: deck.o 
+18,21c18
+&lt; card.o: card.c card.h
+&lt; 	gcc $&lt; $(CFLAGS)
+&lt; 
+&lt; cards.o: cards.c card.h
+---
+&gt; deck.o: deck.c deck.h
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-5-2-4" class="outline-4">
+<h4 id="sec-5-2-4">game/card/test/Makefile と game/deck/test/Makefile の違い</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<div class="org-src-container">
+
+<pre class="src src-sh">#~suzuki/progs/game/make-diff
+diff ~/progs/game/card/test/Makefile  ~/progs/game/deck/test/Makefile
+</pre>
+</div>
+
+
+<pre class="example">
+0a1
+&gt; # deck/test/Makefile
+3c4
+&lt; PROJ_HOME=~/progs/game
+---
+&gt; PROJ_HOME=/home/staff/suzuki/progs/game
+5c6
+&lt; PROJ_LIBE=${PROJ_HOME}/lib
+---
+&gt; PROJ_LIB=${PROJ_HOME}/lib
+7,8c8,9
+&lt; CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src
+&lt; LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
+---
+&gt; CFLAGS = -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src -I${PROJ_INCLUDE}
+&gt; LDFLAGS = -L../src -ldeck `pkg-config cutter --libs` -L${PROJ_LIB} -lcard
+10c11
+&lt; all: test_card.so test_sort.so
+---
+&gt; all: test_deck.so
+12c13
+&lt; test_card.so: test_card.o
+---
+&gt; test_deck.so: test_deck.o
+15,22c16
+&lt; test_card.o: test_card.c 	
+&lt; 	gcc $(CFLAGS) $&lt;
+&lt; 
+&lt; 
+&lt; test_sort.so: test_sort.o
+&lt; 	gcc -o $@ -shared $^ $(LDFLAGS)
+&lt; 
+&lt; test_sort.o: test_sort.c 	
+---
+&gt; test_deck.o: test_deck.c 	
+26c20
+&lt; 	rm -f *.o *.a *.so *~ \#* *.gch
+---
+&gt; 	rm -f *.o *.so *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">講義への補足</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">ghc問題</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>しらなかった事実
+
+<ul class="org-ul">
+<li>card.h をコンパイルすると，card.gch が作られる
+card.gch が存在すると，card.h は読まれず，card.gch 
+が使われる。
+
+<p>
+<a href="https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html">Precompiled Headers - Using the GNU Compiler Collection (GCC)</a>
+</p>
+
+<ul class="org-ul">
+<li>s-: は，文法チェックだけされると考えていた
+</li>
+</ul>
+</li>
+
+<li>ヘッダファイルをあらかじめコンパイルすると，Cソースのコンパイ
+ル時間が大幅に短くなる(ことがある)
+
+<p>
+<a href="http://marupeke296.com/CPP_No14_PrecompiledHeader.html">その14 ドキドキしないプリコンパイル済みヘッダ</a>
+</p>
+
+<ul class="org-ul">
+<li>今から考えると，もっともだと思うが，今迄は，チェック以外意味
+がないと考えていた。
+
+<p>
+card.gch って，コンパイラ内部のデータ構造のメモリダンプだよ.
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>Makefile の小さなミス
+
+<ul class="org-ul">
+<li>gcc -c $^  =&gt; gcc -c card.h card.c となって，card.gch が <b>毎
+回</b> 作られていた。ので，問題は発生していなかった。
+</li>
+</ul>
+</li>
+
+<li>小さなミスの修正が招く大きな混乱
+
+<ul class="org-ul">
+<li>card.ghc を消さずに，Makefile のミスを修正した。以後，card.h
+はコンパイル時に読まれず，いくら card.h を修正しても状況は変わ
+らなくなった。
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+すみませんでした。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">説明</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-0-1" class="outline-4">
+<h4 id="sec-7-0-1">抽象化</h4>
+<div class="outline-text-4" id="text-7-0-1">
+<ul class="org-ul">
+<li>複雑な操作をまとめ，名前をつけること。
+</li>
+<li>関数，構造体，型定義などを使う。
+</li>
+
+<li id="参考"><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/commons/abstraction.html">抽象化とは</a>
+</li>
+</ul>
+<p>
+((<a href="file:///home/staff/suzuki/lects/commons/abstraction.html">@cis.org</a>
+<a href="file:///home/staff/suzuki/COMM/Lects/commons/site/abstraction.html">@s.org</a>))
+</p>
+
+<p>
+wikipedia等で調べてください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-0-2" class="outline-4">
+<h4 id="sec-7-0-2">情報隠蔽</h4>
+<div class="outline-text-4" id="text-7-0-2">
+<ul class="org-ul">
+<li>(モジュール)内部の情報を外部から守ること。
+<ul class="org-ul">
+<li>内部と外部の間に壁を作り，外部から直接内部にアクセスできなくす
+る。
+</li>
+<li>決められた手段を通して，内部の情報を公開する。
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+wikipedia等で調べてください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-0-3" class="outline-4">
+<h4 id="sec-7-0-3">関数の意味</h4>
+<div class="outline-text-4" id="text-7-0-3">
+</div>
+
+<div id="outline-container-sec-7-0-3-1" class="outline-5">
+<h5 id="sec-7-0-3-1">関数と抽象化</h5>
+<div class="outline-text-5" id="text-7-0-3-1">
+<p>
+一連の処理に名前を付る。処理への入力を定め，変数とする。一連の処
+理が作りだす値を定める。
+</p>
+
+<p>
+一連の処理は，名前で呼び出せ，値を渡すと，処理した結果が返ってく
+る。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-0-3-2" class="outline-5">
+<h5 id="sec-7-0-3-2">関数の内と外の間の壁</h5>
+<div class="outline-text-5" id="text-7-0-3-2">
+<p>
+ソースプログラムを書いている時，
+大域変数は，すべての関数から見えるが，
+関数内で定義した変数は，他の関数から見えない。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-0-3-3" class="outline-5">
+<h5 id="sec-7-0-3-3">動作</h5>
+<div class="outline-text-5" id="text-7-0-3-3">
+<ul class="org-ul">
+<li>関数を呼び出した時，どんなことが起こるのか
+<ul class="org-ul">
+<li>実引数*値*を引数をスタックに積み，
+</li>
+<li>戻るための情報をスタックに積み，
+</li>
+<li>関数ヘジャンプする
+<ul class="org-ul">
+<li>関数からもどってくる
+</li>
+</ul>
+</li>
+<li>戻り値がスタックに積まれている
+</li>
+</ul>
+</li>
+
+<li>関数が呼び出され時，どんなことが起こるのか
+<ul class="org-ul">
+<li>仮引数に値が入れらて飛んでくる
+</li>
+<li>計算する
+</li>
+<li>戻り値をスタックに入れて，スタックにある戻るための情報
+にしたがって，ジャンプする
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-0-4" class="outline-4">
+<h4 id="sec-7-0-4">シンプルであること (by George Whitesides)</h4>
+<div class="outline-text-4" id="text-7-0-4">
+<ul class="org-ul">
+<li>予測可能
+</li>
+<li>扱いやすい
+</li>
+<li>構成要素として機能すること
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">昔のガイダンス</h3>
+<div class="outline-text-3" id="text-7-1">
+</div><div id="outline-container-sec-7-1-1" class="outline-4">
+<h4 id="sec-7-1-1">動機付け</h4>
+<div class="outline-text-4" id="text-7-1-1">
+</div><div id="outline-container-sec-7-1-1-1" class="outline-5">
+<h5 id="sec-7-1-1-1">プログラムがかけるようになりたい</h5>
+<div class="outline-text-5" id="text-7-1-1-1">
+<ul class="org-ul">
+<li>プログラムが思うようにかけるようになりたい
+</li>
+<li>プログラムが正確にかけるようになりたい
+</li>
+<li>プログラムが素早くかけるようになりたい
+</li>
+<li>きれいなプログラムがかけるようになりたい
+</li>
+<li>簡潔なプログラムが書けるようになりたい
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-1-2" class="outline-5">
+<h5 id="sec-7-1-1-2">面白いプログラムがかきたい</h5>
+<div class="outline-text-5" id="text-7-1-1-2">
+<ul class="org-ul">
+<li>思っていることをプログラムできる力が欲しい
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-1-3" class="outline-5">
+<h5 id="sec-7-1-1-3">正しいプログラムを書きたい</h5>
+<div class="outline-text-5" id="text-7-1-1-3">
+<ul class="org-ul">
+<li>プログラムの正しさがわかる力が欲しい
+</li>
+<li>プログラムをデバッグする力が欲しい
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-1-4" class="outline-5">
+<h5 id="sec-7-1-1-4">大規模なプログラム開発ができるようになりたい</h5>
+<div class="outline-text-5" id="text-7-1-1-4">
+<ul class="org-ul">
+<li>わかりやすいプログラム
+</li>
+<li>協同作業しやすいプログラム
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-1-2" class="outline-4">
+<h4 id="sec-7-1-2">プログラム開発の肝</h4>
+<div class="outline-text-4" id="text-7-1-2">
+</div><div id="outline-container-sec-7-1-2-1" class="outline-5">
+<h5 id="sec-7-1-2-1">プログラムの構成要素とその働きを理解すること</h5>
+<div class="outline-text-5" id="text-7-1-2-1">
+<ul class="org-ul">
+<li>定数と変数
+</li>
+<li>式
+</li>
+<li>変数と代入による状態変化
+</li>
+<li>文と時間進行
+</li>
+<li>条件分岐と繰り返し
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-2-2" class="outline-5">
+<h5 id="sec-7-1-2-2">データの表現ができること</h5>
+<div class="outline-text-5" id="text-7-1-2-2">
+<ul class="org-ul">
+<li>値（定数）と型
+</li>
+<li>構造体と型定義による値と型の拡張
+</li>
+<li>変数と配列
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-2-3" class="outline-5">
+<h5 id="sec-7-1-2-3">関数の働きを理解すること</h5>
+<div class="outline-text-5" id="text-7-1-2-3">
+<ul class="org-ul">
+<li>関数によるまとめ（抽象)
+<ul class="org-ul">
+<li>関数の宣言
+</li>
+<li>関数の利用
+</li>
+<li>関数の提供
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-2-4" class="outline-5">
+<h5 id="sec-7-1-2-4">名前の見せ方・隠し方を理解すること</h5>
+<div class="outline-text-5" id="text-7-1-2-4">
+<ul class="org-ul">
+<li>変数とスコープ
+</li>
+<li>関数とスコープ
+</li>
+<li>関数とリンク
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-1-2-5" class="outline-5">
+<h5 id="sec-7-1-2-5">コンパイル，リンク，実行</h5>
+</div>
+
+<div id="outline-container-sec-7-1-2-6" class="outline-5">
+<h5 id="sec-7-1-2-6">デバッグ</h5>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">今日のemacs</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1">コマンド</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li><a href="buffer">buffer</a>
+<pre class="example">
+C-x b
+C-x C-b
+C-x 2
+C-x 3
+C-x 1
+C-x 0
+C-x o
+</pre>
+</li>
+
+<li><a href="file">file</a>
+<pre class="example">
+C-x C-f
+C-x 4 f
+M-x find-file-read-only
+C-x 4 r
+C-x C-r
+C-x C-s
+C-x C-w  
+</pre>
+</li>
+
+<li><a href="frame">frame</a>
+<pre class="example">
+C-x 5
+C-x 5 0
+C-x 5 o
+</pre>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2">話題</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>elscreen バッファのタブ化
+</li>
+<li>org-mode
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">今日のorg</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+-<a href="org#DocumentStructure">org#DocumentStructure</a>
+</p>
+<ul class="org-ul">
+<li>見出し
+</li>
+<li>箇条書き
+</li>
+<li>文芸的プログラミング
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">講義内容へのpath</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> ~suzuki/lects/prog/ の下に，講義資料があります。
+</li>
+<li><code>[&#xa0;]</code> ~suzuki/progs が先生の開発ディレクトリで，お手本のつもりです。
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">技術的なこと</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-0-1" class="outline-4">
+<h4 id="sec-11-0-1">モジュール関連技術</h4>
+<div class="outline-text-4" id="text-11-0-1">
+</div><div id="outline-container-sec-11-0-1-1" class="outline-5">
+<h5 id="sec-11-0-1-1">モジュールとは部品</h5>
+<div class="outline-text-5" id="text-11-0-1-1">
+</div><div id="outline-container-sec-11-0-1-1-1" class="outline-6">
+<h6 id="sec-11-0-1-1-1">モジュール</h6>
+<div class="outline-text-6" id="text-11-0-1-1-1">
+<p>
+部品の入れ物
+</p>
+<ul class="org-ul">
+<li>部品を実現する仕組み
+</li>
+<li>部品を提供する仕組み
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-0-1-1-2" class="outline-6">
+<h6 id="sec-11-0-1-1-2">部品，</h6>
+<div class="outline-text-6" id="text-11-0-1-1-2">
+<ul class="org-ul">
+<li>ある機能の実体
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-0-1-1-3" class="outline-6">
+<h6 id="sec-11-0-1-1-3">インタフェース</h6>
+<div class="outline-text-6" id="text-11-0-1-1-3">
+<ul class="org-ul">
+<li>部品の利用に関する決まり
+<ul class="org-ul">
+<li>利用環境での決まり
+</li>
+<li>機能ごとの決まり
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-0-1-1-4" class="outline-6">
+<h6 id="sec-11-0-1-1-4">部品の利用</h6>
+<div class="outline-text-6" id="text-11-0-1-1-4">
+<ul class="org-ul">
+<li>その実装をしらずに，
+</li>
+<li>インターフェイスの呼び出しのみを通して，
+</li>
+<li>自分のプログラムから利用できる
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-0-1-1-5" class="outline-6">
+<h6 id="sec-11-0-1-1-5">部品の提供</h6>
+<div class="outline-text-6" id="text-11-0-1-1-5">
+<ul class="org-ul">
+<li>インターフェイスを守り
+</li>
+<li>ある独立した機能を実現し，
+</li>
+<li>他の人に機能を提供する
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-0-1-1-6" class="outline-6">
+<h6 id="sec-11-0-1-1-6">Ubuntu/C言語を使ったモジュールプログラミング</h6>
+<div class="outline-text-6" id="text-11-0-1-1-6">
+<ul class="org-ul">
+<li>利用側
+<ul class="org-ul">
+<li>あるライブラリの機能（関数）を見つけ，
+</li>
+<li>man やヘッダファイルを見て，APIを知る
+</li>
+<li>ヘッダファイルをインクルードし，
+インターフェイスを守っていることを，
+コンパイラに検査してもらう
+</li>
+<li>自分のプログラムに，ライブラリの関数をリンクする
+</li>
+<li>プログラムをプロセスとして実行する
+</li>
+</ul>
+</li>
+
+<li>提供側
+<ul class="org-ul">
+<li>ヘッダファイルを作成し
+</li>
+<li>ヘッダファイルをインクルードし，
+</li>
+<li>機能を関数として実装し，
+</li>
+<li>ヘッダファイルのAPIを遵守する
+</li>
+<li>オブジェクトファイルあるいはライブラリとして提供する
+</li>
+</ul>
+</li>
+</ul>
+<p>
+　　
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-11-0-2" class="outline-4">
+<h4 id="sec-11-0-2">C-programming</h4>
+</div>
+
+<div id="outline-container-sec-11-0-3" class="outline-4">
+<h4 id="sec-11-0-3">emacs org-mode</h4>
+<div class="outline-text-4" id="text-11-0-3">
+<p>
+ファイルに .org 拡張子をつけることで，emacs で開くと，org-mode に
+なります。org-mode は文書を構造的に扱えます。強力です。
+</p>
+
+<p>
+org-mode links
+</p>
+<ul class="org-ul">
+<li><a href="http://orgmode.org/ja">http://orgmode.org/ja</a>
+</li>
+<li><a href="https://github.com/org-mode-doc-ja/org-ja/blob/master/README.org">org-ja/README.org at master · org-mode-doc-ja/org-ja</a>
+</li>
+<li><a href="http://d.hatena.ne.jp/tamura70/20100203/org">Emacs org-modeを使ってみる: (1) インストール - 屯遁のパズルとプログラミングの日記</a>
+</li>
+<li>info <a href="emacs#org"><a href="emacs#org">emacs#org</a></a> 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-0-4" class="outline-4">
+<h4 id="sec-11-0-4">emacs</h4>
+<div class="outline-text-4" id="text-11-0-4">
+<ul class="org-ul">
+<li>emacs の使い方は，~suzuki/progs/lects/Emacs.org, org-mode の使い
+方は, ~suzuki/progs/lects/Org.org に書いていこうと思っています。
+</li>
+
+<li>emacs links
+<ul class="org-ul">
+<li><a href="http://emacs-jp.github.io/beginner.html">Emacs for Beginners - Emacs JP</a>  - <a href="emacs">emacs</a> Emacs info
+</li>
+<li><a href="http://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html#SEC_Top">GNU Emacsマニュアル:(古いが日本語)</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-0-5" class="outline-4">
+<h4 id="sec-11-0-5">emacs org-mode+babel</h4>
+<div class="outline-text-4" id="text-11-0-5">
+<p>
+emacs org-mode の中に，文芸的プログラミングでき機能があります。説
+明を書きながら，ソースコードも書け，実行でき，出力を文書に取り込めるも
+のです。
+</p>
+
+<p>
+Cやシェル・スクリプトがその mode で書け，コンパイルや実行を行えま
+す。例えば，下記のように:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">#+BEGIN_SRC c :tangle ./src/exmaple.c
+int main(void) {}
+#+END_SRC
+
+#+BEGIN_SRC sh :dir ./src
+cc example.c
+#+END_SRC
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">文書の書き方，見え方などへの補足説明</h2>
+<div class="outline-text-2" id="text-12">
+</div><div id="outline-container-sec-12-0-1" class="outline-4">
+<h4 id="sec-12-0-1">ページ内容の折り畳みと展開</h4>
+<div class="outline-text-4" id="text-12-0-1">
+<p>
+ページ右上に [Collapse all] [Expand all] があるページは，見出し単
+位で折り畳みと展開が可能です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-0-2" class="outline-4">
+<h4 id="sec-12-0-2">title((cis.org s.org))</h4>
+<div class="outline-text-4" id="text-12-0-2">
+<p>
+「title((cis.org s.org)) 」という表示は，三つのリンクから成ってい
+ます。titleは, httpリンクです。cis.orgは講義環境で emacs org-mode
+で開くときに使うファイル・リンクです。s.org は鈴木の個人環境用のファ
+イル・リンクです。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-02-02 火 13:28</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

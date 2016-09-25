@@ -1,0 +1,35 @@
+* Doing org-mode + babelでの literate programming 実践
+  SCHEDULED: <2015-12-15 火>
+
+0. コード類は，機能毎に .org にまとめ，
+   part 毎に :name を付け，:noweb 機能で，
+   関数やファイルにまとめる
+
+1. .ob => .org => tangle (noweb)
+
+   - 各機能用のソースコードの生成が主目的
+     
+   - tangle 時，sh-block は実行しない
+
+2. .org から babel_include された部分を削除
+
+3. .org 中の sh-blk の実行
+
+   - C-c C-v C-n で sh-blk を見つけ，
+
+   - C-c C-c yes で実行していく
+
+   - 開発プロセスを作る
+
+   - 実行結果が .org に書き込まれる
+
+
+5. index.ob => index.org 
+
+   - 文書先頭に noweb コードを表示用に埋めこむ
+
+6. org2html index.org 
+
+   - exportのみ
+   - tangle, sh-blk 実行はしない
+

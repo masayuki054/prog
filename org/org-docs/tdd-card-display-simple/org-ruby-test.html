@@ -1,0 +1,1017 @@
+<h1 class="title">CardDisplayのテスト駆動開発</h1>
+<p>#+Time-stamp: &lt;2016-01-28 20:01:39 m&gt;</p>
+<h1>はじめに</h1>
+<p>テスト駆動開発の例として，card_display_simple問題を
+  テスト駆動開発してましょう。</p>
+<p>その上で，わずかな変更を加えることで，card_display_multi 問題と，
+  card_display_sort 問題を，テスト駆動開発してましょう。</p>
+<p>そして，その開発を通して，カードモジュールが出来上がることを実感して
+  みましょう。</p>
+<h1>ディレクトリ構成</h1>
+<h1>Makefileを作る</h1>
+  <p>simple/ ディレクトリに Makefileを作成します。
+    目的は二つ，カードのテストをすることと，ディレクトリ配下をきれいにするこ
+    とです。</p>
+<pre class="src" lang="makefile">
+
+# ~/progs/card_display/simple/Makefile
+.PHONY: clean card_test
+
+card_test:
+        (cd src; make)
+        (cd test; make)        
+        cutter -v v test/
+
+clean:
+        (cd src; make clean)
+        (cd test; make clean)
+        rm -f *.o *.so *~ \#* .gch
+
+</pre>
+<p>src/Makefileを作ります。まずの目的は，src/ディレクトリをきれいにすることで
+  す:</p>
+<pre class="src" lang="makefile">
+
+# src/Makefile
+.PHONY: clean 
+  
+clean:
+        rm -f *.o *.so *~ \#* *.gch
+
+</pre>
+<p>test/Makefileを作ります: 同様にまずの目的は，test/ディレクトリをきれ
+  いにすることです:</p>
+<pre class="src" lang="makefile">
+# test/Makefile
+.PHONY: clean 
+
+clean:
+        rm -f *.o *.so *~ \#* *.gch
+
+</pre>
+<p>では，Makefile が正しく書けているか確かめるために make してみましょう。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/
+make
+</pre>
+<p>それぞれのディレクトリで make clean して，空のテストをします:</p>
+<p>最初のテストは，成功です。開発とテストに必要なディレクトリ，Makefile を
+  作成し，空のテストを行いました。</p>
+<h1>開発を機能に分ける</h1>
+<p>さて次は，card_display_simpleを，機能に分け，機能をテストしな
+  がら開発します。(file:card-display/)</p>
+<p>下記の機能に分けてみます:</p>
+<ol>
+  <li>スーツを数値にする機能，</li>
+  <li>トランプ番号を数値にする機能，</li>
+  <li>トランプ・カード型を表す機能，</li>
+  <li>スーツと番号からトランプカードを作成する機能</li>
+  <li>トランプ・カードを文字列で表す機能。</li>
+</ol>
+<p>これらの機能を組み合わせてcard_display_simpleプログラムが開発できま
+  す。</p>
+<p>実は，この機能分けが一番重要かもしれません。最初から全ての機能が取り
+  出せなくてもいいと思います。必要そうな機能を一つづつためしてもいいで
+  す。自分で丁度いいと思うことが大切です。</p>
+<h1>機能のテスト駆動開発 (概論)</h1>
+<p>これらの機能をひとつづつ確かめながら開発を進めるのが，テスト駆動開
+  発です。具体的な開発を進める前に，おおまかな流れを説明します。</p>
+<p>進め方は:</p>
+<dl>
+  <dt>Makefileの作成</dt><dd>テストと実装をビルドし，テストを実行するための
+    Makefile を書く。
+    <p>./Makefile には src/, test/ でビルドするルールを書き，
+      cutter によりテストを実行する規則を書く。</p>
+  </dd>
+  <dt>test/Makefileの作成</dt><dd>テストをビルドするための規則を書く。
+    <p>test/Makefile に test_card.c から test_card.so を作成し，
+      cutter によるテストの実行するための規則を書く。</p>
+  </dd>
+  <dt>機能テストの作成</dt><dd>機能が正しく働くことを確かめるテスト (プログラム) を書く。このこ
+    とにより，*機能の使い方*を決める。
+    <p>test/test_card.c に上の5つの機能テストを作成していく。</p>
+  </dd>
+  <dt>テスト(のみ)のビルド</dt><dd>ビルドし，コンパイル・エラーが取れ，確かめ
+    る機能の関数のみが未定義の状態にする。</dd>
+  <dt>src/Makefile</dt><dd>機能の実装をビルドするための規則を書く。
+    <p>src/Makefile に card.c, card.h から libcard.a を
+      作成する規則を書く。</p>
+  </dd>
+  <dt>インタフェースの決定</dt><dd>確かめる機能の関数を使うために必要最小限
+    のインタフェースを決める。
+    <p>test/test_card.c から取り出し，src/card.h に書く。</p>
+  </dd>
+  <dt>機能の実装</dt><dd>インタフェースに従がい，機能を関数として実装する。</dd>
+</dl>
+<p>src/card.c を作成する。</p>
+<dl>
+  <dt>機能の提供</dt><dd>実装をビルドし，ライブラリとヘッダファイルで機能を提
+    供する。
+    <p>src/Makefile にルールを書き，
+      src/libcard.aを作成する。</p>
+  </dd>
+  <dt>テストのビルドと実行</dt><dd></dd>
+</dl>
+<p>では，続く節で，5つの機能のテスト駆動開発をおこないます。</p>
+<h1>スーツを数値にする機能のテストと実装</h1>
+<h1>トランプ番号を数値に</h1>
+<h1>トランプ・カードを作成</h1>
+<h2>機能の追加とテストの作成</h2>
+<p>カードを作る機能のテストは，test/test_card.c に追加作成します。</p>
+<p>設計については，<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2">card_display_simple問題への解法</a> も参考にしてくださ
+  い。</p>
+<h3>card_new のテストを書く</h3>
+<p>機能の名前を card_new とし, card_newが満たすテストを書きます:</p>
+<pre class="src" lang="c">
+Card sa = card_new(SPADE, ACE);
+</pre>
+<p>次のような事が分かります:</p>
+<ul>
+  <li>Card型が必要である，</li>
+  <li>スーツと番号を与え，</li>
+  <li>Card型の値が返る。</li>
+</ul>
+<p>これだけではテストにならないので，スーツと番号を取り出す機能を合わ
+  せて，追加します。</p>
+<pre class="src" lang="c">
+<span style="color:#080;font-weight:bold">enum</span> e_Suit card_suit(Card);
+<span style="color:#080;font-weight:bold">enum</span> e_No card_no(Card);
+</pre>
+<p>これにより，テストが書けます:</p>
+<pre class="src">
+Card sa = card_new(SPADE, ACE);
+cut_assert( card_suit(sa)==SPADE );
+cut_assert( card_no(sa)==ACE );
+</pre>
+<p>スペードのACEを作り，つくられたカードのスーツと番号が正しいか，確
+  かめています。</p>
+<p>Card型が定義できれば，これでよさそうです。</p>
+<pre class="src" lang="c">
+<span style="color:#088;font-weight:bold">void</span>
+test_card_new(<span style="color:#088;font-weight:bold">void</span>)
+{
+  cut_set_message(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">スーツと番号からカードを作成</span><span style="color:#710">&quot;</span></span>);
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert( card_suit(sa)==SPADE );
+    cut_assert( card_no(sa)==ACE );
+  }
+}
+
+</pre>
+<h3>card_new, card_suit, card_no のインタフェースを決める</h3>
+<p>card_new を関数の形で書けたので，関数の型を決めます。</p>
+<p>戻り値の型は Card，与える引数はスーツと番号の内部表現なので:</p>
+<pre class="src" lang="c">
+<span style="color:#080;font-weight:bold">enum</span> e_Suit card_suit(Card);
+<span style="color:#080;font-weight:bold">enum</span> e_No card_no(Card);
+Card card_new(<span style="color:#080;font-weight:bold">enum</span> e_Suit, <span style="color:#080;font-weight:bold">enum</span> e_No);
+</pre>
+<h3>Card型を定義する</h3>
+<p>Card 型を定義しましょう。Card型は次の情報を持ちます:</p>
+<ul>
+  <li>スーツを表す enum e_Suit 型の数値</li>
+  <li>番号を表す enum e_No 型の数値</li>
+</ul>
+<p>これを構造体で表します:</p>
+<pre class="src" lang="c">
+
+<span style="color:#080;font-weight:bold">struct</span> _Card {
+  <span style="color:#080;font-weight:bold">enum</span> e_Suit suit;
+  <span style="color:#080;font-weight:bold">enum</span> e_No no;
+};
+
+</pre>
+<p>ですね。</p>
+<p>これを型にします。</p>
+<pre class="src" lang="c">
+
+typdef <span style="color:#080;font-weight:bold">struct</span> _Card Card;
+
+</pre>
+<p>struct _Card 型を Card 型として定義し，Card が
+  構造体であることを意識せずに使うことができます。</p>
+<h3>テスト全体プログラムの確認</h3>
+<p>test/test_card.cは次のようになります:</p>
+<pre class="src" lang="c">
+&lt;&lt;test_card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#suit_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#no_new</span>&gt;&gt;
+
+&lt;&lt;card.h<span style="color:#579">#card_struct</span>&gt;&gt;
+
+&lt;&lt;card.h<span style="color:#579">#Card</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#card_new</span>&gt;&gt;
+
+</pre>
+<pre class="src" lang="c">
+&lt;&lt;card.h-no_new&gt;&gt;
+</pre>
+<h3>test/Makefile の確認</h3>
+<p>test/Makefile の目的は変わっていませんので，Makefile の更新の必要はありません。</p>
+<pre class="src" lang="c">
+&lt;&lt;test/Makefile&gt;&gt;
+</pre>
+<p>test/test_card.c には card_new に関するテスト関数が加わっています。
+  card_new はまだ未実装ですが，test/test_card.o は作成できます。</p>
+<h3>test/test_card.o の作成</h3>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test
+make test_card.o
+</pre>
+<pre class="example">
+gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+</pre>
+<p>test_card.o ができれば，ひとまず，成功です。</p>
+<p>できない時は，test_card.c に間違いがあるか，Makefile に間違いがあ
+  ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+  う。</p>
+<p>成功したら，test/test_card.o の中身を見てみましょう:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test
+nm test_card.o
+</pre>
+<pre class="example">
+		     U _GLOBAL_OFFSET_TABLE_
+00000000000004c0 r __PRETTY_FUNCTION__.3255
+00000000000004e0 r __PRETTY_FUNCTION__.3271
+00000000000004fd r __PRETTY_FUNCTION__.3302
+		     U _setjmp
+		     U card_new
+		     U card_no
+		     U card_no_new_from_string
+		     U card_suit
+		     U card_suit_new_from_string
+		     U cut_assert_helper
+		     U cut_assert_true_helper
+		     U cut_test_context_current_peek
+		     U cut_test_context_finish_user_message_jump
+		     U cut_test_context_get_have_current_result
+		     U cut_test_context_get_jump_buffer
+		     U cut_test_context_in_user_message_jump
+		     U cut_test_context_long_jump
+		     U cut_test_context_pop_backtrace
+		     U cut_test_context_process_current_result
+		     U cut_test_context_push_backtrace
+		     U cut_test_context_set_jump_buffer
+		     U cut_test_context_set_user_message
+		     U cut_test_context_start_user_message_jump
+0000000000000a1b T test_card_new
+0000000000000482 T test_card_no_new_from_string
+0000000000000000 T test_card_suit_new_from_string
+</pre>
+<p>card_newが未定義で，
+  test_card_new が定義されているのがわかります。</p>
+<h2>card_new の実装</h2>
+<p>さて次は，機能 card_new の実装です。
+  手順は，card_no_new_from_string を実装したときと同様です:</p>
+<ul>
+  <li>test/test_card.c を作成するときに決めたインタフェースをとりだし，
+    src/card.h に移す。</li>
+  <li>src/card.hを遵守し，src/card.c に機能を追加実装する。</li>
+  <li>提供する機能を入れた src/libcard.a を作成する</li>
+</ul>
+<p>src/{card.h，libcard.a} で機能を提供する</p>
+<h3>card/card.h の更新</h3>
+<p>test/test_card.c から card_new等に関するインタフェース宣言を，
+  src/card.h に移します。</p>
+<p>ここまでで，src/card.h は次のようになります:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.h-card_new&gt;&gt;
+</pre>
+<p>test/test_card.c は次のようになります：</p>
+<pre class="src" lang="c">
+&lt;&lt;test_card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#suit_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#no_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#card_new</span>&gt;&gt;
+
+</pre>
+<h3>card_new の実装 (src/card.cの更新)</h3>
+<p>card_new関数への要求は</p>
+<ul>
+  <li>スーツの内部表現と数字の内部表現から，</li>
+  <li>カードを表すデータを作る</li>
+</ul>
+<p>ことでしたから，実装は次のようになるでしょう:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#card_new</span>&gt;&gt;
+</pre>
+<h3>card_suit の実装 (src/card.cの更新)</h3>
+<p>要求は：</p>
+<ul>
+  <li>カードデータからそのスーツが分かること</li>
+</ul>
+<p>でしたから，</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#card_suit</span>&gt;&gt;   
+</pre>
+<h3>card_no の実装 (src/card.cの更新)</h3>
+<p>要求は：</p>
+<ul>
+  <li>カードデータからその数字が分かること</li>
+</ul>
+<p>でしたから，</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#card_no</span>&gt;&gt;
+</pre>
+<h3>src/card.c 全体</h3>
+<p>ここまでの，src/card.c を示しておきます:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#suit_new</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#no_new</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_new</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_suit</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_no</span>&gt;&gt;
+
+</pre>
+<h3>src/Makefile</h3>
+<p>src/Makefileに変更はありません。</p>
+<pre class="src" lang="c">
+&lt;&lt;src/Makefile&gt;&gt;
+</pre>
+<h3>src/card.o の作成</h3>
+<p>src/card.o を make し, ソースコードにエラーがないか確かめます:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+make card.o
+</pre>
+<pre class="example">
+gcc card.c -g -c -fPIC -I. 
+</pre>
+<p>src/card.o ができれば文法や宣言の食い違いはなくなったことになりま
+  す。</p>
+<h3>src/libcard.a の作成</h3>
+<p>src/card.o ができれば，次は， src/libcard.a を make します。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+make libcard.a
+</pre>
+<pre class="example">
+rm -f libcard.a
+ar r libcard.a card.o
+</pre>
+<p>Makefile が正しければ，これは成功するはずです。</p>
+<p>libcard.a の中身を確かめてみましょう:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+nm libcard.a
+</pre>
+<pre class="example">
+
+card.o:
+                 U _GLOBAL_OFFSET_TABLE_
+                 U atoi
+00000000000000e6 T card_new
+000000000000010f T card_no
+000000000000008b T card_no_new_from_string
+0000000000000102 T card_suit
+0000000000000000 T card_suit_new_from_string
+                 U fprintf
+                 U stderr
+                 U strcmp
+</pre>
+<p>src/libcard.a が更新できたので，次はtest_card.so を更新します。</p>
+<h2>テスト</h2>
+<h3>test/test_card.so のビルド</h3>
+<p>src/libcard.a が更新されているので，test/test_card.so を作り直しま
+  す。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+</pre>
+<pre class="example">
+rm -f *.o *.so *~ \#* *.gch
+gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+</pre>
+<p>test/test_card.so ができればテストの実行に移ります。</p>
+<p>できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。</p>
+<h3>テストの実行</h3>
+<p>テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+  めるためにテストする:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple
+cutter -v v test
+</pre>
+<pre class="example">
+test_card:
+  test_card_no_new_from_string:				.: (0.000136)
+  test_card_suit_new_from_string:			.: (0.000079)
+  test_card_new:					.: (0.000044)
+
+Finished in 0.001173 seconds (total: 0.000259 seconds)
+
+3 test(s), 11 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+</pre>
+<h3>テストと再設計</h3>
+<p>テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+  ります。</p>
+<p>テストが失敗した場合は，test/test_card.c, src/{card.h, card.c} を
+  修正していくことになります。</p>
+<p>ソースコードを修正した後は，Makefileに間違いがなけれ
+  ば，~/progs/card_display/simpleで make すれば，全自動でテストまで
+  実行してくれます。テストが成功するまで繰り返してください。</p>
+<h1>トランプ・カードを文字列に</h1>
+<p>自分でやってみましょう。</p>
+<h2>設計</h2>
+<p>要求は，カードの内部表現を文字列にすること</p>
+<ul>
+  <li>2文字からなるの文字列とする</li>
+  <li>スーツは &#8216;S&#8217;, &#8216;H&#8217;, &#8216;D&#8217;, &#8216;C&#8217;,  1文字</li>
+  <li>数は &#8216;A&#8217;,&#8217;K&#8217;,&#8217;Q&#8217;,&#8217;J&#8217;,&#8217;0&#8217;,&#8217;9&#8217;,&#8217;8&#8217;,&#8217;7&#8217;,&#8217;6&#8217;,&#8217;5&#8217;,&#8217;4&#8217;,&#8217;3&#8217;,&#8217;2&#8217;，1文字</li>
+</ul>
+<p>処理</p>
+<ul>
+  <li>スーツや番号を添字に配列を参照するのも一つの方法</li>
+</ul>
+<h3>機能の名前と構造</h3>
+<p>card_to_string カードを文字列にする機能</p>
+<ul>
+  <li>card_suit_to_string  スーツを1文字にする機能</li>
+  <li>card_no_to_string 番号を1文字にする機能</li>
+</ul>
+<h3>関数の引数と戻り値の型 (APIの設計)</h3>
+<ul>
+  <li>char *card_to_string(Card);
+    <ul>
+      <li>char *card_suit_to_string(int suit);</li>
+      <li>char *card_no_to_string(int no);</li>
+    </ul>
+  </li>
+</ul>
+<h2>テストによる開発</h2>
+<p>card_no_new_from_string や card_new の開発をまねして，
+  テストによる開発を行って下さい。</p>
+<p>開発の過程を，ドキュメントとしてまとめ，レポート提出
+  してください。</p>
+<h1>トランプ・カードを文字列に</h1>
+<h2>機能の追加とテストの作成</h2>
+<p>テストは，test/test_card.c に追加作成します。</p>
+<p>設計については，<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2">card_display_simple問題への解法</a> も参考にしてくださ
+  い。</p>
+<h3>card_to_string のテストを書く</h3>
+<p>機能の名前を card_to_string とし, card_to_stringが満たすテストを書きます:</p>
+<pre class="src" lang="c">
+
+Card sa = card_new(SPADE, ACE);
+
+strcmp(card_to_string(sa), <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SA</span><span style="color:#710">&quot;</span></span>)==<span style="color:#00D">0</span>;
+
+</pre>
+<p>テスト関数にします。</p>
+<pre class="src" lang="c">
+
+&lt;&lt;test_card.c<span style="color:#579">#card_to_string</span>&gt;&gt;
+
+</pre>
+<h3>card_to_string のインタフェースを決める</h3>
+<p>card_to_string を関数の形で書けたので，関数の型を決めます。</p>
+<p>戻り値の型は char *，与える引数はカードなので:</p>
+<pre class="src" lang="c">
+
+&lt;&lt;card.h<span style="color:#579">#card_to_string</span>&gt;&gt;
+
+</pre>
+<h3>テスト全体プログラムの確認</h3>
+<p>test/test_card.cは次のようになります:</p>
+<pre class="src" lang="c">
+&lt;&lt;test_card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#suit_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#no_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#card_new</span>&gt;&gt;
+
+&lt;&lt;card.h<span style="color:#579">#card_to_string</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#card_to_string</span>&gt;&gt;
+
+</pre>
+<pre class="src" lang="c">
+&lt;&lt;card.h-card_new&gt;&gt;
+</pre>
+<h3>test/Makefile の確認</h3>
+<p>test/Makefile の目的は変わっていませんので，Makefile の更新の必要はありません。</p>
+<pre class="src" lang="c">
+&lt;&lt;test/Makefile&gt;&gt;
+</pre>
+<p>test/test_card.c には card_to_string に関するテスト関数が加わっています。
+  card_to_string はまだ未実装ですが，test/test_card.o は作成できます。</p>
+<h3>test/test_card.o の作成</h3>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test
+make test_card.o
+</pre>
+<pre class="example">
+gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+</pre>
+<p>test_card.o ができれば，ひとまず，成功です。</p>
+<p>できない時は，test_card.c に間違いがあるか，Makefile に間違いがあ
+  ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+  う。</p>
+<p>成功したら，test/test_card.o の中身を見てみましょう:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test
+nm test_card.o
+</pre>
+<pre class="example">
+		     U _GLOBAL_OFFSET_TABLE_
+0000000000000540 r __PRETTY_FUNCTION__.3268
+0000000000000560 r __PRETTY_FUNCTION__.3284
+000000000000057d r __PRETTY_FUNCTION__.3304
+0000000000000590 r __PRETTY_FUNCTION__.3317
+		     U _setjmp
+		     U card_new
+		     U card_no
+		     U card_no_new_from_string
+		     U card_suit
+		     U card_suit_new_from_string
+		     U card_to_string
+		     U cut_assert_helper
+		     U cut_assert_true_helper
+		     U cut_test_context_current_peek
+		     U cut_test_context_finish_user_message_jump
+		     U cut_test_context_get_have_current_result
+		     U cut_test_context_get_jump_buffer
+		     U cut_test_context_in_user_message_jump
+		     U cut_test_context_long_jump
+		     U cut_test_context_pop_backtrace
+		     U cut_test_context_process_current_result
+		     U cut_test_context_push_backtrace
+		     U cut_test_context_set_jump_buffer
+		     U cut_test_context_set_user_message
+		     U cut_test_context_start_user_message_jump
+		     U strcmp
+0000000000000a1b T test_card_new
+0000000000000482 T test_card_no_new_from_string
+0000000000000000 T test_card_suit_new_from_string
+0000000000000c8b T test_card_to_string
+</pre>
+<p>card_to_stringが未定義で，
+  test_card_to_string が定義されているのがわかります。</p>
+<h2>card_to_string の実装</h2>
+<p>さて次は，機能 card_to_string の実装です。
+  手順は，card_newを実装したときと同様です:</p>
+<ul>
+  <li>test/test_card.c を作成するときに決めたインタフェースをとりだし，
+    src/card.h に移す。</li>
+  <li>src/card.hを遵守し，src/card.c に機能を追加実装する。</li>
+  <li>提供する機能を入れた src/libcard.a を作成する</li>
+</ul>
+<p>src/{card.h，libcard.a} で機能を提供する</p>
+<h3>card/card.h の更新</h3>
+<p>test/test_card.c から card_to_string等に関するインタフェース宣言を，
+  src/card.h に移します。</p>
+<p>ここまでで，src/card.h は次のようになります:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.h-card_to_string&gt;&gt;
+</pre>
+<p>test/test_card.c は次のようになります：</p>
+<pre class="src" lang="c">
+&lt;&lt;test_card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#suit_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#no_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#card_new</span>&gt;&gt;
+
+&lt;&lt;test_card.c<span style="color:#579">#card_to_string</span>&gt;&gt;
+
+</pre>
+<h3>card_to_string の実装 (src/card.cの更新)</h3>
+<p>card_to_string関数への要求を下記のように分解します:</p>
+<ul>
+  <li>スーツの内部表現を &#8216;C&#8217;, &#8216;D&#8217;, &#8216;H&#8217;, &#8216;S&#8217; の文字へ
+    <p>この機能を card_suit_to_char という関数で表します.</p>
+    <ul>
+      <li>型は，char card_suit_to_char(enum e_Suit)</li>
+    </ul>
+  </li>
+</ul>
+<p>実装は，</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#card_suit_to_char</span>&gt;&gt;
+</pre>
+<p>スーツの文字型の配列を定義しています。0に相当するスーツ文字はな
+  いので，&#8217;*&#8217; にしています。</p>
+<ul>
+  <li>番号の内部表現を，2~9 の間に数値は，&#8217;2&#8217;~&#8217;9&#8217;へ，
+    10~14 は &#8216;0&#8217;,&#8217;J&#8217;,&#8217;Q&#8217;,&#8217;K&#8217;,&#8217;A&#8217;</li>
+</ul>
+<p>この機能を card_no_to_char という関数で表します.</p>
+<ul>
+  <li>型は，char card_no_to_char(enum e_No)。</li>
+</ul>
+<p>実装は，</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#card_no_to_char</span>&gt;&gt;
+</pre>
+<ul>
+  <li>スーツを表す文字と番号を表す文字をあわせて，2文字からなる文字列
+    にする</li>
+</ul>
+<p>実装は次のようになるでしょう:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#card_to_string</span>&gt;&gt;
+</pre>
+<h3>src/card.c 全体</h3>
+<p>ここまでの，src/card.c を示しておきます:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#suit_new</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#no_new</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_new</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_suit</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_no</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_to_string</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_suit_to_char</span>&gt;&gt;
+
+&lt;&lt;card.c<span style="color:#579">#card_no_to_char</span>&gt;&gt;
+
+</pre>
+<h3>src/Makefile</h3>
+<p>src/Makefileに変更はありません。</p>
+<pre class="src" lang="c">
+&lt;&lt;src/Makefile&gt;&gt;
+</pre>
+<h3>src/card.o の作成</h3>
+<p>src/card.o を make し, ソースコードにエラーがないか確かめます:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+make card.o
+</pre>
+<pre class="example">
+gcc card.c -g -c -fPIC -I. 
+</pre>
+<p>src/card.o ができれば文法や宣言の食い違いはなくなったことになりま
+  す。</p>
+<h3>src/libcard.a の作成</h3>
+<p>src/card.o ができれば，次は， src/libcard.a を make します。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+make libcard.a
+</pre>
+<pre class="example">
+rm -f libcard.a
+ar r libcard.a card.o
+</pre>
+<p>Makefile が正しければ，これは成功するはずです。</p>
+<p>libcard.a の中身を確かめてみましょう:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+nm libcard.a
+</pre>
+<pre class="example">
+
+card.o:
+0000000000000005 d NoChars
+0000000000000000 d SuitChars
+                 U _GLOBAL_OFFSET_TABLE_
+                 U atoi
+00000000000000e6 T card_new
+000000000000010f T card_no
+000000000000008b T card_no_new_from_string
+00000000000001a2 T card_no_to_char
+0000000000000102 T card_suit
+0000000000000000 T card_suit_new_from_string
+000000000000018b T card_suit_to_char
+000000000000011c T card_to_string
+                 U fprintf
+                 U malloc
+                 U stderr
+                 U strcmp
+</pre>
+<p>src/libcard.a が更新できたので，次はtest_card.so を更新します。</p>
+<h2>テスト</h2>
+<h3>test/test_card.so のビルド</h3>
+<p>src/libcard.a が更新されているので，test/test_card.so を作り直しま
+  す。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+</pre>
+<pre class="example">
+rm -f *.o *.so *~ \#* *.gch
+gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+</pre>
+<p>test/test_card.so ができればテストの実行に移ります。</p>
+<p>できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。</p>
+<h3>テストの実行</h3>
+<p>テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+  めるためにテストする:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple
+cutter -v v test
+</pre>
+<pre class="example">
+test_card:
+  test_card_to_string:					.: (0.000067)
+  test_card_new:					.: (0.000044)
+  test_card_suit_new_from_string:			.: (0.000078)
+  test_card_no_new_from_string:				.: (0.000093)
+
+Finished in 0.001416 seconds (total: 0.000282 seconds)
+
+4 test(s), 12 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+</pre>
+<h3>テストと再設計</h3>
+<p>テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+  ります。</p>
+<p>テストが失敗した場合は，test/test_card.c, src/{card.h, card.c} を
+  修正していくことになります。</p>
+<p>ソースコードを修正した後は，Makefileに間違いがなけれ
+  ば，~/progs/card_display/simpleで make すれば，全自動でテストまで
+  実行してくれます。テストが成功するまで繰り返してください。</p>
+<h1>card_display_simple 問題の解の作成</h1>
+<ul>
+  <li>~/progs/card_display/simple/ に，</li>
+  <li>作成した src/libcard.a を利用し，</li>
+  <li>card_display_simple.c を作成し，</li>
+  <li>Makefile を書き換えて, card_display_simple をビルドできるように，
+    してください。</li>
+</ul>
+<h1>card_display_multi</h1>
+<p>Card cards[5]; を使ってみる。</p>
+<h1>card_display_sort</h1>
+<h2>Doing checks [1/3]</h2>
+<ul>
+  <li>[X] document structure check</li>
+  <li>[ ] tangle check</li>
+  <li>[ ] shell check</li>
+</ul>
+<h2>複数のカードをソートする機能</h2>
+<p>複数のカードを <b>Card型配列へのポインタ</b> で表すことにする:</p>
+<pre class="src" lang="c">
+
+Card *cards;
+
+</pre>
+<p>Card * が型で，cards が変数名。</p>
+<p>ソートの機能は，関数で表す。</p>
+<p>名前を cards_sort とする。cards_ は複数のカードを扱う関数の接頭詞と
+  した。</p>
+<p>次に，関数 cards_sort の型を決める。cards_sort へ何を与え，
+  cards_sort が何を返すかを考える:</p>
+<ul>
+  <li>cards_sort は関数である:
+    <pre class="example">
+cards_sort()
+    </pre>
+  </li>
+  <li>複数のカードをもらう:
+    <pre class="example">
+cards_sort(Card *)
+    </pre>
+  </li>
+  <li>複数のカードの枚数ももらう:
+    <pre class="example">
+cards_sort(Card *, int)
+    </pre>
+  </li>
+  <li>返す値は， (ソートした) 複数のカード:
+    <pre class="example">
+Card *cards_sort(Card *, int)
+    </pre>
+  </li>
+</ul>
+<p>ということで，関数の宣言全体は下記となります:</p>
+<pre class="src" lang="c">
+
+&lt;&lt;card.h<span style="color:#579">#cards_sort</span>&gt;&gt;
+
+</pre>
+<h2>機能の追加とテストの作成</h2>
+<p>カードを作る機能のテストは，test/test_sort.c を新たに作成することにします。</p>
+<h3>cards_sort のテストを書く</h3>
+<p>機能の名前を cards_sort とし, cards_sortが満たすテストを書きます。</p>
+<p>まずは，試し書きしてみます:</p>
+<pre class="src" lang="c">
+<span style="color:#777">// test/test_sort.c</span>
+
+Card *cards, *sorted_cards;
+
+sorted_cards = cards_sort(cards, <span style="color:#00D">5</span>);
+
+</pre>
+<p>関数として書けますね。</p>
+<p>まだテストにはなっていません。まず，テストのためのデータを用意して
+  みます:</p>
+<pre class="src" lang="c">
+
+&lt;&lt;test_sort.c<span style="color:#579">#test_setup</span>&gt;&gt;
+
+</pre>
+<p>よさそうです。</p>
+<p>テストにするために，期待されるデータを用意し，ソート後のデータと比
+  較し，等しいことでテストにすることにします。</p>
+<p>期待されるデータを用意します:</p>
+<pre class="src" lang="c">
+
+&lt;&lt;test_sort.c<span style="color:#579">#expected_setup</span>&gt;&gt;
+
+</pre>
+<p>つぎにテストを書きます。テストの基本は，2枚のカードが等しいかです。</p>
+<p>2枚のカードが等しいかを次のように書きたいところです:</p>
+<pre class="src" lang="c">
+expected_cards[<span style="color:#00D">0</span>]==sorted_cards[<span style="color:#00D">0</span>]
+</pre>
+<p>Card型の比較は == ではできません。関数で行なうことします:</p>
+<pre class="src" lang="c">
+card_compare(expected_cards[<span style="color:#00D">0</span>], sorted_cards[<span style="color:#00D">0</span>])
+</pre>
+<p>二枚のカードの比較を関数 card_compare で書けたので，
+  card_compare のインタフェースと機能を決めましょう：</p>
+<ul>
+  <li>card_compare は，2枚のカードを与え，それが等しいか大きいか小さい
+    かを0，1，-1で返す関数とします：</li>
+  <li>card_compare は関数:
+    <pre class="example">
+card_compare()
+    </pre>
+  </li>
+  <li>二枚のカードをもらって:
+    <pre class="example">
+card_compare(Card, Card)
+    </pre>
+  </li>
+  <li>1,0,-1 の整数値を返す
+    <pre class="example">
+int card_compare(Card, Card)
+    </pre>
+  </li>
+</ul>
+<p>card_compare の宣言は次となります:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.h<span style="color:#579">#card_compare</span>&gt;&gt;
+</pre>
+<p>では，表明にしてみましょう:</p>
+<pre class="src" lang="c">
+cut_assert(card_compare(expected_cards[<span style="color:#00D">0</span>], sorted_cards[<span style="color:#00D">0</span>])==<span style="color:#00D">0</span> );
+</pre>
+<p>よさそうですね。</p>
+<p>5枚のカードをテストする表明にして，全体を合わせて，関数にします。</p>
+<h3>テスト全体プログラムの確認</h3>
+<p>test/test_sort.cは次のようになります:</p>
+<pre class="src" lang="c">
+&lt;&lt;test_sort.c<span style="color:#579">#include</span>&gt;&gt;
+&lt;&lt;card.h<span style="color:#579">#card_compare</span>&gt;&gt;
+&lt;&lt;card.h<span style="color:#579">#cards_sort</span>&gt;&gt;
+&lt;&lt;test_sort.c&gt;&gt;
+</pre>
+<h3>test/Makefile の確認</h3>
+<p>test_sort.c を用意したことで，
+  test/Makefile の目的は変わりました。Makefile を更新します:</p>
+<pre class="src" lang="c">
+&lt;&lt;test/Makefile<span style="color:#579">#test_sort</span>&gt;&gt;
+</pre>
+<h3>test/test_sort.o の作成</h3>
+<pre class="src" lang="sh">
+
+# ~/progs/card_display/simple/test
+make test_sort.o
+
+</pre>
+<p>test_sort.o ができれば，ひとまず，成功です。</p>
+<p>できない時は，test_sort.c に間違いがあるか，Makefile に間違いがあ
+  ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+  う。</p>
+<p>成功したら，test/test_sort.o の中身を見てみましょう:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test
+nm test_sort.o
+</pre>
+<p>cards_sortが未定義で，test_cards_sort が定義されているのがわかるは
+  ずです。</p>
+<h2>cards_sort，card_compare の実装</h2>
+<p>さて次は，機能 cards_sort, card_compare の実装です。</p>
+<p>お決まりの手順です:</p>
+<ul>
+  <li>test/test_sort.c を作成するときに決めたインタフェースをとりだし，
+    src/card.h に移す。</li>
+  <li>src/card.hを遵守し，*src/cards.c* に機能を追加実装する。</li>
+  <li>提供する機能を入れた src/libcard.a を作成する</li>
+</ul>
+<p>src/{card.h，libcard.a} で機能を提供する</p>
+<h3>card/card.h の更新</h3>
+<p>test/test_card.c から cards_sort等に関するインタフェース宣言を，
+  src/card.h に移します。</p>
+<p>ここまでで，src/card.h は次のようになります:</p>
+<pre class="src" lang="c">
+&lt;&lt;card.h-cards_sort&gt;&gt;
+</pre>
+<p>test/test_sort.c からは削除してください。</p>
+<h3>cards_sort の実装 (src/cards.cの作成)</h3>
+<p>cards_sort関数の使い方は決まっています。</p>
+<pre class="src" lang="c">
+
+&lt;&lt;card.h<span style="color:#579">#cards_sort</span>&gt;&gt;
+
+</pre>
+<p>ことでした。ソートのプログラムを書いた経験をもとにします。</p>
+<p>単純ソートは，選択範囲中で，最も小さいものを見付け範囲の先頭に動か
+  すことを，範囲をせばめながら行いことで，ソートを行います。</p>
+<p>実装は次のようになるでしょう:</p>
+<pre class="src" lang="c">
+&lt;&lt;cards.c<span style="color:#579">#cards_sort</span>&gt;&gt;
+</pre>
+<h3>card_compare の実装</h3>
+<p>card_compare の使い方も決まっています:</p>
+<pre class="src" lang="c">
+
+&lt;&lt;card.h<span style="color:#579">#card_compare</span>&gt;&gt;
+
+</pre>
+<p>カードの番号の大小，スーツの大小をから，カードの大小を決めます:</p>
+<pre class="src" lang="c">
+&lt;&lt;cards.c<span style="color:#579">#card_compare</span>&gt;&gt;
+</pre>
+<h3>cards.c の確認</h3>
+<pre class="src" lang="c">
+&lt;&lt;card.c<span style="color:#579">#include</span>&gt;&gt;
+
+&lt;&lt;cards.c<span style="color:#579">#card_compare</span>&gt;&gt;
+
+&lt;&lt;cards.c<span style="color:#579">#cards_sort</span>&gt;&gt;
+
+</pre>
+<h3>src/Makefile</h3>
+<p>src/Makefileには，src/cards.o を作成する規則が追加になり，
+  libcard.a を作る時，cards.o も取り込むように規則を変更します:</p>
+<pre class="src" lang="c">
+&lt;&lt;src/Makefile<span style="color:#579">#cards</span>&gt;&gt;
+</pre>
+<h3>src/cards.o の作成</h3>
+<p>src/cards.o を make し, ソースコードにエラーがないか確かめます:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+make cards.o
+</pre>
+<p>src/cards.o ができれば文法や宣言の食い違いはなくなったことになりま
+  す。</p>
+<h3>src/libcard.a の作成</h3>
+<p>src/cards.o ができれば，次は， src/libcard.a を make します。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+make libcard.a
+</pre>
+<p>Makefile が正しければ，これは成功するはずです。</p>
+<p>libcard.a の中身を確かめてみましょう:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/src
+nm libcard.a
+</pre>
+<p>src/libcard.a が更新できたので，次はtest_card.so を更新します。</p>
+<h2>テスト</h2>
+<h3>test/test_sort.so のビルド</h3>
+<p>test/test_sort.so を作り直します。</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+</pre>
+<p>test/test_card.so ができればテストの実行に移ります。</p>
+<p>できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。</p>
+<h3>テストの実行</h3>
+<p>テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+  めるためにテストする:</p>
+<pre class="src" lang="sh">
+# ~/progs/card_display/simple
+cutter -v v test
+</pre>
+<h3>テストと再設計</h3>
+<p>テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+  ります。</p>
+<p>テストが失敗した場合は，test/test_sort.c, src/{card.h, cards.c} を
+  修正していくことになります。</p>
+<p>ソースコードを修正した後は，Makefileに間違いがなけれ
+  ば，~/progs/card_display/simpleで make すれば，全自動でテストまで
+  実行してくれます。テストが成功するまで繰り返してください。</p>
+<h1>end of org input</h1>
+<p>hoge</p>

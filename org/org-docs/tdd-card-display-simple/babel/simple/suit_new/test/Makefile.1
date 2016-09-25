@@ -1,0 +1,10 @@
+
+# test/Makefile
+.PHONY: clean 
+CFLAGS = -fPIC `pkg-config cutter --cflags`
+
+test_card.o: test_card.c
+	gcc -c $< $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch

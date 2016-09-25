@@ -1,0 +1,8 @@
+* progs.links
+
+- home [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog][prog-http:]]  [[file://~suzuki/lects/prog/site][prog-cis@]]  [[file+org:~/COMM/Lects/prog/site][prog-s@]
+- [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][wiki]] 講義情報，お知らせ，進行状況など
+- [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs][講義用ドキュメント]]
+- [[http://svn.cis.iwate-u.ac.jp/svn/prog][svn開発用リポジトリ]] subversion 
+-  学生用[[http://wiki.cis.iwate-u.ac.jp/~wiki/prog-note-05.cgi][ノート用Wiki]] 
+

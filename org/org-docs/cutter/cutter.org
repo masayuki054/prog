@@ -1,0 +1,445 @@
+* cutter 
+
+  cutter は C/C++ 言語用の単体テストフレームワークです。
+
+  [[http://cutter.sourceforge.net/reference/ja/readme.html][はじめに: Cutterリファレンスマニュアル - Cutter]] をざっと読んでみましょう。使いながら覚えましょう。
+
+* テスト・ファイルの作成
+
+   cutterで*テスト*を行なうためには，テスト用ディレクトリを作成し，テ
+   スト用ディレクトリの中に，*テスト*を作成します。
+
+   cutterでのテストは，ディレクトリの中の，test_ で始まるtest_*.so と
+   いう名前のテストファイル(達)です。
+
+   テストファイルを作成するため，test_*.c にソースプログラムを書き，コ
+   ンパイルして，test_*.so を作成します。
+
+   ここでは，~/progs/cutter/test がテスト用ディレクトリ，
+   ~/progs/cutter/test/test_first.c がテストのソースファイルです。
+   テスト test_first.so を作成することが目的で，そのためにMakefileを容
+   易します。
+
+   まず，テスト用ディレクトリを作成します。
+   次のコマンドで行います:
+
+#+BEGIN_SRC sh :dir ~/progs/ :export both
+# [~/progs] % 
+mkdir -p cutter/test
+#+END_SRC
+
+#+RESULTS:
+
+   テストファイルを作成するため，ソースプログラム
+   (cutter/test/test_first.c) を作成します：
+
+#+BEGIN_SRC c :tangle ~/progs/cutter/test/test_first.c :mkdirp yes
+// ~/progs/cutter/test/test_first.c
+#include <cutter.h>
+#include <string.h>
+
+static int condition = 0;
+
+void
+cut_setup (void)
+{
+    /* 初期化用コード */
+    condition = 1;
+}
+
+void
+cut_teardown (void)
+{
+    /* 後片付け用コード */
+    condition = 0;
+}
+
+void
+test_condition(void)
+{
+    cut_set_message("conditionの値はcut_setup()で1に設定されているはず");
+    cut_assert(condition==1);
+}
+
+void
+test_strcmp(void)
+{
+    cut_set_message("同じ文字列に対し，strcmpは0を返すはず");
+    cut_assert(strcmp("string", "string")==0);
+}
+#+END_SRC
+   
+   - cutter.h をインクルードし， cutter が提供する機能のインタフェース
+     を受け入れます。
+
+   - string.h をインクルードし，テストしたい文字列機能のインタフェース
+     を受け入れます。
+
+   - テストに使う変数 condition を宣言します。
+
+   - cut_setup と cut_teardown 関数は，各テストの前後に呼ばれる初期化
+     と後処理のための関数です。ここでは，conditionの値を設定，クリアしています。
+
+   - test_ で始まる関数がテストを行なうテスト関数です。
+
+     テスト関数は，テストのための*表明*を含みます。表明とは，機能が正し
+     いときに真となる論理式のことです。
+
+     cutterでの表明は，cut_assert で
+     始まる関数に，表明をあらわす論理値を与える呼び出しで書きます。
+
+   - cut_assert(condition==1) は，conditionの値が1であることを確かめる
+     ための表明です。
+
+   - cut_assert(strcmp("string", "string")==0) は，strcmp 関数が0を
+     返すことを確かめるための表明です。
+
+     cut_assert関数は，その値が真ならテスト成功として，偽ならテスト失
+     敗として，振舞います。
+
+   - cut_set_message("message")は　表明が失敗した場合に表示するメッ
+       セージを指定します。
+
+* テストのビルド
+  
+** Makefile
+
+   テストをビルド(作成)するために，makeを使います。Makefileの書き方は，
+
+   [[http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE#f623ebec][prog2::make]] を見て，思い出して下さい。
+
+   テストディレクトリの中に Makefile を作成します:
+
+#+BEGIN_SRC makefile :tangle ~/progs/cutter/test/Makefile
+# ~/progs/cutter/test/Makefile
+CFLAGS = -fPIC `pkg-config cutter --cflags`
+LDFLAGS = `pkg-config cutter --libs`
+
+test_first.so: test_first.o
+	gcc -o $@ -shared $< $(LDFLAGS)
+
+test_first.o: test_first.c
+	gcc -c $< $(CFLAGS)
+
+.PHONY: clean
+clean:
+	rm -f *.o *.so
+#+END_SRC
+
+  - CFLAGS にはコンパイラへの指示を書きます。   
+
+   `pkg-config cutter --cflags` と書くのは，
+
+    '-I /usr/include/cutter'と書くのと同等です。
+
+    '-I' はインクルードパスの指定です。cutter.h のあるディレクトリを指定しています。
+
+
+  - LDFLAGS にはローダへの指示を書きます。'-lcutter' はライブラリパス
+    にある libcutter.a または libcutter.so を意味します。利用環境では，
+    /usr/lib/libcutter.soになります。
+
+  - test_first.so がビルドのターゲットです。-share オプションで，共有ライブラリにします。
+    main関数は必要ありません。
+
+  - test_first.c をコンパイルしオブジェクト・ファイル test_first.o を
+    作ります。このとき CFLAGS変数で，cutter.h の在処を指定しています。
+
+  make してテストをビルドしましょう:
+
+#+BEGIN_SRC sh :results output :exports both :dir ~/progs/cutter/test
+# [~/progs/cutter/test] %
+ make 
+#+END_SRC
+
+#+RESULTS:
+: gcc -c test_first.c -fPIC `pkg-config cutter --cflags`
+: gcc -o test_first.so -shared test_first.o `pkg-config cutter --libs`
+
+  上記のコマンドが成功すれば，test_first.so が出来上がっています。
+
+* テストのビルドへの補足説明
+
+** コンパイラへの指示
+
+Makefile 中の記述への補足です:
+
+*** include パス
+
+#+BEGIN_SRC sh  :results output :exports both
+# 次のコマンドを実行してみてください
+pkg-config cutter --cflags
+
+#+END_SRC
+
+#+RESULTS:
+: -I/usr/include/cutter  
+
+    この結果を，Cコンパイラのオプションで指定すると，インクルード・パ
+    スに~/usr/include/cutter~ を加えることになり，cutter.h がインクルー
+    ドできることになります。
+
+*** ライブラリとライブラリ・パス
+
+#+BEGIN_SRC sh  :results output :exports both :dir ~/progs/cutter
+# 次のコマンドを実行してみてください
+# cutter を使うために必要なライブラリの情報がわかります。
+pkg-config cutter --libs
+#+END_SRC
+
+#+RESULTS:
+: -lcutter  
+
+  - この結果を，Cコンパイラ(実はローダ)のオプションで指定すると，ライ
+    ブラリに libcutter.so を加えることになります。
+
+** ヘッダファイルやライブラリファイルの場所
+
+  cutter.h や libcutter.so の在処を調べてみましょう:
+
+#+BEGIN_SRC sh :results output :dir ~/progs/cutter
+# 次のコマンドを実行してみてください
+# cutter.h がある場所がわかります。
+locate cutter.h
+#+END_SRC
+
+#+RESULTS:
+: /usr/include/cutter/cppcutter.h
+: /usr/include/cutter/cutter.h
+: /usr/include/cutter/gcutter.h
+: /usr/include/cutter/soupcutter.h
+: /usr/share/gtk-doc/html/cutter/cutter.html
+: /usr/share/gtk-doc/html/cutter/ja/cutter.html
+
+  <cutter.h> は /usr/include/cutter/cutter.h ですね。
+
+#+BEGIN_SRC sh :results output :dir ~/progs/cutter
+# 次のコマンドを実行してみてください
+# libcutter.so がある場所がわかります。
+locate libcutter.so
+#+END_SRC
+
+#+RESULTS:
+: /usr/lib/libcutter.so
+: /usr/lib/libcutter.so.0
+: /usr/lib/libcutter.so.0.1.0
+
+   -lcutter で指定した libcutter.so は /usr/lib/libbutter.so です。
+   /usr/lib はシステムの通常のライブラリを置く場所です。
+
+** オブジェクト・ファイルのこと
+
+#+BEGIN_SRC sh :results output :exports both :dir ~/progs/cutter/test
+# [~/progs/cutter/test] % 
+# test_first.o の中に何があるか調べましょう。
+# 次のコマンドを実行してください。e
+
+nm test_first.o 
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+000000000000036d s L_.str
+00000000000003ad s L_.str1
+00000000000003d0 s L_.str2
+00000000000003eb s L_.str3
+00000000000003f8 s L_.str4
+0000000000000440 s L_.str5
+000000000000046c s L_.str6
+0000000000000473 s L_.str7
+00000000000003ba s L___PRETTY_FUNCTION__.test_condition
+000000000000042d s L___PRETTY_FUNCTION__.test_strcmp
+                 U ___stack_chk_fail
+                 U ___stack_chk_guard
+00000000000005d0 b _condition
+                 U _cut_assert_helper
+0000000000000000 T _cut_setup
+0000000000000010 T _cut_teardown
+                 U _cut_test_context_current_peek
+                 U _cut_test_context_finish_user_message_jump
+                 U _cut_test_context_get_have_current_result
+                 U _cut_test_context_get_jump_buffer
+                 U _cut_test_context_in_user_message_jump
+                 U _cut_test_context_long_jump
+                 U _cut_test_context_pop_backtrace
+                 U _cut_test_context_process_current_result
+                 U _cut_test_context_push_backtrace
+                 U _cut_test_context_set_jump_buffer
+                 U _cut_test_context_set_user_message
+                 U _cut_test_context_start_user_message_jump
+                 U _setjmp
+                 U _strcmp
+0000000000000020 T _test_condition
+00000000000001b0 T _test_strcmp
+#+end_example
+
+  test_first.o に入っている変数や関数，参照している関数情報などですね:
+  - T は定義されている関数です
+  - U は参照している関数です
+
+** ライブラリ・ファイルのこと
+    
+  test_first.so をいろいろ調べてみましょう.
+
+  まずは，test_first.so が使用しているライブラリを調べてみます。
+
+#+BEGIN_SRC sh :results output :exports both :dir ~/progs/cutter/test
+# [~/progs/cutter/test] % 
+# test_first.soが使う動的ライブラリを表示するため，
+# 次のコマンドを実行してください
+
+ldd test_first.so 
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+	linux-vdso.so.1 =>  (0x00007fff1f595000)
+	libcutter.so.0 => /usr/lib/libcutter.so.0 (0x00007fc59afa4000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc59abdf000)
+	libgmodule-2.0.so.0 => /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007fc59a9da000)
+	libgio-2.0.so.0 => /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007fc59a667000)
+	libgobject-2.0.so.0 => /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007fc59a416000)
+	libglib-2.0.so.0 => /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007fc59a10d000)
+	libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc599eef000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fc59b456000)
+	libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc599ceb000)
+	libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007fc599ad1000)
+	libselinux.so.1 => /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fc5998ae000)
+	libresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007fc599693000)
+	libffi.so.6 => /usr/lib/x86_64-linux-gnu/libffi.so.6 (0x00007fc59948a000)
+	libpcre.so.3 => /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007fc59924c000)
+#+end_example
+
+  つぎに test_first.so の中に何が入っているか調べてみます:
+
+#+BEGIN_SRC sh :results output :dir ~/progs/cutter/test
+# [~/progs/cutter/test] % 
+# test_first.soで定義された，または参照している関数を表示するため，
+# 次のコマンドを実行してください
+
+nm test_first.so 
+#+END_SRC
+
+
+#+RESULTS:
+#+begin_example
+0000000000201e08 d _DYNAMIC
+0000000000202000 d _GLOBAL_OFFSET_TABLE_
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+                 w _Jv_RegisterClasses
+0000000000001108 r __FRAME_END__
+0000000000201e00 d __JCR_END__
+0000000000201e00 d __JCR_LIST__
+0000000000000ff2 r __PRETTY_FUNCTION__.3239
+0000000000001001 r __PRETTY_FUNCTION__.3246
+00000000002020a0 d __TMC_END__
+00000000002020a0 B __bss_start
+                 w __cxa_finalize@@GLIBC_2.2.5
+0000000000000bf0 t __do_global_dtors_aux
+0000000000201df8 t __do_global_dtors_aux_fini_array_entry
+0000000000202098 d __dso_handle
+0000000000201df0 t __frame_dummy_init_array_entry
+                 w __gmon_start__
+00000000002020a0 D _edata
+00000000002020a8 B _end
+0000000000000ee8 T _fini
+0000000000000a48 T _init
+                 U _setjmp@@GLIBC_2.2.5
+00000000002020a0 b completed.6973
+00000000002020a4 b condition
+                 U cut_assert_helper
+0000000000000c65 T cut_setup
+0000000000000c75 T cut_teardown
+                 U cut_test_context_current_peek
+                 U cut_test_context_finish_user_message_jump
+                 U cut_test_context_get_have_current_result
+                 U cut_test_context_get_jump_buffer
+                 U cut_test_context_in_user_message_jump
+                 U cut_test_context_long_jump
+                 U cut_test_context_pop_backtrace
+                 U cut_test_context_process_current_result
+                 U cut_test_context_push_backtrace
+                 U cut_test_context_set_jump_buffer
+                 U cut_test_context_set_user_message
+                 U cut_test_context_start_user_message_jump
+0000000000000b80 t deregister_tm_clones
+0000000000000c30 t frame_dummy
+0000000000000bb0 t register_tm_clones
+0000000000000c85 T test_condition
+0000000000000dbb T test_strcmp
+#+end_example
+
+* テストの実行
+  
+  作成したテストを実行します:
+
+#+BEGIN_SRC sh :results output code :exports both :dir ~/progs/cutter
+# [~/progs/cutter/] %
+# test/ ディレクトリ中のテストを cutter で実行するために，
+# 次のコマンドを実行してください
+cutter -v v test/
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+test_first:
+  test_condition:					.: (0.000125)
+  test_strcmp:						.: (0.000044)
+
+Finished in 0.001260 seconds (total: 0.000169 seconds)
+
+2 test(s), 2 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+#+END_SRC
+
+
+
+** テスト結果 (成功)
+#+BEGIN_example
+test_first:
+  test_condition:					.: (0.000062)
+  test_strcmp:						.: (0.000025)
+
+Finished in 0.000775 seconds (total: 0.000087 seconds)
+
+2 test(s), 2 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+#+end_example
+
+  上のテスト結果の出力を要約すると:
+#+BEGIN_QUOTE
+  テストファイル test_first にある，ふたつのテスト関数 test_condition,
+  test_strcmp の中，ふたつの表明を実行し，失敗はありませんでした。
+#+END_QUOTE
+  詳しい結果の見方については，[[http://cutter.sourceforge.net/reference/ja/readme.html][はじめに: Cutterリファレンスマニュアル - Cutter]] を読んでください。
+
+** テスト結果 (失敗)
+
+  cut_assert の中の式を変えて，失敗する場合も試してみましょう。
+
+#+BEGIN_EXAMPLE
+test_first:
+  test_condition:					F
+=============================================================================================================================================================
+Failure: test_condition
+conditionの値はcut_setup()で1に設定されているはず
+expected: <condition==0> is neither FALSE nor NULL
+test_first.c:25: test_condition(): cut_assert(condition==0, )
+=============================================================================================================================================================
+: (0.000219)
+  test_strcmp:						F
+=============================================================================================================================================================
+Failure: test_strcmp
+同じ文字列に対し，strcmpは0を返すはず
+expected: <strcmp("string", "string")==1> is neither FALSE nor NULL
+test_first.c:32: test_strcmp(): cut_assert(strcmp("string", "string")==1, )
+=============================================================================================================================================================
+: (0.000096)
+
+Finished in 0.000879 seconds (total: 0.000315 seconds)
+
+2 test(s), 0 assertion(s), 2 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+0% passed
+
+#+END_EXAMPLE

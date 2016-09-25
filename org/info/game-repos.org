@@ -1,0 +1,38 @@
+#+setupfile: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+TITLE: game.repos
+* game開発用 リポジトリ
+
+** リポジトリについて
+
+  バージョン管理ソフト subversion のリポジトリに，game 開発ディレクト
+  リ全体を置きました。
+  
+  リポジトリは，ブラウザから閲覧できます:
+  - URLは，https://wiki.cis.iwate-u.ac.jp/svn/prog/ です。
+  - 認証が必要です。学科計算機のログイン名とパスワードを使ってください。
+  - 安全でないサイトへの接続とみなされますが，例外として登録してくださ
+    い。
+
+** https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game の内容
+
+**** [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card][card]]
+
+    - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/test][card/test]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/test/Makefile][card/test/Makefile]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/test/test_card.c][card/test/test_card.c]]
+    - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src][card/src]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/Makefile][card/src/Makefile]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/card.h][card/src/card.h]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/card.c][card/src/card.c]]
+
+**** [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck][deck]]
+
+    - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test][deck/test]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/Makefile][deck/test/Makefile]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/test_deck.c][deck/test/test_deck.c]]
+    - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src][deck/src]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/Makefile][deck/src/Makefile]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.h][deck/src/deck.h]]
+      - [[https://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.c][deck/src/deck.c]]
+

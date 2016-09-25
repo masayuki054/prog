@@ -1,0 +1,732 @@
+* src/hand.h
+
+** 一回だけしか，include できなくする
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+# pragma once
+
+#+END_SRC
+
+** 依存するモジュールのインタフェースを読む
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+# include <card.h>
+
+#+END_SRC
+
+** hand 型の定義
+
+hand モジュールの主体 Hand型を定義する.
+
+- 最大5枚のカード
+- 手札の枚数。出し入れがあるため。
+
+からなる構造体:
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+# define CardsInHand 5 //02.01 added
+
+struct _Hand {
+  Card cards[5];
+  int size;
+};
+
+typedef struct _Hand Hand;
+
+#+END_SRC
+
+** 手札の作成と状態を知る機能
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+Hand hand_new(void);
+int hand_size(Hand);
+
+#+END_SRC
+
+** 手札の出し入れ
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+Hand hand_add(Hand, Card); // 手札に一枚カードを加える
+Hand hand_draw(Hand, int); // 手札から一枚カードを抜く
+Card hand_card(Hand, int); // 02.02 added 手札中のカードを見る
+                           // 番号の指定は 1..5
+#+END_SRC
+
+** ソート
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+Hand hand_sort(Hand); // 手札のソート
+
+#+END_SRC
+
+** 手札の表示（用文字列の生成）
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+// 手札の表示（用文字列の生成）
+char *hand_to_string(Hand);
+
+#+END_SRC
+
+** 役に関する定義
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+// 役に関する定義
+typedef 
+ enum {
+  HighCard = 1,
+  OnePair,
+  TwoPairs,
+  ThreeCards,
+  Straight,
+  Flush,
+  FullHouse,
+  FourCards,
+  StraightFlush
+}
+  PokerHand;
+
+#+END_SRC
+
+#+BEGIN_SRC c :tangle ../../src/hand.h :mkdirp yes
+// 役の計算
+PokerHand hand_judge(Hand);
+// 役の名前
+char *hand_pokerhand_to_string(PokerHand);
+
+#+END_SRC
+
+
+// C-c C-v C-t :
+* test_hand.c
+** test_hand header
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c :mkdirp yes
+//~/progs/game/hand/test/test_hand.c
+# include <cutter.h>
+# include <hand.h>
+# include <string.h>
+# include <stdio.h>
+#+END_SRC
+
+** 手札の生成のテスト
+
+テスト項目
+- 手札ができ，枚数が0枚であること
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c
+void
+test_hand_new(void)
+{
+  Hand h = hand_new();
+
+  cut_set_message("hand_new");
+  cut_assert(hand_size(h)==0);
+}
+#+END_SRC
+
+** 手札へのカードの追加
+
+テスト項目
+- カードを2枚追加し，手札の枚数が1づつ増えること
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c
+void
+test_hand_add(void)
+{
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE,ACE);
+  Card c2 = card_new(HEART,KING);
+
+  cut_set_message("hand_add");
+  h = hand_add(h, c1);
+  cut_assert(hand_size(h)==1);
+  h = hand_add(h, c2);
+  cut_assert(hand_size(h)==2);
+}
+#+END_SRC
+
+** 手札の no 番目のカードのテスト
+
+テスト項目
+- 手札にカードを加え，手札がそのカードからなっていること
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c
+void
+test_hand_card(void)
+{
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE,ACE);
+  Card c2 = card_new(HEART,KING);
+
+  cut_set_message("hand_card");
+  h = hand_add(h, c1);
+  h = hand_add(h, c2);
+  
+  cut_assert(card_compare(c1, hand_card(h, 0))==0);
+  cut_assert(card_compare(c2, hand_card(h, 1))==0);
+}
+#+END_SRC
+
+** 手札から1枚引く
+テスト項目
+- 手札にカードを加え，
+- 加えた順でカードの情報が得られること
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c
+void
+test_hand_draw()
+{
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE, QUEEN);
+  Card c2 = card_new(HEART, QUEEN);
+  Card c3 = card_new(CLUB, QUEEN);
+  Card c4 = card_new(DIAMOND, QUEEN);
+  Card c5 = card_new(SPADE, JACK);
+
+  cut_set_message("hand_draw");
+  h = hand_add(h, c1);
+  h = hand_add(h, c2);
+  h = hand_add(h, c3);
+  h = hand_add(h, c4); 
+  h = hand_add(h, c5);
+
+  cut_assert(hand_size(h)==5);
+  Card d = hand_card(h, 1);
+  h = hand_draw(h, 1);
+  cut_assert(hand_size(h)==4);
+  cut_assert(card_compare(d, c2)==0);
+}
+#+END_SRC
+** 手札のソート
+
+テスト項目
+- 手札に5枚のカードを加え，
+- ソート後，昇順に並んでいること
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c
+void
+test_hand_sort()
+{
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE, 2);
+  Card c2 = card_new(HEART, 3);
+  Card c3 = card_new(CLUB, 4);
+  Card c4 = card_new(DIAMOND, 5);
+  Card c5 = card_new(SPADE, 6);
+
+  cut_set_message("hand_sort");
+
+  h = hand_add(h, c2);
+  h = hand_add(h, c1);
+  h = hand_add(h, c3);
+  h = hand_add(h, c4);
+  h = hand_add(h, c5);
+
+  h = hand_sort(h);
+
+  cut_assert(card_compare(c1, hand_card(h, 0))==0);
+  cut_assert(card_compare(c2, hand_card(h, 1))==0);
+  cut_assert(card_compare(c3, hand_card(h, 2))==0);
+  cut_assert(card_compare(c4, hand_card(h, 3))==0);
+  cut_assert(card_compare(c5, hand_card(h, 4))==0);
+}
+#+END_SRC
+
+** 手札の文字列化のテスト
+
+テスト項目
+- 手札に5枚のカードを加え，
+- その通りに文字列化されること
+
+#+BEGIN_SRC c :tangle ../../test/test_hand.c
+void
+test_hand_to_string()
+{
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE, 2);
+  Card c2 = card_new(HEART, 3);
+  Card c3 = card_new(CLUB, 4);
+  Card c4 = card_new(DIAMOND, 5);
+  Card c5 = card_new(SPADE, 6);
+
+  cut_set_message("hand_to_string");
+
+  h = hand_add(h, c1);
+  h = hand_add(h, c2);
+  h = hand_add(h, c3);
+  h = hand_add(h, c4);
+  h = hand_add(h, c5);
+
+  char *s = hand_to_string(h);
+  cut_assert(strlen(s)==15);
+  cut_assert(strcmp("S2.H3.C4.D5.S6.", s)==0);
+}
+#+END_SRC
+
+* hand/src/hand.c
+
+** Cの標準ラブラリを使う
+
+# include <stdlib.h>
+# include <stdio.h>
+
+** hand のインタフェースを遵守
+
+#+BEGIN_SRC c :tangle ../../src/hand.c :mkdirp yes
+# include <hand.h>
+#+END_SRC
+
+** hand_new, hand_size
+
+#+BEGIN_SRC c :tangle ../../src/hand.c
+//新らしい手札を作る
+Hand
+hand_new(void)
+{
+  Hand h;  //** 手札を作る。size, cards[5]は初期化されていない。
+
+  h.size=0; //** 枚数を0に初期化する。
+  return h; //** 初期化された手札を値として返す。
+}
+
+// 手札の枚数を求める
+int
+hand_size(Hand h)
+{
+  return h.size; //自明
+}
+#+END_SRC
+
+** hand_add
+
+手札にカードを一枚加える。
+   
+#+BEGIN_SRC c :tangle ../../src/hand.c
+// 手札にカードを一枚加える
+Hand hand_add(Hand h, Card c)
+{
+  h.cards[h.size++] = c; //** 自明
+  return h;
+}
+#+END_SRC
+
+** hand_card
+
+手札の no 番目のカード情報を得る。no は 0~4。
+
+手札から1枚カードを捨てる時，つぎのことが必要である:
+- そのカードを捨て山に積むためのカードの情報 (hand_cardの戻り値)
+- 一枚少なくなった手札自身 (hand_drawの戻り値)
+
+#+BEGIN_SRC c :tangle ../../src/hand.c
+Card hand_card(Hand h, int no)
+{
+  return h.cards[no];
+}
+#+END_SRC
+
+** hand_draw
+
+手札から， no 番目のカードを抜く。
+
+#+BEGIN_SRC c :tangle ../../src/hand.c
+Hand hand_draw(Hand h, int no)
+{
+  int i;
+
+  if (no>h.size)
+    return h;
+
+  // no以降をつめる
+  for(i=no; i<h.size; i++) 
+    {
+      h.cards[i]=h.cards[i+1];
+    }
+  h.size--;
+  return h;
+}
+#+END_SRC
+
+** 文字列化
+
+カードの文字列化をもとに，手札を文字列化する。
+
+#+BEGIN_SRC c :tangle ../../src/hand.c
+char *hand_to_string(Hand h)
+{
+  int i;
+  char *s = (char *) malloc(CardsInHand*3+1); //** 文字列領域確保
+
+  bzero(s,CardsInHand*3+1);   //** 領域の0クリア
+
+  for(i=0; i<hand_size(h); i++)
+    {
+      strcat(s, card_to_string(hand_card(h,i))); //** カード文字列を詰める
+      strcat(s, "."); //** 区切りの . を詰める
+    }
+  return s;
+}
+#+END_SRC
+
+** hand_sort 
+
+   cardモジュールで作った cards_sort の機能がほぼそのまま使える:
+
+#+BEGIN_SRC c :tangle ../../src/hand.c
+Hand hand_sort(Hand h)
+{
+  Card *cards = h.cards;
+
+  cards = cards_sort(cards, hand_size(h));
+  return h;
+}
+#+END_SRC
+
+* test/test_judge.c
+
+** 必要なライブラリのヘッ
+
+#+BEGIN_SRC c :tangle ../../test/test_judge.c
+# include <stdio.h>
+# include <string.h>
+# include <cutter.h>
+
+#+END_SRC
+
+#+BEGIN_SRC c :tangle ../../test/test_judge.c
+# include <hand.h>
+# include <hand_test.h>
+
+void
+test_hand_judge(void)
+{
+  struct Hand_test *tests = hand_test_data;
+  
+  while ( tests->y != 0 )
+    {
+      Hand h = hand_test_hand_new(tests->h);
+      PokerHand y = tests->y;;
+      char *s = tests->s;
+
+      h = hand_sort(h);
+
+      {
+	int hj = hand_judge(h);
+	char *hs = hand_to_string(h);
+      
+	cut_set_message
+	  ("test_judge: hand = %s, PokerHand = %s, y = %d, judge = %d",
+	   hs, s, y, hj);
+	cut_assert(hj==y);
+	cut_assert(strcmp(hand_pokerhand_to_string(y), s)==0);
+	tests++;
+      }
+    }
+}
+
+#+END_SRC
+
+* hand/src/judge.c
+
+** 必要なシステムライブラリのインタフェースを読む (定跡)
+#+BEGIN_SRC c :tangle ../../src/judge.c :mkdirp yes
+# include <stdio.h>
+#+END_SRC
+
+** 依存するモジュールのインタフェースを読む(定跡)
+
+#+BEGIN_SRC c :tangle ../../src/judge.c :mkdirp yes
+# include <card.h>
+# include <hand.h>
+#+END_SRC
+
+** 定数の宣言 (定跡)
+
+#+BEGIN_SRC c :tangle ../../src/judge.c :mkdirp yes
+# define TRUE 1
+# define FALSE 0
+#+END_SRC
+
+** このファイル内でのみ有効な関数の宣言 (定跡)
+
+   hand_calc_pairs, hand_is_stright, hand_is_flush は hand_judge だけ
+   が知っていればいい。他には見せないようにする。
+
+#+BEGIN_SRC c :tangle ../../src/judge.c :mkdirp yes
+// ペアかストレート、フラッシュを判定する
+
+static int hand_calc_pairs(Hand); 
+// 5: high card
+// 7: one pair
+// 9: two pair
+// 11: three cards
+// 13: full house
+// 17: four cards
+static int hand_is_straight(Hand);
+static int hand_is_flush(Hand);
+#+END_SRC
+
+** 役の計算 
+
+#+BEGIN_SRC c :tangle ../../src/judge.c :mkdirp yes
+//手札の役の計算
+PokerHand hand_judge(Hand h)
+{
+  {
+    int s, f;
+
+    // ストレートとフラッシュの判定
+
+    s = hand_is_straight(h);
+    f = hand_is_flush(h);
+
+    if (s)
+      {
+	if (f) 
+	  {
+	    return StraightFlush;
+	  }
+	else
+	  {
+	    return Straight;
+	  }
+      }
+    if (f)
+      {
+	return Flush;
+      }
+  }
+  // ペア系の判定
+  {
+    int p = hand_calc_pairs(h);
+    switch(p)
+      {
+      case 5:
+	return HighCard;
+      case 7:
+	return OnePair;
+      case 9:
+	return TwoPairs;
+      case 11:
+	return ThreeCards;
+      case 13:
+	return FullHouse;
+      case 17:
+	return FourCards;
+      default:
+	printf("No such pairs (%d)!\n", p);
+      }
+  }
+  return 0;
+}
+
+int hand_calc_pairs(Hand h)
+{
+  int p=0;
+  int i, j;
+
+  for(i=0; i<CardsInHand; i++) 
+    {
+      for(j=0; j<CardsInHand; j++)
+	{
+	  if (card_no(hand_card(h, i))==card_no(hand_card(h, j)))
+	    {
+	      p++;
+	    }
+	}
+    }
+  return p;
+}
+  
+int hand_is_straight(Hand h)
+{
+  int i;
+  
+  for (i=0; i<4; i++)
+    {
+      if (card_no(hand_card(h, i))!=(card_no(hand_card(h, i+1))-1))
+	{
+	  return FALSE;
+	}
+    }
+  return TRUE;
+}
+
+int hand_is_flush(Hand h)
+{
+  int i;
+
+  for (i=0; i<(CardsInHand-1); i++)
+    {
+      if (card_suit(hand_card(h, i))!=card_suit(hand_card(h, i+1)))
+	{
+	  return FALSE;
+	}
+    }
+  return TRUE;
+}
+
+// 役を文字列で表す
+
+// 役名文字列の配列
+static char *PokerHandNames[] = 
+  { "",
+  "HighCard",
+  "OnePair",
+  "TwoPairs",
+  "ThreeCards",
+  "Straight",
+  "Flush",
+  "FullHouse",
+  "FourCards",
+  "StraightFlush"
+  };
+
+char *hand_pokerhand_to_string(PokerHand yaku)
+{
+  return PokerHandNames[yaku];
+}
+#+END_SRC
+
+* hand/test/hand_test.h
+
+hand_test_data.c はテスト用の手札データを生成するための機能で，
+hand_test.h はそのための宣言をおこなっています。
+
+
+#+BEGIN_SRC c :tangle ../../test/hand_test.h
+# include <hand.h>
+
+#+END_SRC
+
+- hand のインタフェースを読みます。
+
+#+BEGIN_SRC c :tangle ../../test/hand_test.h
+
+// 役のテストの組を作るためのデータ構造と関数
+
+// card
+struct t_card {char *suit; char *no;} ;
+
+// hand 
+struct t_hand {struct t_card c[5];};
+#+END_SRC
+
+- card, hand の機能を使わず，テスト側で独自にカードや5枚のカードを
+  表現するための構造たいです。
+
+#+BEGIN_SRC c :tangle ../../test/hand_test.h
+// 手札と役と役の名前
+struct Hand_test { PokerHand y; char *s; struct t_hand h; };
+
+#+END_SRC
+
+- 手札 (h) に対し，期待される役 (y), と 手札文字列 (s) を構造体でまと
+  めたものです。
+- テストデータをみやすく管理しやすくします。
+
+#+BEGIN_SRC c :tangle ../../test/hand_test.h
+extern struct Hand_test hand_test_data[];;
+
+#+END_SRC
+- テスト用の Hand_test の配列です。
+- 実際の値は，hand_test_data.c で与えられます。
+
+#+BEGIN_SRC c :tangle ../../test/hand_test.h
+Hand hand_test_hand_new(struct t_hand hs);
+
+#+END_SRC
+- 5枚のカードから手札を作る関数です。
+
+
+
+
+
+* hand/test/hand_test_data.c
+
+** 利用ライブライのヘッダを読む
+
+#+BEGIN_SRC c :tangle ../../test/hand_test_data.c
+# include <string.h>
+#+END_SRC
+
+** 利用モジュールのヘッダを読む
+#+BEGIN_SRC c :tangle ../../test/hand_test_data.c
+# include <card.h>
+# include <hand.h>
+
+#+END_SRC
+
+** 手札テストデータ操作用ヘッダを読む
+#+BEGIN_SRC c :tangle ../../test/hand_test_data.c
+# include <hand_test.h>
+
+#+END_SRC
+
+** 5枚のカードの組のデータ定義
+
+5枚のカードの組の初期化データに名前をつける
+   
+#+BEGIN_SRC c :tangle ../../test/hand_test_data.c
+# define TEST_HIGHCARD \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"CLUB", "5"}, {"DIAMOND", "7"}}}
+
+# define TEST_ONEPAIR							\
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"CLUB", "1"}, {"SPADE", "1"}}}
+
+# define  TEST_TWOPAIRS \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"DIAMOND", "2"}, {"DIAMOND", "3"}}}
+   
+# define  TEST_THREECARDS \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"DIAMOND", "2"}, {"HEART", "2"}}}
+
+# define  TEST_FULLHOUSE \
+  {{{"CLUB", "2"}, {"DIAMOND", "2"}, {"HEART", "2"}, {"CLUB", "3"}, {"DIAMOND", "3"}}}
+
+# define  TEST_FOURCARDS \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"DIAMOND", "2"}, {"HEART", "2"}, {"SPADE", "2"}}}
+
+# define TEST_STRAIGHTFLUSH \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"CLUB", "5"}, {"CLUB", "6"}}}
+
+#+END_SRC
+
+
+** テストデータの初期化
+
+構造体の配列の初期化データを書く:
+
+#+BEGIN_SRC c :tangle ../../test/hand_test_data.c
+struct Hand_test hand_test_data[10] = {
+  { .y = HighCard, .s = "HighCard",   .h = TEST_HIGHCARD},
+  { .y = OnePair, .s = "OnePair", .h = TEST_ONEPAIR},
+  { .y = TwoPairs, .s = "TwoPairs",  .h = TEST_TWOPAIRS},
+  { .y = ThreeCards, .s = "ThreeCards", .h = TEST_THREECARDS}, 
+  { .y = FullHouse, .s =  "FullHouse", .h = TEST_FULLHOUSE}, 
+  { .y = FourCards, .s = "FourCards", .h = TEST_FOURCARDS },
+  { .y = StraightFlush, .s = "StraightFlush", .h = TEST_STRAIGHTFLUSH}
+};
+
+#+END_SRC
+
+** テストデータから Hand型データを生成する機能
+
+#+BEGIN_SRC c :tangle ../../test/hand_test_data.c
+Hand hand_test_hand_new(struct t_hand hs)
+{
+  int i;
+  Hand h = hand_new();
+
+  for(i=0;i<CardsInHand;i++)
+    {
+      enum e_Suit s = card_suit_new_from_string(hs.c[i].suit);
+      enum e_No n = card_no_new_from_string(hs.c[i].no);
+
+      h = hand_add(h, card_new(s, n));
+    }
+  return h;
+}
+
+#+END_SRC
+
+
+

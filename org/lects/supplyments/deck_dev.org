@@ -1,0 +1,10 @@
+* deck モジュールの開発木構造
+
+#+name: deck_module
+#+caption: game開発とcardモジュール/deckモジュール
+#+ATTR_HTML: :alt deck module :title deck module
+[[file:deck_dev.png][file:deck_dev.png]]
+
+
+
+  

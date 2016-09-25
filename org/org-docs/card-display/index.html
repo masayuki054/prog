@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ソフトウェア構成論 トランプカードの表示問題</title>
+<!-- 2016-01-26 火 11:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 トランプカードの表示問題</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">CardDisplay問題</a>
+<ul>
+<li><a href="#sec-1-1">目的</a></li>
+<li><a href="#sec-1-2">トランプ・カード表示問題</a>
+<ul>
+<li><a href="#sec-1-2-1">card_display_simple 問題</a></li>
+<li><a href="#sec-1-2-2">card_display_multi 問題</a></li>
+<li><a href="#sec-1-2-3">card_display_sort 問題</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">card_display_simple 問題への解法</a>
+<ul>
+<li><a href="#sec-2-1">card_display_simple 問題</a></li>
+<li><a href="#sec-2-2">プログラムの設計</a>
+<ul>
+<li><a href="#sec-2-2-1">設計方針</a></li>
+<li><a href="#sec-2-2-2">card_display_simple の設計</a></li>
+<li><a href="#sec-2-2-3">入力と出力例と内部トランプ表現</a></li>
+<li><a href="#sec-2-2-4">スーツ入力文字列からスーツ内部表現へ</a></li>
+<li><a href="#sec-2-2-5">カードの数から内部表現へ</a></li>
+<li><a href="#sec-2-2-6">カードを作る</a></li>
+<li><a href="#sec-2-2-7">カードの内部表現を文字列へ</a></li>
+<li><a href="#sec-2-2-8">関数の名前</a>
+<ul>
+<li><a href="#sec-2-2-8-1">スーツ入力文字列からスーツ内部表現へ</a></li>
+<li><a href="#sec-2-2-8-2">カードの数から内部表現へ</a></li>
+<li><a href="#sec-2-2-8-3">カードを作る</a></li>
+<li><a href="#sec-2-2-8-4">カードの内部表現を文字列へ</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2-9">関数の引数と戻り値の型 (APIの設計)</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">card_display_simple 問題のテストによる開発</a>
+<ul>
+<li><a href="#sec-2-3-1">テストによる開発から設計へのフィードバック</a></li>
+<li><a href="#sec-2-3-2">card_display_simple の解</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">card_display_sort (準備中@<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>)</a>
+<ul>
+<li><a href="#sec-2-4-1">複数のカードをソートする機能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3">card_display_multi 問題への解法</a>
+<ul>
+<li><a href="#sec-3-1">card_display_multi</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">card_display_sort 問題への解法</a>
+<ul>
+<li><a href="#sec-4-1">card_display_sort (準備中@<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>)</a>
+<ul>
+<li><a href="#sec-4-1-1">複数のカードをソートする機能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフト
+ウェア構成論</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a>
+/  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義
+ドキュメント</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">ポー
+カーゲームの開発</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html">repos</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
+</p>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">CardDisplay問題</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">目的</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+トランプ・カードをプログラムしてみよう。プログラムするとはどういうこと
+かについて，考える。トランプ・カードの機能とは何かを考える。
+</p>
+
+<ul class="org-ul">
+<li>トランプ・カードをデータとして入力し，出力して実感する
+</li>
+
+<li>トランプ・カードを扱うことについて考える
+</li>
+
+<li>トランプカードの部品化について考える
+
+<ul class="org-ul">
+<li>*トランプカードのデータ構造*を考え，プログラム化する
+</li>
+
+<li>*トランプカードの機能*について考え，プログラム化する
+</li>
+</ul>
+</li>
+
+<li>ポーカーゲームのために利用することを想定し，プログラムの保守と更新につ
+いて考える
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">トランプ・カード表示問題</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+一枚のカードを表示するプログラム (card_display_simple) から始めて，
+復数のトランプカードを表示 (card_display_multi) し，
+復数のトランプカードをソートし，表示 (card_display_sort) する
+プログラムへ変更していきます。
+</p>
+
+<p>
+データをデータ構造にまとめたり，
+機能を関数にまとめたり，することの意味を理解しましょう。
+</p>
+</div>
+
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">card_display_simple 問題</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+コマンドラインからトランプカードの札種（スーツ）と番号を指定すると，
+そのカードを表す文字列を表示するプログラムを作成する
+</p>
+
+<p>
+例えば，プログラムへの入力と出力は，下記のようになる:
+</p>
+
+<pre class="example">
+% card_display heart 10 
+&gt; H0 	     # と表示される
+% card_display spade 13 
+&gt; SK 	     # と表示される
+% card_display diamond 1 
+&gt; DA 	     # と表示される
+% card_display club 2
+&gt; C2           # と表示される
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">card_display_multi 問題</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+複数のカードを指定して，そのカード達を表示する
+</p>
+
+<p>
+但し，できるだけ card_display_simple プログラムを再利用すること
+</p>
+
+<pre class="example">
+% card_display_multi heart 10 spade 13 diamond 1 club 2 は
+&gt; H0 SK DA C2   # と表示される
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3">card_display_sort 問題</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+複数のカードを入力し，ソートして表示するプログラム
+</p>
+
+<pre class="example">
+% card_display_sort heart 10 spade 13 diamond 1 club 2
+&gt; DA SK H0 C2    # と表示される
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">card_display_simple 問題への解法</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+大きな要求を，細かな機能への要求に分解していきましょう。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">card_display_simple 問題</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+コマンドラインからトランプカードの札種（スーツ）と番号を指定すると，
+</p>
+
+<p>
+そのトランプカード（を表す文字列）を表示するプログラムを作成する
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">プログラムの設計</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1">設計方針</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+もっとも難しく，大切なこと。*構造化プログラミング*とか，*抽象データ型*とか，
+*オブジェクト指向設計*とか，いろいろある。
+</p>
+
+<p>
+学問分野としては，ソフトウェア工学。
+</p>
+
+<p>
+プログラムを正しく設計作成できるように，*プログラムの証明*という考
+え方がある。
+</p>
+
+<p>
+*モジュール*と*モジュール化*という考え方が基本（だと思う）。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2">card_display_simple の設計</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+設計し易いよう，部分に分ける
+</p>
+<ul class="org-ul">
+<li>全体の処理処理を，入力，処理，出力に分割し，
+</li>
+<li>分割できるように，いったん内部データ化する
+<ul class="org-ul">
+<li>入力は，文字列をカード型のデータにすること
+</li>
+<li>出力は，その逆
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+データを主に考えると，まとめやすいことが多い
+</p>
+<ul class="org-ul">
+<li>トランプ・カードが主役
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3">入力と出力例と内部トランプ表現</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">入力値</th>
+<th scope="col" class="left">プログラム内部表現</th>
+<th scope="col" class="left">出力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">"heart" "10"</td>
+<td class="left">"heart”を表す整数値3 "10" を表す10</td>
+<td class="left">"H0"</td>
+</tr>
+
+<tr>
+<td class="left">"spade" "13"</td>
+<td class="left">"spade”を表す整数値4 "13" を表す13</td>
+<td class="left">"SK"</td>
+</tr>
+
+<tr>
+<td class="left">"diamond" "1"</td>
+<td class="left">"diamond”を表す整数値2 "1" を表す14</td>
+<td class="left">"DA"</td>
+</tr>
+
+<tr>
+<td class="left">"club" "1"</td>
+<td class="left">"club”を表す整数値1 "2" を表す2</td>
+<td class="left">"C2"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-4" class="outline-4">
+<h4 id="sec-2-2-4">スーツ入力文字列からスーツ内部表現へ</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+要求
+</p>
+<ul class="org-ul">
+<li>スーツの強さ S&gt;H&gt;D&gt;C
+</li>
+</ul>
+
+<p>
+処理
+</p>
+<ul class="org-ul">
+<li>入力文字列から整数への変換
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">"spade"</td>
+<td class="right">4</td>
+</tr>
+
+<tr>
+<td class="left">"heart"</td>
+<td class="right">3</td>
+</tr>
+
+<tr>
+<td class="left">"diamond"</td>
+<td class="right">2</td>
+</tr>
+
+<tr>
+<td class="left">"club"</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-5" class="outline-4">
+<h4 id="sec-2-2-5">カードの数から内部表現へ</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+要求(ポーカの場合)
+</p>
+<ul class="org-ul">
+<li>A&gt;K&gt;Q&gt;J&gt;10&gt;9&gt;8&gt;7&gt;6&gt;5&gt;4&gt;3&gt;2
+</li>
+</ul>
+
+<p>
+処理
+</p>
+<ul class="org-ul">
+<li>"1"は14に，
+</li>
+<li>残りはそのまま文字列を整数へ
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-6" class="outline-4">
+<h4 id="sec-2-2-6">カードを作る</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<p>
+要求
+</p>
+<ul class="org-ul">
+<li>スーツの内部表現と数字の内部表現から，
+</li>
+<li>カードを表すデータを作る
+</li>
+<li>カードデータからそのスーツが分かること
+</li>
+<li>カードデータからその数字が分かること
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-7" class="outline-4">
+<h4 id="sec-2-2-7">カードの内部表現を文字列へ</h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+設計
+</p>
+<ul class="org-ul">
+<li>2文字からなるの文字列
+</li>
+<li>スーツは 'S', 'H', 'D', 'C',  1文字
+</li>
+<li>数は 'A','K','Q','J','0','9','8','7','6','5','4','3','2'，1文字
+</li>
+</ul>
+
+<p>
+処理
+</p>
+<ul class="org-ul">
+<li>スーツや数を添字に配列を参照する
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-8" class="outline-4">
+<h4 id="sec-2-2-8">関数の名前</h4>
+<div class="outline-text-4" id="text-2-2-8">
+<p>
+この講義では，基本，対象とするデータの型，データの属性，データの処理を下線でつな
+げて命名することにする。
+</p>
+
+<p>
+名前づけの一貫性と分かり易さが大切。
+</p>
+</div>
+
+<div id="outline-container-sec-2-2-8-1" class="outline-5">
+<h5 id="sec-2-2-8-1">スーツ入力文字列からスーツ内部表現へ</h5>
+<div class="outline-text-5" id="text-2-2-8-1">
+<p>
+card_suit_new_from_string
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-8-2" class="outline-5">
+<h5 id="sec-2-2-8-2">カードの数から内部表現へ</h5>
+<div class="outline-text-5" id="text-2-2-8-2">
+<p>
+card_no_new_from_string
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-8-3" class="outline-5">
+<h5 id="sec-2-2-8-3">カードを作る</h5>
+<div class="outline-text-5" id="text-2-2-8-3">
+<p>
+card_new
+</p>
+
+<p>
+カードはその属性としてスーツ(suit)と番号(no)をもつ
+</p>
+
+<ul class="org-ul">
+<li>カードデータからそのスーツが分かること
+
+<p>
+card_suit
+</p>
+</li>
+
+<li>カードデータからその数字が分かること
+
+<p>
+card_no
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-8-4" class="outline-5">
+<h5 id="sec-2-2-8-4">カードの内部表現を文字列へ</h5>
+<div class="outline-text-5" id="text-2-2-8-4">
+<p>
+card_to_string
+</p>
+<ul class="org-ul">
+<li>card_suit_to_string
+</li>
+<li>card_no_to_string
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2-9" class="outline-4">
+<h4 id="sec-2-2-9">関数の引数と戻り値の型 (APIの設計)</h4>
+<div class="outline-text-4" id="text-2-2-9">
+<ul class="org-ul">
+<li>int card_suit_new_from_string(char *);
+</li>
+<li>int card_no_new_from_string(char *);
+</li>
+<li>Card card_new(int suit, int no);
+<ul class="org-ul">
+<li>int card_suit(Card);
+</li>
+<li>int card_no(Card);
+</li>
+</ul>
+</li>
+<li>char *card_to_string(Card);
+<ul class="org-ul">
+<li>char *card_suit_to_string(int suit);
+</li>
+<li>char *card_no_to_string(int no);
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">card_display_simple 問題のテストによる開発</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+前章の設計を頭に入れて，プログラムの開発にとりかかりましょう。
+</p>
+
+<p>
+テストによる開発に関しては別ドキュメントにしましたので，
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple/">カード表示問題_simpleのテストによる開発</a> ((<a href="file:///home/staff/suzuki/lects/prog/org-docs/tdd-card-display-simple/">@cis.org</a> <a href="file:///home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/">@s.org</a>)) こちらを読んでください。
+</p>
+</div>
+
+
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1">テストによる開発から設計へのフィードバック</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+スーツと番号のデータ構造に設計上の下記の変更がありました:
+</p>
+
+<pre class="example">
+enum e_Suit card_suit_new_from_string (char *)
+enum e_No card_no_new_from_string (char *)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2">card_display_simple の解</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+このプログラムの作成はレポート問題の一部になりましたので，
+自分で考えて，作成してください。
+</p>
+
+<p>
+card_display_multi の解の例
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
+    {
+      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+			  card_no_new_from_string(argv[i]++));
+      no_cards++;
+    }
+  for(i=0; i&lt;no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+上記プログラムで，下記の部分はカードの構造が見え，生々しい気がします:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+		    card_no_new_from_string(argv[i]++));
+</pre>
+</div>
+
+<p>
+card_to_stringと同じレベルで反対の機能 card_new_from_string がいい設計
+かもしれません。
+</p>
+
+<pre class="example">
+Card card_new_from_string(char *suit_str, char *no_str);
+</pre>
+
+<p>
+を定義すれば，プログラム全体は下記のようになります:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+  for(i=0; i&lt;no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+こうすることで，入力 (card_new_from_string) と 出力 (card_to_string)
+が対称的になり，
+</p>
+
+<p>
+この設計変更を受け入れれば，card_new_from_string を開発することになり
+ます。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">card_display_sort (準備中@<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>)</h3>
+<div class="outline-text-3" id="text-2-4">
+</div><div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1">複数のカードをソートする機能</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+一枚のカードの機能をもとに，
+</p>
+
+<pre class="example">
+Card * cards_sort(Card *，int)
+</pre>
+
+<p>
+を開発しましょう。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+
+  card_cards_sort(cards);
+
+  for(i=0; i&lt;no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">card_display_multi 問題への解法</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">card_display_multi</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+card_display_multi の解の例
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
+    {
+      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+			  card_no_new_from_string(argv[i]++));
+      no_cards++;
+    }
+  for(i=0; i&lt;no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+上記プログラムで，下記の部分はカードの構造が見え，生々しい気がします:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+		    card_no_new_from_string(argv[i]++));
+</pre>
+</div>
+
+<p>
+card_to_stringと同じレベルで反対の機能 card_new_from_string がいい設計
+かもしれません。
+</p>
+
+<pre class="example">
+Card card_new_from_string(char *suit_str, char *no_str);
+</pre>
+
+<p>
+を定義すれば，プログラム全体は下記のようになります:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+  for(i=0; i&lt;no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+</pre>
+</div>
+
+<p>
+こうすることで，入力 (card_new_from_string) と 出力 (card_to_string)
+が対称的になり，
+</p>
+
+<p>
+この設計変更を受け入れれば，card_new_from_string を開発することになり
+ます。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">card_display_sort 問題への解法</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">card_display_sort (準備中@<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>)</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1">複数のカードをソートする機能</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+一枚のカードの機能をもとに，
+</p>
+
+<pre class="example">
+Card * cards_sort(Card *，int)
+</pre>
+
+<p>
+を開発しましょう。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
+
+int
+main(int argc, char *argv[])
+{
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
+    {
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
+      no_cards++;
+    }
+
+  cards_sort(cards);
+
+  for(i=0; i&lt;no_cards; i++)
+    {
+      printf("%s ", card_to_string(cards[i]));
+    }
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-01-26 火 11:03</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+* Pokerゲーム開発の始まり
+
+  [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][prog-wiki]] を参考にしてください。
+
+#+include: story.org :minlevel 2
+
+* Card モジュールの開発
+
+#+include: card.org :minlevel 2
+
+* Deck モジュールの開発
+#+include: deck.org :minlevel 2
+
+* Hand モジュールの開発
+#+include: hand.org :minlevel 2
+
+* Pokerモジュールの開発
+#+include: poker.org :minlevel 2

@@ -1,0 +1,7 @@
+#+title: 4回目のまとめ
+
+#+include: resume.org
+#+include: response.org :minlevel 1
+# #+include: plan.org
+
+

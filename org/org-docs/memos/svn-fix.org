@@ -1,0 +1,201 @@
+* ソフトウェア構成論 svnあれこれ
+
+** h22j018
+
+    ((% cd ~h22j018/progs %))
+    ((% svn info %))
+    - URL: http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j018
+    ((% svn ls %))
+    - README
+    ((% cd Game; svn info %))
+    - URL: http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j018
+      ~/progs と同じ場所をさしている
+      
+      多分，~/progs と ~/progs/Gameの二ヶ所で，
+      ((% svn co //http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j018
+      . %))
+
+*** 対策
+    : ((% cd ~/progs/Game; rm -rf .svn Card/.svn %))
+    : ((% cd ~/progs; svn add Game %))
+
+** h22j016
+
+  : suzuki@:esut118:~h22j016/progs[119] > svn st
+  : ?       report-1
+  : ?       h22j016
+  : R     C Game
+  :       >   local delete, incoming edit upon update
+  : ?       Game/Deck
+  : A       Game/Interface
+  : ?       Game/Interface/card.h
+  : A       Game/Module
+  : R       Game/Card
+  : ?       Game/Card/test_compare
+  : ?       Game/Card/Card.org
+  : R       Game/Card/card.h
+  : D       Game/Card/test_compare.c
+  : R       Game/Card/compare.c
+  : R       Game/Card/test_card
+  : R       Game/Card/test_card.c
+  : R       Game/Card/card.c
+  : R       Game/Card/test_print
+  : R       Game/Card/test_print.c
+  : R       Game/Card/Makefile
+  : R       Game/Card/print.c
+  : A       Game/Makefile
+
+*** 症状
+    リポジトリのGameに変更があったのに，
+    ((% svn up %)) せずに，Game の下に，
+    Card, Interface, Module, Makefile を ((% svn add %)) した。
+
+
+*** 対策
+    実行する時は，suzuki が立ち会いますので，声をかけてください。
+
+    : ((% cd ~/progs; svn resolved Game %))
+    : ((% svn add --force Card/test_compare.c %))
+    : ((% svn add Card/Card.org %))
+
+
+** h22j086
+  : suzuki@:esut118:~h22j086/progs[123] > ls
+  : Game/  Trigo/  game/  report-1/
+  : suzuki@:esut118:~h22j086/progs[124] > svn st
+  : ?       report-1
+  : ?       game/interface
+  : ?       game/module
+  : ?       game/Deck
+  : ?       game/Card/Card.txt
+  : !       README
+  : suzuki@:esut118:~h22j086/progs[125] > svn ls
+
+  : suzuki@:esut118:~h22j086/progs[127] > svn info
+  : URL: http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j086
+
+  : suzuki@:esut118:~h22j086/progs[132] > svn ls
+
+  : suzuki@:esut118:~h22j086/progs[133] > svn ls http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j086
+  : Game/
+  : README
+  : Trigo/
+  : game/
+
+  : suzuki@:esut118:~h22j086/progs[135] > sudo -u h22j086 svn up
+  : [sudo] password for suzuki: 
+  : 認証領域: <http://wiki.cis.iwate-u.ac.jp:80> Subversion repository
+  : 'h22j086' のパスワード: 
+  : 認証領域: <http://wiki.cis.iwate-u.ac.jp:80> Subversion repository
+  : ユーザ名: suzuki
+  : 'suzuki' のパスワード: hogehogehogehoge
+
+  : suzuki@:esut118:~h22j086/progs[136] > svn ls
+  : Game/
+  : README
+  : Trigo/
+  : game/
+  : suzuki@:esut118:~h22j086/progs[137] > svn st
+  : ?       report-1
+  : ?       game/interface
+  : ?       game/module
+  : ?       game/Deck
+  : ?       game/Card/Card.txt
+
+  : suzuki@:esut118:~h22j086/progs[138] > 
+
+*** 症状
+
+    リポジトリとワーキングコピーがずれている
+
+*** 対策
+    まず ((% svn up %)) しました。
+    あとは，不必要なgame 下を消して，
+
+    : ((% svn add report-1 %))
+    : ((% svn ci %))
+
+
+** h22j124
+   ~h22j12/progs を emacs の svn-status で見ると下記のようになっていま
+   す。
+
+  : svn status for directory /home/h22j/h22j124/progs/
+  : 0 file(s) marked
+  : 
+  :       1820 1818 h22j124     . -> /home/staff/suzuki/prog/h22j124
+  :   ?             ?           %
+  :       1820 1818 h22j124     Game
+  :       1820 1818 h22j124       Card
+  :   ?             ?               Card.txt
+  :       1820 1818 h22j124         Makefile
+  :       1820 1710 h22j124         card.c
+  :       1820 1710 h22j124         card.h
+  :       1820 1710 h22j124         compare.c
+  :       1820 1710 h22j124         print.c
+  :       1820 1710 h22j124         test_card.c
+  :   ?             ?               test_card
+  :   ?             ?               test_compare.c
+  :   ?             ?               test_compare
+  :       1820 1710 h22j124         test_print.c
+  :       1820 1710 h22j124         test_print
+  :   R   1830 1830 h22j124       Deck (switched)
+  :   R   1830 1830 h22j124         Game
+  :   R   1830 1830 h22j124           Card
+  :   D   1830 1830 h22j124             Makefile
+  :   D   1830 1830 h22j124             card.c
+  :   D   1830 1830 h22j124             card.h
+  :   D   1830 1830 h22j124             compare.c
+  :   D   1830 1830 h22j124             print.c
+  :   D   1830 1830 h22j124             test_card.c
+  :   D   1830 1830 h22j124             test_print.c
+  :   D   1830 1830 h22j124             test_print
+  :   R   1830 1830 h22j124           Interface
+  :   D   1830 1830 h22j124             card.h
+  :   D   1830 1830 h22j124           Makefile
+  :   R   1830 1830 h22j124           Module
+  :   D   1830 1830 h22j124         README
+  :   R   1830 1830 h22j124         Trigo
+  :   D   1830 1830 h22j124           Makefile
+  :   D   1830 1830 h22j124           calc_d_sin.c
+  :   D   1830 1830 h22j124           d_cos.c
+  :   D   1830 1830 h22j124           d_cos.h
+  :   D   1830 1830 h22j124           d_sin.c
+  :   D   1830 1830 h22j124           d_sin.h
+  :   D   1830 1830 h22j124           dsin.c
+  :   R   1830 1830 h22j124           report-1
+  :   D   1830 1830 h22j124             Makefile
+  :   D   1830 1830 h22j124             README
+  :   D   1830 1830 h22j124             calc.c
+  :   D   1830 1830 h22j124             calc
+  :   D   1830 1830 h22j124             d_trigo.c
+  :   D   1830 1830 h22j124             d_trigo.h
+  :       1820 1710 h22j124       Interface
+  :       1820 1710 h22j124         card.h
+  :       1820 1710 h22j124       Makefile
+  :       1820 1710 h22j124       Module
+  :       1820 1705 h22j124     README
+  :       1820 1710 h22j124     Trigo
+  :       1820 1710 h22j124       Makefile
+  :       1820 1710 h22j124       calc_d_sin.c
+  :       1820 1710 h22j124       d_cos.c
+  :       1820 1710 h22j124       d_cos.h
+  :       1820 1710 h22j124       d_sin.c
+  :       1820 1710 h22j124       d_sin.h
+  :       1820 1710 h22j124       dsin.c
+  :       1820 1710 h22j124       report-1
+  :       1820 1710 h22j124         Makefile
+  :       1820 1710 h22j124         README
+  :       1820 1710 h22j124         calc.c
+  :       1820 1710 h22j124         calc
+  :       1820 1710 h22j124         d_trigo.c
+  :       1820 1710 h22j124         d_trigo.h
+  :   ?             ?           h22j124 -> /home/staff/suzuki/prog/h22j124
+
+　
+   これをみるとprogs/Game/Deckの下にGameをチェックアウトしたもようです。
+   Deck/{deck.h, deck.c}は残念ながら見当たりません。
+
+*** 対策
+    : ((% cd ~/progs/Game; rm -rf Deck %))
+    : ((% svn add Card/Card.txt Card/test_compare.c %))

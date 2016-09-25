@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<title>ソフトウェア構成論 テスト駆動開発とは</title>
+<!-- 2015-10-11 Sun 14:40 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ソフトウェア構成論 テスト駆動開発とは</h1>
+<div id="table-of-contents">
+<h2>&#30446;&#27425;</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">テスト駆動開発について</a>
+<ul>
+<li><a href="#sec-1-1">入門サイト</a></li>
+<li><a href="#sec-1-2">やりたいこと</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">関数の基本</a>
+<ul>
+<li><a href="#sec-2-1">関数を呼び出すこと</a></li>
+<li><a href="#sec-2-2">関数を定めること</a></li>
+<li><a href="#sec-2-3">関数を呼び出すことと定めることの間にある決まりごと</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">ヘッダファイルとライブラリを利用すること</a>
+<ul>
+<li><a href="#sec-3-1">機能を要求する</a></li>
+<li><a href="#sec-3-2">提供されている機能</a></li>
+<li><a href="#sec-3-3">機能の説明</a></li>
+<li><a href="#sec-3-4">機能を使うきまり</a></li>
+<li><a href="#sec-3-5">機能を利用する側と機能を提供する側とヘッダファイル</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">プログラムの機能</a>
+<ul>
+<li><a href="#sec-4-1">機能とは</a></li>
+<li><a href="#sec-4-2">機能を要求する</a></li>
+<li><a href="#sec-4-3">機能を実現する</a></li>
+<li><a href="#sec-4-4">機能を提供する</a></li>
+<li><a href="#sec-4-5">機能を利用する</a></li>
+<li><a href="#sec-4-6">機能の要求と実現と提供と利用</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">開発と機能とテスト</a>
+<ul>
+<li><a href="#sec-5-1">開発と機能</a></li>
+<li><a href="#sec-5-2">開発とテスト</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフトウェア構成論</a> / <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a> /  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義ドキュメント</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">テスト駆動開発について</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">入門サイト</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><a href="http://www.slideshare.net/shuji_w6e/ss-15246933">テスト駆動開発入門</a> (slideshare)
+</li>
+
+<li><a href="http://www.atmarkit.co.jp/ait/articles/1403/05/news035.html">超入門テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">やりたいこと</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+少しづつ，以下のことを，繰り返すことで，開発を進めること：
+</p>
+
+<ul class="org-ul">
+<li>まず，設計し，
+</li>
+<li>次に，実装し，
+</li>
+<li>そして，要求を満たしていることを確かめる，
+</li>
+<li>今回の変更が，他に影響を及ぼさないことを確かめる
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">関数の基本</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+プログラム演習Iの関数の基本を思いだそう
+</p>
+
+<ul class="org-ul">
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E">第a回</a> &#x2013; 6.1 関数の基本，6.2 引数と戻り値
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E">第b回</a> &#x2013; 6.3 変数の寿命とスコープ，6.4 再帰呼び出し
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">関数を呼び出すこと</h3>
+<div class="outline-text-3" id="text-2-1">
+<pre class="example">
+{ int value = f(1.0, "abc"); ... }
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">関数を定めること</h3>
+<div class="outline-text-3" id="text-2-2">
+<pre class="example">
+int
+f(double x, char *name)
+{ ... ; return 1; }
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">関数を呼び出すことと定めることの間にある決まりごと</h3>
+<div class="outline-text-3" id="text-2-3">
+<pre class="example">
+int f(double, char *name);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">ヘッダファイルとライブラリを利用すること</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+三角関数を使う下記のプログラムを考えます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #483d8b;">  # include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">  # include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">  # include</span> <span style="color: #8b2252;">&lt;math.h&gt;</span>
+  <span style="color: #228b22;">int</span>
+  <span style="color: #0000ff;">main</span>()
+  {
+    <span style="color: #228b22;">double</span> <span style="color: #a0522d;">result</span> = sin(3.14L);
+    printf(<span style="color: #8b2252;">"sin(3.14)=%g\n"</span>, result);
+    exit(0);
+  }
+</pre>
+</div>
+
+<p>
+このソースプログラムをコンパイルし，実行形式プログラムを作成するに
+は，下記コマンドを実行します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"> %  cc -o sin314 sin314.c -lm
+</pre>
+</div>
+
+<p>
+実行は：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"> % ./sin314
+</pre>
+</div>
+
+<p>
+sin関数を計算する機能を，プログラムから利用するために，上記のプログ
+ラムで行なわれていることをまとめると:
+</p>
+
+<dl class="org-dl">
+<dt> 提供 </dt><dd>/usr/lib/libm.so ライブラリ, % nm /usr/lib/libm.so 
+</dd>
+<dt> 利用 </dt><dd>#include &lt;math&gt;, cc -lm
+</dd>
+<dt> 情報 </dt><dd>% man 3 sin
+</dd>
+</dl>
+</div>
+
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">機能を要求する</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+数値計算プログラムから使う"三角関数の計算"機能, double sin(double);
+が要求する機能。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">grep sin /usr/include/math.h
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">提供されている機能</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+機能を提供しているのは，Linux の数値計算ライブラリ /usr/lib/libm.so。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">file /usr/lib/libm.so
+nm /usr/lib/libm.so | grep sin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">機能の説明</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+ユーザはmanコマンドで使い方を知り，~#include &lt;math.h&gt;~ で sin 関数
+を使うためのインタフェースを取り込み，~cc &#x2026; -lm~ で数学ライブラリ
+を取り込む。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">機能を使うきまり</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>利用側のプログラムでは，利用インタフェースが記述されたヘッダファイ
+ルをインクルードし，インタフェースを遵守します。
+</li>
+
+<li>提供側のプログラムは，利用インタフェースが記述されたヘッダファイル
+を作成し，自らそれをインクルードすることで，自身もインタフェースを
+遵守します。
+</li>
+
+<li>提供側は，プログラムソースは見せずに，機能をライブラリに詰め込み，
+ライブラリとヘッダファイルを公開します。
+</li>
+
+<li>利用側は，自身のプログラムとライブラリをリンクすることで，自身の実
+行プログラムに機能を取り込むことができます。
+</li>
+</ul>
+
+<p>
+Linux システム上で，C言語を使ってプログラム開発をおこなう際の，決まり
+事です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">機能を利用する側と機能を提供する側とヘッダファイル</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+main関数は，sin関数（機能）を使う側です。数学ライブラリを開発する
+側が，sin関数を提供する側で，math.hがsin関数を使う際の決まりごと（イン
+タフェース）を定めています。
+</p>
+
+<p>
+使う側は，ヘッダファイル math.h を include し，コンパイル時にエラー
+が起きないことで，そのインタフェースを守っていることが保証されるの
+です。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">プログラムの機能</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">機能とは</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+この講義では，C言語の関数の <b>働き</b> を機能といいます。
+</p>
+
+<p>
+関数の働きとは，「関数に何を与えて，関数は何を計算してくれるか」です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">機能を要求する</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+このデータを与えると，こんな計算をして，こんな結果を返してくれる関数
+を作ってくれませんか？
+</p>
+
+<ul class="org-ul">
+<li>度数版sin関数::
+</li>
+</ul>
+<pre class="example">
+double型の，ラジアンではなく，度数で計算してくれる sin 関数で，結果はfloatでね。
+</pre>
+
+<dl class="org-dl">
+<dt> トランプ・カードのスーツ計算 </dt><dd></dd>
+</dl>
+<pre class="example">
+トランプのスーツを与えると，スーツの強さを整数で返してくれる関数を，お願い。
+</pre>
+
+<ul class="org-ul">
+<li>カードに関する機能(群) &#x2013; モジュール
+</li>
+</ul>
+<pre class="example">
+ポーカーゲームで使うカードの機能達の組。個々の機能は自由に設計してね。
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">機能を実現する</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+はい，了解。こんな入力に対して，こんな風にを計算して，こんな結果を
+返す関数を作りました。
+</p>
+
+<p>
+こんな風につかってくださいね。
+</p>
+
+<pre class="example">
+float deg_sin(double);
+</pre>
+
+<pre class="example">
+int suit_int(char *);
+</pre>
+
+<pre class="example">
+card.h に使い方が書いてあります。
+card/ ディレクトリの下にソースがありますが，見なくても使えるはずです。
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">機能を提供する</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+ヘッダファイルを作りましたので，インクルードして使ってください。本
+体は，オブジェクトファイルやライブラリで提供します。ソースを見る必
+要はないはずです。
+</p>
+
+<pre class="example">
+degsin.h
+libdeg.a
+</pre>
+
+<pre class="example">
+suit.h
+suit_int.o をリンクしてください。
+</pre>
+
+<pre class="example">
+card.h に使い方が書いてあります。
+libcard.a をリンクしてください。
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">機能を利用する</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+ありがとう，では使わせてもらいます。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c" id="use_suit.c"><span style="color: #483d8b;">  # include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">  # include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+  
+<span style="color: #483d8b;">  # include</span> <span style="color: #8b2252;">&lt;suit.h&gt;</span>
+  
+  <span style="color: #0000ff;">main</span>()
+  {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">s</span> = suit_int(<span style="color: #8b2252;">"HEART"</span>);
+    printf(<span style="color: #8b2252;">"HEART = %d\n"</span>, s);
+    exit(0);
+  }
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh" id="use_suit_cc.sh">  <span style="color: #a0522d;">INCLUDE_PATH</span> = /path/to/header_file
+  <span style="color: #a0522d;">LIBRARY_PATH</span> = /path/to/library
+  cc -I $<span style="color: #a0522d;">INCLUDE_PATH</span> main.c -L $<span style="color: #a0522d;">LIBRARY_PATH</span> -lsuit
+</pre>
+</div>
+
+<p>
+うまく使えました。ありがとう。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6">機能の要求と実現と提供と利用</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+欲しい機能が既に存在すれば，それを再開発せずに，使えることが望まれ
+ます。  欲しい機能が存在しなければ，その機能を実現し，上と同じ方法
+で提供・利用することも望まれます。
+</p>
+
+<p>
+機能に対する要求・実現・提供・利用が，別々に行えると融通性が高くな
+ります。
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">開発と機能とテスト</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">開発と機能</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+機能の要求と実現を，一人で行う場合もありますし，
+他人からの要求に応えて，実現を引き受ける場合もあります。
+</p>
+
+<p>
+どちらの場合にも，機能を要求・利用する側と実現・提供する側に分けるこ
+とで，インタフェースを守ることにより，プログラムの開発を分割し独立し
+て行うことが出来ます。
+</p>
+
+<p>
+多人数で開発する場合は分担開発ができるということですし，一人で開発す
+る場合でも，より小さな開発へ分割できることになります。
+</p>
+
+<p>
+大きなプログラムを開発する場合を考えます。大きな機能の実現が求められ
+る場合，より小さな機能の組み合わせとなるよう考えます。実際，そうなっ
+ていることがほとんどです。また，プログラムがたくさんの機能を要求す
+る場合は，復数の機能がグループ化されたり，階層化されたりします。
+この場合もやはり，やはり，より小さな開発へまとめられ
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">開発とテスト</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+小さな機能の組み合わせで大きな開発をおこなう場合，利用する各機能が
+正しく動くことが保証されていると，スムーズに開発できます。
+</p>
+
+<p>
+おかしなことが起こった場合でも，切り分けが可能になります。
+</p>
+
+<p>
+テストは，誰でも時間が経過し中身を忘れても，その保証を確認できます。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">&#33879;&#32773;: suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2015-10-11 Sun 14:40</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

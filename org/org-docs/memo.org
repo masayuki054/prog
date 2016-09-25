@@ -1,0 +1,39 @@
+* memo@prog/org-docs
+  SCHEDULED: <2015-12-05 土>
+
+** tdd-card-display-simple
+
+*** babel+noweb
+
+    ソースコードがあちこち散らばる。DRYのため，ソースコード片に名前を
+    付け，babel の noweb の機能で集めることにする。
+
+    card.c.org, card.h.org, test_card.c.org がソース管理のための org
+    書類。
+
+**** include+noweb 問題
+     章ごとに， #+include しているが，includeファイルに対して，#+name:
+     block 定義の処理をしてくれない。
+
+     .ob ファイル中の #+babel_include: を展開して，.org ファイルを作る
+     ことにする。
+
+*** silent tangle 
+
+    sh などを実行せず，実行結果もそのままにして，
+    tangleのみ実行する
+
+    ~/COMM/bin/org_tangle がそのscript. 
+
+    [[https://github.com/ngirard/org-noweb][ngirard/org-noweb]] の方が本格的なので，
+    後で参考にしよう
+
+
+
+** babel+
+
+
+
+
+    
+

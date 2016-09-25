@@ -1,0 +1,416 @@
+# * カードのソート
+#+babel_include: Makefile.org
+#+babel_include: card.h.org
+#+babel_include: test_card.c.org
+#+babel_include: test_sort.c.org
+#+babel_include: card.c.org
+#+babel_include: cards.c.org
+
+#+BEGIN_SRC sh :exports none
+rm -rf babel/simple/cards_sort/Makefile babel/simple/cards_sort/test babel/simple/cards_sort/src
+mkdir -p babel/simple/cards_sort/src babel/simple/cards_sort/test
+
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/Makefile :exports none
+<<Makefile>>
+#+END_SRC
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/src/Makefile :exports none
+<<src/Makefile>>
+#+END_SRC
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/src/card.c :exports none
+<<card.c#include>>
+<<card.c#suit_new>>
+<<card.c#no_new>>
+<<card.c#card_new>>
+<<card.c#card_suit>>
+<<card.c#card_no>>
+#+END_SRC
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/test/Makefile :exports none
+<<test/Makefile>>
+#+END_SRC
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/test/test_card.c :exports none
+<<test_card.c#include>>
+<<test_card.c#suit_new>>
+<<test_card.c#no_new>>
+<<test_card.c#card_new>>
+#+END_SRC
+
+** Doing checks [1/3]
+   - [X] document structure check
+   - [ ] tangle check
+   - [ ] shell check
+
+** 複数のカードをソートする機能
+
+   複数のカードを *Card型配列へのポインタ* で表すことにする:
+
+#+BEGIN_SRC c
+
+  Card *cards;
+
+#+END_SRC
+
+   Card * が型で，cards が変数名。
+
+   ソートの機能は，関数で表す。
+
+   名前を cards_sort とする。cards_ は複数のカードを扱う関数の接頭詞と
+   した。
+
+   次に，関数 cards_sort の型を決める。cards_sort へ何を与え，
+   cards_sort が何を返すかを考える:
+
+
+   - cards_sort は関数である:
+     
+     : cards_sort()
+   
+   - 複数のカードをもらう:
+
+     : cards_sort(Card *)
+
+   - 複数のカードの枚数ももらう:
+     
+     : cards_sort(Card *, int)
+
+   - 返す値は， (ソートした) 複数のカード:
+
+     : Card *cards_sort(Card *, int)
+
+   ということで，関数の宣言全体は下記となります:
+
+#+BEGIN_SRC c :noweb yes
+
+<<card.h#cards_sort>>
+
+#+END_SRC
+
+** 機能の追加とテストの作成
+   
+   カードを作る機能のテストは，test/test_sort.c を新たに作成することにします。
+   
+*** cards_sort のテストを書く
+    
+    機能の名前を cards_sort とし, cards_sortが満たすテストを書きます。
+    
+    まずは，試し書きしてみます:
+    
+    #+BEGIN_SRC c 
+// test/test_sort.c
+
+Card *cards, *sorted_cards;
+
+sorted_cards = cards_sort(cards, 5);
+
+    #+END_SRC
+    
+    関数として書けますね。
+
+    まだテストにはなっていません。まず，テストのためのデータを用意して
+    みます:
+
+#+BEGIN_SRC c :noweb yes
+
+<<test_sort.c#test_setup>>
+
+#+END_SRC
+
+    よさそうです。
+
+    テストにするために，期待されるデータを用意し，ソート後のデータと比
+    較し，等しいことでテストにすることにします。
+
+    期待されるデータを用意します:
+
+#+BEGIN_SRC c :noweb yes
+
+<<test_sort.c#expected_setup>>
+
+#+END_SRC
+
+
+    つぎにテストを書きます。テストの基本は，2枚のカードが等しいかです。
+
+    2枚のカードが等しいかを次のように書きたいところです:
+    
+#+BEGIN_SRC c
+    expected_cards[0]==sorted_cards[0]
+#+END_SRC    
+
+    Card型の比較は == ではできません。関数で行なうことします:
+
+#+BEGIN_SRC c
+    card_compare(expected_cards[0], sorted_cards[0])
+#+END_SRC    
+
+    
+    二枚のカードの比較を関数 card_compare で書けたので，
+    card_compare のインタフェースと機能を決めましょう：
+
+    - card_compare は，2枚のカードを与え，それが等しいか大きいか小さい
+      かを0，1，-1で返す関数とします：
+
+    - card_compare は関数:
+      
+      : card_compare()
+
+    - 二枚のカードをもらって:
+
+      : card_compare(Card, Card)
+
+    - 1,0,-1 の整数値を返す
+
+      : int card_compare(Card, Card)
+
+    card_compare の宣言は次となります:
+
+#+BEGIN_SRC c :noweb yes
+<<card.h#card_compare>>
+#+END_SRC
+
+    では，表明にしてみましょう:
+
+#+BEGIN_SRC c 
+    cut_assert(card_compare(expected_cards[0], sorted_cards[0])==0 );
+#+END_SRC
+
+    よさそうですね。
+
+    5枚のカードをテストする表明にして，全体を合わせて，関数にします。
+
+*** テスト全体プログラムの確認
+
+    test/test_sort.cは次のようになります:
+    
+    #+BEGIN_SRC c :tangle babel/simple/cards_sort/test/test_sort.0.c :noweb yes
+<<test_sort.c#include>>
+<<card.h#card_compare>>
+<<card.h#cards_sort>>
+<<test_sort.c>>
+    #+END_SRC
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/src/card.h-card_new :exports none
+<<card.h-card_new>>
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/cards_sort/src/ :exports none
+cp card.h-card_new card.h
+#+END_SRC
+
+#+RESULTS:
+
+*** test/Makefile の確認
+
+    test_sort.c を用意したことで，
+    test/Makefile の目的は変わりました。Makefile を更新します:
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/test/Makefile
+<<test/Makefile#test_sort>>
+#+END_SRC
+    
+*** test/test_sort.o の作成
+    
+    #+BEGIN_SRC sh :exports none :dir babel/simple/cards_sort/test
+cp test_sort.0.c test_sort.c
+    #+END_SRC
+    
+    #+RESULTS:
+    
+    #+BEGIN_SRC sh :results output :dir babel/simple/cards_sort/test :exports both
+
+# ~/progs/card_display/simple/test
+make test_sort.o
+
+    #+END_SRC
+    
+    test_sort.o ができれば，ひとまず，成功です。
+    
+    できない時は，test_sort.c に間違いがあるか，Makefile に間違いがあ
+    ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+    う。
+    
+    成功したら，test/test_sort.o の中身を見てみましょう:
+    
+    #+BEGIN_SRC sh :results output :dir babel/simple/cards_sort/test :exports both
+# ~/progs/card_display/simple/test
+nm test_sort.o
+    #+END_SRC
+
+    cards_sortが未定義で，test_cards_sort が定義されているのがわかるは
+    ずです。
+    
+** cards_sort，card_compare の実装
+   
+   さて次は，機能 cards_sort, card_compare の実装です。
+
+   お決まりの手順です:
+   
+   - test/test_sort.c を作成するときに決めたインタフェースをとりだし，
+     src/card.h に移す。
+   - src/card.hを遵守し，*src/cards.c* に機能を追加実装する。
+   - 提供する機能を入れた src/libcard.a を作成する
+     
+   src/{card.h，libcard.a} で機能を提供する
+
+*** card/card.h の更新
+    
+    test/test_card.c から cards_sort等に関するインタフェース宣言を，
+    src/card.h に移します。
+    
+    ここまでで，src/card.h は次のようになります:
+    
+#+BEGIN_SRC c :tangle babel/simple/cards_sort/src/card.h-cards_sort :noweb yes
+<<card.h-cards_sort>>
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/cards_sort/src :exports none
+cp card.h-cards_sort card.h
+#+END_SRC
+
+#+RESULTS:
+
+    test/test_sort.c からは削除してください。
+
+    #+BEGIN_SRC c :tangle babel/simple/cards_sort/test/test_sort.1.c :noweb yes :exports none
+<<test_sort.c#include>>
+<<test_sort.c>>
+    #+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/cards_sort/test :exports none
+cp test_sort.1.c test_card.c
+#+END_SRC
+
+*** cards_sort の実装 (src/cards.cの作成)
+    
+    cards_sort関数の使い方は決まっています。
+
+#+BEGIN_SRC c :noweb yes
+
+<<card.h#cards_sort>>
+
+#+END_SRC
+
+    ことでした。ソートのプログラムを書いた経験をもとにします。
+
+    単純ソートは，選択範囲中で，最も小さいものを見付け範囲の先頭に動か
+    すことを，範囲をせばめながら行いことで，ソートを行います。
+
+    実装は次のようになるでしょう:
+   
+#+BEGIN_SRC c :noweb yes
+<<cards.c#cards_sort>>
+#+END_SRC
+
+*** card_compare の実装
+
+    card_compare の使い方も決まっています:
+
+#+BEGIN_SRC c :noweb yes
+
+<<card.h#card_compare>>
+
+#+END_SRC
+
+    カードの番号の大小，スーツの大小をから，カードの大小を決めます:
+    
+#+BEGIN_SRC c :noweb yes
+<<cards.c#card_compare>>
+#+END_SRC
+
+*** cards.c の確認
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/src/cards.c
+<<card.c#include>>
+
+<<cards.c#card_compare>>
+
+<<cards.c#cards_sort>>
+
+#+END_SRC
+
+*** src/Makefile
+
+    src/Makefileには，src/cards.o を作成する規則が追加になり，
+    libcard.a を作る時，cards.o も取り込むように規則を変更します:
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/cards_sort/src/Makefile.cards
+<<src/Makefile#cards>>
+#+END_SRC
+
+#+BEGIN_SRC sh :dir babel/simple/cards_sort/src :exports none
+cp Makefile.cards Makefile
+#+END_SRC
+*** src/cards.o の作成
+
+    src/cards.o を make し, ソースコードにエラーがないか確かめます:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/cards_sort/src :exports both
+# ~/progs/card_display/simple/src
+make cards.o
+#+END_SRC
+
+    src/cards.o ができれば文法や宣言の食い違いはなくなったことになりま
+    す。
+
+*** src/libcard.a の作成
+
+    src/cards.o ができれば，次は， src/libcard.a を make します。
+
+#+BEGIN_SRC sh :results output :dir babel/simple/cards_sort/src :exports both
+# ~/progs/card_display/simple/src
+make libcard.a
+#+END_SRC
+
+    Makefile が正しければ，これは成功するはずです。
+
+    libcard.a の中身を確かめてみましょう:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/cards_sort/src :exports both
+# ~/progs/card_display/simple/src
+nm libcard.a
+#+END_SRC
+
+    src/libcard.a が更新できたので，次はtest_card.so を更新します。    
+
+** テスト
+
+*** test/test_sort.so のビルド
+
+    test/test_sort.so を作り直します。
+    
+#+BEGIN_SRC sh :results output :dir babel/simple/no_new/test :exports both
+# ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+#+END_SRC
+
+    test/test_card.so ができればテストの実行に移ります。
+
+    できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。
+
+*** テストの実行
+
+    テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+    めるためにテストする:
+
+#+BEGIN_SRC sh :results output :dir babel/simple/card_new/ :exports both
+# ~/progs/card_display/simple
+cutter -v v test
+#+END_SRC
+
+*** テストと再設計
+
+    テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+    ります。
+
+    テストが失敗した場合は，test/test_sort.c, src/{card.h, cards.c} を
+    修正していくことになります。
+
+    ソースコードを修正した後は，Makefileに間違いがなけれ
+    ば，~/progs/card_display/simpleで make すれば，全自動でテストまで
+    実行してくれます。テストが成功するまで繰り返してください。
+

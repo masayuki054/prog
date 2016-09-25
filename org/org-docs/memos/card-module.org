@@ -1,0 +1,148 @@
+* Card モジュールの開発
+
+** 5/16 (5)
+*** [[Cardの機能]]について考える
+    
+    - ポーカーゲームやカードについて考え，
+    - カードモジュールの内と外を認識し，
+    - 外から内を使う機能，
+    - 内から外へ提供する機能，
+
+** 5/23 (6)
+
+*** ~/progs/Game/Card の確認
+    なければ作ってください
+
+    ~/progs/Game/Card がカードモジュールの開発場所です。
+    
+*** [[Cardの機能]]について考える
+
+*** 最初に，Card を使うプログラム（テスト）を考える
+
+    [[file:~suzuki/progs/Game/Card/]]
+
+    1. テストを書いてみる [[[[file:~suzuki/progs/Game/Card/]]test_card.c]]
+
+       定石プログラム
+       - card.h のインクルード
+       - Card 型の変数
+       - カードを作り，できたことを確認する
+
+    2. Makefile を作る
+       - test_card_1.o ができることが目標
+       - card.h を作る [[file:~suzuki/progs/Game/Card/card.h]]
+
+    3. 必要最小限のcard.cを作る file:~suzuki/progs/Game/Card/card.c
+       - Card 型の値を返す
+       - 番号とスーツを返す関数
+
+    4. card.o を作る
+       - Makefile に card.o を作る規則を書く
+
+    5. 実行できるtest_card を作る
+       - Makefile に test_card_1.o と card.o の結合（リンク）を書く
+
+** 6/3 (7)
+   
+*** Card に印刷機能を追加しよう
+
+    suit = HEART, no = ACE => "HA"
+    suit = CLUB, no=2 => "C2"
+
+    この機能の API は，
+    : char * Card_to_str(Card);
+
+    - ~/progs/Game/Card/card.h に書く
+
+    - ~/progs/Game/Card/test_print.c にテストを実装
+      - カードを一枚作り，印刷する
+
+    - Makefile にtest_print.o を作る規則を書く
+    
+    - ~/progs/Game/Card/print.c に Card_to_str を実装
+
+    - Makefile にprint.o を作る規則を書く
+
+    - test_print を作る
+    
+
+
+** 6/10 (8)
+    
+*** Card に比較機能を追加しよう
+
+    : int card_compare(Card, Card); 
+
+    同様に，test_compare, test_compare.{o,c}, compare.{o,c} を作る
+    
+
+*** Card をモジュールとして提供できるようにしよう
+
+    - ~/progs/Game/Module/card.o
+    - ~/progs/Game/Interface/card.h
+
+
+*** file:~/progs/Game/Makefile
+    - カードモジュールを最新状態にし，
+    - モジュール本体を ~progs/Game/Card/card.o へコピーし
+    - インタフェースを ~progs/Game/Card/card.h へコピーし
+
+*
+
+*** Card モジュールを使ってみる
+
+    いままで作ってきたテストを利用して，
+    Card モジュールの外からプログラムを書いてみる．
+
+    - ((% mkdir ~/progs/Game/Test %))
+    - ~/progs/Game/Test/card_game.c に下記プログラムを作成する
+      - 二枚のカードを作り，表示し
+      - 強いカードを表示する
+    - ~/progs/Game/Test/Makefile を作成する
+      - ~/progs/Game/Interface の下のインクルードファイルが使えるようにする
+      - ~/progs/Game/Module の下のオブジェクトファイルが使えるようにする
+
+*** サブバージョンを使い始めよう
+
+
+* Cardの機能
+
+  カードは，
+  1. 札種と番号の情報を持つ．
+  2. 札種は4種類あり，
+  3. 番号には13種類ある．
+  4. 2枚のカードの大小比較ができる．
+  5. カードの大小比較は，
+     1. 番号の大きさ (A>K>Q>...>3>2) と
+     2. 札種の強さ (スペード>ハート>ダイヤ>クラブ) で決まる．
+
+  となりました．
+  忘れがちですが，
+
+  6. カードを表示する (ための文字列を作る) 
+  7. 新しいカードを作る
+
+  機能も必要ですね．
+
+  カード型の値を作る関数を *コンストラクタ*, 
+  カード型の値の属性値を得る関数を *セレクタ* 
+  と呼ぶ
+
+
+* テスト駆動開発について
+
+** 入門サイト
+   - [[http://www.slideshare.net/shuji_w6e/ss-15246933][テスト駆動開発入門]] (slideshare)
+   - [[hp://www.atmarkit.co.jp/ait/articles/1403/05/news035.html][いまさら聞けないTDD/BDD超入門（1）：テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT]]
+
+
+** やりたいこと
+
+   少しづつ，
+   - まず，設計し，
+   - 次に，実装し，
+   - そして，要求を満たしていることを確かめる，
+   - 今回の変更が，他に影響を及ぼさないことを確かめる
+
+
+

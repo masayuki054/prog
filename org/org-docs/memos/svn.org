@@ -1,0 +1,100 @@
+* subversion 6/4
+** コミットの時にviが動いたとき
+   - i で入力モード、
+   - 入力後エスケープで終了
+   - :wq で書き込みviを終了する
+
+   emacsを使いたい人は、~/.bashrc 中に
+
+   : export SVN_EDITOR=emacs
+   
+   
+** 認証設定の確認
+
+   : ((% svn ls http://wiki.cis.iwate-u.ac.jp/svn/prog %))
+
+  を実行して，gnome-keyring のエラーが出る人は，  
+
+  ~/.gnome2/keyrings/login.keyring を消して，もう一度試してみてくださ
+  い．
+
+  : ((% rm ~/.gnome2/keyrings/login.keyring %))
+
+
+** バージョン管理コマンド
+   
+   環境変数の設定
+
+   : export SVN_EDITOR=emacs
+
+   file:~/.bashrc  にも下行を追加
+
+   : export SVN_EDITOR=emacs
+
+
+   リポジトリの中に自分のディレクトリを作る
+    : ((% svn mkdir http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/hXXjYYY %))
+
+    作業用ディレクトリ（ワーキングコピー）にチェックアウトする
+
+    : ((% cd; ln -s ~suzuki/prog/hXXjYYY progs %))
+    : ((% cd progs %))
+    : ((% svn co http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/hXXjYYY . %))
+
+    (svn) 管理情報を見る
+
+    : ((% svn info %))
+
+    READMEというファイルを作成し，何か情報を書く
+    : ((% emacs README %))
+    
+    READMEの履歴管理を始める
+    : ((% svn add README %))
+
+    ワーキングコピーの状態を確かめる
+    : ((% svn st %))
+    
+    ワーキングコピーをリポジトリに反映させる（コミット）
+    : ((% svn ci -m 'hXXjYY はじめました' %))
+
+    ログを見る
+    : ((% svn log %))
+
+    
+** 学生さんの感想とか
+
+   [[http://spws01.cis.iwate-u.ac.jp/~wiki/net-note-05.cgi?%E5%98%86%E3%81%8D%E3%81%AE%E6%A8%B9][嘆きの木]]
+
+
+
+
+** Cardモジュールをリポジトリにコミットする
+
+   : ((% cd ~/progs/ %))
+
+   : ((% svn co http://wiki.cis.iwate-u.ac.jp/svn/prog/2012/hxxjyyy . %))
+
+   : ((% svn info %))
+
+
+   Cardディレクトリ下をキレイにする
+
+   : ((% cd ~/progs/Game/Card; make clean %))
+
+   Card/ のバージョン管理を始める
+
+   : ((% cd ~/progs/Game %))
+   : ((% svn add Card %))  # Card/下のファイルを全て登録する
+   : ((% svn st %)) # 変更状態を確かめる
+
+   この状態では Card/ (ワーキングコピー）だけが存在し，
+   リポジトリ上にはまだ Card/ は存在していません．
+
+   ワーキングコピーをリポジトリへ
+   : ((% svn ci -m 'カードモジュール，始めました．'))
+
+
+   
+
+   
+   

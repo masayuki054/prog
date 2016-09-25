@@ -1,0 +1,107 @@
+* game/deck/src/Makefileの説明
+  game/deck/src/Makefile について説明します:
+
+** 全体
+#+include: babel/deck_src_Makefile src c
+
+** 各部分の説明
+
+*** 
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+.PHONY: clean install
+#+END_SRC  
+- .PHONYは， ターゲット (ここでは，clean と install) が実物(ファイル等）
+  でないことを宣言
+
+*** gameプロジェクトの決まりを変数で表す
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+PROJ_HOME=/home/staff/suzuki/progs/game
+#+END_SRC  
+- 変数への代入文
+  - PROJ_HOME :: game プロジェクトのホームディレクトリを表す make の変数
+  - PROJ_HOME の値を，文字列 「/home/staff/suzuki/progs/game」にする
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+PROJ_INCLUDE=${PROJ_HOME}/include
+PROJ_LIB=${PROJ_HOME}/lib
+#+END_SRC  
+- 変数の値が表すこと
+  - PROJ_INCLUDE :: game プロジェクトのヘッダ・ファイルの保存ディレクト
+       リ。 
+  - PROJ_LIB :: game プロジェクトのライブラリ・ファイルの保存ディレク
+       トリ。
+
+- ${PROJ_HOME} の意味
+  変数 PROJ_HOME の値の参照
+
+#+END_SRC  
+
+*** Cコンパイラへの指示
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
+#+END_SRC  
+- CFLAGS は変数。Cコンパイラの翻訳過程 (ソース・プログラムをオブジェク
+  ト・プログラムに翻訳するまで)への指示を文字列で保持する:
+  - -g :: 名前の情報を残す
+  - -c ::
+  - -Wall :: warnning を表示する
+  - -fPIC ::
+  - -I. :: C コンパイラの include パスに，. (カレント・ディレクトリ) を追加する
+  - -I${PROJ_INCLUDE} :: C コンパイラの include パスに，プロジェクトの
+       ヘッダ・ファイルの保存ディレクトリを追加する
+
+*** ローダへの指示
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+LDFLAGS = -lc
+#+END_SRC  
+- LDFLAGS は変数。ローダのリンク過程 (オブジェクト・プログラムからライ
+  ブラリ，実行プログラムに結合まで)への指示を文字列で保持する:
+
+  - -lc :: ライブラリのロードパスにある，libc.[a,so] をリンクする
+
+*** libdeck.a の作成規則
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+libdeck.a: deck.o 
+	rm -f $@
+	ar r $@ $^
+#+END_SRC  
+- libdeck.a の更新時刻が deck.o のそれより古ければ，以下のコマンド行を
+  実行する (ことで，libdeck.a を作成する)。
+  - rm -f $@ :: 
+    - $@ は作成規則中のターゲット(この場合, libdeck.a) をあらわす変数
+    - rm -f ファイルの消去コマンド。-f は force の意。
+  - ar r $@ $^ ::
+    - $^ は作成規則中のソース全てをあらわす変数
+    - ar r で ライブラリ・ファイルを作成する
+
+
+*** deck モジュールの提供規則
+
+game プロジェクトの決まりに従がい，ライブラリ・ファイルとヘッダ・ファ
+イルを所定の場所に置く:
+    
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+install: libdeck.a deck.h
+	cp libdeck.a ${PROJ_LIB}
+	cp deck.h ${PROJ_INCLUDE}
+#+END_SRC  
+
+*** deck ソースプログラムのコンパイル
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+deck.o: deck.c deck.h
+	gcc $< $(CFLAGS)
+#+END_SRC  
+
+*** src ディレクトの掃除
+
+#+BEGIN_SRC c :mkdirp yes :tangle babel/deck_src_Makefile
+
+clean:
+	rm -f *.o *.a *.so *~ \#* *.gch
+#+END_SRC  
+

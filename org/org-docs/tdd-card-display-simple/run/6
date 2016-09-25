@@ -1,0 +1,3 @@
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);

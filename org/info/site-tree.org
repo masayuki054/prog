@@ -1,0 +1,331 @@
+#+begin_example
+site
++-ChangeLog
++-Makefile
++-bin
++-index.html
++-index.org
++-info-+-000GTD.org
+|      +-2015
+|      +-Makefile
+|      +-common-header.html
+|      +-common-header.org
+|      +-contents.org
+|      +-footnote.org
+|      +-links.org
+|      +-map.html
+|      +-map.org
+|      +-opening.html
+|      +-opening.org
+|      +-org-link-make.org
+|      +-prog-2015.html
+|      +-prog-2015.org
+|      +-ta.html
+|      +-ta.org
++-lects-+-01-+-Makefile
+|       |    +-contents.org
+|       |    +-emacs.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-02-+-Makefile
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-03-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-04-+-Makefile
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.org
+|       |    +-response.org
+|       |    +-resume.org
+|       +-05-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.html
+|       |    +-resume.org
+|       +-06-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.html
+|       |    +-resume.org
+|       +-07-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.org
+|       +-08-+-Makefile
+|       |    +-contents.html
+|       |    +-contents.org
+|       |    +-index.html
+|       |    +-index.org
+|       |    +-plan.html
+|       |    +-plan.org
+|       |    +-response.html
+|       |    +-response.org
+|       |    +-resume.org
+|       +-GTD.org
+|       +-Makefile
+|       +-contents.org
+|       +-index.html
+|       +-index.org
++-links.org
++-org-docs-+-#contents.html#
+|          +-Makefile
+|          +-Makefile.org
+|          +-card-display-+-Makefile
+|          |              +-card-display-multi.org
+|          |              +-card-display-problem.org
+|          |              +-card-display-simple-design.org
+|          |              +-card-display-sort.html
+|          |              +-card-display-sort.org
+|          |              +-index.html
+|          |              +-index.org
+|          +-cis-programming-lects-+-cis-programming-0.org
+|          |                       +-cis-programming-1.org
+|          |                       +-cis-programming-2.org
+|          |                       +-index.html
+|          |                       +-index.org
+|          +-contents.html
+|          +-contents.org
+|          +-cutter-+-#cutter-doc.html#
+|          |        +-babel-+-cutter-+-test-+-Makefile
+|          |        |                       +-test-first.c
+|          |        |                       +-test_first.c
+|          |        |                       +-test_first.o
+|          |        |                       +-test_first.so
+|          |        +-cutter.org
+|          |        +-index.html
+|          |        +-index.org
+|          |        +-test
+|          +-index.html
+|          +-index.org
+|          +-memos-+-c.org
+|          |       +-card-module.org
+|          |       +-dot_example1.png
+|          |       +-emacs.org
+|          |       +-env.org
+|          |       +-glib.org
+|          |       +-graphviz.html
+|          |       +-graphviz.org
+|          |       +-images-+-dot_example.png -Tpng
+|          |       +-index.html
+|          |       +-index.org
+|          |       +-module.org
+|          |       +-prog.org
+|          |       +-progs.org
+|          |       +-shell.org
+|          |       +-svn-fix.org
+|          |       +-svn.org
+|          |       +-vc.org
+|          +-module.org
+|          +-poker-+-Makefile
+|          |       +-card.org
+|          |       +-contents.org
+|          |       +-deck.org
+|          |       +-game-+-card-+-src
+|          |       |      |      +-test
+|          |       |      +-deck-+-src
+|          |       |      |      +-test
+|          |       |      +-hand-+-src
+|          |       |      |      +-test
+|          |       |      +-poker-+-src
+|          |       |              +-test
+|          |       +-hand.org
+|          |       +-index.html
+|          |       +-index.org
+|          |       +-poker.org
+|          |       +-story.org
+|          |       +-wiki.org
+|          +-tdd-card-display-simple-+-01-directory.org
+|          |                         +-02-makefile.org
+|          |                         +-Makefile
+|          |                         +-Makefile.org
+|          |                         +-babel-+-simple-+-card_new-+-#Makefile#
+|          |                         |                |          +-Makefile
+|          |                         |                |          +-card_new.org
+|          |                         |                |          +-src-+-Makefile
+|          |                         |                |          |     +-card.0.h
+|          |                         |                |          |     +-card.c
+|          |                         |                |          |     +-card.h
+|          |                         |                |          |     +-card.h-card_new
+|          |                         |                |          |     +-card.h-no_new
+|          |                         |                |          |     +-card.o
+|          |                         |                |          |     +-libcard.a
+|          |                         |                |          +-test-+-Makefile
+|          |                         |                |                 +-test_card.0.c
+|          |                         |                |                 +-test_card.1.c
+|          |                         |                |                 +-test_card.c
+|          |                         |                |                 +-test_card.c.1
+|          |                         |                |                 +-test_card.o
+|          |                         |                |                 +-test_card.so
+|          |                         |                +-card_to_string-+-Makefile
+|          |                         |                |                +-src-+-Makefile
+|          |                         |                |                |     +-card.c
+|          |                         |                |                |     +-card.h
+|          |                         |                |                |     +-card.h-card_new
+|          |                         |                |                |     +-card.h-card_to_string
+|          |                         |                |                |     +-card.o
+|          |                         |                |                |     +-libcard.a
+|          |                         |                |                +-test-+-Makefile
+|          |                         |                |                       +-test_card.0.c
+|          |                         |                |                       +-test_card.1.c
+|          |                         |                |                       +-test_card.c
+|          |                         |                |                       +-test_card.o
+|          |                         |                |                       +-test_card.so
+|          |                         |                +-cards_sort-+-Makefile
+|          |                         |                |            +-src-+-#card.c#
+|          |                         |                |            |     +-Makefile
+|          |                         |                |            |     +-Makefile.cards
+|          |                         |                |            |     +-card.c
+|          |                         |                |            |     +-card.h
+|          |                         |                |            |     +-card.h-card_new
+|          |                         |                |            |     +-card.h-cards_sort
+|          |                         |                |            |     +-card.o
+|          |                         |                |            |     +-cards.c
+|          |                         |                |            |     +-cards.o
+|          |                         |                |            |     +-libcard.a
+|          |                         |                |            +-test-+-Makefile
+|          |                         |                |                   +-test_card.c
+|          |                         |                |                   +-test_card.o
+|          |                         |                |                   +-test_card.so
+|          |                         |                |                   +-test_sort.0.c
+|          |                         |                |                   +-test_sort.1.c
+|          |                         |                |                   +-test_sort.c
+|          |                         |                |                   +-test_sort.o
+|          |                         |                |                   +-test_sort.so
+|          |                         |                +-no_new-+-Makefile
+|          |                         |                |        +-src-+-Makefile
+|          |                         |                |        |     +-card.c
+|          |                         |                |        |     +-card.c.0
+|          |                         |                |        |     +-card.h
+|          |                         |                |        |     +-card.h.0
+|          |                         |                |        |     +-card.o
+|          |                         |                |        |     +-libcard.a
+|          |                         |                |        +-test-+-Makefile
+|          |                         |                |               +-t.c
+|          |                         |                |               +-test_card.1.c
+|          |                         |                |               +-test_card.c
+|          |                         |                |               +-test_card.c.0
+|          |                         |                |               +-test_card.c.1
+|          |                         |                |               +-test_card.o
+|          |                         |                |               +-test_card.so
+|          |                         |                +-setup-+-Makefile
+|          |                         |                |       +-src-+-Makefile
+|          |                         |                |       +-test-+-Makefile
+|          |                         |                +-suit_new-+-Makefile
+|          |                         |                           +-src-+-Makefile
+|          |                         |                           |     +-Makefile.2
+|          |                         |                           |     +-card.1.c
+|          |                         |                           |     +-card.c
+|          |                         |                           |     +-card.c.0
+|          |                         |                           |     +-card.h
+|          |                         |                           |     +-card.o
+|          |                         |                           |     +-libcard.a
+|          |                         |                           +-test-+-Makefile
+|          |                         |                                  +-Makefile.1
+|          |                         |                                  +-Makefile.2
+|          |                         |                                  +-Makefile.3
+|          |                         |                                  +-test_card.1.c
+|          |                         |                                  +-test_card.2.c
+|          |                         |                                  +-test_card.c
+|          |                         |                                  +-test_card.o
+|          |                         +-babel.export-+-simple-+-card_new-+-src-+-card.h
+|          |                         |                       |          +-test-+-test_card.c
+|          |                         |                       |                 +-test_card.c.1
+|          |                         |                       +-card_to_string-+-src
+|          |                         |                       |                +-test
+|          |                         |                       +-no_new-+-Makefile
+|          |                         |                       |        +-src-+-Makefile
+|          |                         |                       |        |     +-card.c
+|          |                         |                       |        |     +-card.c.0
+|          |                         |                       |        |     +-card.h
+|          |                         |                       |        |     +-card.h.0
+|          |                         |                       |        +-test-+-Makefile
+|          |                         |                       |               +-test_card.1.c
+|          |                         |                       |               +-test_card.c
+|          |                         |                       |               +-test_card.c.0
+|          |                         |                       |               +-test_card.c.1
+|          |                         |                       +-setup-+-Makefile
+|          |                         |                       |       +-src-+-Makefile
+|          |                         |                       |       +-test-+-Makefile
+|          |                         |                       +-suit_new-+-Makefile
+|          |                         |                                  +-src-+-Makefile
+|          |                         |                                  |     +-Makefile.2
+|          |                         |                                  |     +-card.1.c
+|          |                         |                                  |     +-card.c
+|          |                         |                                  |     +-card.h
+|          |                         |                                  +-test-+-Makefile
+|          |                         |                                         +-Makefile.1
+|          |                         |                                         +-Makefile.2
+|          |                         |                                         +-Makefile.3
+|          |                         |                                         +-test_card.1.c
+|          |                         |                                         +-test_card.2.c
+|          |                         |                                         +-test_card.c
+|          |                         +-card.c.org
+|          |                         +-card.h.org
+|          |                         +-card_new.ob
+|          |                         +-card_new.org
+|          |                         +-card_sort.c.org
+|          |                         +-card_to_string.ob
+|          |                         +-card_to_string.org
+|          |                         +-cards.c.org
+|          |                         +-cards_sort.c.org
+|          |                         +-cards_sort.ob
+|          |                         +-cards_sort.org
+|          |                         +-contents.org
+|          |                         +-index.html
+|          |                         +-index.ob
+|          |                         +-index.org
+|          |                         +-no_new.org
+|          |                         +-suit_new.org
+|          |                         +-tdd-card.html
+|          |                         +-tdd-card.org
+|          |                         +-test_card.c.org
+|          |                         +-test_cards.c.org
+|          |                         +-test_sort.c.org
+|          +-what-is-tdd-+-index.html
+|                        +-index.org
+|                        +-what-is-tdd.org
++-ta.tex
++-working-+-c1.org
+          +-c2.org
+          +-contents.org
+          +-index-bigblow.html
+          +-index-bigblow.org
+          +-index-readtheorg.html
+          +-index-readtheorg.org
+          +-index.html
+          +-index.org
+#+end_example
+

@@ -1,0 +1,87 @@
+* プログラミング演習I 実施順
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC1%E5%9B%9E][第1回]] -- 作業ディレクトリの作成，カレントディレクトリを移動する，ソー
+  スファイルの作成，プログラミングの流れ，Emacsの使い方，コンパイルと実行
+    - emacs::エラー箇所を表示
+    - emacs::c言語モード
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC2%E5%9B%9E][第2回]] -- コンピュータの仕組み，コンピュータの5大機能，プログラムがで
+  きるまで（用語の意味），プログラムの基本事項 (include，main，return)，
+  printf関数，エスケープシーケンス
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC3%E5%9B%9E][第3回]] -- 3.1 変数とは，3.2 データ型，3.3 変数の宣言，3.4 変数の値の表
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC4%E5%9B%9E][第4回]] -- フローチャートの書き方，4.1 式と演算子，4.2 データ型と計算，
+  4.3 各種演算子，4.4 インクリメント・デクリメント演算子
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC5%E5%9B%9E][第5回]] -- 4.5 sizeof演算子，4.6 不等号演算子，4.7 等価演算子と非等価
+  演算子，4.8 代入演算子，4.9 キャスト演算子
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC6%E5%9B%9E][第6回]] -- 4.10 ビット演算子，4.11 条件演算子，5.1 if文
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC7%E5%9B%9E][第7回]] -- 5.2 関係演算子と論理演算子，5.3 switch文，5.4 for文
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC8%E5%9B%9E][第8回]] -- 5.5 while文
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC9%E5%9B%9E][第9回]] -- 5.6 do～while文，5.7 break文とcontinue文，5.8 goto文
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E][第a回]] -- 6.1 関数の基本，6.2 引数と戻り値
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E][第b回]] -- 6.3 変数の寿命とスコープ，6.4 再帰呼び出し
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC12%E5%9B%9E][第c回]] -- 7.1 メモリのアドレス，7.2 ポインタの基本，7.3 ポインタへの
+  値代入，7.4 ポインタと引数，7.5 ポインタのポインタ
+
+[[http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?plugin=attach&pcmd=list][添付ファイル一覧]]
+
+
+* プログラミング演習I 内容のまとめ
+  
+** プログラミングのはじまり
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC1%E5%9B%9E][第1回]] -- 作業ディレクトリの作成，カレントディレクトリを移動する，ソー
+  スファイルの作成，プログラミングの流れ，Emacsの使い方，コンパイルと実行
+    - emacs::エラー箇所を表示
+    - emacs::c言語モード
+
+** コンピュータとプログラム
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC2%E5%9B%9E][第2回]] -- コンピュータの仕組み，コンピュータの5大機能，プログラムがで
+  きるまで（用語の意味），プログラムの基本事項 (include，main，return)，
+  printf関数，エスケープシーケンス
+
+** 名前(変数と関数)
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC3%E5%9B%9E][第3回]] -- 3.1 変数とは，3.2 データ型，3.3 変数の宣言，3.4 変数の値の表
+
+** 値と式(計算)と型
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC4%E5%9B%9E][第4回]] -- フローチャートの書き方，4.1 式と演算子，4.2 データ型と計算，
+  4.3 各種演算子，4.4 インクリメント・デクリメント演算子
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC5%E5%9B%9E][第5回]] -- 4.5 sizeof演算子，4.6 不等号演算子，4.7 等価演算子と非等価
+  演算子，4.8 代入演算子，4.9 キャスト演算子
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC6%E5%9B%9E][第6回]] -- 4.10 ビット演算子，4.11 条件演算子，5.1 if文
+
+** 文と流れの制御 ー 実行順序の制御
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC7%E5%9B%9E][第7回]] -- 5.2 関係演算子と論理演算子，5.3 switch文，5.4 for文
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC8%E5%9B%9E][第8回]] -- 5.5 while文
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC9%E5%9B%9E][第9回]] -- 5.6 do～while文，5.7 break文とcontinue文，5.8 goto文
+
+** 関数
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E][第a回]] -- 6.1 関数の基本，6.2 引数と戻り値
+  - プロトタイプ宣言
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E][第b回]] -- 6.3 変数の寿命とスコープ，6.4 再帰呼び出し
+  - ローカル, グローバル
+  - extern
+  - ブロック { ... }
+
+** ポインタ 
+
+- [[http://wiki.cis.iwate-u.ac.jp/%7Ecis/prog1/pukiwiki/index.php?%E7%AC%AC12%E5%9B%9E][第c回]] -- 7.1 メモリのアドレス，7.2 ポインタの基本，7.3 ポインタへの
+  値代入，7.4 ポインタと引数，7.5 ポインタのポインタ
+
+[[http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?plugin=attach&pcmd=list][添付ファイル一覧]]
+
+
+* プログラムの構成要素
+
+  - 型と値
+  - 式 (値の計算)
+  - 変数 (値の記憶)
+  - 文 (実行順序の制御)
+  - *関数* (文のまとめ)
+  - *名前* (変数と関数) のスコープ
+
+

@@ -1,0 +1,22 @@
+* Todo documents (site/org-docs) [1/2]
+
+- [ ] [[./cis-programmin-lects/][プログラム関連講義]] 
+
+- [X] [[./what-is-tdd/][テストによる開発とは]] [1/1]
+  - [X] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter][cutterの使い方]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cutter][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cutter][@s.org]]))
+
+- [ ] [[./card-display/][カード表示問題の始まり]] [/]
+  - [ ] [[./tdd-card-display-simple/][カード表示問題_simpleのテストによる開発]]
+
+- [ ] [[./poker/][モジュール開発によるポーカーゲームの作成]]
+
+* memos (site/org-docs/memos)
+
+  中途半端で，かきなぐりで，すみません。
+
+- [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/memos/][講義メモ]] (([[file+emacs:~suzuki/lects/prog/org-docs/memos/][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/memos/][@s.org]]))
+
+
+
+
+  

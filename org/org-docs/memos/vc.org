@@ -1,0 +1,92 @@
+* 「VC（バージョンコントロール）パッケージの基礎」(菅原泰樹) — ありえるえりあ
+
+  - 出展 :: http://dev.ariel-networks.com/articles/emacs/part7/
+
+** VCとは
+
+   VCはEmacs上で各種バージョン管理システムを統合的に扱うパッケージです．
+
+   RCS, CVS, Subversion, Git, Mercurial, Bazaar, Gnu-Archに標準で対応しています．
+
+
+** バージョン管理システム
+
+   Wikipedia http://ja.wikipedia.org/wiki/バージョン管理システム
+
+   - ソースコードの履歴の管理
+   - 他人とのソースコードの共有
+   - 他人の変更と自分の変更のマージ・衝突の検出
+
+   複数人で何かを開発するときには絶対に必要なシステムですし，一人で開
+   発するときにも，履歴や差分の確認等に大活躍です．
+
+   代表的なバージョン管理システムには以下のものがあります．
+
+   | CVS        | http://www.cvshome.org/           |
+   | Subversion | http://subversion.tigris.org/     |
+   | Git        | http://git-scm.com/               |
+   | Mercurial  | http://www.selenic.com/mercurial/ |
+
+** 代表的なVCを操作するコマンド
+
+| キーバインド | コマンド                 | 説明                   | Subversionのコマンド |
+| C-x v =      | vc-diff                  | 差分を表示             | diff                 |
+| C-x v l      | vc-print-log             | 履歴を表示             | log                  |
+| C-x v g      | vc-annotate              | 注釈を表示             | blame                |
+| C-x v ~      | vc-revision-other-window | 過去のバージョンを表示 | cat                  |
+| C-x v +      | vc-update                | 更新                   | update               |
+| C-x v v      | vc-next-action           | コミット               | commit               |
+| C-x v i      | vc-register              | ファイルの追加         | add                  |
+| C-x v u      | vc-revert                | 修正の破棄             | revert               |
+| C-x v d      | vc-dir                   | 状態の表示             | status               |
+|              | ediff-revision           | Ediffで差分を表示      |                      |
+
+** 差分の表示
+
+   差分を表示するにはC-x v = (vc-diff)を入力します．普通は作業コピーと
+   HEADとの差分です．svn diffなどと同じですね．リビジョンを選んで差分
+   を表示するにはC-u C-x v =としてからリビジョンを入力するか，後で説明
+   する履歴表示機能を使います．C-x v =を入力すると以下のようにWindowが
+   分割して差分が表示されます．
+
+** 注釈の表示
+
+   注釈を表示するにはC-x v g (vc-annotate)を入力します．バージョン管理
+   システムでの注釈とはソースの各行を最後に更新した人とそのリビジョン
+   を表示する機能のことです．リビジョンを選んで注釈を表示するにはC-u
+   C-x v gとしてからリビジョンを入力するか，後で説明する履歴表示機能を
+   使います．C-x v gを入力すると以下のようにWindowが分割して注釈が表示
+   されます
+
+** 履歴の表示
+
+   履歴を表示するにはC-x v l (vc-print-log)を入力します．
+
+   履歴バッファでは差分の表示や該当リビジョンの取り出し等が行なえます．
+
+   履歴バッファでの操作は自分で調べてください。
+
+** 更新系の操作
+
+   バージョン管理システムからファイルを更新するにはC-x v + (vc-update)
+   とします．
+
+   修正してコミットするときはC-x v v (vc-next-action)です．コミットロ
+   グを入力するバッファが表示されるので，ログを入力したらC-c C-c
+   (log-edit-done)でコミットを完了させる．
+
+   ファイルを追加してそれを通知するときもC-x v vです．もう一度C-x v v
+   すればコミットされます。
+
+   next-actionと言うだけあってコミットだけではなく次にやりたい事をそれ
+   となく察して実行してくます。
+
+   修正を破棄するにはC-x v u (vc-revert)を使います．
+
+
+** 衝突の解決
+   
+   更新をかけたときにコンフリクトが起きている場合，Emacsは自動的に
+   smerge-modeを実行してくれます．コンフリクトが起きているファイルを開
+   いたときに<<<<<<<といった箇所に色が付いています
+

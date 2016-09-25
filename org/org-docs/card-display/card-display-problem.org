@@ -1,0 +1,77 @@
+# origin: COMM/Lects/prog/docs/card_display.org
+# Time-stamp: <2015-10-28 11:22:12 m>
+
+* 目的
+
+  トランプ・カードをプログラムしてみよう。プログラムするとはどういうこと
+  かについて，考える。トランプ・カードの機能とは何かを考える。
+
+  - トランプ・カードをデータとして入力し，出力して実感する
+
+  - トランプ・カードを扱うことについて考える
+
+  - トランプカードの部品化について考える
+
+    - *トランプカードのデータ構造*を考え，プログラム化する
+
+    - *トランプカードの機能*について考え，プログラム化する
+
+  - ポーカーゲームのために利用することを想定し，プログラムの保守と更新につ
+    いて考える
+
+* トランプ・カード表示問題
+
+一枚のカードを表示するプログラム (card_display_simple) から始めて，
+復数のトランプカードを表示 (card_display_multi) し，
+復数のトランプカードをソートし，表示 (card_display_sort) する
+プログラムへ変更していきます。
+
+データをデータ構造にまとめたり，
+機能を関数にまとめたり，することの意味を理解しましょう。
+
+** card_display_simple 問題 
+
+    コマンドラインからトランプカードの札種（スーツ）と番号を指定すると，
+    そのカードを表す文字列を表示するプログラムを作成する
+
+    例えば，プログラムへの入力と出力は，下記のようになる:
+
+#+BEGIN_EXAMPLE
+
+      % card_display heart 10 
+      > H0 	     # と表示される
+      % card_display spade 13 
+      > SK 	     # と表示される
+      % card_display diamond 1 
+      > DA 	     # と表示される
+      % card_display club 2
+      > C2           # と表示される
+
+#+END_EXAMPLE
+
+** card_display_multi 問題 
+
+    複数のカードを指定して，そのカード達を表示する
+
+    但し，できるだけ card_display_simple プログラムを再利用すること
+
+#+BEGIN_EXAMPLE
+
+      % card_display_multi heart 10 spade 13 diamond 1 club 2 は
+      > H0 SK DA C2   # と表示される
+
+#+END_EXAMPLE
+
+** card_display_sort 問題 
+
+    複数のカードを入力し，ソートして表示するプログラム
+
+#+BEGIN_EXAMPLE
+
+    % card_display_sort heart 10 spade 13 diamond 1 club 2
+    > DA SK H0 C2    # と表示される
+
+#+END_EXAMPLE
+
+
+

@@ -1,0 +1,9 @@
+#+title: まとめ
+* 7回目のまとめ
+#+include: resume.org :minlevel 2
+
+* レスポンスカード.7 2015.12.08
+#+include: response.org
+
+
+

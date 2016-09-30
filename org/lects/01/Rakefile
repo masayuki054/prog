@@ -12,6 +12,8 @@ ORG = "#{MYHOME}org/"
 SITE = "#{MYHOME}docs/"
 path.shift
 DIR = path.join("/")
+
+
 SRCS = ["index.org", "contents.org", "resume.org", "response.org"]
 
 task :default => "index.html"

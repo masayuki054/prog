@@ -1,7 +1,6 @@
-** 講義紹介 [0/3]
+** 講義紹介 
 
-  - [-] site [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][prog.http]] (([[~suzuki/lects/prog/site/index.org][cis-org]] [[~/COMM/Lects/prog/site/index.org][s-org]])) [1/3]
-
+  - サイト [[http://masayuki054.github.io/prog/][prog]]
     - [X]  [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][wiki]] 
 
       過去の講義でやったことが入っている。補助的に使う。
@@ -58,9 +57,9 @@ card,deck,hand,poker}
 
     - [ ] ~/progs/README.org を作成します:
 
-+BEGIN_SRC org :tangle ~/progs/README.org
-+title: ~/progs/README.org
-ィレクトリの使用目的:
+#+BEGIN_SRC org :tangle ~/progs/README.org
+#+title: ~/progs/README.org
+ディレクトリの使用目的:
 
  ./lects: 毎回の講義のめもを置きましょう
 
@@ -74,7 +73,7 @@ card,deck,hand,poker}
  - ./game/hand: 手札モジュール
  - ./game/poker: ポーカーモジュール
 
-+END_SRC
+#+END_SRC
 
 
 *** emacs org-mode+babel やる？

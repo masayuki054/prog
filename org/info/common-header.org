@@ -1,8 +1,8 @@
 #+title: 2016
 #+author: suzuki@cis.iwate-u.ac.jp
 [[./][ホーム]] /
-[[./lect.org][講義]] / 
+[[./lects.org][講義]] / 
 [[./supplement.org][説明]] / 
 [[./org-docs.org][資料]] / 
-[[./poker.org][poker]] /
+[[./memos.org][雑メモ]] /
 [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][2015]]

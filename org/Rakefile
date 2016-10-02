@@ -1,6 +1,7 @@
 # coding:utf-8
 
-SRCS = Dir.glob("*.html")
+ORGS = FileList["*.orgs"]
+HTMLS = ORGS.ext(".html")
 
 def myhome
   path = `pwd`.chomp.split("/").reverse
@@ -15,18 +16,27 @@ SITE = "#{MYHOME}docs/"
 path.shift
 DIR = path.join("/")
 
-task :default => [:deploy, :subdirs]
+rule ".html" => ".org" do |t|
+   sh "org2html #{t.souce}"
+   sh "mkdir -p $(SITE)/$(DIR)"
+   sh "cp #{t.name} $(SITE)/$(DIR)"
+   p "cp #{t.name} $(SITE)/$(DIR)"
+end
+
+task :default => [:org2html, :deploy]
+
+task :org2html => HTMLS 
 
 task :deploy do 
-  SRCS.each do |html|
+  HTMLS.each do |html|
     sh "mkdir -p #{SITE}#{DIR}"
     sh "cp -p #{html} #{SITE}#{DIR}"
   end
 end
 
 task :subdirs do
-  SRCS.delete("index.html")
-  SRCS.each do |html|
+  HTMLS.delete("index.html")
+  HTMLS.each do |html|
     subdir = File.basename(html,".html")
     unless File.exist?("#{subdir}/Rakefile") 
       sh "cp Rakefile #{subdir}/"

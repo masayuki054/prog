@@ -1,4 +1,4 @@
 #+setupfile: info/index-sos-header.setup
 #+include: info/common-header.org
 #+title: 講義資料
-#+include: lects/contents.org
+#+include: org-docs/contents.org

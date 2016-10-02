@@ -344,6 +344,7 @@ make libcard.a
 
 #+BEGIN_SRC sh :results output :dir babel/simple/card_new/src :exports both
 # ~/progs/card_display/simple/src
+
 nm libcard.a
 #+END_SRC
 

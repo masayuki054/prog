@@ -1,0 +1,4 @@
+# Time-stamp: <2016-10-02 13:52:29 m>
+#+setupfile: ../info/index-sos-header.setup
+#+title:  トランプカードの表示問題
+#+include: cis-programming-lects/contents.org

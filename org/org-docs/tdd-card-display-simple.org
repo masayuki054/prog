@@ -1,0 +1,5 @@
+# Time-stamp: <2016-10-02 16:40:01 m>
+#+SETUPFILE: ../info/index-sos-header.setup
+# # #+include: ../info/common-header.org
+#+TITLE: カード表示問題のテストによる開発
+#+include: tdd-card-display-simple/contents.org

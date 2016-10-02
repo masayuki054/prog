@@ -133,7 +133,7 @@
 
 ** 入門サイト
    - [[http://www.slideshare.net/shuji_w6e/ss-15246933][テスト駆動開発入門]] (slideshare)
-   - [[hp://www.atmarkit.co.jp/ait/articles/1403/05/news035.html][いまさら聞けないTDD/BDD超入門（1）：テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT]]
+   - [[http://www.atmarkit.co.jp/ait/articles/1403/05/news035.html][いまさら聞けないTDD/BDD超入門（1）：テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT]]
 
 
 ** やりたいこと

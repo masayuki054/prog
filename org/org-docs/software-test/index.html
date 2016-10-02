@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-02 日 12:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>2016 ソフトウェア・テスト</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">2016 ソフトウェア・テスト</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. ソフトウェアテストを行う目的</a></li>
+<li><a href="#orgheadline5">2. ソフトウェア開発におけるテスト</a>
+<ul>
+<li><a href="#orgheadline2">2.1. テストとテストケース</a></li>
+<li><a href="#orgheadline3">2.2. テストされていないプログラム</a></li>
+<li><a href="#orgheadline4">2.3. テストの複雑さ</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline12">3. ソフトウェアテストの技法や手法</a>
+<ul>
+<li><a href="#orgheadline10">3.1. ソフトウェアテストの主な分類</a>
+<ul>
+<li><a href="#orgheadline6">テストレベル（開発フェイズ）による分類</a></li>
+<li><a href="#orgheadline7">テスト設計技法による分類</a>
+<ul>
+<li><a href="#orgheadline8">テスト対象となる品質特性による分類</a></li>
+<li><a href="#orgheadline9">テスト実施者、テスト目的による分類</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline11">3.2. テストの一般原則</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline13">4. バイザーのテスト成熟度</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="./">ホーム</a> /
+<a href="./lect.html">講義</a> / 
+<a href="./supplement.html">説明</a> / 
+<a href="./org-docs.html">資料</a> / 
+<a href="./poker.html">poker</a> /
+<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a>
+</p>
+<p>
+原著: <a href="http://www.itmedia.co.jp/im/articles/1111/07/news192.html">情報システム用語事典：ソフトウェアテスト（そふとうぇあてすと）</a>
+</p>
+
+<p>
+コンピュータのソフトウェアプログラムを実行し、それが意図したとおりに動
+くかを観測・評価・検証する作業のこと。
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> ソフトウェアテストを行う目的</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li><b>欠陥やバグを検出する</b></li>
+<li><b>要件を満たすことを保証する</b></li>
+<li>リリース後の品質リスクを見積もる</li>
+<li>開発プロセス改善の指標となる</li>
+</ul>
+
+<p>
+どの目的を重視するかは、開発するソフトウェアプロダクトの目的やニーズ、
+開発組織の成熟度などによって変わってくる。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">2</span> ソフトウェア開発におけるテスト</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>ユーザーの使用状況を反映した入力データを用いてソフトウェアを実行し、</li>
+<li>事前に想定した結果と実際の実行結果をつき合わせて合否の判定を行う。</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> テストとテストケース</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+このテスト用の <b>入力データ</b> とそれを実行したら得られるであろう <b>事前に
+想定した結果</b> の対を <b>テストケース</b> という。
+</p>
+
+<p>
+テストケースを使って対象を実行してみる行為がテストである。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> テストされていないプログラム</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+正しい動作を保証されず、実際に高い確率で正しく動作しない。
+</p>
+
+<p>
+したがってソフトウェア開発において、でき得る限り網羅的にテストを行うべ
+きであり、テスト自体は必須の工程と位置付けられてきた。
+</p>
+
+<p>
+しかしながら、ソフトウェア開発の黎明期から「完全なテスト」の困難性が指
+摘されている。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> テストの複雑さ</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+実用レベルの複雑さ（規模）を持つソフトウェアの場合、“入力データ”と
+“実行結果”の組み合わせは事実上無限となる。
+</p>
+
+<p>
+また、環境に依存する機能では、環境との組み合わせも発生する。
+</p>
+
+<p>
+このため、ほとんどのテストは無限の組み合わせに対して有限個のテストケー
+スをあてがう作業であって、完全なテストにはならないのである。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12"><span class="section-number-2">3</span> ソフトウェアテストの技法や手法</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">3.1</span> ソフトウェアテストの主な分類</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">テストレベル（開発フェイズ）による分類</h4>
+<div class="outline-text-4" id="text-orgheadline6">
+<ul class="org-ul">
+<li>単体テスト</li>
+<li>結合テスト</li>
+<li>システムテスト</li>
+<li>受け入れテスト</li>
+<li>回帰テスト</li>
+<li>スモークテスト</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="orgheadline7">テスト設計技法による分類</h4>
+<div class="outline-text-4" id="text-orgheadline7">
+<ul class="org-ul">
+<li>構造ベース技法 （制御パステスト、データフローパステストなど）</li>
+<li>仕様ベース技法 （同値分割、 境界値分析、 原因結果グラフ技法、 状態遷
+移テスト、ユースケーステスト、ドメイン分析テスト、組み合わせテスト／
+ペア構成テストなど）</li>
+<li>経験ベース技法 （エラー推測、 探索的テスト、 アドホックテスト、 ラン
+ダムテストなど）</li>
+</ul>
+
+<p>
+テスト設計テクニックによる分類: 
+</p>
+
+<ul class="org-ul">
+<li>ホワイトボックステスト</li>
+<li>ブラックボックステスト</li>
+<li>グレーボックステスト</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-5">
+<h5 id="orgheadline8">テスト対象となる品質特性による分類</h5>
+<div class="outline-text-5" id="text-orgheadline8">
+<ul class="org-ul">
+<li>機能テスト</li>
+
+<li>非機能テスト 
+<ul class="org-ul">
+<li>性能テスト</li>
+<li>負荷テスト</li>
+<li>ユーザビリティテスト</li>
+<li>相互運用性テスト</li>
+<li>保守性テスト</li>
+<li>信頼性テスト</li>
+<li>移植性テスト</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-5">
+<h5 id="orgheadline9">テスト実施者、テスト目的による分類</h5>
+<div class="outline-text-5" id="text-orgheadline9">
+<ul class="org-ul">
+<li>デベロッパテスト</li>
+<li>カスタマテスト</li>
+<li>品質保証テスト</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">3.2</span> テストの一般原則</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+ソフトウェアテストの世界には、長年の経験をまとめた7つの一般原則がある。
+</p>
+
+<ul class="org-ul">
+<li><p>
+原則1　テストは欠陥があることしか示せない。
+</p>
+
+<p>
+欠陥がないことを証明できない
+</p></li>
+
+<li><p>
+原則2　全数テストは不可能。
+</p>
+
+<p>
+ごく単純なソフトウェア以外は、すべての条件をテストすることは非現実的
+である
+</p></li>
+
+<li><p>
+原則3　初期テスト。
+</p>
+
+<p>
+テストは開発ライフサイクルの早い時期に開始すべきである
+</p></li>
+
+<li><p>
+原則4　欠陥の偏在。
+</p>
+
+<p>
+テストで見つかる欠陥の大部分は、特定の部分に集中する
+</p></li>
+
+<li><p>
+原則5　殺虫剤のパラドックス。
+</p>
+
+<p>
+同じテストを何度も繰り返すと、そのテストでは新しいバグを見つけられな
+くなる
+</p></li>
+
+<li><p>
+原則6　テストは条件次第。
+</p>
+
+<p>
+ソフトウェアの要件が異なれば、テストの方法も変わる
+</p></li>
+
+<li><p>
+原則7　「バグゼロ」の落とし穴
+</p>
+
+<p>
+仮にバグがゼロだとしても、要求を満たしていなければ、そのシステムは役
+に立たない
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">4</span> バイザーのテスト成熟度</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>レベル0  テストとは、デバッグのことである</li>
+<li>レベル1  テストの目的は、ソフトウェアが正常に働くことを示すことである</li>
+<li>レベル2  テストの目的は、ソフトウェアが正常に働かないことを示すことで
+ある</li>
+<li>レベル3  テストの目的は、ソフトウェアが正常に働かないことで生じるリス
+クを許容値まで下げることである</li>
+<li>レベル 4 テストとは、高品質のソフトウェアを開発しようという精神的な規
+律である</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
+<p class="date">Created: 2016-10-02 日 12:00</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

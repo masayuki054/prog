@@ -1,0 +1,4 @@
+# Time-stamp: <2016-10-02 13:46:31 m>
+#+setupfile: ../info/index-sos-header.setup
+#+title:  トランプカードの表示問題
+#+include: card-display/contents.org

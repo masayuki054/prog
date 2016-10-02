@@ -1,0 +1,15 @@
+* CardDisplay問題
+
+#+include: card-display-problem.org
+
+* card_display_simple 問題への解法
+
+大きな要求を，細かな機能への要求に分解していきましょう。
+
+#+include: card-display-simple-design.org
+
+* card_display_multi 問題への解法
+#+include: card-display-multi.org
+
+* card_display_sort 問題への解法
+#+include: card-display-sort.org

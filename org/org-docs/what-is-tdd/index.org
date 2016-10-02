@@ -1,6 +1,4 @@
-# Time-stamp: <2016-09-24 05:13:07 m>
-#+SETUPFILE: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
-#+include: ~/COMM/Lects/prog/site/info/common-header.org
+# Time-stamp: <2016-10-02 14:15:04 m>
+#+SETUPFILE: ../../info/index-sos-header.setup
 #+TITLE: テスト駆動開発とは
-
-#+include: what-is-tdd.org :minlevel 1
+#+include: contents.org

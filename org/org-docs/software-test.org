@@ -1,0 +1,6 @@
+# Time-stamp: <2016-10-02 13:42:23 m>
+#+SETUPFILE: ../info/index-sos-header.setup
+# # #+include: ../info/common-header.org
+
+#+TITLE: ソフトウェア・テスト
+#+include: software-test/contents.org

@@ -1,0 +1,4 @@
+#+setupfile: ../info/index-sos-header.setup
+[[../index.org][ホーム]] / 
+#+TITLE: 先生の作業メモ
+#+include: contents.org

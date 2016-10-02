@@ -1,0 +1,4 @@
+#+Time-stamp: <2016-10-02 14:02:51 m>
+#+SETUPFILE: ../info/index-sos-header.setup
+#+title: ポーカーゲームの開発
+#+include: poker/contents.org

@@ -1,29 +1,17 @@
-* 講義用ドキュメント
 
+* [[./cis-programming-lects/][プログラム関連講義]] 
+#+include: cis-programming-lects/contents.org
 
-- [ ] [[./cis-programmin-lects/][プログラム関連講義]] 
+* テストと開発
+#+include: what-is-tdd/contents.org
+#+include: software-test/contents.org
+#+include: cutter/contents.org
+* カード表示問題
+#+include: card-display/contents.org
+* カード表示問題_simpleのテストによる開発
+#+include: tdd-card-display-simple/contents.org
 
-- [X] [[./what-is-tdd/][テストによる開発とは]] [0/0]
-
-  - [X] [[./software-test][ソフトウェア・テスト]]
-
-  - [X] [[./cutter][cutterの使い方]] 
-
-  - [X] [[./module][モジュールとは]] 
-
-- [ ] [[./card-display/][カード表示問題の始まり]] [0/1]
-  - [ ] [[./tdd-card-display-simple/][カード表示問題_simpleのテストによる開発]]
-
-- [X] [[./poker/][モジュール開発によるポーカーゲームの作成]]
-
-* memos (site/org-docs/memos)
-
-  中途半端で，かきなぐりで，すみません。
-
-- [[./memos/][講義メモ]]
-
-
-
-
+* モジュール開発によるポーカーゲームの作成
+#+include: poker/contents.org
 
   

@@ -1,0 +1,28 @@
+#+include: crash.org :minlevel 1
+-----
+#+include: org-babel.org :minlevel 1
+-----
+#+include: c.org :minlevel 1
+-----
+#+include:  card-module.org :minlevel 1
+-----
+#+include:  emacs.org :minlevel 1
+-----
+#+include:  env.org :minlevel 1
+-----
+#+include:  module.org :minlevel 1
+-----
+#+include:  prog.org :minlevel 1
+-----
+#+include:  progs.org :minlevel 1
+-----
+#+include:  shell.org :minlevel 1
+-----
+#+include:  svn-fix.org :minlevel 1
+-----
+#+include:  svn.org :minlevel 1
+-----
+#+include:  vc.org :minlevel 1
+-----
+
+

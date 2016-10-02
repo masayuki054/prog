@@ -1,10 +1,3 @@
-* 関連サイト
-- [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連講義]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cis-programming-lects/][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cis-programming-lects/][@s.org]]))
-- [[http://svn.cis.iwate-u.ac.jp/svn/prog][svn開発用リポジトリ]] subversion 
-- [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][wiki]] 講義情報，お知らせ，昔の講義の進行状況など
--  学生用[[http://wiki.cis.iwate-u.ac.jp/~wiki/prog-note-05.cgi][ノート用Wiki]] 
-- [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/suzuki][鈴木の講義]] (([[file+emacs:~suzuki/lects/suzuki/site/][@cis.org]] [[file+emacs:~/COMM/Lects/suzuki/][@s.org]]))
-
- 
-
+[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/meta-ruby/lects][講義記録]] (([[file+emacs:~suzuki/lects/meta-ruby/site/lects][@cis.org]] [[file+emacs:~/COMM/Lects/meta-ruby/site/lects][@s.org]])) / [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/meta-ruby/oo.html][OOへ至る道]] (([[file+emacs:~suzuki/lects/meta-ruby/oo.org][@cis.or]]g [[file+emacs:~/COMM/Lects/meta-ruby/site/oo.org][@s.org]])) / [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/meta-ruby/ruby-begin.html][ruby入門]]
+(([[file+emacs:~suzuki/lects/meta-ruby/site/ruby-begin.org][@cis.org]] [[file+emacs:~/COMM/Lects/meta-ruby/site/ruby-begin.org][@s.org]])) / [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/meta-ruby/org-docs/][講義資料]] (([[file+emacs:~suzuki/lects/meta-ruby/site/org-docs/][@cis.org]] [[file+emacs:~/COMM/Lects/meta-ruby/site/org-docs/][@s.org]])) 
 

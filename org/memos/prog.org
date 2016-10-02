@@ -1,11 +1,4 @@
-#+TITLE ソフトウェア構成論
-#+AUTHOR masayuki
-#+LANGUAGE ja
-#+EMAIL suzuki@cis.iwate-u.ac.jp
-#+STYLE: <link rel="stylesheet" type="text/css" href="../theme/ruby-blue.css" />
-#+OPTION ^:nil toc:nil num:nil
-
-* ソフトウェア構成論
+* ソフトウェア構成論 (昔の説明@wiki)
 ** 道具達の使い方
 
      [[file:./c.org][C言語]]
@@ -89,7 +82,7 @@
       - d_sin.h が 関数の素性
 	: # include <d_sin.h>
 
-***** sin(deg_to_rad(atof(argv[1]))) の計算
+***** sin(deg_to_rad(atof(argv\[1\]))) の計算
 
 ***** コンパイルして calc_d_sin.o を作る
 

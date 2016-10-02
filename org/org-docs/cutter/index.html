@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-09-25 日 13:06 -->
+<!-- 2016-10-02 日 13:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>ソフトウェア構成論 Cutterの使い方</title>
+<title>Cutterの使い方</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="masayuki suzuki@cis.iwate-u.ac.jp" />
+<meta  name="author" content="Masayuki Suzuki" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -157,55 +157,43 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">ソフトウェア構成論 Cutterの使い方</h1>
+<h1 class="title">Cutterの使い方</h1>
 <div id="table-of-contents">
-<h2>&#30446;&#27425;</h2>
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">cutter</a></li>
-<li><a href="#orgheadline2">テスト・ファイルの作成</a></li>
-<li><a href="#orgheadline4">テストのビルド</a>
+<li><a href="#orgheadline1">1. cutter</a></li>
+<li><a href="#orgheadline2">2. テスト・ファイルの作成</a></li>
+<li><a href="#orgheadline4">3. テストのビルド</a>
 <ul>
-<li><a href="#orgheadline3">Makefile</a></li>
+<li><a href="#orgheadline3">3.1. Makefile</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline11">テストのビルドへの補足説明</a>
+<li><a href="#orgheadline11">4. テストのビルドへの補足説明</a>
 <ul>
-<li><a href="#orgheadline5">コンパイラへの指示</a>
+<li><a href="#orgheadline7">4.1. コンパイラへの指示</a>
 <ul>
-<li><a href="#orgheadline6">include パス</a></li>
-<li><a href="#orgheadline7">ライブラリとライブラリ・パス</a></li>
+<li><a href="#orgheadline5">include パス</a></li>
+<li><a href="#orgheadline6">ライブラリとライブラリ・パス</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline8">ヘッダファイルやライブラリファイルの場所</a></li>
-<li><a href="#orgheadline9">オブジェクト・ファイルのこと</a></li>
-<li><a href="#orgheadline10">ライブラリ・ファイルのこと</a></li>
+<li><a href="#orgheadline8">4.2. ヘッダファイルやライブラリファイルの場所</a></li>
+<li><a href="#orgheadline9">4.3. オブジェクト・ファイルのこと</a></li>
+<li><a href="#orgheadline10">4.4. ライブラリ・ファイルのこと</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">テストの実行</a>
+<li><a href="#orgheadline14">5. テストの実行</a>
 <ul>
-<li><a href="#orgheadline13">テスト結果 (成功)</a></li>
-<li><a href="#orgheadline14">テスト結果 (失敗)</a></li>
+<li><a href="#orgheadline12">5.1. テスト結果 (成功)</a></li>
+<li><a href="#orgheadline13">5.2. テスト結果 (失敗)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<p>
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html">ソフト
-ウェア構成論</a> /
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/">毎回の講義</a>
-/  <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/">講義
-ドキュメント</a> /
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/">ポー
-カーゲームの開発</a> /
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html">repos</a> /
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/">講義補足</a>
-</p>
-
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">cutter</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> cutter</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 cutter は C/C++ 言語用の単体テストフレームワークです。
 </p>
@@ -217,8 +205,8 @@ cutter は C/C++ 言語用の単体テストフレームワークです。
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">テスト・ファイルの作成</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> テスト・ファイルの作成</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 cutterで*テスト*を行なうためには，テスト用ディレクトリを作成し，テ
 スト用ディレクトリの中に，*テスト*を作成します。
@@ -248,7 +236,7 @@ cutterでのテストは，ディレクトリの中の，test_ で始まるtest_
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># [~/progs] % 
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">[~/progs] % </span>
 mkdir -p cutter/test
 </pre>
 </div>
@@ -260,38 +248,38 @@ mkdir -p cutter/test
 
 <div class="org-src-container">
 
-<pre class="src src-c">// ~/progs/cutter/test/test_first.c
-#include &lt;cutter.h&gt;
-#include &lt;string.h&gt;
+<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">~/progs/cutter/test/test_first.c</span>
+<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
+<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;string.h&gt;</span>
 
-static int condition = 0;
+<span style="color: #8ac6f2; font-weight: bold;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">condition</span> = 0;
 
-void
-cut_setup (void)
+<span style="color: #92a65e; font-weight: bold;">void</span>
+<span style="color: #cae682;">cut_setup</span> (<span style="color: #92a65e; font-weight: bold;">void</span>)
 {
-    /* 初期化用コード */
+    <span style="color: #99968b;">/* </span><span style="color: #99968b;">&#21021;&#26399;&#21270;&#29992;&#12467;&#12540;&#12489; </span><span style="color: #99968b;">*/</span>
     condition = 1;
 }
 
-void
-cut_teardown (void)
+<span style="color: #92a65e; font-weight: bold;">void</span>
+<span style="color: #cae682;">cut_teardown</span> (<span style="color: #92a65e; font-weight: bold;">void</span>)
 {
-    /* 後片付け用コード */
+    <span style="color: #99968b;">/* </span><span style="color: #99968b;">&#24460;&#29255;&#20184;&#12369;&#29992;&#12467;&#12540;&#12489; </span><span style="color: #99968b;">*/</span>
     condition = 0;
 }
 
-void
-test_condition(void)
+<span style="color: #92a65e; font-weight: bold;">void</span>
+<span style="color: #cae682;">test_condition</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
 {
-    cut_set_message("conditionの値はcut_setup()で1に設定されているはず");
+    cut_set_message(<span style="color: #95e454;">"condition&#12398;&#20516;&#12399;cut_setup()&#12391;1&#12395;&#35373;&#23450;&#12373;&#12428;&#12390;&#12356;&#12427;&#12399;&#12378;"</span>);
     cut_assert(condition==1);
 }
 
-void
-test_strcmp(void)
+<span style="color: #92a65e; font-weight: bold;">void</span>
+<span style="color: #cae682;">test_strcmp</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
 {
-    cut_set_message("同じ文字列に対し，strcmpは0を返すはず");
-    cut_assert(strcmp("string", "string")==0);
+    cut_set_message(<span style="color: #95e454;">"&#21516;&#12376;&#25991;&#23383;&#21015;&#12395;&#23550;&#12375;&#65292;strcmp&#12399;0&#12434;&#36820;&#12377;&#12399;&#12378;"</span>);
+    cut_assert(strcmp(<span style="color: #95e454;">"string"</span>, <span style="color: #95e454;">"string"</span>)==0);
 }
 </pre>
 </div>
@@ -342,11 +330,11 @@ cut_assert関数は，その値が真ならテスト成功として，偽なら�
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">テストのビルド</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<h2 id="orgheadline4"><span class="section-number-2">3</span> テストのビルド</h2>
+<div class="outline-text-2" id="text-3">
 </div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">Makefile</h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<h3 id="orgheadline3"><span class="section-number-3">3.1</span> Makefile</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 テストをビルド(作成)するために，makeを使います。Makefileの書き方は，
 </p>
@@ -361,19 +349,19 @@ cut_assert関数は，その値が真ならテスト成功として，偽なら�
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"># ~/progs/cutter/test/Makefile
-CFLAGS = -fPIC `pkg-config cutter --cflags`
-LDFLAGS = `pkg-config cutter --libs`
+<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/cutter/test/Makefile</span>
+<span style="color: #cae682;">CFLAGS</span> = -fPIC <span style="color: #95e454;">`pkg-config cutter --cflags`</span>
+<span style="color: #cae682;">LDFLAGS</span> = <span style="color: #95e454;">`pkg-config cutter --libs`</span>
 
-test_first.so: test_first.o
-	gcc -o $@ -shared $&lt; $(LDFLAGS)
+<span style="color: #cae682;">test_first.so</span>: test_first.o
+        gcc -o <span style="color: #cae682;">$</span><span style="color: #e5786d;">@</span> -shared $<span style="color: #e5786d;">&lt;</span> $(<span style="color: #cae682;">LDFLAGS</span>)
 
-test_first.o: test_first.c
-	gcc -c $&lt; $(CFLAGS)
+<span style="color: #cae682;">test_first.o</span>: test_first.c
+        gcc -c $<span style="color: #e5786d;">&lt;</span> $(<span style="color: #cae682;">CFLAGS</span>)
 
-.PHONY: clean
-clean:
-	rm -f *.o *.so
+<span style="color: #cae682;">.PHONY</span>: clean
+<span style="color: #cae682;">clean</span>:
+        rm -f *.o *.so
 </pre>
 </div>
 
@@ -414,7 +402,7 @@ make してテストをビルドしましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># [~/progs/cutter/test] %
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">[~/progs/cutter/test] %</span>
  make
 </pre>
 </div>
@@ -432,22 +420,22 @@ gcc -o test_first.so -shared test_first.o `pkg-config cutter --libs`
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11">テストのビルドへの補足説明</h2>
-<div class="outline-text-2" id="text-orgheadline11">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">コンパイラへの指示</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<h2 id="orgheadline11"><span class="section-number-2">4</span> テストのビルドへの補足説明</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">4.1</span> コンパイラへの指示</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 Makefile 中の記述への補足です:
 </p>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6">include パス</h4>
-<div class="outline-text-4" id="text-orgheadline6">
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">include パス</h4>
+<div class="outline-text-4" id="text-orgheadline5">
 <div class="org-src-container">
 
-<pre class="src src-sh"># 次のコマンドを実行してみてください
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12415;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
 pkg-config cutter --cflags
 </pre>
 </div>
@@ -464,13 +452,13 @@ pkg-config cutter --cflags
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">ライブラリとライブラリ・パス</h4>
-<div class="outline-text-4" id="text-orgheadline7">
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6">ライブラリとライブラリ・パス</h4>
+<div class="outline-text-4" id="text-orgheadline6">
 <div class="org-src-container">
 
-<pre class="src src-sh"># 次のコマンドを実行してみてください
-# cutter を使うために必要なライブラリの情報がわかります。
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12415;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">cutter &#12434;&#20351;&#12358;&#12383;&#12417;&#12395;&#24517;&#35201;&#12394;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#24773;&#22577;&#12364;&#12431;&#12363;&#12426;&#12414;&#12377;&#12290;</span>
 pkg-config cutter --libs
 </pre>
 </div>
@@ -488,16 +476,16 @@ pkg-config cutter --libs
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8">ヘッダファイルやライブラリファイルの場所</h3>
-<div class="outline-text-3" id="text-orgheadline8">
+<h3 id="orgheadline8"><span class="section-number-3">4.2</span> ヘッダファイルやライブラリファイルの場所</h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 cutter.h や libcutter.so の在処を調べてみましょう:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># 次のコマンドを実行してみてください
-# cutter.h がある場所がわかります。
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12415;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">cutter.h &#12364;&#12354;&#12427;&#22580;&#25152;&#12364;&#12431;&#12363;&#12426;&#12414;&#12377;&#12290;</span>
 locate cutter.h
 </pre>
 </div>
@@ -508,8 +496,8 @@ locate cutter.h
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># 次のコマンドを実行してみてください
-# libcutter.so がある場所がわかります。
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12415;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">libcutter.so &#12364;&#12354;&#12427;&#22580;&#25152;&#12364;&#12431;&#12363;&#12426;&#12414;&#12377;&#12290;</span>
 locate libcutter.so
 </pre>
 </div>
@@ -522,13 +510,13 @@ locate libcutter.so
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9">オブジェクト・ファイルのこと</h3>
-<div class="outline-text-3" id="text-orgheadline9">
+<h3 id="orgheadline9"><span class="section-number-3">4.3</span> オブジェクト・ファイルのこと</h3>
+<div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 
-<pre class="src src-sh"># [~/progs/cutter/test] % 
-# test_first.o の中に何があるか調べましょう。
-# 次のコマンドを実行してください。e
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">[~/progs/cutter/test] % </span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">test_first.o &#12398;&#20013;&#12395;&#20309;&#12364;&#12354;&#12427;&#12363;&#35519;&#12409;&#12414;&#12375;&#12423;&#12358;&#12290;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;e</span>
 
 nm test_first.o
 </pre>
@@ -580,8 +568,8 @@ test_first.o に入っている変数や関数，参照している関数情報�
 </div>
 
 <div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">ライブラリ・ファイルのこと</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<h3 id="orgheadline10"><span class="section-number-3">4.4</span> ライブラリ・ファイルのこと</h3>
+<div class="outline-text-3" id="text-4-4">
 <p>
 test_first.so をいろいろ調べてみましょう.
 </p>
@@ -592,30 +580,30 @@ test_first.so をいろいろ調べてみましょう.
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># [~/progs/cutter/test] % 
-# test_first.soが使う動的ライブラリを表示するため，
-# 次のコマンドを実行してください
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">[~/progs/cutter/test] % </span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">test_first.so&#12364;&#20351;&#12358;&#21205;&#30340;&#12521;&#12452;&#12502;&#12521;&#12522;&#12434;&#34920;&#31034;&#12377;&#12427;&#12383;&#12417;&#65292;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
 
 ldd test_first.so
 </pre>
 </div>
 
 <pre class="example">
-linux-vdso.so.1 =&gt;  (0x00007fff1f595000)
-libcutter.so.0 =&gt; /usr/lib/libcutter.so.0 (0x00007fc59afa4000)
-libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc59abdf000)
-libgmodule-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007fc59a9da000)
-libgio-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007fc59a667000)
-libgobject-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007fc59a416000)
-libglib-2.0.so.0 =&gt; /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007fc59a10d000)
-libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc599eef000)
-/lib64/ld-linux-x86-64.so.2 (0x00007fc59b456000)
-libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc599ceb000)
-libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.1 (0x00007fc599ad1000)
-libselinux.so.1 =&gt; /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fc5998ae000)
-libresolv.so.2 =&gt; /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007fc599693000)
-libffi.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libffi.so.6 (0x00007fc59948a000)
-libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007fc59924c000)
+	linux-vdso.so.1 =&gt;  (0x00007fff1f595000)
+	libcutter.so.0 =&gt; /usr/lib/libcutter.so.0 (0x00007fc59afa4000)
+	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc59abdf000)
+	libgmodule-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0 (0x00007fc59a9da000)
+	libgio-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgio-2.0.so.0 (0x00007fc59a667000)
+	libgobject-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0 (0x00007fc59a416000)
+	libglib-2.0.so.0 =&gt; /lib/x86_64-linux-gnu/libglib-2.0.so.0 (0x00007fc59a10d000)
+	libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc599eef000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fc59b456000)
+	libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc599ceb000)
+	libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.1 (0x00007fc599ad1000)
+	libselinux.so.1 =&gt; /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fc5998ae000)
+	libresolv.so.2 =&gt; /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007fc599693000)
+	libffi.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libffi.so.6 (0x00007fc59948a000)
+	libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007fc59924c000)
 </pre>
 
 <p>
@@ -624,9 +612,9 @@ libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007fc59924c000)
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># [~/progs/cutter/test] % 
-# test_first.soで定義された，または参照している関数を表示するため，
-# 次のコマンドを実行してください
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">[~/progs/cutter/test] % </span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">test_first.so&#12391;&#23450;&#32681;&#12373;&#12428;&#12383;&#65292;&#12414;&#12383;&#12399;&#21442;&#29031;&#12375;&#12390;&#12356;&#12427;&#38306;&#25968;&#12434;&#34920;&#31034;&#12377;&#12427;&#12383;&#12417;&#65292;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
 
 nm test_first.so
 </pre>
@@ -636,18 +624,18 @@ nm test_first.so
 </div>
 
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12">テストの実行</h2>
-<div class="outline-text-2" id="text-orgheadline12">
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14"><span class="section-number-2">5</span> テストの実行</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 作成したテストを実行します:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-sh"># [~/progs/cutter/] %
-# test/ ディレクトリ中のテストを cutter で実行するために，
-# 次のコマンドを実行してください
+<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">[~/progs/cutter/] %</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">test/ &#12487;&#12451;&#12524;&#12463;&#12488;&#12522;&#20013;&#12398;&#12486;&#12473;&#12488;&#12434; cutter &#12391;&#23455;&#34892;&#12377;&#12427;&#12383;&#12417;&#12395;&#65292;</span>
+<span style="color: #99968b;"># </span><span style="color: #99968b;">&#27425;&#12398;&#12467;&#12510;&#12531;&#12489;&#12434;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;</span>
 cutter -v v test/
 </pre>
 </div>
@@ -658,7 +646,7 @@ cutter -v v test/
   test_condition:                                       .: (0.000125)
   test_strcmp:                                          .: (0.000044)
 
-Finished in 0.001260 seconds (total: 0.000169 seconds)
+Finished<span style="color: #8ac6f2; font-weight: bold;"> in</span> 0.001260 seconds (total: 0.000169 seconds)
 
 2 test(s), 2 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
 100% passed
@@ -668,9 +656,9 @@ Finished in 0.001260 seconds (total: 0.000169 seconds)
 
 
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13">テスト結果 (成功)</h3>
-<div class="outline-text-3" id="text-orgheadline13">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">5.1</span> テスト結果 (成功)</h3>
+<div class="outline-text-3" id="text-5-1">
 <pre class="example">
 test_first:
   test_condition:					.: (0.000062)
@@ -697,9 +685,9 @@ test_strcmp の中，ふたつの表明を実行し，失敗はありません�
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14">テスト結果 (失敗)</h3>
-<div class="outline-text-3" id="text-orgheadline14">
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">5.2</span> テスト結果 (失敗)</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
 cut_assert の中の式を変えて，失敗する場合も試してみましょう。
 </p>
@@ -733,8 +721,8 @@ Finished in 0.000879 seconds (total: 0.000315 seconds)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">&#33879;&#32773;: masayuki suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-09-25 日 13:06</p>
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2016-10-02 日 13:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-02 日 13:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Masayuki Suzuki" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline3">1. <span class="todo Todo">Todo</span> test<sub>sort</sub>() がクラッシュする原因</a>
+<ul>
+<li><a href="#orgheadline1">1.1. 教訓</a></li>
+<li><a href="#orgheadline2">1.2. お願い</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline4">2. <span class="todo Doing">Doing</span> org-mode + babelでの literate programming 実践</a></li>
+<li><a href="#orgheadline9">3. C言語あれこれ</a>
+<ul>
+<li><a href="#orgheadline5">3.1. 共有ライブラリーを解剖する</a></li>
+<li><a href="#orgheadline6">3.2. ライブラリの作り方</a></li>
+<li><a href="#orgheadline7">3.3. Cコンパイラのオプション</a></li>
+<li><a href="#orgheadline8">3.4. ヘッダファイルを二回インクルードしない</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline25">4. Card モジュールの開発</a>
+<ul>
+<li><a href="#orgheadline12">4.1. 5/16 (5)</a>
+<ul>
+<li><a href="#orgheadline11">4.1.1. について考える</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline16">4.2. 5/23 (6)</a>
+<ul>
+<li><a href="#orgheadline13">4.2.1. ~/progs/Game/Card の確認</a></li>
+<li><a href="#orgheadline14">4.2.2. について考える</a></li>
+<li><a href="#orgheadline15">4.2.3. 最初に，Card を使うプログラム（テスト）を考える</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline18">4.3. 6/3 (7)</a>
+<ul>
+<li><a href="#orgheadline17">4.3.1. Card に印刷機能を追加しよう</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline24">4.4. 6/10 (8)</a>
+<ul>
+<li><a href="#orgheadline19">4.4.1. Card に比較機能を追加しよう</a></li>
+<li><a href="#orgheadline20">4.4.2. Card をモジュールとして提供できるようにしよう</a></li>
+<li><a href="#orgheadline21">4.4.3. </a></li>
+<li><a href="#orgheadline22">4.4.4. Card モジュールを使ってみる</a></li>
+<li><a href="#orgheadline23">4.4.5. サブバージョンを使い始めよう</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline10">5. Cardの機能</a></li>
+<li><a href="#orgheadline28">6. テスト駆動開発について</a>
+<ul>
+<li><a href="#orgheadline26">6.1. 入門サイト</a></li>
+<li><a href="#orgheadline27">6.2. やりたいこと</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline29">7. emacs</a></li>
+<li><a href="#orgheadline35">8. ソフトウェア構成論の環境設定について</a>
+<ul>
+<li><a href="#orgheadline30">8.1. ./.ckpt</a></li>
+<li><a href="#orgheadline31">8.2. 開発ディレクトリ</a></li>
+<li><a href="#orgheadline32">8.3. ~/progs でシンボリックリンクする</a></li>
+<li><a href="#orgheadline34">8.4. ~/progs/{Game, Trigo, Reports}</a>
+<ul>
+<li><a href="#orgheadline33">8.4.1. サブディレクトリの作成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline45">9. モジュールとは</a>
+<ul>
+<li><a href="#orgheadline38">9.1. モジュールのイメージ</a>
+<ul>
+<li><a href="#orgheadline36">9.1.1. 関数</a></li>
+<li><a href="#orgheadline37">9.1.2. 機能</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline41">9.2. モジュールとは部品</a>
+<ul>
+<li><a href="#orgheadline39">9.2.1. 部品の利用</a></li>
+<li><a href="#orgheadline40">9.2.2. 部品の提供</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline44">9.3. Ubuntu/C言語を使ったモジュールプログラミング</a>
+<ul>
+<li><a href="#orgheadline43">9.3.1. 利用側</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">1</span> <span class="todo Todo">Todo</span> test<sub>sort</sub>() がクラッシュする原因</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Card *cards に値を入れずに，cards<sub>sort</sub> に渡したのが原因です。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_sort.c</span>
+<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
+<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<span style="color: #92a65e; font-weight: bold;">void</span>
+<span style="color: #cae682;">test_cards_sort</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+{
+    <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">test_cards</span>[5];
+    {
+      test_cards[0] = card_new(SPADE,ACE);
+      test_cards[1] = card_new(HEART,ACE);
+      test_cards[2] = card_new(CLUB,2);
+      test_cards[3] = card_new(DIAMOND,10);
+      test_cards[4] = card_new(SPADE,2);
+    }
+
+    <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">expected_cards</span>[5];
+    {
+      expected_cards[4] = card_new(SPADE,ACE);
+      expected_cards[3] = card_new(HEART,ACE);
+      expected_cards[2] = card_new(DIAMOND,10);
+      expected_cards[1] = card_new(SPADE,2);
+      expected_cards[0] = card_new(CLUB,2);
+    }
+
+  <span style="color: #92a65e; font-weight: bold;">Card</span> *<span style="color: #cae682;">cards</span>, *<span style="color: #cae682;">sorted_cards</span>;
+  {
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">cards = test_cards; // 2015.12.08 fixed</span>
+    sorted_cards = cards_sort(cards, 5);
+  }
+
+  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+  <span style="color: #8ac6f2; font-weight: bold;">for</span> (i=0; i&lt;5; i++)
+    {
+      cut_assert(card_compare(expected_cards[i], sorted_cards[i])==0 );
+    }
+}
+</pre>
+</div>
+
+<p>
+gcc のオプションに， -Wall を付てコンパイルしてみてください。
+</p>
+
+
+<pre class="example">
+-*- mode: compilation; default-directory: "~/progs/card_display/simple/test/" -*-
+Compilation started at Tue Dec 15 10:16:19
+
+make 
+gcc -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src test_card.c
+gcc -o test_card.so -shared test_card.o -L../src -lcard `pkg-config cutter --libs`
+gcc -c -g -Wall -fPIC `pkg-config cutter --cflags` -I../src test_sort.c
+test_sort.c: In function ‘test_cards_sort’:
+test_sort.c:8:10: warning: variable ‘test_cards’ set but not used [-Wunused-but-set-variable]
+     Card test_cards[5];
+          ^
+test_sort.c:29:18: warning: ‘cards’ is used uninitialized in this function [-Wuninitialized]
+     sorted_cards = cards_sort(cards, 5);
+                  ^
+gcc -o test_sort.so -shared test_sort.o -L../src -lcard `pkg-config cutter --libs`
+
+Compilation finished at Tue Dec 15 10:16:19
+</pre>
+
+<p>
+Warning (警告)は，致命的なエラーではなく，一応コンパイルは通り，.o が
+できます。文法的には正しいということです。
+</p>
+
+<p>
+Warning を無視すると意味的(実行時)におかしくなります。
+</p>
+
+
+<p>
+上の警告の意味は:
+</p>
+
+<ul class="org-ul">
+<li>test<sub>cardss</sub> は set されているが，not used であること</li>
+
+<li>cards は uninitialized であること</li>
+</ul>
+
+<p>
+実行時，
+</p>
+
+<ul class="org-ul">
+<li>cards は，オート変数で，割り当てられたメモリの内容そのままになります。</li>
+
+<li>cards の値は cards<sub>sort</sub> に渡り，cards<sub>sort関数は</sub>，それが Card * なの
+で，その先の Card を使おうとしますが，
+
+<ul class="org-ul">
+<li>そこがデータ領域でなければ, Segment Fault (例外) が起ります。</li>
+<li>そこがデータ領域だった場合は，もっと悪いことに，処理続き，
+おこしな振舞をすることになります。</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> 教訓</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>gcc のオプションに，-Wall を付てコンパイルし, Warning をチェックする
+こと
+
+<ul class="org-ul">
+<li>以前は，-Wall がデフォルトだったと思います。現システムでもそうだと
+思いこんでいました。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> お願い</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+card<sub>display</sub>/simple/ 配下の，Makefile の CFLAGS 変数の値に， -g -Wall
+を付け加えてください。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">2</span> <span class="todo Doing">Doing</span> org-mode + babelでの literate programming 実践</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>コード類は，機能毎に .org にまとめ，
+part 毎に :name を付け，:noweb 機能で，
+関数やファイルにまとめる</li>
+
+<li>.ob =&gt; .org =&gt; tangle (noweb)
+
+<ul class="org-ul">
+<li>各機能用のソースコードの生成が主目的</li>
+
+<li>tangle 時，sh-block は実行しない</li>
+</ul></li>
+
+<li>.org から babel<sub>include</sub> された部分を削除</li>
+
+<li>.org 中の sh-blk の実行
+
+<ul class="org-ul">
+<li>C-c C-v C-n で sh-blk を見つけ，</li>
+
+<li>C-c C-c yes で実行していく</li>
+
+<li>開発プロセスを作る</li>
+
+<li>実行結果が .org に書き込まれる</li>
+</ul></li>
+</ol>
+
+
+<ol class="org-ol">
+<li>index.ob =&gt; index.org 
+
+<ul class="org-ul">
+<li>文書先頭に noweb コードを表示用に埋めこむ</li>
+</ul></li>
+
+<li>org2html index.org 
+
+<ul class="org-ul">
+<li>exportのみ</li>
+<li>tangle, sh-blk 実行はしない</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">3</span> C言語あれこれ</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">3.1</span> 共有ライブラリーを解剖する</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<a href="http://www.ibm.com/developerworks/jp/linux/library/l-shlibs/">共有ライブラリーを解剖する</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">3.2</span> ライブラリの作り方</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><p>
+動的ライブラリ 作り方
+<a href="http://d.hatena.ne.jp/sleepy_yoshi/20090510/p1">gccを用いたCの共有ライブラリの作り方 - 睡眠不足？！</a>
+</p>
+
+<p>
+CFLAGS = -fPIC
+LDFLAGS = &#x2013;shared
+</p></li>
+
+<li><p>
+静的ライブラリ 作り方
+<a href="http://qiita.com/edo_m18/items/b9765ff3313d5a13f82f">共有ライブラリと静的ライブラリを整理する - Qiita</a>
+</p>
+
+<p>
+ar r
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">3.3</span> Cコンパイラのオプション</h3>
+<div class="outline-text-3" id="text-3-3">
+<pre class="example">
+-I&lt;include_path&gt;, C_INCLUDE_PATH環境変数
+-L&lt;library_path&gt;, LIBRARY_PATH環境変数
+-l&lt;libname&gt;, 
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">3.4</span> ヘッダファイルを二回インクルードしない</h3>
+<div class="outline-text-3" id="text-3-4">
+<pre class="example">
+# pragma once
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline25" class="outline-2">
+<h2 id="orgheadline25"><span class="section-number-2">4</span> Card モジュールの開発</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">4.1</span> 5/16 (5)</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">4.1.1</span> <a href="#orgheadline10">5</a>について考える</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<ul class="org-ul">
+<li>ポーカーゲームやカードについて考え，</li>
+<li>カードモジュールの内と外を認識し，</li>
+<li>外から内を使う機能，</li>
+<li>内から外へ提供する機能，</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">4.2</span> 5/23 (6)</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">4.2.1</span> ~/progs/Game/Card の確認</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+なければ作ってください
+</p>
+
+<p>
+~/progs/Game/Card がカードモジュールの開発場所です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">4.2.2</span> <a href="#orgheadline10">5</a>について考える</h4>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">4.2.3</span> 最初に，Card を使うプログラム（テスト）を考える</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+<a href="file:///users/home/masayuki/progs/Game/Card/">file:///users/home/masayuki/progs/Game/Card/</a>
+</p>
+
+<ol class="org-ol">
+<li><p>
+テストを書いてみる [[<a href="file:///users/home/masayuki/progs/Game/Card/">file:///users/home/masayuki/progs/Game/Card/</a>test<sub>card.c</sub>]]
+</p>
+
+<p>
+定石プログラム
+</p>
+<ul class="org-ul">
+<li>card.h のインクルード</li>
+<li>Card 型の変数</li>
+<li>カードを作り，できたことを確認する</li>
+</ul></li>
+
+<li>Makefile を作る
+<ul class="org-ul">
+<li>test<sub>card</sub><sub>1.o</sub> ができることが目標</li>
+<li>card.h を作る <a href="file:///users/home/masayuki/progs/Game/Card/card.h">file:///users/home/masayuki/progs/Game/Card/card.h</a></li>
+</ul></li>
+
+<li>必要最小限のcard.cを作る <a href="file:///users/home/masayuki/progs/Game/Card/card.c">file:///users/home/masayuki/progs/Game/Card/card.c</a>
+<ul class="org-ul">
+<li>Card 型の値を返す</li>
+<li>番号とスーツを返す関数</li>
+</ul></li>
+
+<li>card.o を作る
+<ul class="org-ul">
+<li>Makefile に card.o を作る規則を書く</li>
+</ul></li>
+
+<li>実行できるtest<sub>card</sub> を作る
+<ul class="org-ul">
+<li>Makefile に test<sub>card</sub><sub>1.o</sub> と card.o の結合（リンク）を書く</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">4.3</span> 6/3 (7)</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">4.3.1</span> Card に印刷機能を追加しよう</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+suit = HEART, no = ACE =&gt; "HA"
+suit = CLUB, no=2 =&gt; "C2"
+</p>
+
+<p>
+この機能の API は，
+</p>
+<pre class="example">
+char * Card_to_str(Card);
+</pre>
+
+<ul class="org-ul">
+<li>~/progs/Game/Card/card.h に書く</li>
+
+<li>~/progs/Game/Card/test<sub>print.c</sub> にテストを実装
+<ul class="org-ul">
+<li>カードを一枚作り，印刷する</li>
+</ul></li>
+
+<li>Makefile にtest<sub>print.o</sub> を作る規則を書く</li>
+
+<li>~/progs/Game/Card/print.c に Card<sub>to</sub><sub>str</sub> を実装</li>
+
+<li>Makefile にprint.o を作る規則を書く</li>
+
+<li>test<sub>print</sub> を作る</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">4.4</span> 6/10 (8)</h3>
+<div class="outline-text-3" id="text-4-4">
+</div><div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">4.4.1</span> Card に比較機能を追加しよう</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<pre class="example">
+int card_compare(Card, Card); 
+</pre>
+
+<p>
+同様に，test<sub>compare</sub>, test<sub>compare</sub>.{o,c}, compare.{o,c} を作る
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">4.4.2</span> Card をモジュールとして提供できるようにしよう</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<ul class="org-ul">
+<li>~/progs/Game/Module/card.o</li>
+<li>~/progs/Game/Interface/card.h</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">4.4.3</span> <a href="file:///users/home/masayuki/progs/Game/Makefile">file:///users/home/masayuki/progs/Game/Makefile</a></h4>
+<div class="outline-text-4" id="text-4-4-3">
+<ul class="org-ul">
+<li>カードモジュールを最新状態にし，</li>
+<li>モジュール本体を ~progs/Game/Card/card.o へコピーし</li>
+<li>インタフェースを ~progs/Game/Card/card.h へコピーし</li>
+</ul>
+
+<p>
+*
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">4.4.4</span> Card モジュールを使ってみる</h4>
+<div class="outline-text-4" id="text-4-4-4">
+<p>
+いままで作ってきたテストを利用して，
+Card モジュールの外からプログラムを書いてみる．
+</p>
+
+<ul class="org-ul">
+<li>((% mkdir ~/progs/Game/Test %))</li>
+<li>~/progs/Game/Test/card<sub>game.c</sub> に下記プログラムを作成する
+<ul class="org-ul">
+<li>二枚のカードを作り，表示し</li>
+<li>強いカードを表示する</li>
+</ul></li>
+<li>~/progs/Game/Test/Makefile を作成する
+<ul class="org-ul">
+<li>~/progs/Game/Interface の下のインクルードファイルが使えるようにする</li>
+<li>~/progs/Game/Module の下のオブジェクトファイルが使えるようにする</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">4.4.5</span> サブバージョンを使い始めよう</h4>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10"><span class="section-number-2">5</span> Cardの機能</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+カードは，
+</p>
+<ol class="org-ol">
+<li>札種と番号の情報を持つ．</li>
+<li>札種は4種類あり，</li>
+<li>番号には13種類ある．</li>
+<li>2枚のカードの大小比較ができる．</li>
+<li>カードの大小比較は，
+<ol class="org-ol">
+<li>番号の大きさ (A&gt;K&gt;Q&gt;&#x2026;&gt;3&gt;2) と</li>
+<li>札種の強さ (スペード&gt;ハート&gt;ダイヤ&gt;クラブ) で決まる．</li>
+</ol></li>
+</ol>
+
+<p>
+となりました．
+忘れがちですが，
+</p>
+
+<ol class="org-ol">
+<li>カードを表示する (ための文字列を作る)</li>
+<li>新しいカードを作る</li>
+</ol>
+
+<p>
+機能も必要ですね．
+</p>
+
+<p>
+カード型の値を作る関数を <b>コンストラクタ</b>, 
+カード型の値の属性値を得る関数を <b>セレクタ</b> 
+と呼ぶ
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline28" class="outline-2">
+<h2 id="orgheadline28"><span class="section-number-2">6</span> テスト駆動開発について</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">6.1</span> 入門サイト</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><a href="http://www.slideshare.net/shuji_w6e/ss-15246933">テスト駆動開発入門</a> (slideshare)</li>
+<li><a href="http://www.atmarkit.co.jp/ait/articles/1403/05/news035.html">いまさら聞けないTDD/BDD超入門（1）：テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">6.2</span> やりたいこと</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+少しづつ，
+</p>
+<ul class="org-ul">
+<li>まず，設計し，</li>
+<li>次に，実装し，</li>
+<li>そして，要求を満たしていることを確かめる，</li>
+<li>今回の変更が，他に影響を及ぼさないことを確かめる</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline29" class="outline-2">
+<h2 id="orgheadline29"><span class="section-number-2">7</span> emacs</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+<a href="http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs.html">日本語マニュアル</a>
+</p>
+
+<ul class="org-ul">
+<li><p>
+emacs の中でコンパイル
+</p>
+<pre class="example">
+M-x compile 
+</pre>
+<p>
+C-a C-k gcc -c -I . calc<sub>d</sub><sub>sin.c</sub>
+</p></li>
+
+<li><p>
+開いている先生のファイルを自分のディレクトリに保存する
+</p>
+<pre class="example">
+C-x C-w ~/progs/calc_d_sin.c
+</pre></li>
+
+<li><p>
+emacs の中から先生のファイルを開く
+</p>
+<pre class="example">
+C-x C-f ~suzuki/progs/suzuki/.... 
+</pre></li>
+
+<li><p>
+ファイルとバッファ
+</p>
+<pre class="example">
+C-x C-f ファイルを開きバッファへ
+C-x C-s バッファをファイルへセーブ
+C-x C-w バッファを別のファイルへ書く
+</pre></li>
+
+<li><p>
+ウィンドウ
+<a href="http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_17.html">http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_17.html</a>
+</p>
+
+<pre class="example">
+C-x 2, C-x 3 横や縦に分ける
+C-x o 別のウィンドウへ
+C-x 0 ウィンドウを消す
+C-x C-b バッファの一覧を表示する
+</pre></li>
+</ul>
+
+
+<ul class="org-ul">
+<li><p>
+別のフレーム
+<a href="http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_18.html#SEC177">http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_18.html#SEC177</a>
+</p>
+<pre class="example">
+C-x 5 2 開く
+C-x 5 o 行き来する
+C-x 5 0 閉じる
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline35" class="outline-2">
+<h2 id="orgheadline35"><span class="section-number-2">8</span> ソフトウェア構成論の環境設定について</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+2014以前
+</p>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30"><span class="section-number-3">8.1</span> ./.ckpt</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>バックアップがある，隠しディレクトリです．</li>
+<li><p>
+全てのディレクトリにあります．
+</p>
+
+<pre class="example">
+((% cd .ckpt; ls -lR %))
+</pre>
+
+<p>
+1分前，10分前，30分前，1時間前，1日前 ．．．7日前の状態が保存され
+ています．
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">8.2</span> 開発ディレクトリ</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+<a href="file:///users/home/masayuki/prog">file:///users/home/masayuki/prog</a> の下の自分のログイン名のディレクトリ
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">8.3</span> ~/progs でシンボリックリンクする</h3>
+<div class="outline-text-3" id="text-8-3">
+<pre class="example">
+((% ln -s ~suzuki/prog/h00j000 ~/progs %))
+</pre>
+<ul class="org-ul">
+<li>既にリンクが張れている人はなにもしなくていいです．</li>
+</ul>
+
+<p>
+すでに ~/progs というディレクトリを作ってしまった人は，以下のコマン
+ドをおこなってください
+</p>
+
+<pre class="example">
+((% cd ; mv progs progs.local %)) 
+#今までのprogsをprogs.localという名前にする (mv は move)
+</pre>
+
+<pre class="example">
+((% ln -s ~suzuki/prog/h00j000 ~/progs %)) 
+# [[s-:]] の用意したディレクトリへ、~/progs というシンボリックリンクを張る. 
+</pre>
+
+<pre class="example">
+((% cp -Rp progs.local progs %))
+# 古い progs の内容を新しい progs へコピー する．
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><span class="section-number-3">8.4</span> ~/progs/{Game, Trigo, Reports}</h3>
+<div class="outline-text-3" id="text-8-4">
+</div><div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33"><span class="section-number-4">8.4.1</span> サブディレクトリの作成</h4>
+<div class="outline-text-4" id="text-8-4-1">
+<p>
+~/progsの下に三つのディレクトリを作ります．
+</p>
+<pre class="example">
+((% cd ~/progs;  mkdir -p {Game,Trigo,Reports} %))
+</pre>
+
+<p>
+作成した，三角関数をTrigoの下に移します．
+</p>
+
+<pre class="example">
+((% mv Makefile *.c *.h Trigo %))
+</pre>
+
+<p>
+作成したレポート (~/progs/report-1) を ~/progs/Reports/1へ移します
+</p>
+
+<pre class="example">
+((% mv report-1 Reports/1 %))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-2">
+<h2 id="orgheadline45"><span class="section-number-2">9</span> モジュールとは</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">9.1</span> モジュールのイメージ</h3>
+<div class="outline-text-3" id="text-9-1">
+</div><div id="outline-container-orgheadline36" class="outline-4">
+<h4 id="orgheadline36"><span class="section-number-4">9.1.1</span> 関数</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<ul class="org-ul">
+<li>関数として独立したもの</li>
+<li>関数とは何？
+<ul class="org-ul">
+<li>名前で呼び出せること</li>
+<li>値を渡せること</li>
+<li>結果が返ってくること</li>
+</ul></li>
+<li>独立するとはどういうこと？</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">9.1.2</span> 機能</h4>
+<div class="outline-text-4" id="text-9-1-2">
+<ul class="org-ul">
+<li>大きな仕事の中から，
+独立したまとまりのいい部分的な機能を取り出したもの，</li>
+<li>使いまわしがきく</li>
+<li>インターフェイスをとおして使う</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">9.2</span> モジュールとは部品</h3>
+<div class="outline-text-3" id="text-9-2">
+</div><div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">9.2.1</span> 部品の利用</h4>
+<div class="outline-text-4" id="text-9-2-1">
+<ul class="org-ul">
+<li>ある機能の実体</li>
+<li>その実装をしらずに，</li>
+<li>インターフェイスを守り，</li>
+<li>自分のプログラムから利用できる</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><span class="section-number-4">9.2.2</span> 部品の提供</h4>
+<div class="outline-text-4" id="text-9-2-2">
+<ul class="org-ul">
+<li>ある独立した機能を実現し，</li>
+<li>インターフェイスを守り</li>
+<li>インターフェイスのみを通して，</li>
+<li>他の人に機能を提供する</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">9.3</span> Ubuntu/C言語を使ったモジュールプログラミング</h3>
+<div class="outline-text-3" id="text-9-3">
+</div><div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">9.3.1</span> 利用側</h4>
+<div class="outline-text-4" id="text-9-3-1">
+<ul class="org-ul">
+<li>あるライブラリの機能（関数）を見つけ，</li>
+<li>man やヘッダファイルを見て，APIを知る</li>
+<li>ヘッダファイルをインクルードし，
+インターフェイスを守っていることを，
+コンパイラに検査してもらう</li>
+<li>自分のプログラムに，ライブラリの関数をリンクする</li>
+<li>プログラムをプロセスとして実行する</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="orgheadline42"></a>提供側<br  /><div class="outline-text-5" id="text-9-3-1-1">
+<ul class="org-ul">
+<li>ヘッダファイルを作成し</li>
+<li>ヘッダファイルをインクルードし，</li>
+<li>機能を関数として実装し，</li>
+<li>ヘッダファイルのAPIを遵守する</li>
+<li>オブジェクトファイルあるいはライブラリとして提供する</li>
+</ul>
+<p>
+　　
+</p>
+</div></li></ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2016-10-02 日 13:04</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

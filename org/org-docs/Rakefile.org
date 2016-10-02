@@ -1,0 +1,47 @@
+* Rakefile
+** rake 
+   [[http://docs.ruby-lang.org/ja/2.2.0/library/rake.html][library rake (Ruby 2.2.0)]] はビルドツール
+
+   [[http://www2s.biglobe.ne.jp/~idesaku/sss/tech/rake/][rakeの例]]
+   
+** Rakefile
+
+#+name:rakefile
+#+begin_src ruby :tangle Rakefile :noweb yes
+# coding:utf-8
+
+SRCS = Dir.glob("*.html")
+
+def myhome
+  path = `pwd`.chomp.split("/").reverse
+  depth = path.index("org")
+  [depth+1, path[0..depth].reverse]
+end
+  
+depth,path = myhome
+MYHOME = "../"*depth
+ORG = "#{MYHOME}org/"
+SITE = "#{MYHOME}docs/"
+path.shift
+DIR = path.join("/")
+
+task :default => :deploy
+
+task :deploy => SRCS do 
+  SRCS.each do |html|
+    sh "mkdir -p #{SITE}#{DIR}"
+    sh "cp -p #{html} #{SITE}#{DIR}"
+  end
+end
+
+#+end_src
+
+#+BEGIN_SRC sh  :results output 
+rake deploy
+
+#+END_SRC
+
+#+RESULTS:
+
+
+

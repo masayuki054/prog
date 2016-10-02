@@ -1,0 +1,25 @@
+# coding:utf-8
+
+SRCS = Dir.glob("*.html")
+
+def myhome
+  path = `pwd`.chomp.split("/").reverse
+  depth = path.index("org")
+  [depth+1, path[0..depth].reverse]
+end
+  
+depth,path = myhome
+MYHOME = "../"*depth
+ORG = "#{MYHOME}org/"
+SITE = "#{MYHOME}docs/"
+path.shift
+DIR = path.join("/")
+
+task :default => :deploy
+
+task :deploy => SRCS do 
+  SRCS.each do |html|
+    sh "mkdir -p #{SITE}#{DIR}"
+    sh "cp -p #{html} #{SITE}#{DIR}"
+  end
+end

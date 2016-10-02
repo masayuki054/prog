@@ -1,12 +1,8 @@
-#+title: ソフトウェア構成論
+#+title: 2016
 #+author: suzuki@cis.iwate-u.ac.jp
-
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/index.html][ソフト
-ウェア構成論]] /
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/][毎回の講義]]
-/  [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/][講義
-ドキュメント]] /
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/poker/][ポー
-カーゲームの開発]] /
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/info/game-repos.html][repos]] /
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments/][講義補足]]
+[[./][ホーム]] /
+[[./lect.org][講義]] / 
+[[./supplement.org][説明]] / 
+[[./org-docs.org][資料]] / 
+[[./poker.org][poker]] /
+[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][2015]]

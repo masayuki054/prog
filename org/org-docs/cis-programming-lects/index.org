@@ -1,20 +1,6 @@
-# Time-stamp: <2015-10-06 10:04:40 m>
+# Time-stamp: <2016-10-02 13:54:45 m>
+#+SETUPFILE: ../../info/index-sos-header.setup
 #+title: プログラム関連の講義
-#+SETUPFILE: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
+#+include: contents.org
 
-* プログラミング関連のサイト
-   
-1. [[http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/jkiso/index.html][情報基礎]]
-   
-2. [[http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/index.html][プログラム言語入門]]
-
-3. [[http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/][プログラム言語及び演習１]]
-
-4. [[http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/][プログラム言語及び演習２]]
-
-5. [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][ソフトウェア構成論]] (([[~suzuki/lects/prog/site/index.org][cis-org]] [[~/COMM/Lects/prog/site/index.org][s-org]]))
-
-#+include: ./cis-programming-0.org :minlevel 1
-#+include: ./cis-programming-1.org :minlevel 1
-#+include: ./cis-programming-2.org :minlevel 1
 

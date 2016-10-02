@@ -7,9 +7,12 @@ SHELL = zsh
 index.html: index.org
 
 all:
+	make index.html
 	(cd lects; make)
 	(cd org-docs; make)
-	make index.html
+	(cd supplement; make)
+	(cd memos; make)
+
 
 .SUFFIXES: .org .html
 .org.html: info/common-header.org 
@@ -19,9 +22,7 @@ all:
 
 .PHONY: clean
 clean:
-	rm -f *.html
-	(cd lects; make clean)
-	(cd org-docs; make clean)
+	rm -f *~ \#* */*~ */\#*~
 
 
 

@@ -1,7 +1,9 @@
 * おしらせ
 #+include: announce.org
 
-* 講義記録
+* 2016 講義記録
+
+* 2015 講義記録
 *** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/15][15回目]] ([[~suzuki/lects/prog/site/lects/15/][cis.org]] [[~/COMM/Lects/prog/site/lects/15/][s.org]])
 *** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/14][14回目]] ([[~suzuki/lects/prog/site/lects/14/][cis.org]] [[~/COMM/Lects/prog/site/lects/14/][s.org]])
 *** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/13][13回目]] ([[~suzuki/lects/prog/site/lects/13/][cis.org]] [[~/COMM/Lects/prog/site/lects/13/][s.org]])
@@ -19,7 +21,4 @@
 *** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/01][1回目]] ([[~suzuki/lects/prog/site/lects/01/][cis.org]] [[~/COMM/Lects/prog/site/lects/01/][s-org]])
 
 
-* 講義補足
-
-#+include: supplyments/contents.org
  

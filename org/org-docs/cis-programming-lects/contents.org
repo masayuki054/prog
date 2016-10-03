@@ -8,7 +8,7 @@
 
 4. [[http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/][プログラム言語及び演習２]]
 
-5. [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][ソフトウェア構成論]] (([[~suzuki/lects/prog/site/index.org][cis-org]] [[~/COMM/Lects/prog/site/index.org][s-org]]))
+5. [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][ソフトウェア構成論]] 2015
 
 #+include: ./cis-programming-0.org :minlevel 1
 #+include: ./cis-programming-1.org :minlevel 1

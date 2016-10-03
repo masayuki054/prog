@@ -1,6 +1,7 @@
+
 # coding:utf-8
 
-ORGS = FileList["*.orgs"]
+ORGS = FileList["*.org"]
 HTMLS = ORGS.ext(".html")
 
 def myhome

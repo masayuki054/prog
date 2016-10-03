@@ -10,7 +10,7 @@
 #+begin_src ruby :tangle Rakefile :noweb yes
 # coding:utf-8
 
-ORGS = FileList["*.orgs"]
+ORGS = FileList["*.org"]
 HTMLS = ORGS.ext(".html")
 
 def myhome

@@ -1,3 +1,4 @@
+
 # coding:utf-8
 
 SRCS = Dir.glob("*.html")

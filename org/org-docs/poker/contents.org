@@ -2,17 +2,17 @@
 
   [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi][prog-wiki]] を参考にしてください。
 
-#+include: story.org :minlevel 2
+#+include: story.org 
 
 * Card モジュールの開発
 
-#+include: card.org :minlevel 2
+#+include: card.org 
 
 * Deck モジュールの開発
-#+include: deck.org :minlevel 2
+#+include: deck.org 
 
 * Hand モジュールの開発
-#+include: hand.org :minlevel 2
+#+include: hand.org 
 
 * Pokerモジュールの開発
-#+include: poker.org :minlevel 2
+#+include: poker.org

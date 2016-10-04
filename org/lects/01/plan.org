@@ -1,102 +1,219 @@
-* 講義紹介 
+* 1回目 (10/04) の講義内容
+** 講義紹介 
+*** 講義コンテンツ
+    - 学科のサイト ::
+         http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016 
+	 講義中の変更を反映する予定です。
 
-  - サイト http://masayuki054.github.io/prog
-  - リポジトリ http://github.com/masayuki054/prog/
+    - publicサイト ::
+      http://masayuki054.github.io/prog
 
-    - [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs][講義用ドキュメント]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/][cis-org]], [[file+emacs:~/COMM/Lects/prog/site/org-docs][s-org]]))
+    - リポジトリ :: http://github.com/masayuki054/prog/ 
 
-      講義で用いるドキュメント類
+    - ワーキングコピー :: file:~suzuki/prog.git/ [fn:1]
 
-    - [ ] [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects][毎回の講義]] (([[file+emacs:~suzuki/lects/prog/site/lects/][cis-org]], [[file+emacs:~/COMM/Lects/prog/site/lects][s-org]])) 
+[fn:1] 'file:'はファイルへのリンクを表すURLです。
+
+   - [ ] 講義の目的など [0/0]
+
+** 講師
+
+   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/][自己紹介]]
+
+** prog2016 導入
+
+   progs の導入に関連する内容
+
+*** モジュラープログラミングについて
+
+**** Acroquest プログラミング講座
+
+     [[http://www.acroquest.co.jp/webworkshop/programing_course/index1.html][目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？]]
+
+     [[http://www.acroquest.co.jp/webworkshop/programing_course/index18.html][目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念]]
 
 
-  - [ ] 講義の目的など [0/1]
+**** 構造化プログラミングについて
 
-    - [ ] emacs org-mode+babel 
+[[http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html][構造化プログラミング]] がいい。
 
-      文芸的プログラミング
+「大規模なプログラムを書くとき，どうしたら良いプログラムに仕上げること
+ができるか？」という問いに対して与えられた回答。
 
-  - [ ] 自己紹介と休講のこと
 
-* はじまり
+**** Strategic Choice の役に立ちそうなコンテンツ
 
-**  ~/progs の作成 [/]
-    
-- [ ] 講義用のディレクトリを作成します：
+オブジェクト指向についてのサイトですが，モジュール化について考えるとき
+の拠り所について参考にしてください:
+
+- [[http://d.hatena.ne.jp/asakichy/20090216/1234765854][構造化プログラミング入門 - Strategic Choice]]
+
+- [[http://d.hatena.ne.jp/asakichy/20090217/1234830611][段階的詳細化 - Strategic Choice]]
+
+- [[http://d.hatena.ne.jp/asakichy/20090218/1234990542][凝集度 - Strategic Choice]]
+
+- [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
+
+
+*** テストによる開発の説明 
+
+TDD (Test Driven Development) テスト駆動開発といいます。
+
+- [[https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA][テスト駆動開発 - Wikipedia]]
+  
+- [[./org-docs/what-is-tdd.org][資料/テストによる開発とは]] (この中にもリンクがあります)
+
+
+*** (ソフトウェア) テストについての説明
+
+    [[./org-docs/software-test.org][資料/ソフトウェア・テスト]]
+
+    [[https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88][ソフトウェアテスト - Wikipedia]] 難い
+
+
+*** プログラミング関連の講義と演習
+
+    [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis.iwate-u.ac.jp]] 振り返りましょう.
+
+    下記のことが重要です。今は分らなくても，講義の終りには，理解できる
+    ようになる(といいですね)。
+
+    - [ ] 重要なプログラムの構成要素 [0/3]
+      - [ ] 関数と抽象化，情報隠蔽
+      - [ ] ヘッダファイルの役割，インタフェース遵守
+      - [ ] 名前と実体の管理
+
+    - [ ] コンパイル過程のこと [0/6]
+      - [ ] #include の意味
+      - [ ] gcc がおこなうこと
+      - [ ] .o (オブジェクト・ファイル)
+      - [ ] .a (静的ライブラリ), .so(動的ライブラリ)
+      - [ ] ld (ローダ，リンケージ・エディタ)
+      - [ ] a.out (実行プログラム)
+
+*** Emacs for progs (検討中)
+
+    emacs@progs でどんな内容を教えるか？
+
+**** 何に使うか
+     - programming
+       - source coding
+       - Makefile, make
+     - terminal/shell execution
+     - 全文検索
+     - Document 作成 
+       - org-mode
+     - 文芸的プログラミング
+       - org-mode + babel 
+
+     - eww (emacs ブラウザ)
    
-#+BEGIN_SRC sh :dir ~/ :results output output
+**** わかりやすサイトを見つけた
+
+参考にしてください。
+
+- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333883641][Diredの基本操作を覚える - CLOVER]]
+
+- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333885399][Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER]]
+
+- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333890311][Emacsで矩形編集を行う - CLOVER]]
+
+- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333891517][Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER]]
+
+
+** はじまり
+
+***  ~/progs の作成 [/]
+    
+ - [ ] 講義用のディレクトリを作成します：
+   
+ #+BEGIN_SRC sh :dir ~/ :results output output
 # [~/]
 cd ~/
 mkdir -p progs
 cd progs
-mkdir -p lects cutter card_display game/{card,deck,hand,poker}
+mkdir -p lects cutter card_display game
 ls -R
-#+END_SRC
+ #+END_SRC
 
-- [ ] ~/progs/README.org を作成します:
+ - [ ] ~/progs/README.org を作成します:
 
-#+BEGIN_SRC org :tangle ~/progs/README.org
+ #+BEGIN_SRC org :tangle ~/progs/README.org
 #+title: ~/progs/README.org
 *ディレクトリの使用目的:
- - ./lects: 毎回の講義のめもを置きましょう
+ - ./documents: 毎回の講義のめもを置きましょう
  - ./card_display: カード表示問題の開発用
  - ./cutter: テスト用
  - ./game: ポーカーゲーム開発用
-   - ./game/card: カードモジュール
-   - ./game/deck: 山モジュール
-   - ./game/hand: 手札モジュール
-   - ./game/poker: ポーカーモジュール
+ #+END_SRC
 
+**** emacs 
+
+- [[info:Emacs]], info:org-mode を教え,
+- org-mode のことを少し説明する，かな
+  - 見出しの書き方 ::
+       行頭に*
+  - 箇条書き :: 
+       行頭に-, あるいは段落の始まりに-
+  - 折りたたみ/展開 :: 
+       タブ，またはシフト+タブ
+
+**** 先生のprogs/
+     - file:~suzuki/progs がお手本です。
+
+*** テストとテストによる開発とは [0/2]
+
+     - [ ] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
+
+     - [ ] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+   
+     - [ ] [[./org-docs/cutter.org][cutterの使い方]] テストの体験
+
+*** card_display問題 [0/3]
+
+    - [ ] [[./org-docs/card-display.org][カード表示問題の始まり]]
+    - [ ] 自分なりにプログラムを作ってみる (今日)
+    - [ ] 機能分解して，テストによる開発してみる (来週)
+
+*** card_display_simple の解プログラムと開発ドキュメントを作成してください。
+
+    これは最初のレポート課題になります。
+    
+    - ~/progs/card_display/first/ の作成 ::
+#+BEGIN_SRC sh :exports code
+# ~/progs
+mkdir card_display/first
 #+END_SRC
 
-*** emacs org-mode+babel やる？
+    - ~/progs/card_display/first/simple.org ::
+      - ソース・プログラムを作成する前にどんなふうに何を作るかを，
+	できれば org-mode で書いてください。
+      - プログラムの作成中に考えた事，決めた事，疑問など，箇条書きで書
+        いてください。
 
-    (([[info:Emacs]])), ((info:org-mode))
+    - ~/progs/card_display/first/simple.c ::
+      1. できれば関数を多用してください。
+      2. できれば分りやく書いてください。
+      3. 正しく動くプログラムをsimple.c を作成してください。
+      4. 正しく動くプログラムをsimple.0.c にし，
+         1と2の2つの観点から書き直してみてください。
+         改良し, 正しく動く simple.c にしてください。
+      5. 納得できるまで上記の改良を繰り返し，繰り返しごとに番号を
+         0->1->2-> ... と増やしてください。
 
+    - ~/progs/card_display/first/Makefile ::
+      simple.c をコンパイルするための規則を書いてください。
 
-*** 講義内容へのpath [/]
+*** card_display問題のテストによる開発 [0/7] 
 
-    - [ ] file:~suzuki/lects/prog の下に，講義資料があります。
-    - [ ] file:~suzuki/progs がお手本です。
+    この内容は，次々回からになると思います。
 
-** プログラミング関連の講義と演習
-
-   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cis-programming-lects/][cis-org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cis-programming-lects][s-org]])) 振り返りましょう.
-
-   下記のことが重要です。
-
-   - [ ] 重要なプログラムの構成要素 [0/3]
-     - [ ] 関数と抽象化，情報隠蔽
-     - [ ] ヘッダファイルの役割，インタフェース遵守
-     - [ ] 名前と実体の管理
-
-   - [ ] コンパイル過程のこと [0/6]
-     - [ ] include
-     - [ ] gcc
-     - [ ] .o (オブジェクト・ファイル)
-     - [ ] .a (静的ライブラリ), .so(動的ライブラリ)
-     - [ ] ld (ローダ，リンケージ・エディタ)
-     - [ ] a.out (実行プログラム)
-
-** テストとテストによる開発とは [0/2]
-
-    - [ ] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
-
-    - [ ] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
-   
-    - [ ] [[./org-docs/cutter.org][cutterの使い方]] テストの体験
-
-** card_display問題 [/]
-
-   - [ ] [[./org-docs/card-display.org][カード表示問題の始まり]]
-
-** card_display問題のテストによる開発 [0/7]
-   [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]]
-    - [ ] test_card_suit_new_from_string
-    - [ ] test_card_no_new_from_string
-    - [ ] test_card_new, suit, no
-    - [ ] test_card_no_to_string
-    - [ ] test_card_suit_to_string
-    - [ ] test_card_to_string
-    - [ ] card_display_single
+    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] [ ]
+     - [ ] test_card_suit_new_from_string
+     - [ ] test_card_no_new_from_string
+     - [ ] test_card_new, suit, no
+     - [ ] test_card_no_to_string
+     - [ ] test_card_suit_to_string
+     - [ ] test_card_to_string
+     - [ ] card_display_single
 

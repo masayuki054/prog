@@ -1,6 +1,6 @@
 #+setupfile: info/index-sos-header.setup
 #+include: info/common-header.org
-#+TITLE: 2016
-* 今日の講義 (1回目，2016.10.04)
-#+include: lects/01/plan.org
+#+title: 今日の講義
+# #+include: lects/01/plan.org
+#+include: lects/contents.org
 

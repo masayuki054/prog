@@ -18,7 +18,7 @@ path.shift
 DIR = path.join("/")
 
 rule ".html" => ".org" do |t|
-   sh "org2html #{t.souce}"
+   sh "org2html #{t.prerequisites.join(" ")}"
    sh "mkdir -p $(SITE)/$(DIR)"
    sh "cp #{t.name} $(SITE)/$(DIR)"
    p "cp #{t.name} $(SITE)/$(DIR)"

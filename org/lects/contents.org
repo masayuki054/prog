@@ -1,24 +1,4 @@
-* おしらせ
-#+include: announce.org
+#+include: announce.org 
+#+include: preface.org  
+#+include: 01/plan.org 
 
-* 2016 講義記録
-
-* 2015 講義記録
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/15][15回目]] ([[~suzuki/lects/prog/site/lects/15/][cis.org]] [[~/COMM/Lects/prog/site/lects/15/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/14][14回目]] ([[~suzuki/lects/prog/site/lects/14/][cis.org]] [[~/COMM/Lects/prog/site/lects/14/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/13][13回目]] ([[~suzuki/lects/prog/site/lects/13/][cis.org]] [[~/COMM/Lects/prog/site/lects/13/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/12][12回目]] ([[~suzuki/lects/prog/site/lects/12/][cis.org]] [[~/COMM/Lects/prog/site/lects/12/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/11][11回目]] ([[~suzuki/lects/prog/site/lects/11/][cis.org]] [[~/COMM/Lects/prog/site/lects/11/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/10][10回目]] ([[~suzuki/lects/prog/site/lects/10/][cis.org]] [[~/COMM/Lects/prog/site/lects/10/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/09][9回目]] ([[~suzuki/lects/prog/site/lects/09/][cis.org]] [[~/COMM/Lects/prog/site/lects/09/][s.org]])
-*** [[Http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/08][8回目]] ([[~suzuki/lects/prog/site/lects/08/][cis.org]] [[~/COMM/Lects/prog/site/lects/08/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/07][7回目]] ([[~suzuki/lects/prog/site/lects/07/][cis.org]] [[~/COMM/Lects/prog/site/lects/07/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/06][6回目]] ([[~suzuki/lects/prog/site/lects/06/][cis.org]] [[~/COMM/Lects/prog/site/lects/06/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/05][5回目]] ([[~suzuki/lects/prog/site/lects/05/][cis.org]] [[~/COMM/Lects/prog/site/lects/05/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/04][4回目]] ([[~suzuki/lects/prog/site/lects/04/][cis.org]] [[~/COMM/Lects/prog/site/lects/04/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/03][3回目]] ([[~suzuki/lects/prog/site/lects/03/][cis.org]] [[~/COMM/Lects/prog/site/lects/03/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/02][2回目]] ([[~suzuki/lects/prog/site/lects/02/][cis.org]] [[~/COMM/Lects/prog/site/lects/02/][s.org]])
-*** [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/01][1回目]] ([[~suzuki/lects/prog/site/lects/01/][cis.org]] [[~/COMM/Lects/prog/site/lects/01/][s-org]])
-
-
- 

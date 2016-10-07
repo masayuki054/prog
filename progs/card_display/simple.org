@@ -1,0 +1,30 @@
+* card_display_simple
+** 問題
+
+
+   : %% card_display_simple heart 1
+   : => HA
+
+** 処理の分解と組み合わせ
+
+*** 入力 コマンドライン文字列を変数へ
+    - suit_string は ARGV\[1\]
+    - no_string は ARGV\[2\]
+
+*** スーツと番号を数字にする
+
+**** スーツを数字に
+
+     - suit_from_string(suit_string)
+
+**** 番号を数字に
+
+     - no_from_string(no_string)
+
+*** スーツと番号を表す数字をそれぞれ文字に
+
+    - suit_to_string(suit)
+    - no_to_string(no)
+
+
+    

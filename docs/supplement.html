@@ -3,30 +3,23 @@
 "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-09 日 20:52 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>progs2016 補足説明</title>
+<!-- 2016-10-11 火 07:48 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -65,14 +58,15 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -162,235 +156,235 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline24">1. ガイダンスのために</a>
+<li><a href="#sec-1">1. ガイダンスのために</a>
 <ul>
-<li><a href="#orgheadline5">1.1. 動機付け</a>
+<li><a href="#sec-1-1">1.1. 動機付け</a>
 <ul>
-<li><a href="#orgheadline1">プログラムがかけるようになりたい</a></li>
-<li><a href="#orgheadline2">面白いプログラムがかきたい</a></li>
-<li><a href="#orgheadline3">正しいプログラムを書きたい</a></li>
-<li><a href="#orgheadline4">大規模なプログラム開発ができるようになりたい</a></li>
+<li><a href="#sec-1-1-1">プログラムがかけるようになりたい</a></li>
+<li><a href="#sec-1-1-2">面白いプログラムがかきたい</a></li>
+<li><a href="#sec-1-1-3">正しいプログラムを書きたい</a></li>
+<li><a href="#sec-1-1-4">大規模なプログラム開発ができるようになりたい</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">1.2. プログラム開発の肝</a>
+<li><a href="#sec-1-2">1.2. プログラム開発の肝</a>
 <ul>
-<li><a href="#orgheadline6">プログラムの構成要素とその働きを理解すること</a></li>
-<li><a href="#orgheadline7">データの表現ができること</a></li>
-<li><a href="#orgheadline8">関数の働きを理解すること</a></li>
-<li><a href="#orgheadline9">名前の見せ方・隠し方を理解すること</a></li>
-<li><a href="#orgheadline10">コンパイル，リンク，実行</a></li>
-<li><a href="#orgheadline11">デバッグ</a></li>
+<li><a href="#sec-1-2-1">プログラムの構成要素とその働きを理解すること</a></li>
+<li><a href="#sec-1-2-2">データの表現ができること</a></li>
+<li><a href="#sec-1-2-3">関数の働きを理解すること</a></li>
+<li><a href="#sec-1-2-4">名前の見せ方・隠し方を理解すること</a></li>
+<li><a href="#sec-1-2-5">コンパイル，リンク，実行</a></li>
+<li><a href="#sec-1-2-6">デバッグ</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline23">1.3. 講義の眺望2015 @prog.org</a>
+<li><a href="#sec-1-3">1.3. 講義の眺望2015 @prog.org</a>
 <ul>
-<li><a href="#orgheadline13">機能とテスト</a></li>
-<li><a href="#orgheadline14">機能とモジュール</a></li>
-<li><a href="#orgheadline15">テスト駆動開発</a></li>
-<li><a href="#orgheadline16">カード表示問題とテスト駆動開発</a></li>
-<li><a href="#orgheadline22">ポーカーゲーム開発</a>
+<li><a href="#sec-1-3-1">機能とテスト</a></li>
+<li><a href="#sec-1-3-2">機能とモジュール</a></li>
+<li><a href="#sec-1-3-3">テスト駆動開発</a></li>
+<li><a href="#sec-1-3-4">カード表示問題とテスト駆動開発</a></li>
+<li><a href="#sec-1-3-5">ポーカーゲーム開発</a>
 <ul>
-<li><a href="#orgheadline17">Card</a></li>
-<li><a href="#orgheadline18">Deck</a></li>
-<li><a href="#orgheadline19">Hand</a></li>
-<li><a href="#orgheadline20">Player</a></li>
-<li><a href="#orgheadline21">Poker</a></li>
+<li><a href="#sec-1-3-5-1">Card</a></li>
+<li><a href="#sec-1-3-5-2">Deck</a></li>
+<li><a href="#sec-1-3-5-3">Hand</a></li>
+<li><a href="#sec-1-3-5-4">Player</a></li>
+<li><a href="#sec-1-3-5-5">Poker</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline32">2. 概念説明</a>
+<li><a href="#sec-2">2. 概念説明</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgheadline25">抽象化</a></li>
-<li><a href="#orgheadline26">情報隠蔽</a></li>
-<li><a href="#orgheadline27">関数の意味</a>
+<li><a href="#sec-2-0-1">抽象化</a></li>
+<li><a href="#sec-2-0-2">情報隠蔽</a></li>
+<li><a href="#sec-2-0-3">関数の意味</a>
 <ul>
-<li><a href="#orgheadline28">関数と抽象化</a></li>
-<li><a href="#orgheadline29">関数の内と外の間の壁</a></li>
-<li><a href="#orgheadline30">動作</a></li>
+<li><a href="#sec-2-0-3-1">関数と抽象化</a></li>
+<li><a href="#sec-2-0-3-2">関数の内と外の間の壁</a></li>
+<li><a href="#sec-2-0-3-3">動作</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline31">シンプルであること (by George Whitesides)</a></li>
+<li><a href="#sec-2-0-4">シンプルであること (by George Whitesides)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline42">3. モジュールとは</a>
+<li><a href="#sec-3">3. モジュールとは</a>
 <ul>
-<li><a href="#orgheadline35">3.1. モジュールのイメージ</a>
+<li><a href="#sec-3-1">3.1. モジュールのイメージ</a>
 <ul>
-<li><a href="#orgheadline33">関数</a></li>
-<li><a href="#orgheadline34">機能</a></li>
+<li><a href="#sec-3-1-1">関数</a></li>
+<li><a href="#sec-3-1-2">機能</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline38">3.2. モジュールとは部品</a>
+<li><a href="#sec-3-2">3.2. モジュールとは部品</a>
 <ul>
-<li><a href="#orgheadline36">部品の利用</a></li>
-<li><a href="#orgheadline37">部品の提供</a></li>
+<li><a href="#sec-3-2-1">部品の利用</a></li>
+<li><a href="#sec-3-2-2">部品の提供</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline41">3.3. Ubuntu/C言語を使ったモジュールプログラミング</a>
+<li><a href="#sec-3-3">3.3. Ubuntu/C言語を使ったモジュールプログラミング</a>
 <ul>
-<li><a href="#orgheadline39">利用側</a>
+<li><a href="#sec-3-3-1">利用側</a>
 <ul>
-<li><a href="#orgheadline40">提供側</a></li>
+<li><a href="#sec-3-3-1-1">提供側</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline54">4. 講義いままで，これから 講義への補足 2016-01-12</a>
-<ul>
-<li>
-<ul>
-<li><a href="#orgheadline43">講義の眺望 @ prog.org</a>
-<ul>
-<li><a href="#orgheadline44">機能とテスト</a></li>
-<li><a href="#orgheadline45">機能とモジュール</a></li>
-<li><a href="#orgheadline46">テスト駆動開発</a></li>
-<li><a href="#orgheadline47">カード表示問題とテスト駆動開発</a></li>
-<li><a href="#orgheadline53">ポーカーゲーム開発</a>
-<ul>
-<li><a href="#orgheadline48">Card</a></li>
-<li><a href="#orgheadline49">Deck</a></li>
-<li><a href="#orgheadline50">Hand</a></li>
-<li><a href="#orgheadline51">Player</a></li>
-<li><a href="#orgheadline52">Poker</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline57">5. 開発の構造</a>
+<li><a href="#sec-4">4. 講義いままで，これから 講義への補足 2016-01-12</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgheadline55">card_display_simple問題の開発木構造</a></li>
-<li><a href="#orgheadline56">deck モジュールの開発木構造</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline77">6. deck/src/Makefile</a>
+<li><a href="#sec-4-0-1">講義の眺望 @ prog.org</a>
 <ul>
-<li><a href="#orgheadline68">6.1. game/deck/src/Makefileの説明</a>
+<li><a href="#sec-4-0-1-1">機能とテスト</a></li>
+<li><a href="#sec-4-0-1-2">機能とモジュール</a></li>
+<li><a href="#sec-4-0-1-3">テスト駆動開発</a></li>
+<li><a href="#sec-4-0-1-4">カード表示問題とテスト駆動開発</a></li>
+<li><a href="#sec-4-0-1-5">ポーカーゲーム開発</a>
 <ul>
-<li><a href="#orgheadline58">全体</a></li>
-<li><a href="#orgheadline67">各部分の説明</a>
-<ul>
-<li><a href="#orgheadline59"></a></li>
-<li><a href="#orgheadline60">gameプロジェクトの決まりを変数で表す</a></li>
-<li><a href="#orgheadline61">Cコンパイラへの指示</a></li>
-<li><a href="#orgheadline62">ローダへの指示</a></li>
-<li><a href="#orgheadline63">libdeck.a の作成規則</a></li>
-<li><a href="#orgheadline64">deck モジュールの提供規則</a></li>
-<li><a href="#orgheadline65">deck ソースプログラムのコンパイル</a></li>
-<li><a href="#orgheadline66">src ディレクトの掃除</a></li>
+<li><a href="#sec-4-0-1-5-1">Card</a></li>
+<li><a href="#sec-4-0-1-5-2">Deck</a></li>
+<li><a href="#sec-4-0-1-5-3">Hand</a></li>
+<li><a href="#sec-4-0-1-5-4">Player</a></li>
+<li><a href="#sec-4-0-1-5-5">Poker</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline71">6.2. Makefile (card_display/simple)</a>
-<ul>
-<li><a href="#orgheadline69">src/Makefile</a></li>
-<li><a href="#orgheadline70">test/Makefile</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline76">6.3. card/deck 用 Makefile との違い</a>
-<ul>
-<li><a href="#orgheadline72">card_display/simple/src/Makefile と game/card/src/Makefile の違い</a></li>
-<li><a href="#orgheadline73">card_display/simple/test/Makefile と game/card/test/Makefile の違い</a></li>
-<li><a href="#orgheadline74">game/card/src/Makefile と game/deck/src/Makefile の違い</a></li>
-<li><a href="#orgheadline75">game/card/test/Makefile と game/deck/test/Makefile の違い</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline92">7. handモジュール開発文書の作成 講義への補足 2016-01-19</a>
+<li><a href="#sec-5">5. 開発の構造</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgheadline87">Hand モジュールの開発 2016/02/02</a>
+<li><a href="#sec-5-0-1">card_display_simple問題の開発木構造</a></li>
+<li><a href="#sec-5-0-2">deck モジュールの開発木構造</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-6">6. deck/src/Makefile</a>
 <ul>
-<li><a href="#orgheadline86">01/26の説明への変更</a>
+<li><a href="#sec-6-1">6.1. game/deck/src/Makefileの説明</a>
 <ul>
-<li><a href="#orgheadline78">インタフェースの変更</a></li>
-<li><a href="#orgheadline79">judge 機能を独立に</a>
+<li><a href="#sec-6-1-1">全体</a></li>
+<li><a href="#sec-6-1-2">各部分の説明</a>
 <ul>
-<li><a href="#orgheadline80">ファイルの追加</a></li>
-<li><a href="#orgheadline81">Makefileの変更</a></li>
-<li><a href="#orgheadline82">ペアの計算</a>
+<li><a href="#sec-6-1-2-1"></a></li>
+<li><a href="#sec-6-1-2-2">gameプロジェクトの決まりを変数で表す</a></li>
+<li><a href="#sec-6-1-2-3">Cコンパイラへの指示</a></li>
+<li><a href="#sec-6-1-2-4">ローダへの指示</a></li>
+<li><a href="#sec-6-1-2-5">libdeck.a の作成規則</a></li>
+<li><a href="#sec-6-1-2-6">deck モジュールの提供規則</a></li>
+<li><a href="#sec-6-1-2-7">deck ソースプログラムのコンパイル</a></li>
+<li><a href="#sec-6-1-2-8">src ディレクトの掃除</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-6-2">6.2. Makefile (card_display/simple)</a>
 <ul>
-<li><a href="#orgheadline83">Highcardの場合は5</a></li>
-<li><a href="#orgheadline84">ThreeCardsの場合は11</a></li>
-<li><a href="#orgheadline85">Fullehouseの場合は13</a></li>
+<li><a href="#sec-6-2-1">src/Makefile</a></li>
+<li><a href="#sec-6-2-2">test/Makefile</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline91">Hand モジュールの開発 2016/01/26</a>
+<li><a href="#sec-6-3">6.3. card/deck 用 Makefile との違い</a>
 <ul>
-<li><a href="#orgheadline88">おことわり</a></li>
-<li><a href="#orgheadline89">Deckモジュール開発からHandモジュール開発へ</a>
-<ul>
-<li><a href="#orgheadline90">先生のDeck開発文書のcopy</a></li>
+<li><a href="#sec-6-3-1">card_display/simple/src/Makefile と game/card/src/Makefile の違い</a></li>
+<li><a href="#sec-6-3-2">card_display/simple/test/Makefile と game/card/test/Makefile の違い</a></li>
+<li><a href="#sec-6-3-3">game/card/src/Makefile と game/deck/src/Makefile の違い</a></li>
+<li><a href="#sec-6-3-4">game/card/test/Makefile と game/deck/test/Makefile の違い</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline93">8. gch問題</a></li>
-<li><a href="#orgheadline96">9. emacs</a>
-<ul>
-<li><a href="#orgheadline94">9.1. コマンド</a></li>
-<li><a href="#orgheadline95">9.2. 話題</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline97">10. emacs org-mode</a></li>
-<li><a href="#orgheadline98">11. 講義内容へのpath</a></li>
-<li><a href="#orgheadline106">12. モジュール関連技術</a>
+<li><a href="#sec-7">7. handモジュール開発文書の作成 講義への補足 2016-01-19</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgheadline105">モジュールとは部品</a>
+<li><a href="#sec-7-0-1">Hand モジュールの開発 2016/02/02</a>
 <ul>
-<li><a href="#orgheadline99">モジュール</a></li>
-<li><a href="#orgheadline100">部品，</a></li>
-<li><a href="#orgheadline101">インタフェース</a></li>
-<li><a href="#orgheadline102">部品の利用</a></li>
-<li><a href="#orgheadline103">部品の提供</a></li>
-<li><a href="#orgheadline104">Ubuntu/C言語を使ったモジュールプログラミング</a></li>
+<li><a href="#sec-7-0-1-1">01/26の説明への変更</a>
+<ul>
+<li><a href="#sec-7-0-1-1-1">インタフェースの変更</a></li>
+<li><a href="#sec-7-0-1-1-2">judge 機能を独立に</a>
+<ul>
+<li><a href="#sec-7-0-1-1-2-1">ファイルの追加</a></li>
+<li><a href="#sec-7-0-1-1-2-2">Makefileの変更</a></li>
+<li><a href="#sec-7-0-1-1-2-3">ペアの計算</a>
+<ul>
+<li><a href="#sec-7-0-1-1-2-3-1">Highcardの場合は5</a></li>
+<li><a href="#sec-7-0-1-1-2-3-2">ThreeCardsの場合は11</a></li>
+<li><a href="#sec-7-0-1-1-2-3-3">Fullehouseの場合は13</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline107">13. C-programming</a></li>
-<li><a href="#orgheadline108">14. emacs org-mode</a></li>
-<li><a href="#orgheadline109">15. emacs</a></li>
-<li><a href="#orgheadline110">16. emacs org-mode+babel</a></li>
-<li><a href="#orgheadline113">17. 文書の書き方，見え方などへの補足説明</a>
+</ul>
+</li>
+<li><a href="#sec-7-0-2">Hand モジュールの開発 2016/01/26</a>
+<ul>
+<li><a href="#sec-7-0-2-1">おことわり</a></li>
+<li><a href="#sec-7-0-2-2">Deckモジュール開発からHandモジュール開発へ</a>
+<ul>
+<li><a href="#sec-7-0-2-2-1">先生のDeck開発文書のcopy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-8">8. gch問題</a></li>
+<li><a href="#sec-9">9. emacs</a>
+<ul>
+<li><a href="#sec-9-1">9.1. コマンド</a></li>
+<li><a href="#sec-9-2">9.2. 話題</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. emacs org-mode</a></li>
+<li><a href="#sec-11">11. 講義内容へのpath</a></li>
+<li><a href="#sec-12">12. モジュール関連技術</a>
 <ul>
 <li>
 <ul>
-<li><a href="#orgheadline111">ページ内容の折り畳みと展開</a></li>
-<li><a href="#orgheadline112">title((cis.org s.org))</a></li>
+<li><a href="#sec-12-0-1">モジュールとは部品</a>
+<ul>
+<li><a href="#sec-12-0-1-1">モジュール</a></li>
+<li><a href="#sec-12-0-1-2">部品，</a></li>
+<li><a href="#sec-12-0-1-3">インタフェース</a></li>
+<li><a href="#sec-12-0-1-4">部品の利用</a></li>
+<li><a href="#sec-12-0-1-5">部品の提供</a></li>
+<li><a href="#sec-12-0-1-6">Ubuntu/C言語を使ったモジュールプログラミング</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-13">13. C-programming</a></li>
+<li><a href="#sec-14">14. emacs org-mode</a></li>
+<li><a href="#sec-15">15. emacs</a></li>
+<li><a href="#sec-16">16. emacs org-mode+babel</a></li>
+<li><a href="#sec-17">17. 文書の書き方，見え方などへの補足説明</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-17-0-1">ページ内容の折り畳みと展開</a></li>
+<li><a href="#sec-17-0-2">title((cis.org s.org))</a></li>
 </ul>
 </li>
 </ul>
@@ -406,211 +400,249 @@ for the JavaScript code in this tag.
 <a href="./memos.html">雑メモ</a> /
 <a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a>
 </p>
-<div id="outline-container-orgheadline24" class="outline-2">
-<h2 id="orgheadline24"><span class="section-number-2">1</span> ガイダンスのために</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> ガイダンスのために</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">1.1</span> 動機付け</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 動機付け</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-orgheadline1" class="outline-4">
-<h4 id="orgheadline1">プログラムがかけるようになりたい</h4>
-<div class="outline-text-4" id="text-orgheadline1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">プログラムがかけるようになりたい</h4>
+<div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
-<li>プログラムが思うようにかけるようになりたい</li>
-<li>プログラムが正確にかけるようになりたい</li>
-<li>プログラムが素早くかけるようになりたい</li>
-<li>きれいなプログラムがかけるようになりたい</li>
-<li>簡潔なプログラムが書けるようになりたい</li>
+<li>プログラムが思うようにかけるようになりたい
+</li>
+<li>プログラムが正確にかけるようになりたい
+</li>
+<li>プログラムが素早くかけるようになりたい
+</li>
+<li>きれいなプログラムがかけるようになりたい
+</li>
+<li>簡潔なプログラムが書けるようになりたい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2">面白いプログラムがかきたい</h4>
-<div class="outline-text-4" id="text-orgheadline2">
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">面白いプログラムがかきたい</h4>
+<div class="outline-text-4" id="text-1-1-2">
 <ul class="org-ul">
-<li>思っていることをプログラムできる力が欲しい</li>
+<li>思っていることをプログラムできる力が欲しい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3">正しいプログラムを書きたい</h4>
-<div class="outline-text-4" id="text-orgheadline3">
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3">正しいプログラムを書きたい</h4>
+<div class="outline-text-4" id="text-1-1-3">
 <ul class="org-ul">
-<li>プログラムの正しさがわかる力が欲しい</li>
-<li>プログラムをデバッグする力が欲しい</li>
+<li>プログラムの正しさがわかる力が欲しい
+</li>
+<li>プログラムをデバッグする力が欲しい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4">大規模なプログラム開発ができるようになりたい</h4>
-<div class="outline-text-4" id="text-orgheadline4">
+<div id="outline-container-sec-1-1-4" class="outline-4">
+<h4 id="sec-1-1-4">大規模なプログラム開発ができるようになりたい</h4>
+<div class="outline-text-4" id="text-1-1-4">
 <ul class="org-ul">
-<li>わかりやすいプログラム</li>
-<li>協同作業しやすいプログラム</li>
+<li>わかりやすいプログラム
+</li>
+<li>協同作業しやすいプログラム
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">1.2</span> プログラム開発の肝</h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> プログラム開発の肝</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6">プログラムの構成要素とその働きを理解すること</h4>
-<div class="outline-text-4" id="text-orgheadline6">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">プログラムの構成要素とその働きを理解すること</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <ul class="org-ul">
-<li>定数と変数</li>
-<li>式</li>
-<li>変数と代入による状態変化</li>
-<li>文と時間進行</li>
-<li>条件分岐と繰り返し</li>
+<li>定数と変数
+</li>
+<li>式
+</li>
+<li>変数と代入による状態変化
+</li>
+<li>文と時間進行
+</li>
+<li>条件分岐と繰り返し
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">データの表現ができること</h4>
-<div class="outline-text-4" id="text-orgheadline7">
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">データの表現ができること</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <ul class="org-ul">
-<li>値（定数）と型</li>
-<li>構造体と型定義による値と型の拡張</li>
-<li>変数と配列</li>
+<li>値（定数）と型
+</li>
+<li>構造体と型定義による値と型の拡張
+</li>
+<li>変数と配列
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8">関数の働きを理解すること</h4>
-<div class="outline-text-4" id="text-orgheadline8">
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3">関数の働きを理解すること</h4>
+<div class="outline-text-4" id="text-1-2-3">
 <ul class="org-ul">
 <li>関数によるまとめ（抽象)
 <ul class="org-ul">
-<li>関数の宣言</li>
-<li>関数の利用</li>
-<li>関数の提供</li>
-</ul></li>
+<li>関数の宣言
+</li>
+<li>関数の利用
+</li>
+<li>関数の提供
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9">名前の見せ方・隠し方を理解すること</h4>
-<div class="outline-text-4" id="text-orgheadline9">
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4">名前の見せ方・隠し方を理解すること</h4>
+<div class="outline-text-4" id="text-1-2-4">
 <ul class="org-ul">
-<li>変数とスコープ</li>
-<li>関数とスコープ</li>
-<li>関数とリンク</li>
+<li>変数とスコープ
+</li>
+<li>関数とスコープ
+</li>
+<li>関数とリンク
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10">コンパイル，リンク，実行</h4>
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5">コンパイル，リンク，実行</h4>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11">デバッグ</h4>
+<div id="outline-container-sec-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6">デバッグ</h4>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">1.3</span> 講義の眺望2015 @prog.org</h3>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 講義の眺望2015 @prog.org</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 2015.10回目 今迄やってきた事，これからやる事の意味
 </p>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">機能とテスト</h4>
-<div class="outline-text-4" id="text-orgheadline13">
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">機能とテスト</h4>
+<div class="outline-text-4" id="text-1-3-1">
 <ul class="org-ul">
-<li>プログラムを考える単位，関数</li>
+<li>プログラムを考える単位，関数
+</li>
 
-<li>正しさを考える単位，関数</li>
+<li>正しさを考える単位，関数
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14">機能とモジュール</h4>
-<div class="outline-text-4" id="text-orgheadline14">
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">機能とモジュール</h4>
+<div class="outline-text-4" id="text-1-3-2">
 <ul class="org-ul">
-<li>機能の集まり</li>
+<li>機能の集まり
+</li>
 
-<li>プログラム群を扱う</li>
+<li>プログラム群を扱う
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15">テスト駆動開発</h4>
-<div class="outline-text-4" id="text-orgheadline15">
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3">テスト駆動開発</h4>
+<div class="outline-text-4" id="text-1-3-3">
 <ul class="org-ul">
-<li>関数単位の開発</li>
+<li>関数単位の開発
+</li>
 
-<li>反復的な開発</li>
+<li>反復的な開発
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16">カード表示問題とテスト駆動開発</h4>
-<div class="outline-text-4" id="text-orgheadline16">
+<div id="outline-container-sec-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4">カード表示問題とテスト駆動開発</h4>
+<div class="outline-text-4" id="text-1-3-4">
 <ul class="org-ul">
-<li>問題の解法のための機能作り</li>
+<li>問題の解法のための機能作り
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-4">
-<h4 id="orgheadline22">ポーカーゲーム開発</h4>
-<div class="outline-text-4" id="text-orgheadline22">
-</div><div id="outline-container-orgheadline17" class="outline-5">
-<h5 id="orgheadline17">Card</h5>
-<div class="outline-text-5" id="text-orgheadline17">
+<div id="outline-container-sec-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5">ポーカーゲーム開発</h4>
+<div class="outline-text-4" id="text-1-3-5">
+</div><div id="outline-container-sec-1-3-5-1" class="outline-5">
+<h5 id="sec-1-3-5-1">Card</h5>
+<div class="outline-text-5" id="text-1-3-5-1">
 <ul class="org-ul">
-<li>機能の集まりとしての module</li>
+<li>機能の集まりとしての module
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-5">
-<h5 id="orgheadline18">Deck</h5>
-<div class="outline-text-5" id="text-orgheadline18">
+<div id="outline-container-sec-1-3-5-2" class="outline-5">
+<h5 id="sec-1-3-5-2">Deck</h5>
+<div class="outline-text-5" id="text-1-3-5-2">
 <ul class="org-ul">
-<li>module 設計</li>
+<li>module 設計
+</li>
 
-<li>機能の設計</li>
+<li>機能の設計
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-5">
-<h5 id="orgheadline19">Hand</h5>
-<div class="outline-text-5" id="text-orgheadline19">
+<div id="outline-container-sec-1-3-5-3" class="outline-5">
+<h5 id="sec-1-3-5-3">Hand</h5>
+<div class="outline-text-5" id="text-1-3-5-3">
 <ul class="org-ul">
-<li>module 設計</li>
+<li>module 設計
+</li>
 
-<li>機能の設計</li>
+<li>機能の設計
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20">Player</h5>
+<div id="outline-container-sec-1-3-5-4" class="outline-5">
+<h5 id="sec-1-3-5-4">Player</h5>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21">Poker</h5>
-<div class="outline-text-5" id="text-orgheadline21">
+<div id="outline-container-sec-1-3-5-5" class="outline-5">
+<h5 id="sec-1-3-5-5">Poker</h5>
+<div class="outline-text-5" id="text-1-3-5-5">
 <ul class="org-ul">
-<li>機能の組み合わせと利用</li>
+<li>機能の組み合わせと利用
+</li>
 </ul>
 </div>
 </div>
@@ -618,21 +650,24 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline32" class="outline-2">
-<h2 id="orgheadline32"><span class="section-number-2">2</span> 概念説明</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 概念説明</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline25" class="outline-4">
-<h4 id="orgheadline25">抽象化</h4>
-<div class="outline-text-4" id="text-orgheadline25">
+</div><div id="outline-container-sec-2-0-1" class="outline-4">
+<h4 id="sec-2-0-1">抽象化</h4>
+<div class="outline-text-4" id="text-2-0-1">
 <ul class="org-ul">
-<li>複雑な操作をまとめ，名前をつけること。</li>
-<li>関数，構造体，型定義などを使う。</li>
+<li>複雑な操作をまとめ，名前をつけること。
+</li>
+<li>関数，構造体，型定義などを使う。
+</li>
 
-<li id="参考"><a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/commons/abstraction.html">抽象化とは</a></li>
+<li id="参考"><a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/commons/abstraction.html">抽象化とは</a>
+</li>
 </ul>
 <p>
-((<a href="file:///users/home/masayuki/lects/commons/abstraction.html">@cis.org</a>
-<a href="file:///users/home/masayuki/COMM/Lects/commons/site/abstraction.html">@s.org</a>))
+((<a href="file:///home/staff/suzuki/lects/commons/abstraction.html">@cis.org</a>
+<a href="file:///home/staff/suzuki/COMM/Lects/commons/site/abstraction.html">@s.org</a>))
 </p>
 
 <p>
@@ -641,16 +676,19 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-4">
-<h4 id="orgheadline26">情報隠蔽</h4>
-<div class="outline-text-4" id="text-orgheadline26">
+<div id="outline-container-sec-2-0-2" class="outline-4">
+<h4 id="sec-2-0-2">情報隠蔽</h4>
+<div class="outline-text-4" id="text-2-0-2">
 <ul class="org-ul">
 <li>(モジュール)内部の情報を外部から守ること。
 <ul class="org-ul">
 <li>内部と外部の間に壁を作り，外部から直接内部にアクセスできなくす
-る。</li>
-<li>決められた手段を通して，内部の情報を公開する。</li>
-</ul></li>
+る。
+</li>
+<li>決められた手段を通して，内部の情報を公開する。
+</li>
+</ul>
+</li>
 </ul>
 
 <p>
@@ -659,14 +697,14 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-4">
-<h4 id="orgheadline27">関数の意味</h4>
-<div class="outline-text-4" id="text-orgheadline27">
+<div id="outline-container-sec-2-0-3" class="outline-4">
+<h4 id="sec-2-0-3">関数の意味</h4>
+<div class="outline-text-4" id="text-2-0-3">
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-5">
-<h5 id="orgheadline28">関数と抽象化</h5>
-<div class="outline-text-5" id="text-orgheadline28">
+<div id="outline-container-sec-2-0-3-1" class="outline-5">
+<h5 id="sec-2-0-3-1">関数と抽象化</h5>
+<div class="outline-text-5" id="text-2-0-3-1">
 <p>
 一連の処理に名前を付る。処理への入力を定め，変数とする。一連の処
 理が作りだす値を定める。
@@ -679,9 +717,9 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline29" class="outline-5">
-<h5 id="orgheadline29">関数の内と外の間の壁</h5>
-<div class="outline-text-5" id="text-orgheadline29">
+<div id="outline-container-sec-2-0-3-2" class="outline-5">
+<h5 id="sec-2-0-3-2">関数の内と外の間の壁</h5>
+<div class="outline-text-5" id="text-2-0-3-2">
 <p>
 ソースプログラムを書いている時，
 大域変数は，すべての関数から見えるが，
@@ -690,133 +728,173 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-5">
-<h5 id="orgheadline30">動作</h5>
-<div class="outline-text-5" id="text-orgheadline30">
+<div id="outline-container-sec-2-0-3-3" class="outline-5">
+<h5 id="sec-2-0-3-3">動作</h5>
+<div class="outline-text-5" id="text-2-0-3-3">
 <ul class="org-ul">
 <li>関数を呼び出した時，どんなことが起こるのか
 <ul class="org-ul">
-<li>実引数*値*を引数をスタックに積み，</li>
-<li>戻るための情報をスタックに積み，</li>
+<li>実引数*値*を引数をスタックに積み，
+</li>
+<li>戻るための情報をスタックに積み，
+</li>
 <li>関数ヘジャンプする
 <ul class="org-ul">
-<li>関数からもどってくる</li>
-</ul></li>
-<li>戻り値がスタックに積まれている</li>
-</ul></li>
+<li>関数からもどってくる
+</li>
+</ul>
+</li>
+<li>戻り値がスタックに積まれている
+</li>
+</ul>
+</li>
 
 <li>関数が呼び出され時，どんなことが起こるのか
 <ul class="org-ul">
-<li>仮引数に値が入れらて飛んでくる</li>
-<li>計算する</li>
+<li>仮引数に値が入れらて飛んでくる
+</li>
+<li>計算する
+</li>
 <li>戻り値をスタックに入れて，スタックにある戻るための情報
-にしたがって，ジャンプする</li>
-</ul></li>
+にしたがって，ジャンプする
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline31" class="outline-4">
-<h4 id="orgheadline31">シンプルであること (by George Whitesides)</h4>
-<div class="outline-text-4" id="text-orgheadline31">
+<div id="outline-container-sec-2-0-4" class="outline-4">
+<h4 id="sec-2-0-4">シンプルであること (by George Whitesides)</h4>
+<div class="outline-text-4" id="text-2-0-4">
 <ul class="org-ul">
-<li>予測可能</li>
-<li>扱いやすい</li>
-<li>構成要素として機能すること</li>
+<li>予測可能
+</li>
+<li>扱いやすい
+</li>
+<li>構成要素として機能すること
+</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline42" class="outline-2">
-<h2 id="orgheadline42"><span class="section-number-2">3</span> モジュールとは</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> モジュールとは</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline35" class="outline-3">
-<h3 id="orgheadline35"><span class="section-number-3">3.1</span> モジュールのイメージ</h3>
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> モジュールのイメージ</h3>
 <div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgheadline33" class="outline-4">
-<h4 id="orgheadline33">関数</h4>
-<div class="outline-text-4" id="text-orgheadline33">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">関数</h4>
+<div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
-<li>関数として独立したもの</li>
+<li>関数として独立したもの
+</li>
 <li>関数とは何？
 <ul class="org-ul">
-<li>名前で呼び出せること</li>
-<li>値を渡せること</li>
-<li>結果が返ってくること</li>
-</ul></li>
-<li>独立するとはどういうこと？</li>
+<li>名前で呼び出せること
+</li>
+<li>値を渡せること
+</li>
+<li>結果が返ってくること
+</li>
+</ul>
+</li>
+<li>独立するとはどういうこと？
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline34" class="outline-4">
-<h4 id="orgheadline34">機能</h4>
-<div class="outline-text-4" id="text-orgheadline34">
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2">機能</h4>
+<div class="outline-text-4" id="text-3-1-2">
 <ul class="org-ul">
 <li>大きな仕事の中から，
-独立したまとまりのいい部分的な機能を取り出したもの，</li>
-<li>使いまわしがきく</li>
-<li>インターフェイスをとおして使う</li>
+独立したまとまりのいい部分的な機能を取り出したもの，
+</li>
+<li>使いまわしがきく
+</li>
+<li>インターフェイスをとおして使う
+</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38"><span class="section-number-3">3.2</span> モジュールとは部品</h3>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> モジュールとは部品</h3>
 <div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-orgheadline36" class="outline-4">
-<h4 id="orgheadline36">部品の利用</h4>
-<div class="outline-text-4" id="text-orgheadline36">
+</div><div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1">部品の利用</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
-<li>ある機能の実体</li>
-<li>その実装をしらずに，</li>
-<li>インターフェイスを守り，</li>
-<li>自分のプログラムから利用できる</li>
+<li>ある機能の実体
+</li>
+<li>その実装をしらずに，
+</li>
+<li>インターフェイスを守り，
+</li>
+<li>自分のプログラムから利用できる
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline37" class="outline-4">
-<h4 id="orgheadline37">部品の提供</h4>
-<div class="outline-text-4" id="text-orgheadline37">
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2">部品の提供</h4>
+<div class="outline-text-4" id="text-3-2-2">
 <ul class="org-ul">
-<li>ある独立した機能を実現し，</li>
-<li>インターフェイスを守り</li>
-<li>インターフェイスのみを通して，</li>
-<li>他の人に機能を提供する</li>
+<li>ある独立した機能を実現し，
+</li>
+<li>インターフェイスを守り
+</li>
+<li>インターフェイスのみを通して，
+</li>
+<li>他の人に機能を提供する
+</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline41" class="outline-3">
-<h3 id="orgheadline41"><span class="section-number-3">3.3</span> Ubuntu/C言語を使ったモジュールプログラミング</h3>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Ubuntu/C言語を使ったモジュールプログラミング</h3>
 <div class="outline-text-3" id="text-3-3">
-</div><div id="outline-container-orgheadline39" class="outline-4">
-<h4 id="orgheadline39">利用側</h4>
-<div class="outline-text-4" id="text-orgheadline39">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1">利用側</h4>
+<div class="outline-text-4" id="text-3-3-1">
 <ul class="org-ul">
-<li>あるライブラリの機能（関数）を見つけ，</li>
-<li>man やヘッダファイルを見て，APIを知る</li>
+<li>あるライブラリの機能（関数）を見つけ，
+</li>
+<li>man やヘッダファイルを見て，APIを知る
+</li>
 <li>ヘッダファイルをインクルードし，
 インターフェイスを守っていることを，
-コンパイラに検査してもらう</li>
-<li>自分のプログラムに，ライブラリの関数をリンクする</li>
-<li>プログラムをプロセスとして実行する</li>
+コンパイラに検査してもらう
+</li>
+<li>自分のプログラムに，ライブラリの関数をリンクする
+</li>
+<li>プログラムをプロセスとして実行する
+</li>
 </ul>
 </div>
 
-<div id="outline-container-orgheadline40" class="outline-5">
-<h5 id="orgheadline40">提供側</h5>
-<div class="outline-text-5" id="text-orgheadline40">
+<div id="outline-container-sec-3-3-1-1" class="outline-5">
+<h5 id="sec-3-3-1-1">提供側</h5>
+<div class="outline-text-5" id="text-3-3-1-1">
 <ul class="org-ul">
-<li>ヘッダファイルを作成し</li>
-<li>ヘッダファイルをインクルードし，</li>
-<li>機能を関数として実装し，</li>
-<li>ヘッダファイルのAPIを遵守する</li>
-<li>オブジェクトファイルあるいはライブラリとして提供する</li>
+<li>ヘッダファイルを作成し
+</li>
+<li>ヘッダファイルをインクルードし，
+</li>
+<li>機能を関数として実装し，
+</li>
+<li>ヘッダファイルのAPIを遵守する
+</li>
+<li>オブジェクトファイルあるいはライブラリとして提供する
+</li>
 </ul>
 <p>
 　　
@@ -827,102 +905,115 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline54" class="outline-2">
-<h2 id="orgheadline54"><span class="section-number-2">4</span> 講義いままで，これから 講義への補足 2016-01-12</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 講義いままで，これから 講義への補足 2016-01-12</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline43" class="outline-4">
-<h4 id="orgheadline43">講義の眺望 @ prog.org</h4>
-<div class="outline-text-4" id="text-orgheadline43">
+</div><div id="outline-container-sec-4-0-1" class="outline-4">
+<h4 id="sec-4-0-1">講義の眺望 @ prog.org</h4>
+<div class="outline-text-4" id="text-4-0-1">
 <p>
 2015.10回目 今迄やってきた事，これからやる事の意味
 </p>
 </div>
 
-<div id="outline-container-orgheadline44" class="outline-5">
-<h5 id="orgheadline44">機能とテスト</h5>
-<div class="outline-text-5" id="text-orgheadline44">
+<div id="outline-container-sec-4-0-1-1" class="outline-5">
+<h5 id="sec-4-0-1-1">機能とテスト</h5>
+<div class="outline-text-5" id="text-4-0-1-1">
 <ul class="org-ul">
-<li>プログラムを考える単位，関数</li>
+<li>プログラムを考える単位，関数
+</li>
 
-<li>正しさを考える単位，関数</li>
+<li>正しさを考える単位，関数
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline45" class="outline-5">
-<h5 id="orgheadline45">機能とモジュール</h5>
-<div class="outline-text-5" id="text-orgheadline45">
+<div id="outline-container-sec-4-0-1-2" class="outline-5">
+<h5 id="sec-4-0-1-2">機能とモジュール</h5>
+<div class="outline-text-5" id="text-4-0-1-2">
 <ul class="org-ul">
-<li>機能の集まり</li>
+<li>機能の集まり
+</li>
 
-<li>プログラム群を扱う</li>
+<li>プログラム群を扱う
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline46" class="outline-5">
-<h5 id="orgheadline46">テスト駆動開発</h5>
-<div class="outline-text-5" id="text-orgheadline46">
+<div id="outline-container-sec-4-0-1-3" class="outline-5">
+<h5 id="sec-4-0-1-3">テスト駆動開発</h5>
+<div class="outline-text-5" id="text-4-0-1-3">
 <ul class="org-ul">
-<li>関数単位の開発</li>
+<li>関数単位の開発
+</li>
 
-<li>反復的な開発</li>
+<li>反復的な開発
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline47" class="outline-5">
-<h5 id="orgheadline47">カード表示問題とテスト駆動開発</h5>
-<div class="outline-text-5" id="text-orgheadline47">
+<div id="outline-container-sec-4-0-1-4" class="outline-5">
+<h5 id="sec-4-0-1-4">カード表示問題とテスト駆動開発</h5>
+<div class="outline-text-5" id="text-4-0-1-4">
 <ul class="org-ul">
-<li>問題の解法のための機能作り</li>
+<li>問題の解法のための機能作り
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline53" class="outline-5">
-<h5 id="orgheadline53">ポーカーゲーム開発</h5>
-<div class="outline-text-5" id="text-orgheadline53">
-</div><div id="outline-container-orgheadline48" class="outline-6">
-<h6 id="orgheadline48">Card</h6>
-<div class="outline-text-6" id="text-orgheadline48">
+<div id="outline-container-sec-4-0-1-5" class="outline-5">
+<h5 id="sec-4-0-1-5">ポーカーゲーム開発</h5>
+<div class="outline-text-5" id="text-4-0-1-5">
+</div><div id="outline-container-sec-4-0-1-5-1" class="outline-6">
+<h6 id="sec-4-0-1-5-1">Card</h6>
+<div class="outline-text-6" id="text-4-0-1-5-1">
 <ul class="org-ul">
-<li>機能の集まりとしての module</li>
+<li>機能の集まりとしての module
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline49" class="outline-6">
-<h6 id="orgheadline49">Deck</h6>
-<div class="outline-text-6" id="text-orgheadline49">
+<div id="outline-container-sec-4-0-1-5-2" class="outline-6">
+<h6 id="sec-4-0-1-5-2">Deck</h6>
+<div class="outline-text-6" id="text-4-0-1-5-2">
 <ul class="org-ul">
-<li>module 設計</li>
+<li>module 設計
+</li>
 
-<li>機能の設計</li>
+<li>機能の設計
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline50" class="outline-6">
-<h6 id="orgheadline50">Hand</h6>
-<div class="outline-text-6" id="text-orgheadline50">
+<div id="outline-container-sec-4-0-1-5-3" class="outline-6">
+<h6 id="sec-4-0-1-5-3">Hand</h6>
+<div class="outline-text-6" id="text-4-0-1-5-3">
 <ul class="org-ul">
-<li>module 設計</li>
+<li>module 設計
+</li>
 
-<li>機能の設計</li>
+<li>機能の設計
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline51" class="outline-6">
-<h6 id="orgheadline51">Player</h6>
+<div id="outline-container-sec-4-0-1-5-4" class="outline-6">
+<h6 id="sec-4-0-1-5-4">Player</h6>
 </div>
 
-<div id="outline-container-orgheadline52" class="outline-6">
-<h6 id="orgheadline52">Poker</h6>
-<div class="outline-text-6" id="text-orgheadline52">
+<div id="outline-container-sec-4-0-1-5-5" class="outline-6">
+<h6 id="sec-4-0-1-5-5">Poker</h6>
+<div class="outline-text-6" id="text-4-0-1-5-5">
 <ul class="org-ul">
-<li>機能の組み合わせと利用</li>
+<li>機能の組み合わせと利用
+</li>
 </ul>
 </div>
 </div>
@@ -930,14 +1021,14 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline57" class="outline-2">
-<h2 id="orgheadline57"><span class="section-number-2">5</span> 開発の構造</h2>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 開発の構造</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline55" class="outline-4">
-<h4 id="orgheadline55">card_display_simple問題の開発木構造</h4>
-<div class="outline-text-4" id="text-orgheadline55">
+</div><div id="outline-container-sec-5-0-1" class="outline-4">
+<h4 id="sec-5-0-1">card_display_simple問題の開発木構造</h4>
+<div class="outline-text-4" id="text-5-0-1">
 
-<div id="orgparagraph1" class="figure">
+<div id="card_display/simple/2" class="figure">
 <p><a href="card_display_simple.png" alt="card_display/simple" title="card_display/simple"><img src="card_display_simple.png" alt="card_display/simple" title="card_display/simple" /></a>
 </p>
 <p><span class="figure-number">Figure 1:</span> card_display_simple 問題と card モジュール開発</p>
@@ -945,11 +1036,11 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline56" class="outline-4">
-<h4 id="orgheadline56">deck モジュールの開発木構造</h4>
-<div class="outline-text-4" id="text-orgheadline56">
+<div id="outline-container-sec-5-0-2" class="outline-4">
+<h4 id="sec-5-0-2">deck モジュールの開発木構造</h4>
+<div class="outline-text-4" id="text-5-0-2">
 
-<div id="orgparagraph2" class="figure">
+<div id="deck_module" class="figure">
 <p><a href="deck_dev.png" alt="deck module" title="deck module"><img src="deck_dev.png" alt="deck module" title="deck module" /></a>
 </p>
 <p><span class="figure-number">Figure 2:</span> game開発とcardモジュール/deckモジュール</p>
@@ -958,20 +1049,20 @@ wikipedia等で調べてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline77" class="outline-2">
-<h2 id="orgheadline77"><span class="section-number-2">6</span> deck/src/Makefile</h2>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> deck/src/Makefile</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline68" class="outline-3">
-<h3 id="orgheadline68"><span class="section-number-3">6.1</span> game/deck/src/Makefileの説明</h3>
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> game/deck/src/Makefileの説明</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 game/deck/src/Makefile について説明します:
 </p>
 </div>
 
-<div id="outline-container-orgheadline58" class="outline-4">
-<h4 id="orgheadline58">全体</h4>
-<div class="outline-text-4" id="text-orgheadline58">
+<div id="outline-container-sec-6-1-1" class="outline-4">
+<h4 id="sec-6-1-1">全体</h4>
+<div class="outline-text-4" id="text-6-1-1">
 <div class="org-src-container">
 
 <pre class="src src-c">.PHONY: clean install
@@ -1003,12 +1094,12 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-orgheadline67" class="outline-4">
-<h4 id="orgheadline67">各部分の説明</h4>
-<div class="outline-text-4" id="text-orgheadline67">
-</div><div id="outline-container-orgheadline59" class="outline-5">
-<h5 id="orgheadline59"></h5>
-<div class="outline-text-5" id="text-orgheadline59">
+<div id="outline-container-sec-6-1-2" class="outline-4">
+<h4 id="sec-6-1-2">各部分の説明</h4>
+<div class="outline-text-4" id="text-6-1-2">
+</div><div id="outline-container-sec-6-1-2-1" class="outline-5">
+<h5 id="sec-6-1-2-1"></h5>
+<div class="outline-text-5" id="text-6-1-2-1">
 <div class="org-src-container">
 
 <pre class="src src-c">.PHONY: clean install
@@ -1016,14 +1107,15 @@ clean:
 </div>
 <ul class="org-ul">
 <li>.PHONYは， ターゲット (ここでは，clean と install) が実物(ファイル等）
-でないことを宣言</li>
+でないことを宣言
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline60" class="outline-5">
-<h5 id="orgheadline60">gameプロジェクトの決まりを変数で表す</h5>
-<div class="outline-text-5" id="text-orgheadline60">
+<div id="outline-container-sec-6-1-2-2" class="outline-5">
+<h5 id="sec-6-1-2-2">gameプロジェクトの決まりを変数で表す</h5>
+<div class="outline-text-5" id="text-6-1-2-2">
 <div class="org-src-container">
 
 <pre class="src src-c">PROJ_HOME=/home/staff/suzuki/progs/game
@@ -1032,9 +1124,12 @@ clean:
 <ul class="org-ul">
 <li>変数への代入文
 <dl class="org-dl">
-<dt>PROJ_HOME</dt><dd>game プロジェクトのホームディレクトリを表す make の変数</dd>
-<dt>(no term)</dt><dd>PROJ_HOME の値を，文字列 「/home/staff/suzuki/progs/game」にする</dd>
-</dl></li>
+<dt> PROJ_HOME </dt><dd>game プロジェクトのホームディレクトリを表す make の変数
+</dd>
+<dt> (no term) </dt><dd>PROJ_HOME の値を，文字列 「/home/staff/suzuki/progs/game」にする
+</dd>
+</dl>
+</li>
 </ul>
 
 <div class="org-src-container">
@@ -1046,14 +1141,18 @@ PROJ_LIB=${PROJ_HOME}/lib
 <ul class="org-ul">
 <li>変数の値が表すこと
 <dl class="org-dl">
-<dt>PROJ_INCLUDE</dt><dd>game プロジェクトのヘッダ・ファイルの保存ディレクト
-リ。</dd>
-<dt>PROJ_LIB</dt><dd>game プロジェクトのライブラリ・ファイルの保存ディレク
-トリ。</dd>
-</dl></li>
+<dt> PROJ_INCLUDE </dt><dd>game プロジェクトのヘッダ・ファイルの保存ディレクト
+リ。 
+</dd>
+<dt> PROJ_LIB </dt><dd>game プロジェクトのライブラリ・ファイルの保存ディレク
+トリ。
+</dd>
+</dl>
+</li>
 
 <li>${PROJ_HOME} の意味
-変数 PROJ_HOME の値の参照</li>
+変数 PROJ_HOME の値の参照
+</li>
 </ul>
 
 <p>
@@ -1062,9 +1161,9 @@ PROJ_LIB=${PROJ_HOME}/lib
 </div>
 </div>
 
-<div id="outline-container-orgheadline61" class="outline-5">
-<h5 id="orgheadline61">Cコンパイラへの指示</h5>
-<div class="outline-text-5" id="text-orgheadline61">
+<div id="outline-container-sec-6-1-2-3" class="outline-5">
+<h5 id="sec-6-1-2-3">Cコンパイラへの指示</h5>
+<div class="outline-text-5" id="text-6-1-2-3">
 <div class="org-src-container">
 
 <pre class="src src-c">CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
@@ -1074,23 +1173,26 @@ PROJ_LIB=${PROJ_HOME}/lib
 <li>CFLAGS は変数。Cコンパイラの翻訳過程 (ソース・プログラムをオブジェク
 ト・プログラムに翻訳するまで)への指示を文字列で保持する:
 <dl class="org-dl">
-<dt>-g</dt><dd>名前の情報を残す</dd>
-<dt>-c</dt><dd></dd>
-
-<dt>-Wall</dt><dd>warnning を表示する</dd>
-<dt>-fPIC</dt><dd></dd>
-
-<dt>-I.</dt><dd>C コンパイラの include パスに，. (カレント・ディレクトリ) を追加する</dd>
-<dt>-I${PROJ_INCLUDE}</dt><dd>C コンパイラの include パスに，プロジェクトの
-ヘッダ・ファイルの保存ディレクトリを追加する</dd>
-</dl></li>
+<dt> -g </dt><dd>名前の情報を残す
+</dd>
+<dt> -c </dt><dd></dd>
+<dt> -Wall </dt><dd>warnning を表示する
+</dd>
+<dt> -fPIC </dt><dd></dd>
+<dt> -I. </dt><dd>C コンパイラの include パスに，. (カレント・ディレクトリ) を追加する
+</dd>
+<dt> -I${PROJ_INCLUDE} </dt><dd>C コンパイラの include パスに，プロジェクトの
+ヘッダ・ファイルの保存ディレクトリを追加する
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline62" class="outline-5">
-<h5 id="orgheadline62">ローダへの指示</h5>
-<div class="outline-text-5" id="text-orgheadline62">
+<div id="outline-container-sec-6-1-2-4" class="outline-5">
+<h5 id="sec-6-1-2-4">ローダへの指示</h5>
+<div class="outline-text-5" id="text-6-1-2-4">
 <div class="org-src-container">
 
 <pre class="src src-c">LDFLAGS = -lc
@@ -1101,15 +1203,17 @@ PROJ_LIB=${PROJ_HOME}/lib
 ブラリ，実行プログラムに結合まで)への指示を文字列で保持する:
 
 <dl class="org-dl">
-<dt>-lc</dt><dd>ライブラリのロードパスにある，libc.[a,so] をリンクする</dd>
-</dl></li>
+<dt> -lc </dt><dd>ライブラリのロードパスにある，libc.[a,so] をリンクする
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline63" class="outline-5">
-<h5 id="orgheadline63">libdeck.a の作成規則</h5>
-<div class="outline-text-5" id="text-orgheadline63">
+<div id="outline-container-sec-6-1-2-5" class="outline-5">
+<h5 id="sec-6-1-2-5">libdeck.a の作成規則</h5>
+<div class="outline-text-5" id="text-6-1-2-5">
 <div class="org-src-container">
 
 <pre class="src src-c">libdeck.a: deck.o 
@@ -1121,23 +1225,30 @@ PROJ_LIB=${PROJ_HOME}/lib
 <li>libdeck.a の更新時刻が deck.o のそれより古ければ，以下のコマンド行を
 実行する (ことで，libdeck.a を作成する)。
 <dl class="org-dl">
-<dt>rm -f $@</dt><dd><ul class="org-ul">
-<li>$@ は作成規則中のターゲット(この場合, libdeck.a) をあらわす変数</li>
-<li>rm -f ファイルの消去コマンド。-f は force の意。</li>
-</ul></dd>
-<dt>ar r $@ $^</dt><dd><ul class="org-ul">
-<li>$^ は作成規則中のソース全てをあらわす変数</li>
-<li>ar r で ライブラリ・ファイルを作成する</li>
-</ul></dd>
-</dl></li>
+<dt> rm -f $@ </dt><dd><ul class="org-ul">
+<li>$@ は作成規則中のターゲット(この場合, libdeck.a) をあらわす変数
+</li>
+<li>rm -f ファイルの消去コマンド。-f は force の意。
+</li>
+</ul>
+</dd>
+<dt> ar r $@ $^ </dt><dd><ul class="org-ul">
+<li>$^ は作成規則中のソース全てをあらわす変数
+</li>
+<li>ar r で ライブラリ・ファイルを作成する
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline64" class="outline-5">
-<h5 id="orgheadline64">deck モジュールの提供規則</h5>
-<div class="outline-text-5" id="text-orgheadline64">
+<div id="outline-container-sec-6-1-2-6" class="outline-5">
+<h5 id="sec-6-1-2-6">deck モジュールの提供規則</h5>
+<div class="outline-text-5" id="text-6-1-2-6">
 <p>
 game プロジェクトの決まりに従がい，ライブラリ・ファイルとヘッダ・ファ
 イルを所定の場所に置く:
@@ -1153,9 +1264,9 @@ game プロジェクトの決まりに従がい，ライブラリ・ファイル
 </div>
 </div>
 
-<div id="outline-container-orgheadline65" class="outline-5">
-<h5 id="orgheadline65">deck ソースプログラムのコンパイル</h5>
-<div class="outline-text-5" id="text-orgheadline65">
+<div id="outline-container-sec-6-1-2-7" class="outline-5">
+<h5 id="sec-6-1-2-7">deck ソースプログラムのコンパイル</h5>
+<div class="outline-text-5" id="text-6-1-2-7">
 <div class="org-src-container">
 
 <pre class="src src-c">deck.o: deck.c deck.h
@@ -1165,9 +1276,9 @@ game プロジェクトの決まりに従がい，ライブラリ・ファイル
 </div>
 </div>
 
-<div id="outline-container-orgheadline66" class="outline-5">
-<h5 id="orgheadline66">src ディレクトの掃除</h5>
-<div class="outline-text-5" id="text-orgheadline66">
+<div id="outline-container-sec-6-1-2-8" class="outline-5">
+<h5 id="sec-6-1-2-8">src ディレクトの掃除</h5>
+<div class="outline-text-5" id="text-6-1-2-8">
 <div class="org-src-container">
 
 <pre class="src src-c">clean:
@@ -1179,12 +1290,12 @@ game プロジェクトの決まりに従がい，ライブラリ・ファイル
 </div>
 </div>
 
-<div id="outline-container-orgheadline71" class="outline-3">
-<h3 id="orgheadline71"><span class="section-number-3">6.2</span> Makefile (card_display/simple)</h3>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Makefile (card_display/simple)</h3>
 <div class="outline-text-3" id="text-6-2">
-</div><div id="outline-container-orgheadline69" class="outline-4">
-<h4 id="orgheadline69">src/Makefile</h4>
-<div class="outline-text-4" id="text-orgheadline69">
+</div><div id="outline-container-sec-6-2-1" class="outline-4">
+<h4 id="sec-6-2-1">src/Makefile</h4>
+<div class="outline-text-4" id="text-6-2-1">
 <div class="org-src-container">
 
 <pre class="src src-c"># ~/progs/card_display/simple/src/Makefile
@@ -1209,9 +1320,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-orgheadline70" class="outline-4">
-<h4 id="orgheadline70">test/Makefile</h4>
-<div class="outline-text-4" id="text-orgheadline70">
+<div id="outline-container-sec-6-2-2" class="outline-4">
+<h4 id="sec-6-2-2">test/Makefile</h4>
+<div class="outline-text-4" id="text-6-2-2">
 <div class="org-src-container">
 
 <pre class="src src-c">.PHONY: clean
@@ -1242,8 +1353,8 @@ clean:
 </div>
 
 
-<div id="outline-container-orgheadline76" class="outline-3">
-<h3 id="orgheadline76"><span class="section-number-3">6.3</span> card/deck 用 Makefile との違い</h3>
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> card/deck 用 Makefile との違い</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 まず，card_display/simple，game/card， game/deck のMakefileの違いを
@@ -1256,9 +1367,9 @@ diff 関連コマンド等が，使えます。
 </p>
 </div>
 
-<div id="outline-container-orgheadline72" class="outline-4">
-<h4 id="orgheadline72">card_display/simple/src/Makefile と game/card/src/Makefile の違い</h4>
-<div class="outline-text-4" id="text-orgheadline72">
+<div id="outline-container-sec-6-3-1" class="outline-4">
+<h4 id="sec-6-3-1">card_display/simple/src/Makefile と game/card/src/Makefile の違い</h4>
+<div class="outline-text-4" id="text-6-3-1">
 <p>
 次の diff コマンドにより差分が取得できます:
 </p>
@@ -1300,9 +1411,12 @@ diffの出力結果の見方と，Makefileに於けるその意味を解説し�
 1a2,6：
 </p>
 <ul class="org-ul">
-<li>1 は ~/progs/card_display/simple/src/Makefileの1行目</li>
-<li>a は append</li>
-<li>2,6 ~/progs/game/card/src/Makefileの2~6行目です</li>
+<li>1 は ~/progs/card_display/simple/src/Makefileの1行目
+</li>
+<li>a は append 
+</li>
+<li>2,6 ~/progs/game/card/src/Makefileの2~6行目です
+</li>
 </ul>
 <pre class="example">
 &gt;
@@ -1314,14 +1428,16 @@ diffの出力結果の見方と，Makefileに於けるその意味を解説し�
 <ul class="org-ul">
 <li>この内容は，game プロジェクトのディレクトリと，その下にあるヘッダ
 ファイルとライブラリファイルの置き場所を, Makefile の変数に代入し
-ているものです。</li>
+ているものです。
+</li>
 </ul>
 
 <pre class="example">
 4a10,13
 </pre>
 <ul class="org-ul">
-<li>同様に，4行目の後に次の行が加えられています。</li>
+<li>同様に，4行目の後に次の行が加えられています。
+</li>
 </ul>
 
 <pre class="example">
@@ -1335,8 +1451,10 @@ diffの出力結果の見方と，Makefileに於けるその意味を解説し�
 これは，新たなルールを加わえています。
 </p>
 <ul class="org-ul">
-<li>libcard.a をプロジェクトのライブラリ・ディレクトリにコピーし，</li>
-<li>card.h をプロジェクトのインクルード・ディレクトリにコピーします。</li>
+<li>libcard.a をプロジェクトのライブラリ・ディレクトリにコピーし，
+</li>
+<li>card.h をプロジェクトのインクルード・ディレクトリにコピーします。
+</li>
 </ul>
 
 <pre class="example">
@@ -1344,7 +1462,8 @@ diffの出力結果の見方と，Makefileに於けるその意味を解説し�
 </pre>
 
 <ul class="org-ul">
-<li>16行目を25行目に変更を意味します。</li>
+<li>16行目を25行目に変更を意味します。
+</li>
 </ul>
 
 <pre class="example">
@@ -1354,15 +1473,16 @@ diffの出力結果の見方と，Makefileに於けるその意味を解説し�
 </pre>
 
 <ul class="org-ul">
-<li>*.a (静的ライブラリ)も消去するように変更されています。</li>
+<li>*.a (静的ライブラリ)も消去するように変更されています。
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline73" class="outline-4">
-<h4 id="orgheadline73">card_display/simple/test/Makefile と game/card/test/Makefile の違い</h4>
-<div class="outline-text-4" id="text-orgheadline73">
+<div id="outline-container-sec-6-3-2" class="outline-4">
+<h4 id="sec-6-3-2">card_display/simple/test/Makefile と game/card/test/Makefile の違い</h4>
+<div class="outline-text-4" id="text-6-3-2">
 <div class="org-src-container">
 
 <pre class="src src-sh">#~suzuki/progs/game/make-diff
@@ -1385,9 +1505,9 @@ diff ~/progs/card_display/simple/test/Makefile  ~/progs/game/card/test/Makefile
 </div>
 </div>
 
-<div id="outline-container-orgheadline74" class="outline-4">
-<h4 id="orgheadline74">game/card/src/Makefile と game/deck/src/Makefile の違い</h4>
-<div class="outline-text-4" id="text-orgheadline74">
+<div id="outline-container-sec-6-3-3" class="outline-4">
+<h4 id="sec-6-3-3">game/card/src/Makefile と game/deck/src/Makefile の違い</h4>
+<div class="outline-text-4" id="text-6-3-3">
 <div class="org-src-container">
 
 <pre class="src src-sh">#~suzuki/progs/game/make-diff
@@ -1426,9 +1546,9 @@ diff ~/progs/game/card/src/Makefile  ~/progs/game/deck/src/Makefile
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline75" class="outline-4">
-<h4 id="orgheadline75">game/card/test/Makefile と game/deck/test/Makefile の違い</h4>
-<div class="outline-text-4" id="text-orgheadline75">
+<div id="outline-container-sec-6-3-4" class="outline-4">
+<h4 id="sec-6-3-4">game/card/test/Makefile と game/deck/test/Makefile の違い</h4>
+<div class="outline-text-4" id="text-6-3-4">
 <div class="org-src-container">
 
 <pre class="src src-sh">#~suzuki/progs/game/make-diff
@@ -1483,39 +1603,40 @@ diff ~/progs/game/card/test/Makefile  ~/progs/game/deck/test/Makefile
 </div>
 </div>
 
-<div id="outline-container-orgheadline92" class="outline-2">
-<h2 id="orgheadline92"><span class="section-number-2">7</span> handモジュール開発文書の作成 講義への補足 2016-01-19</h2>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> handモジュール開発文書の作成 講義への補足 2016-01-19</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-orgheadline87" class="outline-4">
-<h4 id="orgheadline87">Hand モジュールの開発 2016/02/02</h4>
-<div class="outline-text-4" id="text-orgheadline87">
-</div><div id="outline-container-orgheadline86" class="outline-5">
-<h5 id="orgheadline86">01/26の説明への変更</h5>
-<div class="outline-text-5" id="text-orgheadline86">
-</div><div id="outline-container-orgheadline78" class="outline-6">
-<h6 id="orgheadline78">インタフェースの変更</h6>
-<div class="outline-text-6" id="text-orgheadline78">
+</div><div id="outline-container-sec-7-0-1" class="outline-4">
+<h4 id="sec-7-0-1">Hand モジュールの開発 2016/02/02</h4>
+<div class="outline-text-4" id="text-7-0-1">
+</div><div id="outline-container-sec-7-0-1-1" class="outline-5">
+<h5 id="sec-7-0-1-1">01/26の説明への変更</h5>
+<div class="outline-text-5" id="text-7-0-1-1">
+</div><div id="outline-container-sec-7-0-1-1-1" class="outline-6">
+<h6 id="sec-7-0-1-1-1">インタフェースの変更</h6>
+<div class="outline-text-6" id="text-7-0-1-1-1">
 <p>
 先週名前を決めましたが，しっくりこないので，変更したいです:
 </p>
 
 <ul class="org-ul">
-<li><p>
-<code>hand_card</code> を追加
-</p>
+<li><code>hand_card</code> を追加
 <pre class="example">
 Card hand_card(Hand, int);
-</pre></li>
+</pre>
+</li>
 
-<li><code>hand_calc</code> <code>&gt; =hand_judge</code> 名前の変更</li>
-<li><code>poker_hand_to_string</code> =&gt; =hand_pokerhand_to_string = 名前の変更</li>
+<li><code>hand_calc</code> <code>&gt; =hand_judge</code> 名前の変更
+</li>
+<li><code>poker_hand_to_string</code> =&gt; =hand_pokerhand_to_string = 名前の変更
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline79" class="outline-6">
-<h6 id="orgheadline79">judge 機能を独立に</h6>
-<div class="outline-text-6" id="text-orgheadline79">
+<div id="outline-container-sec-7-0-1-1-2" class="outline-6">
+<h6 id="sec-7-0-1-1-2">judge 機能を独立に</h6>
+<div class="outline-text-6" id="text-7-0-1-1-2">
 <p>
 役判定に関する機能を纏めることにしました。
 hand.c の中に全ての関数を詰め込まず，
@@ -1528,34 +1649,43 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </p>
 </div>
 
-<div id="outline-container-orgheadline80" class="outline-7">
-<h7 id="orgheadline80">ファイルの追加</h7>
-<div class="outline-text-7" id="text-orgheadline80">
+<div id="outline-container-sec-7-0-1-1-2-1" class="outline-7">
+<h7 id="sec-7-0-1-1-2-1">ファイルの追加</h7>
+<div class="outline-text-7" id="text-7-0-1-1-2-1">
 <ul class="org-ul">
 <li>src/judge.c
 <ul class="org-ul">
 <li>PokerHand hand_judge(Hand)
 <ul class="org-ul">
-<li>int hand_calc_pairs(Hand)</li>
-<li>bool hand_is_straight(Hand)</li>
-<li>bool hand_is_flush(Hand)</li>
-</ul></li>
-<li>char *hand_pokerhand_to_string(PokerHand)</li>
-</ul></li>
+<li>int hand_calc_pairs(Hand)
+</li>
+<li>bool hand_is_straight(Hand)
+</li>
+<li>bool hand_is_flush(Hand)
+</li>
+</ul>
+</li>
+<li>char *hand_pokerhand_to_string(PokerHand)
+</li>
+</ul>
+</li>
 
 <li>test/test_judge.c
 <ul class="org-ul">
-<li>void test_hand_judge()</li>
-<li>void test_hand_pokerhand_to_string()</li>
-</ul></li>
+<li>void test_hand_judge()
+</li>
+<li>void test_hand_pokerhand_to_string()
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline81" class="outline-7">
-<h7 id="orgheadline81">Makefileの変更</h7>
-<div class="outline-text-7" id="text-orgheadline81">
+<div id="outline-container-sec-7-0-1-1-2-2" class="outline-7">
+<h7 id="sec-7-0-1-1-2-2">Makefileの変更</h7>
+<div class="outline-text-7" id="text-7-0-1-1-2-2">
 <p>
 これに伴ない，src/, test/ の Makefile に変更が必要です。
 </p>
@@ -1567,13 +1697,16 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </div>
 </div>
 
-<div id="outline-container-orgheadline82" class="outline-7">
-<h7 id="orgheadline82">ペアの計算</h7>
-<div class="outline-text-7" id="text-orgheadline82">
+<div id="outline-container-sec-7-0-1-1-2-3" class="outline-7">
+<h7 id="sec-7-0-1-1-2-3">ペアの計算</h7>
+<div class="outline-text-7" id="text-7-0-1-1-2-3">
 <ul class="org-ul">
-<li>ある一枚のカードについて，</li>
-<li>そのカード自身を含め，5枚の手札について，</li>
-<li>同じ数のカードが，何枚あるか，</li>
+<li>ある一枚のカードについて，
+</li>
+<li>そのカード自身を含め，5枚の手札について，
+</li>
+<li>同じ数のカードが，何枚あるか，
+</li>
 </ul>
 
 <p>
@@ -1587,83 +1720,83 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </div>
 
 
-<div id="outline-container-orgheadline83" class="outline-8">
-<h8 id="orgheadline83">Highcardの場合は5</h8>
-<div class="outline-text-8" id="text-orgheadline83">
+<div id="outline-container-sec-7-0-1-1-2-3-1" class="outline-8">
+<h8 id="sec-7-0-1-1-2-3-1">Highcardの場合は5</h8>
+<div class="outline-text-8" id="text-7-0-1-1-2-3-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-right">&#xa0;</th>
-<th scope="col" class="org-right">1</th>
-<th scope="col" class="org-right">2</th>
-<th scope="col" class="org-right">3</th>
-<th scope="col" class="org-right">4</th>
-<th scope="col" class="org-right">5</th>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="right">1</th>
+<th scope="col" class="right">2</th>
+<th scope="col" class="right">3</th>
+<th scope="col" class="right">4</th>
+<th scope="col" class="right">5</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">2</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">2</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">3</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">3</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">4</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">4</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">5</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
+<td class="right">5</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -1671,83 +1804,83 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </div>
 
 
-<div id="outline-container-orgheadline84" class="outline-8">
-<h8 id="orgheadline84">ThreeCardsの場合は11</h8>
-<div class="outline-text-8" id="text-orgheadline84">
+<div id="outline-container-sec-7-0-1-1-2-3-2" class="outline-8">
+<h8 id="sec-7-0-1-1-2-3-2">ThreeCardsの場合は11</h8>
+<div class="outline-text-8" id="text-7-0-1-1-2-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-right">&#xa0;</th>
-<th scope="col" class="org-right">1</th>
-<th scope="col" class="org-right">2</th>
-<th scope="col" class="org-right">3</th>
-<th scope="col" class="org-right">4</th>
-<th scope="col" class="org-right">5</th>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="right">1</th>
+<th scope="col" class="right">2</th>
+<th scope="col" class="right">3</th>
+<th scope="col" class="right">4</th>
+<th scope="col" class="right">5</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">2</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">2</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">3</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">3</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">4</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">4</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">5</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
+<td class="right">5</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -1755,83 +1888,83 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </div>
 
 
-<div id="outline-container-orgheadline85" class="outline-8">
-<h8 id="orgheadline85">Fullehouseの場合は13</h8>
-<div class="outline-text-8" id="text-orgheadline85">
+<div id="outline-container-sec-7-0-1-1-2-3-3" class="outline-8">
+<h8 id="sec-7-0-1-1-2-3-3">Fullehouseの場合は13</h8>
+<div class="outline-text-8" id="text-7-0-1-1-2-3-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 
-<col  class="org-right" />
+<col  class="right" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-right">&#xa0;</th>
-<th scope="col" class="org-right">1</th>
-<th scope="col" class="org-right">2</th>
-<th scope="col" class="org-right">3</th>
-<th scope="col" class="org-right">4</th>
-<th scope="col" class="org-right">5</th>
+<th scope="col" class="right">&#xa0;</th>
+<th scope="col" class="right">1</th>
+<th scope="col" class="right">2</th>
+<th scope="col" class="right">3</th>
+<th scope="col" class="right">4</th>
+<th scope="col" class="right">5</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">2</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">2</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">3</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
+<td class="right">3</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">1</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">4</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
+<td class="right">4</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-right">5</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">1</td>
-<td class="org-right">1</td>
+<td class="right">5</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">&#xa0;</td>
+<td class="right">1</td>
+<td class="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -1842,12 +1975,12 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </div>
 </div>
 
-<div id="outline-container-orgheadline91" class="outline-4">
-<h4 id="orgheadline91">Hand モジュールの開発 2016/01/26</h4>
-<div class="outline-text-4" id="text-orgheadline91">
-</div><div id="outline-container-orgheadline88" class="outline-5">
-<h5 id="orgheadline88">おことわり</h5>
-<div class="outline-text-5" id="text-orgheadline88">
+<div id="outline-container-sec-7-0-2" class="outline-4">
+<h4 id="sec-7-0-2">Hand モジュールの開発 2016/01/26</h4>
+<div class="outline-text-4" id="text-7-0-2">
+</div><div id="outline-container-sec-7-0-2-1" class="outline-5">
+<h5 id="sec-7-0-2-1">おことわり</h5>
+<div class="outline-text-5" id="text-7-0-2-1">
 <p>
 時間が足りなく，この文書はまだ書きかけです。
 講義中に，書きながら進めたいと思います。
@@ -1858,14 +1991,15 @@ judge.c の中に役判定関係の関数を纏めることにします。
 </p>
 
 <ul class="org-ul">
-<li>~suzuki/lects/prog/lects/supplyments/hand_dev.org</li>
+<li>~suzuki/lects/prog/lects/supplyments/hand_dev.org 
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline89" class="outline-5">
-<h5 id="orgheadline89">Deckモジュール開発からHandモジュール開発へ</h5>
-<div class="outline-text-5" id="text-orgheadline89">
+<div id="outline-container-sec-7-0-2-2" class="outline-5">
+<h5 id="sec-7-0-2-2">Deckモジュール開発からHandモジュール開発へ</h5>
+<div class="outline-text-5" id="text-7-0-2-2">
 <p>
 先生のDeck開発文書を元に，自分のHand開発文書を作ってみましょう。
 文書を作ることが目的ではなく，開発を理解することが目的です。
@@ -1885,9 +2019,9 @@ Deckの開発と，同じ所，違がう所を理解しましょう。
 </p>
 </div>
 
-<div id="outline-container-orgheadline90" class="outline-6">
-<h6 id="orgheadline90">先生のDeck開発文書のcopy</h6>
-<div class="outline-text-6" id="text-orgheadline90">
+<div id="outline-container-sec-7-0-2-2-1" class="outline-6">
+<h6 id="sec-7-0-2-2-1">先生のDeck開発文書のcopy</h6>
+<div class="outline-text-6" id="text-7-0-2-2-1">
 <p>
 先生のpoker開発文書を全てcopyします:
 </p>
@@ -1937,62 +2071,65 @@ poker-dev/deck.org を元に，自分の hand-dev.org を作りましょう。
 </div>
 </div>
 
-<div id="outline-container-orgheadline93" class="outline-2">
-<h2 id="orgheadline93"><span class="section-number-2">8</span> gch問題</h2>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> gch問題</h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>しらなかった事実
 
 <ul class="org-ul">
-<li><p>
-card.h をコンパイルすると，card.gch が作られる
+<li>card.h をコンパイルすると，card.gch が作られる
 card.gch が存在すると，card.h は読まれず，card.gch 
 が使われる。
-</p>
 
 <p>
 <a href="https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html">Precompiled Headers - Using the GNU Compiler Collection (GCC)</a>
 </p>
 
 <ul class="org-ul">
-<li>s-: は，文法チェックだけされると考えていた</li>
-</ul></li>
+<li>s-: は，文法チェックだけされると考えていた
+</li>
+</ul>
+</li>
 
-<li><p>
-ヘッダファイルをあらかじめコンパイルすると，Cソースのコンパイ
+<li>ヘッダファイルをあらかじめコンパイルすると，Cソースのコンパイ
 ル時間が大幅に短くなる(ことがある)
-</p>
 
 <p>
 <a href="https://marupeke296.com/CPP_No14_PrecompiledHeader.html">その14 ドキドキしないプリコンパイル済みヘッダ</a>
 </p>
 
 <ul class="org-ul">
-<li><p>
-今から考えると，もっともだと思うが，今迄は，チェック以外意味
+<li>今から考えると，もっともだと思うが，今迄は，チェック以外意味
 がないと考えていた。
-</p>
 
 <p>
 card.gch って，コンパイラ内部のデータ構造のメモリダンプだよ.
-</p></li>
-</ul></li>
-</ul></li>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 
 <li>Makefile の小さなミス
 
 <ul class="org-ul">
 <li>gcc -c $^  =&gt; gcc -c card.h card.c となって，card.gch が <b>毎
-回</b> 作られていた。ので，問題は発生していなかった。</li>
-</ul></li>
+回</b> 作られていた。ので，問題は発生していなかった。
+</li>
+</ul>
+</li>
 
 <li>小さなミスの修正が招く大きな混乱
 
 <ul class="org-ul">
 <li>card.ghc を消さずに，Makefile のミスを修正した。以後，card.h
 はコンパイル時に読まれず，いくら card.h を修正しても状況は変わ
-らなくなった。</li>
-</ul></li>
+らなくなった。
+</li>
+</ul>
+</li>
 </ul>
 
 <p>
@@ -2001,16 +2138,14 @@ card.gch って，コンパイラ内部のデータ構造のメモリダンプ�
 </div>
 </div>
 
-<div id="outline-container-orgheadline96" class="outline-2">
-<h2 id="orgheadline96"><span class="section-number-2">9</span> emacs</h2>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> emacs</h2>
 <div class="outline-text-2" id="text-9">
-</div><div id="outline-container-orgheadline94" class="outline-3">
-<h3 id="orgheadline94"><span class="section-number-3">9.1</span> コマンド</h3>
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> コマンド</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
-<li><p>
-<a href="buffer.html#Top">buffer</a>
-</p>
+<li><a href="buffer">buffer</a>
 <pre class="example">
 C-x b
 C-x C-b
@@ -2019,11 +2154,10 @@ C-x 3
 C-x 1
 C-x 0
 C-x o
-</pre></li>
+</pre>
+</li>
 
-<li><p>
-<a href="file.html#Top">file</a>
-</p>
+<li><a href="file">file</a>
 <pre class="example">
 C-x C-f
 C-x 4 f
@@ -2032,142 +2166,173 @@ C-x 4 r
 C-x C-r
 C-x C-s
 C-x C-w  
-</pre></li>
+</pre>
+</li>
 
-<li><p>
-<a href="frame.html#Top">frame</a>
-</p>
+<li><a href="frame">frame</a>
 <pre class="example">
 C-x 5
 C-x 5 0
 C-x 5 o
-</pre></li>
+</pre>
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline95" class="outline-3">
-<h3 id="orgheadline95"><span class="section-number-3">9.2</span> 話題</h3>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> 話題</h3>
 <div class="outline-text-3" id="text-9-2">
 <ul class="org-ul">
-<li>elscreen バッファのタブ化</li>
-<li>org-mode</li>
+<li>elscreen バッファのタブ化
+</li>
+<li>org-mode
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline97" class="outline-2">
-<h2 id="orgheadline97"><span class="section-number-2">10</span> emacs org-mode</h2>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> emacs org-mode</h2>
 <div class="outline-text-2" id="text-10">
 <p>
--<a href="org.html#DocumentStructure">org#DocumentStructure</a>
+-<a href="org#DocumentStructure">org#DocumentStructure</a>
 </p>
 <ul class="org-ul">
-<li>見出し</li>
-<li>箇条書き</li>
-<li>文芸的プログラミング</li>
+<li>見出し
+</li>
+<li>箇条書き
+</li>
+<li>文芸的プログラミング
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline98" class="outline-2">
-<h2 id="orgheadline98"><span class="section-number-2">11</span> 講義内容へのpath</h2>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> 講義内容へのpath</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> ~suzuki/lects/prog/ の下に，講義資料があります。</li>
-<li class="off"><code>[&#xa0;]</code> ~suzuki/progs が先生の開発ディレクトリで，お手本のつもりです。</li>
+<li><code>[&#xa0;]</code> ~suzuki/lects/prog/ の下に，講義資料があります。
+</li>
+<li><code>[&#xa0;]</code> ~suzuki/progs が先生の開発ディレクトリで，お手本のつもりです。
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline106" class="outline-2">
-<h2 id="orgheadline106"><span class="section-number-2">12</span> モジュール関連技術</h2>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> モジュール関連技術</h2>
 <div class="outline-text-2" id="text-12">
-</div><div id="outline-container-orgheadline105" class="outline-4">
-<h4 id="orgheadline105">モジュールとは部品</h4>
-<div class="outline-text-4" id="text-orgheadline105">
-</div><div id="outline-container-orgheadline99" class="outline-5">
-<h5 id="orgheadline99">モジュール</h5>
-<div class="outline-text-5" id="text-orgheadline99">
+</div><div id="outline-container-sec-12-0-1" class="outline-4">
+<h4 id="sec-12-0-1">モジュールとは部品</h4>
+<div class="outline-text-4" id="text-12-0-1">
+</div><div id="outline-container-sec-12-0-1-1" class="outline-5">
+<h5 id="sec-12-0-1-1">モジュール</h5>
+<div class="outline-text-5" id="text-12-0-1-1">
 <p>
 部品の入れ物
 </p>
 <ul class="org-ul">
-<li>部品を実現する仕組み</li>
-<li>部品を提供する仕組み</li>
+<li>部品を実現する仕組み
+</li>
+<li>部品を提供する仕組み
+</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline100" class="outline-5">
-<h5 id="orgheadline100">部品，</h5>
-<div class="outline-text-5" id="text-orgheadline100">
+<div id="outline-container-sec-12-0-1-2" class="outline-5">
+<h5 id="sec-12-0-1-2">部品，</h5>
+<div class="outline-text-5" id="text-12-0-1-2">
 <ul class="org-ul">
-<li>ある機能の実体</li>
+<li>ある機能の実体
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline101" class="outline-5">
-<h5 id="orgheadline101">インタフェース</h5>
-<div class="outline-text-5" id="text-orgheadline101">
+<div id="outline-container-sec-12-0-1-3" class="outline-5">
+<h5 id="sec-12-0-1-3">インタフェース</h5>
+<div class="outline-text-5" id="text-12-0-1-3">
 <ul class="org-ul">
 <li>部品の利用に関する決まり
 <ul class="org-ul">
-<li>利用環境での決まり</li>
-<li>機能ごとの決まり</li>
-</ul></li>
+<li>利用環境での決まり
+</li>
+<li>機能ごとの決まり
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline102" class="outline-5">
-<h5 id="orgheadline102">部品の利用</h5>
-<div class="outline-text-5" id="text-orgheadline102">
+<div id="outline-container-sec-12-0-1-4" class="outline-5">
+<h5 id="sec-12-0-1-4">部品の利用</h5>
+<div class="outline-text-5" id="text-12-0-1-4">
 <ul class="org-ul">
-<li>その実装をしらずに，</li>
-<li>インターフェイスの呼び出しのみを通して，</li>
-<li>自分のプログラムから利用できる</li>
+<li>その実装をしらずに，
+</li>
+<li>インターフェイスの呼び出しのみを通して，
+</li>
+<li>自分のプログラムから利用できる
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline103" class="outline-5">
-<h5 id="orgheadline103">部品の提供</h5>
-<div class="outline-text-5" id="text-orgheadline103">
+<div id="outline-container-sec-12-0-1-5" class="outline-5">
+<h5 id="sec-12-0-1-5">部品の提供</h5>
+<div class="outline-text-5" id="text-12-0-1-5">
 <ul class="org-ul">
-<li>インターフェイスを守り</li>
-<li>ある独立した機能を実現し，</li>
-<li>他の人に機能を提供する</li>
+<li>インターフェイスを守り
+</li>
+<li>ある独立した機能を実現し，
+</li>
+<li>他の人に機能を提供する
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline104" class="outline-5">
-<h5 id="orgheadline104">Ubuntu/C言語を使ったモジュールプログラミング</h5>
-<div class="outline-text-5" id="text-orgheadline104">
+<div id="outline-container-sec-12-0-1-6" class="outline-5">
+<h5 id="sec-12-0-1-6">Ubuntu/C言語を使ったモジュールプログラミング</h5>
+<div class="outline-text-5" id="text-12-0-1-6">
 <ul class="org-ul">
 <li>利用側
 <ul class="org-ul">
-<li>あるライブラリの機能（関数）を見つけ，</li>
-<li>man やヘッダファイルを見て，APIを知る</li>
+<li>あるライブラリの機能（関数）を見つけ，
+</li>
+<li>man やヘッダファイルを見て，APIを知る
+</li>
 <li>ヘッダファイルをインクルードし，
 インターフェイスを守っていることを，
-コンパイラに検査してもらう</li>
-<li>自分のプログラムに，ライブラリの関数をリンクする</li>
-<li>プログラムをプロセスとして実行する</li>
-</ul></li>
+コンパイラに検査してもらう
+</li>
+<li>自分のプログラムに，ライブラリの関数をリンクする
+</li>
+<li>プログラムをプロセスとして実行する
+</li>
+</ul>
+</li>
 
 <li>提供側
 <ul class="org-ul">
-<li>ヘッダファイルを作成し</li>
-<li>ヘッダファイルをインクルードし，</li>
-<li>機能を関数として実装し，</li>
-<li>ヘッダファイルのAPIを遵守する</li>
-<li>オブジェクトファイルあるいはライブラリとして提供する</li>
-</ul></li>
+<li>ヘッダファイルを作成し
+</li>
+<li>ヘッダファイルをインクルードし，
+</li>
+<li>機能を関数として実装し，
+</li>
+<li>ヘッダファイルのAPIを遵守する
+</li>
+<li>オブジェクトファイルあるいはライブラリとして提供する
+</li>
+</ul>
+</li>
 </ul>
 <p>
 　　
@@ -2179,12 +2344,12 @@ C-x 5 o
 
 
 
-<div id="outline-container-orgheadline107" class="outline-2">
-<h2 id="orgheadline107"><span class="section-number-2">13</span> C-programming</h2>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> C-programming</h2>
 </div>
 
-<div id="outline-container-orgheadline108" class="outline-2">
-<h2 id="orgheadline108"><span class="section-number-2">14</span> emacs org-mode</h2>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> emacs org-mode</h2>
 <div class="outline-text-2" id="text-14">
 <p>
 ファイルに .org 拡張子をつけることで，emacs で開くと，org-mode に
@@ -2195,32 +2360,40 @@ C-x 5 o
 org-mode links
 </p>
 <ul class="org-ul">
-<li><a href="https://orgmode.org/ja">https://orgmode.org/ja</a></li>
-<li><a href="https://github.com/org-mode-doc-ja/org-ja/blob/master/README.org">org-ja/README.org at master · org-mode-doc-ja/org-ja</a></li>
-<li><a href="https://d.hatena.ne.jp/tamura70/20100203/org">Emacs org-modeを使ってみる: (1) インストール - 屯遁のパズルとプログラミングの日記</a></li>
-<li>info <a href="emacs.html#org"><a href="emacs.html#org">emacs#org</a></a></li>
+<li><a href="https://orgmode.org/ja">https://orgmode.org/ja</a>
+</li>
+<li><a href="https://github.com/org-mode-doc-ja/org-ja/blob/master/README.org">org-ja/README.org at master · org-mode-doc-ja/org-ja</a>
+</li>
+<li><a href="https://d.hatena.ne.jp/tamura70/20100203/org">Emacs org-modeを使ってみる: (1) インストール - 屯遁のパズルとプログラミングの日記</a>
+</li>
+<li>info <a href="emacs#org"><a href="emacs#org">emacs#org</a></a> 
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline109" class="outline-2">
-<h2 id="orgheadline109"><span class="section-number-2">15</span> emacs</h2>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> emacs</h2>
 <div class="outline-text-2" id="text-15">
 <ul class="org-ul">
 <li>emacs の使い方は，~suzuki/progs/lects/Emacs.org, org-mode の使い
-方は, ~suzuki/progs/lects/Org.org に書いていこうと思っています。</li>
+方は, ~suzuki/progs/lects/Org.org に書いていこうと思っています。
+</li>
 
 <li>emacs links
 <ul class="org-ul">
-<li><a href="https://emacs-jp.github.io/beginner.html">Emacs for Beginners - Emacs JP</a>  - <a href="emacs.html#Top">emacs</a> Emacs info</li>
-<li><a href="https://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html#SEC_Top">GNU Emacsマニュアル:(古いが日本語)</a></li>
-</ul></li>
+<li><a href="https://emacs-jp.github.io/beginner.html">Emacs for Beginners - Emacs JP</a>  - <a href="emacs">emacs</a> Emacs info
+</li>
+<li><a href="https://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html#SEC_Top">GNU Emacsマニュアル:(古いが日本語)</a>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline110" class="outline-2">
-<h2 id="orgheadline110"><span class="section-number-2">16</span> emacs org-mode+babel</h2>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> emacs org-mode+babel</h2>
 <div class="outline-text-2" id="text-16">
 <p>
 emacs org-mode の中に，文芸的プログラミングでき機能があります。説
@@ -2249,12 +2422,12 @@ cc example.c
 
 
 
-<div id="outline-container-orgheadline113" class="outline-2">
-<h2 id="orgheadline113"><span class="section-number-2">17</span> 文書の書き方，見え方などへの補足説明</h2>
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> 文書の書き方，見え方などへの補足説明</h2>
 <div class="outline-text-2" id="text-17">
-</div><div id="outline-container-orgheadline111" class="outline-4">
-<h4 id="orgheadline111">ページ内容の折り畳みと展開</h4>
-<div class="outline-text-4" id="text-orgheadline111">
+</div><div id="outline-container-sec-17-0-1" class="outline-4">
+<h4 id="sec-17-0-1">ページ内容の折り畳みと展開</h4>
+<div class="outline-text-4" id="text-17-0-1">
 <p>
 ページ右上に [Collapse all] [Expand all] があるページは，見出し単
 位で折り畳みと展開が可能です。
@@ -2262,9 +2435,9 @@ cc example.c
 </div>
 </div>
 
-<div id="outline-container-orgheadline112" class="outline-4">
-<h4 id="orgheadline112">title((cis.org s.org))</h4>
-<div class="outline-text-4" id="text-orgheadline112">
+<div id="outline-container-sec-17-0-2" class="outline-4">
+<h4 id="sec-17-0-2">title((cis.org s.org))</h4>
+<div class="outline-text-4" id="text-17-0-2">
 <p>
 「title((cis.org s.org)) 」という表示は，三つのリンクから成ってい
 ます。titleは, httpリンクです。cis.orgは講義環境で emacs org-mode
@@ -2277,7 +2450,8 @@ cc example.c
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-10-09 日 20:52</p>
+<p class="date">Created: 2016-10-11 火 07:48</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="https://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

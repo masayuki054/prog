@@ -1,8 +1,0 @@
-#+title: 6回目の講義のまとめ
-#+include: resume.org
-
-* レスポンスカード.6 2015.12.01
-#+include: response.org
-# #+include: plan.org
-
-

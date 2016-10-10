@@ -1,50 +1,98 @@
-
 # coding:utf-8
-
-ORGS = FileList["*.org"]
-HTMLS = ORGS.ext(".html")
+# coding:utf-8
+require 'date'
+require 'rake/clean'
 
 def myhome
   path = `pwd`.chomp.split("/").reverse
   depth = path.index("org")
   [depth+1, path[0..depth].reverse]
 end
+
+def org_sub_dir
+  (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
+end
+
+if File.exist?("Rakefile.setup.rb")
+  puts "loading Rakefile.setup.rb."
+  load "./Rakefile.setup.rb"
+else
+  SUBDIRS = org_sub_dir
+  EXCLUDES = FielList ["Makefile.org", "Rakefile.org", "log.org", "0*.org"]
+  ORGS = FileList["*.org"] - EXCLUDES
+  HTMLS = ORGS.ext(".html")
+end
+
+NOW = DateTime.now.to_s
+
+puts "HTMLS: #{HTMLS}"
+puts "SUBDIRS: #{SUBDIRS}"
+
+CLEAN.include(FileList["*~","#*"])
+CLOBBER.include(HTMLS)
+
+ORGS.each do |org|
+  html = File.basename(org, ".org")+".html"
+  @depends = `org_dependency.rb #{org}`.chomp.split(", ")
+  if @depends.size!=0 
+    file html => @depends.push(org) do |t|
+      sh "org2html #{org}"
+      deploy(t.name, "#{SITE}/#{DIR}")
+    end
+  end
+end
+
   
 depth,path = myhome
+
 MYHOME = "../"*depth
 ORG = "#{MYHOME}org/"
 SITE = "#{MYHOME}docs/"
 path.shift
 DIR = path.join("/")
 
-rule ".html" => ".org" do |t|
-   sh "org2html #{t.prerequisites.join(" ")}"
-   sh "mkdir -p $(SITE)/$(DIR)"
-   sh "cp #{t.name} $(SITE)/$(DIR)"
-   p "cp #{t.name} $(SITE)/$(DIR)"
+def deploy(file, dir)
+  p "deploying #{dir}#{file}"
+  sh "mkdir -p #{dir}"
+  File.open("#{dir}/#{file}", "w") do |target| 
+    all = File.read(file).gsub("http://", "https://")
+    all.gsub!('//www.pirilampo.org', '//wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme')
+    target.write(all)
+  end
+
+  sh "git add #{dir}/#{file}"
+  sh "git commit -m deploy_#{NOW} #{dir}/#{file}"
+
 end
 
-task :default => [:org2html, :deploy]
+rule ".html" => ".org" do |t|
+  sh "org2html #{t.prerequisites.join(' ')}"
+  deploy(t.name, "#{SITE}/#{DIR}")
+end
 
-task :org2html => HTMLS 
+task :default => [:org2html]
 
-task :deploy do 
-  HTMLS.each do |html|
-    sh "mkdir -p #{SITE}#{DIR}"
-    sh "cp -p #{html} #{SITE}#{DIR}"
-  end
+task :org2html => HTMLS do
+  puts "git push"
+  sh "git push"
 end
 
 task :subdirs do
-  HTMLS.delete("index.html")
-  HTMLS.each do |html|
-    subdir = File.basename(html,".html")
-    unless File.exist?("#{subdir}/Rakefile") 
-      sh "cp Rakefile #{subdir}/"
-    end
-    p  Dir.pwd
+  org_sub_dir.each do |subdir|
     Dir.chdir(subdir) do
+      puts `pwd`
       sh "rake"
+    end
+  end
+end    
+
+task :subdirs_install_rakefile do
+  org_sub_dir.each do |subdir|
+    Dir.chdir(subdir) do
+      puts `pwd`
+      sh "cp ../Rakefile.org ."
+      sh "cp ../Rakefile ."
+      sh "rake subdirs_install_rakefile"
     end
   end
 end    

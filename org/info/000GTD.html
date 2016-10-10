@@ -6,9 +6,9 @@
 <!-- 2016-10-09 日 19:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>progs2016</title>
+<title></title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
+<meta  name="author" content="m" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -143,18 +143,58 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">progs2016</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline3">1. prog/site/info</a>
+<ul>
+<li><a href="#orgheadline1">1.1. contents.org</a></li>
+<li><a href="#orgheadline2">1.2. map.org</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">1</span> prog/site/info</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> contents.org</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
-<a href="./">ホーム</a> /
-<a href="./lects.html">講義</a> / 
-<a href="./supplement.html">説明</a> / 
-<a href="./org-docs.html">資料</a> / 
-<a href="./memos.html">雑メモ</a> /
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a>
+info が提供するコンテンツ
 </p>
 </div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> map.org</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+map.org はサイトマップに include される
+ディレクトリにあるコンテンツへのリンク，
+そのサブディレクリのマップのインクルード
+</p>
+
+<p>
+こんな感じ: 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-ruby">sitemap = Dir.chdir('progs/site') do
+  [".", "info", "lects", "org-docs"].each do |dir|
+    Dir.glob(*.html).map { |c|  to_link (c) }
+    Dir.glob("*/").map { |d| "#+include: #{d}/map.org" }
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
-<p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
+<p class="author">Author: m</p>
 <p class="date">Created: 2016-10-09 日 19:46</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

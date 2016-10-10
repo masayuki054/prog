@@ -1,0 +1,830 @@
+* card\_display\_simple
+
+** 問題
+
+      : % card_display heart 10 
+      : > H0 	     # と表示される
+
+      : % card_display spade 13 
+      : > SK 	     # と表示される
+
+      : % card_display diamond 1 
+      : > DA 	     # と表示される
+
+      : % card_display club 2
+      : > C2           # と表示される
+
+
+** 解プログラムの作成の流れ
+
+*** simple\_-1.c
+
+**** やるべきこと
+
+     - コマンドラインとのやり取りは一旦忘れる (後で)。
+     - スーツと番号の文字列から表示用文字列を作る。
+     - 表示用文字列を画面に表示する。
+
+***** 部分的にプログラムを書いてみる:
+      
+     : str = card_string("heart", "10");
+     : puts(str);
+
+***** よさそうなので，コマンドラインから文字列もらうように書く 
+
+#+BEGIN_SRC c
+// 入力
+suit_string = argv[1];
+no_string = argv[2];
+str = card_string(suit_string, no_string);
+puts(str);
+#+END_SRC
+
+よさそう。
+
+**** ~card_string~ 関数について考える
+
+- ~card_string~ という名前をもった処理
+- スーツと番号の文字列をもらって，
+- 表示用文字列を作って返す
+
+つまり, 下記の宣言となります:
+#+BEGIN_SRC c
+char *card_string(char *, char *);
+#+END_SRC
+
+**** ~card_string~ 関数を使うmainを書く
+
+忘れないうちに，main関数を書いてみる:
+
+#+BEGIN_SRC c :tangle simple_main.c
+// simple.c#main()
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+#+END_SRC     
+
+よさそう。とりあえず，main 関数はこれで完成。
+
+
+**** ~char *card_string(char *, char *)~ の入口出口ついて考える
+
+入力引数の型と戻り値の型は既に決っているので，変数の名前を決めます:
+
+- 最初の引数の名前は，suit_string (札種を表す文字列の意)
+- 最初の引数の名前は，no_string (札番号を表す文字列の意)
+
+ここまで決めると，card_stringの大枠ができます:
+#+BEGIN_SRC c
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  //  result = 変換(suit_string, no_string)
+  result = "SA";
+
+  return result;
+}
+
+#+END_SRC
+
+**** simple_-1.c 
+
+ simple0.c の要件を満しませんが，一応コンパイルして実行できるものがで
+ きました。
+
+#+BEGIN_SRC c :tangle simple_-1.c
+// simple_-1.c
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  //  result = 変換(suit_string, no_string)
+  result = "SA";
+
+  return result;
+}
+ #+END_SRC
+
+**** simple_-1.c をコンパイルする Makefile
+
+#+BEGIN_SRC makefile :tangle Makefile_-1
+.PHONY: all clean
+all: simple_-1
+
+simple_-1: simple_-1.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+#+END_SRC
+
+**** make
+#+BEGIN_SRC sh :exports both
+make -f Makefile_-1
+
+#+END_SRC
+
+#+RESULTS:
+: gcc -o simple_-1 simple_-1.c
+
+**** 実行
+
+
+
+#+BEGIN_SRC sh
+./simple_-1 "aho" "baka"
+
+#+END_SRC
+
+#+RESULTS:
+: SA
+
+
+*** simple_0.c
+これから要件を満たすように変更していきましょう。
+
+そのためには，card_string 関数を正しく作りなおせば良いでしょう。
+
+そしてそのためには，
+: result = "SA"; 
+
+と書いていた部分を正しい処理に書き換えます。
+
+#+BEGIN_SRC c
+{ 
+  char suit_c, no_c;
+  char suit_char(char *);
+  char no_char(char *);
+  
+  suit_c = suit_char(suit_string);
+  no_c = no_char(no_string);
+  result = (char *) malloc(3);
+  result[0] = suit_c;
+  result[1] = no_c;
+  result[2] = '\0';
+}
+ 
+#+END_SRC
+
+この中で，また，新しい関数を作ることになりました。
+
+**** suit_char 関数
+
+ #+BEGIN_SRC c
+char suit_char(char *);
+ #+END_SRC
+
+ #+BEGIN_SRC c
+char suit_char(char *suit)
+{
+  if (strcmp("spade", suit)) return 'S';
+  if (strcmp("heart", suit)) return 'H';
+  if (strcmp("diamond", suit)) return 'D';
+  if (strcmp("club", suit)) return 'C';
+  return('?');
+} 
+ #+END_SRC
+
+
+**** no_char 関数
+ #+BEGIN_SRC c
+char no_char(char *);
+ #+END_SRC
+
+ #+BEGIN_SRC c
+char no_char(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) return 'A';
+  if (n==13) return 'K';
+  if (n==12) return 'Q';
+  if (n==11) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+ #+END_SRC
+
+
+**** simple_0.c
+ まとめると:
+
+ #+BEGIN_SRC c :tangle simple_0.c
+// simple_0.c
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  { 
+    char suit_c, no_c;
+    char suit_char(char *);
+    char no_char(char *);
+  
+    suit_c = suit_char(suit_string);
+    no_c = no_char(no_string);
+    result = (char *) malloc(3);
+    result[0] = suit_c;
+    result[1] = no_c;
+    result[2] = '\0';
+  }
+
+  return result;
+}
+
+
+char suit_char(char *suit)
+{
+  if (strcmp("spade", suit)==0) return 'S';
+  if (strcmp("heart", suit)==0) return 'H';
+  if (strcmp("diamond", suit)==0) return 'D';
+  if (strcmp("club", suit)==0) return 'C';
+  return('?');
+} 
+
+char no_char(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) return 'A';
+  if (n==13) return 'K';
+  if (n==12) return 'Q';
+  if (n==11) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+ #+END_SRC
+
+ Makefile は変更ありません:
+
+ #+BEGIN_SRC makefile :tangle Makefile_0
+.PHONY: all clean
+all: simple_0
+
+simple_0: simple_0.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+ #+END_SRC
+
+**** make
+#+BEGIN_SRC sh :exports both
+make -f Makefile_0
+
+#+END_SRC
+
+#+RESULTS:
+: cc     simple_0.c   -o simple_0
+
+#+BEGIN_SRC sh
+./simple_0 heart 10
+./simple_0 spade 1
+./simple_0 diamond 13
+./simple_0 club 2
+
+#+END_SRC
+
+#+RESULTS:
+| H0 |
+| SA |
+| DK |
+| C2 | 
+
+simple_0.c 完成です。
+
+
+*** card_string をテストするコード
+
+card_string は関数で，満すべき性質は下記のように書くことができます:
+#+BEGIN_SRC c 
+
+if (strcmp(card_string("diamond", "1"), "DA")==0) puts("OK"); else puts("NG"); 
+if (strcmp(card_string("spade", "13"), "SK")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("spade", "12"), "SQ")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("spade", "11"), "SJ")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("heart", "10"), "H0")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("club", "9"), "C9")==0) puts("OK"); else puts("NG"); 
+if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG"); 
+#+END_SRC
+
+main関数の中で，card_string が呼ばれる前に，このテストを実行し，
+card_string の実装が正しいことを，プログラム自身で確かめるようにしてみ
+ます。
+
+
+#+BEGIN_SRC c :tangle simple_0.1.c
+// simple_0.1.c
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str;
+
+  {
+    void test_card_string(void);
+
+    test_card_string();
+  }
+
+  str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+
+void
+test_card_string(void)
+{
+  if (strcmp(card_string("diamond", "1"), "DA")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "13"), "SK")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "12"), "SQ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "11"), "SJ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("heart", "10"), "H0")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "9"), "C9")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG");
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  { 
+    char suit_c, no_c;
+    char suit_char(char *);
+    char no_char(char *);
+  
+    suit_c = suit_char(suit_string);
+    no_c = no_char(no_string);
+    result = (char *) malloc(3);
+    result[0] = suit_c;
+    result[1] = no_c;
+    result[2] = '\0';
+  }
+
+  return result;
+}
+
+char suit_char(char *suit)
+{
+  if (strcmp("spade", suit)==0) return 'S';
+  if (strcmp("heart", suit)==0) return 'H';
+  if (strcmp("diamond", suit)==0) return 'D';
+  if (strcmp("club", suit)==0) return 'C';
+  return('?');
+} 
+
+char no_char(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) return 'A';
+  if (n==13) return 'K';
+  if (n==12) return 'Q';
+  if (n==11) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+#+END_SRC
+
+#+BEGIN_SRC makefile :tangle Makefile_0.1 :exports none
+.PHONY: all clean
+all: simple_0.1
+
+simple_0.1: simple_0.1.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+ #+END_SRC
+
+**** make
+#+BEGIN_SRC sh :exports both
+make -f Makefile_0.1
+#+END_SRC
+
+#+RESULTS:
+: gcc -o simple_0.1 simple_0.1.c
+
+#+BEGIN_SRC sh
+./simple_0.1 heart 13
+
+#+END_SRC
+
+#+RESULTS:
+| OK |
+| OK |
+| OK |
+| OK |
+| OK |
+| OK |
+| OK |
+| HK |
+
+OKですね。
+
+**** simple_0.1.c のまとめ
+次の関数を作った:
+- ~char * card_string(char *suit_string, char *no_string);~ ::
+     
+- ~char suit_char(char *suit);~ ::
+     
+- ~char no_char(char *no);~ ::
+
+- ~void test_card_string(void);~ ::
+     
+
+*** simple_1.c カードの作成
+
+simple_0.1.c では，カードという *物* が現われていません。
+
+今後，複数のカードの入力や，それらのソート機能が求められるため，
+カードを作ることにします。
+
+**** [[https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)][リファクタリング (プログラミング) - Wikipedia]] とは
+
+#+BEGIN_QUOTE
+リファクタリング (refactoring) とは、コンピュータプログラミングにおい
+て、プログラムの外部から見た動作を変えずにソースコードの内部構造を整理
+することである。
+#+END_QUOTE
+
+**** card_string関数のリファクタリング
+
+     入力の suit_string と no_string から，表示文字列を作る前に，
+     いったん一枚のカードを作ることにします。
+
+     すると，カードを作る前と後の処理を別々に考えやすくなります。
+     ~card_string~ 関数の処理の流れは次のようになります:
+
+     - あるカード = カードの作成(suit_string, no_string)
+       
+       ~Card a_card = card_new(suit_string, no_string);~
+
+     - result = カードの表示文字列を作る(あるカード)
+
+       ~result = card_to_string(a_card);~
+
+     カードを作るということは，カードの構造を持った構造体を作ることに
+     なります。
+
+
+**** カード構造体を作る
+
+     取り敢えず，カードが持つ情報は次の2つとします:
+
+     - スーツを表わす整数値
+     - 番号を表わす整数値
+
+     どちらも整数値としたのは，カードの強さを，数の大小関係で表わすた
+     めです。
+
+     スーツの整数値と番号の整数値をもつ構造体型に，_Cardと名前を付けて，
+     定義します:
+
+#+BEGIN_SRC c
+struct _Card {
+  int suit;
+  int no;
+};
+#+END_SRC     
+
+#+BEGIN_SRC c 
+typdef struct _Card Card;
+#+END_SRC     
+
+    カードを作るための関数を作ります:
+
+#+BEGIN_SRC c
+Card card_new(int suit, int no) 
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+
+  return new;
+}
+#+END_SRC
+
+#+BEGIN_SRC c
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  {
+    Card a_card;
+
+    Card card_new(char *, char *);
+    char *card_to_string(Card);
+    
+    a_card = card_new(suit_string, no_string);
+    result = card_to_string(a_card);
+  }
+
+  return result;
+}
+#+END_SRC
+
+ここで，スーツや番号を表すのに，文字列を使っているのが気になります。
+後の課題で，カードをソートすることを考えると，スーツと番号のプロ
+グラム内部の表現は，整数がいいでしょう。
+
+***** スーツを整数に
+
+ card_string 関数内から呼び出す形を書いてみます:
+
+ #+BEGIN_SRC c
+int suit = suit_from_string(suit_string);
+ #+END_SRC
+
+ いいでしょう。
+
+ 次に，suit_from_string が満たすべきことをCで書いてみましょう:
+
+ #+BEGIN_SRC c
+
+if (suit_from_string("spade") != 4) puts("error");
+if (suit_from_string("heart") != 3) puts("error");
+if (suit_from_string("diamond") != 2) puts("error");
+if (suit_from_string("club") != 1) puts("error");
+
+ #+END_SRC
+
+ うまく使えそうです。これでいいでしょう。
+ すると，suit_from_string のプロトタイプ宣言が書けます:
+
+ #+BEGIN_SRC c
+
+int suit_from_string(char *);
+
+ #+END_SRC
+
+***** 番号を数字に
+ 続いて，カード番号について，プログラム内部表現への変換を，スーツ同様に，
+ 書いてみましょう:
+
+ #+BEGIN_SRC c
+int no =  no_from_string(no_string);
+ #+END_SRC
+
+ 次に，no_from_string が満たすべきことをCで書いてみましょう:
+ #+BEGIN_SRC c
+
+if ( no_from_string("13") == 13 ) puts("OK"); else puts("NG");
+if ( no_from_string("12") == 12 ) puts("OK"); else puts("NG");
+if ( no_from_string("2") == 2 ) puts("OK"); else puts("NG");
+if ( no_from_string("1") == 14 ) puts("OK"); else puts("NG");
+
+ #+END_SRC
+
+**** カードを文字列にする
+
+****** スーツと番号を表す数字をそれぞれ文字に
+
+       - suit_to_char(card)
+       - no_to_string(card)
+    
+
+ card_string関数の処理は，
+
+ - suit_str と no_strからカードを作り，
+ - カードの表示文字列をつくる
+
+ 処理に名前をつけて，card_string関数の中身を書きます:
+
+ #+BEGIN_SRC c
+card = card_new(suit, no);
+str = card_to_string(card)
+ #+END_SRC
+
+*** simple_1.c 
+
+#+BEGIN_SRC c :tangle simple_1.c
+// simple_1.c
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+
+struct _Card {
+  int suit;
+  int no;
+};
+
+typedef struct _Card Card;
+
+char *card_string(char *, char *);
+
+int suit_from_string(char *);
+int no_from_string(char *);
+
+Card card_new(int, int);
+
+char *card_to_string(Card);
+char suit_to_char(Card);
+char no_to_char(Card);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str;
+
+  {
+    void test_card_string(void);
+    void test_suit_from_string(void);
+    void test_no_from_string(void);
+
+    test_suit_from_string();
+    test_no_from_string();
+    test_card_string();
+  }
+
+  str = card_string(suit_string, no_string);
+  puts(str);
+
+  exit(0);
+}
+
+void
+test_card_string(void)
+{
+  if (strcmp(card_string("diamond", "1"), "DA")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "13"), "SK")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "12"), "SQ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "11"), "SJ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("heart", "10"), "H0")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "9"), "C9")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG");
+}
+
+void
+test_suit_from_string(void)
+{
+if (suit_from_string("spade") != 4) puts("error");
+if (suit_from_string("heart") != 3) puts("error");
+if (suit_from_string("diamond") != 2) puts("error");
+if (suit_from_string("club") != 1) puts("error");
+}
+
+void
+test_no_from_string(void)
+{
+  if ( no_from_string("13") == 13 ) puts("OK"); else puts("NG");
+  if ( no_from_string("12") == 12 ) puts("OK"); else puts("NG");
+  if ( no_from_string("2") == 2 ) puts("OK"); else puts("NG");
+  if ( no_from_string("1") == 14 ) puts("OK"); else puts("NG");
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  {
+    int suit = suit_from_string(suit_string);
+    int no = no_from_string(no_string);
+    Card a = card_new(suit, no);
+    
+    result = card_to_string(a);
+  }
+
+  return result;
+}
+
+Card card_new(int suit, int no) 
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+
+  return new;
+}
+
+char *
+card_to_string(Card card)
+{
+  char *str = (char *) malloc(3);
+  char suitc = suit_to_char(card);
+  char noc = no_to_char(card);
+
+  str[0] = suitc;
+  str[1] = noc;
+  str[2] = 0;
+
+  return str;
+}
+
+int suit_from_string(char *suit)
+{
+  if (strcmp("spade", suit)==0) return 4;
+  if (strcmp("heart", suit)==0) return 3;
+  if (strcmp("diamond", suit)==0) return 2;
+  if (strcmp("club", suit)==0) return 1;
+  return('?');
+} 
+
+# define SPADE 4
+# define HEART 3
+# define DIAMOND 2
+# define CLUB 1
+
+char
+suit_to_char(Card c)
+{
+  if (c.suit==SPADE) return 'S';
+  if (c.suit==HEART) return 'H';
+  if (c.suit==DIAMOND) return 'D';
+  if (c.suit==CLUB) return 'C';
+  return('?');
+} 
+
+# define ACE 14
+# define KING 13
+# define QUEEN 12
+# define JACK 11
+
+int no_from_string(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) n = ACE;
+  return n;
+}
+
+char
+no_to_char(Card c)
+{
+  int n = c.no;
+
+  if (n==ACE) return 'A';
+  if (n==KING) return 'K';
+  if (n==QUEEN) return 'Q';
+  if (n==JACK) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+
+#+END_SRC
+
+#+BEGIN_SRC makefile :tangle Makefile_1
+.PHONY: all clean
+all: simple_1
+
+simple_1: simple_1.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+#+END_SRC

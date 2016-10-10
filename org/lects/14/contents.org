@@ -1,9 +1,0 @@
-#+title: 講義のまとめ
-
-
-* 講義の纏め
-#+include: resume.org :minlevel 2
-
-* response (13,14)
-#+include: response.org minlevel 2
-

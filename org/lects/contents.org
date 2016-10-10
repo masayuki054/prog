@@ -1,4 +1,11 @@
+* お知らせ
 #+include: announce.org 
-#+include: preface.org  
+* はじめに
+#+include: preface.org
+
+* 2回目
+#+include: 02/plan.org
+* 1回目
 #+include: 01/plan.org 
+
 

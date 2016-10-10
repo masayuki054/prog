@@ -1,5 +1,5 @@
 #+setupfile: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
-#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+include: ../../info/common-header.org
 #+TITLE: 1回目
 
 #+include: contents.org

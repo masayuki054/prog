@@ -1,4 +1,4 @@
-#+title: 2016
+#+title: progs2016
 #+author: suzuki@cis.iwate-u.ac.jp
 [[./][ホーム]] /
 [[./lects.org][講義]] / 

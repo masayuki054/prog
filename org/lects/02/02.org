@@ -1,33 +1,18 @@
 * 1回目 (10/04) の講義実施内容
 
-** Done 講義紹介 
-*** Done 講義コンテンツ
-    CLOSED: [2016-10-09 日 13:05]
-    - 学科のサイト ::
-         http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016 
+- 学科のサイト :: http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016 
 	 講義中の変更を反映する予定です。
-
-    - publicサイト ::
+- publicサイト ::
       http://masayuki054.github.io/prog
+- リポジトリ :: http://github.com/masayuki054/prog/ 
+- ワーキングコピー :: file:~suzuki/prog.git/
 
-    - リポジトリ :: http://github.com/masayuki054/prog/ 
+- [[./supplement.org][説明]]::ガイダンス
+- 講師 [[http://wiki.cis.iwate-u.ac.jp/~suzuki/][自己紹介]]
 
-    - ワーキングコピー :: file:~suzuki/prog.git/
+- モジュラープログラミングについて軽く紹介
 
-
-*** Done 講義の目的など 
-    CLOSED: [2016-10-09 日 13:05]
-
-    [[./supplement.org][説明]]::ガイダンス
-
-** Done 講師
-   CLOSED: [2016-10-09 日 13:05]
-
-   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/][自己紹介]]
-
-** prog2016 導入
-
-   progs の導入に関連する内容
+#+BEGIN_SRC org :tangle ../../supplement/modular-programming.org
 
 *** Todo モジュラープログラミングについて
     SCHEDULED: <2016-11-08 火>
@@ -60,6 +45,8 @@
 
 - [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
 
+
+#+END_SRC
 
 *** Todo テストによる開発の説明 
     SCHEDULED: <2016-10-25 火>
@@ -136,7 +123,7 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 
 ** Doing はじまり
 
-*** Done ~/progs の作成 [0/1]
+*** Done ~/progs の作成 [2/2]
     CLOSED: [2016-10-09 日 13:15]
     
  - [X] 講義用のディレクトリを作成します：
@@ -161,7 +148,7 @@ ls -R
  - ./game: ポーカーゲーム開発用
  #+END_SRC
 
-**** Doing emacs 
+**** emacs 
 
 - [[info:Emacs]], info:org-mode を教え,
 - org-mode のことを少し説明する，かな
@@ -175,7 +162,7 @@ ls -R
 **** 先生のprogs/
      - file:~suzuki/progs がお手本です。
 
-*** Doing 課題: card_display問題を始める
+*** 課題: card_display問題を始める
 
 [[./org-docs/card-display.org][カード表示問題の始まり]]の card_display_simple 問題を読んで，
 card_display_simple の解プログラムと開発ドキュメントを下記のように作成
@@ -204,7 +191,7 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
     - ~/progs/card_display/first/Makefile ::
       simple.c をコンパイルするための規則を書いてください。
 
-*** Todo テストとテストによる開発とは 
+*** テストとテストによる開発とは 
 
 何回かかけて，回下記の3つの資料を使って，テストによる開発を経験します。
 

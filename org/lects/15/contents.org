@@ -1,3 +1,0 @@
-#+title: 講義予定
-* 講義予定
-#+include: plan.org

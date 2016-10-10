@@ -1,7 +1,0 @@
-#+include: resume.org
-
-#+include: response.org :minlevel 1
-
-##+include: plan.org
-
-

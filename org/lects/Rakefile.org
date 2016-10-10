@@ -12,7 +12,7 @@
 # coding:utf-8
 require 'date'
 
-SUBDIRS = ["lects", "org-docs", "memos", "supplement"]
+SUBDIRS = []
 EXCLS = ["log.org", "contents.org", "Makefile.org", "Rakefile.org"]
 ORGS = FileList["*.org"] - EXCLS
 HTMLS = ORGS.ext(".html")
@@ -28,10 +28,6 @@ def myhome
   path = `pwd`.chomp.split("/").reverse
   depth = path.index("org")
   [depth+1, path[0..depth].reverse]
-end
-
-def org_sub_dir
-  (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
 end
   
 depth,path = myhome
@@ -61,7 +57,7 @@ rule ".html" => ".org" do |t|
   deploy(t.name, "#{SITE}/#{DIR}")
 end
 
-task :default => [:org2html, :subdirs]
+task :default => :org2html
 
 task :org2html => HTMLS do
 
@@ -71,25 +67,18 @@ task :org2html => HTMLS do
 end
 
 task :subdirs do
-  org_sub_dir.each do |subdir|
+  HTMLS.delete("index.html")
+  HTMLS.each do |html|
+    subdir = File.basename(html,".html")
+    unless File.exist?("#{subdir}/Rakefile") 
+      sh "cp Rakefile #{subdir}/"
+    end
+    p  Dir.pwd
     Dir.chdir(subdir) do
-      puts `pwd`
       sh "rake"
     end
   end
 end    
-
-task :subdirs_install_rakefile do
-  org_sub_dir.each do |subdir|
-    Dir.chdir(subdir) do
-      puts `pwd`
-      sh "cp ../Rakefile.org ."
-      sh "cp ../Rakefile ."
-      sh "rake subdirs_install_rakefile"
-    end
-  end
-end    
-
 #+end_src
 
 #+BEGIN_SRC sh  :results output 

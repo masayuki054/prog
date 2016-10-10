@@ -1,382 +1,72 @@
-* 講義予定.02
-** Todo はじめに 
-
-   - サイトの構成と内容を大きく変更しました。まだ書き換え中のものもあり
-     ます。おかしなところや改善点を教えて下さい。
-
-*** 提案 [0/2]
-
+* 2回目 (10/11) の講義内容
+** 提案
    - [ ] 各列最後尾に，TAさんの席を作りたいと思います。協力お願いします。
+   - [ ] 各自の ~/progs/documents/の下に講義のメモを作成しませんか？ 
 
-   - [ ] 各自の ~/progs/lects/の下，02.orgとかに講義のメモを作成しませ
-     んか？ 
-
-** Todo 前回の講義のまとめ
-   - [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/01/index.html][講義.01のまとめ]] (([[file+emacs:~suzuki/lects/prog/site/lects/01/index.org][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/lects/01/index.org][@s.org]]))
-
-** Todo 講義紹介続き
-
-   サイトをリニューアルしたので，もう一度説明:
-   - 講義サイト renewal
-     [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][ソフトウェア構成論]] (([[~suzuki/lects/prog/site/index.org][cis-org]] [[~/COMM/Lects/prog/site/index.org][s-org]])) 
-
-** Doing ~/progs/ のはじまりの確認
-
-*** ~/progs 講義用のディレクトリの確認
-
-#+BEGIN_SRC sh :results output example :exports results
-# ~/progsの表示スクリプトの実行
-~/COMM/bin/lstree ~/progs
-#+END_SRC
-
-こんなふうにディレクトリを作ります:
-#+begin_example 
-~/progs
-+-README.org
-+-card_display
-+-cutter
-+-game-+-card
-|      +-deck
-|      +-hand
-|      +-poker
-+-lects
-#+end_example
-
-*** ~/progs/README.org の確認
-
-    README.org ([[emacs org-mode][補足]]) に，ディレクトリの説明を書きます。
+** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
+    
+   - [-] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
+     - [-] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
+     - [ ] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
+   - [ ] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
+   - [ ] cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <2016-11-01 火>
+   - [ ] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
+   - [ ] カードモジュールの作成 SCHEDULED: <2016-11-15 火>
 
 
-#+BEGIN_SRC org :tangle ~/progs/lects/Org.org
-,** マークアップ文書の書き方を覚えましょう。(1)
-- 見出し (行頭に * を書く)
-- 箇条書き (行頭に * を書く)
-#+END_SRC
+** Doing 課題: card_display問題を始める
+   SCHEDULED: <2016-10-04 火>
 
-# #+include: ~/progs/lects/Org.org
+[[./org-docs/card-display.org][カード表示問題の始まり]]の card_display_simple 問題を読んで，
+card_display_simple の解プログラムと開発ドキュメントを下記のように作成
+してください。
 
-~/progs/README.org を次の様な内容で書きます:
-#+BEGIN_SRC org :tangle ~/progs/README.org
-,#+title: ~/progs/README.org
-,* ~/progs ソフトウェア構成論開発用ディレクトリ
-,** ディレクトリの構成と使用目的:
-- ./lects: 毎回の講義のめもを置きましょう
-- ./card_display: カード表示問題の開発用
-- ./cutter: テスト用
-- ./game: ポーカーゲーム開発用
-  - ./game/card: カードモジュール
-  - ./game/deck: 山モジュール
-  - ./game/hand: 手札モジュール
-  - ./game/poker: ポーカーモジュール
-#+END_SRC
+- [ ] 自分なりにプログラムを作ってみる (来週まで)
+- [ ] 機能分解して，テストによる開発してみる (来週)
+- [ ] ~/progs/card_display/first/ を提出 (10/25)
 
-** Doing 既習の内容を思いだす
+  - ~/progs/card_display/first/simple.org ::
 
-   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cis-programming-lects/][cis-org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cis-programming-lects][s-org]])) 
+    - ソース・プログラムを作成する前にどんなふうに何を作るかを，
+      できれば org-mode で書いてください。
 
-   下記のことが重要です:
+    - プログラムの作成中に考えた事，決めた事，疑問など，箇条書きで書
+      いてください。
 
-   - [-] 重要なプログラムの構成要素 [3/4]
+    - ~/progs/card_display/first/simple.c ::
+      1. できれば関数を多用してください。
+      2. できれば分りやく書いてください。
+      3. 正しく動くプログラムをsimple.c を作成してください。
+      4. 正しく動くプログラムをsimple.0.c にし，
+         1と2の2つの観点から書き直してみてください。
+         改良し, 正しく動く simple.c にしてください。
+      5. 納得できるまで上記の改良を繰り返し，繰り返しごとに番号を
+         0->1->2-> ... と増やしてください。
 
-     - [X] 構造体，型定義
+      6. ~/progs/card_display/first/Makefile ::
+	 simple.c をコンパイルするための規則を書いてください。
 
-       => [[抽象化]]と[[情報隠蔽]]
-       のために使います。
+** Todo テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
 
-     - [X] 関数
+何回かかけて，回下記の3つの資料を使って，テストによる開発を経験します。
 
-       => [[抽象化]]と[[情報隠蔽]]
-       のために使います。
+- [ ] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
 
-     - [X] ヘッダファイルの役割
-
-       => インタフェースの提供と遵守のために使います。
-
-     - [ ] 名前と実体の管理
-
-       => 情報公開と隠蔽のために使います。
-
-   - [-] コンパイル過程のこと [3/7]
-     - [X] include
-     - [ ] gcc
-     - [ ] .o ([[オブジェクト・ファイル]])
-
-       => 関数や変数，定数の入れ物です。
-
-     - [ ] .a ([[静的ライブラリ]]), .so([[動的ライブラリ]])
-
-       => 関数や変数，定数の入れ物です。
-
-     - [ ] ld ([[ローダ]]，[[リンケージ・エディタ]])
-
-       => オブジェクトファイルやライブラリを集めて，実行プログラムを作
-       成するコマンドです。
-
-     - [X] a.out (実行プログラム)
-
-     - [X] make
-       
-** Todo テストと関数と開発について理解する
- 
-   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/what-is-tdd/][
-   テストによる開発とは]]
-   (([[file+emacs:~suzuki/lects/prog/site/org-docs/what-is-tdd/][@cis.org]]
-   [[file+emacs:~/COMM/Lects/prog/site/org-docs/what-is-tdd/][@s.org]]))
-   を説明します：
-
-   - できるだけやりながら説明します([[emacs org-mode+babel][補足]])。
-   - 機能とは何か理解しましょう。
-   - テストとは何か理解しましょう。
-   - 機能を要求・利用・実装・テスト・提供することを理解しましょう。
-   - 概念的なことが多いですが，実際のプログラムの開発をおこないながら，
-     身をもって，理解していきましょう。
-   - 必要なら，次週以降もまた説明します。
-
-** Todo テスト体験
-
-  [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cutter][cutterの使い方]] (([[file+emacs:~suzuki/lects/prog/site/org-docs/cutter][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/org-docs/cutter][@s.org]]))
+- [ ] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
    
-    - cutter を使ってみます。
-    - テストを書いてみます。
-    - テストする機能は，C言語文字列ライブラリの ~strcmp~ です。
+- [ ] [[./org-docs/cutter.org][cutterの使い方]] テストの体験
 
-* 補足.02
+** Todo card_display問題のテストによる開発 [0/7] SCHEDULED: <2016-11-01 火>
 
-  ここは，その日の講義に必要な補足的な説明や情報を置くところです。
-講義中にも書くかもしれませんし，以前の講義のためのものも残っています。
-書き溜めていけたらと思います。
+    この内容は，次々回からになると思います。
 
-** 説明
-*** 抽象化
-    - 複雑な操作をまとめ，名前をつけること。
-    - 関数，構造体，型定義などを使う。
+    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] [ ]
+     - [ ] test_card_suit_new_from_string
+     - [ ] test_card_no_new_from_string
+     - [ ] test_card_new, suit, no
+     - [ ] test_card_no_to_string
+     - [ ] test_card_suit_to_string
+     - [ ] test_card_to_string
+     - [ ] card_display_single
 
-    - 参考 :: [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/commons/abstraction.html][抽象化とは]]
-    (([[file+emacs:~suzuki/lects/commons/abstraction.org][@cis.org]]
-    [[file+emacs:~/COMM/Lects/commons/site/abstraction.org][@s.org]]))
 
-    wikipedia等で調べてください。
-
-*** 情報隠蔽
-    - (モジュール)内部の情報を外部から守ること。
-      - 内部と外部の間に壁を作り，外部から直接内部にアクセスできなくす
-        る。
-      - 決められた手段を通して，内部の情報を公開する。
-
-    wikipedia等で調べてください。
-
-*** シンプルであること (by George Whitesides)
-
-     - 予測可能
-     - 扱いやすい
-     - 構成要素として機能すること
-
-
-** 講義への補足
-
-*** 昔のガイダンス
-
-**** 動機付け
-
-***** プログラムがかけるようになりたい
-
-     - プログラムが思うようにかけるようになりたい
-     - プログラムが正確にかけるようになりたい
-     - プログラムが素早くかけるようになりたい
-     - きれいなプログラムがかけるようになりたい
-     - 簡潔なプログラムが書けるようになりたい
-
-***** 面白いプログラムがかきたい
-
-      - 思っていることをプログラムできる力が欲しい
-
-***** 正しいプログラムを書きたい
-
-      - プログラムの正しさがわかる力が欲しい
-      - プログラムをデバッグする力が欲しい
-
-***** 大規模なプログラム開発ができるようになりたい
-
-      - わかりやすいプログラム
-      - 協同作業しやすいプログラム
-
-
-**** プログラム開発の肝
-
-***** プログラムの構成要素とその働きを理解すること
-
-      - 定数と変数
-      - 式
-      - 変数と代入による状態変化
-      - 文と時間進行
-      - 条件分岐と繰り返し
-
-***** データの表現ができること
-
-      - 値（定数）と型
-      - 構造体と型定義による値と型の拡張
-      - 変数と配列
-
-***** 関数の働きを理解すること
-
-      - 関数によるまとめ（抽象)
-       	- 関数の宣言
-       	- 関数の利用
-       	- 関数の提供
-
-***** 名前の見せ方・隠し方を理解すること
-
-      - 変数とスコープ
-      - 関数とスコープ
-      - 関数とリンク
-
-***** コンパイル，リンク，実行
-
-***** デバッグ
-
-
-*** 今日のemacs
-
-**** コマンド
-
-     - info:buffer
-       : C-x b
-       : C-x C-b
-       : C-x 2
-       : C-x 3
-       : C-x 1
-       : C-x 0
-       : C-x o
-
-     - info:file
-       : C-x C-f
-       : C-x 4 f
-       : M-x find-file-read-only
-       : C-x 4 r
-       : C-x C-r
-       : C-x C-s
-       : C-x C-w  
-       
-     - info:frame
-       : C-x 5
-       : C-x 5 0
-       : C-x 5 o
-
-
-**** 話題
-     - elscreen バッファのタブ化
-     - org-mode
-
-*** 今日のorg
-    -info:org#DocumentStructure
-     - 見出し
-     - 箇条書き
-     - 文芸的プログラミング
-*** 講義内容へのpath
-    - [ ] file:~suzuki/lects/prog の下に，講義資料があります。
-    - [ ] file:~suzuki/progs が先生の開発ディレクトリで，お手本のつも
-      りです。
-
-
-** 技術的なこと
-
-*** モジュール関連技術
-**** モジュールとは部品
-***** モジュール
-      部品の入れ物
-       	- 部品を実現する仕組み
-       	- 部品を提供する仕組み
-***** 部品，
-       	- ある機能の実体
-
-***** インタフェース
-      - 部品の利用に関する決まり
-       	* 利用環境での決まり
-       	* 機能ごとの決まり
-
-***** 部品の利用
-       	- その実装をしらずに，
-       	- インターフェイスの呼び出しのみを通して，
-       	- 自分のプログラムから利用できる
-
-***** 部品の提供
-       	- インターフェイスを守り
-       	- ある独立した機能を実現し，
-       	- 他の人に機能を提供する
-      
-***** Ubuntu/C言語を使ったモジュールプログラミング
-
-     * 利用側
-       * あるライブラリの機能（関数）を見つけ，
-       * man やヘッダファイルを見て，APIを知る
-       * ヘッダファイルをインクルードし，
-	 インターフェイスを守っていることを，
-	 コンパイラに検査してもらう
-       * 自分のプログラムに，ライブラリの関数をリンクする
-       * プログラムをプロセスとして実行する
-   
-     * 提供側
-       * ヘッダファイルを作成し
-       * ヘッダファイルをインクルードし，
-       * 機能を関数として実装し，
-       * ヘッダファイルのAPIを遵守する
-       * オブジェクトファイルあるいはライブラリとして提供する
-　　
-
-
-
-*** C-programming
-
-*** emacs org-mode
-
-    ファイルに .org 拡張子をつけることで，emacs で開くと，org-mode に
-    なります。org-mode は文書を構造的に扱えます。強力です。
-
-    org-mode links
-    - http://orgmode.org/ja
-    - [[https://github.com/org-mode-doc-ja/org-ja/blob/master/README.org][org-ja/README.org at master · org-mode-doc-ja/org-ja]]
-    - [[http://d.hatena.ne.jp/tamura70/20100203/org][Emacs org-modeを使ってみる: (1) インストール - 屯遁のパズルとプログラミングの日記]]
-    - info [[info:emacs#org][info:emacs#org]] 
-
-*** emacs   
-    - emacs の使い方は，~suzuki/progs/lects/Emacs.org, org-mode の使い
-      方は, ~suzuki/progs/lects/Org.org に書いていこうと思っています。
-
-    - emacs links
-      - [[http://emacs-jp.github.io/beginner.html][Emacs for Beginners - Emacs JP]]  - info:emacs Emacs info
-      - [[http://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html#SEC_Top][GNU Emacsマニュアル:(古いが日本語)]]
-
-*** emacs org-mode+babel
-
-    emacs org-mode の中に，文芸的プログラミングでき機能があります。説
-    明を書きながら，ソースコードも書け，実行でき，出力を文書に取り込めるも
-    のです。
-
-    Cやシェル・スクリプトがその mode で書け，コンパイルや実行を行えま
-    す。例えば，下記のように:
-
-#+BEGIN_SRC org
-,#+BEGIN_SRC c :tangle ./src/exmaple.c
-int main(void) {}
-,#+END_SRC
-
-,#+BEGIN_SRC sh :dir ./src
-cc example.c
-,#+END_SRC
-#+END_SRC
-
-
-
-** 文書の書き方，見え方などへの補足説明
-
-*** ページ内容の折り畳みと展開
-
-    ページ右上に [Collapse all] [Expand all] があるページは，見出し単
-    位で折り畳みと展開が可能です。
-
-*** title((cis.org s.org))
-
-    「title((cis.org s.org)) 」という表示は，三つのリンクから成ってい
-    ます。titleは, httpリンクです。cis.orgは講義環境で emacs org-mode
-    で開くときに使うファイル・リンクです。s.org は鈴木の個人環境用のファ
-    イル・リンクです。

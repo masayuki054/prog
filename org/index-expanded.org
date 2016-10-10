@@ -1,8 +1,110 @@
-* 1回目 (10/04) の講義実施内容
+#+setupfile: info/index-sos-header.setup
+#+title: 2016
+#+author: suzuki@cis.iwate-u.ac.jp
+[[./][ホーム]] /
+[[./lects.org][講義]] / 
+[[./supplement.org][説明]] / 
+[[./org-docs.org][資料]] / 
+[[./memos.org][雑メモ]] /
+[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][2015]]
+#+title: 今日の講義
+# #+include: lects/01/plan.org
+#+BEGIN_SRC org :tangle lects/objective.org
 
-** Done 講義紹介 
-*** Done 講義コンテンツ
-    CLOSED: [2016-10-09 日 13:05]
+* 講義のねらい
+
+** 動機 ([[./supplements.org][説明/ガイダンス]]より)
+
+*** プログラムがかけるようになりたい
+
+   - プログラムが思うようにかけるようになりたい
+   - プログラムが正確にかけるようになりたい
+   - プログラムが素早くかけるようになりたい
+   - きれいなプログラムがかけるようになりたい
+   - 簡潔なプログラムが書けるようになりたい
+
+*** 面白いプログラムがかきたい
+
+    - 思っていることをプログラムできる力が欲しい
+
+*** 正しいプログラムを書きたい
+
+    - プログラムの正しさがわかる力が欲しい
+    - プログラムをデバッグする力が欲しい
+
+*** 大規模なプログラム開発ができるようになりたい
+
+    - わかりやすいプログラム
+    - 協同作業しやすいプログラム
+
+
+** 思い
+
+   [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?1%E5%9B%9E%E7%9B%AE.14_2][Prog Wikky - 1回目.14_2]] の説明より
+
+,#+begin_quote
+
+プログラミング（スタイル）は変化し続けます。教えたい事が網羅され た教
+科書なんて存在しません。コンピュータの環境、教える側の技量、 聞く側の
+知識や能力、などなどの程度によって教えることが変化します。 固定的な教
+科書ではダメなのです。だからWikiで作りながら、毎年変化 しながら、ノウ
+ハウをため、よりよいものに変身していきたいのです。
+
+だから，Wiki を使って講義をしています．
+
+    講義内容の予定やまとめ
+    講義に関する有用な情報
+
+を私が行い， を先生生徒両方が書き込めるWebページを通して，講義を進めて
+いきたいと思います．このページが、講義ノートとまではいかなくとも、講
+義の記録になればと思います．
+,#+end_quote
+
+現在教科書に相当する部分は，emacs org-mode ドキュメントでサイトを構築
+し，github で公開しています。
+
+学生さんからの意見を聞くのには，レスポンスカードを使っています。
+何とかしたいんですが。。。
+
+#+END_SRC
+
+* 講義の実施時間について
+
+演習を伴なう (むしろ演習が主な) 講義なので，90分の時間内で，
+講義と演習を終ることが，例年，できません。
+
+- 講義内容の説明は，2:30 までに終りにします。
+
+- 講義中の課題は次週までの宿題とします。
+
+- 2:30~ 自主的に課題に取り組む時間とし，
+  3:00 までは TA さんが対応してくれ，
+  それ以降は，((s-:)) が適宜対応します。
+
+どうでしょうか？
+
+* ホームディレクトリのパーミションについて
+
+進行状況の確認や，レポート提出のために，~/progs の中を閲覧，回収したい
+と思っています。
+
+~/progs の中を，鈴木 (((s-:))) が見られるように設定してもらえませんか？
+
+  : chmod o+rx ~
+  : chmod -R o+rx ~/progs
+
+
+
+
+
+
+
+
+
+
+* 1回目 (10/04) の講義内容
+** 講義紹介 
+*** 講義コンテンツ
     - 学科のサイト ::
          http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016 
 	 講義中の変更を反映する予定です。
@@ -12,16 +114,13 @@
 
     - リポジトリ :: http://github.com/masayuki054/prog/ 
 
-    - ワーキングコピー :: file:~suzuki/prog.git/
+    - ワーキングコピー :: file:~suzuki/prog.git/ [fn:1]
 
+[fn:1] 'file:'はファイルへのリンクを表すURLです。
 
-*** Done 講義の目的など 
-    CLOSED: [2016-10-09 日 13:05]
+   - [ ] 講義の目的など [0/0]
 
-    [[./supplement.org][説明]]::ガイダンス
-
-** Done 講師
-   CLOSED: [2016-10-09 日 13:05]
+** 講師
 
    [[http://wiki.cis.iwate-u.ac.jp/~suzuki/][自己紹介]]
 
@@ -29,8 +128,7 @@
 
    progs の導入に関連する内容
 
-*** Todo モジュラープログラミングについて
-    SCHEDULED: <2016-11-08 火>
+*** モジュラープログラミングについて
 
 **** Acroquest プログラミング講座
 
@@ -61,8 +159,7 @@
 - [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
 
 
-*** Todo テストによる開発の説明 
-    SCHEDULED: <2016-10-25 火>
+*** テストによる開発の説明 
 
 TDD (Test Driven Development) テスト駆動開発といいます。
 
@@ -71,15 +168,14 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 - [[./org-docs/what-is-tdd.org][資料/テストによる開発とは]] (この中にもリンクがあります)
 
 
-*** Todo (ソフトウェア) テストについての説明
-    SCHEDULED: <2016-10-25 火>
+*** (ソフトウェア) テストについての説明
 
     [[./org-docs/software-test.org][資料/ソフトウェア・テスト]]
 
     [[https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88][ソフトウェアテスト - Wikipedia]] 難い
 
 
-*** Todo プログラミング関連の講義と演習
+*** プログラミング関連の講義と演習
 
     [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis.iwate-u.ac.jp]] 振り返りましょう.
 
@@ -99,29 +195,24 @@ TDD (Test Driven Development) テスト駆動開発といいます。
       - [ ] ld (ローダ，リンケージ・エディタ)
       - [ ] a.out (実行プログラム)
 
-*** Doing Emacs for progs (検討中)
+*** Emacs for progs (検討中)
 
     emacs@progs でどんな内容を教えるか？
 
-**** 何に使うか [2/4]
-     - [X] file handling
-       - [X] find-file
-       - [X] dired
-     - [ ] programming
-       - [ ] source coding
-       - [ ] Makefile, make
-     - [X] Document 作成 
-       - [X] org-mode
-     - [ ] terminal/shell execution
-     - [ ] 全文検索
-       - [ ] recnetf
-       - [ ] ag
-     - [?] 文芸的プログラミング
+**** 何に使うか
+     - programming
+       - source coding
+       - Makefile, make
+     - terminal/shell execution
+     - 全文検索
+     - Document 作成 
+       - org-mode
+     - 文芸的プログラミング
        - org-mode + babel 
 
+     - eww (emacs ブラウザ)
    
-**** Someday わかりやすサイトを見つけた
-     CLOSED: [2016-10-09 日 13:15]
+**** わかりやすサイトを見つけた
 
 参考にしてください。
 
@@ -134,12 +225,11 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 - [[http://d.hatena.ne.jp/Kazuhira/20120408/1333891517][Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER]]
 
 
-** Doing はじまり
+** はじまり
 
-*** Done ~/progs の作成 [0/1]
-    CLOSED: [2016-10-09 日 13:15]
+***  ~/progs の作成 [/]
     
- - [X] 講義用のディレクトリを作成します：
+ - [ ] 講義用のディレクトリを作成します：
    
  #+BEGIN_SRC sh :dir ~/ :results output output
 # [~/]
@@ -150,7 +240,7 @@ mkdir -p lects cutter card_display game
 ls -R
  #+END_SRC
 
- - [X] ~/progs/README.org を作成します:
+ - [ ] ~/progs/README.org を作成します:
 
  #+BEGIN_SRC org :tangle ~/progs/README.org
 #+title: ~/progs/README.org
@@ -161,7 +251,7 @@ ls -R
  - ./game: ポーカーゲーム開発用
  #+END_SRC
 
-**** Doing emacs 
+**** emacs 
 
 - [[info:Emacs]], info:org-mode を教え,
 - org-mode のことを少し説明する，かな
@@ -175,15 +265,29 @@ ls -R
 **** 先生のprogs/
      - file:~suzuki/progs がお手本です。
 
-*** Doing 課題: card_display問題を始める
+*** テストとテストによる開発とは [0/2]
 
-[[./org-docs/card-display.org][カード表示問題の始まり]]の card_display_simple 問題を読んで，
-card_display_simple の解プログラムと開発ドキュメントを下記のように作成
-してください。
+     - [ ] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
 
-- [ ] 自分なりにプログラムを作ってみる (来週まで)
-- [ ] 機能分解して，テストによる開発してみる (来週)
-- [ ] ~/progs/card_display/first/ を提出 (10/25)
+     - [ ] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+   
+     - [ ] [[./org-docs/cutter.org][cutterの使い方]] テストの体験
+
+*** card_display問題 [0/3]
+
+    - [ ] [[./org-docs/card-display.org][カード表示問題の始まり]]
+    - [ ] 自分なりにプログラムを作ってみる (今日)
+    - [ ] 機能分解して，テストによる開発してみる (来週)
+
+*** card_display_simple の解プログラムと開発ドキュメントを作成してください。
+
+    これは最初のレポート課題になります。
+    
+    - ~/progs/card_display/first/ の作成 ::
+#+BEGIN_SRC sh :exports code
+# ~/progs
+mkdir card_display/first
+#+END_SRC
 
     - ~/progs/card_display/first/simple.org ::
       - ソース・プログラムを作成する前にどんなふうに何を作るかを，
@@ -204,16 +308,6 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
     - ~/progs/card_display/first/Makefile ::
       simple.c をコンパイルするための規則を書いてください。
 
-*** Todo テストとテストによる開発とは 
-
-何回かかけて，回下記の3つの資料を使って，テストによる開発を経験します。
-
-- [ ] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
-
-- [ ] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
-   
-- [ ] [[./org-docs/cutter.org][cutterの使い方]] テストの体験
-
 *** card_display問題のテストによる開発 [0/7] 
 
     この内容は，次々回からになると思います。
@@ -226,4 +320,6 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
      - [ ] test_card_suit_to_string
      - [ ] test_card_to_string
      - [ ] card_display_single
+
+
 

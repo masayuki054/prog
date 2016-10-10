@@ -1,4 +1,5 @@
-#+setupfile: info/index-sos-header.setup
+# #+setupfile: info/index-sos-header.setup
+#+setupfile: info/index-bigblow-header.setup
 #+include: info/common-header.org
 #+title: 先生のメモ
 #+include: memos/contents.org

@@ -1,3 +1,5 @@
+#+include: simple.org :minlevel 1
+-----
 #+include: crash.org :minlevel 1
 -----
 #+include: org-babel.org :minlevel 1

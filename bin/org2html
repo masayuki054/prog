@@ -1,0 +1,17 @@
+#!/bin/sh
+# http://blog.nguyenvq.com/2010/10/30/bash-batch-script-to-convert-org-mode-file-to-html/
+# orgdir=/r/src/org-mode/lisp/    # Git版org-modeのディレクトリ
+# opts="-l ~/.org2html-batch.el"  # カスタマイズしなければ "" にする
+opts=""
+f=""
+for file in "$@"
+do
+#    f="${f} --visit ${file} --funcall org-export-as-html-batch"
+#    f="${f} --visit ${file} --funcall org-html-export-as-html"
+    f="${f} --visit ${file} --funcall org-html-export-to-html"
+done
+# Emacs標準添付のorg-modeを使う場合はこっち
+emacs --batch -l org $opts $f
+#~/bin/emacs --batch -q --no-site-file -l org $opts $f
+# Git版org-modeを使う場合はこっち
+# emacs --batch -q --no-site-file -L $orgdir -l org $opts $f

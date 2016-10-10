@@ -1,0 +1,12 @@
+#+title: ~/progs/README.org
+- M-x org-mode 
+- C-c C-e h h
+- C-x C-s
+- C-x o other window
+- C-x d
+
+* ディレクトリの使用目的:
+- ./documents: 毎回の講義のめもを置きましょう
+- ./card_display: カード表示問題の開発用
+- ./cutter: テスト用
+- ./game: ポーカーゲーム開発用

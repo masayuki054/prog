@@ -3,7 +3,7 @@
 "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-10 月 22:55 -->
+<!-- 2016-10-11 火 10:27 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>progs2016 先生のメモ</title>
@@ -181,10 +181,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline31">1. card\_display\_simple</a>
+<li><a href="#orgheadline30">1. card\_display\_simple</a>
 <ul>
 <li><a href="#orgheadline1">1.1. 問題</a></li>
-<li><a href="#orgheadline30">1.2. 解プログラムの作成の流れ</a>
+<li><a href="#orgheadline29">1.2. 解プログラムの作成の流れ</a>
 <ul>
 <li><a href="#orgheadline12">simple\_-1.c</a>
 <ul>
@@ -197,7 +197,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline5"><code>card_string</code> 関数について考える</a></li>
 <li><a href="#orgheadline6"><code>card_string</code> 関数を使うmainを書く</a></li>
 <li><a href="#orgheadline7"><code>char *card_string(char *, char *)</code> の入口出口ついて考える</a></li>
-<li><a href="#orgheadline8">simple_-1.c</a></li>
+<li><a href="#orgheadline8">simple\_-1.c</a></li>
 <li><a href="#orgheadline9">simple_-1.c をコンパイルする Makefile</a></li>
 <li><a href="#orgheadline10">make</a></li>
 <li><a href="#orgheadline11">実行</a></li>
@@ -223,221 +223,213 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline23">card_string関数のリファクタリング</a></li>
 <li><a href="#orgheadline24">カード構造体を作る</a>
 <ul>
-<li><a href="#orgheadline25">スーツを整数に</a></li>
-<li><a href="#orgheadline26">番号を数字に</a></li>
+<li><a href="#orgheadline25">文字列で与えられたスーツ(文字列)を整数にする関数</a></li>
+<li><a href="#orgheadline26">番号文字列を数字にする関数</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline28">カードを文字列にする</a>
+<li><a href="#orgheadline27">カードを文字列にする関数 card_to_string</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline28">simple_1.c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline33">2. Todo test_sort() がクラッシュする原因</a>
 <ul>
-<li>
+<li><a href="#orgheadline31">2.1. 教訓</a></li>
+<li><a href="#orgheadline32">2.2. お願い</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline34">3. Doing org-mode + babelでの literate programming 実践</a></li>
+<li><a href="#orgheadline39">4. C言語あれこれ</a>
 <ul>
-<li><a href="#orgheadline27">スーツと番号を表す数字をそれぞれ文字に</a></li>
+<li><a href="#orgheadline35">4.1. 共有ライブラリーを解剖する</a></li>
+<li><a href="#orgheadline36">4.2. ライブラリの作り方</a></li>
+<li><a href="#orgheadline37">4.3. Cコンパイラのオプション</a></li>
+<li><a href="#orgheadline38">4.4. ヘッダファイルを二回インクルードしない</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline29">simple_1.c</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline34">2. Todo test_sort() がクラッシュする原因</a>
+<li><a href="#orgheadline55">5. Card モジュールの開発</a>
 <ul>
-<li><a href="#orgheadline32">2.1. 教訓</a></li>
-<li><a href="#orgheadline33">2.2. お願い</a></li>
+<li><a href="#orgheadline42">5.1. 5/16 (5)</a>
+<ul>
+<li><a href="#orgheadline40">について考える</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline35">3. Doing org-mode + babelでの literate programming 実践</a></li>
-<li><a href="#orgheadline40">4. C言語あれこれ</a>
+<li><a href="#orgheadline46">5.2. 5/23 (6)</a>
 <ul>
-<li><a href="#orgheadline36">4.1. 共有ライブラリーを解剖する</a></li>
-<li><a href="#orgheadline37">4.2. ライブラリの作り方</a></li>
-<li><a href="#orgheadline38">4.3. Cコンパイラのオプション</a></li>
-<li><a href="#orgheadline39">4.4. ヘッダファイルを二回インクルードしない</a></li>
+<li><a href="#orgheadline43">~/progs/Game/Card の確認</a></li>
+<li><a href="#orgheadline44">について考える</a></li>
+<li><a href="#orgheadline45">最初に，Card を使うプログラム（テスト）を考える</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline56">5. Card モジュールの開発</a>
+<li><a href="#orgheadline48">5.3. 6/3 (7)</a>
 <ul>
-<li><a href="#orgheadline43">5.1. 5/16 (5)</a>
-<ul>
-<li><a href="#orgheadline41">について考える</a></li>
+<li><a href="#orgheadline47">Card に印刷機能を追加しよう</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline47">5.2. 5/23 (6)</a>
+<li><a href="#orgheadline54">5.4. 6/10 (8)</a>
 <ul>
-<li><a href="#orgheadline44">~/progs/Game/Card の確認</a></li>
-<li><a href="#orgheadline45">について考える</a></li>
-<li><a href="#orgheadline46">最初に，Card を使うプログラム（テスト）を考える</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline49">5.3. 6/3 (7)</a>
-<ul>
-<li><a href="#orgheadline48">Card に印刷機能を追加しよう</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline55">5.4. 6/10 (8)</a>
-<ul>
-<li><a href="#orgheadline50">Card に比較機能を追加しよう</a></li>
-<li><a href="#orgheadline51">Card をモジュールとして提供できるようにしよう</a></li>
-<li><a href="#orgheadline52"></a></li>
-<li><a href="#orgheadline53">Card モジュールを使ってみる</a></li>
-<li><a href="#orgheadline54">サブバージョンを使い始めよう</a></li>
+<li><a href="#orgheadline49">Card に比較機能を追加しよう</a></li>
+<li><a href="#orgheadline50">Card をモジュールとして提供できるようにしよう</a></li>
+<li><a href="#orgheadline51"></a></li>
+<li><a href="#orgheadline52">Card モジュールを使ってみる</a></li>
+<li><a href="#orgheadline53">サブバージョンを使い始めよう</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline42">6. Cardの機能</a></li>
-<li><a href="#orgheadline59">7. テスト駆動開発について</a>
+<li><a href="#orgheadline41">6. Cardの機能</a></li>
+<li><a href="#orgheadline58">7. テスト駆動開発について</a>
 <ul>
-<li><a href="#orgheadline57">7.1. 入門サイト</a></li>
-<li><a href="#orgheadline58">7.2. やりたいこと</a></li>
+<li><a href="#orgheadline56">7.1. 入門サイト</a></li>
+<li><a href="#orgheadline57">7.2. やりたいこと</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline60">8. emacs</a></li>
-<li><a href="#orgheadline66">9. ソフトウェア構成論の環境設定について</a>
+<li><a href="#orgheadline59">8. emacs</a></li>
+<li><a href="#orgheadline65">9. ソフトウェア構成論の環境設定について</a>
 <ul>
-<li><a href="#orgheadline61">9.1. ./.ckpt</a></li>
-<li><a href="#orgheadline62">9.2. 開発ディレクトリ</a></li>
-<li><a href="#orgheadline63">9.3. ~/progs でシンボリックリンクする</a></li>
-<li><a href="#orgheadline65">9.4. ~/progs/{Game, Trigo, Reports}</a>
+<li><a href="#orgheadline60">9.1. ./.ckpt</a></li>
+<li><a href="#orgheadline61">9.2. 開発ディレクトリ</a></li>
+<li><a href="#orgheadline62">9.3. ~/progs でシンボリックリンクする</a></li>
+<li><a href="#orgheadline64">9.4. ~/progs/{Game, Trigo, Reports}</a>
 <ul>
-<li><a href="#orgheadline64">サブディレクトリの作成</a></li>
+<li><a href="#orgheadline63">サブディレクトリの作成</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline76">10. モジュールとは</a>
+<li><a href="#orgheadline75">10. モジュールとは</a>
 <ul>
-<li><a href="#orgheadline69">10.1. モジュールのイメージ</a>
+<li><a href="#orgheadline68">10.1. モジュールのイメージ</a>
 <ul>
-<li><a href="#orgheadline67">関数</a></li>
-<li><a href="#orgheadline68">機能</a></li>
+<li><a href="#orgheadline66">関数</a></li>
+<li><a href="#orgheadline67">機能</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline72">10.2. モジュールとは部品</a>
+<li><a href="#orgheadline71">10.2. モジュールとは部品</a>
 <ul>
-<li><a href="#orgheadline70">部品の利用</a></li>
-<li><a href="#orgheadline71">部品の提供</a></li>
+<li><a href="#orgheadline69">部品の利用</a></li>
+<li><a href="#orgheadline70">部品の提供</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline75">10.3. Ubuntu/C言語を使ったモジュールプログラミング</a>
+<li><a href="#orgheadline74">10.3. Ubuntu/C言語を使ったモジュールプログラミング</a>
 <ul>
-<li><a href="#orgheadline73">利用側</a>
+<li><a href="#orgheadline72">利用側</a>
 <ul>
-<li><a href="#orgheadline74">提供側</a></li>
+<li><a href="#orgheadline73">提供側</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline95">11. ソフトウェア構成論 (昔の説明@wiki)</a>
+<li><a href="#orgheadline94">11. ソフトウェア構成論 (昔の説明@wiki)</a>
 <ul>
-<li><a href="#orgheadline77">11.1. 道具達の使い方</a></li>
-<li><a href="#orgheadline94">11.2. 自前の関数を作り，利用する</a>
+<li><a href="#orgheadline76">11.1. 道具達の使い方</a></li>
+<li><a href="#orgheadline93">11.2. 自前の関数を作り，利用する</a>
 <ul>
-<li><a href="#orgheadline78">度が使えるsin関数を作る</a>
+<li><a href="#orgheadline77">度が使えるsin関数を作る</a>
 <ul>
-<li><a href="#orgheadline79">ライブラリの sin を調べる</a></li>
-<li><a href="#orgheadline84">引数を度で渡すと，sin関数値を計算する関数</a>
+<li><a href="#orgheadline78">ライブラリの sin を調べる</a></li>
+<li><a href="#orgheadline83">引数を度で渡すと，sin関数値を計算する関数</a>
 <ul>
-<li><a href="#orgheadline80">名前と引数の型と結果の型を決める</a></li>
-<li><a href="#orgheadline81">この決まりごとをヘッダファイルに書いておく</a></li>
-<li><a href="#orgheadline82">に関数の振る舞いをプログラムする</a></li>
-<li><a href="#orgheadline83">d_sin.c をコンパイルしてみる</a></li>
+<li><a href="#orgheadline79">名前と引数の型と結果の型を決める</a></li>
+<li><a href="#orgheadline80">この決まりごとをヘッダファイルに書いておく</a></li>
+<li><a href="#orgheadline81">に関数の振る舞いをプログラムする</a></li>
+<li><a href="#orgheadline82">d_sin.c をコンパイルしてみる</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline89">角度を入力したらそのsin値を計算するプログラムを書く</a>
+<li><a href="#orgheadline88">角度を入力したらそのsin値を計算するプログラムを書く</a>
 <ul>
-<li><a href="#orgheadline85"></a></li>
-<li><a href="#orgheadline86">sin(deg_to_rad(atof(argv\[1\]))) の計算</a></li>
-<li><a href="#orgheadline87">コンパイルして calc_d_sin.o を作る</a></li>
-<li><a href="#orgheadline88">d_sin.o と calc_d_sin.o （とライブラリ)をリンクして，実行プログラムを作る</a></li>
+<li><a href="#orgheadline84"></a></li>
+<li><a href="#orgheadline85">sin(deg_to_rad(atof(argv\[1\]))) の計算</a></li>
+<li><a href="#orgheadline86">コンパイルして calc_d_sin.o を作る</a></li>
+<li><a href="#orgheadline87">d_sin.o と calc_d_sin.o （とライブラリ)をリンクして，実行プログラムを作る</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline90">make</a>
+<li><a href="#orgheadline89">make</a>
 <ul>
-<li><a href="#orgheadline91">実行プログラムを作成するまでにおこなったコマンド</a></li>
-<li><a href="#orgheadline92">Makefile にこれらを記述</a></li>
+<li><a href="#orgheadline90">実行プログラムを作成するまでにおこなったコマンド</a></li>
+<li><a href="#orgheadline91">Makefile にこれらを記述</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline93">バージョン管理</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline106">12. ソフトウェア構成論の受講の準備</a>
-<ul>
-<li><a href="#orgheadline96">12.1. 開発ディレクトリ</a></li>
-<li><a href="#orgheadline97">12.2. Wiki</a></li>
-<li><a href="#orgheadline98">12.3. C言語</a></li>
-<li><a href="#orgheadline104">12.4. 開発環境</a>
-<ul>
-<li><a href="#orgheadline99">Emacs</a></li>
-<li><a href="#orgheadline100">make</a></li>
-<li><a href="#orgheadline101">GCC</a></li>
-<li><a href="#orgheadline102">シェルとスクリプト</a></li>
-<li><a href="#orgheadline103"></a></li>
-</ul>
-</li>
-<li><a href="#orgheadline105">12.5. 連絡方法</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline109">13. shell</a>
-<ul>
-<li><a href="#orgheadline107">13.1. ディレクトリ</a></li>
-<li><a href="#orgheadline108">13.2. ファイル</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline120">14. ソフトウェア構成論 svnあれこれ</a>
-<ul>
-<li><a href="#orgheadline111">14.1. h22j018</a>
-<ul>
-<li><a href="#orgheadline110">対策</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline114">14.2. h22j016</a>
-<ul>
-<li><a href="#orgheadline112">症状</a></li>
-<li><a href="#orgheadline113">対策</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline117">14.3. h22j086</a>
-<ul>
-<li><a href="#orgheadline115">症状</a></li>
-<li><a href="#orgheadline116">対策</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline119">14.4. h22j124</a>
-<ul>
-<li><a href="#orgheadline118">対策</a></li>
+<li><a href="#orgheadline92">バージョン管理</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline126">15. subversion 6/4</a>
-<ul>
-<li><a href="#orgheadline121">15.1. コミットの時にviが動いたとき</a></li>
-<li><a href="#orgheadline122">15.2. 認証設定の確認</a></li>
-<li><a href="#orgheadline123">15.3. バージョン管理コマンド</a></li>
-<li><a href="#orgheadline124">15.4. 学生さんの感想とか</a></li>
-<li><a href="#orgheadline125">15.5. Cardモジュールをリポジトリにコミットする</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline135">16. 「VC（バージョンコントロール）パッケージの基礎」(菅原泰樹) — ありえるえりあ</a>
+<li><a href="#orgheadline105">12. ソフトウェア構成論の受講の準備</a>
 <ul>
-<li><a href="#orgheadline127">16.1. VCとは</a></li>
-<li><a href="#orgheadline128">16.2. バージョン管理システム</a></li>
-<li><a href="#orgheadline129">16.3. 代表的なVCを操作するコマンド</a></li>
-<li><a href="#orgheadline130">16.4. 差分の表示</a></li>
-<li><a href="#orgheadline131">16.5. 注釈の表示</a></li>
-<li><a href="#orgheadline132">16.6. 履歴の表示</a></li>
-<li><a href="#orgheadline133">16.7. 更新系の操作</a></li>
-<li><a href="#orgheadline134">16.8. 衝突の解決</a></li>
+<li><a href="#orgheadline95">12.1. 開発ディレクトリ</a></li>
+<li><a href="#orgheadline96">12.2. Wiki</a></li>
+<li><a href="#orgheadline97">12.3. C言語</a></li>
+<li><a href="#orgheadline103">12.4. 開発環境</a>
+<ul>
+<li><a href="#orgheadline98">Emacs</a></li>
+<li><a href="#orgheadline99">make</a></li>
+<li><a href="#orgheadline100">GCC</a></li>
+<li><a href="#orgheadline101">シェルとスクリプト</a></li>
+<li><a href="#orgheadline102"></a></li>
+</ul>
+</li>
+<li><a href="#orgheadline104">12.5. 連絡方法</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline108">13. shell</a>
+<ul>
+<li><a href="#orgheadline106">13.1. ディレクトリ</a></li>
+<li><a href="#orgheadline107">13.2. ファイル</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline119">14. ソフトウェア構成論 svnあれこれ</a>
+<ul>
+<li><a href="#orgheadline110">14.1. h22j018</a>
+<ul>
+<li><a href="#orgheadline109">対策</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline113">14.2. h22j016</a>
+<ul>
+<li><a href="#orgheadline111">症状</a></li>
+<li><a href="#orgheadline112">対策</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline116">14.3. h22j086</a>
+<ul>
+<li><a href="#orgheadline114">症状</a></li>
+<li><a href="#orgheadline115">対策</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline118">14.4. h22j124</a>
+<ul>
+<li><a href="#orgheadline117">対策</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline125">15. subversion 6/4</a>
+<ul>
+<li><a href="#orgheadline120">15.1. コミットの時にviが動いたとき</a></li>
+<li><a href="#orgheadline121">15.2. 認証設定の確認</a></li>
+<li><a href="#orgheadline122">15.3. バージョン管理コマンド</a></li>
+<li><a href="#orgheadline123">15.4. 学生さんの感想とか</a></li>
+<li><a href="#orgheadline124">15.5. Cardモジュールをリポジトリにコミットする</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline134">16. 「VC（バージョンコントロール）パッケージの基礎」(菅原泰樹) — ありえるえりあ</a>
+<ul>
+<li><a href="#orgheadline126">16.1. VCとは</a></li>
+<li><a href="#orgheadline127">16.2. バージョン管理システム</a></li>
+<li><a href="#orgheadline128">16.3. 代表的なVCを操作するコマンド</a></li>
+<li><a href="#orgheadline129">16.4. 差分の表示</a></li>
+<li><a href="#orgheadline130">16.5. 注釈の表示</a></li>
+<li><a href="#orgheadline131">16.6. 履歴の表示</a></li>
+<li><a href="#orgheadline132">16.7. 更新系の操作</a></li>
+<li><a href="#orgheadline133">16.8. 衝突の解決</a></li>
 </ul>
 </li>
 </ul>
@@ -451,8 +443,8 @@ for the JavaScript code in this tag.
 <a href="./memos.html">雑メモ</a> /
 <a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a>
 </p>
-<div id="outline-container-orgheadline31" class="outline-2">
-<h2 id="orgheadline31"><span class="section-number-2">1</span> card\_display\_simple</h2>
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30"><span class="section-number-2">1</span> card\_display\_simple</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-orgheadline1" class="outline-3">
 <h3 id="orgheadline1"><span class="section-number-3">1.1</span> 問題</h3>
@@ -480,8 +472,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgheadline30" class="outline-3">
-<h3 id="orgheadline30"><span class="section-number-3">1.2</span> 解プログラムの作成の流れ</h3>
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">1.2</span> 解プログラムの作成の流れ</h3>
 <div class="outline-text-3" id="text-1-2">
 </div><div id="outline-container-orgheadline12" class="outline-4">
 <h4 id="orgheadline12">simple\_-1.c</h4>
@@ -550,7 +542,7 @@ puts(str);
 <h5 id="orgheadline6"><code>card_string</code> 関数を使うmainを書く</h5>
 <div class="outline-text-5" id="text-orgheadline6">
 <p>
-忘れないうちに，main関数を書いてみる:
+忘れないうちに，main関数を書いてみます:
 </p>
 
 <div class="org-src-container">
@@ -580,7 +572,6 @@ main(int argc, char *argv[])
 </div>
 </div>
 
-
 <div id="outline-container-orgheadline7" class="outline-5">
 <h5 id="orgheadline7"><code>char *card_string(char *, char *)</code> の入口出口ついて考える</h5>
 <div class="outline-text-5" id="text-orgheadline7">
@@ -589,8 +580,8 @@ main(int argc, char *argv[])
 </p>
 
 <ul class="org-ul">
-<li>最初の引数の名前は，suit_string (札種を表す文字列の意)</li>
-<li>最初の引数の名前は，no_string (札番号を表す文字列の意)</li>
+<li>最初の引数の名前は，~suit_string~ (札種を表す文字列の意)</li>
+<li>最初の引数の名前は，~no_string~ (札番号を表す文字列の意)</li>
 </ul>
 
 <p>
@@ -613,7 +604,7 @@ main(int argc, char *argv[])
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-5">
-<h5 id="orgheadline8">simple_-1.c</h5>
+<h5 id="orgheadline8">simple\_-1.c</h5>
 <div class="outline-text-5" id="text-orgheadline8">
 <p>
 simple0.c の要件を満しませんが，一応コンパイルして実行できるものがで
@@ -658,8 +649,7 @@ char *card_string(char *suit_string, char *no_string)
 <div class="outline-text-5" id="text-orgheadline9">
 <div class="org-src-container">
 
-<pre class="src src-makefile">.PHONY: all clean
-all: simple_-1
+<pre class="src src-makefile">.PHONY: clean
 
 simple_-1: simple_-1.c
 	gcc -o $@ $^ 
@@ -668,6 +658,29 @@ clean:
 	rm -f *~ \#* *.gch
 </pre>
 </div>
+
+<ul class="org-ul">
+<li><code>.PHONY:</code> は，~clean~ がまぼろしのターゲットであることを定
+義しています。</li>
+
+<li><code>simple_-1</code> ターゲットは，実行プログラム(ファイル)名で，
+<ul class="org-ul">
+<li><code>: simple_-1.c</code> に依存していて，</li>
+
+<li><code>simple_-1.c</code> が <code>simple_-1</code> より新らしければ，</li>
+
+<li>~        gcc -o $@ $^ ~ が <b>シュルコマンド</b> として実行されます。</li>
+
+<li><p>
+実行の前に，~\(@~ はターゲット(の名前)に，~\)^~ はソースに置き換えら
+れ, 次のコマンドとなります:
+</p>
+
+<pre class="example">
+gcc -o simple_-1 simple_-1.c
+</pre></li>
+</ul></li>
+</ul>
 </div>
 </div>
 
@@ -691,9 +704,13 @@ gcc -o simple_-1 simple_-1.c
 <div class="outline-text-5" id="text-orgheadline11">
 <div class="org-src-container">
 
-<pre class="src src-sh">./simple_-1 "aho" "baka"
+<pre class="src src-sh">./simple_-1 "hoge" "hoge"
 </pre>
 </div>
+
+<pre class="example">
+SA
+</pre>
 </div>
 </div>
 </div>
@@ -872,8 +889,7 @@ Makefile は変更ありません:
 
 <div class="org-src-container">
 
-<pre class="src src-makefile">.PHONY: all clean
-all: simple_0
+<pre class="src src-makefile">.PHONY: clean
 
 simple_0: simple_0.c
 	gcc -o $@ $^ 
@@ -906,6 +922,31 @@ cc     simple_0.c   -o simple_0
 ./simple_0 club 2
 </pre>
 </div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">H0</td>
+</tr>
+
+<tr>
+<td class="org-left">SA</td>
+</tr>
+
+<tr>
+<td class="org-left">DK</td>
+</tr>
+
+<tr>
+<td class="org-left">C2</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 simple_0.c 完成です。
@@ -1116,7 +1157,7 @@ simple_0.1.c では，カードという <b>物</b> が現われていません�
 </p>
 
 <p>
-<code>Card a_card = card_new(suit_string, no_string);</code>
+<code>Card a_card = card_new_from_string(suit_string, no_string);</code>
 </p></li>
 
 <li><p>
@@ -1174,7 +1215,9 @@ result = カードの表示文字列を作る(あるカード)
 </div>
 
 <p>
-カードを作るための関数を作ります:
+カードを作るための関数を作ります。
+また，~card_string~ で使うために，スーツや番号を表す文字列を与えてカー
+ドを作る関数も併せて作ります。
 </p>
 
 <div class="org-src-container">
@@ -1188,8 +1231,20 @@ result = カードの表示文字列を作る(あるカード)
 
   return new;
 }
+
+Card card_new_from_string(char *suit_str, char *no_str)
+{
+  int suit = card_suit_from_string(suit_str);
+  int no = card_no_from_string(no_str);
+
+  return card_new(suit, no);
+}
 </pre>
 </div>
+
+<p>
+ここで，~card_string~ がきちんと書けます:
+</p>
 
 <div class="org-src-container">
 
@@ -1198,72 +1253,62 @@ result = カードの表示文字列を作る(あるカード)
   char *result;
 
   {
-    Card a_card;
-
-    Card card_new(char *, char *);
+    Card card_new_from_string(char *, char *);
+    Card card;
     char *card_to_string(Card);
 
-    a_card = card_new(suit_string, no_string);
-    result = card_to_string(a_card);
+    card = card_new_from_string(suit_string, no_string);
+
+    result = card_to_string(card);
   }
 
   return result;
 }
 </pre>
 </div>
-
-<p>
-ここで，スーツや番号を表すのに，文字列を使っているのが気になります。
-後の課題で，カードをソートすることを考えると，スーツと番号のプロ
-グラム内部の表現は，整数がいいでしょう。
-</p>
 </div>
 
 <div id="outline-container-orgheadline25" class="outline-6">
-<h6 id="orgheadline25">スーツを整数に</h6>
+<h6 id="orgheadline25">文字列で与えられたスーツ(文字列)を整数にする関数</h6>
 <div class="outline-text-6" id="text-orgheadline25">
 <p>
-card_string 関数内から呼び出す形を書いてみます:
+<code>card_new_from_string</code> 関数では次のように書きました:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-c">int suit = suit_from_string(suit_string);
+<pre class="src src-c">int suit = card_suit_from_string(suit_string);
 </pre>
 </div>
 
 <p>
-いいでしょう。
-</p>
-
-<p>
-次に，suit_from_string が満たすべきことをCで書いてみましょう:
+<code>card_suit_from_string</code> が満たすべきことをCで書いてみましょう:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-c">if (suit_from_string("spade") != 4) puts("error");
-if (suit_from_string("heart") != 3) puts("error");
-if (suit_from_string("diamond") != 2) puts("error");
-if (suit_from_string("club") != 1) puts("error");
+<pre class="src src-c">if (card_suit_from_string("spade") != 4) puts("error");
+if (card_suit_from_string("heart") != 3) puts("error");
+if (card_suit_from_string("diamond") != 2) puts("error");
+if (card_suit_from_string("club") != 1) puts("error");
 </pre>
 </div>
 
 <p>
 うまく使えそうです。これでいいでしょう。
-すると，suit_from_string のプロトタイプ宣言が書けます:
+すると，card_suit_from_string のプロトタイプ宣言が書けます:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-c">int suit_from_string(char *);
+<pre class="src src-c">int card_suit_from_string(char *);
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline26" class="outline-6">
-<h6 id="orgheadline26">番号を数字に</h6>
+<h6 id="orgheadline26">番号文字列を数字にする関数</h6>
 <div class="outline-text-6" id="text-orgheadline26">
 <p>
 続いて，カード番号について，プログラム内部表現への変換を，スーツ同様に，
@@ -1272,64 +1317,74 @@ if (suit_from_string("club") != 1) puts("error");
 
 <div class="org-src-container">
 
-<pre class="src src-c">int no =  no_from_string(no_string);
+<pre class="src src-c">int no =  card_no_from_string(no_str);
 </pre>
 </div>
 
 <p>
-次に，no_from_string が満たすべきことをCで書いてみましょう:
+<code>card_no_from_string</code> が満たすべきことをCで書いてみましょう:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c">if ( no_from_string("13") == 13 ) puts("OK"); else puts("NG");
-if ( no_from_string("12") == 12 ) puts("OK"); else puts("NG");
-if ( no_from_string("2") == 2 ) puts("OK"); else puts("NG");
-if ( no_from_string("1") == 14 ) puts("OK"); else puts("NG");
+<pre class="src src-c">if (card_no_from_string("13") == 13 ) puts("OK"); else puts("NG");
+if (card_no_from_string("12") == 12 ) puts("OK"); else puts("NG");
+if (card_no_from_string("2") == 2 ) puts("OK"); else puts("NG");
+if (card_no_from_string("1") == 14 ) puts("OK"); else puts("NG");
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-5">
-<h5 id="orgheadline28">カードを文字列にする</h5>
-<div class="outline-text-5" id="text-orgheadline28">
-</div><div id="outline-container-orgheadline27" class="outline-7">
-<h7 id="orgheadline27">スーツと番号を表す数字をそれぞれ文字に</h7>
-<div class="outline-text-7" id="text-orgheadline27">
-<ul class="org-ul">
-<li>suit_to_char(card)</li>
-<li>no_to_string(card)</li>
-</ul>
-
-
+<div id="outline-container-orgheadline27" class="outline-5">
+<h5 id="orgheadline27">カードを文字列にする関数 card_to_string</h5>
+<div class="outline-text-5" id="text-orgheadline27">
 <p>
-card_string関数の処理は，
+<code>card_to_string</code> の使われかたは，次でした:
 </p>
-
-<ul class="org-ul">
-<li>suit_str と no_strからカードを作り，</li>
-<li>カードの表示文字列をつくる</li>
-</ul>
-
-<p>
-処理に名前をつけて，card_string関数の中身を書きます:
-</p>
-
 <div class="org-src-container">
 
-<pre class="src src-c">card = card_new(suit, no);
-str = card_to_string(card)
+<pre class="src src-c">str = card_to_string(card)
+</pre>
+</div>
+
+<p>
+スーツと番号を表す数字をそれぞれ文字にする関数を考えます。
+</p>
+
+<ul class="org-ul">
+<li><code>card_suit_to_char(card)</code></li>
+<li><code>card_no_to_string(card)</code></li>
+</ul>
+
+<p>
+すると，~card_to_string~ が書けます:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">char *
+card_to_string(Card card)
+{
+char suit_char = card_suit_to_char(card);
+char no_char = card_no_to_char(card);
+char *result = (char *) malloc(3);
+
+result[0] = suit_char;
+result[1] = no_char;
+result[2] = 0;
+
+return result;
+}
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-orgheadline29" class="outline-4">
-<h4 id="orgheadline29">simple_1.c</h4>
-<div class="outline-text-4" id="text-orgheadline29">
+
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28">simple_1.c</h4>
+<div class="outline-text-4" id="text-orgheadline28">
 <div class="org-src-container">
 
 <pre class="src src-c">// simple_1.c
@@ -1346,14 +1401,15 @@ typedef struct _Card Card;
 
 char *card_string(char *, char *);
 
-int suit_from_string(char *);
-int no_from_string(char *);
 
+Card card_new_from_string(char *, char *);
 Card card_new(int, int);
+int card_suit_from_string(char *);
+int card_no_from_string(char *);
 
 char *card_to_string(Card);
-char suit_to_char(Card);
-char no_to_char(Card);
+char card_suit_to_char(Card);
+char card_no_to_char(Card);
 
 int
 main(int argc, char *argv[])
@@ -1364,11 +1420,11 @@ main(int argc, char *argv[])
 
   {
     void test_card_string(void);
-    void test_suit_from_string(void);
-    void test_no_from_string(void);
+    void test_card_suit_from_string(void);
+    void test_card_no_from_string(void);
 
-    test_suit_from_string();
-    test_no_from_string();
+    test_card_suit_from_string();
+    test_card_no_from_string();
     test_card_string();
   }
 
@@ -1390,38 +1446,46 @@ test_card_string(void)
   if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG");
 }
 
-void
-test_suit_from_string(void)
-{
-if (suit_from_string("spade") != 4) puts("error");
-if (suit_from_string("heart") != 3) puts("error");
-if (suit_from_string("diamond") != 2) puts("error");
-if (suit_from_string("club") != 1) puts("error");
-}
-
-void
-test_no_from_string(void)
-{
-  if ( no_from_string("13") == 13 ) puts("OK"); else puts("NG");
-  if ( no_from_string("12") == 12 ) puts("OK"); else puts("NG");
-  if ( no_from_string("2") == 2 ) puts("OK"); else puts("NG");
-  if ( no_from_string("1") == 14 ) puts("OK"); else puts("NG");
-}
 
 char *card_string(char *suit_string, char *no_string)
 {
   char *result;
 
   {
-    int suit = suit_from_string(suit_string);
-    int no = no_from_string(no_string);
-    Card a = card_new(suit, no);
+    Card a = card_new_from_string(suit_string, no_string);
 
     result = card_to_string(a);
   }
 
   return result;
 }
+
+void
+test_card_suit_from_string(void)
+{
+if (card_suit_from_string("spade") != 4) puts("error");
+if (card_suit_from_string("heart") != 3) puts("error");
+if (card_suit_from_string("diamond") != 2) puts("error");
+if (card_suit_from_string("club") != 1) puts("error");
+}
+
+void
+test_card_no_from_string(void)
+{
+  if (card_no_from_string("13") == 13 ) puts("OK"); else puts("NG");
+  if (card_no_from_string("12") == 12 ) puts("OK"); else puts("NG");
+  if (card_no_from_string("2") == 2 ) puts("OK"); else puts("NG");
+  if (card_no_from_string("1") == 14 ) puts("OK"); else puts("NG");
+}
+
+Card card_new_from_string(char *suit_str, char *no_str)
+{
+  int suit = card_suit_from_string(suit_str);
+  int no = card_no_from_string(no_str);
+
+  return card_new(suit, no);
+}
+
 
 Card card_new(int suit, int no) 
 {
@@ -1436,18 +1500,20 @@ Card card_new(int suit, int no)
 char *
 card_to_string(Card card)
 {
-  char *str = (char *) malloc(3);
-  char suitc = suit_to_char(card);
-  char noc = no_to_char(card);
+  char suitc = card_suit_to_char(card);
+  char noc = card_no_to_char(card);
+  char *result = (char *) malloc(3);
 
-  str[0] = suitc;
-  str[1] = noc;
-  str[2] = 0;
 
-  return str;
+  result[0] = suitc;
+  result[1] = noc;
+  result[2] = 0;
+
+  return result;
 }
 
-int suit_from_string(char *suit)
+int 
+card_suit_from_string(char *suit)
 {
   if (strcmp("spade", suit)==0) return 4;
   if (strcmp("heart", suit)==0) return 3;
@@ -1462,7 +1528,7 @@ int suit_from_string(char *suit)
 # define CLUB 1
 
 char
-suit_to_char(Card c)
+card_suit_to_char(Card c)
 {
   if (c.suit==SPADE) return 'S';
   if (c.suit==HEART) return 'H';
@@ -1476,7 +1542,8 @@ suit_to_char(Card c)
 # define QUEEN 12
 # define JACK 11
 
-int no_from_string(char *no)
+int 
+card_no_from_string(char *no)
 {
   int n = atoi(no);
 
@@ -1485,7 +1552,7 @@ int no_from_string(char *no)
 }
 
 char
-no_to_char(Card c)
+card_no_to_char(Card c)
 {
   int n = c.no;
 
@@ -1501,8 +1568,7 @@ no_to_char(Card c)
 
 <div class="org-src-container">
 
-<pre class="src src-makefile">.PHONY: all clean
-all: simple_1
+<pre class="src src-makefile">.PHONY: clean
 
 simple_1: simple_1.c
 	gcc -o $@ $^ 
@@ -1511,13 +1577,37 @@ clean:
 	rm -f *~ \#* *.gch
 </pre>
 </div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">make clean
+make -f Makefile_1
+./simple_1 heart 1
+</pre>
+</div>
+
+<pre class="example">
+gcc -o simple_1 simple_1.c 
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+HA
+</pre>
 <hr  />
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline34" class="outline-2">
-<h2 id="orgheadline34"><span class="section-number-2">2</span> Todo test_sort() がクラッシュする原因</h2>
+<div id="outline-container-orgheadline33" class="outline-2">
+<h2 id="orgheadline33"><span class="section-number-2">2</span> Todo test_sort() がクラッシュする原因</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Card *cards に値を入れずに，cards_sort に渡したのが原因です。
@@ -1627,8 +1717,8 @@ Warning を無視すると意味的(実行時)におかしくなります。
 </ul>
 </div>
 
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32"><span class="section-number-3">2.1</span> 教訓</h3>
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">2.1</span> 教訓</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>gcc のオプションに，-Wall を付てコンパイルし, Warning をチェックする
@@ -1643,8 +1733,8 @@ Warning を無視すると意味的(実行時)におかしくなります。
 </div>
 
 
-<div id="outline-container-orgheadline33" class="outline-3">
-<h3 id="orgheadline33"><span class="section-number-3">2.2</span> お願い</h3>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">2.2</span> お願い</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 card_display/simple/ 配下の，Makefile の CFLAGS 変数の値に， -g -Wall
@@ -1654,8 +1744,8 @@ card_display/simple/ 配下の，Makefile の CFLAGS 変数の値に， -g -Wall
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline35" class="outline-2">
-<h2 id="orgheadline35"><span class="section-number-2">3</span> Doing org-mode + babelでの literate programming 実践</h2>
+<div id="outline-container-orgheadline34" class="outline-2">
+<h2 id="orgheadline34"><span class="section-number-2">3</span> Doing org-mode + babelでの literate programming 実践</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>コード類は，機能毎に .org にまとめ，
@@ -1703,11 +1793,11 @@ part 毎に :name を付け，:noweb 機能で，
 <hr  />
 </div>
 </div>
-<div id="outline-container-orgheadline40" class="outline-2">
-<h2 id="orgheadline40"><span class="section-number-2">4</span> C言語あれこれ</h2>
+<div id="outline-container-orgheadline39" class="outline-2">
+<h2 id="orgheadline39"><span class="section-number-2">4</span> C言語あれこれ</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline36" class="outline-3">
-<h3 id="orgheadline36"><span class="section-number-3">4.1</span> 共有ライブラリーを解剖する</h3>
+</div><div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><span class="section-number-3">4.1</span> 共有ライブラリーを解剖する</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 <a href="https://www.ibm.com/developerworks/jp/linux/library/l-shlibs/">共有ライブラリーを解剖する</a>
@@ -1715,8 +1805,8 @@ part 毎に :name を付け，:noweb 機能で，
 </div>
 </div>
 
-<div id="outline-container-orgheadline37" class="outline-3">
-<h3 id="orgheadline37"><span class="section-number-3">4.2</span> ライブラリの作り方</h3>
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">4.2</span> ライブラリの作り方</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li><p>
@@ -1741,8 +1831,8 @@ ar r
 </div>
 </div>
 
-<div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38"><span class="section-number-3">4.3</span> Cコンパイラのオプション</h3>
+<div id="outline-container-orgheadline37" class="outline-3">
+<h3 id="orgheadline37"><span class="section-number-3">4.3</span> Cコンパイラのオプション</h3>
 <div class="outline-text-3" id="text-4-3">
 <pre class="example">
 -I&lt;include_path&gt;, C_INCLUDE_PATH環境変数
@@ -1752,8 +1842,8 @@ ar r
 </div>
 </div>
 
-<div id="outline-container-orgheadline39" class="outline-3">
-<h3 id="orgheadline39"><span class="section-number-3">4.4</span> ヘッダファイルを二回インクルードしない</h3>
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">4.4</span> ヘッダファイルを二回インクルードしない</h3>
 <div class="outline-text-3" id="text-4-4">
 <pre class="example">
 # pragma once
@@ -1762,15 +1852,15 @@ ar r
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline56" class="outline-2">
-<h2 id="orgheadline56"><span class="section-number-2">5</span> Card モジュールの開発</h2>
+<div id="outline-container-orgheadline55" class="outline-2">
+<h2 id="orgheadline55"><span class="section-number-2">5</span> Card モジュールの開発</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline43" class="outline-3">
-<h3 id="orgheadline43"><span class="section-number-3">5.1</span> 5/16 (5)</h3>
+</div><div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">5.1</span> 5/16 (5)</h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-orgheadline41" class="outline-4">
-<h4 id="orgheadline41"><a href="#orgheadline42">6</a>について考える</h4>
-<div class="outline-text-4" id="text-orgheadline41">
+</div><div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="orgheadline40"><a href="#orgheadline41">6</a>について考える</h4>
+<div class="outline-text-4" id="text-orgheadline40">
 <ul class="org-ul">
 <li>ポーカーゲームやカードについて考え，</li>
 <li>カードモジュールの内と外を認識し，</li>
@@ -1781,12 +1871,12 @@ ar r
 </div>
 </div>
 
-<div id="outline-container-orgheadline47" class="outline-3">
-<h3 id="orgheadline47"><span class="section-number-3">5.2</span> 5/23 (6)</h3>
+<div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="orgheadline46"><span class="section-number-3">5.2</span> 5/23 (6)</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-orgheadline44" class="outline-4">
-<h4 id="orgheadline44">~/progs/Game/Card の確認</h4>
-<div class="outline-text-4" id="text-orgheadline44">
+</div><div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43">~/progs/Game/Card の確認</h4>
+<div class="outline-text-4" id="text-orgheadline43">
 <p>
 なければ作ってください
 </p>
@@ -1797,13 +1887,13 @@ ar r
 </div>
 </div>
 
-<div id="outline-container-orgheadline45" class="outline-4">
-<h4 id="orgheadline45"><a href="#orgheadline42">6</a>について考える</h4>
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44"><a href="#orgheadline41">6</a>について考える</h4>
 </div>
 
-<div id="outline-container-orgheadline46" class="outline-4">
-<h4 id="orgheadline46">最初に，Card を使うプログラム（テスト）を考える</h4>
-<div class="outline-text-4" id="text-orgheadline46">
+<div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45">最初に，Card を使うプログラム（テスト）を考える</h4>
+<div class="outline-text-4" id="text-orgheadline45">
 <p>
 <a href="file:///users/home/masayuki/progs/Game/Card/">file:///users/home/masayuki/progs/Game/Card/</a>
 </p>
@@ -1848,12 +1938,12 @@ ar r
 </div>
 </div>
 
-<div id="outline-container-orgheadline49" class="outline-3">
-<h3 id="orgheadline49"><span class="section-number-3">5.3</span> 6/3 (7)</h3>
+<div id="outline-container-orgheadline48" class="outline-3">
+<h3 id="orgheadline48"><span class="section-number-3">5.3</span> 6/3 (7)</h3>
 <div class="outline-text-3" id="text-5-3">
-</div><div id="outline-container-orgheadline48" class="outline-4">
-<h4 id="orgheadline48">Card に印刷機能を追加しよう</h4>
-<div class="outline-text-4" id="text-orgheadline48">
+</div><div id="outline-container-orgheadline47" class="outline-4">
+<h4 id="orgheadline47">Card に印刷機能を追加しよう</h4>
+<div class="outline-text-4" id="text-orgheadline47">
 <p>
 suit = HEART, no = ACE =&gt; "HA"
 suit = CLUB, no=2 =&gt; "C2"
@@ -1888,12 +1978,12 @@ char * Card_to_str(Card);
 
 
 
-<div id="outline-container-orgheadline55" class="outline-3">
-<h3 id="orgheadline55"><span class="section-number-3">5.4</span> 6/10 (8)</h3>
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54"><span class="section-number-3">5.4</span> 6/10 (8)</h3>
 <div class="outline-text-3" id="text-5-4">
-</div><div id="outline-container-orgheadline50" class="outline-4">
-<h4 id="orgheadline50">Card に比較機能を追加しよう</h4>
-<div class="outline-text-4" id="text-orgheadline50">
+</div><div id="outline-container-orgheadline49" class="outline-4">
+<h4 id="orgheadline49">Card に比較機能を追加しよう</h4>
+<div class="outline-text-4" id="text-orgheadline49">
 <pre class="example">
 int card_compare(Card, Card); 
 </pre>
@@ -1905,9 +1995,9 @@ int card_compare(Card, Card);
 </div>
 
 
-<div id="outline-container-orgheadline51" class="outline-4">
-<h4 id="orgheadline51">Card をモジュールとして提供できるようにしよう</h4>
-<div class="outline-text-4" id="text-orgheadline51">
+<div id="outline-container-orgheadline50" class="outline-4">
+<h4 id="orgheadline50">Card をモジュールとして提供できるようにしよう</h4>
+<div class="outline-text-4" id="text-orgheadline50">
 <ul class="org-ul">
 <li>~/progs/Game/Module/card.o</li>
 <li>~/progs/Game/Interface/card.h</li>
@@ -1916,9 +2006,9 @@ int card_compare(Card, Card);
 </div>
 
 
-<div id="outline-container-orgheadline52" class="outline-4">
-<h4 id="orgheadline52"><a href="file:///users/home/masayuki/progs/Game/Makefile">file:///users/home/masayuki/progs/Game/Makefile</a></h4>
-<div class="outline-text-4" id="text-orgheadline52">
+<div id="outline-container-orgheadline51" class="outline-4">
+<h4 id="orgheadline51"><a href="file:///users/home/masayuki/progs/Game/Makefile">file:///users/home/masayuki/progs/Game/Makefile</a></h4>
+<div class="outline-text-4" id="text-orgheadline51">
 <ul class="org-ul">
 <li>カードモジュールを最新状態にし，</li>
 <li>モジュール本体を ~progs/Game/Card/card.o へコピーし</li>
@@ -1931,9 +2021,9 @@ int card_compare(Card, Card);
 </div>
 </div>
 
-<div id="outline-container-orgheadline53" class="outline-4">
-<h4 id="orgheadline53">Card モジュールを使ってみる</h4>
-<div class="outline-text-4" id="text-orgheadline53">
+<div id="outline-container-orgheadline52" class="outline-4">
+<h4 id="orgheadline52">Card モジュールを使ってみる</h4>
+<div class="outline-text-4" id="text-orgheadline52">
 <p>
 いままで作ってきたテストを利用して，
 Card モジュールの外からプログラムを書いてみる．
@@ -1955,15 +2045,15 @@ Card モジュールの外からプログラムを書いてみる．
 </div>
 </div>
 
-<div id="outline-container-orgheadline54" class="outline-4">
-<h4 id="orgheadline54">サブバージョンを使い始めよう</h4>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53">サブバージョンを使い始めよう</h4>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline42" class="outline-2">
-<h2 id="orgheadline42"><span class="section-number-2">6</span> Cardの機能</h2>
+<div id="outline-container-orgheadline41" class="outline-2">
+<h2 id="orgheadline41"><span class="section-number-2">6</span> Cardの機能</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 カードは，
@@ -2003,11 +2093,11 @@ Card モジュールの外からプログラムを書いてみる．
 </div>
 
 
-<div id="outline-container-orgheadline59" class="outline-2">
-<h2 id="orgheadline59"><span class="section-number-2">7</span> テスト駆動開発について</h2>
+<div id="outline-container-orgheadline58" class="outline-2">
+<h2 id="orgheadline58"><span class="section-number-2">7</span> テスト駆動開発について</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-orgheadline57" class="outline-3">
-<h3 id="orgheadline57"><span class="section-number-3">7.1</span> 入門サイト</h3>
+</div><div id="outline-container-orgheadline56" class="outline-3">
+<h3 id="orgheadline56"><span class="section-number-3">7.1</span> 入門サイト</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
 <li><a href="https://www.slideshare.net/shuji_w6e/ss-15246933">テスト駆動開発入門</a> (slideshare)</li>
@@ -2017,8 +2107,8 @@ Card モジュールの外からプログラムを書いてみる．
 </div>
 
 
-<div id="outline-container-orgheadline58" class="outline-3">
-<h3 id="orgheadline58"><span class="section-number-3">7.2</span> やりたいこと</h3>
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57"><span class="section-number-3">7.2</span> やりたいこと</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 少しづつ，
@@ -2033,8 +2123,8 @@ Card モジュールの外からプログラムを書いてみる．
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline60" class="outline-2">
-<h2 id="orgheadline60"><span class="section-number-2">8</span> emacs</h2>
+<div id="outline-container-orgheadline59" class="outline-2">
+<h2 id="orgheadline59"><span class="section-number-2">8</span> emacs</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 <a href="https://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs.html">日本語マニュアル</a>
@@ -2102,16 +2192,16 @@ C-x 5 0 閉じる
 <hr  />
 </div>
 </div>
-<div id="outline-container-orgheadline66" class="outline-2">
-<h2 id="orgheadline66"><span class="section-number-2">9</span> ソフトウェア構成論の環境設定について</h2>
+<div id="outline-container-orgheadline65" class="outline-2">
+<h2 id="orgheadline65"><span class="section-number-2">9</span> ソフトウェア構成論の環境設定について</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 2014以前
 </p>
 </div>
 
-<div id="outline-container-orgheadline61" class="outline-3">
-<h3 id="orgheadline61"><span class="section-number-3">9.1</span> ./.ckpt</h3>
+<div id="outline-container-orgheadline60" class="outline-3">
+<h3 id="orgheadline60"><span class="section-number-3">9.1</span> ./.ckpt</h3>
 <div class="outline-text-3" id="text-9-1">
 <ul class="org-ul">
 <li>バックアップがある，隠しディレクトリです．</li>
@@ -2131,8 +2221,8 @@ C-x 5 0 閉じる
 </div>
 </div>
 
-<div id="outline-container-orgheadline62" class="outline-3">
-<h3 id="orgheadline62"><span class="section-number-3">9.2</span> 開発ディレクトリ</h3>
+<div id="outline-container-orgheadline61" class="outline-3">
+<h3 id="orgheadline61"><span class="section-number-3">9.2</span> 開発ディレクトリ</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 <a href="file:///users/home/masayuki/prog">file:///users/home/masayuki/prog</a> の下の自分のログイン名のディレクトリ
@@ -2140,8 +2230,8 @@ C-x 5 0 閉じる
 </div>
 </div>
 
-<div id="outline-container-orgheadline63" class="outline-3">
-<h3 id="orgheadline63"><span class="section-number-3">9.3</span> ~/progs でシンボリックリンクする</h3>
+<div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62"><span class="section-number-3">9.3</span> ~/progs でシンボリックリンクする</h3>
 <div class="outline-text-3" id="text-9-3">
 <pre class="example">
 ((% ln -s ~suzuki/prog/h00j000 ~/progs %))
@@ -2172,12 +2262,12 @@ C-x 5 0 閉じる
 </div>
 </div>
 
-<div id="outline-container-orgheadline65" class="outline-3">
-<h3 id="orgheadline65"><span class="section-number-3">9.4</span> ~/progs/{Game, Trigo, Reports}</h3>
+<div id="outline-container-orgheadline64" class="outline-3">
+<h3 id="orgheadline64"><span class="section-number-3">9.4</span> ~/progs/{Game, Trigo, Reports}</h3>
 <div class="outline-text-3" id="text-9-4">
-</div><div id="outline-container-orgheadline64" class="outline-4">
-<h4 id="orgheadline64">サブディレクトリの作成</h4>
-<div class="outline-text-4" id="text-orgheadline64">
+</div><div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63">サブディレクトリの作成</h4>
+<div class="outline-text-4" id="text-orgheadline63">
 <p>
 ~/progsの下に三つのディレクトリを作ります．
 </p>
@@ -2205,15 +2295,15 @@ C-x 5 0 閉じる
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline76" class="outline-2">
-<h2 id="orgheadline76"><span class="section-number-2">10</span> モジュールとは</h2>
+<div id="outline-container-orgheadline75" class="outline-2">
+<h2 id="orgheadline75"><span class="section-number-2">10</span> モジュールとは</h2>
 <div class="outline-text-2" id="text-10">
-</div><div id="outline-container-orgheadline69" class="outline-3">
-<h3 id="orgheadline69"><span class="section-number-3">10.1</span> モジュールのイメージ</h3>
+</div><div id="outline-container-orgheadline68" class="outline-3">
+<h3 id="orgheadline68"><span class="section-number-3">10.1</span> モジュールのイメージ</h3>
 <div class="outline-text-3" id="text-10-1">
-</div><div id="outline-container-orgheadline67" class="outline-4">
-<h4 id="orgheadline67">関数</h4>
-<div class="outline-text-4" id="text-orgheadline67">
+</div><div id="outline-container-orgheadline66" class="outline-4">
+<h4 id="orgheadline66">関数</h4>
+<div class="outline-text-4" id="text-orgheadline66">
 <ul class="org-ul">
 <li>関数として独立したもの</li>
 <li>関数とは何？
@@ -2227,9 +2317,9 @@ C-x 5 0 閉じる
 </div>
 </div>
 
-<div id="outline-container-orgheadline68" class="outline-4">
-<h4 id="orgheadline68">機能</h4>
-<div class="outline-text-4" id="text-orgheadline68">
+<div id="outline-container-orgheadline67" class="outline-4">
+<h4 id="orgheadline67">機能</h4>
+<div class="outline-text-4" id="text-orgheadline67">
 <ul class="org-ul">
 <li>大きな仕事の中から，
 独立したまとまりのいい部分的な機能を取り出したもの，</li>
@@ -2240,12 +2330,12 @@ C-x 5 0 閉じる
 </div>
 </div>
 
-<div id="outline-container-orgheadline72" class="outline-3">
-<h3 id="orgheadline72"><span class="section-number-3">10.2</span> モジュールとは部品</h3>
+<div id="outline-container-orgheadline71" class="outline-3">
+<h3 id="orgheadline71"><span class="section-number-3">10.2</span> モジュールとは部品</h3>
 <div class="outline-text-3" id="text-10-2">
-</div><div id="outline-container-orgheadline70" class="outline-4">
-<h4 id="orgheadline70">部品の利用</h4>
-<div class="outline-text-4" id="text-orgheadline70">
+</div><div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69">部品の利用</h4>
+<div class="outline-text-4" id="text-orgheadline69">
 <ul class="org-ul">
 <li>ある機能の実体</li>
 <li>その実装をしらずに，</li>
@@ -2254,9 +2344,9 @@ C-x 5 0 閉じる
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline71" class="outline-4">
-<h4 id="orgheadline71">部品の提供</h4>
-<div class="outline-text-4" id="text-orgheadline71">
+<div id="outline-container-orgheadline70" class="outline-4">
+<h4 id="orgheadline70">部品の提供</h4>
+<div class="outline-text-4" id="text-orgheadline70">
 <ul class="org-ul">
 <li>ある独立した機能を実現し，</li>
 <li>インターフェイスを守り</li>
@@ -2267,12 +2357,12 @@ C-x 5 0 閉じる
 </div>
 </div>
 
-<div id="outline-container-orgheadline75" class="outline-3">
-<h3 id="orgheadline75"><span class="section-number-3">10.3</span> Ubuntu/C言語を使ったモジュールプログラミング</h3>
+<div id="outline-container-orgheadline74" class="outline-3">
+<h3 id="orgheadline74"><span class="section-number-3">10.3</span> Ubuntu/C言語を使ったモジュールプログラミング</h3>
 <div class="outline-text-3" id="text-10-3">
-</div><div id="outline-container-orgheadline73" class="outline-4">
-<h4 id="orgheadline73">利用側</h4>
-<div class="outline-text-4" id="text-orgheadline73">
+</div><div id="outline-container-orgheadline72" class="outline-4">
+<h4 id="orgheadline72">利用側</h4>
+<div class="outline-text-4" id="text-orgheadline72">
 <ul class="org-ul">
 <li>あるライブラリの機能（関数）を見つけ，</li>
 <li>man やヘッダファイルを見て，APIを知る</li>
@@ -2284,9 +2374,9 @@ C-x 5 0 閉じる
 </ul>
 </div>
 
-<div id="outline-container-orgheadline74" class="outline-5">
-<h5 id="orgheadline74">提供側</h5>
-<div class="outline-text-5" id="text-orgheadline74">
+<div id="outline-container-orgheadline73" class="outline-5">
+<h5 id="orgheadline73">提供側</h5>
+<div class="outline-text-5" id="text-orgheadline73">
 <ul class="org-ul">
 <li>ヘッダファイルを作成し</li>
 <li>ヘッダファイルをインクルードし，</li>
@@ -2303,11 +2393,11 @@ C-x 5 0 閉じる
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline95" class="outline-2">
-<h2 id="orgheadline95"><span class="section-number-2">11</span> ソフトウェア構成論 (昔の説明@wiki)</h2>
+<div id="outline-container-orgheadline94" class="outline-2">
+<h2 id="orgheadline94"><span class="section-number-2">11</span> ソフトウェア構成論 (昔の説明@wiki)</h2>
 <div class="outline-text-2" id="text-11">
-</div><div id="outline-container-orgheadline77" class="outline-3">
-<h3 id="orgheadline77"><span class="section-number-3">11.1</span> 道具達の使い方</h3>
+</div><div id="outline-container-orgheadline76" class="outline-3">
+<h3 id="orgheadline76"><span class="section-number-3">11.1</span> 道具達の使い方</h3>
 <div class="outline-text-3" id="text-11-1">
 <p>
 <a href="./c.html">C言語</a>
@@ -2350,12 +2440,12 @@ C-x 5 0 閉じる
 </div>
 
 
-<div id="outline-container-orgheadline94" class="outline-3">
-<h3 id="orgheadline94"><span class="section-number-3">11.2</span> 自前の関数を作り，利用する</h3>
+<div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="orgheadline93"><span class="section-number-3">11.2</span> 自前の関数を作り，利用する</h3>
 <div class="outline-text-3" id="text-11-2">
-</div><div id="outline-container-orgheadline78" class="outline-4">
-<h4 id="orgheadline78">度が使えるsin関数を作る</h4>
-<div class="outline-text-4" id="text-orgheadline78">
+</div><div id="outline-container-orgheadline77" class="outline-4">
+<h4 id="orgheadline77">度が使えるsin関数を作る</h4>
+<div class="outline-text-4" id="text-orgheadline77">
 <ul class="org-ul">
 <li>sin 関数の変更拡張を行い</li>
 <li>新たな関数（ライブラリ）の提供</li>
@@ -2363,9 +2453,9 @@ C-x 5 0 閉じる
 </ul>
 </div>
 
-<div id="outline-container-orgheadline79" class="outline-5">
-<h5 id="orgheadline79">ライブラリの sin を調べる</h5>
-<div class="outline-text-5" id="text-orgheadline79">
+<div id="outline-container-orgheadline78" class="outline-5">
+<h5 id="orgheadline78">ライブラリの sin を調べる</h5>
+<div class="outline-text-5" id="text-orgheadline78">
 <p>
 sin 関数の素性とは？
 </p>
@@ -2377,21 +2467,21 @@ double sin(double)
 </div>
 </div>
 
-<div id="outline-container-orgheadline84" class="outline-5">
-<h5 id="orgheadline84">引数を度で渡すと，sin関数値を計算する関数</h5>
-<div class="outline-text-5" id="text-orgheadline84">
-</div><div id="outline-container-orgheadline80" class="outline-6">
-<h6 id="orgheadline80">名前と引数の型と結果の型を決める</h6>
-<div class="outline-text-6" id="text-orgheadline80">
+<div id="outline-container-orgheadline83" class="outline-5">
+<h5 id="orgheadline83">引数を度で渡すと，sin関数値を計算する関数</h5>
+<div class="outline-text-5" id="text-orgheadline83">
+</div><div id="outline-container-orgheadline79" class="outline-6">
+<h6 id="orgheadline79">名前と引数の型と結果の型を決める</h6>
+<div class="outline-text-6" id="text-orgheadline79">
 <pre class="example">
 double d_sin(double)
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgheadline81" class="outline-6">
-<h6 id="orgheadline81">この決まりごとをヘッダファイルに書いておく</h6>
-<div class="outline-text-6" id="text-orgheadline81">
+<div id="outline-container-orgheadline80" class="outline-6">
+<h6 id="orgheadline80">この決まりごとをヘッダファイルに書いておく</h6>
+<div class="outline-text-6" id="text-orgheadline80">
 <p>
 <a href="./d_sin.h">./d_sin.h</a>
 </p>
@@ -2400,9 +2490,9 @@ double d_sin(double)
 </div>
 </div>
 
-<div id="outline-container-orgheadline82" class="outline-6">
-<h6 id="orgheadline82"><a href="./d_sin.c">./d_sin.c</a> に関数の振る舞いをプログラムする</h6>
-<div class="outline-text-6" id="text-orgheadline82">
+<div id="outline-container-orgheadline81" class="outline-6">
+<h6 id="orgheadline81"><a href="./d_sin.c">./d_sin.c</a> に関数の振る舞いをプログラムする</h6>
+<div class="outline-text-6" id="text-orgheadline81">
 <p>
 決まりごと
 </p>
@@ -2424,9 +2514,9 @@ double d_sin(double x) // あらかじめ決めた素性を読み込む
 </div>
 
 
-<div id="outline-container-orgheadline83" class="outline-6">
-<h6 id="orgheadline83">d_sin.c をコンパイルしてみる</h6>
-<div class="outline-text-6" id="text-orgheadline83">
+<div id="outline-container-orgheadline82" class="outline-6">
+<h6 id="orgheadline82">d_sin.c をコンパイルしてみる</h6>
+<div class="outline-text-6" id="text-orgheadline82">
 <p>
 コンパイラが文句を言わず，
 オブジェクトファイル d_sin.o が正しくできれば，
@@ -2445,12 +2535,12 @@ double d_sin(double x) // あらかじめ決めた素性を読み込む
 </div>
 
 
-<div id="outline-container-orgheadline89" class="outline-5">
-<h5 id="orgheadline89">角度を入力したらそのsin値を計算するプログラムを書く</h5>
-<div class="outline-text-5" id="text-orgheadline89">
-</div><div id="outline-container-orgheadline85" class="outline-6">
-<h6 id="orgheadline85"><a href="./calc_sin.c">./calc_sin.c</a></h6>
-<div class="outline-text-6" id="text-orgheadline85">
+<div id="outline-container-orgheadline88" class="outline-5">
+<h5 id="orgheadline88">角度を入力したらそのsin値を計算するプログラムを書く</h5>
+<div class="outline-text-5" id="text-orgheadline88">
+</div><div id="outline-container-orgheadline84" class="outline-6">
+<h6 id="orgheadline84"><a href="./calc_sin.c">./calc_sin.c</a></h6>
+<div class="outline-text-6" id="text-orgheadline84">
 <ul class="org-ul">
 <li><p>
 d_sin.h が 関数の素性
@@ -2462,13 +2552,13 @@ d_sin.h が 関数の素性
 </div>
 </div>
 
-<div id="outline-container-orgheadline86" class="outline-6">
-<h6 id="orgheadline86">sin(deg_to_rad(atof(argv\[1\]))) の計算</h6>
+<div id="outline-container-orgheadline85" class="outline-6">
+<h6 id="orgheadline85">sin(deg_to_rad(atof(argv\[1\]))) の計算</h6>
 </div>
 
-<div id="outline-container-orgheadline87" class="outline-6">
-<h6 id="orgheadline87">コンパイルして calc_d_sin.o を作る</h6>
-<div class="outline-text-6" id="text-orgheadline87">
+<div id="outline-container-orgheadline86" class="outline-6">
+<h6 id="orgheadline86">コンパイルして calc_d_sin.o を作る</h6>
+<div class="outline-text-6" id="text-orgheadline86">
 <pre class="example">
 ((% gcc -c calc_d_sin.c %))
 </pre>
@@ -2480,9 +2570,9 @@ d_sin.h が 関数の素性
 </div>
 
 
-<div id="outline-container-orgheadline88" class="outline-6">
-<h6 id="orgheadline88">d_sin.o と calc_d_sin.o （とライブラリ)をリンクして，実行プログラムを作る</h6>
-<div class="outline-text-6" id="text-orgheadline88">
+<div id="outline-container-orgheadline87" class="outline-6">
+<h6 id="orgheadline87">d_sin.o と calc_d_sin.o （とライブラリ)をリンクして，実行プログラムを作る</h6>
+<div class="outline-text-6" id="text-orgheadline87">
 <pre class="example">
 ((% gcc calc_d_sin.o d_sin.o -lm -o calc_d_sin %))
 </pre>
@@ -2491,9 +2581,9 @@ d_sin.h が 関数の素性
 </div>
 
 
-<div id="outline-container-orgheadline90" class="outline-5">
-<h5 id="orgheadline90">make</h5>
-<div class="outline-text-5" id="text-orgheadline90">
+<div id="outline-container-orgheadline89" class="outline-5">
+<h5 id="orgheadline89">make</h5>
+<div class="outline-text-5" id="text-orgheadline89">
 <p>
 どうやって目的のプログラムを作るのかを，
 段階的に記述する
@@ -2504,9 +2594,9 @@ d_sin.h が 関数の素性
 </p>
 </div>
 
-<div id="outline-container-orgheadline91" class="outline-6">
-<h6 id="orgheadline91">実行プログラムを作成するまでにおこなったコマンド</h6>
-<div class="outline-text-6" id="text-orgheadline91">
+<div id="outline-container-orgheadline90" class="outline-6">
+<h6 id="orgheadline90">実行プログラムを作成するまでにおこなったコマンド</h6>
+<div class="outline-text-6" id="text-orgheadline90">
 <ul class="org-ul">
 <li>d_sin.h を設計し，d_sin.c に実装を記述</li>
 <li>: ((% gcc -c -I . d_sin.c %))</li>
@@ -2523,9 +2613,9 @@ d_sin.h が 関数の素性
 </div>
 </div>
 
-<div id="outline-container-orgheadline92" class="outline-6">
-<h6 id="orgheadline92">Makefile にこれらを記述</h6>
-<div class="outline-text-6" id="text-orgheadline92">
+<div id="outline-container-orgheadline91" class="outline-6">
+<h6 id="orgheadline91">Makefile にこれらを記述</h6>
+<div class="outline-text-6" id="text-orgheadline91">
 <p>
 <a href="file:///users/home/masayuki/.Makefile">file:///users/home/masayuki/.Makefile</a>
 </p>
@@ -2573,9 +2663,9 @@ calc_d_sin: calc_d_sin.o d_sin.o
 </div>
 
 
-<div id="outline-container-orgheadline93" class="outline-5">
-<h5 id="orgheadline93">バージョン管理</h5>
-<div class="outline-text-5" id="text-orgheadline93">
+<div id="outline-container-orgheadline92" class="outline-5">
+<h5 id="orgheadline92">バージョン管理</h5>
+<div class="outline-text-5" id="text-orgheadline92">
 <p>
 リポジトリの中に自分のディレクトリを作る
 </p>
@@ -2641,11 +2731,11 @@ READMEの履歴管理を始める
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline106" class="outline-2">
-<h2 id="orgheadline106"><span class="section-number-2">12</span> ソフトウェア構成論の受講の準備</h2>
+<div id="outline-container-orgheadline105" class="outline-2">
+<h2 id="orgheadline105"><span class="section-number-2">12</span> ソフトウェア構成論の受講の準備</h2>
 <div class="outline-text-2" id="text-12">
-</div><div id="outline-container-orgheadline96" class="outline-3">
-<h3 id="orgheadline96"><span class="section-number-3">12.1</span> 開発ディレクトリ</h3>
+</div><div id="outline-container-orgheadline95" class="outline-3">
+<h3 id="orgheadline95"><span class="section-number-3">12.1</span> 開発ディレクトリ</h3>
 <div class="outline-text-3" id="text-12-1">
 <p>
 ~/progs
@@ -2654,8 +2744,8 @@ READMEの履歴管理を始める
 </div>
 </div>
 
-<div id="outline-container-orgheadline97" class="outline-3">
-<h3 id="orgheadline97"><span class="section-number-3">12.2</span> Wiki</h3>
+<div id="outline-container-orgheadline96" class="outline-3">
+<h3 id="orgheadline96"><span class="section-number-3">12.2</span> Wiki</h3>
 <div class="outline-text-3" id="text-12-2">
 <ul class="org-ul">
 <li>htp://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi をブックマーク</li>
@@ -2668,31 +2758,31 @@ Wikiの見方
 </div>
 </div>
 
-<div id="outline-container-orgheadline98" class="outline-3">
-<h3 id="orgheadline98"><span class="section-number-3">12.3</span> C言語</h3>
+<div id="outline-container-orgheadline97" class="outline-3">
+<h3 id="orgheadline97"><span class="section-number-3">12.3</span> C言語</h3>
 </div>
 
-<div id="outline-container-orgheadline104" class="outline-3">
-<h3 id="orgheadline104"><span class="section-number-3">12.4</span> 開発環境</h3>
+<div id="outline-container-orgheadline103" class="outline-3">
+<h3 id="orgheadline103"><span class="section-number-3">12.4</span> 開発環境</h3>
 <div class="outline-text-3" id="text-12-4">
-</div><div id="outline-container-orgheadline99" class="outline-4">
-<h4 id="orgheadline99">Emacs</h4>
+</div><div id="outline-container-orgheadline98" class="outline-4">
+<h4 id="orgheadline98">Emacs</h4>
+</div>
+<div id="outline-container-orgheadline99" class="outline-4">
+<h4 id="orgheadline99">make</h4>
 </div>
 <div id="outline-container-orgheadline100" class="outline-4">
-<h4 id="orgheadline100">make</h4>
+<h4 id="orgheadline100">GCC</h4>
 </div>
 <div id="outline-container-orgheadline101" class="outline-4">
-<h4 id="orgheadline101">GCC</h4>
+<h4 id="orgheadline101">シェルとスクリプト</h4>
 </div>
 <div id="outline-container-orgheadline102" class="outline-4">
-<h4 id="orgheadline102">シェルとスクリプト</h4>
-</div>
-<div id="outline-container-orgheadline103" class="outline-4">
-<h4 id="orgheadline103"></h4>
+<h4 id="orgheadline102"></h4>
 </div>
 </div>
-<div id="outline-container-orgheadline105" class="outline-3">
-<h3 id="orgheadline105"><span class="section-number-3">12.5</span> 連絡方法</h3>
+<div id="outline-container-orgheadline104" class="outline-3">
+<h3 id="orgheadline104"><span class="section-number-3">12.5</span> 連絡方法</h3>
 <div class="outline-text-3" id="text-12-5">
 <ul class="org-ul">
 <li>suzuki@cis.iwate-u.ac.jp</li>
@@ -2702,11 +2792,11 @@ Wikiの見方
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline109" class="outline-2">
-<h2 id="orgheadline109"><span class="section-number-2">13</span> shell</h2>
+<div id="outline-container-orgheadline108" class="outline-2">
+<h2 id="orgheadline108"><span class="section-number-2">13</span> shell</h2>
 <div class="outline-text-2" id="text-13">
-</div><div id="outline-container-orgheadline107" class="outline-3">
-<h3 id="orgheadline107"><span class="section-number-3">13.1</span> ディレクトリ</h3>
+</div><div id="outline-container-orgheadline106" class="outline-3">
+<h3 id="orgheadline106"><span class="section-number-3">13.1</span> ディレクトリ</h3>
 <div class="outline-text-3" id="text-13-1">
 <pre class="example">
 ((% cd %))
@@ -2721,8 +2811,8 @@ Wikiの見方
 </div>
 </div>
 
-<div id="outline-container-orgheadline108" class="outline-3">
-<h3 id="orgheadline108"><span class="section-number-3">13.2</span> ファイル</h3>
+<div id="outline-container-orgheadline107" class="outline-3">
+<h3 id="orgheadline107"><span class="section-number-3">13.2</span> ファイル</h3>
 <div class="outline-text-3" id="text-13-2">
 <pre class="example">
 ((% mv a b %))
@@ -2733,11 +2823,11 @@ Wikiの見方
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline120" class="outline-2">
-<h2 id="orgheadline120"><span class="section-number-2">14</span> ソフトウェア構成論 svnあれこれ</h2>
+<div id="outline-container-orgheadline119" class="outline-2">
+<h2 id="orgheadline119"><span class="section-number-2">14</span> ソフトウェア構成論 svnあれこれ</h2>
 <div class="outline-text-2" id="text-14">
-</div><div id="outline-container-orgheadline111" class="outline-3">
-<h3 id="orgheadline111"><span class="section-number-3">14.1</span> h22j018</h3>
+</div><div id="outline-container-orgheadline110" class="outline-3">
+<h3 id="orgheadline110"><span class="section-number-3">14.1</span> h22j018</h3>
 <div class="outline-text-3" id="text-14-1">
 <p>
 ((% cd ~h22j018/progs %))
@@ -2769,9 +2859,9 @@ URL: <a href="https://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j018">https://wiki
 </ul>
 </div>
 
-<div id="outline-container-orgheadline110" class="outline-4">
-<h4 id="orgheadline110">対策</h4>
-<div class="outline-text-4" id="text-orgheadline110">
+<div id="outline-container-orgheadline109" class="outline-4">
+<h4 id="orgheadline109">対策</h4>
+<div class="outline-text-4" id="text-orgheadline109">
 <pre class="example">
 ((% cd ~/progs/Game; rm -rf .svn Card/.svn %))
 ((% cd ~/progs; svn add Game %))
@@ -2780,8 +2870,8 @@ URL: <a href="https://wiki.cis.iwate-u.ac.jp/svn/prog/2012/h22j018">https://wiki
 </div>
 </div>
 
-<div id="outline-container-orgheadline114" class="outline-3">
-<h3 id="orgheadline114"><span class="section-number-3">14.2</span> h22j016</h3>
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="orgheadline113"><span class="section-number-3">14.2</span> h22j016</h3>
 <div class="outline-text-3" id="text-14-2">
 <pre class="example">
 suzuki@:esut118:~h22j016/progs[119] &gt; svn st
@@ -2810,9 +2900,9 @@ A       Game/Makefile
 </pre>
 </div>
 
-<div id="outline-container-orgheadline112" class="outline-4">
-<h4 id="orgheadline112">症状</h4>
-<div class="outline-text-4" id="text-orgheadline112">
+<div id="outline-container-orgheadline111" class="outline-4">
+<h4 id="orgheadline111">症状</h4>
+<div class="outline-text-4" id="text-orgheadline111">
 <p>
 リポジトリのGameに変更があったのに，
 ((% svn up %)) せずに，Game の下に，
@@ -2822,9 +2912,9 @@ Card, Interface, Module, Makefile を ((% svn add %)) した。
 </div>
 
 
-<div id="outline-container-orgheadline113" class="outline-4">
-<h4 id="orgheadline113">対策</h4>
-<div class="outline-text-4" id="text-orgheadline113">
+<div id="outline-container-orgheadline112" class="outline-4">
+<h4 id="orgheadline112">対策</h4>
+<div class="outline-text-4" id="text-orgheadline112">
 <p>
 実行する時は，suzuki が立ち会いますので，声をかけてください。
 </p>
@@ -2839,8 +2929,8 @@ Card, Interface, Module, Makefile を ((% svn add %)) した。
 </div>
 
 
-<div id="outline-container-orgheadline117" class="outline-3">
-<h3 id="orgheadline117"><span class="section-number-3">14.3</span> h22j086</h3>
+<div id="outline-container-orgheadline116" class="outline-3">
+<h3 id="orgheadline116"><span class="section-number-3">14.3</span> h22j086</h3>
 <div class="outline-text-3" id="text-14-3">
 <pre class="example">
 suzuki@:esut118:~h22j086/progs[123] &gt; ls
@@ -2901,18 +2991,18 @@ suzuki@:esut118:~h22j086/progs[138] &gt;
 </pre>
 </div>
 
-<div id="outline-container-orgheadline115" class="outline-4">
-<h4 id="orgheadline115">症状</h4>
-<div class="outline-text-4" id="text-orgheadline115">
+<div id="outline-container-orgheadline114" class="outline-4">
+<h4 id="orgheadline114">症状</h4>
+<div class="outline-text-4" id="text-orgheadline114">
 <p>
 リポジトリとワーキングコピーがずれている
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline116" class="outline-4">
-<h4 id="orgheadline116">対策</h4>
-<div class="outline-text-4" id="text-orgheadline116">
+<div id="outline-container-orgheadline115" class="outline-4">
+<h4 id="orgheadline115">対策</h4>
+<div class="outline-text-4" id="text-orgheadline115">
 <p>
 まず ((% svn up %)) しました。
 あとは，不必要なgame 下を消して，
@@ -2927,8 +3017,8 @@ suzuki@:esut118:~h22j086/progs[138] &gt;
 </div>
 
 
-<div id="outline-container-orgheadline119" class="outline-3">
-<h3 id="orgheadline119"><span class="section-number-3">14.4</span> h22j124</h3>
+<div id="outline-container-orgheadline118" class="outline-3">
+<h3 id="orgheadline118"><span class="section-number-3">14.4</span> h22j124</h3>
 <div class="outline-text-3" id="text-14-4">
 <p>
 ~h22j12/progs を emacs の svn-status で見ると下記のようになっていま
@@ -3016,9 +3106,9 @@ svn status for directory /home/h22j/h22j124/progs/
 </p>
 </div>
 
-<div id="outline-container-orgheadline118" class="outline-4">
-<h4 id="orgheadline118">対策</h4>
-<div class="outline-text-4" id="text-orgheadline118">
+<div id="outline-container-orgheadline117" class="outline-4">
+<h4 id="orgheadline117">対策</h4>
+<div class="outline-text-4" id="text-orgheadline117">
 <pre class="example">
 ((% cd ~/progs/Game; rm -rf Deck %))
 ((% svn add Card/Card.txt Card/test_compare.c %))
@@ -3028,11 +3118,11 @@ svn status for directory /home/h22j/h22j124/progs/
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline126" class="outline-2">
-<h2 id="orgheadline126"><span class="section-number-2">15</span> subversion 6/4</h2>
+<div id="outline-container-orgheadline125" class="outline-2">
+<h2 id="orgheadline125"><span class="section-number-2">15</span> subversion 6/4</h2>
 <div class="outline-text-2" id="text-15">
-</div><div id="outline-container-orgheadline121" class="outline-3">
-<h3 id="orgheadline121"><span class="section-number-3">15.1</span> コミットの時にviが動いたとき</h3>
+</div><div id="outline-container-orgheadline120" class="outline-3">
+<h3 id="orgheadline120"><span class="section-number-3">15.1</span> コミットの時にviが動いたとき</h3>
 <div class="outline-text-3" id="text-15-1">
 <ul class="org-ul">
 <li>i で入力モード、</li>
@@ -3051,8 +3141,8 @@ export SVN_EDITOR=emacs
 </div>
 
 
-<div id="outline-container-orgheadline122" class="outline-3">
-<h3 id="orgheadline122"><span class="section-number-3">15.2</span> 認証設定の確認</h3>
+<div id="outline-container-orgheadline121" class="outline-3">
+<h3 id="orgheadline121"><span class="section-number-3">15.2</span> 認証設定の確認</h3>
 <div class="outline-text-3" id="text-15-2">
 <pre class="example">
 ((% svn ls https://wiki.cis.iwate-u.ac.jp/svn/prog %))
@@ -3074,8 +3164,8 @@ export SVN_EDITOR=emacs
 </div>
 
 
-<div id="outline-container-orgheadline123" class="outline-3">
-<h3 id="orgheadline123"><span class="section-number-3">15.3</span> バージョン管理コマンド</h3>
+<div id="outline-container-orgheadline122" class="outline-3">
+<h3 id="orgheadline122"><span class="section-number-3">15.3</span> バージョン管理コマンド</h3>
 <div class="outline-text-3" id="text-15-3">
 <p>
 環境変数の設定
@@ -3157,8 +3247,8 @@ READMEの履歴管理を始める
 </div>
 
 
-<div id="outline-container-orgheadline124" class="outline-3">
-<h3 id="orgheadline124"><span class="section-number-3">15.4</span> 学生さんの感想とか</h3>
+<div id="outline-container-orgheadline123" class="outline-3">
+<h3 id="orgheadline123"><span class="section-number-3">15.4</span> 学生さんの感想とか</h3>
 <div class="outline-text-3" id="text-15-4">
 <p>
 <a href="https://spws01.cis.iwate-u.ac.jp/~wiki/net-note-05.cgi?%E5%98%86%E3%81%8D%E3%81%AE%E6%A8%B9">嘆きの木</a>
@@ -3169,8 +3259,8 @@ READMEの履歴管理を始める
 
 
 
-<div id="outline-container-orgheadline125" class="outline-3">
-<h3 id="orgheadline125"><span class="section-number-3">15.5</span> Cardモジュールをリポジトリにコミットする</h3>
+<div id="outline-container-orgheadline124" class="outline-3">
+<h3 id="orgheadline124"><span class="section-number-3">15.5</span> Cardモジュールをリポジトリにコミットする</h3>
 <div class="outline-text-3" id="text-15-5">
 <pre class="example">
 ((% cd ~/progs/ %))
@@ -3218,16 +3308,16 @@ Card/ のバージョン管理を始める
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline135" class="outline-2">
-<h2 id="orgheadline135"><span class="section-number-2">16</span> 「VC（バージョンコントロール）パッケージの基礎」(菅原泰樹) — ありえるえりあ</h2>
+<div id="outline-container-orgheadline134" class="outline-2">
+<h2 id="orgheadline134"><span class="section-number-2">16</span> 「VC（バージョンコントロール）パッケージの基礎」(菅原泰樹) — ありえるえりあ</h2>
 <div class="outline-text-2" id="text-16">
 <dl class="org-dl">
 <dt>出展</dt><dd><a href="https://dev.ariel-networks.com/articles/emacs/part7/">https://dev.ariel-networks.com/articles/emacs/part7/</a></dd>
 </dl>
 </div>
 
-<div id="outline-container-orgheadline127" class="outline-3">
-<h3 id="orgheadline127"><span class="section-number-3">16.1</span> VCとは</h3>
+<div id="outline-container-orgheadline126" class="outline-3">
+<h3 id="orgheadline126"><span class="section-number-3">16.1</span> VCとは</h3>
 <div class="outline-text-3" id="text-16-1">
 <p>
 VCはEmacs上で各種バージョン管理システムを統合的に扱うパッケージです．
@@ -3240,8 +3330,8 @@ RCS, CVS, Subversion, Git, Mercurial, Bazaar, Gnu-Archに標準で対応して�
 </div>
 
 
-<div id="outline-container-orgheadline128" class="outline-3">
-<h3 id="orgheadline128"><span class="section-number-3">16.2</span> バージョン管理システム</h3>
+<div id="outline-container-orgheadline127" class="outline-3">
+<h3 id="orgheadline127"><span class="section-number-3">16.2</span> バージョン管理システム</h3>
 <div class="outline-text-3" id="text-16-2">
 <p>
 Wikipedia <a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0</a>
@@ -3295,8 +3385,8 @@ Wikipedia <a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%82%B8%E3%
 </div>
 </div>
 
-<div id="outline-container-orgheadline129" class="outline-3">
-<h3 id="orgheadline129"><span class="section-number-3">16.3</span> 代表的なVCを操作するコマンド</h3>
+<div id="outline-container-orgheadline128" class="outline-3">
+<h3 id="orgheadline128"><span class="section-number-3">16.3</span> 代表的なVCを操作するコマンド</h3>
 <div class="outline-text-3" id="text-16-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -3392,8 +3482,8 @@ Wikipedia <a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%BC%E3%82%B8%E3%
 </div>
 </div>
 
-<div id="outline-container-orgheadline130" class="outline-3">
-<h3 id="orgheadline130"><span class="section-number-3">16.4</span> 差分の表示</h3>
+<div id="outline-container-orgheadline129" class="outline-3">
+<h3 id="orgheadline129"><span class="section-number-3">16.4</span> 差分の表示</h3>
 <div class="outline-text-3" id="text-16-4">
 <p>
 差分を表示するにはC-x v = (vc-diff)を入力します．普通は作業コピーと
@@ -3405,8 +3495,8 @@ HEADとの差分です．svn diffなどと同じですね．リビジョンを�
 </div>
 </div>
 
-<div id="outline-container-orgheadline131" class="outline-3">
-<h3 id="orgheadline131"><span class="section-number-3">16.5</span> 注釈の表示</h3>
+<div id="outline-container-orgheadline130" class="outline-3">
+<h3 id="orgheadline130"><span class="section-number-3">16.5</span> 注釈の表示</h3>
 <div class="outline-text-3" id="text-16-5">
 <p>
 注釈を表示するにはC-x v g (vc-annotate)を入力します．バージョン管理
@@ -3419,8 +3509,8 @@ C-x v gとしてからリビジョンを入力するか，後で説明する履�
 </div>
 </div>
 
-<div id="outline-container-orgheadline132" class="outline-3">
-<h3 id="orgheadline132"><span class="section-number-3">16.6</span> 履歴の表示</h3>
+<div id="outline-container-orgheadline131" class="outline-3">
+<h3 id="orgheadline131"><span class="section-number-3">16.6</span> 履歴の表示</h3>
 <div class="outline-text-3" id="text-16-6">
 <p>
 履歴を表示するにはC-x v l (vc-print-log)を入力します．
@@ -3436,8 +3526,8 @@ C-x v gとしてからリビジョンを入力するか，後で説明する履�
 </div>
 </div>
 
-<div id="outline-container-orgheadline133" class="outline-3">
-<h3 id="orgheadline133"><span class="section-number-3">16.7</span> 更新系の操作</h3>
+<div id="outline-container-orgheadline132" class="outline-3">
+<h3 id="orgheadline132"><span class="section-number-3">16.7</span> 更新系の操作</h3>
 <div class="outline-text-3" id="text-16-7">
 <p>
 バージョン管理システムからファイルを更新するにはC-x v + (vc-update)
@@ -3467,8 +3557,8 @@ next-actionと言うだけあってコミットだけではなく次にやりた
 </div>
 
 
-<div id="outline-container-orgheadline134" class="outline-3">
-<h3 id="orgheadline134"><span class="section-number-3">16.8</span> 衝突の解決</h3>
+<div id="outline-container-orgheadline133" class="outline-3">
+<h3 id="orgheadline133"><span class="section-number-3">16.8</span> 衝突の解決</h3>
 <div class="outline-text-3" id="text-16-8">
 <p>
 更新をかけたときにコンフリクトが起きている場合，Emacsは自動的に
@@ -3482,7 +3572,7 @@ smerge-modeを実行してくれます．コンフリクトが起きているフ
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-10-10 月 22:55</p>
+<p class="date">Created: 2016-10-11 火 10:27</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -4,9 +4,13 @@
 #+title: 今日の講義
 # #+include: lects/01/plan.org
 
-* お知らせ
 #+include: lects/announce.org 
 
-* 2回目
 #+include: lects/02/plan.org
+
+#+include: lects/01/resume.org
+
+#+include: lects/01/response.org
+
+
 

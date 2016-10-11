@@ -1,6 +1,0 @@
-#+setupfile: ../org-html-theme/index-bigblow-header.setup
-#+include: ../info/common-header.org
-#+TITLE: 毎回の講義
-
-#+include: contents.org 
-

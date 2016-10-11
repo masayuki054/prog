@@ -1,9 +1,0 @@
-* emacs
-    info:emacs  
-
-** emacs links
-
-    [[http://emacs-jp.github.io/beginner.html][Emacs for Beginners - Emacs JP]]
-    
-    [[http://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html#SEC_Top][GNU Emacsマニュアル:(古いが日本語)]]
-

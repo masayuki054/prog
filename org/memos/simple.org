@@ -1,5 +1,5 @@
 #+OPTIONS: ^:{}
-* card\_display\_simple
+* card_display_simple
 
 ** 問題
 
@@ -18,7 +18,7 @@
 
 ** 解プログラムの作成の流れ
 
-*** simple\_-1.c
+*** simple_-1.c
 
 **** やるべきこと
 
@@ -100,7 +100,7 @@ char *card_string(char *suit_string, char *no_string)
 
 #+END_SRC
 
-**** simple\_-1.c 
+**** simple_-1.c 
 
  simple0.c の要件を満しませんが，一応コンパイルして実行できるものがで
  きました。
@@ -137,6 +137,7 @@ char *card_string(char *suit_string, char *no_string)
 **** simple_-1.c をコンパイルする Makefile
 
 #+BEGIN_SRC makefile :tangle Makefile_-1
+# Makefile_-1
 .PHONY: clean
 
 simple_-1: simple_-1.c
@@ -313,7 +314,8 @@ char no_char(char *no)
 
  Makefile は変更ありません:
 
- #+BEGIN_SRC makefile :tangle Makefile_0
+#+BEGIN_SRC makefile :tangle Makefile_0
+# Makefile_0
 .PHONY: clean
 
 simple_0: simple_0.c
@@ -347,7 +349,6 @@ make -f Makefile_0
 | C2 | 
 
 simple_0.c 完成です。
-
 
 *** card_string をテストするコード
 
@@ -449,6 +450,7 @@ char no_char(char *no)
 #+END_SRC
 
 #+BEGIN_SRC makefile :tangle Makefile_0.1 :exports none
+# Makefile_0.1
 .PHONY: clean
 
 simple_0.1: simple_0.1.c
@@ -797,7 +799,6 @@ card_to_string(Card card)
   char noc = card_no_to_char(card);
   char *result = (char *) malloc(3);
 
-
   result[0] = suitc;
   result[1] = noc;
   result[2] = 0;
@@ -860,6 +861,7 @@ card_no_to_char(Card c)
 #+END_SRC
 
 #+BEGIN_SRC makefile :tangle Makefile_1
+# Makefile_1
 .PHONY: clean
 
 simple_1: simple_1.c

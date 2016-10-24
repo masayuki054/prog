@@ -1,0 +1,99 @@
+* Rakefile
+** rake 
+   [[http://docs.ruby-lang.org/ja/2.2.0/library/rake.html][library rake (Ruby 2.2.0)]] はビルドツール
+
+   [[http://www2s.biglobe.ne.jp/~idesaku/sss/tech/rake/][rakeの例]]
+   
+** Rakefile
+
+#+name:rakefile
+#+begin_src ruby :tangle Rakefile :noweb yes
+# coding:utf-8
+# coding:utf-8
+require 'date'
+
+SUBDIRS = []
+EXCLS = ["log.org", "contents.org", "Makefile.org", "Rakefile.org"]
+ORGS = FileList["*.org"] - EXCLS
+HTMLS = ORGS.ext(".html")
+NOW = DateTime.now.to_s
+
+ORGS.each do |org|
+  html = File.basename(org, ".org")+".html"
+  depends = `org_dependency.rb #{org}`.split(",")
+  rule html => depends 
+end
+
+def myhome
+  path = `pwd`.chomp.split("/").reverse
+  depth = path.index("org")
+  [depth+1, path[0..depth].reverse]
+end
+  
+depth,path = myhome
+
+MYHOME = "../"*depth
+ORG = "#{MYHOME}org/"
+SITE = "#{MYHOME}docs/"
+path.shift
+DIR = path.join("/")
+
+def deploy(file, dir)
+  p "deploying #{dir}#{file}"
+  sh "mkdir -p #{dir}"
+  File.open("#{dir}/#{file}", "w") do |target| 
+    all = File.read(file).gsub("http://", "https://")
+    all.gsub!('//www.pirilampo.org', '//wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme')
+    target.write(all)
+  end
+
+  sh "git add #{dir}/#{file}"
+  sh "git commit -m deploy_#{NOW} #{dir}/#{file}"
+
+end
+
+rule ".html" => ".org" do |t|
+  sh "org2html #{t.prerequisites.join(' ')}"
+  deploy(t.name, "#{SITE}/#{DIR}")
+end
+
+task :default => :org2html
+
+task :org2html => HTMLS do
+
+  p "git push"
+  sh "git push"
+  
+end
+
+task :subdirs do
+  HTMLS.delete("index.html")
+  HTMLS.each do |html|
+    subdir = File.basename(html,".html")
+    unless File.exist?("#{subdir}/Rakefile") 
+      sh "cp Rakefile #{subdir}/"
+    end
+    p  Dir.pwd
+    Dir.chdir(subdir) do
+      sh "rake"
+    end
+  end
+end    
+#+end_src
+
+#+BEGIN_SRC sh  :results output 
+rake
+
+#+END_SRC
+
+#+RESULTS:
+: Rakefile.org
+: index-expanded.org
+: index.org
+: lects.org
+: links.org
+: memos.org
+: org-docs.org
+: supplement.org
+: "git push"
+

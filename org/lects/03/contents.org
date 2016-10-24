@@ -1,0 +1,7 @@
+#
+#+include: resume.org 
+#+include: response.org
+
+##+include: c.org
+##+include: emacs.org
+##+include: org-mode.org

@@ -2,7 +2,7 @@
 
 ** レポートの回収  <2016-10-25 火>
 
-   「課題:card_display問題を始める」のレポートを回収します。
+*** 「課題:card_display問題を始める」のレポートを回収します。
 
    各自の，~/progs/card_display/first/ を回収します。そこには，
    下記のファイルがあることを想定しています：
@@ -19,9 +19,60 @@
 
        各段階のソースプログラムをコンパイルするためのMakefile達。
 
+
+*** 確認方法
+
+    今回のレポートは，~suzuki/progss/collected_srcs/1/の下に回収します。
+
+    ~suzuki/progss/collected_srcs/1/自分のログイン名/first の下を確認
+    してください。
+
+
+** [[./index.org][講義サイト]] のタブに補足を追加しました <2016-10-25 火>
+
+Emacs や Org-mode のこと，ガイダンスでふれたプログラム開発に関すること
+を，[[./index.org][講義サイト]] の補足タブとして追加しました。
+
+とりあえずの処置です。
+
+
+** リアルタイムストリーミングを試してみましょう  <2016-10-25 火>
+
+萩原さんが，調べてくれました。試してみましょう:   
+
+*** 3.1. 送信側 (先生)
+
+#+BEGIN_SRC sh :export both
+
+ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 -c:v libx264 -preset fast -pix_fmt yuv420p -s 1280x720 -threads 0 -f sap sap://224.0.0.255 &
+
+#+END_SRC
+
+*** 3.2. 受信側 (学生)
+- vlcを起動します:
+  ： % vlc 
+
+- 「表示」->「プレイリスト」->「ローカルネットワーク」->「ネットワークス
+トリーム(SAP)」->「No Name」をダブルクリック
+
+- そこそこ待つ
+
+- 表示サイズは受信側でも変更可能
+
+*** キャプチャのみ(先生)
+
+#+BEGIN_SRC sh
+ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 ~suzuki/progs/lects/03.mp4
+#+END_SRC
+
+#+RESULTS:
+
+二番目のモニタをキャプチャしたい場合はオプションを"-i :0.0+1920,0"にしてください． 
+キャプチャの終了はC-cです．
+
 ** card_display/first/simple.c の解説 <2016-10-12 水>
 
-講義サイトの雑メモタブから見られるようにしました。
+[[./index.org][講義サイト]] の [[./memos.org][雑メモ]] タブから見られるようにしました。
 
 Emacs で見るには，~suzuki/prog.git/org/memos/simple.org が最新です。
 

@@ -7,6 +7,8 @@
 
 #+include: lects/03/plan.org
 
+#+include: lects/supplement.org
+
 #+include: lects/02/resume.org
 
 #+include: lects/01/resume.org

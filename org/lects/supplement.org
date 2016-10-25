@@ -1,142 +1,174 @@
-** emacsの設定
+* 補足
+** emacs  
 
-*** わかりやすそうなサイト
+*** 基本コマンド
 
-参考にしてください。
+    - emacs の中でコンパイル
+      : M-x compile 
+      : C-a C-k gcc -c -I . calc_d_sin.c
 
-- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333883641][Diredの基本操作を覚える - CLOVER]]
+    - emacs の中から先生のファイルを開く
+      : C-x C-f ~suzuki/progs/suzuki/.... 
+     
+    - 開いている先生のファイルを自分のディレクトリに保存する
+      : C-x C-w ~/progs/calc_d_sin.c
 
-- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333885399][Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER]]
+    - ファイルとバッファ
+      : C-x C-f ファイルを開きバッファへ
+      : C-x C-s バッファをファイルへセーブ
+      : C-x C-w バッファを別のファイルへ書く
 
-- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333890311][Emacsで矩形編集を行う - CLOVER]]
+    - ウィンドウ
+      http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_17.html
 
-- [[http://d.hatena.ne.jp/Kazuhira/20120408/1333891517][Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER]]
-
-
-
-*** Emacs24.5日本語マニュアル登場！！info作成方法
-    http://emacs.rubikitch.com/emacs245-manual-ja/
-
-    ~suzuki/local/infoに置きました。
-
-*** #11 Emacs に革命を起こすパッケージ「helm」 (Software Design 2015年3月号掲載記事) Emacs helm インストール 設定 使い方
-    http://emacs.rubikitch.com/sd1503-helm/
-
-    helmは便利です。
-
-** org-mode の紹介
-
-   Emacs info :: org ([[info:org]])
-
-   http://orgmode.org/ja
-
-*** #10 巨大なオーガナイズシステム「org-mode」の世界 (Software Design 2015年2月号掲載記事) Emacs org-mode インストール 設定 使い方
-    http://emacs.rubikitch.com/sd1502-org-mode/
+      : C-x 2, C-x 3 横や縦に分ける
+      : C-x o 別のウィンドウへ
+      : C-x 0 ウィンドウを消す
+      : C-x C-b バッファの一覧を表示する
 
 
+    - 別のフレーム
+      http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs_18.html#SEC177
+      : C-x 5 2 開く
+      : C-x 5 o 行き来する
+      : C-x 5 0 閉じる
+
+**** わかりやすそうなサイト
+
+ 参考にしてください。
+
+ - [[http://d.hatena.ne.jp/Kazuhira/20120408/1333883641][Diredの基本操作を覚える - CLOVER]]
+
+ - [[http://d.hatena.ne.jp/Kazuhira/20120408/1333885399][Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER]]
+
+ - [[http://d.hatena.ne.jp/Kazuhira/20120408/1333890311][Emacsで矩形編集を行う - CLOVER]]
+
+ - [[http://d.hatena.ne.jp/Kazuhira/20120408/1333891517][Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER]]
 
 
- ~suzuki/meta-ruby.git/org/  
+**** Emacs日本語マニュアル
+   [[http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs.html][日本語
+   マニュアル]]
+
+**** Emacs24.5日本語マニュアル登場！！info作成方法
+     http://emacs.rubikitch.com/emacs245-manual-ja/
+
+     ~suzuki/local/infoに置きました。
+
+**** #11 Emacs に革命を起こすパッケージ「helm」 (Software Design 2015年3月号掲載記事) Emacs helm インストール 設定 使い方
+     http://emacs.rubikitch.com/sd1503-helm/
+
+     helmは便利です。
+
+*** org-mode の紹介
+
+    Emacs info :: org ([[info:org]])
+
+    http://orgmode.org/ja
+
+**** #10 巨大なオーガナイズシステム「org-mode」の世界 (Software Design 2015年2月号掲載記事) Emacs org-mode インストール 設定 使い方
+     http://emacs.rubikitch.com/sd1502-org-mode/
 
 
-** org-mode babel の紹介
 
- #+BEGIN_SRC ruby :exports both :results output
+
+  ~suzuki/meta-ruby.git/org/  
+
+
+*** org-mode babel の紹介
+
+  #+BEGIN_SRC ruby :exports both :results output
 p 1.class
 p "abc".class
 
- #+END_SRC
+  #+END_SRC
 
- #+RESULTS:
- : Fixnum
- : String
-
-** prog2016 導入
-
-   progs の導入に関連する内容
-
-*** モジュラープログラミングについて
-
-**** Acroquest プログラミング講座
-
-     [[http://www.acroquest.co.jp/webworkshop/programing_course/index1.html][目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？]]
-
-     [[http://www.acroquest.co.jp/webworkshop/programing_course/index18.html][目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念]]
+  #+RESULTS:
+  : Fixnum
+  : String
 
 
-**** 構造化プログラミングについて
+** モジュラープログラミングについて
 
-[[http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html][構造化プログラミング]] がいい。
+*** Acroquest プログラミング講座
 
-「大規模なプログラムを書くとき，どうしたら良いプログラムに仕上げること
-ができるか？」という問いに対して与えられた回答。
+    [[http://www.acroquest.co.jp/webworkshop/programing_course/index1.html][目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？]]
 
-
-**** Strategic Choice の役に立ちそうなコンテンツ
-
-オブジェクト指向についてのサイトですが，モジュール化について考えるとき
-の拠り所について参考にしてください:
-
-- [[http://d.hatena.ne.jp/asakichy/20090216/1234765854][構造化プログラミング入門 - Strategic Choice]]
-
-- [[http://d.hatena.ne.jp/asakichy/20090217/1234830611][段階的詳細化 - Strategic Choice]]
-
-- [[http://d.hatena.ne.jp/asakichy/20090218/1234990542][凝集度 - Strategic Choice]]
-
-- [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
+    [[http://www.acroquest.co.jp/webworkshop/programing_course/index18.html][目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念]]
 
 
-*** テストによる開発の説明 
+*** 構造化プログラミングについて
 
-TDD (Test Driven Development) テスト駆動開発といいます。
+ [[http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html][構造化プログラミング]] がいい。
 
-- [[https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA][テスト駆動開発 - Wikipedia]]
+ 「大規模なプログラムを書くとき，どうしたら良いプログラムに仕上げること
+ ができるか？」という問いに対して与えられた回答。
+
+
+*** Strategic Choice の役に立ちそうなコンテンツ
+
+ オブジェクト指向についてのサイトですが，モジュール化について考えるとき
+ の拠り所について参考にしてください:
+
+ - [[http://d.hatena.ne.jp/asakichy/20090216/1234765854][構造化プログラミング入門 - Strategic Choice]]
+
+ - [[http://d.hatena.ne.jp/asakichy/20090217/1234830611][段階的詳細化 - Strategic Choice]]
+
+ - [[http://d.hatena.ne.jp/asakichy/20090218/1234990542][凝集度 - Strategic Choice]]
+
+ - [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
+
+
+** テストによる開発の説明 
+
+ TDD (Test Driven Development) テスト駆動開発といいます。
+
+ - [[https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA][テスト駆動開発 - Wikipedia]]
   
-- [[./org-docs/what-is-tdd.org][資料/テストによる開発とは]] (この中にもリンクがあります)
+ - [[./org-docs/what-is-tdd.org][資料/テストによる開発とは]] (この中にもリンクがあります)
 
 
-*** (ソフトウェア) テストについての説明
+** (ソフトウェア) テストについての説明
 
-    [[./org-docs/software-test.org][資料/ソフトウェア・テスト]]
+   [[./org-docs/software-test.org][資料/ソフトウェア・テスト]]
 
-    [[https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88][ソフトウェアテスト - Wikipedia]] 難い
+   [[https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88][ソフトウェアテスト - Wikipedia]] 難い
 
 
-*** プログラミング関連の講義と演習
+** プログラミング関連の講義と演習
 
-    [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis.iwate-u.ac.jp]] 振り返りましょう.
+   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/][プログラム関連演習@cis.iwate-u.ac.jp]] 振り返りましょう.
 
-    下記のことが重要です。今は分らなくても，講義の終りには，理解できる
-    ようになる(といいですね)。
+   下記のことが重要です。今は分らなくても，講義の終りには，理解できる
+   ようになる(といいですね)。
 
-    - [ ] 重要なプログラムの構成要素 [0/3]
-      - [ ] 関数と抽象化，情報隠蔽
-      - [ ] ヘッダファイルの役割，インタフェース遵守
-      - [ ] 名前と実体の管理
+   - [ ] 重要なプログラムの構成要素 [0/3]
+     - [ ] 関数と抽象化，情報隠蔽
+     - [ ] ヘッダファイルの役割，インタフェース遵守
+     - [ ] 名前と実体の管理
 
-    - [ ] コンパイル過程のこと [0/6]
-      - [ ] #include の意味
-      - [ ] gcc がおこなうこと
-      - [ ] .o (オブジェクト・ファイル)
-      - [ ] .a (静的ライブラリ), .so(動的ライブラリ)
-      - [ ] ld (ローダ，リンケージ・エディタ)
-      - [ ] a.out (実行プログラム)
+   - [ ] コンパイル過程のこと [0/6]
+     - [ ] #include の意味
+     - [ ] gcc がおこなうこと
+     - [ ] .o (オブジェクト・ファイル)
+     - [ ] .a (静的ライブラリ), .so(動的ライブラリ)
+     - [ ] ld (ローダ，リンケージ・エディタ)
+     - [ ] a.out (実行プログラム)
 
-*** Emacs for progs (検討中)
 
-    emacs@progs でどんな内容を教えるか？
 
-**** 何に使うか
-     - programming
-       - source coding
-       - Makefile, make
-     - terminal/shell execution
-     - 全文検索
-     - Document 作成 
-       - org-mode
-     - 文芸的プログラミング
-       - org-mode + babel 
+** Emacs for progs (検討中)
 
-     - eww (emacs ブラウザ)
-   
+   emacs@progs でどんな内容を教えるか？
 
+*** 何に使うか
+    - programming
+      - source coding
+      - Makefile, make
+    - terminal/shell execution
+    - 全文検索
+    - Document 作成 
+      - org-mode
+    - 文芸的プログラミング
+      - org-mode + babel 
+    - eww (emacs ブラウザ)

@@ -1,5 +1,6 @@
 * emacs 
-  [[http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs.html][日本語マニュアル]]
+  [[http://www.bookshelf.jp/texi/emacs-20.6-man-jp/emacs.html][日本語
+  マニュアル]]
 
    - emacs の中でコンパイル
      : M-x compile 

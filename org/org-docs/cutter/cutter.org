@@ -17,8 +17,8 @@
 
    ここでは，~/progs/cutter/test がテスト用ディレクトリ，
    ~/progs/cutter/test/test_first.c がテストのソースファイルです。
-   テスト test_first.so を作成することが目的で，そのためにMakefileを容
-   易します。
+   テスト test_first.so を作成することが目的で，そのためにMakefileを用
+   意します。
 
    まず，テスト用ディレクトリを作成します。
    次のコマンドで行います:

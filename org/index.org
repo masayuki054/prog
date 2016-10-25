@@ -2,14 +2,16 @@
 # #+setupfile: info/index-sos-header.setup
 #+include: info/common-header.org
 #+title: 今日の講義
-# #+include: lects/01/plan.org
 
 #+include: lects/announce.org 
 
-#+include: lects/02/plan.org
+#+include: lects/03/plan.org
+
+#+include: lects/02/resume.org
 
 #+include: lects/01/resume.org
 
+#+include: lects/02/response.org
 #+include: lects/01/response.org
 
 

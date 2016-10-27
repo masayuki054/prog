@@ -1,0 +1,35 @@
+docs
++-Rakefile.html
++-index-expanded.html
++-index.html
++-info-+-000GTD.html
+|      +-common-header.html
+|      +-footnote.html
+|      +-links.html
+|      +-org-link-make.html
+|      +-site-tree.html
+|      +-ta.html
++-lects-+-01-+-index.html
+|       +-index.html
++-lects.html
++-links.html
++-log.html
++-memos-+-contents.html
+|       +-graphviz.html
+|       +-index.html
++-memos.html
++-org-docs-+-card-display.html
+|          +-cis-programming-lects.html
+|          +-cutter-+-index.html
+|          +-cutter.html
+|          +-index.html
+|          +-poker-+-index.html
+|          +-poker.html
+|          +-software-test.html
+|          +-tdd-card-display-simple.html
+|          +-what-is-tdd.html
++-org-docs.html
++-supplement-+-index.html
++-supplement.html
++-working-+-c1.html
+          +-c2.html

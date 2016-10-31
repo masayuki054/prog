@@ -1,5 +1,9 @@
+#+Time-stamp: <2016-10-31 15:36:58 m>
+#+SETUPFILE: ../info/index-sos-header.setup
+ #+title: 初めてのcard_display_simple
 #+OPTIONS: ^:{}
-* card\_display\_simple
+
+* card_display/first
 
 ** 問題
 
@@ -18,7 +22,7 @@
 
 ** 解プログラムの作成の流れ
 
-*** simple\_-1.c
+*** simple_-1.c
 
 **** やるべきこと
 
@@ -100,7 +104,7 @@ char *card_string(char *suit_string, char *no_string)
 
 #+END_SRC
 
-**** simple\_-1.c 
+**** simple_-1.c 
 
  simple0.c の要件を満しませんが，一応コンパイルして実行できるものがで
  きました。

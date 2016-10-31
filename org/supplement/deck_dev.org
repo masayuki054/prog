@@ -3,7 +3,7 @@
 #+name: deck_module
 #+caption: game開発とcardモジュール/deckモジュール
 #+ATTR_HTML: :alt deck module :title deck module
-[[file:deck_dev.png][file:deck_dev.png]]
+[[./Figs/deck_dev.png][deck_dev.png]]
 
 
 

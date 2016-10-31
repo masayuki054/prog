@@ -1,3 +1,8 @@
+** Figs/ディレクトリの作成
+   SCHEDULED: <2016-10-31 月>
+
+文書中の図への参照は，[[./Figs/card_display_simple.png]] のようにする
+ことにした。
 
 ** Done lects/supplyments/の作成
    CLOSED: [2015-12-22 火 07:13]

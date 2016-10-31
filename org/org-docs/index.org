@@ -1,4 +1,4 @@
-# Time-stamp: <2016-10-02 16:40:13 m>
+y# Time-stamp: <2016-10-31 14:56:45 m>
 #+SETUPFILE: ~/COMM/public_html/org-html-theme/index-sos-header.setup
 #+include: ~/COMM/Lects/prog/site/info/common-header.org
 #+TITLE: 講義ドキュメント

@@ -2,10 +2,12 @@
 #+include: info/common-header.org
 #+title: 講義資料 (リンク集)
 # #+include: org-docs/contents.org
-
 * 関連講義のまとめ
 
  [[./org-docs/cis-programming-lects.org][プログラム関連講義]]
+
+* 初めてのcard_display_simple
+[[./org-docs/simple.org][card_display/first]]
 
 * テストと開発
 - [[./org-docs/software-test/index.org][ソフトウェア・テスト]]

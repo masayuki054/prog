@@ -1,18 +1,6 @@
 # coding:utf-8
-# coding:utf-8
 require 'date'
-
-SUBDIRS = ["lects", "org-docs", "memos", "supplement"]
-EXCLS = ["log.org", "contents.org", "Makefile.org", "Rakefile.org"]
-ORGS = FileList["*.org"] - EXCLS
-HTMLS = ORGS.ext(".html")
-NOW = DateTime.now.to_s
-
-ORGS.each do |org|
-  html = File.basename(org, ".org")+".html"
-  depends = `org_dependency.rb #{org}`.split(",")
-  rule html => depends 
-end
+require 'rake/clean'
 
 def myhome
   path = `pwd`.chomp.split("/").reverse
@@ -23,6 +11,36 @@ end
 def org_sub_dir
   (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
 end
+
+if File.exist?("Rakefile.setup.rb")
+  puts "loading Rakefile.setup.rb."
+  load "./Rakefile.setup.rb"
+else
+  SUBDIRS = org_sub_dir
+  EXCLUDES = FielList ["Makefile.org", "Rakefile.org", "log.org", "0*.org"]
+  ORGS = FileList["*.org"] - EXCLUDES
+  HTMLS = ORGS.ext(".html")
+end
+
+NOW = DateTime.now.to_s
+
+puts "HTMLS: #{HTMLS}"
+puts "SUBDIRS: #{SUBDIRS}"
+
+CLEAN.include(FileList["*~","#*"])
+CLOBBER.include(HTMLS)
+
+ORGS.each do |org|
+  html = File.basename(org, ".org")+".html"
+  @depends = `org_dependency.rb #{org}`.chomp.split(", ")
+  if @depends.size!=0 
+    file html => @depends.push(org) do |t|
+      sh "org2html #{org}"
+      deploy(t.name, "#{SITE}/#{DIR}")
+    end
+  end
+end
+
   
 depth,path = myhome
 
@@ -51,13 +69,11 @@ rule ".html" => ".org" do |t|
   deploy(t.name, "#{SITE}/#{DIR}")
 end
 
-task :default => [:org2html, :subdirs]
+task :default => [:org2html]
 
 task :org2html => HTMLS do
-
-  p "git push"
+  puts "git push"
   sh "git push"
-  
 end
 
 task :subdirs do

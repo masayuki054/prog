@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-09 日 20:52 -->
+<!-- 2016-10-31 月 14:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>progs2016 補足説明</title>
@@ -936,24 +936,18 @@ wikipedia等で調べてください。
 </div><div id="outline-container-orgheadline55" class="outline-4">
 <h4 id="orgheadline55">card_display_simple問題の開発木構造</h4>
 <div class="outline-text-4" id="text-orgheadline55">
-
-<div id="orgparagraph1" class="figure">
-<p><a href="card_display_simple.png" alt="card_display/simple" title="card_display/simple"><img src="card_display_simple.png" alt="card_display/simple" title="card_display/simple" /></a>
+<p alt="card_display/simple" title="card_display/simple">
+<a href="./Figs/card_display_simple.png" alt="card_display/simple" title="card_display/simple">card_display_simple.png</a>
 </p>
-<p><span class="figure-number">Figure 1:</span> card_display_simple 問題と card モジュール開発</p>
-</div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline56" class="outline-4">
 <h4 id="orgheadline56">deck モジュールの開発木構造</h4>
 <div class="outline-text-4" id="text-orgheadline56">
-
-<div id="orgparagraph2" class="figure">
-<p><a href="deck_dev.png" alt="deck module" title="deck module"><img src="deck_dev.png" alt="deck module" title="deck module" /></a>
+<p alt="deck module" title="deck module">
+<a href="./Figs/deck_dev.png" alt="deck module" title="deck module">deck_dev.png</a>
 </p>
-<p><span class="figure-number">Figure 2:</span> game開発とcardモジュール/deckモジュール</p>
-</div>
 </div>
 </div>
 </div>
@@ -986,18 +980,18 @@ CFLAGS = -g -c -Wall -fPIC -I. -I${PROJ_INCLUDE}
 LDFLAGS = -lc
 
 libdeck.a: deck.o 
-	rm -f $@
-	ar r $@ $^
+        rm -f $@
+        ar r $@ $^
 
 install: libdeck.a deck.h
-	cp libdeck.a ${PROJ_LIB}
-	cp deck.h ${PROJ_INCLUDE}
+        cp libdeck.a ${PROJ_LIB}
+        <span style="color: #92a65e; font-weight: bold;">cp</span> <span style="color: #cae682;">deck</span>.h ${PROJ_INCLUDE}
 
 deck.o: deck.c deck.h
-	gcc $&lt; $(CFLAGS)
+        gcc $&lt; $(CFLAGS)
 
 clean:
-	rm -f *.o *.a *.so *~ \#* *.gch
+        rm -f *.o *.a *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
@@ -1112,9 +1106,9 @@ PROJ_LIB=${PROJ_HOME}/lib
 <div class="outline-text-5" id="text-orgheadline63">
 <div class="org-src-container">
 
-<pre class="src src-c">libdeck.a: deck.o 
-	rm -f $@
-	ar r $@ $^
+<pre class="src src-c">libdeck.<span style="color: #e5786d;">a</span>: deck.o 
+        rm -f $@
+        ar r $@ $^
 </pre>
 </div>
 <ul class="org-ul">
@@ -1145,9 +1139,9 @@ game プロジェクトの決まりに従がい，ライブラリ・ファイル
 
 <div class="org-src-container">
 
-<pre class="src src-c">install: libdeck.a deck.h
-	cp libdeck.a ${PROJ_LIB}
-	cp deck.h ${PROJ_INCLUDE}
+<pre class="src src-c"><span style="color: #e5786d;">install</span>: libdeck.a deck.h
+        cp libdeck.a ${PROJ_LIB}
+        <span style="color: #92a65e; font-weight: bold;">cp</span> <span style="color: #cae682;">deck</span>.h ${PROJ_INCLUDE}
 </pre>
 </div>
 </div>
@@ -1158,8 +1152,8 @@ game プロジェクトの決まりに従がい，ライブラリ・ファイル
 <div class="outline-text-5" id="text-orgheadline65">
 <div class="org-src-container">
 
-<pre class="src src-c">deck.o: deck.c deck.h
-	gcc $&lt; $(CFLAGS)
+<pre class="src src-c">deck.<span style="color: #e5786d;">o</span>: deck.c deck.h
+        gcc $&lt; $(CFLAGS)
 </pre>
 </div>
 </div>
@@ -1170,8 +1164,8 @@ game プロジェクトの決まりに従がい，ライブラリ・ファイル
 <div class="outline-text-5" id="text-orgheadline66">
 <div class="org-src-container">
 
-<pre class="src src-c">clean:
-	rm -f *.o *.a *.so *~ \#* *.gch
+<pre class="src src-c"><span style="color: #e5786d;">clean</span>:
+        rm -f *.o *.a *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
@@ -1193,17 +1187,17 @@ CFLAGS = -g -c -fPIC -I .
 LDFLAGS = -lc
 
 libcard.a: card.o cards.o
-	rm -f $@
-	ar r $@ $^
+        rm -f $@
+        ar r $@ $^
 
 card.o: card.c card.h
-	gcc $&lt; $(CFLAGS)
+        gcc $&lt; $(CFLAGS)
 
 cards.o: cards.c card.h
-	gcc $&lt; $(CFLAGS)
+        gcc $&lt; $(CFLAGS)
 
 clean:
-	rm -f *.o *.so *~ \#* *.gch
+        rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
@@ -1221,20 +1215,20 @@ LDFLAGS = -L../src -lcard `pkg-config cutter --libs`
 all: test_card.so test_sort.so
 
 test_card.so: test_card.o
-	gcc -o $@ -shared $^ $(LDFLAGS)
+        gcc -o $@ -shared $^ $(LDFLAGS)
 
 test_card.o: test_card.c        
-	gcc $(CFLAGS) $&lt;
+        gcc $(CFLAGS) $&lt;
 
 
 test_sort.so: test_sort.o
-	gcc -o $@ -shared $^ $(LDFLAGS)
+        gcc -o $@ -shared $^ $(LDFLAGS)
 
 test_sort.o: test_sort.c        
-	gcc $(CFLAGS) $&lt;
+        gcc $(CFLAGS) $&lt;
 
 clean:
-	rm -f *.o *.so *~ \#* *.gch
+        rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
@@ -1265,7 +1259,7 @@ diff 関連コマンド等が，使えます。
 
 <div class="org-src-container">
 
-<pre class="src src-sh">#~suzuki/progs/game/make-diff
+<pre class="src src-sh"><span style="color: #99968b;">#</span><span style="color: #99968b;">~suzuki/progs/game/make-diff</span>
 diff ~/progs/card_display/simple/src/Makefile  ~/progs/game/card/src/Makefile
 </pre>
 </div>
@@ -1365,7 +1359,7 @@ diffの出力結果の見方と，Makefileに於けるその意味を解説し�
 <div class="outline-text-4" id="text-orgheadline73">
 <div class="org-src-container">
 
-<pre class="src src-sh">#~suzuki/progs/game/make-diff
+<pre class="src src-sh"><span style="color: #99968b;">#</span><span style="color: #99968b;">~suzuki/progs/game/make-diff</span>
 diff ~/progs/card_display/simple/test/Makefile  ~/progs/game/card/test/Makefile
 </pre>
 </div>
@@ -1390,7 +1384,7 @@ diff ~/progs/card_display/simple/test/Makefile  ~/progs/game/card/test/Makefile
 <div class="outline-text-4" id="text-orgheadline74">
 <div class="org-src-container">
 
-<pre class="src src-sh">#~suzuki/progs/game/make-diff
+<pre class="src src-sh"><span style="color: #99968b;">#</span><span style="color: #99968b;">~suzuki/progs/game/make-diff</span>
 diff ~/progs/game/card/src/Makefile  ~/progs/game/deck/src/Makefile
 </pre>
 </div>
@@ -1431,7 +1425,7 @@ diff ~/progs/game/card/src/Makefile  ~/progs/game/deck/src/Makefile
 <div class="outline-text-4" id="text-orgheadline75">
 <div class="org-src-container">
 
-<pre class="src src-sh">#~suzuki/progs/game/make-diff
+<pre class="src src-sh"><span style="color: #99968b;">#</span><span style="color: #99968b;">~suzuki/progs/game/make-diff</span>
 diff ~/progs/game/card/test/Makefile  ~/progs/game/deck/test/Makefile
 </pre>
 </div>
@@ -1894,7 +1888,7 @@ Deckの開発と，同じ所，違がう所を理解しましょう。
 
 <div class="org-src-container">
 
-<pre class="src src-sh">cd ~/progs/game/
+<pre class="src src-sh"><span style="color: #e5786d;">cd</span> ~/progs/game/
 </pre>
 </div>
 
@@ -1914,7 +1908,7 @@ Deckの開発と，同じ所，違がう所を理解しましょう。
 
 <div class="org-src-container">
 
-<pre class="src src-sh">cd ~/progs/game/doc
+<pre class="src src-sh"><span style="color: #e5786d;">cd</span> ~/progs/game/doc
 cp -Rp ~suzuki/lects/prog/org-docs/poker poker-dev
 </pre>
 </div>
@@ -2235,13 +2229,13 @@ Cやシェル・スクリプトがその mode で書け，コンパイルや実�
 
 <div class="org-src-container">
 
-<pre class="src src-org">#+BEGIN_SRC c :tangle ./src/exmaple.c
-int main(void) {}
-#+END_SRC
+<pre class="src src-org"><span style="color: #99968b;">#+BEGIN_SRC c :tangle ./src/exmaple.c</span>
+<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">void</span>) {}
+<span style="color: #99968b;">#+END_SRC</span>
 
-#+BEGIN_SRC sh :dir ./src
+<span style="color: #99968b;">#+BEGIN_SRC sh :dir ./src</span>
 cc example.c
-#+END_SRC
+<span style="color: #99968b;">#+END_SRC</span>
 </pre>
 </div>
 </div>
@@ -2277,7 +2271,7 @@ cc example.c
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-10-09 日 20:52</p>
+<p class="date">Created: 2016-10-31 月 14:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

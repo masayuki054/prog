@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-02 日 14:22 -->
+<!-- 2016-10-31 月 15:27 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>テスト駆動開発とは</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Masayuki Suzuki" />
+<meta  name="author" content="m" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -95,19 +95,19 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/css/sos.css">
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.zclip.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/hideshow.js"></script>
-<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/sos.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -168,36 +168,36 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">1.2. やりたいこと</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">2. 開発と機能とテスト</a>
+<li><a href="#orgheadline7">2. 開発と機能とテスト</a>
 <ul>
-<li><a href="#orgheadline4">2.1. 開発と機能</a></li>
-<li><a href="#orgheadline5">2.2. 開発とテスト</a></li>
+<li><a href="#orgheadline4">2.1. 機能とは</a></li>
+<li><a href="#orgheadline5">2.2. 開発と機能</a></li>
+<li><a href="#orgheadline6">2.3. 開発とテスト</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">3. 機能とヘッダファイル/ライブラリ</a>
+<li><a href="#orgheadline17">3. プログラムの機能</a>
 <ul>
-<li><a href="#orgheadline7">3.1. 機能を要求する</a></li>
-<li><a href="#orgheadline8">3.2. 提供されている機能</a></li>
-<li><a href="#orgheadline9">3.3. 機能の説明</a></li>
-<li><a href="#orgheadline10">3.4. 機能を使うきまり</a></li>
-<li><a href="#orgheadline11">3.5. 機能を利用する側と機能を提供する側とヘッダファイル</a></li>
+<li><a href="#orgheadline11">3.1. 基本は関数</a>
+<ul>
+<li><a href="#orgheadline8">関数を呼び出すこと</a></li>
+<li><a href="#orgheadline9">関数を定めること</a></li>
+<li><a href="#orgheadline10">関数を呼び出すことと定めることの間にある決まりごと</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline23">4. プログラムの機能</a>
-<ul>
-<li><a href="#orgheadline16">4.1. 基本は関数</a>
-<ul>
-<li><a href="#orgheadline13">関数を呼び出すこと</a></li>
-<li><a href="#orgheadline14">関数を定めること</a></li>
-<li><a href="#orgheadline15">関数を呼び出すことと定めることの間にある決まりごと</a></li>
+<li><a href="#orgheadline12">3.2. 機能を要求する</a></li>
+<li><a href="#orgheadline13">3.3. 機能を実現する</a></li>
+<li><a href="#orgheadline14">3.4. 機能を提供する</a></li>
+<li><a href="#orgheadline15">3.5. 機能を利用する</a></li>
+<li><a href="#orgheadline16">3.6. 機能の要求と実現と提供と利用</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">4.2. 機能とは</a></li>
-<li><a href="#orgheadline18">4.3. 機能を要求する</a></li>
-<li><a href="#orgheadline19">4.4. 機能を実現する</a></li>
-<li><a href="#orgheadline20">4.5. 機能を提供する</a></li>
-<li><a href="#orgheadline21">4.6. 機能を利用する</a></li>
-<li><a href="#orgheadline22">4.7. 機能の要求と実現と提供と利用</a></li>
+<li><a href="#orgheadline23">4. 機能とヘッダファイル/ライブラリ</a>
+<ul>
+<li><a href="#orgheadline18">4.1. 機能を要求する</a></li>
+<li><a href="#orgheadline19">4.2. 提供されている機能</a></li>
+<li><a href="#orgheadline20">4.3. 機能の説明</a></li>
+<li><a href="#orgheadline21">4.4. 機能を使うきまり</a></li>
+<li><a href="#orgheadline22">4.5. 機能を利用する側と機能を提供する側とヘッダファイル</a></li>
 </ul>
 </li>
 </ul>
@@ -211,9 +211,9 @@ for the JavaScript code in this tag.
 <h3 id="orgheadline1"><span class="section-number-3">1.1</span> 入門サイト</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li><a href="http://www.slideshare.net/shuji_w6e/ss-15246933">テスト駆動開発入門</a> (slideshare)</li>
+<li><a href="https://www.slideshare.net/shuji_w6e/ss-15246933">テスト駆動開発入門</a> (slideshare)</li>
 
-<li><a href="http://www.atmarkit.co.jp/ait/articles/1403/05/news035.html">超入門テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT</a></li>
+<li><a href="https://www.atmarkit.co.jp/ait/articles/1403/05/news035.html">超入門テスト駆動開発／振る舞い駆動開発を始めるための基礎知識 (1/3) - ＠IT</a></li>
 </ul>
 </div>
 </div>
@@ -236,12 +236,25 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">2</span> 開発と機能とテスト</h2>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">2</span> 開発と機能とテスト</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.1</span> 開発と機能</h3>
+<h3 id="orgheadline4"><span class="section-number-3">2.1</span> 機能とは</h3>
 <div class="outline-text-3" id="text-2-1">
+<p>
+この講義では，C言語の関数の <b>働き</b> を機能といいます。
+</p>
+
+<p>
+関数の働きとは，「関数に何を与えて，関数は何を計算してくれるか」です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">2.2</span> 開発と機能</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 機能の要求と実現を，一人で行う場合もありますし，
 他人からの要求に応えて，実現を引き受ける場合もあります。
@@ -268,9 +281,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.2</span> 開発とテスト</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">2.3</span> 開発とテスト</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
 小さな機能の組み合わせで大きな開発をおこなう場合，利用する各機能が
 正しく動くことが保証されていると，スムーズに開発できます。
@@ -288,192 +301,34 @@ for the JavaScript code in this tag.
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12"><span class="section-number-2">3</span> 機能とヘッダファイル/ライブラリ</h2>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">3</span> プログラムの機能</h2>
 <div class="outline-text-2" id="text-3">
-<p>
-三角関数を使う下記のプログラムを考えます:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-c"><span style="color: #e5786d;">  # include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">  # include</span> <span style="color: #95e454;">&lt;stdlib.h&gt;</span>
-<span style="color: #e5786d;">  # include</span> <span style="color: #95e454;">&lt;math.h&gt;</span>
-  <span style="color: #92a65e; font-weight: bold;">int</span>
-  <span style="color: #cae682;">main</span>()
-  {
-    <span style="color: #92a65e; font-weight: bold;">double</span> <span style="color: #cae682;">result</span> = sin(3.14L);
-    printf(<span style="color: #95e454;">"sin(3.14)=%g\n"</span>, result);
-    exit(0);
-  }
-</pre>
-</div>
-
-<p>
-このソースプログラムをコンパイルし，実行形式プログラムを作成するに
-は，下記コマンドを実行します:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh"> %  cc -o sin314 sin314.c -lm
-</pre>
-</div>
-
-<p>
-実行は：
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh"> % ./sin314
-</pre>
-</div>
-
-<p>
-sin関数を計算する機能を，プログラムから利用するために，上記のプログ
-ラムで行なわれていることをまとめると:
-</p>
-
-<dl class="org-dl">
-<dt>提供</dt><dd>/usr/lib/libm.so ライブラリ, % nm /usr/lib/libm.so</dd>
-<dt>利用</dt><dd>#include &lt;math&gt;, cc -lm</dd>
-<dt>情報</dt><dd>% man 3 sin</dd>
-</dl>
-</div>
-
-
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">3.1</span> 機能を要求する</h3>
+</div><div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">3.1</span> 基本は関数</h3>
 <div class="outline-text-3" id="text-3-1">
-<p>
-数値計算プログラムから使う"三角関数の計算"機能, double sin(double);
-が要求する機能。
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh">grep sin /usr/include/math.h
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">3.2</span> 提供されている機能</h3>
-<div class="outline-text-3" id="text-3-2">
-<p>
-機能を提供しているのは，Linux の数値計算ライブラリ /usr/lib/libm.so。
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh">file /usr/lib/libm.so
-nm /usr/lib/libm.so | grep sin
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">3.3</span> 機能の説明</h3>
-<div class="outline-text-3" id="text-3-3">
-<p>
-ユーザはmanコマンドで使い方を知り，~#include &lt;math.h&gt;~ で sin 関数
-を使うためのインタフェースを取り込み，~cc &#x2026; -lm~ で数学ライブラリ
-を取り込む。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">3.4</span> 機能を使うきまり</h3>
-<div class="outline-text-3" id="text-3-4">
-<ul class="org-ul">
-<li>利用側のプログラムでは，利用インタフェースが記述されたヘッダファイ
-ルをインクルードし，インタフェースを遵守します。</li>
-
-<li>提供側のプログラムは，利用インタフェースが記述されたヘッダファイル
-を作成し，自らそれをインクルードすることで，自身もインタフェースを
-遵守します。</li>
-
-<li>提供側は，プログラムソースは見せずに，機能をライブラリに詰め込み，
-ライブラリとヘッダファイルを公開します。</li>
-
-<li>利用側は，自身のプログラムとライブラリをリンクすることで，自身の実
-行プログラムに機能を取り込むことができます。</li>
-</ul>
-
-<p>
-Linux システム上で，C言語を使ってプログラム開発をおこなう際の，決まり
-事です。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">3.5</span> 機能を利用する側と機能を提供する側とヘッダファイル</h3>
-<div class="outline-text-3" id="text-3-5">
-<p>
-main関数は，sin関数（機能）を使う側です。数学ライブラリを開発する
-側が，sin関数を提供する側で，math.hがsin関数を使う際の決まりごと（イン
-タフェース）を定めています。
-</p>
-
-<p>
-使う側は，ヘッダファイル math.h を include し，コンパイル時にエラー
-が起きないことで，そのインタフェースを守っていることが保証されるの
-です。
-</p>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline23" class="outline-2">
-<h2 id="orgheadline23"><span class="section-number-2">4</span> プログラムの機能</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-プログラムの働きを <b>機能</b> と呼ぶことにします。
-</p>
-</div>
-
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">4.1</span> 基本は関数</h3>
-<div class="outline-text-3" id="text-4-1">
 <p>
 プログラム演習Iの関数の基本を思いだそう
 </p>
 
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E">第a回</a> &#x2013; 6.1 関数の基本，6.2 引数と戻り値</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E">第b回</a> &#x2013; 6.3 変数の寿命とスコープ，6.4 再帰呼び出し</li>
+<li><a href="https://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E">第a回</a> &#x2013; 6.1 関数の基本，6.2 引数と戻り値</li>
+<li><a href="https://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E">第b回</a> &#x2013; 6.3 変数の寿命とスコープ，6.4 再帰呼び出し</li>
 </ul>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">関数を呼び出すこと</h4>
-<div class="outline-text-4" id="text-orgheadline13">
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8">関数を呼び出すこと</h4>
+<div class="outline-text-4" id="text-orgheadline8">
 <pre class="example">
 { int value = f(1.0, "abc"); ... }
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14">関数を定めること</h4>
-<div class="outline-text-4" id="text-orgheadline14">
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9">関数を定めること</h4>
+<div class="outline-text-4" id="text-orgheadline9">
 <pre class="example">
 int
 f(double x, char *name)
@@ -482,9 +337,9 @@ f(double x, char *name)
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15">関数を呼び出すことと定めることの間にある決まりごと</h4>
-<div class="outline-text-4" id="text-orgheadline15">
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10">関数を呼び出すことと定めることの間にある決まりごと</h4>
+<div class="outline-text-4" id="text-orgheadline10">
 <pre class="example">
 int f(double, char *name);
 </pre>
@@ -493,23 +348,9 @@ int f(double, char *name);
 </div>
 
 
-
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">4.2</span> 機能とは</h3>
-<div class="outline-text-3" id="text-4-2">
-<p>
-この講義では，C言語の関数の <b>働き</b> を機能といいます。
-</p>
-
-<p>
-関数の働きとは，「関数に何を与えて，関数は何を計算してくれるか」です。
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">4.3</span> 機能を要求する</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">3.2</span> 機能を要求する</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 このデータを与えると，こんな計算をして，こんな結果を返してくれる関数
 を作ってくれませんか？
@@ -538,9 +379,9 @@ double型の，ラジアンではなく，度数で計算してくれる sin 関
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">4.4</span> 機能を実現する</h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">3.3</span> 機能を実現する</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 はい，了解。こんな入力に対して，こんな風にを計算して，こんな結果を
 返す関数を作りました。
@@ -565,9 +406,9 @@ card/ ディレクトリの下にソースがありますが，見なくても�
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">4.5</span> 機能を提供する</h3>
-<div class="outline-text-3" id="text-4-5">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">3.4</span> 機能を提供する</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 ヘッダファイルを作りましたので，インクルードして使ってください。本
 体は，オブジェクトファイルやライブラリで提供します。ソースを見る必
@@ -591,34 +432,34 @@ libcard.a をリンクしてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">4.6</span> 機能を利用する</h3>
-<div class="outline-text-3" id="text-4-6">
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">3.5</span> 機能を利用する</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 ありがとう，では使わせてもらいます。
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-c" id="orgsrcblock1"><span style="color: #e5786d;">  # include</span> <span style="color: #95e454;">&lt;stdlib.h&gt;</span>
-<span style="color: #e5786d;">  # include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-  
-<span style="color: #e5786d;">  # include</span> <span style="color: #95e454;">&lt;suit.h&gt;</span>
-  
-  <span style="color: #cae682;">main</span>()
-  {
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">s</span> = suit_int(<span style="color: #95e454;">"HEART"</span>);
-    printf(<span style="color: #95e454;">"HEART = %d\n"</span>, s);
-    exit(0);
-  }
+<pre class="src src-c" id="orgsrcblock1"># include &lt;stdlib.h&gt;
+# include &lt;stdio.h&gt;
+
+# include &lt;suit.h&gt;
+
+main()
+{
+  int s = suit_int("HEART");
+  printf("HEART = %d\n", s);
+  exit(0);
+}
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-sh" id="orgsrcblock2">  <span style="color: #cae682;">INCLUDE_PATH</span> = /path/to/header_file
-  <span style="color: #cae682;">LIBRARY_PATH</span> = /path/to/library
-  cc -I $<span style="color: #cae682;">INCLUDE_PATH</span> main.c -L $<span style="color: #cae682;">LIBRARY_PATH</span> -lsuit
+<pre class="src src-sh" id="orgsrcblock2">INCLUDE_PATH = /path/to/header_file
+LIBRARY_PATH = /path/to/library
+cc -I $INCLUDE_PATH main.c -L $LIBRARY_PATH -lsuit
 </pre>
 </div>
 
@@ -628,9 +469,9 @@ libcard.a をリンクしてください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">4.7</span> 機能の要求と実現と提供と利用</h3>
-<div class="outline-text-3" id="text-4-7">
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">3.6</span> 機能の要求と実現と提供と利用</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 欲しい機能が既に存在すれば，それを再開発せずに，使えることが望まれ
 ます。  欲しい機能が存在しなければ，その機能を実現し，上と同じ方法
@@ -644,11 +485,155 @@ libcard.a をリンクしてください。
 </div>
 </div>
 </div>
+
+
+
+<div id="outline-container-orgheadline23" class="outline-2">
+<h2 id="orgheadline23"><span class="section-number-2">4</span> 機能とヘッダファイル/ライブラリ</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+三角関数を使う下記のプログラムを考えます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"># include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;math.h&gt;
+int
+main()
+{
+  double result = sin(3.14L);
+  printf("sin(3.14)=%g\n", result);
+  exit(0);
+}
+</pre>
+</div>
+
+<p>
+このソースプログラムをコンパイルし，実行形式プログラムを作成するに
+は，下記コマンドを実行します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">%  cc -o sin314 sin314.c -lm
+</pre>
+</div>
+
+<p>
+実行は：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">% ./sin314
+</pre>
+</div>
+
+<p>
+sin関数を計算する機能を，プログラムから利用するために，上記のプログ
+ラムで行なわれていることをまとめると:
+</p>
+
+<dl class="org-dl">
+<dt>提供</dt><dd>/usr/lib/libm.so ライブラリ, % nm /usr/lib/libm.so</dd>
+<dt>利用</dt><dd>#include &lt;math&gt;, cc -lm</dd>
+<dt>情報</dt><dd>% man 3 sin</dd>
+</dl>
+</div>
+
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">4.1</span> 機能を要求する</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+数値計算プログラムから使う"三角関数の計算"機能, double sin(double);
+が要求する機能。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">grep sin /usr/include/math.h
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">4.2</span> 提供されている機能</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+機能を提供しているのは，Linux の数値計算ライブラリ /usr/lib/libm.so。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">file /usr/lib/libm.so
+nm /usr/lib/libm.so | grep sin
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">4.3</span> 機能の説明</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+ユーザはmanコマンドで使い方を知り，~#include &lt;math.h&gt;~ で sin 関数
+を使うためのインタフェースを取り込み，~cc &#x2026; -lm~ で数学ライブラリ
+を取り込む。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">4.4</span> 機能を使うきまり</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>利用側のプログラムでは，利用インタフェースが記述されたヘッダファイ
+ルをインクルードし，インタフェースを遵守します。</li>
+
+<li>提供側のプログラムは，利用インタフェースが記述されたヘッダファイル
+を作成し，自らそれをインクルードすることで，自身もインタフェースを
+遵守します。</li>
+
+<li>提供側は，プログラムソースは見せずに，機能をライブラリに詰め込み，
+ライブラリとヘッダファイルを公開します。</li>
+
+<li>利用側は，自身のプログラムとライブラリをリンクすることで，自身の実
+行プログラムに機能を取り込むことができます。</li>
+</ul>
+
+<p>
+Linux システム上で，C言語を使ってプログラム開発をおこなう際の，決まり
+事です。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">4.5</span> 機能を利用する側と機能を提供する側とヘッダファイル</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+main関数は，sin関数（機能）を使う側です。数学ライブラリを開発する
+側が，sin関数を提供する側で，math.hがsin関数を使う際の決まりごと（イン
+タフェース）を定めています。
+</p>
+
+<p>
+使う側は，ヘッダファイル math.h を include し，コンパイル時にエラー
+が起きないことで，そのインタフェースを守っていることが保証されるの
+です。
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Masayuki Suzuki</p>
-<p class="date">Created: 2016-10-02 日 14:22</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: m</p>
+<p class="date">Created: 2016-10-31 月 15:27</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

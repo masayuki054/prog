@@ -2,8 +2,11 @@
 #+include: announce.org 
 #* はじめに
 #+include: preface.org
+#* 4回目
+#+include: 04/plan.org
 #* 3回目
-#+include: 03/plan.org
+#+include: 03/resume.org
+#+include: 03/response.org
 #* 2回目
 #+include: 02/resume.org
 #+include: 02/response.org

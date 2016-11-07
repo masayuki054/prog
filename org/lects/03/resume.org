@@ -1,0 +1,87 @@
+* 3回目 (10/25) の講義実施内容
+
+** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
+    
+   - [-] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
+     - [-] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
+     - [-] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
+     - [-] simple.org (雑メモの中) の解説  SCHEDULED: <2016-10-25 火>
+
+   - [X] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
+
+   - [ ] cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <2016-11-01 火>
+   - [ ] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
+   - [ ] カードモジュールの作成 SCHEDULED: <2016-11-15 火>
+
+** Done 課題: card_display問題を始める
+   CLOSED: [2016-10-24 月 23:04] SCHEDULED: <2016-10-04 火>
+
+   レポートを回収しました。
+
+** Doing テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
+
+何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
+
+- [.] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
+
+  *テスト* とは何か, その大切さ，を理解しましょう。
+
+- [.] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+
+  大きな問題を，小さな機能に分け，テストにより設計しと確認し，
+  段階的に，開発を進める方法を知りましょう。
+
+  この文書も段階的に読み進めましょう。
+   
+- [X] [[./org-docs/cutter.org][cutterの使い方]] 
+
+  Cutter によるテストを体験しましょう。
+
+** Todo card_display問題のテストによる開発 [0/7] SCHEDULED: <2016-11-01 火>
+
+    この内容は，次々回からになると思います。
+
+    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] [ ]
+     - [ ] test_card_suit_new_from_string
+     - [ ] test_card_no_new_from_string
+     - [ ] test_card_new, suit, no
+     - [ ] test_card_no_to_string
+     - [ ] test_card_suit_to_string
+     - [ ] test_card_to_string
+     - [ ] card_display_single
+
+** ((:-s)) のつぶやき
+
+今日もやりたいこといっぱい。
+
+*** Done レスポンス 15/15 min.
+    CLOSED: [2016-10-31 月 18:01]
+
+  具体的な改善方法を書いてくれると嬉しい
+
+*** Done 画面のキャプチャとストリーミング配信 10/25 min.
+    CLOSED: [2016-10-31 月 18:00]
+
+  萩原さんが試してくれた方法でやってみる, 成功!
+
+*** Someday simple.org の説明 (30/55 min.)
+    CLOSED: [2016-10-31 月 18:01]
+
+  簡単に説明して，後で読んでもらって，その後もう一度，
+  simple.org と simple.c を提出してもらうかな？
+
+*** Doing テストと開発の話 (15/70 min.)
+
+**** Done 今日は導入部だけ読む
+     CLOSED: [2016-10-31 月 18:00]
+
+*** Done cutter によるテスト体験 (60/130 min.)
+    CLOSED: [2016-10-31 月 17:59]
+
+  cutter の使いかたは▽やりました。
+
+
+
+
+
+   

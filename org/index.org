@@ -5,16 +5,13 @@
 
 #+include: lects/announce.org 
 
-#+include: lects/03/plan.org
+#+include: lects/04/plan.org
 
 #+include: lects/supplement.org
 
-#+include: lects/02/resume.org
+#+include: lects/03/resume.org
 
-#+include: lects/01/resume.org
-
-#+include: lects/02/response.org
-#+include: lects/01/response.org
+#+include: lects/03/response.org
 
 
 

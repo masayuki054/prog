@@ -1,0 +1,11 @@
+#+setupfile: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
+#+include: ~/COMM/Lects/prog/site/info/common-header.org
+#+TITLE: 2回目
+
+#+include: resume.org
+
+* レスポンス.02
+#+include: response.org
+
+# #+include: plan.org
+

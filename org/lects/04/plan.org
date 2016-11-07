@@ -1,0 +1,72 @@
+* 4回目 (11/01) の講義内容
+** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
+    
+   - [-] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
+     - [X] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
+     - [-] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
+     - [-] simple.org (雑メモの中) の解説  SCHEDULED: <2016-10-25 火>
+
+   - [X] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
+
+   - [ ] cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <2016-11-01 火>
+   - [ ] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
+   - [ ] カードモジュールの作成 SCHEDULED: <2016-11-15 火>
+
+** Todo テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
+
+何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
+
+- [-] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
+
+  *テスト* とは何か, その大切さ，を理解しましょう。
+
+- [-] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+
+  大きな問題を，小さな機能に分け，テストにより設計しと確認し，
+  段階的に，開発を進める方法を知りましょう。
+
+  この文書も段階的に読み進めましょう。
+   
+- [X] [[./org-docs/cutter.org][cutterの使い方]] 
+
+  Cutter によるテストを体験しましょう。
+
+** Todo card_display問題のテストによる開発 [0/7] SCHEDULED: <2016-11-01 火>
+
+    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] [ ]
+     - [ ] test_card_suit_new_from_string
+     - [ ] test_card_no_new_from_string
+     - [ ] test_card_new, suit, no
+     - [ ] test_card_no_to_string
+     - [ ] test_card_suit_to_string
+     - [ ] test_card_to_string
+     - [ ] card_display_single
+
+
+** ((:-s)) のつぶやき
+
+今日もやりたいこといっぱい。
+
+- レスポンス (10/10 min.)
+
+  具体的な改善方法を書いてくれると嬉しい
+
+- 画面のストリーミング配信 (1/ min.)
+- 画面のキャプチャ 5/ min.
+
+- simple.org/simple.c の講評 (15/ min.)
+
+- テストと開発の話 (10/70 min.)
+
+  すこし先へ進む
+
+- cutter によるテスト体験の復習 (15/ min.)
+
+  1時間はかかるよねぇ。宿題だね。
+   
+
+- テストによるカード表示問題の開発
+
+  はじまり
+
+

@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-31 月 15:39 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>初めてのcard_display_simple</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="m" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="http://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="http://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">初めてのcard_display_simple</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline30">1. card_display/first</a>
+<ul>
+<li><a href="#orgheadline1">1.1. 問題</a></li>
+<li><a href="#orgheadline29">1.2. 解プログラムの作成の流れ</a>
+<ul>
+<li><a href="#orgheadline12">simple_-1.c</a>
+<ul>
+<li><a href="#orgheadline2">やるべきこと</a>
+<ul>
+<li><a href="#orgheadline3">部分的にプログラムを書いてみる:</a></li>
+<li><a href="#orgheadline4">よさそうなので，コマンドラインから文字列もらうように書く</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5"><code>card_string</code> 関数について考える</a></li>
+<li><a href="#orgheadline6"><code>card_string</code> 関数を使うmainを書く</a></li>
+<li><a href="#orgheadline7"><code>char *card_string(char *, char *)</code> の入口出口ついて考える</a></li>
+<li><a href="#orgheadline8">simple_-1.c</a></li>
+<li><a href="#orgheadline9">simple_-1.c をコンパイルする Makefile</a></li>
+<li><a href="#orgheadline10">make</a></li>
+<li><a href="#orgheadline11">実行</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline13">simple_0.c</a>
+<ul>
+<li><a href="#orgheadline14">suit_char 関数</a></li>
+<li><a href="#orgheadline15">no_char 関数</a></li>
+<li><a href="#orgheadline16">simple_0.c</a></li>
+<li><a href="#orgheadline17">make</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline18">card_string をテストするコード</a>
+<ul>
+<li><a href="#orgheadline19">make</a></li>
+<li><a href="#orgheadline20">simple_0.1.c のまとめ</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline21">simple_1.c カードの作成</a>
+<ul>
+<li><a href="#orgheadline22">リファクタリング (プログラミング) - Wikipedia とは</a></li>
+<li><a href="#orgheadline23">card_string関数のリファクタリング</a></li>
+<li><a href="#orgheadline24">カード構造体を作る</a>
+<ul>
+<li><a href="#orgheadline25">文字列で与えられたスーツ(文字列)を整数にする関数</a></li>
+<li><a href="#orgheadline26">番号文字列を数字にする関数</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline27">カードを文字列にする関数 card_to_string</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline28">simple_1.c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30"><span class="section-number-2">1</span> card_display/first</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> 問題</h3>
+<div class="outline-text-3" id="text-1-1">
+<pre class="example">
+% card_display heart 10 
+&gt; H0         # と表示される
+</pre>
+
+<pre class="example">
+% card_display spade 13 
+&gt; SK         # と表示される
+</pre>
+
+<pre class="example">
+% card_display diamond 1 
+&gt; DA         # と表示される
+</pre>
+
+<pre class="example">
+% card_display club 2
+&gt; C2           # と表示される
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">1.2</span> 解プログラムの作成の流れ</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12">simple_-1.c</h4>
+<div class="outline-text-4" id="text-orgheadline12">
+</div><div id="outline-container-orgheadline2" class="outline-5">
+<h5 id="orgheadline2">やるべきこと</h5>
+<div class="outline-text-5" id="text-orgheadline2">
+<ul class="org-ul">
+<li>コマンドラインとのやり取りは一旦忘れる (後で)。</li>
+<li>スーツと番号の文字列から表示用文字列を作る。</li>
+<li>表示用文字列を画面に表示する。</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-6">
+<h6 id="orgheadline3">部分的にプログラムを書いてみる:</h6>
+<div class="outline-text-6" id="text-orgheadline3">
+<pre class="example">
+str = card_string("heart", "10");
+puts(str);
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-6">
+<h6 id="orgheadline4">よさそうなので，コマンドラインから文字列もらうように書く</h6>
+<div class="outline-text-6" id="text-orgheadline4">
+<div class="org-src-container">
+
+<pre class="src src-c">// 入力
+suit_string = argv[1];
+no_string = argv[2];
+str = card_string(suit_string, no_string);
+puts(str);
+</pre>
+</div>
+
+<p>
+よさそう。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-5">
+<h5 id="orgheadline5"><code>card_string</code> 関数について考える</h5>
+<div class="outline-text-5" id="text-orgheadline5">
+<ul class="org-ul">
+<li><code>card_string</code> という名前をもった処理</li>
+<li>スーツと番号の文字列をもらって，</li>
+<li>表示用文字列を作って返す</li>
+</ul>
+
+<p>
+つまり, 下記の宣言となります:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">char *card_string(char *, char *);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-5">
+<h5 id="orgheadline6"><code>card_string</code> 関数を使うmainを書く</h5>
+<div class="outline-text-5" id="text-orgheadline6">
+<p>
+忘れないうちに，main関数を書いてみます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// simple.c#main()
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+</pre>
+</div>
+
+<p>
+よさそう。とりあえず，main 関数はこれで完成。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-5">
+<h5 id="orgheadline7"><code>char *card_string(char *, char *)</code> の入口出口ついて考える</h5>
+<div class="outline-text-5" id="text-orgheadline7">
+<p>
+入力引数の型と戻り値の型は既に決っているので，変数の名前を決めます:
+</p>
+
+<ul class="org-ul">
+<li>最初の引数の名前は，~suit_string~ (札種を表す文字列の意)</li>
+<li>最初の引数の名前は，~no_string~ (札番号を表す文字列の意)</li>
+</ul>
+
+<p>
+ここまで決めると，card_stringの大枠ができます:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  //  result = 変換(suit_string, no_string)
+  result = "SA";
+
+  return result;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-5">
+<h5 id="orgheadline8">simple_-1.c</h5>
+<div class="outline-text-5" id="text-orgheadline8">
+<p>
+simple0.c の要件を満しませんが，一応コンパイルして実行できるものがで
+きました。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// simple_-1.c
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  //  result = 変換(suit_string, no_string)
+  result = "SA";
+
+  return result;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-5">
+<h5 id="orgheadline9">simple_-1.c をコンパイルする Makefile</h5>
+<div class="outline-text-5" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-makefile">.PHONY: clean
+
+simple_-1: simple_-1.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>.PHONY:</code> は，~clean~ がまぼろしのターゲットであることを定
+義しています。</li>
+
+<li><code>simple_-1</code> ターゲットは，実行プログラム(ファイル)名で，
+<ul class="org-ul">
+<li><code>: simple_-1.c</code> に依存していて，</li>
+
+<li><code>simple_-1.c</code> が <code>simple_-1</code> より新らしければ，</li>
+
+<li>~        gcc -o $@ $^ ~ が <b>シュルコマンド</b> として実行されます。</li>
+
+<li><p>
+実行の前に，~\(@~ はターゲット(の名前)に，~\)^~ はソースに置き換えら
+れ, 次のコマンドとなります:
+</p>
+
+<pre class="example">
+gcc -o simple_-1 simple_-1.c
+</pre></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-5">
+<h5 id="orgheadline10">make</h5>
+<div class="outline-text-5" id="text-orgheadline10">
+<div class="org-src-container">
+
+<pre class="src src-sh">make -f Makefile_-1
+</pre>
+</div>
+
+<pre class="example">
+gcc -o simple_-1 simple_-1.c
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-5">
+<h5 id="orgheadline11">実行</h5>
+<div class="outline-text-5" id="text-orgheadline11">
+<div class="org-src-container">
+
+<pre class="src src-sh">./simple_-1 "hoge" "hoge"
+</pre>
+</div>
+
+<pre class="example">
+SA
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13">simple_0.c</h4>
+<div class="outline-text-4" id="text-orgheadline13">
+<p>
+これから要件を満たすように変更していきましょう。
+</p>
+
+<p>
+そのためには，card_string 関数を正しく作りなおせば良いでしょう。
+</p>
+
+<p>
+そしてそのためには，
+</p>
+<pre class="example">
+result = "SA"; 
+</pre>
+
+<p>
+と書いていた部分を正しい処理に書き換えます。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">{ 
+  char suit_c, no_c;
+  char suit_char(char *);
+  char no_char(char *);
+
+  suit_c = suit_char(suit_string);
+  no_c = no_char(no_string);
+  result = (char *) malloc(3);
+  result[0] = suit_c;
+  result[1] = no_c;
+  result[2] = '\0';
+}
+</pre>
+</div>
+
+<p>
+この中で，また，新しい関数を作ることになりました。
+</p>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-5">
+<h5 id="orgheadline14">suit_char 関数</h5>
+<div class="outline-text-5" id="text-orgheadline14">
+<div class="org-src-container">
+
+<pre class="src src-c">char suit_char(char *);
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-c">char suit_char(char *suit)
+{
+  if (strcmp("spade", suit)) return 'S';
+  if (strcmp("heart", suit)) return 'H';
+  if (strcmp("diamond", suit)) return 'D';
+  if (strcmp("club", suit)) return 'C';
+  return('?');
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline15" class="outline-5">
+<h5 id="orgheadline15">no_char 関数</h5>
+<div class="outline-text-5" id="text-orgheadline15">
+<div class="org-src-container">
+
+<pre class="src src-c">char no_char(char *);
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-c">char no_char(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) return 'A';
+  if (n==13) return 'K';
+  if (n==12) return 'Q';
+  if (n==11) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline16" class="outline-5">
+<h5 id="orgheadline16">simple_0.c</h5>
+<div class="outline-text-5" id="text-orgheadline16">
+<p>
+まとめると:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// simple_0.c
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  { 
+    char suit_c, no_c;
+    char suit_char(char *);
+    char no_char(char *);
+
+    suit_c = suit_char(suit_string);
+    no_c = no_char(no_string);
+    result = (char *) malloc(3);
+    result[0] = suit_c;
+    result[1] = no_c;
+    result[2] = '\0';
+  }
+
+  return result;
+}
+
+
+char suit_char(char *suit)
+{
+  if (strcmp("spade", suit)==0) return 'S';
+  if (strcmp("heart", suit)==0) return 'H';
+  if (strcmp("diamond", suit)==0) return 'D';
+  if (strcmp("club", suit)==0) return 'C';
+  return('?');
+} 
+
+char no_char(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) return 'A';
+  if (n==13) return 'K';
+  if (n==12) return 'Q';
+  if (n==11) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+</pre>
+</div>
+
+<p>
+Makefile は変更ありません:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-makefile">.PHONY: clean
+
+simple_0: simple_0.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-5">
+<h5 id="orgheadline17">make</h5>
+<div class="outline-text-5" id="text-orgheadline17">
+<div class="org-src-container">
+
+<pre class="src src-sh">make -f Makefile_0
+</pre>
+</div>
+
+<pre class="example">
+cc     simple_0.c   -o simple_0
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">./simple_0 heart 10
+./simple_0 spade 1
+./simple_0 diamond 13
+./simple_0 club 2
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">H0</td>
+</tr>
+
+<tr>
+<td class="org-left">SA</td>
+</tr>
+
+<tr>
+<td class="org-left">DK</td>
+</tr>
+
+<tr>
+<td class="org-left">C2</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+simple_0.c 完成です。
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18">card_string をテストするコード</h4>
+<div class="outline-text-4" id="text-orgheadline18">
+<p>
+card_string は関数で，満すべき性質は下記のように書くことができます:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">if (strcmp(card_string("diamond", "1"), "DA")==0) puts("OK"); else puts("NG"); 
+if (strcmp(card_string("spade", "13"), "SK")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("spade", "12"), "SQ")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("spade", "11"), "SJ")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("heart", "10"), "H0")==0)  puts("OK"); else puts("NG"); 
+if (strcmp(card_string("club", "9"), "C9")==0) puts("OK"); else puts("NG"); 
+if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG");
+</pre>
+</div>
+
+<p>
+main関数の中で，card_string が呼ばれる前に，このテストを実行し，
+card_string の実装が正しいことを，プログラム自身で確かめるようにしてみ
+ます。
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-c">// simple_0.1.c
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+char * card_string(char *, char *);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str;
+
+  {
+    void test_card_string(void);
+
+    test_card_string();
+  }
+
+  str = card_string(suit_string, no_string);
+  puts(str);
+  exit(0);
+}
+
+void
+test_card_string(void)
+{
+  if (strcmp(card_string("diamond", "1"), "DA")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "13"), "SK")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "12"), "SQ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "11"), "SJ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("heart", "10"), "H0")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "9"), "C9")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG");
+}
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  { 
+    char suit_c, no_c;
+    char suit_char(char *);
+    char no_char(char *);
+
+    suit_c = suit_char(suit_string);
+    no_c = no_char(no_string);
+    result = (char *) malloc(3);
+    result[0] = suit_c;
+    result[1] = no_c;
+    result[2] = '\0';
+  }
+
+  return result;
+}
+
+char suit_char(char *suit)
+{
+  if (strcmp("spade", suit)==0) return 'S';
+  if (strcmp("heart", suit)==0) return 'H';
+  if (strcmp("diamond", suit)==0) return 'D';
+  if (strcmp("club", suit)==0) return 'C';
+  return('?');
+} 
+
+char no_char(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) return 'A';
+  if (n==13) return 'K';
+  if (n==12) return 'Q';
+  if (n==11) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-5">
+<h5 id="orgheadline19">make</h5>
+<div class="outline-text-5" id="text-orgheadline19">
+<div class="org-src-container">
+
+<pre class="src src-sh">make -f Makefile_0.1
+</pre>
+</div>
+
+<pre class="example">
+gcc -o simple_0.1 simple_0.1.c
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">./simple_0.1 heart 13
+</pre>
+</div>
+
+<p>
+OKですね。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-5">
+<h5 id="orgheadline20">simple_0.1.c のまとめ</h5>
+<div class="outline-text-5" id="text-orgheadline20">
+<p>
+次の関数を作った:
+</p>
+<dl class="org-dl">
+<dt><code>char * card_string(char *suit_string, char *no_string);</code></dt><dd></dd>
+
+
+<dt><code>char suit_char(char *suit);</code></dt><dd></dd>
+
+
+<dt><code>char no_char(char *no);</code></dt><dd></dd>
+
+
+<dt><code>void test_card_string(void);</code></dt><dd></dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21">simple_1.c カードの作成</h4>
+<div class="outline-text-4" id="text-orgheadline21">
+<p>
+simple_0.1.c では，カードという <b>物</b> が現われていません。
+</p>
+
+<p>
+今後，複数のカードの入力や，それらのソート機能が求められるため，
+カードを作ることにします。
+</p>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-5">
+<h5 id="orgheadline22"><a href="https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">リファクタリング (プログラミング) - Wikipedia</a> とは</h5>
+<div class="outline-text-5" id="text-orgheadline22">
+<blockquote>
+<p>
+リファクタリング (refactoring) とは、コンピュータプログラミングにおい
+て、プログラムの外部から見た動作を変えずにソースコードの内部構造を整理
+することである。
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-5">
+<h5 id="orgheadline23">card_string関数のリファクタリング</h5>
+<div class="outline-text-5" id="text-orgheadline23">
+<p>
+入力の suit_string と no_string から，表示文字列を作る前に，
+いったん一枚のカードを作ることにします。
+</p>
+
+<p>
+すると，カードを作る前と後の処理を別々に考えやすくなります。
+<code>card_string</code> 関数の処理の流れは次のようになります:
+</p>
+
+<ul class="org-ul">
+<li><p>
+あるカード = カードの作成(suit_string, no_string)
+</p>
+
+<p>
+<code>Card a_card = card_new_from_string(suit_string, no_string);</code>
+</p></li>
+
+<li><p>
+result = カードの表示文字列を作る(あるカード)
+</p>
+
+<p>
+<code>result = card_to_string(a_card);</code>
+</p></li>
+</ul>
+
+<p>
+カードを作るということは，カードの構造を持った構造体を作ることに
+なります。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline24" class="outline-5">
+<h5 id="orgheadline24">カード構造体を作る</h5>
+<div class="outline-text-5" id="text-orgheadline24">
+<p>
+取り敢えず，カードが持つ情報は次の2つとします:
+</p>
+
+<ul class="org-ul">
+<li>スーツを表わす整数値</li>
+<li>番号を表わす整数値</li>
+</ul>
+
+<p>
+どちらも整数値としたのは，カードの強さを，数の大小関係で表わすた
+めです。
+</p>
+
+<p>
+スーツの整数値と番号の整数値をもつ構造体型に，_Cardと名前を付けて，
+定義します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">struct _Card {
+  int suit;
+  int no;
+};
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-c">typdef struct _Card Card;
+</pre>
+</div>
+
+<p>
+カードを作るための関数を作ります。
+また，~card_string~ で使うために，スーツや番号を表す文字列を与えてカー
+ドを作る関数も併せて作ります。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">Card card_new(int suit, int no) 
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+
+  return new;
+}
+
+Card card_new_from_string(char *suit_str, char *no_str)
+{
+  int suit = card_suit_from_string(suit_str);
+  int no = card_no_from_string(no_str);
+
+  return card_new(suit, no);
+}
+</pre>
+</div>
+
+<p>
+ここで，~card_string~ がきちんと書けます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  {
+    Card card_new_from_string(char *, char *);
+    Card card;
+    char *card_to_string(Card);
+
+    card = card_new_from_string(suit_string, no_string);
+
+    result = card_to_string(card);
+  }
+
+  return result;
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-6">
+<h6 id="orgheadline25">文字列で与えられたスーツ(文字列)を整数にする関数</h6>
+<div class="outline-text-6" id="text-orgheadline25">
+<p>
+<code>card_new_from_string</code> 関数では次のように書きました:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">int suit = card_suit_from_string(suit_string);
+</pre>
+</div>
+
+<p>
+<code>card_suit_from_string</code> が満たすべきことをCで書いてみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">if (card_suit_from_string("spade") != 4) puts("error");
+if (card_suit_from_string("heart") != 3) puts("error");
+if (card_suit_from_string("diamond") != 2) puts("error");
+if (card_suit_from_string("club") != 1) puts("error");
+</pre>
+</div>
+
+<p>
+うまく使えそうです。これでいいでしょう。
+すると，card_suit_from_string のプロトタイプ宣言が書けます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">int card_suit_from_string(char *);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-6">
+<h6 id="orgheadline26">番号文字列を数字にする関数</h6>
+<div class="outline-text-6" id="text-orgheadline26">
+<p>
+続いて，カード番号について，プログラム内部表現への変換を，スーツ同様に，
+書いてみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">int no =  card_no_from_string(no_str);
+</pre>
+</div>
+
+<p>
+<code>card_no_from_string</code> が満たすべきことをCで書いてみましょう:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">if (card_no_from_string("13") == 13 ) puts("OK"); else puts("NG");
+if (card_no_from_string("12") == 12 ) puts("OK"); else puts("NG");
+if (card_no_from_string("2") == 2 ) puts("OK"); else puts("NG");
+if (card_no_from_string("1") == 14 ) puts("OK"); else puts("NG");
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-5">
+<h5 id="orgheadline27">カードを文字列にする関数 card_to_string</h5>
+<div class="outline-text-5" id="text-orgheadline27">
+<p>
+<code>card_to_string</code> の使われかたは，次でした:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">str = card_to_string(card)
+</pre>
+</div>
+
+<p>
+スーツと番号を表す数字をそれぞれ文字にする関数を考えます。
+</p>
+
+<ul class="org-ul">
+<li><code>card_suit_to_char(card)</code></li>
+<li><code>card_no_to_string(card)</code></li>
+</ul>
+
+<p>
+すると，~card_to_string~ が書けます:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">char *
+card_to_string(Card card)
+{
+char suit_char = card_suit_to_char(card);
+char no_char = card_no_to_char(card);
+char *result = (char *) malloc(3);
+
+result[0] = suit_char;
+result[1] = no_char;
+result[2] = 0;
+
+return result;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28">simple_1.c</h4>
+<div class="outline-text-4" id="text-orgheadline28">
+<div class="org-src-container">
+
+<pre class="src src-c">// simple_1.c
+# include &lt;stdio.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;string.h&gt;
+
+struct _Card {
+  int suit;
+  int no;
+};
+
+typedef struct _Card Card;
+
+char *card_string(char *, char *);
+
+
+Card card_new_from_string(char *, char *);
+Card card_new(int, int);
+int card_suit_from_string(char *);
+int card_no_from_string(char *);
+
+char *card_to_string(Card);
+char card_suit_to_char(Card);
+char card_no_to_char(Card);
+
+int
+main(int argc, char *argv[])
+{
+  char * suit_string = argv[1];
+  char * no_string = argv[2];
+  char * str;
+
+  {
+    void test_card_string(void);
+    void test_card_suit_from_string(void);
+    void test_card_no_from_string(void);
+
+    test_card_suit_from_string();
+    test_card_no_from_string();
+    test_card_string();
+  }
+
+  str = card_string(suit_string, no_string);
+  puts(str);
+
+  exit(0);
+}
+
+void
+test_card_string(void)
+{
+  if (strcmp(card_string("diamond", "1"), "DA")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "13"), "SK")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "12"), "SQ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("spade", "11"), "SJ")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("heart", "10"), "H0")==0)  puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "9"), "C9")==0) puts("OK"); else puts("NG"); 
+  if (strcmp(card_string("club", "2"), "C2")==0) puts("OK"); else puts("NG");
+}
+
+
+char *card_string(char *suit_string, char *no_string)
+{
+  char *result;
+
+  {
+    Card a = card_new_from_string(suit_string, no_string);
+
+    result = card_to_string(a);
+  }
+
+  return result;
+}
+
+void
+test_card_suit_from_string(void)
+{
+if (card_suit_from_string("spade") != 4) puts("error");
+if (card_suit_from_string("heart") != 3) puts("error");
+if (card_suit_from_string("diamond") != 2) puts("error");
+if (card_suit_from_string("club") != 1) puts("error");
+}
+
+void
+test_card_no_from_string(void)
+{
+  if (card_no_from_string("13") == 13 ) puts("OK"); else puts("NG");
+  if (card_no_from_string("12") == 12 ) puts("OK"); else puts("NG");
+  if (card_no_from_string("2") == 2 ) puts("OK"); else puts("NG");
+  if (card_no_from_string("1") == 14 ) puts("OK"); else puts("NG");
+}
+
+Card card_new_from_string(char *suit_str, char *no_str)
+{
+  int suit = card_suit_from_string(suit_str);
+  int no = card_no_from_string(no_str);
+
+  return card_new(suit, no);
+}
+
+
+Card card_new(int suit, int no) 
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+
+  return new;
+}
+
+char *
+card_to_string(Card card)
+{
+  char suitc = card_suit_to_char(card);
+  char noc = card_no_to_char(card);
+  char *result = (char *) malloc(3);
+
+
+  result[0] = suitc;
+  result[1] = noc;
+  result[2] = 0;
+
+  return result;
+}
+
+int 
+card_suit_from_string(char *suit)
+{
+  if (strcmp("spade", suit)==0) return 4;
+  if (strcmp("heart", suit)==0) return 3;
+  if (strcmp("diamond", suit)==0) return 2;
+  if (strcmp("club", suit)==0) return 1;
+  return('?');
+} 
+
+# define SPADE 4
+# define HEART 3
+# define DIAMOND 2
+# define CLUB 1
+
+char
+card_suit_to_char(Card c)
+{
+  if (c.suit==SPADE) return 'S';
+  if (c.suit==HEART) return 'H';
+  if (c.suit==DIAMOND) return 'D';
+  if (c.suit==CLUB) return 'C';
+  return('?');
+} 
+
+# define ACE 14
+# define KING 13
+# define QUEEN 12
+# define JACK 11
+
+int 
+card_no_from_string(char *no)
+{
+  int n = atoi(no);
+
+  if (n==1) n = ACE;
+  return n;
+}
+
+char
+card_no_to_char(Card c)
+{
+  int n = c.no;
+
+  if (n==ACE) return 'A';
+  if (n==KING) return 'K';
+  if (n==QUEEN) return 'Q';
+  if (n==JACK) return 'J';
+  if (n==10) return '0';
+  return '0'+n;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-makefile">.PHONY: clean
+
+simple_1: simple_1.c
+	gcc -o $@ $^ 
+
+clean:
+	rm -f *~ \#* *.gch
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">make clean
+make -f Makefile_1
+./simple_1 heart 1
+</pre>
+</div>
+
+<pre class="example">
+gcc -o simple_1 simple_1.c 
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+HA
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: m</p>
+<p class="date">Created: 2016-10-31 月 15:39</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,26 +1,110 @@
 * 補足
 
-** cutter.h が見つからないのは
+** emacs は1つだけ起動して，ウィンドウを沢山使う <2016-11-08 火>
+
+: C-x C-f で emacs の中からファイルを開く
+: C-x 2, C-x 3, C-x 5 などで沢山のウィンドウを開く
+: C-x o, C-x 5 o などで移動する
+: C-x C-b, C-x b 開いているファイル (バッファ)を選ぶ
+
+
+** dired を使う <2016-11-08 火>
+
+card_display/simple の下には， src/, test/ のディレクトリがあり，
+その下には，それぞれ幾つかファイルがあります。
+
+: emacs &
+: C-x C-f ~/progs/card_display/simple
+: ;; src/ へ移動して，
+: i
+: ;; src/ ディレクトリが展開される
+: ;; test/ へ移動して，
+: i
+: ;; test/ ディレクトリが展開される
+: ;; 開きたいファイルへ移動して，o
+: ;; 別のウィンドウで開く
+
+すると，card_display/simple の下のファイルを全て見ながら，
+個々のファイルを閲覧修正することができます。
+
+
+** cutter.h が見つからないのは <2016-11-08 火>
 
 cutter を使うには，ヘッダ(ファイル)とライブラリ(ファイル) が必要です。
-- 何故必要かは，説明されていると思います。
+cutter が提供する機能(関数)のAPIが書かれているからです。
+
+*** cutter.h の在処
+
+まず，どういう仕組みで，cutter.h の在処を指定するか，説明します。
+
+Cプログラムからは，下記のように書きます:
 
 : # include <cutter.h> 
 
-の意味は，コンパイラが知っているインクルード・パス上の，cutter.h とい
+この意味は，コンパイラが知っているインクルード・パス上の，cutter.h とい
 う名前のファイルの内容を，include のある箇所に埋め込むことです。
 
 cutter は後から追加された(テスト用)パッケージなので，コンパイラはそれ
 を知りません。
 
-なので，gcc する時に教えます。
+cutter.h がどこにあるのかは, 下記コマンドを実行すると出力されます:
+
+#+BEGIN_SRC sh :exports both
+pkg-config cutter --cflags
+#+END_SRC
+
+#+RESULTS:
+: -I/usr/include/cutter
+
+/usr/include/cutter/ に cutter のヘッダファイルがあるようです。確かめ
+ます:
+
+#+BEGIN_SRC sh :exports both :results code
+ls -l /usr/include/cutter
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+合計 56
+drwxr-xr-x 2 root root  4096  9月  8  2015 cppcutter
+-rw-r--r-- 1 root root  4097  7月 30  2015 cppcutter.h
+drwxr-xr-x 2 root root  4096  9月  8  2015 cutter
+-rw-r--r-- 1 root root 13651  7月 30  2015 cutter.h
+drwxr-xr-x 2 root root  4096  9月  8  2015 gcutter
+-rw-r--r-- 1 root root  1993  7月 30  2015 gcutter.h
+drwxr-xr-x 2 root root  4096  9月  8  2015 gdkcutter-pixbuf
+-rw-r--r-- 1 root root  2175  7月 30  2015 gdkcutter-pixbuf.h
+drwxr-xr-x 2 root root  4096  9月  8  2015 soupcutter
+-rw-r--r-- 1 root root  2210  7月 30  2015 soupcutter.h
+#+END_SRC
 
 
+ありますね。Makefile 中で，gcc する時に教えます:
+
+: CFLAGS = -g -fPIC -I ../src `pkg-config cutter --cflags` 
+: ...
+: test_card.o: test_card.c
+: 	gcc -c $< $(CFLAGS)
+
+- CFLAGS は，Makefile の変数で，gcc へのコンパイル時へのオプションを保
+  持します。
+
+  - `pkg-config cutter --cflags` はコマンド出力をここへ埋め込みます。
+    
+    - -I/usr/include/cutter は インクルード・パスヘ /usr/include/cutter
+      を含める事を意味します。
 
 
+ここまでが仕組みです。
 
+*** cutter.h が見つからない原因
 
-   
+: `pkg-config cutter --cflags` まわり
+
+- ` ではなく，' になっている
+- ミススペルがある
+- 前後に空白文字がない
+  
    
 ** emacs  
 

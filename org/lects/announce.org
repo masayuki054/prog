@@ -1,5 +1,13 @@
 * お知らせ
+** card_display_simple の開発に関する絵
 
+参考にしてください：
+
+- [[Figs/card_display_simple_structure.png][card_string機能の構造]] 
+
+- [[Figs/card_display_simple.png][テストによる開発の構造]]
+   
+   
 ** レポートの回収  <2016-10-25 火>
 
 *** 「課題:card_display問題を始める」のレポートを回収します。

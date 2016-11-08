@@ -9,10 +9,10 @@
    - [X] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
 
    - [X] cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <2016-11-01 火>
-   - [ ] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
+   - [-] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
    - [ ] カードモジュールの作成 SCHEDULED: <2016-11-15 火>
 
-** Todo テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
+** Doing テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
 
 何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
 
@@ -31,31 +31,40 @@
 
   Cutter によるテストを体験しましょう。
 
-** Todo card_display問題のテストによる開発 [2/7] SCHEDULED: <2016-11-01 火>
+** Doing card_display問題のテストによる開発 [2/7] SCHEDULED: <2016-11-01 火>
 
     [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
 
      - [X] test_card_suit_new_from_string
      - [X] test_card_no_new_from_string
-     - [ ] test_card_new, suit, no
-     - [ ] test_card_no_to_string
-     - [ ] test_card_suit_to_string
+     - [-] test_card_new, suit, no
+     - [ ] test_card_no_to_char, =test_card_no_to_string=
+     - [ ] test_card_suit_to_char, =test_card_suit_to_string=
      - [ ] test_card_to_string
-     - [ ] card_display_single
+     - [ ] card_display_simple
 
+** 次回までの課題
+
+   次週までに，下記の機能のテストと実装を行なってください:
+
+     - [ ] test_card_no_to_char, =test_card_no_to_string=
+     - [ ] test_card_suit_to_char, =test_card_suit_to_string=
+     - [ ] test_card_to_string
 
 ** ((:-s)) のつぶやき
 
-今日もやりたいこといっぱい。
+- 画面のストリーミング配信 講義開始前に
+- 画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず
+
+- 前回のまとめとお知らせ
+
+  開発の絵
+
+- test_card_suit_new_from_string の復習
+  - 開発サイクル
+  - まずは，機能の設計ができるようになろう
 
 - レスポンス (10/10 min.)
-
-  具体的な改善方法を書いてくれると嬉しい
-
-- 画面のストリーミング配信 (1/ min.)
-- 画面のキャプチャ 5/ min.
-
-- simple.org/simple.c の講評 (15/ min.)
 
 - テストと開発の話 (10/70 min.)
 
@@ -63,11 +72,15 @@
 
 - cutter によるテスト体験の復習 (15/ min.)
 
-  1時間はかかるよねぇ。宿題だね。
-   
-
 - テストによるカード表示問題の開発
 
-  はじまり
+  - card_no_new_from_string は宿題
+
+  - card_new 周辺
+
+  - card_to_string 周辺
+
+
+  
 
 

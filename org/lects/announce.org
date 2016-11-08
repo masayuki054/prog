@@ -1,11 +1,24 @@
 * お知らせ
-** card_display_simple の開発に関する絵
+** card_display_simple の開発に関する絵 <2016-11-08 火>
 
-参考にしてください：
+   参考にしてください：
 
 - [[Figs/card_display_simple_structure.png][card_string機能の構造]] 
 
-- [[Figs/card_display_simple.png][テストによる開発の構造]]
+  card_string 機能の構造・流れを描きました。四角い箱がデータで，下が波
+  うっている箱が処理です。
+
+- [[Figs/card_display_simple.png][card_display_simple問題の開発木構造]]
+
+  テストによる開発で用いるディレクトリ構造とファイル(.h, .c, .o, .a)の
+  関係を描きました。矢印は依存関係を表わしています。
+
+- [[Figs/deck_dev.png][deckモジュールの開発木構造]]
+
+  カードモジュールの開発終了後，山(deck)モジュールの開発を行ないます。
+  その際の，山(deck)モジュールの開発構造と，カードモジュールの機能提供
+  の構造を描きました。
+
    
    
 ** レポートの回収  <2016-10-25 火>

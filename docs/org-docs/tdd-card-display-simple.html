@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-02 日 15:04 -->
+<!-- 2016-11-08 火 10:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>カード表示問題のテストによる開発</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Masayuki Suzuki" />
+<meta  name="author" content="m" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -95,19 +95,19 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/css/sos.css">
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.zclip.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/hideshow.js"></script>
-<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/sos.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -175,7 +175,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -317,7 +317,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline80">12. card_display_multi</a></li>
 <li><a href="#orgheadline100">13. card_display_sort</a>
 <ul>
-<li><a href="#orgheadline81">13.1. <span class="todo Doing">Doing</span> checks <code>[1/3]</code></a></li>
+<li><a href="#orgheadline81">13.1. Doing checks <code>[1/3]</code></a></li>
 <li><a href="#orgheadline82">13.2. 複数のカードをソートする機能</a></li>
 <li><a href="#orgheadline87">13.3. 機能の追加とテストの作成</a>
 <ul>
@@ -381,10 +381,10 @@ simple/ とする。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/</span>
+<pre class="src src-sh"># ~/
 mkdir -p ~/progs/card_display/simple
-<span style="color: #e5786d;">cd</span> ~/progs/card_display/simple
-<span style="color: #e5786d;">pwd</span>
+cd ~/progs/card_display/simple
+pwd
 </pre>
 </div>
 
@@ -395,7 +395,7 @@ mkdir -p ~/progs/card_display/simple
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 mkdir -p src test
 </pre>
 </div>
@@ -405,9 +405,9 @@ mkdir -p src test
 </p>
 
 <pre class="example">
-    simple/ --+- src/  ソースファイル用ディレクトリ
-              |
-              +- test/ テストプログラム用ディレクトリ
+simple/ --+- src/  ソースファイル用ディレクトリ
+          |
+          +- test/ テストプログラム用ディレクトリ
 </pre>
 </div>
 </div>
@@ -423,18 +423,18 @@ simple/ ディレクトリに Makefileを作成します。
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/Makefile</span>
-<span style="color: #cae682;">.PHONY</span>: clean card_test
+<pre class="src src-makefile"># ~/progs/card_display/simple/Makefile
+.PHONY: clean card_test
 
-<span style="color: #cae682;">card_test</span>:
-        (cd src; make)
-        (cd test; make) 
-        cutter -v v test/
+card_test:
+	(cd src; make)
+	(cd test; make) 
+	cutter -v v test/
 
-<span style="color: #cae682;">clean</span>:
-        (cd src; make clean)
-        (cd test; make clean)
-        rm -f *.o *.so *~ \#* .gch
+clean:
+	(cd src; make clean)
+	(cd test; make clean)
+	rm -f *.o *.so *~ \#* .gch
 </pre>
 </div>
 
@@ -445,11 +445,11 @@ src/Makefileを作ります。まずの目的は，src/ディレクトリをき�
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">src/Makefile</span>
-<span style="color: #cae682;">.PHONY</span>: clean 
-<span style="background-color: #ff69b4;">  </span>
-<span style="color: #cae682;">clean</span>:
-        rm -f *.o *.so *~ \#* *.gch
+<pre class="src src-makefile"># src/Makefile
+.PHONY: clean 
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 
@@ -460,11 +460,11 @@ test/Makefileを作ります: 同様にまずの目的は，test/ディレクト
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">test/Makefile</span>
-<span style="color: #cae682;">.PHONY</span>: clean 
+<pre class="src src-makefile"># test/Makefile
+.PHONY: clean 
 
-<span style="color: #cae682;">clean</span>:
-        rm -f *.o *.so *~ \#* *.gch
+clean:
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 
@@ -474,7 +474,7 @@ test/Makefileを作ります: 同様にまずの目的は，test/ディレクト
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/
 make
 </pre>
 </div>
@@ -641,8 +641,8 @@ card_suit_new_from_string が満たすテストを書きます:
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"SPADE"</span>)==SPADE);
+<pre class="src src-c">// test/test_card.c
+  cut_assert(card_suit_new_from_string("SPADE")==SPADE);
 </pre>
 </div>
 
@@ -662,7 +662,7 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c">  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+<pre class="src src-c">int card_suit_new_from_string(char *);
 </pre>
 </div>
 
@@ -673,7 +673,7 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
+<pre class="src src-c"># include &lt;cutter.h&gt;
 </pre>
 </div>
 
@@ -683,7 +683,7 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c" id="orgsrcblock1">  <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> {<span style="color: #cae682;">CLUB</span>=1, <span style="color: #cae682;">DIAMOND</span>, <span style="color: #cae682;">HEART</span>, <span style="color: #cae682;">SPADE</span>};
+<pre class="src src-c" id="orgsrcblock1">enum e_Suit {CLUB=1, DIAMOND, HEART, SPADE};
 </pre>
 </div>
 <p>
@@ -692,10 +692,10 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">  # define</span> <span style="color: #cae682;">SPADE</span> 4
-<span style="color: #e5786d;">  # define</span> <span style="color: #cae682;">HEART</span> 3
-<span style="color: #e5786d;">  # define</span> <span style="color: #cae682;">DIAMOND</span> 2
-<span style="color: #e5786d;">  # define</span> <span style="color: #cae682;">CLUB</span> 1
+<pre class="src src-c"># define SPADE 4
+# define HEART 3
+# define DIAMOND 2
+# define CLUB 1
 </pre>
 </div>
 
@@ -710,8 +710,8 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
 </pre>
 </div>
 
@@ -722,12 +722,12 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+<pre class="src src-c">// test/test_card.c
+void
+test_card_suit_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#25991;&#23383;&#21015;&#12363;&#12425;&#12473;&#12540;&#12484;&#12434;&#20316;&#25104;&#12377;&#12427;&#12290;"</span>);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"SPADE"</span>)==SPADE);
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
 }
 </pre>
 </div>
@@ -742,18 +742,18 @@ card_suit_new_from_stringを関数の形で書けたので，関数の型を決�
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> {<span style="color: #cae682;">CLUB</span>=1, <span style="color: #cae682;">DIAMOND</span>, <span style="color: #cae682;">HEART</span>, <span style="color: #cae682;">SPADE</span>};
+enum e_Suit {CLUB=1, DIAMOND, HEART, SPADE};
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+enum e_Suit card_suit_new_from_string(char *);
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_suit_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#25991;&#23383;&#21015;&#12363;&#12425;&#12473;&#12540;&#12484;&#12434;&#20316;&#25104;&#12377;&#12427;&#12290;"</span>);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"SPADE"</span>)==SPADE);
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
 }
 </pre>
 </div>
@@ -774,9 +774,9 @@ Makefileに次のように規則を書き加えます:
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">test/Makefile</span>
-<span style="color: #cae682;">test_card.o</span>: test_card.c
-        gcc -c $<span style="color: #e5786d;">&lt;</span>
+<pre class="src src-makefile"># test/Makefile
+test_card.o: test_card.c
+	gcc -c $&lt;
 </pre>
 </div>
 
@@ -787,7 +787,7 @@ test_card.c がインクルードしている cutter.h がどこにあるのか�
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/CardDisplay/simple/</span>
+<pre class="src src-sh"># ~/progs/CardDisplay/simple/
 pkg-config cutter --cflags
 </pre>
 </div>
@@ -808,15 +808,15 @@ cutter.hをインクルードするためのコンパイラへの指示が出力
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">test/Makefile</span>
-<span style="color: #cae682;">.PHONY</span>: clean 
-<span style="color: #cae682;">CFLAGS</span> = -fPIC <span style="color: #95e454;">`pkg-config cutter --cflags`</span>
+<pre class="src src-makefile"># test/Makefile
+.PHONY: clean 
+CFLAGS = -fPIC `pkg-config cutter --cflags`
 
-<span style="color: #cae682;">test_card.o</span>: test_card.c
-        gcc -c $<span style="color: #e5786d;">&lt;</span> $(<span style="color: #cae682;">CFLAGS</span>)
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
 
-<span style="color: #cae682;">clean</span>:
-        rm -f *.o *.so *~ \#* *.gch
+clean:
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 </div>
@@ -831,7 +831,7 @@ test/{test_card.c, Makefile}ができたので，make してみましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 make clean
 make test_card.o
 </pre>
@@ -849,7 +849,7 @@ test/test_card.o の中身を見てみましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 nm test_card.o
 </pre>
 </div>
@@ -940,19 +940,19 @@ gcc に対するオプション -fPIC とか &#x2013;shared は動的ライブ�
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">test/Makefile (2)</span>
-<span style="color: #cae682;">.PHONY</span>: clean
-<span style="color: #cae682;">CFLAGS</span> = -fPIC <span style="color: #95e454;">`pkg-config cutter --cflags`</span> 
-<span style="color: #cae682;">LDFLAGS</span> = <span style="color: #95e454;">`pkg-config --libs cutter`</span>
+<pre class="src src-makefile"># test/Makefile (2)
+.PHONY: clean
+CFLAGS = -fPIC `pkg-config cutter --cflags` 
+LDFLAGS = `pkg-config --libs cutter`
 
-<span style="color: #cae682;">test_card.so</span>: test_card.o       
-        gcc -o <span style="color: #cae682;">$</span><span style="color: #e5786d;">@</span> --shared $<span style="color: #e5786d;">^</span> $(<span style="color: #cae682;">LDFLAGS</span>)
+test_card.so: test_card.o       
+	gcc -o $@ --shared $^ $(LDFLAGS)
 
-<span style="color: #cae682;">test_card.o</span>: test_card.c
-        gcc -c $<span style="color: #e5786d;">&lt;</span> $(<span style="color: #cae682;">CFLAGS</span>)
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
 
-<span style="color: #cae682;">clean</span>:
-        rm -f *.o *.so *~ \#* *.gch
+clean:
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 
@@ -1032,10 +1032,10 @@ src/card.h にします。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">src/card.h</span>
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> {<span style="color: #cae682;">CLUB</span>=1,<span style="color: #cae682;">DIAMOND</span>,<span style="color: #cae682;">HEART</span>,<span style="color: #cae682;">SPADE</span>};
+<pre class="src src-c">// src/card.h
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+enum e_Suit card_suit_new_from_string(char *);
 </pre>
 </div>
 </div>
@@ -1052,8 +1052,8 @@ src/card.h にします。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">// test/test_card.c
+# include &lt;card.h&gt;
 </pre>
 </div>
 
@@ -1065,7 +1065,7 @@ src/card.h にします。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">"../src/card.h"</span>
+<pre class="src src-c"># include "../src/card.h"
 </pre>
 </div>
 
@@ -1075,18 +1075,18 @@ test/test_card.c は，下記のようになります:
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_suit_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#25991;&#23383;&#21015;&#12363;&#12425;&#12473;&#12540;&#12484;&#12434;&#20316;&#25104;&#12377;&#12427;&#12290;"</span>);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"SPADE"</span>)==SPADE);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"HEART"</span>)==HEART);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"DIAMOND"</span>)==DIAMOND);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"CLUB"</span>)==CLUB);
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert(card_suit_new_from_string("HEART")==HEART);
+  cut_assert(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert(card_suit_new_from_string("CLUB")==CLUB);
 }
 </pre>
 </div>
@@ -1133,22 +1133,22 @@ src/card.h に書かれている API を守って，card_suit_new_from_string
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">src/card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;string.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">// src/card.c
+# include &lt;string.h&gt;
+# include &lt;card.h&gt;
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span>
-<span style="color: #cae682;">card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">suit_str</span>)
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
 {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"CLUB"</span>, suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> CLUB;
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"DIAMOND"</span>, suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> DIAMOND;
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"HEART"</span>, suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> HEART;
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"SPADE"</span>, suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> SPADE;
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  if (strcmp("CLUB", suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND", suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART", suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE", suit_str)==0)
+    return SPADE;
+  return 0;
 }
 </pre>
 </div>
@@ -1165,20 +1165,20 @@ src/card.c をコンパイルし，src/libcard.a を作成する規則を追加�
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">src/Makefile </span>
-<span style="color: #cae682;">.PHONY</span>: clean
-<span style="color: #cae682;">CFLAGS</span> = -g -c -fPIC -I. 
-<span style="color: #cae682;">LDFLAGS</span> = -lc
+<pre class="src src-makefile"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
 
-<span style="color: #cae682;">libcard.a</span>: card.o
-        rm -f <span style="color: #cae682;">$</span><span style="color: #e5786d;">@</span>
-        ar r <span style="color: #cae682;">$</span><span style="color: #e5786d;">@</span> $<span style="color: #e5786d;">^</span>
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
 
-<span style="color: #cae682;">card.o</span>: card.c card.h
-        gcc $<span style="color: #e5786d;">&lt;</span> $(<span style="color: #cae682;">CFLAGS</span>)
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
 
-<span style="color: #cae682;">clean</span>: 
-        rm -f *.o *.so *~ \#* *.gch
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 
@@ -1188,7 +1188,7 @@ src/card.c をコンパイルし，src/libcard.a を作成する規則を追加�
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make clean
 make libcard.a
 </pre>
@@ -1218,7 +1218,7 @@ libcard.a の中身を確かめて，card_suit_new_from_string 関数が入っ�
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 nm libcard.a
 </pre>
 </div>
@@ -1242,7 +1242,7 @@ src/libcard.a ができたので，次は test/test_card.so に libcard.a を取
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #cae682;">LDFLAGS</span> = -L../src/ -lcard <span style="color: #95e454;">`pkg-config cutter --libs`</span>
+<pre class="src src-makefile">LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
 </pre>
 </div>
 
@@ -1252,19 +1252,19 @@ test/Makefileは下記のようになります:
 
 <div class="org-src-container">
 
-<pre class="src src-makefile"><span style="color: #99968b;"># </span><span style="color: #99968b;">test/Makefile (3) </span>
-<span style="color: #cae682;">.PHONY</span>: clean
-<span style="color: #cae682;">CFLAGS</span> = -fPIC -I../src <span style="color: #95e454;">`pkg-config cutter --cflags`</span>
-<span style="color: #cae682;">LDFLAGS</span> = -L../src/ -lcard <span style="color: #95e454;">`pkg-config cutter --libs`</span>
+<pre class="src src-makefile"># test/Makefile (3) 
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
 
-<span style="color: #cae682;">test_card.so</span>: test_card.o
-        gcc -o <span style="color: #cae682;">$</span><span style="color: #e5786d;">@</span> --shared $<span style="color: #e5786d;">^</span> $(<span style="color: #cae682;">LDFLAGS</span>)
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
 
-<span style="color: #cae682;">test_card.o</span>: test_card.c
-        gcc -c $<span style="color: #e5786d;">&lt;</span> $(<span style="color: #cae682;">CFLAGS</span>)
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
 
-<span style="color: #cae682;">clean</span>:
-        rm -f *.o *.so *~ \#* *.gch
+clean:
+	rm -f *.o *.so *~ \#* *.gch
 </pre>
 </div>
 
@@ -1274,7 +1274,7 @@ make し，src/libcard.a を取り込んだ test/test_card.so を作成します
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test/</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
 make clean
 make test_card.so
 </pre>
@@ -1305,7 +1305,7 @@ test/test_card.so はできあがるはずです。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 make
 </pre>
 </div>
@@ -1410,9 +1410,9 @@ card_no_new_from_string を呼び出してみます：
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
+<pre class="src src-c">// test/test_card.c
 
-  card_no_new_from_string(<span style="color: #95e454;">"13"</span>)==KING;
+  card_no_new_from_string("13")==KING;
 </pre>
 </div>
 
@@ -1423,14 +1423,14 @@ card_no_new_from_string を呼び出してみます：
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
+<pre class="src src-c">// test/test_card.c
 
-  cut_set_message(<span style="color: #95e454;">"&#30058;&#21495;&#12363;&#12425;&#25968;&#20516;&#12408;&#12398;&#22793;&#25563;&#12398;&#12486;&#12473;&#12488;"</span>);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"1"</span>)==ACE);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"13"</span>)==KING);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"12"</span>)==QUEEN);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"11"</span>)==JACK);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"10"</span>)==10);
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
 </pre>
 </div>
 
@@ -1444,9 +1444,9 @@ card_no_new_from_string 関数の型を決めます。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
+<pre class="src src-c">// test/test_card.c
 
-  <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+  enum e_No card_no_new_from_string(char *);
 </pre>
 </div>
 
@@ -1456,9 +1456,9 @@ card_no_new_from_string 関数の型を決めます。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
+<pre class="src src-c">// test/test_card.c
 
-  <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> {<span style="color: #cae682;">JACK</span>=11, <span style="color: #cae682;">QUEEN</span>, <span style="color: #cae682;">KING</span>, <span style="color: #cae682;">ACE</span>};
+  enum e_No {JACK=11, QUEEN, KING, ACE};
 </pre>
 </div>
 
@@ -1468,17 +1468,17 @@ card_no_new_from_string 関数の型を決めます。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
+<pre class="src src-c">// test/test_card.c
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_suit_no_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_suit_no_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#30058;&#21495;&#12363;&#12425;&#25968;&#20516;&#12408;&#12398;&#22793;&#25563;&#12398;&#12486;&#12473;&#12488;"</span>);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"1"</span>)==ACE);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"13"</span>)==KING);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"12"</span>)==QUEEN);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"11"</span>)==JACK);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"10"</span>)==10);
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
 }
 </pre>
 </div>
@@ -1489,32 +1489,32 @@ card_no_new_from_string 関数の型を決めます。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> {<span style="color: #cae682;">JACK</span>=11, <span style="color: #cae682;">QUEEN</span>, <span style="color: #cae682;">KING</span>, <span style="color: #cae682;">ACE</span>};
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+enum e_No {JACK=11, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_suit_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#12473;&#12540;&#12484;&#12363;&#12425;&#25968;&#20516;&#12408;&#12398;&#22793;&#25563;&#12398;&#12486;&#12473;&#12488;"</span>);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"SPADE"</span>)==SPADE);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"HEART"</span>)==HEART);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"DIAMOND"</span>)==DIAMOND);
-  cut_assert(card_suit_new_from_string(<span style="color: #95e454;">"CLUB"</span>)==CLUB);
+  cut_set_message("スーツから数値への変換のテスト");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert(card_suit_new_from_string("HEART")==HEART);
+  cut_assert(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert(card_suit_new_from_string("CLUB")==CLUB);
 }
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_no_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#30058;&#21495;&#12363;&#12425;&#25968;&#20516;&#12408;&#12398;&#22793;&#25563;&#12398;&#12486;&#12473;&#12488;"</span>);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"1"</span>)==ACE);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"13"</span>)==KING);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"12"</span>)==QUEEN);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"11"</span>)==JACK);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"10"</span>)==10);
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
 }
 </pre>
 </div>
@@ -1542,7 +1542,7 @@ test/ で makeしてみましょう。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 make test_card.o
 </pre>
 </div>
@@ -1567,7 +1567,7 @@ test_card.o ができれば，ひとまず，成功です。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 nm test_card.o
 </pre>
 </div>
@@ -1609,7 +1609,7 @@ test_card_no_new_from_string が定義されているのがわかります。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 make test_card.so
 </pre>
 </div>
@@ -1663,16 +1663,16 @@ enum e_No の値も TWO~ACEまでにします.
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">src/card.h (&#36861;&#21152;)</span>
+<pre class="src src-c">// src/card.h (追加)
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> {<span style="color: #cae682;">CLUB</span>=1,<span style="color: #cae682;">DIAMOND</span>,<span style="color: #cae682;">HEART</span>,<span style="color: #cae682;">SPADE</span>};
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> { <span style="color: #cae682;">TWO</span>=2, <span style="color: #cae682;">THREE</span>, <span style="color: #cae682;">FOUR</span>, <span style="color: #cae682;">FIVE</span>,
-            <span style="color: #cae682;">SIX</span>, <span style="color: #cae682;">SEVEN</span>, <span style="color: #cae682;">EIGHT</span>, <span style="color: #cae682;">NINE</span>, <span style="color: #cae682;">TEN</span>,
-            <span style="color: #cae682;">JACK</span>, <span style="color: #cae682;">QUEEN</span>, <span style="color: #cae682;">KING</span>, <span style="color: #cae682;">ACE</span>};
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+enum e_No card_no_new_from_string(char *);
 </pre>
 </div>
 </div>
@@ -1688,29 +1688,29 @@ test/test_card.c から card_no_new_from_string に関する宣言を消しま
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_card.c.1</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">// test/test_card.c.1
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_suit_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#25991;&#23383;&#21015;&#12363;&#12425;&#12473;&#12540;&#12484;&#12434;&#20316;&#25104;&#12377;&#12427;&#12290;"</span>);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"SPADE"</span>)==SPADE);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"HEART"</span>)==HEART);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"DIAMOND"</span>)==DIAMOND);
-  cut_assert_true(card_suit_new_from_string(<span style="color: #95e454;">"CLUB"</span>)==CLUB);
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
 }
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_card_no_new_from_string(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#30058;&#21495;&#12363;&#12425;&#25968;&#20516;&#12408;&#12398;&#22793;&#25563;&#12398;&#12486;&#12473;&#12488;"</span>);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"1"</span>)==ACE);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"13"</span>)==KING);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"12"</span>)==QUEEN);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"11"</span>)==JACK);
-  cut_assert(card_no_new_from_string(<span style="color: #95e454;">"10"</span>)==10);
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
 }
 </pre>
 </div>
@@ -1731,8 +1731,8 @@ test/test_card.c から card_no_new_from_string に関する宣言を消しま
 
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="color: #99968b;">// </span><span style="color: #99968b;">src/card.h</span>
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *);
+<pre class="src src-C">// src/card.h
+enum e_No card_no_new_from_string(char *);
 </pre>
 </div>
 
@@ -1747,12 +1747,12 @@ test/test_card.c から card_no_new_from_string に関する宣言を消しま
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span>
-<span style="color: #cae682;">card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">no_str</span>)
+<pre class="src src-c">enum e_No
+card_no_new_from_string(char *no_str)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no</span>;
+  int no;
 
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> (<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span>) no;
+  return (enum e_No) no;
 }
 </pre>
 </div>
@@ -1769,7 +1769,7 @@ test/test_card.c から card_no_new_from_string に関する宣言を消しま
 
 <div class="org-src-container">
 
-<pre class="src src-c">  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no</span> = atoi(no_str);
+<pre class="src src-c">int no = atoi(no_str);
 </pre>
 </div>
 
@@ -1780,12 +1780,12 @@ test/test_card.c から card_no_new_from_string に関する宣言を消しま
 
 <div class="org-src-container">
 
-<pre class="src src-c">  <span style="color: #8ac6f2; font-weight: bold;">if</span> (no==1)  no = ACE;
+<pre class="src src-c">if (no==1)  no = ACE;
 
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> ( no &lt; TWO || ACE &lt; no )
-    {
-      fprintf(stderr, <span style="color: #95e454;">"&#19981;&#36969;&#12394;&#25968;&#20516; (%s)!\n"</span>, no_str);
-    };
+if ( no &lt; TWO || ACE &lt; no )
+  {
+    fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+  };
 </pre>
 </div>
 
@@ -1795,37 +1795,37 @@ test/test_card.c から card_no_new_from_string に関する宣言を消しま
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">src/card.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;string.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;card.h&gt;
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span>
-<span style="color: #cae682;">card_suit_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">suit_str</span>)
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
 {
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"CLUB"</span>,suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> CLUB;
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"DIAMOND"</span>,suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> DIAMOND;
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"HEART"</span>,suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> HEART;
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (strcmp(<span style="color: #95e454;">"SPADE"</span>,suit_str)==0)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> SPADE;
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
 }
 
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span>
-<span style="color: #cae682;">card_no_new_from_string</span>(<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">no_str</span>)
+enum e_No
+card_no_new_from_string(char *no_str)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no</span> = atoi(no_str);
+  int no = atoi(no_str);
 
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (no==1)  no = ACE;
+  if (no==1)  no = ACE;
 
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> ( no &lt; TWO || ACE &lt; no )
+  if ( no &lt; TWO || ACE &lt; no )
     {
-      fprintf(stderr, <span style="color: #95e454;">"&#19981;&#36969;&#12394;&#25968;&#20516; (%s)!\n"</span>, no_str);
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
     };
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> (<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span>) no;
+  return (enum e_No) no;
 }
 </pre>
 </div>
@@ -1847,7 +1847,7 @@ src/libcard.a を作成するルールに変更はありません。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make card.o
 </pre>
 </div>
@@ -1871,7 +1871,7 @@ src/card.o ができれば， src/libcard.a を作成します:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/CardDisplay/simple/src</span>
+<pre class="src src-sh"># ~/progs/CardDisplay/simple/src
 make libcard.a
 </pre>
 </div>
@@ -1882,7 +1882,7 @@ Makefileが正しければ，これは成功します。libcard.a の中身を�
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/CardDisplay/simple/src</span>
+<pre class="src src-sh"># ~/progs/CardDisplay/simple/src
 nm libcard.a
 </pre>
 </div>
@@ -1916,7 +1916,7 @@ test/test_card.so を更新します。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test/</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
 make clean
 make test_card.so
 </pre>
@@ -1947,7 +1947,7 @@ gcc -o test_card.so &#x2013;shared test_card.o -L../src/ -lcard `pkg-config cutt
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 make
 </pre>
 </div>
@@ -2015,7 +2015,7 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 </p>
 
 <p>
-設計については，<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2">card_display_simple問題への解法</a> も参考にしてくださ
+設計については，<a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2">card_display_simple問題への解法</a> も参考にしてくださ
 い。
 </p>
 </div>
@@ -2029,7 +2029,7 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">sa</span> = card_new(SPADE, ACE);
+<pre class="src src-c">Card sa = card_new(SPADE, ACE);
 </pre>
 </div>
 
@@ -2049,8 +2049,8 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 
 <div class="org-src-container">
 
-<pre class="src src-c"> <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">card_suit</span>(Card);
- <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">card_no</span>(Card);
+<pre class="src src-c">enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
 </pre>
 </div>
 
@@ -2060,7 +2060,7 @@ Finished in 0.000531 seconds (total: 0.000113 seconds)
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">sa</span> = card_new(SPADE, ACE);
+<pre class="src src-c">Card sa = card_new(SPADE, ACE);
 cut_assert( card_suit(sa)==SPADE );
 cut_assert( card_no(sa)==ACE );
 </pre>
@@ -2077,12 +2077,12 @@ Card型が定義できれば，これでよさそうです。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_card_new</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+<pre class="src src-c">void
+test_card_new(void)
 {
-  cut_set_message(<span style="color: #95e454;">"&#12473;&#12540;&#12484;&#12392;&#30058;&#21495;&#12363;&#12425;&#12459;&#12540;&#12489;&#12434;&#20316;&#25104;"</span>);
+  cut_set_message("スーツと番号からカードを作成");
   {
-    <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">sa</span> = card_new(SPADE,ACE);
+    Card sa = card_new(SPADE,ACE);
     cut_assert( card_suit(sa)==SPADE );
     cut_assert( card_no(sa)==ACE );
   }
@@ -2105,9 +2105,9 @@ card_new を関数の形で書けたので，関数の型を決めます。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">card_suit</span>(Card);
-<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">card_no</span>(Card);
-<span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">card_new</span>(<span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span>, <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span>);
+<pre class="src src-c">enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
 </pre>
 </div>
 </div>
@@ -2131,9 +2131,9 @@ Card 型を定義しましょう。Card型は次の情報を持ちます:
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">_Card</span> {
-  <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">suit</span>;
-  <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">no</span>;
+<pre class="src src-c">struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
 };
 </pre>
 </div>
@@ -2148,7 +2148,7 @@ Card 型を定義しましょう。Card型は次の情報を持ちます:
 
 <div class="org-src-container">
 
-<pre class="src src-c">typdef <span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">_Card</span> <span style="color: #cae682;">Card</span>;
+<pre class="src src-c">typdef struct _Card Card;
 </pre>
 </div>
 
@@ -2168,12 +2168,68 @@ test/test_card.cは次のようになります:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
+</pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+</pre>
 </div>
 </div>
 </div>
@@ -2187,7 +2243,20 @@ test/Makefile の目的は変わっていませんので，Makefile の更新の
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
 </div>
 
 <p>
@@ -2202,7 +2271,7 @@ card_new はまだ未実装ですが，test/test_card.o は作成できます。
 <div class="outline-text-4" id="text-orgheadline40">
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 make test_card.o
 </pre>
 </div>
@@ -2227,7 +2296,7 @@ test_card.o ができれば，ひとまず，成功です。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 nm test_card.o
 </pre>
 </div>
@@ -2305,7 +2374,28 @@ src/card.h に移します。
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+</pre>
 </div>
 <p>
 test/test_card.c は次のようになります：
@@ -2313,7 +2403,42 @@ test/test_card.c は次のようになります：
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2335,7 +2460,16 @@ card_new関数への要求は
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2356,7 +2490,12 @@ card_new関数への要求は
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2376,7 +2515,12 @@ card_new関数への要求は
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2390,7 +2534,62 @@ card_new関数への要求は
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
+
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
+
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
+
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO &amp;&amp; ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No)no;
+}
+
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
+
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
+
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2403,7 +2602,21 @@ src/Makefileに変更はありません。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
 </div>
 </div>
 </div>
@@ -2417,7 +2630,7 @@ src/card.o を make し, ソースコードにエラーがないか確かめま�
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make card.o
 </pre>
 </div>
@@ -2442,7 +2655,7 @@ src/card.o ができれば，次は， src/libcard.a を make します。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make libcard.a
 </pre>
 </div>
@@ -2462,8 +2675,7 @@ libcard.a の中身を確かめてみましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
-
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 nm libcard.a
 </pre>
 </div>
@@ -2502,7 +2714,7 @@ src/libcard.a が更新されているので，test/test_card.so を作り直し
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test/</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
 make clean
 make test_card.so
 </pre>
@@ -2534,7 +2746,7 @@ test/test_card.so ができればテストの実行に移ります。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 cutter -v v test
 </pre>
 </div>
@@ -2659,7 +2871,7 @@ card_no_new_from_string や card_new の開発をまねして，
 </p>
 
 <p>
-設計については，<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2">card_display_simple問題への解法</a> も参考にしてくださ
+設計については，<a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/card-display/#outline-container-sec-2">card_display_simple問題への解法</a> も参考にしてくださ
 い。
 </p>
 </div>
@@ -2673,9 +2885,9 @@ card_no_new_from_string や card_new の開発をまねして，
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">sa</span> = card_new(SPADE, ACE);
+<pre class="src src-c">Card sa = card_new(SPADE, ACE);
 
-strcmp(card_to_string(sa), <span style="color: #95e454;">"SA"</span>)==0;
+strcmp(card_to_string(sa), "SA")==0;
 </pre>
 </div>
 
@@ -2685,7 +2897,17 @@ strcmp(card_to_string(sa), <span style="color: #95e454;">"SA"</span>)==0;
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2703,7 +2925,8 @@ card_to_string を関数の形で書けたので，関数の型を決めます�
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">char *card_to_string(Card);
+</pre>
 </div>
 </div>
 </div>
@@ -2717,12 +2940,82 @@ test/test_card.cは次のようになります:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
+
+char *card_to_string(Card);
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
+</pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+</pre>
 </div>
 </div>
 </div>
@@ -2736,7 +3029,20 @@ test/Makefile の目的は変わっていませんので，Makefile の更新の
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
 </div>
 
 <p>
@@ -2751,7 +3057,7 @@ card_to_string はまだ未実装ですが，test/test_card.o は作成できま
 <div class="outline-text-4" id="text-orgheadline65">
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 make test_card.o
 </pre>
 </div>
@@ -2777,7 +3083,7 @@ test_card.o ができれば，ひとまず，成功です。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 nm test_card.o
 </pre>
 </div>
@@ -2858,7 +3164,30 @@ src/card.h に移します。
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
+</pre>
 </div>
 <p>
 test/test_card.c は次のようになります：
@@ -2866,7 +3195,54 @@ test/test_card.c は次のようになります：
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2900,7 +3276,14 @@ card_to_string関数への要求を下記のように分解します:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">static char SuitChars[] =
+  {'*', 'C', 'D', 'H', 'S'};
+char 
+card_suit_to_char(enum e_Suit suit)
+{
+  return SuitChars[suit];
+}
+</pre>
 </div>
 
 <p>
@@ -2924,7 +3307,15 @@ card_to_string関数への要求を下記のように分解します:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">static char NoChars[] =
+  {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
+   '0', 'J', 'Q', 'K', 'A'};
+char
+card_no_to_char(enum e_No no)
+{
+  return NoChars[no];
+}
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -2938,7 +3329,22 @@ card_to_string関数への要求を下記のように分解します:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">char card_suit_to_char(enum e_Suit);
+char card_no_to_char(enum e_No);
+char *
+card_to_string(Card c)
+{
+  char suit = card_suit_to_char(card_suit(c));
+  char no = card_no_to_char(card_no(c));
+  char *s = (char *) malloc(3);
+
+  s[0] = suit;
+  s[1] = no;
+  s[2] = '\0';
+
+  return s;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2952,7 +3358,98 @@ card_to_string関数への要求を下記のように分解します:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
+
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
+
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
+
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO &amp;&amp; ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No)no;
+}
+
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
+
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
+
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
+
+
+char card_suit_to_char(enum e_Suit);
+char card_no_to_char(enum e_No);
+char *
+card_to_string(Card c)
+{
+  char suit = card_suit_to_char(card_suit(c));
+  char no = card_no_to_char(card_no(c));
+  char *s = (char *) malloc(3);
+
+  s[0] = suit;
+  s[1] = no;
+  s[2] = '\0';
+
+  return s;
+}
+
+
+static char SuitChars[] =
+  {'*', 'C', 'D', 'H', 'S'};
+char 
+card_suit_to_char(enum e_Suit suit)
+{
+  return SuitChars[suit];
+}
+
+
+static char NoChars[] =
+  {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
+   '0', 'J', 'Q', 'K', 'A'};
+char
+card_no_to_char(enum e_No no)
+{
+  return NoChars[no];
+}
+</pre>
 </div>
 </div>
 </div>
@@ -2965,7 +3462,21 @@ src/Makefileに変更はありません。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
 </div>
 </div>
 </div>
@@ -2979,7 +3490,7 @@ src/card.o を make し, ソースコードにエラーがないか確かめま�
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make card.o
 </pre>
 </div>
@@ -3004,7 +3515,7 @@ src/card.o ができれば，次は， src/libcard.a を make します。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make libcard.a
 </pre>
 </div>
@@ -3024,7 +3535,7 @@ libcard.a の中身を確かめてみましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 nm libcard.a
 </pre>
 </div>
@@ -3069,7 +3580,7 @@ src/libcard.a が更新されているので，test/test_card.so を作り直し
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test/</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
 make clean
 make test_card.so
 </pre>
@@ -3102,7 +3613,7 @@ test/test_card.so ができればテストの実行に移ります。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 cutter -v v test
 </pre>
 </div>
@@ -3174,7 +3685,7 @@ Card cards\[5\]; を使ってみる。
 <h2 id="orgheadline100"><span class="section-number-2">13</span> card_display_sort</h2>
 <div class="outline-text-2" id="text-13">
 </div><div id="outline-container-orgheadline81" class="outline-3">
-<h3 id="orgheadline81"><span class="section-number-3">13.1</span> <span class="todo Doing">Doing</span> checks <code>[1/3]</code></h3>
+<h3 id="orgheadline81"><span class="section-number-3">13.1</span> Doing checks <code>[1/3]</code></h3>
 <div class="outline-text-3" id="text-13-1">
 <ul class="org-ul">
 <li class="on"><code>[X]</code> document structure check</li>
@@ -3193,7 +3704,7 @@ Card cards\[5\]; を使ってみる。
 
 <div class="org-src-container">
 
-<pre class="src src-c">  <span style="color: #92a65e; font-weight: bold;">Card</span> *<span style="color: #cae682;">cards</span>;
+<pre class="src src-c">Card *cards;
 </pre>
 </div>
 
@@ -3256,7 +3767,8 @@ Card *cards_sort(Card *, int)
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card *cards_sort(Card *, int);
+</pre>
 </div>
 </div>
 </div>
@@ -3282,9 +3794,9 @@ Card *cards_sort(Card *, int)
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">test/test_sort.c</span>
+<pre class="src src-c">// test/test_sort.c
 
-<span style="color: #92a65e; font-weight: bold;">Card</span> *<span style="color: #cae682;">cards</span>, *<span style="color: #cae682;">sorted_cards</span>;
+Card *cards, *sorted_cards;
 
 sorted_cards = cards_sort(cards, 5);
 </pre>
@@ -3333,7 +3845,7 @@ sorted_cards = cards_sort(cards, 5);
 
 <div class="org-src-container">
 
-<pre class="src src-c">    expected_cards[0]==sorted_cards[0]
+<pre class="src src-c">expected_cards[0]==sorted_cards[0]
 </pre>
 </div>
 
@@ -3343,7 +3855,7 @@ Card型の比較は == ではできません。関数で行なうことします
 
 <div class="org-src-container">
 
-<pre class="src src-c">    card_compare(expected_cards[0], sorted_cards[0])
+<pre class="src src-c">card_compare(expected_cards[0], sorted_cards[0])
 </pre>
 </div>
 
@@ -3388,7 +3900,8 @@ card_compare の宣言は次となります:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">int card_compare(Card, Card);
+</pre>
 </div>
 
 <p>
@@ -3397,7 +3910,7 @@ card_compare の宣言は次となります:
 
 <div class="org-src-container">
 
-<pre class="src src-c">    cut_assert(card_compare(expected_cards[0], sorted_cards[0])==0 );
+<pre class="src src-c">cut_assert(card_compare(expected_cards[0], sorted_cards[0])==0 );
 </pre>
 </div>
 
@@ -3420,7 +3933,9 @@ test/test_sort.cは次のようになります:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
+</pre>
 </div>
 </div>
 </div>
@@ -3435,7 +3950,28 @@ test/Makefile の目的は変わりました。Makefile を更新します:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+all: test_card.so test_sort.so
+
+test_card.so: test_card.o 
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+test_sort.so: test_sort.o 
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_sort.o: test_sort.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
 </div>
 </div>
 </div>
@@ -3445,7 +3981,7 @@ test/Makefile の目的は変わりました。Makefile を更新します:
 <div class="outline-text-4" id="text-orgheadline86">
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 make test_sort.o
 </pre>
 </div>
@@ -3466,7 +4002,7 @@ test_sort.o ができれば，ひとまず，成功です。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test
 nm test_sort.o
 </pre>
 </div>
@@ -3516,7 +4052,33 @@ src/card.h に移します。
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
+
+int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
+</pre>
 </div>
 
 <p>
@@ -3534,7 +4096,8 @@ cards_sort関数の使い方は決まっています。
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card *cards_sort(Card *, int);
+</pre>
 </div>
 
 <p>
@@ -3566,7 +4129,8 @@ card_compare の使い方も決まっています:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">int card_compare(Card, Card);
+</pre>
 </div>
 
 <p>
@@ -3585,7 +4149,12 @@ card_compare の使い方も決まっています:
 <div class="outline-text-4" id="text-orgheadline91">
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
+</pre>
 </div>
 </div>
 </div>
@@ -3600,7 +4169,25 @@ libcard.a を作る時，cards.o も取り込むように規則を変更しま�
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o cards.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+# (2015.12.08) cards.o: cards.o card.h 
+cards.o: cards.c card.h 
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+</pre>
 </div>
 </div>
 </div>
@@ -3614,7 +4201,7 @@ src/cards.o を make し, ソースコードにエラーがないか確かめま
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make cards.o
 </pre>
 </div>
@@ -3635,7 +4222,7 @@ src/cards.o ができれば，次は， src/libcard.a を make します。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 make libcard.a
 </pre>
 </div>
@@ -3650,7 +4237,7 @@ libcard.a の中身を確かめてみましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/src</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/src
 nm libcard.a
 </pre>
 </div>
@@ -3674,7 +4261,7 @@ test/test_sort.so を作り直します。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple/test/</span>
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
 make clean
 make test_card.so
 </pre>
@@ -3700,7 +4287,7 @@ test/test_card.so ができればテストの実行に移ります。
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 cutter -v v test
 </pre>
 </div>
@@ -3731,9 +4318,9 @@ cutter -v v test
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Masayuki Suzuki</p>
-<p class="date">Created: 2016-10-02 日 15:04</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: m</p>
+<p class="date">Created: 2016-11-08 火 10:56</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

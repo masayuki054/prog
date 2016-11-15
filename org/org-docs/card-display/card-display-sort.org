@@ -1,4 +1,4 @@
-* card_display_sort (準備中@<2015-12-01 火>)
+* card_display_sort
 
 
 ** 複数のカードをソートする機能
@@ -7,7 +7,10 @@
 
 :  Card * cards_sort(Card *，int)
 
-を開発しましょう。
+を開発しましょう。その開発については，[[./tdd-card-display.org][カード表示問題のテストによる開発]]
+を見てください。
+
+~cards_sort~ 関数を使ったプログラムは，下記のようになるでしょう:
 
 #+BEGIN_SRC c
 #include <stdio.h>

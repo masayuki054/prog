@@ -1,4 +1,5 @@
 # * カードのソート
+
 #+babel_include: Makefile.org
 #+babel_include: card.h.org
 #+babel_include: test_card.c.org

@@ -1,4 +1,3 @@
-
 # ~/progs/card_display/simple/Makefile
 .PHONY: clean card_test
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-02 日 13:51 -->
+<!-- 2016-11-15 火 11:01 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>トランプカードの表示問題</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Masayuki Suzuki" />
+<meta  name="author" content="m" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -95,19 +95,19 @@
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="styles/readtheorg/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/css/sos.css">
-<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/bigblow/css/hideshow.css"/>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.localscroll-min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/jquery.zclip.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/css/sos.css">
+<link rel="stylesheet" type="text/css" href="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/jquery.zclip.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/bigblow/js/hideshow.js"></script>
-<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/hideshow.js"></script>
-<script type="text/javascript" src="http://nat054.ddo.jp/~masayuki/org-html-theme/styles/sos/js/sos.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/hideshow.js"></script>
+<script type="text/javascript" src="https://wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme/styles/sos/js/sos.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -217,7 +217,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgheadline32">4. card_display_sort 問題への解法</a>
 <ul>
-<li><a href="#orgheadline31">4.1. card_display_sort (準備中@<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>)</a>
+<li><a href="#orgheadline31">4.1. card_display_sort</a>
 <ul>
 <li><a href="#orgheadline30">複数のカードをソートする機能</a></li>
 </ul>
@@ -286,14 +286,14 @@ for the JavaScript code in this tag.
 </p>
 
 <pre class="example">
-      % card_display heart 10 
-      &gt; H0 	     # と表示される
-      % card_display spade 13 
-      &gt; SK 	     # と表示される
-      % card_display diamond 1 
-      &gt; DA 	     # と表示される
-      % card_display club 2
-      &gt; C2           # と表示される
+% card_display heart 10 
+&gt; H0 	     # と表示される
+% card_display spade 13 
+&gt; SK 	     # と表示される
+% card_display diamond 1 
+&gt; DA 	     # と表示される
+% card_display club 2
+&gt; C2           # と表示される
 </pre>
 </div>
 </div>
@@ -310,8 +310,8 @@ for the JavaScript code in this tag.
 </p>
 
 <pre class="example">
-      % card_display_multi heart 10 spade 13 diamond 1 club 2 は
-      &gt; H0 SK DA C2   # と表示される
+% card_display_multi heart 10 spade 13 diamond 1 club 2 は
+&gt; H0 SK DA C2   # と表示される
 </pre>
 </div>
 </div>
@@ -324,8 +324,8 @@ for the JavaScript code in this tag.
 </p>
 
 <pre class="example">
-    % card_display_sort heart 10 spade 13 diamond 1 club 2
-    &gt; DA SK H0 C2    # と表示される
+% card_display_sort heart 10 spade 13 diamond 1 club 2
+&gt; DA SK H0 C2    # と表示される
 </pre>
 </div>
 </div>
@@ -668,7 +668,7 @@ card_to_string
 
 <p>
 テストによる開発に関しては別ドキュメントにしましたので，
-<a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple/">カード表示問題_simpleのテストによる開発</a> ((<a href="file:///users/home/masayuki/lects/prog/org-docs/tdd-card-display-simple/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/">@s.org</a>)) こちらを読んでください。
+<a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/tdd-card-display-simple/">カード表示問題_simpleのテストによる開発</a> ((<a href="file:///users/home/masayuki/lects/prog/org-docs/tdd-card-display-simple/">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/">@s.org</a>)) こちらを読んでください。
 </p>
 </div>
 
@@ -701,26 +701,26 @@ card_display_multi の解の例
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">argc</span>, <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">argv</span>[])
+int
+main(int argc, char *argv[])
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[MaxCards];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no_cards</span> = 0;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;argc; i++)
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
     {
       cards[i] = card_new(card_suit_new_from_string(argv[i]++),
-                          card_no_new_from_string(argv[i]++));
+			  card_no_new_from_string(argv[i]++));
       no_cards++;
     }
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;no_cards; i++)
+  for(i=0; i&lt;no_cards; i++)
     {
-      printf(<span style="color: #95e454;">"%s "</span>, card_to_string(cards[i]));
+      printf("%s ", card_to_string(cards[i]));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 </pre>
 </div>
@@ -730,8 +730,8 @@ card_display_multi の解の例
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c">      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
-                          card_no_new_from_string(argv[i]++));
+<pre class="src src-c">cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+		    card_no_new_from_string(argv[i]++));
 </pre>
 </div>
 
@@ -750,25 +750,25 @@ Card card_new_from_string(char *suit_str, char *no_str);
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">argc</span>, <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">argv</span>[])
+int
+main(int argc, char *argv[])
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[MaxCards];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no_cards</span> = 0;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;argc; i++)
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
     {
-      cards[i] = card_new_from_string(argv[i]++&#65292;argv[i]++);
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
       no_cards++;
     }
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;no_cards; i++)
+  for(i=0; i&lt;no_cards; i++)
     {
-      printf(<span style="color: #95e454;">"%s "</span>, card_to_string(cards[i]));
+      printf("%s ", card_to_string(cards[i]));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 </pre>
 </div>
@@ -806,28 +806,28 @@ Card * cards_sort(Card *，int)
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">argc</span>, <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">argv</span>[])
+int
+main(int argc, char *argv[])
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[MaxCards];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no_cards</span> = 0;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;argc; i++)
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
     {
-      cards[i] = card_new_from_string(argv[i]++&#65292;argv[i]++);
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
       no_cards++;
     }
 
   card_cards_sort(cards);
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;no_cards; i++)
+
+  for(i=0; i&lt;no_cards; i++)
     {
-      printf(<span style="color: #95e454;">"%s "</span>, card_to_string(cards[i]));
+      printf("%s ", card_to_string(cards[i]));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 </pre>
 </div>
@@ -848,26 +848,26 @@ card_display_multi の解の例
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">argc</span>, <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">argv</span>[])
+int
+main(int argc, char *argv[])
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[MaxCards];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no_cards</span> = 0;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;argc; i++)
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
     {
       cards[i] = card_new(card_suit_new_from_string(argv[i]++),
-                          card_no_new_from_string(argv[i]++));
+			  card_no_new_from_string(argv[i]++));
       no_cards++;
     }
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;no_cards; i++)
+  for(i=0; i&lt;no_cards; i++)
     {
-      printf(<span style="color: #95e454;">"%s "</span>, card_to_string(cards[i]));
+      printf("%s ", card_to_string(cards[i]));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 </pre>
 </div>
@@ -877,8 +877,8 @@ card_display_multi の解の例
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c">      cards[i] = card_new(card_suit_new_from_string(argv[i]++),
-                          card_no_new_from_string(argv[i]++));
+<pre class="src src-c">cards[i] = card_new(card_suit_new_from_string(argv[i]++),
+		    card_no_new_from_string(argv[i]++));
 </pre>
 </div>
 
@@ -897,25 +897,25 @@ Card card_new_from_string(char *suit_str, char *no_str);
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">argc</span>, <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">argv</span>[])
+int
+main(int argc, char *argv[])
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[MaxCards];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no_cards</span> = 0;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;argc; i++)
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
     {
-      cards[i] = card_new_from_string(argv[i]++&#65292;argv[i]++);
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
       no_cards++;
     }
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;no_cards; i++)
+  for(i=0; i&lt;no_cards; i++)
     {
-      printf(<span style="color: #95e454;">"%s "</span>, card_to_string(cards[i]));
+      printf("%s ", card_to_string(cards[i]));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 </pre>
 </div>
@@ -937,7 +937,7 @@ Card card_new_from_string(char *suit_str, char *no_str);
 <h2 id="orgheadline32"><span class="section-number-2">4</span> card_display_sort 問題への解法</h2>
 <div class="outline-text-2" id="text-4">
 </div><div id="outline-container-orgheadline31" class="outline-3">
-<h3 id="orgheadline31"><span class="section-number-3">4.1</span> card_display_sort (準備中@<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-12-01 火&gt;</span></span>)</h3>
+<h3 id="orgheadline31"><span class="section-number-3">4.1</span> card_display_sort</h3>
 <div class="outline-text-3" id="text-4-1">
 </div><div id="outline-container-orgheadline30" class="outline-4">
 <h4 id="orgheadline30">複数のカードをソートする機能</h4>
@@ -951,33 +951,38 @@ Card * cards_sort(Card *，int)
 </pre>
 
 <p>
-を開発しましょう。
+を開発しましょう。その開発については，<a href="./org-docs/tdd-card-display.html">カード表示問題のテスト駆動開発</a>
+を見てください。
+</p>
+
+<p>
+<code>cards_sort</code> 関数を使ったプログラムは，下記のようになるでしょう:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;">#include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c">#include &lt;stdio.h&gt;
+#include &lt;card.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">main</span>(<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">argc</span>, <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">argv</span>[])
+int
+main(int argc, char *argv[])
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[MaxCards];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no_cards</span> = 0;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;argc; i++)
+  Card cards[MaxCards];
+  int no_cards = 0;
+
+  for(i=0; i&lt;argc; i++)
     {
-      cards[i] = card_new_from_string(argv[i]++&#65292;argv[i]++);
+      cards[i] = card_new_from_string(argv[i]++，argv[i]++);
       no_cards++;
     }
 
   cards_sort(cards);
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;no_cards; i++)
+
+  for(i=0; i&lt;no_cards; i++)
     {
-      printf(<span style="color: #95e454;">"%s "</span>, card_to_string(cards[i]));
+      printf("%s ", card_to_string(cards[i]));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 </pre>
 </div>
@@ -987,9 +992,9 @@ Card * cards_sort(Card *，int)
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Masayuki Suzuki</p>
-<p class="date">Created: 2016-10-02 日 13:51</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: m</p>
+<p class="date">Created: 2016-11-15 火 11:01</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>

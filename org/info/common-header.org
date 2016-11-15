@@ -5,4 +5,5 @@
 [[./supplement.org][説明]] / 
 [[./org-docs.org][資料]] / 
 [[./memos.org][雑メモ]] /
+[[https://masayuki054.github.io/prog/wiki][prog Wiki]]/
 [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][2015]]

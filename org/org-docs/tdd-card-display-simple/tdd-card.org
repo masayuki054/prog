@@ -1,5 +1,6 @@
-# Time-stamp: <2016-09-25 23:09:21 m>
+# Time-stamp: <2016-11-15 10:33:54 m>
 #+startup: overview
+#+options: ^:{}
 
 * はじめに
 
@@ -128,17 +129,17 @@
    card_no_new_from_string や card_new の開発をまねして，
    テストによる開発を行って下さい。
 
-   開発の過程を，ドキュメントとしてまとめ，レポート提出
-   してください。
+   =開発の過程をドキュメントとしてまとめ= =レポート提出してください= 。
 
 * トランプ・カードを文字列に
 #+include: card_to_string.org
 
 * card_display_simple 問題の解の作成
   
-  - ~/progs/card_display/simple/ に，
+  - ~/progs/card_display/simple/ =に，= 
 
-  - 作成した src/libcard.a を利用し，
+  - 作成した src/libcard.a =を利用し，= 
+    の中で提供した関数を利用し，
 
   - card_display_simple.c を作成し，
 
@@ -147,20 +148,7 @@
 
 * card_display_multi
 
-  Card cards\[5\]; を使ってみる。
+  Card cards[5]; を使ってみる。
 
 * card_display_sort 
 #+include: cards_sort.org
-
-
-
-  
-
-  
-    
-
-    
-
-
-
-  

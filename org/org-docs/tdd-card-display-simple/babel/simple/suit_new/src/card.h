@@ -1,4 +1,3 @@
-
 // src/card.h
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 

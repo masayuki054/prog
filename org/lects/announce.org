@@ -1,26 +1,33 @@
 * お知らせ
+** wiki の設置
+
+   https://masayuki054.github.io/prog/wiki 
+   
 ** card_display_simple の開発に関する絵 <2016-11-08 火>
 
    参考にしてください：
 
-- [[Figs/card_display_simple_structure.png][card_string機能の構造]] 
+- [[./Figs/card_display_simple_structure.png][card_string機能の構造]] 
 
   card_string 機能の構造・流れを描きました。四角い箱がデータで，下が波
   うっている箱が処理です。
 
-- [[Figs/card_display_simple.png][card_display_simple問題の開発木構造]]
+- [[./Figs/card_display_simple.png][card_display_simple問題の開発木構造]]
 
   テストによる開発で用いるディレクトリ構造とファイル(.h, .c, .o, .a)の
   関係を描きました。矢印は依存関係を表わしています。
 
-- [[Figs/deck_dev.png][deckモジュールの開発木構造]]
+- [[./Figs/deck_dev.png][deckモジュールの開発木構造]]
 
   カードモジュールの開発終了後，山(deck)モジュールの開発を行ないます。
   その際の，山(deck)モジュールの開発構造と，カードモジュールの機能提供
   の構造を描きました。
 
-   
-   
+** 回収レポートの評価  <2016-11-08 火>
+
+   未だ少ししか見られていませんが，
+   ~suzuki/progss/collected_srcs/1.org に評価と感想を書いています。
+
 ** レポートの回収  <2016-10-25 火>
 
 *** 「課題:card_display問題を始める」のレポートを回収します。
@@ -91,6 +98,7 @@ ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 ~suzuki/progs/lects/03.mp4
 二番目のモニタをキャプチャしたい場合はオプションを"-i :0.0+1920,0"にしてください． 
 キャプチャの終了はC-cです．
 
+
 ** card_display/first/simple.c の解説 <2016-10-12 水>
 
 [[./index.org][講義サイト]] の [[./memos.org][雑メモ]] タブから見られるようにしました。
@@ -98,6 +106,7 @@ ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 ~suzuki/progs/lects/03.mp4
 Emacs で見るには，~suzuki/prog.git/org/memos/simple.org が最新です。
 
 ~suzuki/progs/card_display/first/ に下に，C のソースとMakefileがありま す。
+
 
 ** org-mode の文書の見方 <2016-10-12 水>
 

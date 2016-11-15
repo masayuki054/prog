@@ -1,4 +1,3 @@
-
 // test/test_card.c
 # include <cutter.h>
 # include <card.h>

@@ -1,10 +1,10 @@
-* 5回目 (11/07) の講義内容
+* 5回目 (11/07) の講義実施内容
 ** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
     
-   - [-] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
+   - [X] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
      - [X] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
-     - [-] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
-     - [-] simple.org (雑メモの中) の解説  SCHEDULED: <2016-10-25 火>
+     - [X] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
+     - [X] simple.org (雑メモの中) の解説  SCHEDULED: <2016-10-25 火>
 
    - [X] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
 
@@ -48,6 +48,7 @@
     [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] を参考にして，
    次週までに，下記の機能のテストと実装を行なってください:
 
+     - [ ] test_card_new
      - [ ] test_card_no_to_char, =test_card_no_to_string=
      - [ ] test_card_suit_to_char, =test_card_suit_to_string=
      - [ ] test_card_to_string

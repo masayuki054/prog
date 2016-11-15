@@ -2,23 +2,23 @@
 #+include: info/common-header.org
 #+title: 講義資料 (リンク集)
 # #+include: org-docs/contents.org
-* 関連講義のまとめ
+** 関連講義のまとめ
 
  [[./org-docs/cis-programming-lects.org][プログラム関連講義]]
 
-* 初めてのcard_display_simple
+** 初めてのcard_display_simple
 [[./org-docs/simple.org][card_display/first]]
 
-* テストと開発
+** テストと開発
 - [[./org-docs/software-test/index.org][ソフトウェア・テスト]]
 - [[./org-docs/what-is-tdd.org][テストによる開発とは]]
 - [[./org-docs/cutter.org][cutter]]
 
-* テストによる開発
+** テストによる開発
 
 - [[./org-docs/card-display.org][カード表示問題]]
 - [[./org-docs/tdd-card-display-simple.org][カード表示問題のテストによる開発]]
 
-* モジュールとテストによる開発
-- [[./poker.org][モジュール開発によるポーカーゲームの作成]]
+** モジュールとテストによる開発
+- [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]]
 

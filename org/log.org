@@ -1,3 +1,12 @@
+** wikiの利用開始
+   SCHEDULED: <2016-11-15 火>
+
+   wiki site :: https://masayuki054.github.io/prog/wiki
+
+   - org-mode のプレビューのために利用する
+   - 学生が自分のページを持つために
+   - リアルタイムなメモに
+   
 ** Figs/ディレクトリの作成
    SCHEDULED: <2016-10-31 月>
 

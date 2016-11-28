@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-15 火 12:16 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>progs2016 講義のこと</title>
+<!-- 2016-11-28 月 17:18 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -65,14 +58,15 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -159,227 +153,70 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline26">1. お知らせ</a>
+<li><a href="#sec-1">1. お知らせ</a>
 <ul>
-<li><a href="#orgheadline1">1.1. wiki の設置</a></li>
-<li><a href="#orgheadline2">1.2. if文とセミコロン <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
-<li><a href="#orgheadline3">1.3. あっているのでしょうか？ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
-<li><a href="#orgheadline4">1.4. card_display_simple の開発に関する絵 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
-<li><a href="#orgheadline5">1.5. 回収レポートの評価  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
-<li><a href="#orgheadline8">1.6. レポートの回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a>
+<li><a href="#sec-1-1">1.1. wiki の設置 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-28 月&gt;</span></span></a></li>
+<li><a href="#sec-1-2">1.2. if文とセミコロン <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#sec-1-3">1.3. あっているのでしょうか？ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#sec-1-4">1.4. card_display_simple の開発に関する絵 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#sec-1-5">1.5. 回収レポートの評価  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#sec-1-6">1.6. レポートの回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a>
 <ul>
-<li><a href="#orgheadline6">「課題:card_display問題を始める」のレポートを回収します。</a></li>
-<li><a href="#orgheadline7">確認方法</a></li>
+<li><a href="#sec-1-6-1">「課題:card_display問題を始める」のレポートを回収します。</a></li>
+<li><a href="#sec-1-6-2">確認方法</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline9">1.7. 講義サイト のタブに補足を追加しました <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
-<li><a href="#orgheadline13">1.8. リアルタイムストリーミングを試してみましょう  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a>
+<li><a href="#sec-1-7">1.7. 講義サイト のタブに補足を追加しました <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
+<li><a href="#sec-1-8">1.8. リアルタイムストリーミングを試してみましょう  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a>
 <ul>
-<li><a href="#orgheadline10">3.1. 送信側 (先生)</a></li>
-<li><a href="#orgheadline11">3.2. 受信側 (学生)</a></li>
-<li><a href="#orgheadline12">キャプチャのみ(先生)</a></li>
+<li><a href="#sec-1-8-1">3.1. 送信側 (先生)</a></li>
+<li><a href="#sec-1-8-2">3.2. 受信側 (学生)</a></li>
+<li><a href="#sec-1-8-3">キャプチャのみ(先生)</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline14">1.9. card_display/first/simple.c の解説 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
-<li><a href="#orgheadline15">1.10. org-mode の文書の見方 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
-<li><a href="#orgheadline16">1.11. 講義サイトの雑メモが開かなかったわけ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
-<li><a href="#orgheadline20">1.12. ガイダンスの説明について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a>
+<li><a href="#sec-1-9">1.9. card_display/first/simple.c の解説 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
+<li><a href="#sec-1-10">1.10. org-mode の文書の見方 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
+<li><a href="#sec-1-11">1.11. 講義サイトの雑メモが開かなかったわけ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
+<li><a href="#sec-1-12">1.12. ガイダンスの説明について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a>
 <ul>
-<li><a href="#orgheadline17">講義で教えること <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
-<li><a href="#orgheadline18">前提とする知識</a></li>
-<li><a href="#orgheadline19">講義資料</a></li>
+<li><a href="#sec-1-12-1">講義で教えること <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
+<li><a href="#sec-1-12-2">前提とする知識</a></li>
+<li><a href="#sec-1-12-3">講義資料</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline21">1.13. 講義の実施時間について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
-<li><a href="#orgheadline22">1.14. 講義資料について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
-<li><a href="#orgheadline23">1.15. ホームディレクトリのパーミションについて</a></li>
-<li><a href="#orgheadline24">1.16. 2016-10-18 休講します。</a></li>
-<li><a href="#orgheadline25">1.17. 2016-10-04 開講します。</a></li>
+<li><a href="#sec-1-13">1.13. 講義の実施時間について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
+<li><a href="#sec-1-14">1.14. 講義資料について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
+<li><a href="#sec-1-15">1.15. ホームディレクトリのパーミションについて</a></li>
+<li><a href="#sec-1-16">1.16. 2016-10-18 休講します。</a></li>
+<li><a href="#sec-1-17">1.17. 2016-10-04 開講します。</a>
+<ul>
+<li><a href="#sec-1-17-1">講義のねらい</a>
+<ul>
+<li><a href="#sec-1-17-1-1">動機 (説明/ガイダンスより)</a>
+<ul>
+<li><a href="#sec-1-17-1-1-1">プログラムがかけるようになりたい</a></li>
+<li><a href="#sec-1-17-1-1-2">面白いプログラムがかきたい</a></li>
+<li><a href="#sec-1-17-1-1-3">正しいプログラムを書きたい</a></li>
+<li><a href="#sec-1-17-1-1-4">大規模なプログラム開発ができるようになりたい</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline33">2. 講義のねらい</a>
+<li><a href="#sec-1-17-1-2">思い</a>
 <ul>
-<li><a href="#orgheadline31">2.1. 動機 (説明/ガイダンスより)</a>
+<li><a href="#sec-1-17-1-2-1">7回目 (11/29) の講義内容</a>
 <ul>
-<li><a href="#orgheadline27">プログラムがかけるようになりたい</a></li>
-<li><a href="#orgheadline28">面白いプログラムがかきたい</a></li>
-<li><a href="#orgheadline29">正しいプログラムを書きたい</a></li>
-<li><a href="#orgheadline30">大規模なプログラム開発ができるようになりたい</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline32">2.2. 思い</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline39">3. 6回目 (11/15) の講義内容</a>
-<ul>
-<li><a href="#orgheadline34">3.1. カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></a></li>
-<li><a href="#orgheadline35">3.2. Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
-<li><a href="#orgheadline36">3.3. Doing card_display問題のテストによる開発 <code>[5/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></a></li>
-<li><a href="#orgheadline37">3.4. 次回</a></li>
-<li><a href="#orgheadline38">3.5. ((:-s)) のつぶやき <code>[/]</code></a></li>
-</ul>
-</li>
-<li><a href="#orgheadline45">4. 5回目 (11/07) の講義実施内容</a>
-<ul>
-<li><a href="#orgheadline40">4.1. カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></a></li>
-<li><a href="#orgheadline41">4.2. Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
-<li><a href="#orgheadline42">4.3. Doing card_display問題のテストによる開発 <code>[2/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></a></li>
-<li><a href="#orgheadline43">4.4. 次回までの課題</a></li>
-<li><a href="#orgheadline44">4.5. ((:-s)) のつぶやき</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline48">5. レスポンス.05</a>
-<ul>
-<li><a href="#orgheadline46">5.1. カード</a></li>
-<li><a href="#orgheadline47">5.2. response</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline53">6. 4回目 (11/01) の講義内容</a>
-<ul>
-<li><a href="#orgheadline49">6.1. カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></a></li>
-<li><a href="#orgheadline50">6.2. Todo テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
-<li><a href="#orgheadline51">6.3. Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></a></li>
-<li><a href="#orgheadline52">6.4. ((:-s)) のつぶやき</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline66">7. レスポンス.04</a>
-<ul>
-<li><a href="#orgheadline54">7.1. カード</a></li>
-<li><a href="#orgheadline65">7.2. response card 04</a>
-<ul>
-<li><a href="#orgheadline55">内容</a></li>
-<li><a href="#orgheadline56">知識</a></li>
-<li><a href="#orgheadline57">プログラミング</a></li>
-<li><a href="#orgheadline58">cutter/test</a></li>
-<li><a href="#orgheadline59">make</a></li>
-<li><a href="#orgheadline60">ストリーミング</a></li>
-<li><a href="#orgheadline61">emacs</a></li>
-<li><a href="#orgheadline62">org</a></li>
-<li><a href="#orgheadline63">説明</a></li>
-<li><a href="#orgheadline64">画面提示</a></li>
+<li><a href="#sec-1-17-1-2-1-1">カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></a></li>
+<li><a href="#sec-1-17-1-2-1-2">Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
+<li><a href="#sec-1-17-1-2-1-3">Doing card_display問題のテストによる開発 <code>[8/10]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></a></li>
+<li><a href="#sec-1-17-1-2-1-4">モジュール開発によるポーカーゲームの作成</a></li>
+<li><a href="#sec-1-17-1-2-1-5">((:-s)) のつぶやき <code>[/]</code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline78">8. 3回目 (10/25) の講義実施内容</a>
-<ul>
-<li><a href="#orgheadline67">8.1. カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></a></li>
-<li><a href="#orgheadline68">8.2. Done 課題: card_display問題を始める</a></li>
-<li><a href="#orgheadline69">8.3. Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
-<li><a href="#orgheadline70">8.4. Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></a></li>
-<li><a href="#orgheadline77">8.5. ((:-s)) のつぶやき</a>
-<ul>
-<li><a href="#orgheadline71">Done レスポンス 15/15 min.</a></li>
-<li><a href="#orgheadline72">Done 画面のキャプチャとストリーミング配信 10/25 min.</a></li>
-<li><a href="#orgheadline73">Someday simple.org の説明 (30/55 min.)</a></li>
-<li><a href="#orgheadline75">Doing テストと開発の話 (15/70 min.)</a>
-<ul>
-<li><a href="#orgheadline74">Done 今日は導入部だけ読む</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline76">Done cutter によるテスト体験 (60/130 min.)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline94">9. レスポンス.03</a>
-<ul>
-<li><a href="#orgheadline79">9.1. カード</a></li>
-<li><a href="#orgheadline92">9.2. response card 03</a>
-<ul>
-<li><a href="#orgheadline80">内容</a></li>
-<li><a href="#orgheadline81">知識</a></li>
-<li><a href="#orgheadline82">プログラミング</a></li>
-<li><a href="#orgheadline83">simple.c</a></li>
-<li><a href="#orgheadline84">cutter</a></li>
-<li><a href="#orgheadline85">make</a></li>
-<li><a href="#orgheadline86">ストリーミング</a></li>
-<li><a href="#orgheadline87">emacs</a></li>
-<li><a href="#orgheadline88">org</a></li>
-<li><a href="#orgheadline89">説明</a></li>
-<li><a href="#orgheadline90">レポート</a></li>
-<li><a href="#orgheadline91">画面提示</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline93">9.3. suzukiから 2015</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline100">10. 2回目 (10/11) の講義実施内容</a>
-<ul>
-<li><a href="#orgheadline95">10.1. Done 提案</a></li>
-<li><a href="#orgheadline96">10.2. Done カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></a></li>
-<li><a href="#orgheadline97">10.3. Doing 課題: card_display問題を始める</a></li>
-<li><a href="#orgheadline98">10.4. Todo テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
-<li><a href="#orgheadline99">10.5. Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></a></li>
-</ul>
-</li>
-<li><a href="#orgheadline112">11. レスポンス.02</a>
-<ul>
-<li><a href="#orgheadline101">11.1. カード</a></li>
-<li><a href="#orgheadline109">11.2. response card 02</a>
-<ul>
-<li><a href="#orgheadline102">内容</a></li>
-<li><a href="#orgheadline103">知識</a></li>
-<li><a href="#orgheadline104">プログラミング</a></li>
-<li><a href="#orgheadline105">simple.c</a></li>
-<li><a href="#orgheadline106">org</a></li>
-<li><a href="#orgheadline107">説明</a></li>
-<li><a href="#orgheadline108">画面提示</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline110">11.3. 前回のレスポンス</a></li>
-<li><a href="#orgheadline111">11.4. suzukiから 2015</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline135">12. 1回目 (10/04) の講義実施内容</a>
-<ul>
-<li><a href="#orgheadline115">12.1. Done 講義紹介</a>
-<ul>
-<li><a href="#orgheadline113">Done 講義コンテンツ</a></li>
-<li><a href="#orgheadline114">Done 講義の目的など</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline116">12.2. Done 講師</a></li>
-<li><a href="#orgheadline127">12.3. prog2016 導入</a>
-<ul>
-<li><a href="#orgheadline117">Todo モジュラープログラミングについて</a>
-<ul>
-<li><a href="#orgheadline118">Acroquest プログラミング講座</a></li>
-<li><a href="#orgheadline119">構造化プログラミングについて</a></li>
-<li><a href="#orgheadline120">Strategic Choice の役に立ちそうなコンテンツ</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline121">Todo テストによる開発の説明</a></li>
-<li><a href="#orgheadline122">Todo (ソフトウェア) テストについての説明</a></li>
-<li><a href="#orgheadline123">Todo プログラミング関連の講義と演習</a></li>
-<li><a href="#orgheadline124">Doing Emacs for progs (検討中)</a>
-<ul>
-<li><a href="#orgheadline125">何に使うか <code>[2/4]</code></a></li>
-<li><a href="#orgheadline126">Someday わかりやすサイトを見つけた</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline134">12.4. Doing はじまり</a>
-<ul>
-<li><a href="#orgheadline128">Done ~/progs の作成 <code>[0/1]</code></a>
-<ul>
-<li><a href="#orgheadline129">Doing emacs</a></li>
-<li><a href="#orgheadline130">先生のprogs/</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline131">Doing 課題: card_display問題を始める</a></li>
-<li><a href="#orgheadline132">Todo テストとテストによる開発とは</a></li>
-<li><a href="#orgheadline133">card_display問題のテストによる開発 <code>[0/7]</code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline139">13. レスポンス.01</a>
-<ul>
-<li><a href="#orgheadline136">13.1. カード</a></li>
-<li><a href="#orgheadline137">13.2. response card 01</a></li>
-<li><a href="#orgheadline138">13.3. suzukiから 2015</a></li>
 </ul>
 </li>
 </ul>
@@ -391,17 +228,17 @@ for the JavaScript code in this tag.
 <a href="./supplement.html">説明</a> / 
 <a href="./org-docs.html">資料</a> / 
 <a href="./memos.html">雑メモ</a> /
-<a href="https://masayuki054.github.io/prog/wiki">prog Wiki</a>/
+<a href="https://github.com/masayuki054/prog/wiki">prog Wiki</a>/
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a>
 </p>
 <p>
 #* お知らせ
 </p>
-<div id="outline-container-orgheadline26" class="outline-2">
-<h2 id="orgheadline26"><span class="section-number-2">1</span> お知らせ</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> お知らせ</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> wiki の設置</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> wiki の設置 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-28 月&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 github のページに，<a href="https://masayuki054.github.io/prog/wiki">wiki</a> を設置しました。
@@ -418,8 +255,8 @@ github のページに，<a href="https://masayuki054.github.io/prog/wiki">wiki<
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">1.2</span> if文とセミコロン <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> if文とセミコロン <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <a href="http://kmaebashi.com/programmer/c_yota/semicolon.html">SEMICOLON</a> 
@@ -450,8 +287,8 @@ else節があるときも書いているかもしれません。
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">1.3</span> あっているのでしょうか？ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> あっているのでしょうか？ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 
@@ -475,47 +312,44 @@ else節があるときも書いているかもしれません。
 </div>
 
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">1.4</span> card_display_simple の開発に関する絵 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> card_display_simple の開発に関する絵 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 参考にしてください：
 </p>
 
 <ul class="org-ul">
-<li><p>
-<a href="./Figs/card_display_simple_structure.png">card_string機能の構造</a> 
-</p>
+<li><a href="./Figs/card_display_simple_structure.png">card_string機能の構造</a> 
 
 <p>
 card_string 機能の構造・流れを描きました。四角い箱がデータで，下が波
 うっている箱が処理です。
-</p></li>
-
-<li><p>
-<a href="./Figs/card_display_simple.png">card_display_simple問題の開発木構造</a>
 </p>
+</li>
+
+<li><a href="./Figs/card_display_simple.png">card_display_simple問題の開発木構造</a>
 
 <p>
 テストによる開発で用いるディレクトリ構造とファイル(.h, .c, .o, .a)の
 関係を描きました。矢印は依存関係を表わしています。
-</p></li>
-
-<li><p>
-<a href="./Figs/deck_dev.png">deckモジュールの開発木構造</a>
 </p>
+</li>
+
+<li><a href="./Figs/deck_dev.png">deckモジュールの開発木構造</a>
 
 <p>
 カードモジュールの開発終了後，山(deck)モジュールの開発を行ないます。
 その際の，山(deck)モジュールの開発構造と，カードモジュールの機能提供
 の構造を描きました。
-</p></li>
+</p>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">1.5</span> 回収レポートの評価  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 回収レポートの評価  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 未だ少ししか見られていませんが，
@@ -524,49 +358,46 @@ card_string 機能の構造・流れを描きました。四角い箱がデー�
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">1.6</span> レポートの回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> レポートの回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-6">
-</div><div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6">「課題:card_display問題を始める」のレポートを回収します。</h4>
-<div class="outline-text-4" id="text-orgheadline6">
+</div><div id="outline-container-sec-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1">「課題:card_display問題を始める」のレポートを回収します。</h4>
+<div class="outline-text-4" id="text-1-6-1">
 <p>
 各自の，~/progs/card_display/first/ を回収します。そこには，
 下記のファイルがあることを想定しています：
 </p>
 
 <ul class="org-ul">
-<li><p>
-~/progs/card_display/first/simple.org
-</p>
+<li>~/progs/card_display/first/simple.org
 
 <p>
 simple_*.c を作成する際に考えたことをまとめる。
-</p></li>
-
-<li><p>
-~/progs/card_display/first/simple_*.c
 </p>
+</li>
+
+<li>~/progs/card_display/first/simple_*.c
 
 <p>
 段階的に作成したソースプログラム達。
-</p></li>
-
-<li><p>
-~/progs/card_display/first/Makefile_*
 </p>
+</li>
+
+<li>~/progs/card_display/first/Makefile_*
 
 <p>
 各段階のソースプログラムをコンパイルするためのMakefile達。
-</p></li>
+</p>
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7">確認方法</h4>
-<div class="outline-text-4" id="text-orgheadline7">
+<div id="outline-container-sec-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2">確認方法</h4>
+<div class="outline-text-4" id="text-1-6-2">
 <p>
 今回のレポートは，~suzuki/progss/collected_srcs/1/の下に回収します。
 </p>
@@ -580,8 +411,8 @@ simple_*.c を作成する際に考えたことをまとめる。
 </div>
 
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">1.7</span> <a href="./index.html">講義サイト</a> のタブに補足を追加しました <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> <a href="./index.html">講義サイト</a> のタブに補足を追加しました <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-7">
 <p>
 Emacs や Org-mode のこと，ガイダンスでふれたプログラム開発に関すること
@@ -595,17 +426,17 @@ Emacs や Org-mode のこと，ガイダンスでふれたプログラム開発�
 </div>
 
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">1.8</span> リアルタイムストリーミングを試してみましょう  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> リアルタイムストリーミングを試してみましょう  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-8">
 <p>
 萩原さんが，調べてくれました。試してみましょう:   
 </p>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10">3.1. 送信側 (先生)</h4>
-<div class="outline-text-4" id="text-orgheadline10">
+<div id="outline-container-sec-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1">3.1. 送信側 (先生)</h4>
+<div class="outline-text-4" id="text-1-8-1">
 <div class="org-src-container">
 
 <pre class="src src-sh">ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 -c:v libx264 -preset fast -pix_fmt yuv420p -s 1280x720 -threads 0 -f sap sap://224.0.0.255 &amp;
@@ -614,30 +445,34 @@ Emacs や Org-mode のこと，ガイダンスでふれたプログラム開発�
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11">3.2. 受信側 (学生)</h4>
-<div class="outline-text-4" id="text-orgheadline11">
+<div id="outline-container-sec-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2">3.2. 受信側 (学生)</h4>
+<div class="outline-text-4" id="text-1-8-2">
 <ul class="org-ul">
 <li>vlcを起動します:
-： % vlc</li>
+： % vlc 
+</li>
 
-<li>「表示」-&gt;「プレイリスト」-&gt;「ローカルネットワーク」-&gt;「ネットワークス</li>
+<li>「表示」-&gt;「プレイリスト」-&gt;「ローカルネットワーク」-&gt;「ネットワークス
+</li>
 </ul>
 <p>
 トリーム(SAP)」-&gt;「No Name」をダブルクリック
 </p>
 
 <ul class="org-ul">
-<li>そこそこ待つ</li>
+<li>そこそこ待つ
+</li>
 
-<li>表示サイズは受信側でも変更可能</li>
+<li>表示サイズは受信側でも変更可能
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12">キャプチャのみ(先生)</h4>
-<div class="outline-text-4" id="text-orgheadline12">
+<div id="outline-container-sec-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3">キャプチャのみ(先生)</h4>
+<div class="outline-text-4" id="text-1-8-3">
 <div class="org-src-container">
 
 <pre class="src src-sh">ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 ~suzuki/progs/lects/03.mp4
@@ -653,8 +488,8 @@ Emacs や Org-mode のこと，ガイダンスでふれたプログラム開発�
 </div>
 
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">1.9</span> card_display/first/simple.c の解説 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> card_display/first/simple.c の解説 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-9">
 <p>
 <a href="./index.html">講義サイト</a> の <a href="./memos.html">雑メモ</a> タブから見られるようにしました。
@@ -671,8 +506,8 @@ Emacs で見るには，~suzuki/prog.git/org/memos/simple.org が最新です。
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">1.10</span> org-mode の文書の見方 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> org-mode の文書の見方 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-10">
 <p>
 simple.org は org-mode で書いてあります。 Emacs で開いて，見出しで，
@@ -682,12 +517,12 @@ TAB または SHIFT+TAB を打つと，下位の文書 構造を展開縮小さ�
 </div>
 
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">1.11</span> 講義サイトの雑メモが開かなかったわけ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> 講義サイトの雑メモが開かなかったわけ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-11">
 <p>
 org-mode 文書を HTML に変換すると，数式マークアップのレンダリングのた
-めに， MathML.js を使いますが，昨日 は何故か <a href="https://orgmode.org/">https://orgmode.org/</a> から
+めに， MathML.js を使いますが，昨日 は何故か <a href="https://orgmode.org">https://orgmode.org</a> から
 ダウンロードできなかったようです。
 </p>
 
@@ -700,8 +535,8 @@ mathml.org おすすめの
 </div>
 
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">1.12</span> ガイダンスの説明について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> ガイダンスの説明について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-12">
 <p>
 初回のガイダンスがわかりにくかったようです。すみません。
@@ -714,9 +549,9 @@ mathml.org おすすめの
 </p>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17">講義で教えること <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h4>
-<div class="outline-text-4" id="text-orgheadline17">
+<div id="outline-container-sec-1-12-1" class="outline-4">
+<h4 id="sec-1-12-1">講義で教えること <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h4>
+<div class="outline-text-4" id="text-1-12-1">
 <p>
 重要なことをまとめると, 次のようになります:
 </p>
@@ -730,27 +565,36 @@ mathml.org おすすめの
 </p>
 
 <ul class="org-ul">
-<li>モジュラー・プログラミングのこと</li>
-<li>テストとテストによる開発のこと</li>
+<li>モジュラー・プログラミングのこと
+</li>
+<li>テストとテストによる開発のこと
+</li>
 <li>設計，開発について文書を作成すること (このために，org-mode を使うこ
-とを <b>推奨</b> しています。)</li>
+とを <b>推奨</b> しています。)
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18">前提とする知識</h4>
-<div class="outline-text-4" id="text-orgheadline18">
+<div id="outline-container-sec-1-12-2" class="outline-4">
+<h4 id="sec-1-12-2">前提とする知識</h4>
+<div class="outline-text-4" id="text-1-12-2">
 <p>
 そのためには，次の知識が必要です:
 </p>
 <ul class="org-ul">
-<li>プログラム言語とプログラミング</li>
-<li>コンパイルと実行のこと，</li>
-<li>ライブラリのこと，</li>
-<li>make と Makefileのこと，</li>
-<li>Emacs のこと</li>
-<li>シェルと Linux のこと</li>
+<li>プログラム言語とプログラミング
+</li>
+<li>コンパイルと実行のこと，
+</li>
+<li>ライブラリのこと，
+</li>
+<li>make と Makefileのこと，
+</li>
+<li>Emacs のこと
+</li>
+<li>シェルと Linux のこと
+</li>
 </ul>
 
 <p>
@@ -773,9 +617,9 @@ mathml.org おすすめの
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19">講義資料</h4>
-<div class="outline-text-4" id="text-orgheadline19">
+<div id="outline-container-sec-1-12-3" class="outline-4">
+<h4 id="sec-1-12-3">講義資料</h4>
+<div class="outline-text-4" id="text-1-12-3">
 <p>
 新らしいカリキュラムになって，3回目の講義です。皆さんの状況が，だいぶ
 分ってきましたが，講義のための資料作りにはかなり時間がかかります。
@@ -798,8 +642,8 @@ mathml.org おすすめの
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">1.13</span> 講義の実施時間について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> 講義の実施時間について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-13">
 <blockquote>
 <p>
@@ -817,13 +661,16 @@ mathml.org おすすめの
 </p>
 
 <ul class="org-ul">
-<li>講義内容の説明は，2:30 までに終りにします。</li>
+<li>講義内容の説明は，2:30 までに終りにします。
+</li>
 
-<li>講義中の課題は次週までの宿題とします。</li>
+<li>講義中の課題は次週までの宿題とします。
+</li>
 
 <li>2:30~ 自主的に課題に取り組む時間とし，
 3:00 までは TA さんが対応してくれ，
-それ以降は，((s-:)) が適宜対応します。</li>
+それ以降は，((s-:)) が適宜対応します。
+</li>
 </ul>
 
 <p>
@@ -833,31 +680,36 @@ mathml.org おすすめの
 </div>
 
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">1.14</span> 講義資料について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14"><span class="section-number-3">1.14</span> 講義資料について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
 <div class="outline-text-3" id="text-1-14">
 <dl class="org-dl">
-<dt><a href="./org-docs.html">資料</a></dt><dd>基本，講義する内容です。教科書的な資料です。</dd>
+<dt> <a href="./org-docs.html">資料</a> </dt><dd>     基本，講義する内容です。教科書的な資料です。
+</dd>
 
-<dt><a href="./supplement.html">説明</a></dt><dd>資料への補足説明です。昨年度，徐々に書いたもので，今年度，資料に反映させ
-た方がいいかもしれませんが，まだ見直していません。</dd>
+<dt> <a href="./supplement.html">説明</a> </dt><dd>     資料への補足説明です。昨年度，徐々に書いたもので，今年度，資料に反映させ
+た方がいいかもしれませんが，まだ見直していません。
+</dd>
 
-<dt><a href="./memos.html">雑メモ</a></dt><dd>昨年の講義の進行中に，思い付いて書いたメモです。要整理です。</dd>
+<dt> <a href="./memos.html">雑メモ</a> </dt><dd>     昨年の講義の進行中に，思い付いて書いたメモです。要整理です。
+</dd>
 
-<dt><a href="./lects.html">講義</a></dt><dd>おしらせ，講義の情報，講義の記録などです。</dd>
+<dt> <a href="./lects.html">講義</a> </dt><dd>     おしらせ，講義の情報，講義の記録などです。
+</dd>
 </dl>
 
 
 
 <dl class="org-dl">
-<dt><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a></dt><dd>2015年度のソフトウェア構成論の講義の全てです。</dd>
+<dt> <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a> </dt><dd>     2015年度のソフトウェア構成論の講義の全てです。
+</dd>
 </dl>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">1.15</span> ホームディレクトリのパーミションについて</h3>
+<div id="outline-container-sec-1-15" class="outline-3">
+<h3 id="sec-1-15"><span class="section-number-3">1.15</span> ホームディレクトリのパーミションについて</h3>
 <div class="outline-text-3" id="text-1-15">
 <p>
 進行状況の確認や，レポート提出のために，~/progs の中を閲覧，回収したい
@@ -875,8 +727,8 @@ chmod -R o+rx ~/progs
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="orgheadline24"><span class="section-number-3">1.16</span> 2016-10-18 休講します。</h3>
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> 2016-10-18 休講します。</h3>
 <div class="outline-text-3" id="text-1-16">
 <p>
 ((s-:)) ネンリンピック長崎 サッカー出場のため
@@ -885,68 +737,76 @@ chmod -R o+rx ~/progs
 </div>
 
 
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="orgheadline25"><span class="section-number-3">1.17</span> 2016-10-04 開講します。</h3>
+<div id="outline-container-sec-1-17" class="outline-3">
+<h3 id="sec-1-17"><span class="section-number-3">1.17</span> 2016-10-04 開講します。</h3>
 <div class="outline-text-3" id="text-1-17">
 <p>
 #* はじめに
 </p>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline33" class="outline-2">
-<h2 id="orgheadline33"><span class="section-number-2">2</span> 講義のねらい</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline31" class="outline-3">
-<h3 id="orgheadline31"><span class="section-number-3">2.1</span> 動機 (<a href="./supplements.html">説明/ガイダンス</a>より)</h3>
-<div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-orgheadline27" class="outline-4">
-<h4 id="orgheadline27">プログラムがかけるようになりたい</h4>
-<div class="outline-text-4" id="text-orgheadline27">
+<div id="outline-container-sec-1-17-1" class="outline-4">
+<h4 id="sec-1-17-1">講義のねらい</h4>
+<div class="outline-text-4" id="text-1-17-1">
+</div><div id="outline-container-sec-1-17-1-1" class="outline-5">
+<h5 id="sec-1-17-1-1">動機 (<a href="./supplements.html">説明/ガイダンス</a>より)</h5>
+<div class="outline-text-5" id="text-1-17-1-1">
+</div><div id="outline-container-sec-1-17-1-1-1" class="outline-6">
+<h6 id="sec-1-17-1-1-1">プログラムがかけるようになりたい</h6>
+<div class="outline-text-6" id="text-1-17-1-1-1">
 <ul class="org-ul">
-<li>プログラムが思うようにかけるようになりたい</li>
-<li>プログラムが正確にかけるようになりたい</li>
-<li>プログラムが素早くかけるようになりたい</li>
-<li>きれいなプログラムがかけるようになりたい</li>
-<li>簡潔なプログラムが書けるようになりたい</li>
+<li>プログラムが思うようにかけるようになりたい
+</li>
+<li>プログラムが正確にかけるようになりたい
+</li>
+<li>プログラムが素早くかけるようになりたい
+</li>
+<li>きれいなプログラムがかけるようになりたい
+</li>
+<li>簡潔なプログラムが書けるようになりたい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-4">
-<h4 id="orgheadline28">面白いプログラムがかきたい</h4>
-<div class="outline-text-4" id="text-orgheadline28">
+<div id="outline-container-sec-1-17-1-1-2" class="outline-6">
+<h6 id="sec-1-17-1-1-2">面白いプログラムがかきたい</h6>
+<div class="outline-text-6" id="text-1-17-1-1-2">
 <ul class="org-ul">
-<li>思っていることをプログラムできる力が欲しい</li>
+<li>思っていることをプログラムできる力が欲しい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline29" class="outline-4">
-<h4 id="orgheadline29">正しいプログラムを書きたい</h4>
-<div class="outline-text-4" id="text-orgheadline29">
+<div id="outline-container-sec-1-17-1-1-3" class="outline-6">
+<h6 id="sec-1-17-1-1-3">正しいプログラムを書きたい</h6>
+<div class="outline-text-6" id="text-1-17-1-1-3">
 <ul class="org-ul">
-<li>プログラムの正しさがわかる力が欲しい</li>
-<li>プログラムをデバッグする力が欲しい</li>
+<li>プログラムの正しさがわかる力が欲しい
+</li>
+<li>プログラムをデバッグする力が欲しい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-4">
-<h4 id="orgheadline30">大規模なプログラム開発ができるようになりたい</h4>
-<div class="outline-text-4" id="text-orgheadline30">
+<div id="outline-container-sec-1-17-1-1-4" class="outline-6">
+<h6 id="sec-1-17-1-1-4">大規模なプログラム開発ができるようになりたい</h6>
+<div class="outline-text-6" id="text-1-17-1-1-4">
 <ul class="org-ul">
-<li>わかりやすいプログラム</li>
-<li>協同作業しやすいプログラム</li>
+<li>わかりやすいプログラム
+</li>
+<li>協同作業しやすいプログラム
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32"><span class="section-number-3">2.2</span> 思い</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-sec-1-17-1-2" class="outline-5">
+<h5 id="sec-1-17-1-2">思い</h5>
+<div class="outline-text-5" id="text-1-17-1-2">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?1%E5%9B%9E%E7%9B%AE.14_2">Prog Wikky - 1回目.14_2</a> の説明より
 </p>
@@ -988,53 +848,56 @@ chmod -R o+rx ~/progs
 <p>
 学生さんからの意見を聞くのには，レスポンスカードを使っています。
 何とかしたいんですが。。。
-#* 6回目
+#* 7回目
 </p>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline39" class="outline-2">
-<h2 id="orgheadline39"><span class="section-number-2">3</span> 6回目 (11/15) の講義内容</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline34" class="outline-3">
-<h3 id="orgheadline34"><span class="section-number-3">3.1</span> カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-sec-1-17-1-2-1" class="outline-6">
+<h6 id="sec-1-17-1-2-1">7回目 (11/29) の講義内容</h6>
+<div class="outline-text-6" id="text-1-17-1-2-1">
+</div><div id="outline-container-sec-1-17-1-2-1-1" class="outline-7">
+<h7 id="sec-1-17-1-2-1-1">カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></h7>
+<div class="outline-text-7" id="text-1-17-1-2-1-1">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+<li><code>[X]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span></li>
-<li class="on"><code>[X]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></li>
-<li class="on"><code>[X]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
-</ul></li>
+<li><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+</li>
+<li><code>[X]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span>
+</li>
+<li><code>[X]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+</ul>
+</li>
 
-<li class="on"><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
+<li><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
 
-<li class="on"><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></li>
-<li class="on"><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></li>
-<li class="trans"><code>[-]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span></li>
+<li><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span>
+</li>
+<li><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span>
+</li>
+<li><code>[-]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline35" class="outline-3">
-<h3 id="orgheadline35"><span class="section-number-3">3.2</span> Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-sec-1-17-1-2-1-2" class="outline-7">
+<h7 id="sec-1-17-1-2-1-2">Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h7>
+<div class="outline-text-7" id="text-1-17-1-2-1-2">
 <p>
 何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
 </p>
 
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> <p>
-<a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
-</p>
+<li><code>[X]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
 
 <p>
 <b>テスト</b> とは何か, その大切さ，を理解しましょう。
-</p></li>
-
-<li class="trans"><code>[-]</code> <p>
-<a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 </p>
+</li>
+
+<li><code>[X]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 
 <p>
 大きな問題を，小さな機能に分け，テストにより設計しと確認し，
@@ -1043,48 +906,193 @@ chmod -R o+rx ~/progs
 
 <p>
 この文書も段階的に読み進めましょう。
-</p></li>
-
-<li class="on"><code>[X]</code> <p>
-<a href="./org-docs/cutter.html">cutterの使い方</a> 
 </p>
+</li>
+
+<li><code>[X]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> 
 
 <p>
 Cutter によるテストを体験しましょう。
-</p></li>
+</p>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline36" class="outline-3">
-<h3 id="orgheadline36"><span class="section-number-3">3.3</span> Doing card_display問題のテストによる開発 <code>[5/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-sec-1-17-1-2-1-3" class="outline-7">
+<h7 id="sec-1-17-1-2-1-3">Doing card_display問題のテストによる開発 <code>[8/10]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></h7>
+<div class="outline-text-7" id="text-1-17-1-2-1-3">
 <p>
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> 
 </p>
 
 <ul class="org-ul">
-<li class="on"><code>[X]</code> test_card_suit_new_from_string</li>
-<li class="on"><code>[X]</code> test_card_no_new_from_string</li>
-<li class="on"><code>[X]</code> test_card_new, suit, no</li>
-<li class="trans"><code>[-]</code> test_card_no_to_char, <code>test_card_no_to_string</code></li>
-<li class="trans"><code>[-]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code></li>
-<li class="trans"><code>[-]</code> test_card_to_string</li>
-<li class="trans"><code>[-]</code> card_display_simple</li>
-<li class="trans"><code>[-]</code> card_display_multi</li>
-<li class="trans"><code>[-]</code> cards_sort</li>
-<li class="trans"><code>[-]</code> card_display_sort</li>
+<li><code>[X]</code> test_card_suit_new_from_string
+</li>
+<li><code>[X]</code> test_card_no_new_from_string
+</li>
+<li><code>[X]</code> test_card_new, suit, no
+</li>
+<li><code>[X]</code> test_card_no_to_char, <code>test_card_no_to_string</code>
+</li>
+<li><code>[X]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code>
+</li>
+<li><code>[X]</code> test_card_to_string
+</li>
+<li><code>[X]</code> card_display_simple
+</li>
+<li><code>[&#xa0;]</code> card_display_multi
+</li>
+<li><code>[-]</code> cards_sort <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-28 月&gt;</span></span>
+</li>
+<li><code>[-]</code> card_display_sort <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-28 月&gt;</span></span>
+</li>
 </ul>
 </div>
 </div>
 
+<div id="outline-container-sec-1-17-1-2-1-4" class="outline-7">
+<h7 id="sec-1-17-1-2-1-4"><a href="./org-docs/poker.html">モジュール開発によるポーカーゲームの作成</a></h7>
+<div class="outline-text-7" id="text-1-17-1-2-1-4">
+<p>
+ポーカーゲームに入り，カードモジュールの作成をやろうと思っています。
+</p>
+</div>
+</div>
 
+<div id="outline-container-sec-1-17-1-2-1-5" class="outline-7">
+<h7 id="sec-1-17-1-2-1-5">((:-s)) のつぶやき <code>[/]</code></h7>
+<div class="outline-text-7" id="text-1-17-1-2-1-5">
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> 画面のストリーミング配信 講義開始前に
+</li>
+<li><code>[&#xa0;]</code> 画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず
+</li>
+<li>レスポンス (10/10 min.)
+</li>
 
+<li>テストと開発の話 (10/70 min.)
 
+<p>
+すこし先へ進む
+</p>
+</li>
 
-<div id="outline-container-orgheadline37" class="outline-3">
-<h3 id="orgheadline37"><span class="section-number-3">3.4</span> 次回</h3>
-<div class="outline-text-3" id="text-3-4">
+<li>テストによるカード表示問題の開発
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> card_new あたりの解説
+</li>
+<li><code>[&#xa0;]</code> card_to_stringあたりの解説
+</li>
+<li><code>[&#xa0;]</code> Makefile の解説
+</li>
+<li><code>[&#xa0;]</code> 開発サイクルの理解
+</li>
+<li><code>[&#xa0;]</code> 機能の設計ができるようになろう
+</li>
+<li><code>[&#xa0;]</code> card_display_simple問題の解
+</li>
+<li><code>[&#xa0;]</code> cards_sort あたり
+</li>
+</ul>
+</li>
+</ul>
+<p>
+#* 6回目
+</p>
+</div>
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1" name="sec-1-17-1-2-1-5-1"></a>6回目 (11/15) の講義実施内容<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-1" name="sec-1-17-1-2-1-5-1-1"></a>カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span><br  /><div class="outline-text-9" id="text-1-17-1-2-1-5-1-1">
+<ul class="org-ul">
+<li><code>[X]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+<ul class="org-ul">
+<li><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+</li>
+<li><code>[X]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span>
+</li>
+<li><code>[X]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+</ul>
+</li>
+
+<li><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+
+<li><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span>
+</li>
+<li><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span>
+</li>
+<li><code>[-]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span>
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-17-1-2-1-5-1-2" name="sec-1-17-1-2-1-5-1-2"></a>Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span><br  /><div class="outline-text-9" id="text-1-17-1-2-1-5-1-2">
+<p>
+何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
+</p>
+
+<ul class="org-ul">
+<li><code>[-]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
+
+<p>
+<b>テスト</b> とは何か, その大切さ，を理解しましょう。
+</p>
+</li>
+
+<li><code>[-]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
+
+<p>
+大きな問題を，小さな機能に分け，テストにより設計しと確認し，
+段階的に，開発を進める方法を知りましょう。
+</p>
+
+<p>
+この文書も段階的に読み進めましょう。
+</p>
+</li>
+
+<li><code>[X]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> 
+
+<p>
+Cutter によるテストを体験しましょう。
+</p>
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-17-1-2-1-5-1-3" name="sec-1-17-1-2-1-5-1-3"></a>Doing card_display問題のテストによる開発 <code>[7/10]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span><br  /><div class="outline-text-9" id="text-1-17-1-2-1-5-1-3">
+<p>
+<a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> 
+</p>
+
+<ul class="org-ul">
+<li><code>[X]</code> test_card_suit_new_from_string
+</li>
+<li><code>[X]</code> test_card_no_new_from_string
+</li>
+<li><code>[X]</code> test_card_new, suit, no
+</li>
+<li><code>[X]</code> test_card_no_to_char, <code>test_card_no_to_string</code>
+</li>
+<li><code>[X]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code>
+</li>
+<li><code>[X]</code> test_card_to_string
+</li>
+<li><code>[X]</code> card_display_simple
+</li>
+<li><code>[-]</code> card_display_multi
+</li>
+<li><code>[-]</code> cards_sort
+</li>
+<li><code>[-]</code> card_display_sort
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-17-1-2-1-5-1-4" name="sec-1-17-1-2-1-5-1-4"></a>次回<br  /><div class="outline-text-9" id="text-1-17-1-2-1-5-1-4">
 <p>
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> の残りを終えて，
 </p>
@@ -1093,83 +1101,87 @@ Cutter によるテストを体験しましょう。
 ポーカーゲームに入り，カードモジュールの作成をやろうと思っています。
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38"><span class="section-number-3">3.5</span> ((:-s)) のつぶやき <code>[/]</code></h3>
-<div class="outline-text-3" id="text-3-5">
+<li><a id="sec-1-17-1-2-1-5-1-5" name="sec-1-17-1-2-1-5-1-5"></a>((:-s)) のつぶやき <code>[3/4]</code><br  /><div class="outline-text-9" id="text-1-17-1-2-1-5-1-5">
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 画面のストリーミング配信 講義開始前に</li>
-<li class="off"><code>[&#xa0;]</code> 画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず</li>
-<li>レスポンス (10/10 min.)</li>
+<li><code>[X]</code> 画面のストリーミング配信 講義開始前に
+</li>
+<li><code>[&#xa0;]</code> 画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず
+</li>
+<li><code>[X]</code> レスポンス (10/10 min.)
+</li>
 
-<li><p>
-テストと開発の話 (10/70 min.)
-</p>
+<li><code>[X]</code> テストと開発の話 (10/70 min.)
 
 <p>
 すこし先へ進む
-</p></li>
+</p>
+</li>
 
 <li>テストによるカード表示問題の開発
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> card_new あたりの解説</li>
-<li class="off"><code>[&#xa0;]</code> card_to_stringあたりの解説</li>
-<li class="off"><code>[&#xa0;]</code> Makefile の解説</li>
-<li class="off"><code>[&#xa0;]</code> 開発サイクルの理解</li>
-<li class="off"><code>[&#xa0;]</code> 機能の設計ができるようになろう</li>
-<li class="off"><code>[&#xa0;]</code> card_display_simple問題の解</li>
-<li class="off"><code>[&#xa0;]</code> cards_sort あたり</li>
-</ul></li>
+<li><code>[X]</code> card_new あたりの解説
+</li>
+<li><code>[X]</code> card_to_stringあたりの解説
+</li>
+<li><code>[X]</code> Makefile の解説
+</li>
+<li><code>[X]</code> 開発サイクルの理解
+</li>
+<li><code>[-]</code> 機能の設計ができるようになろう
+</li>
+<li><code>[X]</code> card_display_simple問題の解
+</li>
+<li><code>[&#xa0;]</code> cards_sort あたり
+</li>
+</ul>
+</li>
 </ul>
 <p>
 #* 5回目
 </p>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline45" class="outline-2">
-<h2 id="orgheadline45"><span class="section-number-2">4</span> 5回目 (11/07) の講義実施内容</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline40" class="outline-3">
-<h3 id="orgheadline40"><span class="section-number-3">4.1</span> カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></h3>
-<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1" name="sec-1-17-1-2-1-5-1-5-1"></a>5回目 (11/07) の講義実施内容<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-1" name="sec-1-17-1-2-1-5-1-5-1-1"></a>カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span><br  /><div class="outline-text-11" id="text-1-17-1-2-1-5-1-5-1-1">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+<li><code>[X]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span></li>
-<li class="on"><code>[X]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></li>
-<li class="on"><code>[X]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
-</ul></li>
+<li><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+</li>
+<li><code>[X]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span>
+</li>
+<li><code>[X]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+</ul>
+</li>
 
-<li class="on"><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
+<li><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
 
-<li class="on"><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></li>
-<li class="trans"><code>[-]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span></li>
+<li><code>[X]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span>
+</li>
+<li><code>[-]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline41" class="outline-3">
-<h3 id="orgheadline41"><span class="section-number-3">4.2</span> Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-4-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-2" name="sec-1-17-1-2-1-5-1-5-1-2"></a>Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span><br  /><div class="outline-text-11" id="text-1-17-1-2-1-5-1-5-1-2">
 <p>
 何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
 </p>
 
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> <p>
-<a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
-</p>
+<li><code>[-]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
 
 <p>
 <b>テスト</b> とは何か, その大切さ，を理解しましょう。
-</p></li>
-
-<li class="trans"><code>[-]</code> <p>
-<a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 </p>
+</li>
+
+<li><code>[-]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 
 <p>
 大きな問題を，小さな機能に分け，テストにより設計しと確認し，
@@ -1178,166 +1190,167 @@ Cutter によるテストを体験しましょう。
 
 <p>
 この文書も段階的に読み進めましょう。
-</p></li>
-
-<li class="on"><code>[X]</code> <p>
-<a href="./org-docs/cutter.html">cutterの使い方</a> 
 </p>
+</li>
+
+<li><code>[X]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> 
 
 <p>
 Cutter によるテストを体験しましょう。
-</p></li>
+</p>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline42" class="outline-3">
-<h3 id="orgheadline42"><span class="section-number-3">4.3</span> Doing card_display問題のテストによる開発 <code>[2/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-4-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-3" name="sec-1-17-1-2-1-5-1-5-1-3"></a>Doing card_display問題のテストによる開発 <code>[2/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span><br  /><div class="outline-text-11" id="text-1-17-1-2-1-5-1-5-1-3">
 <p>
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> 
 </p>
 
 <ul class="org-ul">
-<li class="on"><code>[X]</code> test_card_suit_new_from_string</li>
-<li class="on"><code>[X]</code> test_card_no_new_from_string</li>
-<li class="trans"><code>[-]</code> test_card_new, suit, no</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_char, <code>test_card_no_to_string</code></li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code></li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
-<li class="off"><code>[&#xa0;]</code> card_display_simple</li>
+<li><code>[X]</code> test_card_suit_new_from_string
+</li>
+<li><code>[X]</code> test_card_no_new_from_string
+</li>
+<li><code>[-]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_char, <code>test_card_no_to_string</code>
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code>
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_simple
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline43" class="outline-3">
-<h3 id="orgheadline43"><span class="section-number-3">4.4</span> 次回までの課題</h3>
-<div class="outline-text-3" id="text-4-4">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-4" name="sec-1-17-1-2-1-5-1-5-1-4"></a>次回までの課題<br  /><div class="outline-text-11" id="text-1-17-1-2-1-5-1-5-1-4">
 <p>
  <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> を参考にして，
 次週までに，下記の機能のテストと実装を行なってください:
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> test_card_new</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_char, <code>test_card_no_to_string</code></li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code></li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
+<li><code>[&#xa0;]</code> test_card_new
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_char, <code>test_card_no_to_string</code>
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_char, <code>test_card_suit_to_string</code>
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline44" class="outline-3">
-<h3 id="orgheadline44"><span class="section-number-3">4.5</span> ((:-s)) のつぶやき</h3>
-<div class="outline-text-3" id="text-4-5">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5" name="sec-1-17-1-2-1-5-1-5-1-5"></a>((:-s)) のつぶやき<br  /><div class="outline-text-11" id="text-1-17-1-2-1-5-1-5-1-5">
 <ul class="org-ul">
-<li>画面のストリーミング配信 講義開始前に</li>
-<li>画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず</li>
+<li>画面のストリーミング配信 講義開始前に
+</li>
+<li>画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず
+</li>
 
-<li><p>
-前回のまとめとお知らせ
-</p>
+<li>前回のまとめとお知らせ
 
 <p>
 開発の絵
-</p></li>
+</p>
+</li>
 
 <li>test_card_suit_new_from_string の復習
 <ul class="org-ul">
-<li>開発サイクル</li>
-<li>まずは，機能の設計ができるようになろう</li>
-</ul></li>
+<li>開発サイクル
+</li>
+<li>まずは，機能の設計ができるようになろう
+</li>
+</ul>
+</li>
 
-<li>レスポンス (10/10 min.)</li>
+<li>レスポンス (10/10 min.)
+</li>
 
-<li><p>
-テストと開発の話 (10/70 min.)
-</p>
+<li>テストと開発の話 (10/70 min.)
 
 <p>
 すこし先へ進む
-</p></li>
+</p>
+</li>
 
-<li>cutter によるテスト体験の復習 (15/ min.)</li>
+<li>cutter によるテスト体験の復習 (15/ min.)
+</li>
 
 <li>テストによるカード表示問題の開発
 
 <ul class="org-ul">
-<li>card_no_new_from_string は宿題</li>
+<li>card_no_new_from_string は宿題
+</li>
 
-<li>card_new 周辺</li>
+<li>card_new 周辺
+</li>
 
-<li>card_to_string 周辺</li>
-</ul></li>
+<li>card_to_string 周辺
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline48" class="outline-2">
-<h2 id="orgheadline48"><span class="section-number-2">5</span> レスポンス.05</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline46" class="outline-3">
-<h3 id="orgheadline46"><span class="section-number-3">5.1</span> カード</h3>
-<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1" name="sec-1-17-1-2-1-5-1-5-1-5-1"></a>レスポンス.05<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-1"></a>カード<br  /><div class="outline-text-13" id="text-1-17-1-2-1-5-1-5-1-5-1-1">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-05.pdf">card-05.pdf</a>
 </p>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline47" class="outline-3">
-<h3 id="orgheadline47"><span class="section-number-3">5.2</span> response</h3>
-<div class="outline-text-3" id="text-5-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2" name="sec-1-17-1-2-1-5-1-5-1-5-1-2"></a>response<br  /><div class="outline-text-13" id="text-1-17-1-2-1-5-1-5-1-5-1-2">
 <p>
 今回は，口頭で。
 #* 4回目
 </p>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline53" class="outline-2">
-<h2 id="orgheadline53"><span class="section-number-2">6</span> 4回目 (11/01) の講義内容</h2>
-<div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline49" class="outline-3">
-<h3 id="orgheadline49"><span class="section-number-3">6.1</span> カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></h3>
-<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1"></a>4回目 (11/01) の講義内容<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-1"></a>カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span><br  /><div class="outline-text-15" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-1">
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+<li><code>[-]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span></li>
-<li class="trans"><code>[-]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></li>
-<li class="trans"><code>[-]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
-</ul></li>
+<li><code>[X]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+</li>
+<li><code>[-]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span>
+</li>
+<li><code>[-]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+</ul>
+</li>
 
-<li class="on"><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
+<li><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span></li>
+<li><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline50" class="outline-3">
-<h3 id="orgheadline50"><span class="section-number-3">6.2</span> Todo テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-6-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-2" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-2"></a>Todo テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span><br  /><div class="outline-text-15" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-2">
 <p>
 何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
 </p>
 
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> <p>
-<a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
-</p>
+<li><code>[-]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
 
 <p>
 <b>テスト</b> とは何か, その大切さ，を理解しましょう。
-</p></li>
-
-<li class="trans"><code>[-]</code> <p>
-<a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 </p>
+</li>
+
+<li><code>[-]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 
 <p>
 大きな問題を，小さな機能に分け，テストにより設計しと確認し，
@@ -1346,292 +1359,297 @@ Cutter によるテストを体験しましょう。
 
 <p>
 この文書も段階的に読み進めましょう。
-</p></li>
-
-<li class="on"><code>[X]</code> <p>
-<a href="./org-docs/cutter.html">cutterの使い方</a> 
 </p>
+</li>
+
+<li><code>[X]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> 
 
 <p>
 Cutter によるテストを体験しましょう。
-</p></li>
+</p>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline51" class="outline-3">
-<h3 id="orgheadline51"><span class="section-number-3">6.3</span> Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-6-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-3" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-3"></a>Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span><br  /><div class="outline-text-15" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-3">
 <p>
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> [ ]
 </p>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
-<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+<li><code>[&#xa0;]</code> test_card_suit_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_no_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_single
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline52" class="outline-3">
-<h3 id="orgheadline52"><span class="section-number-3">6.4</span> ((:-s)) のつぶやき</h3>
-<div class="outline-text-3" id="text-6-4">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4"></a>((:-s)) のつぶやき<br  /><div class="outline-text-15" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4">
 <p>
 今日もやりたいこといっぱい。
 </p>
 
 <ul class="org-ul">
-<li><p>
-レスポンス (10/10 min.)
-</p>
+<li>レスポンス (10/10 min.)
 
 <p>
 具体的な改善方法を書いてくれると嬉しい
-</p></li>
-
-<li>画面のストリーミング配信 (1/ min.)</li>
-<li>画面のキャプチャ 5/ min.</li>
-
-<li>simple.org/simple.c の講評 (15/ min.)</li>
-
-<li><p>
-テストと開発の話 (10/70 min.)
 </p>
+</li>
+
+<li>画面のストリーミング配信 (1/ min.)
+</li>
+<li>画面のキャプチャ 5/ min.
+</li>
+
+<li>simple.org/simple.c の講評 (15/ min.)
+</li>
+
+<li>テストと開発の話 (10/70 min.)
 
 <p>
 すこし先へ進む
-</p></li>
-
-<li><p>
-cutter によるテスト体験の復習 (15/ min.)
 </p>
+</li>
+
+<li>cutter によるテスト体験の復習 (15/ min.)
 
 <p>
 1時間はかかるよねぇ。宿題だね。
-</p></li>
+</p>
+</li>
 </ul>
 
 
 <ul class="org-ul">
-<li><p>
-テストによるカード表示問題の開発
-</p>
+<li>テストによるカード表示問題の開発
 
 <p>
 はじまり
-</p></li>
+</p>
+</li>
 </ul>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline66" class="outline-2">
-<h2 id="orgheadline66"><span class="section-number-2">7</span> レスポンス.04</h2>
-<div class="outline-text-2" id="text-7">
-</div><div id="outline-container-orgheadline54" class="outline-3">
-<h3 id="orgheadline54"><span class="section-number-3">7.1</span> カード</h3>
-<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1"></a>レスポンス.04<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-1"></a>カード<br  /><div class="outline-text-17" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-1">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-04.pdf">card-04.pdf</a> 
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline65" class="outline-3">
-<h3 id="orgheadline65"><span class="section-number-3">7.2</span> response card 04</h3>
-<div class="outline-text-3" id="text-7-2">
-</div><div id="outline-container-orgheadline55" class="outline-4">
-<h4 id="orgheadline55">内容</h4>
-<div class="outline-text-4" id="text-orgheadline55">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2"></a>response card 04<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-1"></a>内容<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-1">
 <ul class="org-ul">
-<li>今日はついていけた 1234567</li>
-<li>テキストが分かりやすい 12</li>
-<li>意味や根本的なことを理解できていない 1234</li>
-<li>個人で作業が進められるようになって，よかった。12</li>
+<li>今日はついていけた 1234567
+</li>
+<li>テキストが分かりやすい 12
+</li>
+<li>意味や根本的なことを理解できていない 1234
+</li>
+<li>個人で作業が進められるようになって，よかった。12
+</li>
 
-<li>課題が少し多い　1</li>
+<li>課題が少し多い　1
+</li>
 
 <li>時間が足りないなら，内容を変えて 1
 <ul class="org-ul">
-<li>３年前期の演習で使う内容なので，変えられない</li>
-</ul></li>
-<li>レベルが上りすぎて，宿題ができない 1</li>
+<li>３年前期の演習で使う内容なので，変えられない
+</li>
+</ul>
+</li>
+<li>レベルが上りすぎて，宿題ができない 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline56" class="outline-4">
-<h4 id="orgheadline56">知識</h4>
-</div>
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-2" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-2"></a>知識<br  /></li>
 
 
-<div id="outline-container-orgheadline57" class="outline-4">
-<h4 id="orgheadline57">プログラミング</h4>
-<div class="outline-text-4" id="text-orgheadline57">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-3" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-3"></a>プログラミング<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-3">
 <ul class="org-ul">
-<li>enum がわからない 1</li>
-<li>cutter.h が見つからない 1</li>
-<li>cutter や Makefile などについて詳しく説明して 12</li>
-<li>少し速さに慣れてきた 1</li>
-<li>card_suit_new_from_string の説明は速くて追い付いていけなかった 1</li>
-<li>小さな機能への分解が大切なことがわかった 1</li>
+<li>enum がわからない 1
+</li>
+<li>cutter.h が見つからない 1
+</li>
+<li>cutter や Makefile などについて詳しく説明して 12
+</li>
+<li>少し速さに慣れてきた 1
+</li>
+<li>card_suit_new_from_string の説明は速くて追い付いていけなかった 1
+</li>
+<li>小さな機能への分解が大切なことがわかった 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline58" class="outline-4">
-<h4 id="orgheadline58">cutter/test</h4>
-<div class="outline-text-4" id="text-orgheadline58">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-4" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-4"></a>cutter/test<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-4">
 <ul class="org-ul">
-<li>テストのやり方がわかってきた 12</li>
+<li>テストのやり方がわかってきた 12
+</li>
 <li>テストをするのも結構大変 1
 <ul class="org-ul">
-<li>やりかたは定型なので，すぐに慣れます。</li>
-</ul></li>
+<li>やりかたは定型なので，すぐに慣れます。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline59" class="outline-4">
-<h4 id="orgheadline59">make</h4>
-<div class="outline-text-4" id="text-orgheadline59">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-5"></a>make<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-5">
 <ul class="org-ul">
 <li>make がとおらない 1
 <ul class="org-ul">
-<li>是非, TAさんを呼んで，聞いてください。</li>
-</ul></li>
+<li>是非, TAさんを呼んで，聞いてください。
+</li>
+</ul>
+</li>
 <li>CFLAGS, LDFLAGS, $@, $^, $&lt; などがわからない 1
 <ul class="org-ul">
-<li>是非, TAさんを呼んで，聞いてください。</li>
-</ul></li>
+<li>是非, TAさんを呼んで，聞いてください。
+</li>
+</ul>
+</li>
 <li>make をとおすのに時間がかかる 1
 <ul class="org-ul">
-<li>是非, TAさんを呼んで，聞いてください。</li>
-</ul></li>
-<li>便利 123</li>
+<li>是非, TAさんを呼んで，聞いてください。
+</li>
+</ul>
+</li>
+<li>便利 123
+</li>
 <li>test_card.c のMakefileで，test_card.o ができることを確認すべきか？ 1
 <ul class="org-ul">
 <li>はい。そして，test_card.o ができたことで，何が確認できたかを考えて
-ください。</li>
-</ul></li>
+ください。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline60" class="outline-4">
-<h4 id="orgheadline60">ストリーミング</h4>
-<div class="outline-text-4" id="text-orgheadline60">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-6" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-6"></a>ストリーミング<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-6">
 <ul class="org-ul">
-<li>わかりやすくなった 123</li>
-<li>無理にやらなくていい 1</li>
+<li>わかりやすくなった 123
+</li>
+<li>無理にやらなくていい 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline61" class="outline-4">
-<h4 id="orgheadline61">emacs</h4>
-</div>
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-7" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-7"></a>emacs<br  /></li>
 
-<div id="outline-container-orgheadline62" class="outline-4">
-<h4 id="orgheadline62">org</h4>
-</div>
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-8" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-8"></a>org<br  /></li>
 
-<div id="outline-container-orgheadline63" class="outline-4">
-<h4 id="orgheadline63">説明</h4>
-<div class="outline-text-4" id="text-orgheadline63">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-9" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-9"></a>説明<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-9">
 <ul class="org-ul">
-<li>作業しながら話を聞くことは，やっぱりできない。1</li>
-<li>キャプチャとプロジェクタと作業と話が続く。情報量が多すぎる 1</li>
-<li>途中で何をやっているかわからなくなる。1</li>
-<li>課題の内容と期限をサイトに書いて 1</li>
+<li>作業しながら話を聞くことは，やっぱりできない。1
+</li>
+<li>キャプチャとプロジェクタと作業と話が続く。情報量が多すぎる 1
+</li>
+<li>途中で何をやっているかわからなくなる。1
+</li>
+<li>課題の内容と期限をサイトに書いて 1
+</li>
 
-<li>ネガティブな事を言うのはやめて 1</li>
-<li>高圧的にモノを言うのはやめて 1</li>
+<li>ネガティブな事を言うのはやめて 1
+</li>
+<li>高圧的にモノを言うのはやめて 1
+</li>
 <li>今までやったことがないことをやっている人が大半。意識がと言われても困
-る。1</li>
+る。1
+</li>
 
-<li>先生はどんどん先へ進むが，理解しながら追いつけない時がある 1</li>
+<li>先生はどんどん先へ進むが，理解しながら追いつけない時がある 1
+</li>
 
-<li>もっとじゃんじゃん進んでください 1</li>
+<li>もっとじゃんじゃん進んでください 1
+</li>
 
-<li>聞いたことのない方法や，プログラムの内容がわからないものが多い 1</li>
+<li>聞いたことのない方法や，プログラムの内容がわからないものが多い 1
+</li>
 
-<li>教室が寒すぎる 12</li>
+<li>教室が寒すぎる 12
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline64" class="outline-4">
-<h4 id="orgheadline64">画面提示</h4>
-<div class="outline-text-4" id="text-orgheadline64">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10"></a>画面提示<br  /><div class="outline-text-18" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10">
 <ul class="org-ul">
-<li>見づらい色がある</li>
+<li>見づらい色がある
+</li>
 </ul>
 <p>
 #* 3回目
 </p>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgheadline78" class="outline-2">
-<h2 id="orgheadline78"><span class="section-number-2">8</span> 3回目 (10/25) の講義実施内容</h2>
-<div class="outline-text-2" id="text-8">
-</div><div id="outline-container-orgheadline67" class="outline-3">
-<h3 id="orgheadline67"><span class="section-number-3">8.1</span> カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></h3>
-<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1"></a>3回目 (10/25) の講義実施内容<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-1" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-1"></a>カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span><br  /><div class="outline-text-20" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-1">
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+<li><code>[-]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span></li>
-<li class="trans"><code>[-]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></li>
-<li class="trans"><code>[-]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
-</ul></li>
+<li><code>[-]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+</li>
+<li><code>[-]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span>
+</li>
+<li><code>[-]</code> simple.org (雑メモの中) の解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+</ul>
+</li>
 
-<li class="on"><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
+<li><code>[X]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span></li>
+<li><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline68" class="outline-3">
-<h3 id="orgheadline68"><span class="section-number-3">8.2</span> Done 課題: card_display問題を始める</h3>
-<div class="outline-text-3" id="text-8-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-2" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-2"></a>Done 課題: card_display問題を始める<br  /><div class="outline-text-20" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-2">
 <p>
 レポートを回収しました。
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline69" class="outline-3">
-<h3 id="orgheadline69"><span class="section-number-3">8.3</span> Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-8-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-3" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-3"></a>Doing テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span><br  /><div class="outline-text-20" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-3">
 <p>
 何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
 </p>
 
 <ul class="org-ul">
-<li><p>
-[.] <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
-</p>
+<li>[.] <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
 
 <p>
 <b>テスト</b> とは何か, その大切さ，を理解しましょう。
-</p></li>
-
-<li><p>
-[.] <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 </p>
+</li>
+
+<li>[.] <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
 
 <p>
 大きな問題を，小さな機能に分け，テストにより設計しと確認し，
@@ -1640,22 +1658,20 @@ cutter によるテスト体験の復習 (15/ min.)
 
 <p>
 この文書も段階的に読み進めましょう。
-</p></li>
-
-<li class="on"><code>[X]</code> <p>
-<a href="./org-docs/cutter.html">cutterの使い方</a> 
 </p>
+</li>
+
+<li><code>[X]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> 
 
 <p>
 Cutter によるテストを体験しましょう。
-</p></li>
+</p>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline70" class="outline-3">
-<h3 id="orgheadline70"><span class="section-number-3">8.4</span> Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-8-4">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-4" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-4"></a>Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span><br  /><div class="outline-text-20" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-4">
 <p>
 この内容は，次々回からになると思います。
 </p>
@@ -1664,309 +1680,327 @@ Cutter によるテストを体験しましょう。
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> [ ]
 </p>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
-<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+<li><code>[&#xa0;]</code> test_card_suit_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_no_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_single
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline77" class="outline-3">
-<h3 id="orgheadline77"><span class="section-number-3">8.5</span> ((:-s)) のつぶやき</h3>
-<div class="outline-text-3" id="text-8-5">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>((:-s)) のつぶやき<br  /><div class="outline-text-20" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 今日もやりたいこといっぱい。
 </p>
 </div>
 
-<div id="outline-container-orgheadline71" class="outline-4">
-<h4 id="orgheadline71">Done レスポンス 15/15 min.</h4>
-<div class="outline-text-4" id="text-orgheadline71">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done レスポンス 15/15 min.<br  /><div class="outline-text-21" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 具体的な改善方法を書いてくれると嬉しい
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline72" class="outline-4">
-<h4 id="orgheadline72">Done 画面のキャプチャとストリーミング配信 10/25 min.</h4>
-<div class="outline-text-4" id="text-orgheadline72">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 画面のキャプチャとストリーミング配信 10/25 min.<br  /><div class="outline-text-21" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 萩原さんが試してくれた方法でやってみる, 成功!
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline73" class="outline-4">
-<h4 id="orgheadline73">Someday simple.org の説明 (30/55 min.)</h4>
-<div class="outline-text-4" id="text-orgheadline73">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Someday simple.org の説明 (30/55 min.)<br  /><div class="outline-text-21" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 簡単に説明して，後で読んでもらって，その後もう一度，
 simple.org と simple.c を提出してもらうかな？
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline75" class="outline-4">
-<h4 id="orgheadline75">Doing テストと開発の話 (15/70 min.)</h4>
-<div class="outline-text-4" id="text-orgheadline75">
-</div><div id="outline-container-orgheadline74" class="outline-5">
-<h5 id="orgheadline74">Done 今日は導入部だけ読む</h5>
-<div class="outline-text-5" id="text-orgheadline74">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Doing テストと開発の話 (15/70 min.)<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 今日は導入部だけ読む<br  /><div class="outline-text-22" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 </div>
-</div>
-</div>
+</li></ul>
+</li>
 
-<div id="outline-container-orgheadline76" class="outline-4">
-<h4 id="orgheadline76">Done cutter によるテスト体験 (60/130 min.)</h4>
-<div class="outline-text-4" id="text-orgheadline76">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done cutter によるテスト体験 (60/130 min.)<br  /><div class="outline-text-21" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 cutter の使いかたは▽やりました。
 </p>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgheadline94" class="outline-2">
-<h2 id="orgheadline94"><span class="section-number-2">9</span> レスポンス.03</h2>
-<div class="outline-text-2" id="text-9">
-</div><div id="outline-container-orgheadline79" class="outline-3">
-<h3 id="orgheadline79"><span class="section-number-3">9.1</span> カード</h3>
-<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>レスポンス.03<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>カード<br  /><div class="outline-text-23" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-03.pdf">card-03.pdf</a> 
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline92" class="outline-3">
-<h3 id="orgheadline92"><span class="section-number-3">9.2</span> response card 03</h3>
-<div class="outline-text-3" id="text-9-2">
-</div><div id="outline-container-orgheadline80" class="outline-4">
-<h4 id="orgheadline80">内容</h4>
-<div class="outline-text-4" id="text-orgheadline80">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>response card 03<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>内容<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>わかってきた 1</li>
-<li>今日はついていけた 123456789</li>
-<li>ほぼコピペ。自分で書けるようになりたい 1</li>
-<li>けっこう大変 1</li>
+<li>わかってきた 1
+</li>
+<li>今日はついていけた 123456789
+</li>
+<li>ほぼコピペ。自分で書けるようになりたい 1
+</li>
+<li>けっこう大変 1
+</li>
 <li>今後が不安だ 12
 <ul class="org-ul">
-<li>何考えてるの，先生を信用してないってことだよね。</li>
-</ul></li>
+<li>何考えてるの，先生を信用してないってことだよね。
+</li>
+</ul>
+</li>
 <li>一度に与えられる情報量が多くて大変だ 12
 <ul class="org-ul">
 <li>前にも言ったけど，プログラミングには色々な知識が必要で，
 幅広い分野を，同時に，やっていきます。
-量的には，それほどでもないと思いますが。。。</li>
-</ul></li>
+量的には，それほどでもないと思いますが。。。
+</li>
+</ul>
+</li>
 
-<li>やることはわかってきたが，何処に入力すればいいか，わからない 1</li>
+<li>やることはわかってきたが，何処に入力すればいいか，わからない 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline81" class="outline-4">
-<h4 id="orgheadline81">知識</h4>
-</div>
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>知識<br  /></li>
 
-<div id="outline-container-orgheadline82" class="outline-4">
-<h4 id="orgheadline82">プログラミング</h4>
-<div class="outline-text-4" id="text-orgheadline82">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>プログラミング<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>作業中に説明するのやめて。作業後に説明して 1234</li>
-<li>モジュールを上手く作れるように努力したい 1</li>
+<li>作業中に説明するのやめて。作業後に説明して 1234
+</li>
+<li>モジュールを上手く作れるように努力したい 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline83" class="outline-4">
-<h4 id="orgheadline83">simple.c</h4>
-<div class="outline-text-4" id="text-orgheadline83">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>simple.c<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>できたが，例外の処理等していないのが心配 1
 <ul class="org-ul">
-<li>プログラムの耐性は大切なことですが，この講義での関心事ではありませんよ。</li>
-</ul></li>
+<li>プログラムの耐性は大切なことですが，この講義での関心事ではありませんよ。
+</li>
+</ul>
+</li>
 
 <li>再提出したい。どうすれば？ 1
 <ul class="org-ul">
-<li>その旨，報せてください。</li>
-</ul></li>
+<li>その旨，報せてください。
+</li>
+</ul>
+</li>
 
-<li>自力では完成させられなかった 1</li>
+<li>自力では完成させられなかった 1
+</li>
 
-<li>前回，前々回の内容が理解できず，simple.{c,org}が作れない</li>
-<li>勉強不足で，全く手の付けかたが分らない 1</li>
+<li>前回，前々回の内容が理解できず，simple.{c,org}が作れない
+</li>
+<li>勉強不足で，全く手の付けかたが分らない 1
+</li>
 
-<li>独自に関数化を進めたい 1</li>
+<li>独自に関数化を進めたい 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline84" class="outline-4">
-<h4 id="orgheadline84">cutter</h4>
-<div class="outline-text-4" id="text-orgheadline84">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>cutter<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>テストファイルって何に使うんですか？ 1
 <ul class="org-ul">
-<li>プログラムの機能が正しく働くかを確かめるために使います</li>
-</ul></li>
+<li>プログラムの機能が正しく働くかを確かめるために使います
+</li>
+</ul>
+</li>
 
-<li>順調に終わった 1234</li>
-<li>テスト失敗したが，直し方が分からない 1</li>
-<li>失敗させるのに時間がかかった。理解が足りない 1</li>
+<li>順調に終わった 1234
+</li>
+<li>テスト失敗したが，直し方が分からない 1
+</li>
+<li>失敗させるのに時間がかかった。理解が足りない 1
+</li>
 <li>活用方法がわからない 1234
 <ul class="org-ul">
-<li>デバッグや開発への意識が足りないんだね。</li>
-<li>僕の説明が悪いのか，聞いていないのか，どちらかだね。</li>
-</ul></li>
+<li>デバッグや開発への意識が足りないんだね。
+</li>
+<li>僕の説明が悪いのか，聞いていないのか，どちらかだね。
+</li>
+</ul>
+</li>
 
 <li>原理がよく分からない 12
 <ul class="org-ul">
-<li>関数を呼び出して，結果と期待する値が等しいか確かめること</li>
-</ul></li>
+<li>関数を呼び出して，結果と期待する値が等しいか確かめること
+</li>
+</ul>
+</li>
 
 <li>使い方を学びたい 1
 <ul class="org-ul">
-<li>テストすることの意味が分っていれば，後は方法論ですね。</li>
-</ul></li>
+<li>テストすることの意味が分っていれば，後は方法論ですね。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline85" class="outline-4">
-<h4 id="orgheadline85">make</h4>
-<div class="outline-text-4" id="text-orgheadline85">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>make<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>Makefile を復習したい 12345
 <ul class="org-ul">
 <li>一度習ったことなので，自分で復習することが基本です。が，講義中にも
-説明するつもりです。</li>
-</ul></li>
+説明するつもりです。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline86" class="outline-4">
-<h4 id="orgheadline86">ストリーミング</h4>
-<div class="outline-text-4" id="text-orgheadline86">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>ストリーミング<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>10秒ぐらいタイムラグがありました 1</li>
-<li>いい 123456</li>
+<li>10秒ぐらいタイムラグがありました 1
+</li>
+<li>いい 123456
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline87" class="outline-4">
-<h4 id="orgheadline87">emacs</h4>
-<div class="outline-text-4" id="text-orgheadline87">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>emacs<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>説明がわかりにくい 1</li>
+<li>説明がわかりにくい 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline88" class="outline-4">
-<h4 id="orgheadline88">org</h4>
-<div class="outline-text-4" id="text-orgheadline88">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>org<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>学べるサイトや本はありますか？ 1
 <ul class="org-ul">
-<li>いっぱいあります。探せば見つかりますよ</li>
-</ul></li>
+<li>いっぱいあります。探せば見つかりますよ
+</li>
+</ul>
+</li>
 <li>org ができてるか不安だ 1
 <ul class="org-ul">
 <li>とりあえず，org-mode が正しく使われているかは，関係ありません。
 一番大切なのは，説明の中身です。org-mode はその構造を見やすくする
-ものです。</li>
-</ul></li>
+ものです。
+</li>
+</ul>
+</li>
 <li>.org のファイルを開いても，数行の文章があるだけですが？ 12
 <ul class="org-ul">
 <li>見出しで，TAB または SHIFT+TAB を押してみてください。
-もう何度も言ってますよ。</li>
-</ul></li>
+もう何度も言ってますよ。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline89" class="outline-4">
-<h4 id="orgheadline89">説明</h4>
-<div class="outline-text-4" id="text-orgheadline89">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>説明<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>サイトの見方がイマイチ分からない 1</li>
+<li>サイトの見方がイマイチ分からない 1
+</li>
 <li>知らない用語が多くて，分からなかった 1
 <ul class="org-ul">
-<li>質問してください。レスポンスカードに書いてください。</li>
-</ul></li>
+<li>質問してください。レスポンスカードに書いてください。
+</li>
+</ul>
+</li>
 <li>しっかり指示を聞けばやることは分かる授業だ 1
 <ul class="org-ul">
-<li>そういってもらえると嬉しいです。</li>
-</ul></li>
+<li>そういってもらえると嬉しいです。
+</li>
+</ul>
+</li>
 
 <li>講義がない日にも，サイトを見られるようにしてほしい 1
 <ul class="org-ul">
-<li>見られるはずです。次回の講義内容はまだできていないかもしれませんが。</li>
-</ul></li>
+<li>見られるはずです。次回の講義内容はまだできていないかもしれませんが。
+</li>
+</ul>
+</li>
 
-<li>講義は時間内に終って 1</li>
+<li>講義は時間内に終って 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline90" class="outline-4">
-<h4 id="orgheadline90">レポート</h4>
-<div class="outline-text-4" id="text-orgheadline90">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>レポート<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>レポート提出していないが，期限はあるか？
 <ul class="org-ul">
-<li>提示した期限は，一応，守ってください。僕が，何時，評価するかの問題です。</li>
+<li>提示した期限は，一応，守ってください。僕が，何時，評価するかの問題です。
+</li>
 <li>遅れても提出してください。面倒ですが，評価します。少し，評価が下が
-ります。</li>
-</ul></li>
+ります。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline91" class="outline-4">
-<h4 id="orgheadline91">画面提示</h4>
-<div class="outline-text-4" id="text-orgheadline91">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>画面提示<br  /><div class="outline-text-24" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>画面に切り替えが早い 1</li>
+<li>画面に切り替えが早い 1
+</li>
 <li>表示しているプログラムの色が，一部見づらい 12
 <ul class="org-ul">
 <li>変えるように努力します。
 <ul class="org-ul">
-<li>custom-theme でできるか？</li>
-</ul></li>
-</ul></li>
+<li>custom-theme でできるか？
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>しばしばどこのページを見ているか，追えなかった
 <ul class="org-ul">
-<li>ページを切り替えるときは，注意するよう，気を付けます。</li>
-</ul></li>
+<li>ページを切り替えるときは，注意するよう，気を付けます。
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
-</div>
+</li></ul>
+</li>
 
-<div id="outline-container-orgheadline93" class="outline-3">
-<h3 id="orgheadline93"><span class="section-number-3">9.3</span> suzukiから 2015</h3>
-<div class="outline-text-3" id="text-9-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>suzukiから 2015<br  /><div class="outline-text-23" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>早すぎる。
 <ul class="org-ul">
-<li>初回は，方向づけだったので，理解できたかは確認しませんでした。</li>
-</ul></li>
+<li>初回は，方向づけだったので，理解できたかは確認しませんでした。
+</li>
+</ul>
+</li>
 
 <li>つまづくと追いつけない。
 <ul class="org-ul">
 <li>作業のあとは，時間を取るよう気をつけます。時間がたりないときは，声
-をかけて下さい。</li>
-</ul></li>
+をかけて下さい。
+</li>
+</ul>
+</li>
 
 <li>しゃべるだけではだめ，書いてください。
 
@@ -1974,34 +2008,40 @@ cutter の使いかたは▽やりました。
 <li>はい。
 
 <ul class="org-ul">
-<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。</li>
-<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。</li>
+<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。
+</li>
+<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。
+</li>
 <li>具体的な作業については，指示を書いたつもりでしたが，ぜんぜん不足
-だったみたいですね。注意します。</li>
+だったみたいですね。注意します。
+</li>
 <li>Linux システム，シェル，emacs, emacs org-mode などに
-ついてはメモを作りましょうか。</li>
-<li><p>
-板書はできないので，講義中に emacs でメモを書きたいと思います。
+ついてはメモを作りましょうか。
+</li>
+<li>板書はできないので，講義中に emacs でメモを書きたいと思います。
 気がついたら，~suzuki/progs/lects/のあたりに書こうと思います。
-</p>
 
 <p>
 今日の講義の補足にまとめましょう。
-</p></li>
-</ul></li>
-</ul></li>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 
 <li>ページが醜い。リンク飛びすぎ。
 
 <ul class="org-ul">
-<li>renewal しました。</li>
+<li>renewal しました。
+</li>
 
-<li>なるべくリンク少なくしました。</li>
-</ul></li>
+<li>なるべくリンク少なくしました。
+</li>
+</ul>
+</li>
 
-<li><p>
-むずかしい。
-</p>
+<li>むずかしい。
 
 <p>
 むずかしいのではなくて，知らないことが多いのです。
@@ -2020,64 +2060,61 @@ cutter の使いかたは▽やりました。
 <p>
 本当に，難かしいのは，設計とか，開発管理とか，など，体験を通してしか
 学べない事柄だと思います。
-</p></li>
-
-<li><p>
-emacs 覚えなきゃ
 </p>
+</li>
+
+<li>emacs 覚えなきゃ
 
 <p>
 はい是非。人生の伴侶になります。
-</p></li>
-
-<li><p>
-org-mode 便利そう
 </p>
+</li>
+
+<li>org-mode 便利そう
 
 <p>
 それはもうほんとうに。もっと早く知りたかった。
-</p></li>
+</p>
+</li>
 </ul>
 <p>
 #* 2回目
 </p>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline100" class="outline-2">
-<h2 id="orgheadline100"><span class="section-number-2">10</span> 2回目 (10/11) の講義実施内容</h2>
-<div class="outline-text-2" id="text-10">
-</div><div id="outline-container-orgheadline95" class="outline-3">
-<h3 id="orgheadline95"><span class="section-number-3">10.1</span> Done 提案</h3>
-<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>2回目 (10/11) の講義実施内容<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 提案<br  /><div class="outline-text-25" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 各列最後尾に，TAさんの席を作りたいと思います。協力お願いします。</li>
-<li class="on"><code>[X]</code> 各自の ~/progs/documents/の下に講義のメモを作成しませんか？</li>
+<li><code>[X]</code> 各列最後尾に，TAさんの席を作りたいと思います。協力お願いします。
+</li>
+<li><code>[X]</code> 各自の ~/progs/documents/の下に講義のメモを作成しませんか？ 
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline96" class="outline-3">
-<h3 id="orgheadline96"><span class="section-number-3">10.2</span> Done カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span></h3>
-<div class="outline-text-3" id="text-10-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done カードモジュール作成までの講義の進み SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 日&gt;</span></span><br  /><div class="outline-text-25" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+<li><code>[-]</code> カード表示問題へ解プログラムの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
 <ul class="org-ul">
-<li class="trans"><code>[-]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></li>
-</ul></li>
-<li class="off"><code>[&#xa0;]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></li>
-<li class="off"><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span></li>
+<li><code>[-]</code> 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-04 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> 先生のプログラム解説  SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span>
+</li>
+</ul>
+</li>
+<li><code>[&#xa0;]</code> テストとcutterの使い方 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span>
+</li>
+<li><code>[&#xa0;]</code> カードモジュールの作成 SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-15 火&gt;</span></span>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline97" class="outline-3">
-<h3 id="orgheadline97"><span class="section-number-3">10.3</span> Doing 課題: card_display問題を始める</h3>
-<div class="outline-text-3" id="text-10-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Doing 課題: card_display問題を始める<br  /><div class="outline-text-25" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="./org-docs/card-display.html">カード表示問題の始まり</a>の card_display_simple 問題を読んで，
 card_display_simple の解プログラムと開発ドキュメントを下記のように作成
@@ -2085,57 +2122,69 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 自分なりにプログラムを作ってみる (来週まで)</li>
-<li class="off"><code>[&#xa0;]</code> 機能分解して，テストによる開発してみる (来週)</li>
-<li class="off"><code>[&#xa0;]</code> ~/progs/card_display/first/ を提出 (10/25)
+<li><code>[&#xa0;]</code> 自分なりにプログラムを作ってみる (来週まで)
+</li>
+<li><code>[&#xa0;]</code> 機能分解して，テストによる開発してみる (来週)
+</li>
+<li><code>[&#xa0;]</code> ~/progs/card_display/first/ を提出 (10/25)
 
 <dl class="org-dl">
-<dt>~/progs/card_display/first/simple.org</dt><dd><ul class="org-ul">
+<dt> ~/progs/card_display/first/simple.org </dt><dd><ul class="org-ul">
 <li>ソース・プログラムを作成する前にどんなふうに何を作るかを，
-できれば org-mode で書いてください。</li>
+できれば org-mode で書いてください。
+</li>
 
 <li>プログラムの作成中に考えた事，決めた事，疑問など，箇条書きで書
-いてください。</li>
+いてください。
+</li>
 
 <li id="~/progs/card_display/first/simple.c"><ol class="org-ol">
-<li>できれば関数を多用してください。</li>
-<li>できれば分りやく書いてください。</li>
-<li>正しく動くプログラムをsimple.c を作成してください。</li>
+<li>できれば関数を多用してください。
+</li>
+<li>できれば分りやく書いてください。
+</li>
+<li>正しく動くプログラムをsimple.c を作成してください。
+</li>
 <li>正しく動くプログラムをsimple.0.c にし，
 1と2の2つの観点から書き直してみてください。
-改良し, 正しく動く simple.c にしてください。</li>
+改良し, 正しく動く simple.c にしてください。
+</li>
 <li>納得できるまで上記の改良を繰り返し，繰り返しごとに番号を
-0-&gt;1-&gt;2-&gt; &#x2026; と増やしてください。</li>
+0-&gt;1-&gt;2-&gt; &#x2026; と増やしてください。
+</li>
 
 <li>~/progs/card_display/first/Makefile ::
-simple.c をコンパイルするための規則を書いてください。</li>
-</ol></li>
-</ul></dd>
-</dl></li>
+simple.c をコンパイルするための規則を書いてください。
+</li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline98" class="outline-3">
-<h3 id="orgheadline98"><span class="section-number-3">10.4</span> Todo テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-10-4">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo テストとテストによる開発とは SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span><br  /><div class="outline-text-25" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 何回かかけて，回下記の3つの資料を使って，テストによる開発を経験します。
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a></li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a></li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> テストの体験</li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> テストの体験
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline99" class="outline-3">
-<h3 id="orgheadline99"><span class="section-number-3">10.5</span> Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span></h3>
-<div class="outline-text-3" id="text-10-5">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo card_display問題のテストによる開発 <code>[0/7]</code> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-01 火&gt;</span></span><br  /><div class="outline-text-25" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 この内容は，次々回からになると思います。
 </p>
@@ -2144,212 +2193,260 @@ simple.c をコンパイルするための規則を書いてください。</li>
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> [ ]
 </p>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
-<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+<li><code>[&#xa0;]</code> test_card_suit_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_no_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_single
+</li>
 </ul>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline112" class="outline-2">
-<h2 id="orgheadline112"><span class="section-number-2">11</span> レスポンス.02</h2>
-<div class="outline-text-2" id="text-11">
-</div><div id="outline-container-orgheadline101" class="outline-3">
-<h3 id="orgheadline101"><span class="section-number-3">11.1</span> カード</h3>
-<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>レスポンス.02<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>カード<br  /><div class="outline-text-27" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-02.pdf">card-02.pdf</a> 
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline109" class="outline-3">
-<h3 id="orgheadline109"><span class="section-number-3">11.2</span> response card 02</h3>
-<div class="outline-text-3" id="text-11-2">
-</div><div id="outline-container-orgheadline102" class="outline-4">
-<h4 id="orgheadline102">内容</h4>
-<div class="outline-text-4" id="text-orgheadline102">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>response card 02<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>内容<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>課題の内容がわかった 12</li>
-<li>話の流れがわかった 123</li>
-<li>今回は理解できた 1</li>
+<li>課題の内容がわかった 12
+</li>
+<li>話の流れがわかった 123
+</li>
+<li>今回は理解できた 1
+</li>
 
-<li>わからない 1234</li>
-<li>何もできない 12</li>
-<li>講義についていけない 1234</li>
+<li>わからない 1234
+</li>
+<li>何もできない 12
+</li>
+<li>講義についていけない 1234
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline103" class="outline-4">
-<h4 id="orgheadline103">知識</h4>
-<div class="outline-text-4" id="text-orgheadline103">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>知識<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>プログランミング言語の内容が欠落している 1234567</li>
-<li>Makefile からついていけなかった 1</li>
-<li>難かしいしいのではなく知らないという言葉がささった 1</li>
+<li>プログランミング言語の内容が欠落している 1234567
+</li>
+<li>Makefile からついていけなかった 1
+</li>
+<li>難かしいしいのではなく知らないという言葉がささった 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline104" class="outline-4">
-<h4 id="orgheadline104">プログラミング</h4>
-<div class="outline-text-4" id="text-orgheadline104">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>プログラミング<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>テストによる開発を身につけたい 1</li>
-<li>コーディング技術を身に付けたい 12</li>
+<li>テストによる開発を身につけたい 1
+</li>
+<li>コーディング技術を身に付けたい 12
+</li>
 <li>実際のプログラミングでも関数やヘッダを多用すべき？ 1
 
 <ul class="org-ul">
-<li>はい。</li>
-</ul></li>
+<li>はい。
+</li>
+</ul>
+</li>
 
-<li>ポーカーゲーム，完成させられるか不安 1</li>
+<li>ポーカーゲーム，完成させられるか不安 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline105" class="outline-4">
-<h4 id="orgheadline105">simple.c</h4>
-<div class="outline-text-4" id="text-orgheadline105">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>simple.c<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>simpleプログラムの目処が立った 1</li>
-<li>関数を使わないsimpleプログラムはできた 1234</li>
-<li>simple.c は簡単 12</li>
+<li>simpleプログラムの目処が立った 1
+</li>
+<li>関数を使わないsimpleプログラムはできた 1234
+</li>
+<li>simple.c は簡単 12
+</li>
 <li>simple.c の完成後，何をやればいいかわからない 12
 
 <ul class="org-ul">
-<li>プログラムを見直してみる (リファクタリング)</li>
-</ul></li>
+<li>プログラムを見直してみる (リファクタリング)
+</li>
+</ul>
+</li>
 
-<li>simple.1.cを作成中 1</li>
-<li>simple.c が自力でできなかった 1</li>
-<li>ubuntu 16.04での結果が異なって困った 1</li>
-<li>自分のプログラムと先生のと全然違って，難かしい 1</li>
+<li>simple.1.cを作成中 1
+</li>
+<li>simple.c が自力でできなかった 1
+</li>
+<li>ubuntu 16.04での結果が異なって困った 1
+</li>
+<li>自分のプログラムと先生のと全然違って，難かしい 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline106" class="outline-4">
-<h4 id="orgheadline106">org</h4>
-<div class="outline-text-4" id="text-orgheadline106">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>org<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>先生の simple.org を見るまでが，いつもとまどう 1</li>
-<li>simple.org が見られなかった 12</li>
-<li>org-mode がわからない 12</li>
-<li>org-mode がわからなくて作業が進みません 1</li>
+<li>先生の simple.org を見るまでが，いつもとまどう 1
+</li>
+<li>simple.org が見られなかった 12
+</li>
+<li>org-mode がわからない 12
+</li>
+<li>org-mode がわからなくて作業が進みません 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline107" class="outline-4">
-<h4 id="orgheadline107">説明</h4>
-<div class="outline-text-4" id="text-orgheadline107">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>説明<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>教科書がないため，つまづくと，置いておかれ，全くわからなくなる 1</li>
-<li>説明内容を絞ってほしい 1</li>
-<li>次の講義に必要な情報があればスムーズにいく 1</li>
-<li>大切な話の前には注意喚起して 1</li>
-<li>大事な事は何度も言って 12</li>
-<li>Not found のページをなくして 1</li>
-<li>1つ1つ一緒には追いつかない。メモる。1</li>
-<li>慣れていない操作でひっかかり，大筋の理解をさまたげている 12</li>
-</ul>
-
-
-<ul class="org-ul">
-<li>必要なことは，書いているつもりなんです。</li>
-</ul>
-<ul class="org-ul">
-<li>講義時間は守ってください 12</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline108" class="outline-4">
-<h4 id="orgheadline108">画面提示</h4>
-<div class="outline-text-4" id="text-orgheadline108">
-<ul class="org-ul">
-<li>先生の画面を手元でリアルタイムで見たい 1</li>
-<li>スクリーンの下が見えない 1234567</li>
-<li>説明と画面の内容が合わないときがある 1</li>
-</ul>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-<div id="outline-container-orgheadline110" class="outline-3">
-<h3 id="orgheadline110"><span class="section-number-3">11.3</span> 前回のレスポンス</h3>
-<div class="outline-text-3" id="text-11-3">
-<ul class="org-ul">
-<li>ゆっくり説明してほしい 6</li>
-<li>丁寧に説明してほしい 3</li>
-<li>説明をはしょらないで 1</li>
-
-<li>進むペースが早く追い付けない 4</li>
-<li>やっている間に話が進む 1</li>
-
-<li>Webページがみづらい 1</li>
-<li>サイトをとびまわりすぎ，わかりにくい 1</li>
-
-<li>なにをやっているのかわからない 2</li>
-<li>なにをすればいいのか具体的に画面に出して 1</li>
-
-<li>むずかしい 4</li>
-<li>新しい用語が多い    2</li>
-<li>C言語演習で習得していない用語が出てきた 1</li>
+<li>教科書がないため，つまづくと，置いておかれ，全くわからなくなる 1
+</li>
+<li>説明内容を絞ってほしい 1
+</li>
+<li>次の講義に必要な情報があればスムーズにいく 1
+</li>
+<li>大切な話の前には注意喚起して 1
+</li>
+<li>大事な事は何度も言って 12
+</li>
+<li>Not found のページをなくして 1
+</li>
+<li>1つ1つ一緒には追いつかない。メモる。1
+</li>
+<li>慣れていない操作でひっかかり，大筋の理解をさまたげている 12
+</li>
 </ul>
 
 
 <ul class="org-ul">
-<li>なにをやるのか詳しくWebに書いてほしい 1</li>
-<li>何回か先の講義内容も見られるといい 1</li>
+<li>必要なことは，書いているつもりなんです。
+</li>
 
-<li>C言語はゆっくり解説してほしい 1</li>
-<li>makefileを解説してほしい 1</li>
-<li>プログラミングが苦手 1</li>
-<li>1週間でプログラムを完成させたい 1</li>
-<li>プログラムの仕様を org-mode で書く理由は？ 1</li>
-
-<li>Emacsコマンドを復習したい 8</li>
-<li>Emacs が使えるようになりたい 1</li>
-<li>Emacsの設定が，学生と先生で違って，わかりづらい 1</li>
-
-<li>org-mode を覚えたい 6</li>
-<li>org-mode のいいところがわからない  5</li>
-<li>C-c C-e h h は C-c C-e h では？ 1</li>
-
-<li>授業時間はもっと長く必要 1</li>
+<li>講義時間は守ってください 12
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline111" class="outline-3">
-<h3 id="orgheadline111"><span class="section-number-3">11.4</span> suzukiから 2015</h3>
-<div class="outline-text-3" id="text-11-4">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>画面提示<br  /><div class="outline-text-28" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
+<ul class="org-ul">
+<li>先生の画面を手元でリアルタイムで見たい 1
+</li>
+<li>スクリーンの下が見えない 1234567
+</li>
+<li>説明と画面の内容が合わないときがある 1
+</li>
+</ul>
+</div>
+</li></ul>
+</li>
+
+
+
+
+
+
+
+
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>前回のレスポンス<br  /><div class="outline-text-27" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
+<ul class="org-ul">
+<li>ゆっくり説明してほしい 6
+</li>
+<li>丁寧に説明してほしい 3
+</li>
+<li>説明をはしょらないで 1
+</li>
+
+<li>進むペースが早く追い付けない 4
+</li>
+<li>やっている間に話が進む 1
+</li>
+
+<li>Webページがみづらい 1
+</li>
+<li>サイトをとびまわりすぎ，わかりにくい 1
+</li>
+
+<li>なにをやっているのかわからない 2
+</li>
+<li>なにをすればいいのか具体的に画面に出して 1
+</li>
+
+<li>むずかしい 4
+</li>
+<li>新しい用語が多い    2
+</li>
+<li>C言語演習で習得していない用語が出てきた 1
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>なにをやるのか詳しくWebに書いてほしい 1
+</li>
+<li>何回か先の講義内容も見られるといい 1
+</li>
+
+<li>C言語はゆっくり解説してほしい 1
+</li>
+<li>makefileを解説してほしい 1
+</li>
+<li>プログラミングが苦手 1
+</li>
+<li>1週間でプログラムを完成させたい 1
+</li>
+<li>プログラムの仕様を org-mode で書く理由は？ 1
+</li>
+
+<li>Emacsコマンドを復習したい 8
+</li>
+<li>Emacs が使えるようになりたい 1
+</li>
+<li>Emacsの設定が，学生と先生で違って，わかりづらい 1
+</li>
+
+<li>org-mode を覚えたい 6
+</li>
+<li>org-mode のいいところがわからない  5
+</li>
+<li>C-c C-e h h は C-c C-e h では？ 1
+</li>
+
+<li>授業時間はもっと長く必要 1
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>suzukiから 2015<br  /><div class="outline-text-27" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>早すぎる。
 <ul class="org-ul">
-<li>初回は，方向づけだったので，理解できたかは確認しませんでした。</li>
-</ul></li>
+<li>初回は，方向づけだったので，理解できたかは確認しませんでした。
+</li>
+</ul>
+</li>
 
 <li>つまづくと追いつけない。
 <ul class="org-ul">
 <li>作業のあとは，時間を取るよう気をつけます。時間がたりないときは，声
-をかけて下さい。</li>
-</ul></li>
+をかけて下さい。
+</li>
+</ul>
+</li>
 
 <li>しゃべるだけではだめ，書いてください。
 
@@ -2357,34 +2454,40 @@ simple.c をコンパイルするための規則を書いてください。</li>
 <li>はい。
 
 <ul class="org-ul">
-<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。</li>
-<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。</li>
+<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。
+</li>
+<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。
+</li>
 <li>具体的な作業については，指示を書いたつもりでしたが，ぜんぜん不足
-だったみたいですね。注意します。</li>
+だったみたいですね。注意します。
+</li>
 <li>Linux システム，シェル，emacs, emacs org-mode などに
-ついてはメモを作りましょうか。</li>
-<li><p>
-板書はできないので，講義中に emacs でメモを書きたいと思います。
+ついてはメモを作りましょうか。
+</li>
+<li>板書はできないので，講義中に emacs でメモを書きたいと思います。
 気がついたら，~suzuki/progs/lects/のあたりに書こうと思います。
-</p>
 
 <p>
 今日の講義の補足にまとめましょう。
-</p></li>
-</ul></li>
-</ul></li>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 
 <li>ページが醜い。リンク飛びすぎ。
 
 <ul class="org-ul">
-<li>renewal しました。</li>
+<li>renewal しました。
+</li>
 
-<li>なるべくリンク少なくしました。</li>
-</ul></li>
+<li>なるべくリンク少なくしました。
+</li>
+</ul>
+</li>
 
-<li><p>
-むずかしい。
-</p>
+<li>むずかしい。
 
 <p>
 むずかしいのではなくて，知らないことが多いのです。
@@ -2403,88 +2506,71 @@ simple.c をコンパイルするための規則を書いてください。</li>
 <p>
 本当に，難かしいのは，設計とか，開発管理とか，など，体験を通してしか
 学べない事柄だと思います。
-</p></li>
-
-<li><p>
-emacs 覚えなきゃ
 </p>
+</li>
+
+<li>emacs 覚えなきゃ
 
 <p>
 はい是非。人生の伴侶になります。
-</p></li>
-
-<li><p>
-org-mode 便利そう
 </p>
+</li>
+
+<li>org-mode 便利そう
 
 <p>
 それはもうほんとうに。もっと早く知りたかった。
-</p></li>
+</p>
+</li>
 </ul>
 <p>
 #* 1回目
 </p>
 </div>
-</div>
-</div>
-<div id="outline-container-orgheadline135" class="outline-2">
-<h2 id="orgheadline135"><span class="section-number-2">12</span> 1回目 (10/04) の講義実施内容</h2>
-<div class="outline-text-2" id="text-12">
-</div><div id="outline-container-orgheadline115" class="outline-3">
-<h3 id="orgheadline115"><span class="section-number-3">12.1</span> Done 講義紹介</h3>
-<div class="outline-text-3" id="text-12-1">
-</div><div id="outline-container-orgheadline113" class="outline-4">
-<h4 id="orgheadline113">Done 講義コンテンツ</h4>
-<div class="outline-text-4" id="text-orgheadline113">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>1回目 (10/04) の講義実施内容<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 講義紹介<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 講義コンテンツ<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <dl class="org-dl">
-<dt>学科のサイト</dt><dd><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016">http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016</a> 
-         講義中の変更を反映する予定です。</dd>
+<dt> 学科のサイト </dt><dd>         <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016">http://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016</a> 
+         講義中の変更を反映する予定です。
+</dd>
 
-<dt>publicサイト</dt><dd><a href="http://masayuki054.github.io/prog">http://masayuki054.github.io/prog</a></dd>
+<dt> publicサイト </dt><dd>      <a href="http://masayuki054.github.io/prog">http://masayuki054.github.io/prog</a>
+</dd>
 
-<dt>リポジトリ</dt><dd><a href="http://github.com/masayuki054/prog/">http://github.com/masayuki054/prog/</a></dd>
+<dt> リポジトリ </dt><dd><a href="http://github.com/masayuki054/prog/">http://github.com/masayuki054/prog/</a> 
+</dd>
 
-<dt>ワーキングコピー</dt><dd><a href="file:///users/home/masayuki/prog.git/">file:///users/home/masayuki/prog.git/</a></dd>
+<dt> ワーキングコピー </dt><dd><a href="file:///home/staff/suzuki/prog.git/">file:///home/staff/suzuki/prog.git/</a>
+</dd>
 </dl>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline114" class="outline-4">
-<h4 id="orgheadline114">Done 講義の目的など</h4>
-<div class="outline-text-4" id="text-orgheadline114">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 講義の目的など<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="./supplement.html">説明</a>::ガイダンス
 </p>
 </div>
-</div>
-</div>
+</li></ul>
+</li>
 
-<div id="outline-container-orgheadline116" class="outline-3">
-<h3 id="orgheadline116"><span class="section-number-3">12.2</span> Done 講師</h3>
-<div class="outline-text-3" id="text-12-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done 講師<br  /><div class="outline-text-29" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/">自己紹介</a>
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline127" class="outline-3">
-<h3 id="orgheadline127"><span class="section-number-3">12.3</span> prog2016 導入</h3>
-<div class="outline-text-3" id="text-12-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>prog2016 導入<br  /><div class="outline-text-29" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 progs の導入に関連する内容
 </p>
 </div>
 
-<div id="outline-container-orgheadline117" class="outline-4">
-<h4 id="orgheadline117">Todo モジュラープログラミングについて</h4>
-<div class="outline-text-4" id="text-orgheadline117">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo モジュラープログラミングについて<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 </div>
 
-<div id="outline-container-orgheadline118" class="outline-5">
-<h5 id="orgheadline118">Acroquest プログラミング講座</h5>
-<div class="outline-text-5" id="text-orgheadline118">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Acroquest プログラミング講座<br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://www.acroquest.co.jp/webworkshop/programing_course/index1.html">目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？</a>
 </p>
@@ -2493,12 +2579,10 @@ progs の導入に関連する内容
 <a href="http://www.acroquest.co.jp/webworkshop/programing_course/index18.html">目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念</a>
 </p>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline119" class="outline-5">
-<h5 id="orgheadline119">構造化プログラミングについて</h5>
-<div class="outline-text-5" id="text-orgheadline119">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>構造化プログラミングについて<br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html">構造化プログラミング</a> がいい。
 </p>
@@ -2508,50 +2592,50 @@ progs の導入に関連する内容
 ができるか？」という問いに対して与えられた回答。
 </p>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline120" class="outline-5">
-<h5 id="orgheadline120">Strategic Choice の役に立ちそうなコンテンツ</h5>
-<div class="outline-text-5" id="text-orgheadline120">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Strategic Choice の役に立ちそうなコンテンツ<br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 オブジェクト指向についてのサイトですが，モジュール化について考えるとき
 の拠り所について参考にしてください:
 </p>
 
 <ul class="org-ul">
-<li><a href="http://d.hatena.ne.jp/asakichy/20090216/1234765854">構造化プログラミング入門 - Strategic Choice</a></li>
+<li><a href="http://d.hatena.ne.jp/asakichy/20090216/1234765854">構造化プログラミング入門 - Strategic Choice</a>
+</li>
 
-<li><a href="http://d.hatena.ne.jp/asakichy/20090217/1234830611">段階的詳細化 - Strategic Choice</a></li>
+<li><a href="http://d.hatena.ne.jp/asakichy/20090217/1234830611">段階的詳細化 - Strategic Choice</a>
+</li>
 
-<li><a href="http://d.hatena.ne.jp/asakichy/20090218/1234990542">凝集度 - Strategic Choice</a></li>
+<li><a href="http://d.hatena.ne.jp/asakichy/20090218/1234990542">凝集度 - Strategic Choice</a>
+</li>
 
-<li><a href="http://d.hatena.ne.jp/asakichy/20090219/1234936956">結合度 - Strategic Choice</a></li>
+<li><a href="http://d.hatena.ne.jp/asakichy/20090219/1234936956">結合度 - Strategic Choice</a>
+</li>
 </ul>
 </div>
-</div>
-</div>
+</li></ul>
+</li>
 
 
-<div id="outline-container-orgheadline121" class="outline-4">
-<h4 id="orgheadline121">Todo テストによる開発の説明</h4>
-<div class="outline-text-4" id="text-orgheadline121">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo テストによる開発の説明<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 TDD (Test Driven Development) テスト駆動開発といいます。
 </p>
 
 <ul class="org-ul">
-<li><a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA">テスト駆動開発 - Wikipedia</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA">テスト駆動開発 - Wikipedia</a>
+</li>
 
-<li><a href="./org-docs/what-is-tdd.html">資料/テストによる開発とは</a> (この中にもリンクがあります)</li>
+<li><a href="./org-docs/what-is-tdd.html">資料/テストによる開発とは</a> (この中にもリンクがあります)
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline122" class="outline-4">
-<h4 id="orgheadline122">Todo (ソフトウェア) テストについての説明</h4>
-<div class="outline-text-4" id="text-orgheadline122">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo (ソフトウェア) テストについての説明<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="./org-docs/software-test.html">資料/ソフトウェア・テスト</a>
 </p>
@@ -2560,12 +2644,10 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 <a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%83%86%E3%82%B9%E3%83%88">ソフトウェアテスト - Wikipedia</a> 難い
 </p>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline123" class="outline-4">
-<h4 id="orgheadline123">Todo プログラミング関連の講義と演習</h4>
-<div class="outline-text-4" id="text-orgheadline123">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo プログラミング関連の講義と演習<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連演習@cis.iwate-u.ac.jp</a> 振り返りましょう.
 </p>
@@ -2576,97 +2658,116 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 重要なプログラムの構成要素 <code>[0/3]</code>
+<li><code>[&#xa0;]</code> 重要なプログラムの構成要素 <code>[0/3]</code>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 関数と抽象化，情報隠蔽</li>
-<li class="off"><code>[&#xa0;]</code> ヘッダファイルの役割，インタフェース遵守</li>
-<li class="off"><code>[&#xa0;]</code> 名前と実体の管理</li>
-</ul></li>
+<li><code>[&#xa0;]</code> 関数と抽象化，情報隠蔽
+</li>
+<li><code>[&#xa0;]</code> ヘッダファイルの役割，インタフェース遵守
+</li>
+<li><code>[&#xa0;]</code> 名前と実体の管理
+</li>
+</ul>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> コンパイル過程のこと <code>[0/6]</code>
+<li><code>[&#xa0;]</code> コンパイル過程のこと <code>[0/6]</code>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> #include の意味</li>
-<li class="off"><code>[&#xa0;]</code> gcc がおこなうこと</li>
-<li class="off"><code>[&#xa0;]</code> .o (オブジェクト・ファイル)</li>
-<li class="off"><code>[&#xa0;]</code> .a (静的ライブラリ), .so(動的ライブラリ)</li>
-<li class="off"><code>[&#xa0;]</code> ld (ローダ，リンケージ・エディタ)</li>
-<li class="off"><code>[&#xa0;]</code> a.out (実行プログラム)</li>
-</ul></li>
+<li><code>[&#xa0;]</code> #include の意味
+</li>
+<li><code>[&#xa0;]</code> gcc がおこなうこと
+</li>
+<li><code>[&#xa0;]</code> .o (オブジェクト・ファイル)
+</li>
+<li><code>[&#xa0;]</code> .a (静的ライブラリ), .so(動的ライブラリ)
+</li>
+<li><code>[&#xa0;]</code> ld (ローダ，リンケージ・エディタ)
+</li>
+<li><code>[&#xa0;]</code> a.out (実行プログラム)
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline124" class="outline-4">
-<h4 id="orgheadline124">Doing Emacs for progs (検討中)</h4>
-<div class="outline-text-4" id="text-orgheadline124">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Doing Emacs for progs (検討中)<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 emacs@progs でどんな内容を教えるか？
 </p>
 </div>
 
-<div id="outline-container-orgheadline125" class="outline-5">
-<h5 id="orgheadline125">何に使うか <code>[2/4]</code></h5>
-<div class="outline-text-5" id="text-orgheadline125">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>何に使うか <code>[2/4]</code><br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> file handling
+<li><code>[X]</code> file handling
 <ul class="org-ul">
-<li class="on"><code>[X]</code> find-file</li>
-<li class="on"><code>[X]</code> dired</li>
-</ul></li>
-<li class="off"><code>[&#xa0;]</code> programming
+<li><code>[X]</code> find-file
+</li>
+<li><code>[X]</code> dired
+</li>
+</ul>
+</li>
+<li><code>[&#xa0;]</code> programming
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> source coding</li>
-<li class="off"><code>[&#xa0;]</code> Makefile, make</li>
-</ul></li>
-<li class="on"><code>[X]</code> Document 作成 
+<li><code>[&#xa0;]</code> source coding
+</li>
+<li><code>[&#xa0;]</code> Makefile, make
+</li>
+</ul>
+</li>
+<li><code>[X]</code> Document 作成 
 <ul class="org-ul">
-<li class="on"><code>[X]</code> org-mode</li>
-</ul></li>
-<li class="off"><code>[&#xa0;]</code> terminal/shell execution</li>
-<li class="off"><code>[&#xa0;]</code> 全文検索
+<li><code>[X]</code> org-mode
+</li>
+</ul>
+</li>
+<li><code>[&#xa0;]</code> terminal/shell execution
+</li>
+<li><code>[&#xa0;]</code> 全文検索
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> recnetf</li>
-<li class="off"><code>[&#xa0;]</code> ag</li>
-</ul></li>
+<li><code>[&#xa0;]</code> recnetf
+</li>
+<li><code>[&#xa0;]</code> ag
+</li>
+</ul>
+</li>
 <li>[?] 文芸的プログラミング
 <ul class="org-ul">
-<li>org-mode + babel</li>
-</ul></li>
+<li>org-mode + babel 
+</li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
 
-<div id="outline-container-orgheadline126" class="outline-5">
-<h5 id="orgheadline126">Someday わかりやすサイトを見つけた</h5>
-<div class="outline-text-5" id="text-orgheadline126">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Someday わかりやすサイトを見つけた<br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 参考にしてください。
 </p>
 
 <ul class="org-ul">
-<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333883641">Diredの基本操作を覚える - CLOVER</a></li>
+<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333883641">Diredの基本操作を覚える - CLOVER</a>
+</li>
 
-<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333885399">Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER</a></li>
+<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333885399">Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER</a>
+</li>
 
-<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333890311">Emacsで矩形編集を行う - CLOVER</a></li>
+<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333890311">Emacsで矩形編集を行う - CLOVER</a>
+</li>
 
-<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333891517">Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER</a></li>
+<li><a href="http://d.hatena.ne.jp/Kazuhira/20120408/1333891517">Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER</a>
+</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</li></ul>
+</li></ul>
+</li>
 
 
-<div id="outline-container-orgheadline134" class="outline-3">
-<h3 id="orgheadline134"><span class="section-number-3">12.4</span> Doing はじまり</h3>
-<div class="outline-text-3" id="text-12-4">
-</div><div id="outline-container-orgheadline128" class="outline-4">
-<h4 id="orgheadline128">Done ~/progs の作成 <code>[0/1]</code></h4>
-<div class="outline-text-4" id="text-orgheadline128">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Doing はじまり<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Done ~/progs の作成 <code>[0/1]</code><br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li class="on"><code>[X]</code> 講義用のディレクトリを作成します：</li>
+<li><code>[X]</code> 講義用のディレクトリを作成します：
+</li>
 </ul>
 
 <div class="org-src-container">
@@ -2681,7 +2782,8 @@ ls -R
 </div>
 
 <ul class="org-ul">
-<li class="on"><code>[X]</code> ~/progs/README.org を作成します:</li>
+<li><code>[X]</code> ~/progs/README.org を作成します:
+</li>
 </ul>
 
 <div class="org-src-container">
@@ -2696,34 +2798,34 @@ ls -R
 </div>
 </div>
 
-<div id="outline-container-orgheadline129" class="outline-5">
-<h5 id="orgheadline129">Doing emacs</h5>
-<div class="outline-text-5" id="text-orgheadline129">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Doing emacs<br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li><a href="Emacs.html#Top">Emacs</a>, <a href="org-mode.html#Top">org-mode</a> を教え,</li>
+<li><a href="Emacs">Emacs</a>, <a href="org-mode">org-mode</a> を教え,
+</li>
 <li>org-mode のことを少し説明する，かな
 <dl class="org-dl">
-<dt>見出しの書き方</dt><dd>行頭に*</dd>
-<dt>箇条書き</dt><dd>行頭に-, あるいは段落の始まりに-</dd>
-<dt>折りたたみ/展開</dt><dd>タブ，またはシフト+タブ</dd>
-</dl></li>
+<dt> 見出しの書き方 </dt><dd>       行頭に*
+</dd>
+<dt> 箇条書き </dt><dd>       行頭に-, あるいは段落の始まりに-
+</dd>
+<dt> 折りたたみ/展開 </dt><dd>       タブ，またはシフト+タブ
+</dd>
+</dl>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline130" class="outline-5">
-<h5 id="orgheadline130">先生のprogs/</h5>
-<div class="outline-text-5" id="text-orgheadline130">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>先生のprogs/<br  /><div class="outline-text-31" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li><a href="file:///users/home/masayuki/progs">file:///users/home/masayuki/progs</a> がお手本です。</li>
+<li><a href="file:///home/staff/suzuki/progs">file:///home/staff/suzuki/progs</a> がお手本です。
+</li>
 </ul>
 </div>
-</div>
-</div>
+</li></ul>
+</li>
 
-<div id="outline-container-orgheadline131" class="outline-4">
-<h4 id="orgheadline131">Doing 課題: card_display問題を始める</h4>
-<div class="outline-text-4" id="text-orgheadline131">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Doing 課題: card_display問題を始める<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="./org-docs/card-display.html">カード表示問題の始まり</a>の card_display_simple 問題を読んで，
 card_display_simple の解プログラムと開発ドキュメントを下記のように作成
@@ -2731,55 +2833,67 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 自分なりにプログラムを作ってみる (来週まで)</li>
-<li class="off"><code>[&#xa0;]</code> 機能分解して，テストによる開発してみる (来週)</li>
-<li class="off"><code>[&#xa0;]</code> ~/progs/card_display/first/ を提出 (10/25)
+<li><code>[&#xa0;]</code> 自分なりにプログラムを作ってみる (来週まで)
+</li>
+<li><code>[&#xa0;]</code> 機能分解して，テストによる開発してみる (来週)
+</li>
+<li><code>[&#xa0;]</code> ~/progs/card_display/first/ を提出 (10/25)
 
 <dl class="org-dl">
-<dt>~/progs/card_display/first/simple.org</dt><dd><ul class="org-ul">
+<dt> ~/progs/card_display/first/simple.org </dt><dd><ul class="org-ul">
 <li>ソース・プログラムを作成する前にどんなふうに何を作るかを，
-できれば org-mode で書いてください。</li>
+できれば org-mode で書いてください。
+</li>
 <li>プログラムの作成中に考えた事，決めた事，疑問など，箇条書きで書
-いてください。</li>
-</ul></dd>
+いてください。
+</li>
+</ul>
+</dd>
 
-<dt>~/progs/card_display/first/simple.c</dt><dd><ol class="org-ol">
-<li>できれば関数を多用してください。</li>
-<li>できれば分りやく書いてください。</li>
-<li>正しく動くプログラムをsimple.c を作成してください。</li>
+<dt> ~/progs/card_display/first/simple.c </dt><dd><ol class="org-ol">
+<li>できれば関数を多用してください。
+</li>
+<li>できれば分りやく書いてください。
+</li>
+<li>正しく動くプログラムをsimple.c を作成してください。
+</li>
 <li>正しく動くプログラムをsimple.0.c にし，
 1と2の2つの観点から書き直してみてください。
-改良し, 正しく動く simple.c にしてください。</li>
+改良し, 正しく動く simple.c にしてください。
+</li>
 <li>納得できるまで上記の改良を繰り返し，繰り返しごとに番号を
-0-&gt;1-&gt;2-&gt; &#x2026; と増やしてください。</li>
-</ol></dd>
+0-&gt;1-&gt;2-&gt; &#x2026; と増やしてください。
+</li>
+</ol>
+</dd>
 
-<dt>~/progs/card_display/first/Makefile</dt><dd>simple.c をコンパイルするための規則を書いてください。</dd>
-</dl></li>
+<dt> ~/progs/card_display/first/Makefile </dt><dd>      simple.c をコンパイルするための規則を書いてください。
+</dd>
+</dl>
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline132" class="outline-4">
-<h4 id="orgheadline132">Todo テストとテストによる開発とは</h4>
-<div class="outline-text-4" id="text-orgheadline132">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>Todo テストとテストによる開発とは<br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 何回かかけて，回下記の3つの資料を使って，テストによる開発を経験します。
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a></li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a></li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> テストの体験</li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> テストの体験
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline133" class="outline-4">
-<h4 id="orgheadline133">card_display問題のテストによる開発 <code>[0/7]</code></h4>
-<div class="outline-text-4" id="text-orgheadline133">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>card_display問題のテストによる開発 <code>[0/7]</code><br  /><div class="outline-text-30" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 この内容は，次々回からになると思います。
 </p>
@@ -2788,88 +2902,114 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> [ ]
 </p>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
-<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+<li><code>[&#xa0;]</code> test_card_suit_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_no_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_single
+</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgheadline139" class="outline-2">
-<h2 id="orgheadline139"><span class="section-number-2">13</span> レスポンス.01</h2>
-<div class="outline-text-2" id="text-13">
-</div><div id="outline-container-orgheadline136" class="outline-3">
-<h3 id="orgheadline136"><span class="section-number-3">13.1</span> カード</h3>
-<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>レスポンス.01<br  /><ul class="org-ul"><li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>カード<br  /><div class="outline-text-32" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-01.pdf">card-01.pdf</a> 
 </p>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline137" class="outline-3">
-<h3 id="orgheadline137"><span class="section-number-3">13.2</span> response card 01</h3>
-<div class="outline-text-3" id="text-13-2">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>response card 01<br  /><div class="outline-text-32" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
-<li>ゆっくり説明してほしい 6</li>
-<li>丁寧に説明してほしい 3</li>
-<li>説明をはしょらないで 1</li>
+<li>ゆっくり説明してほしい 6
+</li>
+<li>丁寧に説明してほしい 3
+</li>
+<li>説明をはしょらないで 1
+</li>
 
-<li>進むペースが早く追い付けない 4</li>
-<li>やっている間に話が進む 1</li>
+<li>進むペースが早く追い付けない 4
+</li>
+<li>やっている間に話が進む 1
+</li>
 
-<li>Webページがみづらい 1</li>
-<li>サイトをとびまわりすぎ，わかりにくい 1</li>
+<li>Webページがみづらい 1
+</li>
+<li>サイトをとびまわりすぎ，わかりにくい 1
+</li>
 
-<li>なにをやっているのかわからない 2</li>
-<li>なにをすればいいのか具体的に画面に出して 1</li>
+<li>なにをやっているのかわからない 2
+</li>
+<li>なにをすればいいのか具体的に画面に出して 1
+</li>
 
-<li>むずかしい 4</li>
-<li>新しい用語が多い    2</li>
-<li>C言語演習で習得していない用語が出てきた 1</li>
+<li>むずかしい 4
+</li>
+<li>新しい用語が多い    2
+</li>
+<li>C言語演習で習得していない用語が出てきた 1
+</li>
 
-<li>課題の内容がわからない    3</li>
-<li>なにをやるのか詳しくWebに書いてほしい 1</li>
-<li>何回か先の講義内容も見られるといい 1</li>
+<li>課題の内容がわからない    3
+</li>
+<li>なにをやるのか詳しくWebに書いてほしい 1
+</li>
+<li>何回か先の講義内容も見られるといい 1
+</li>
 
-<li>C言語はゆっくり解説してほしい 1</li>
-<li>makefileを解説してほしい 1</li>
-<li>プログラミングが苦手 1</li>
-<li>1週間でプログラムを完成させたい 1</li>
-<li>プログラムの仕様を org-mode で書く理由は？ 1</li>
+<li>C言語はゆっくり解説してほしい 1
+</li>
+<li>makefileを解説してほしい 1
+</li>
+<li>プログラミングが苦手 1
+</li>
+<li>1週間でプログラムを完成させたい 1
+</li>
+<li>プログラムの仕様を org-mode で書く理由は？ 1
+</li>
 
-<li>Emacsコマンドを復習したい 8</li>
-<li>Emacs が使えるようになりたい 1</li>
-<li>Emacsの設定が，学生と先生で違って，わかりづらい 1</li>
+<li>Emacsコマンドを復習したい 8
+</li>
+<li>Emacs が使えるようになりたい 1
+</li>
+<li>Emacsの設定が，学生と先生で違って，わかりづらい 1
+</li>
 
-<li>org-mode を覚えたい 6</li>
-<li>org-mode のいいところがわからない  5</li>
-<li>C-c C-e h h は C-c C-e h では？ 1</li>
+<li>org-mode を覚えたい 6
+</li>
+<li>org-mode のいいところがわからない  5
+</li>
+<li>C-c C-e h h は C-c C-e h では？ 1
+</li>
 
-<li>授業時間はもっと長く必要 1</li>
+<li>授業時間はもっと長く必要 1
+</li>
 </ul>
 </div>
-</div>
+</li>
 
-<div id="outline-container-orgheadline138" class="outline-3">
-<h3 id="orgheadline138"><span class="section-number-3">13.3</span> suzukiから 2015</h3>
-<div class="outline-text-3" id="text-13-3">
+<li><a id="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5" name="sec-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5"></a>suzukiから 2015<br  /><div class="outline-text-32" id="text-1-17-1-2-1-5-1-5-1-5-1-2-1-4-1-2-10-1-5">
 <ul class="org-ul">
 <li>早すぎる。
 <ul class="org-ul">
-<li>初回は，方向づけだったので，理解できたかは確認しませんでした。</li>
-</ul></li>
+<li>初回は，方向づけだったので，理解できたかは確認しませんでした。
+</li>
+</ul>
+</li>
 
 <li>つまづくと追いつけない。
 <ul class="org-ul">
 <li>作業のあとは，時間を取るよう気をつけます。時間がたりないときは，声
-をかけて下さい。</li>
-</ul></li>
+をかけて下さい。
+</li>
+</ul>
+</li>
 
 <li>しゃべるだけではだめ，書いてください。
 
@@ -2877,34 +3017,40 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
 <li>はい。
 
 <ul class="org-ul">
-<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。</li>
-<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。</li>
+<li>どこまで書くかが問題です。先生はおおまかな事柄を示し，学生が調べることも必要です。
+</li>
+<li>初回の講義では，大切なことについて，まず方向性だけを示したつもりです。
+</li>
 <li>具体的な作業については，指示を書いたつもりでしたが，ぜんぜん不足
-だったみたいですね。注意します。</li>
+だったみたいですね。注意します。
+</li>
 <li>Linux システム，シェル，emacs, emacs org-mode などに
-ついてはメモを作りましょうか。</li>
-<li><p>
-板書はできないので，講義中に emacs でメモを書きたいと思います。
+ついてはメモを作りましょうか。
+</li>
+<li>板書はできないので，講義中に emacs でメモを書きたいと思います。
 気がついたら，~suzuki/progs/lects/のあたりに書こうと思います。
-</p>
 
 <p>
 今日の講義の補足にまとめましょう。
-</p></li>
-</ul></li>
-</ul></li>
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 
 <li>ページが醜い。リンク飛びすぎ。
 
 <ul class="org-ul">
-<li>renewal しました。</li>
+<li>renewal しました。
+</li>
 
-<li>なるべくリンク少なくしました。</li>
-</ul></li>
+<li>なるべくリンク少なくしました。
+</li>
+</ul>
+</li>
 
-<li><p>
-むずかしい。
-</p>
+<li>むずかしい。
 
 <p>
 むずかしいのではなくて，知らないことが多いのです。
@@ -2923,31 +3069,60 @@ card_display_simple の解プログラムと開発ドキュメントを下記の
 <p>
 本当に，難かしいのは，設計とか，開発管理とか，など，体験を通してしか
 学べない事柄だと思います。
-</p></li>
-
-<li><p>
-emacs 覚えなきゃ
 </p>
+</li>
+
+<li>emacs 覚えなきゃ
 
 <p>
 はい是非。人生の伴侶になります。
-</p></li>
-
-<li><p>
-org-mode 便利そう
 </p>
+</li>
+
+<li>org-mode 便利そう
 
 <p>
 それはもうほんとうに。もっと早く知りたかった。
-</p></li>
+</p>
+</li>
 </ul>
+</div>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2016-11-15 火 12:16</p>
+<p class="date">Created: 2016-11-28 月 17:18</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

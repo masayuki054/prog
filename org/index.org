@@ -9,9 +9,9 @@
 
 #+include: lects/supplement.org
 
-#+include: lects/05/resume.org
+#+include: lects/06/resume.org
 
-#+include: lects/05/response.org
+# #+include: lects/06/response.org
 
 
 

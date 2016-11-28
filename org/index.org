@@ -5,7 +5,7 @@
 
 #+include: lects/announce.org 
 
-#+include: lects/06/plan.org
+#+include: lects/07/plan.org
 
 #+include: lects/supplement.org
 

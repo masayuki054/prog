@@ -1,5 +1,5 @@
 * お知らせ
-** wiki の設置
+** wiki の設置 <2016-11-28 月>
 
    github のページに，[[https://masayuki054.github.io/prog/wiki][wiki]] を設置しました。
 

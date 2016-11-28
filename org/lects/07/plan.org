@@ -1,5 +1,6 @@
-* 6回目 (11/15) の講義内容
+* 7回目 (11/29) の講義内容
 ** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
+   SCHEDULED: <2016-10-09 日>
     
    - [X] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
      - [X] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
@@ -16,11 +17,11 @@
 
 何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
 
-- [-] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
+- [X] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
 
   *テスト* とは何か, その大切さ，を理解しましょう。
 
-- [-] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+- [X] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
 
   大きな問題を，小さな機能に分け，テストにより設計しと確認し，
   段階的に，開発を進める方法を知りましょう。
@@ -31,29 +32,23 @@
 
   Cutter によるテストを体験しましょう。
 
-** Doing card_display問題のテストによる開発 [5/7] SCHEDULED: <2016-11-01 火>
+** Doing card_display問題のテストによる開発 [8/10] SCHEDULED: <2016-11-01 火>
 
     [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
 
      - [X] test_card_suit_new_from_string
      - [X] test_card_no_new_from_string
      - [X] test_card_new, suit, no
-     - [-] test_card_no_to_char, =test_card_no_to_string=
-     - [-] test_card_suit_to_char, =test_card_suit_to_string=
-     - [-] test_card_to_string
-     - [-] card_display_simple
-     - [-] card_display_multi
-     - [-] cards_sort
-     - [-] card_display_sort
+     - [X] test_card_no_to_char, =test_card_no_to_string=
+     - [X] test_card_suit_to_char, =test_card_suit_to_string=
+     - [X] test_card_to_string
+     - [X] card_display_simple
+     - [ ] card_display_multi
+     - [-] cards_sort <2016-11-28 月>
+     - [-] card_display_sort <2016-11-28 月>
 
+** [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]]  
 
-
-
-
-** 次回
-
-    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] の残りを終えて，
-    
     ポーカーゲームに入り，カードモジュールの作成をやろうと思っています。
   
 ** ((:-s)) のつぶやき [/]

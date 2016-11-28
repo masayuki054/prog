@@ -3,7 +3,7 @@
 "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-08 火 10:56 -->
+<!-- 2016-11-29 火 03:51 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>カード表示問題のテストによる開発</title>
@@ -154,28 +154,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -2171,7 +2149,19 @@ test/test_card.cは次のようになります:
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 void
 test_card_suit_new_from_string(void)
 {
@@ -2192,7 +2182,21 @@ test_card_no_new_from_string(void)
   cut_assert(card_no_new_from_string("11")==JACK);
   cut_assert(card_no_new_from_string("10")==10);
 }
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -2203,7 +2207,22 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 void
 test_card_new(void)
 {
@@ -2221,10 +2240,37 @@ test_card_new(void)
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
@@ -2244,6 +2290,19 @@ test/Makefile の目的は変わっていませんので，Makefile の更新の
 <div class="org-src-container">
 
 <pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+# test/Makefile
 .PHONY: clean
 CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
 LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
@@ -2376,10 +2435,18 @@ src/card.h に移します。
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
@@ -2389,7 +2456,54 @@ struct _Card {
   enum e_Suit suit;
   enum e_No no;
 };
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
 typedef struct _Card Card;
 
 enum e_Suit card_suit(Card);
@@ -2406,7 +2520,19 @@ test/test_card.c は次のようになります：
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 void
 test_card_suit_new_from_string(void)
 {
@@ -2427,7 +2553,27 @@ test_card_no_new_from_string(void)
   cut_assert(card_no_new_from_string("11")==JACK);
   cut_assert(card_no_new_from_string("10")==10);
 }
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 void
 test_card_new(void)
 {
@@ -2469,6 +2615,15 @@ card_new(enum e_Suit suit, enum e_No no)
   new.no = no;
   return new;
 }
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
 </pre>
 </div>
 </div>
@@ -2491,6 +2646,11 @@ card_new(enum e_Suit suit, enum e_No no)
 <div class="org-src-container">
 
 <pre class="src src-c">enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
+enum e_Suit
 card_suit(Card c)
 {
   return c.suit;
@@ -2520,6 +2680,11 @@ card_no(Card c)
 {
   return c.no;
 }
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
 </pre>
 </div>
 </div>
@@ -2539,7 +2704,25 @@ card_no(Card c)
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
 # include &lt;card.h&gt;
+// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
 
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
 enum e_Suit
 card_suit_new_from_string(char *suit_str)
 {
@@ -2567,7 +2750,29 @@ card_no_new_from_string(char *no_str)
     };
   return (enum e_No)no;
 }
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
 
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO &amp;&amp; ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No)no;
+}
+
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
 Card
 card_new(enum e_Suit suit, enum e_No no)
 {
@@ -2583,7 +2788,17 @@ card_suit(Card c)
 {
   return c.suit;
 }
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
 
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
 enum e_No
 card_no(Card c)
 {
@@ -2603,6 +2818,21 @@ src/Makefileに変更はありません。
 <div class="org-src-container">
 
 <pre class="src src-c"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+
+# src/Makefile 
 .PHONY: clean
 CFLAGS = -g -c -fPIC -I. 
 LDFLAGS = -lc
@@ -2853,8 +3083,7 @@ card_no_new_from_string や card_new の開発をまねして，
 </p>
 
 <p>
-開発の過程を，ドキュメントとしてまとめ，レポート提出
-してください。
+<code>開発の過程をドキュメントとしてまとめ</code> <code>レポート提出してください</code> 。
 </p>
 </div>
 </div>
@@ -2907,6 +3136,18 @@ test_card_to_string(void)
     cut_assert(strcmp(card_to_string(sa), "SA")==0);
   }
 }
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
 </pre>
 </div>
 </div>
@@ -2926,6 +3167,7 @@ card_to_string を関数の形で書けたので，関数の型を決めます�
 <div class="org-src-container">
 
 <pre class="src src-c">char *card_to_string(Card);
+char *card_to_string(Card);
 </pre>
 </div>
 </div>
@@ -2943,6 +3185,9 @@ test/test_card.cは次のようになります:
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
 void
 test_card_suit_new_from_string(void)
@@ -2953,7 +3198,26 @@ test_card_suit_new_from_string(void)
   cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
   cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
 }
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 void
 test_card_no_new_from_string(void)
 {
@@ -2975,8 +3239,31 @@ test_card_new(void)
     cut_assert(card_no(sa)==ACE);
   }
 }
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
 
 char *card_to_string(Card);
+char *card_to_string(Card);
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
+  }
+}
 
 
 void
@@ -2996,10 +3283,18 @@ test_card_to_string(void)
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
@@ -3009,7 +3304,54 @@ struct _Card {
   enum e_Suit suit;
   enum e_No no;
 };
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
 typedef struct _Card Card;
 
 enum e_Suit card_suit(Card);
@@ -3030,6 +3372,19 @@ test/Makefile の目的は変わっていませんので，Makefile の更新の
 <div class="org-src-container">
 
 <pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+test_card.so: test_card.o
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+# test/Makefile
 .PHONY: clean
 CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
 LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
@@ -3166,7 +3521,11 @@ src/card.h に移します。
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
 
@@ -3174,7 +3533,15 @@ enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
 enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -3185,7 +3552,54 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
+char *card_to_string(Card);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
 char *card_to_string(Card);
 </pre>
 </div>
@@ -3198,7 +3612,19 @@ test/test_card.c は次のようになります：
 <pre class="src src-c">// test/test_card.c
 # include &lt;cutter.h&gt;
 # include &lt;card.h&gt;
+// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
 
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
 void
 test_card_suit_new_from_string(void)
 {
@@ -3219,6 +3645,16 @@ test_card_no_new_from_string(void)
   cut_assert(card_no_new_from_string("11")==JACK);
   cut_assert(card_no_new_from_string("10")==10);
 }
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
 
 void
 test_card_new(void)
@@ -3228,6 +3664,28 @@ test_card_new(void)
     Card sa = card_new(SPADE,ACE);
     cut_assert(card_suit(sa)==SPADE);
     cut_assert(card_no(sa)==ACE);
+  }
+}
+void
+test_card_new(void)
+{
+   cut_set_message("スーツと番号からカードを作成");
+  {
+    Card sa = card_new(SPADE,ACE);
+    cut_assert(card_suit(sa)==SPADE);
+    cut_assert(card_no(sa)==ACE);
+  }
+}
+
+
+void
+test_card_to_string(void)
+{
+  cut_set_message("カードを文字列にする");
+  {
+    Card sa = card_new(SPADE,ACE);
+
+    cut_assert(strcmp(card_to_string(sa), "SA")==0);
   }
 }
 
@@ -3283,6 +3741,14 @@ card_suit_to_char(enum e_Suit suit)
 {
   return SuitChars[suit];
 }
+
+static char SuitChars[] =
+  {'*', 'C', 'D', 'H', 'S'};
+char 
+card_suit_to_char(enum e_Suit suit)
+{
+  return SuitChars[suit];
+}
 </pre>
 </div>
 
@@ -3308,6 +3774,16 @@ card_suit_to_char(enum e_Suit suit)
 <div class="org-src-container">
 
 <pre class="src src-c">static char NoChars[] =
+  {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
+   '0', 'J', 'Q', 'K', 'A'};
+char
+card_no_to_char(enum e_No no)
+{
+  return NoChars[no];
+}
+
+
+static char NoChars[] =
   {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
    '0', 'J', 'Q', 'K', 'A'};
 char
@@ -3344,6 +3820,22 @@ card_to_string(Card c)
 
   return s;
 }
+
+char card_suit_to_char(enum e_Suit);
+char card_no_to_char(enum e_No);
+char *
+card_to_string(Card c)
+{
+  char suit = card_suit_to_char(card_suit(c));
+  char no = card_no_to_char(card_no(c));
+  char *s = (char *) malloc(3);
+
+  s[0] = suit;
+  s[1] = no;
+  s[2] = '\0';
+
+  return s;
+}
 </pre>
 </div>
 </div>
@@ -3363,7 +3855,25 @@ card_to_string(Card c)
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
 # include &lt;card.h&gt;
+// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
 
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
 enum e_Suit
 card_suit_new_from_string(char *suit_str)
 {
@@ -3391,7 +3901,29 @@ card_no_new_from_string(char *no_str)
     };
   return (enum e_No)no;
 }
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
 
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO &amp;&amp; ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No)no;
+}
+
+Card
+card_new(enum e_Suit suit, enum e_No no)
+{
+  Card new;
+
+  new.suit = suit;
+  new.no = no;
+  return new;
+}
 Card
 card_new(enum e_Suit suit, enum e_No no)
 {
@@ -3407,13 +3939,39 @@ card_suit(Card c)
 {
   return c.suit;
 }
+enum e_Suit
+card_suit(Card c)
+{
+  return c.suit;
+}
 
 enum e_No
 card_no(Card c)
 {
   return c.no;
 }
+enum e_No
+card_no(Card c)
+{
+  return c.no;
+}
 
+
+char card_suit_to_char(enum e_Suit);
+char card_no_to_char(enum e_No);
+char *
+card_to_string(Card c)
+{
+  char suit = card_suit_to_char(card_suit(c));
+  char no = card_no_to_char(card_no(c));
+  char *s = (char *) malloc(3);
+
+  s[0] = suit;
+  s[1] = no;
+  s[2] = '\0';
+
+  return s;
+}
 
 char card_suit_to_char(enum e_Suit);
 char card_no_to_char(enum e_No);
@@ -3440,6 +3998,24 @@ card_suit_to_char(enum e_Suit suit)
   return SuitChars[suit];
 }
 
+static char SuitChars[] =
+  {'*', 'C', 'D', 'H', 'S'};
+char 
+card_suit_to_char(enum e_Suit suit)
+{
+  return SuitChars[suit];
+}
+
+
+static char NoChars[] =
+  {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
+   '0', 'J', 'Q', 'K', 'A'};
+char
+card_no_to_char(enum e_No no)
+{
+  return NoChars[no];
+}
+
 
 static char NoChars[] =
   {'.', '*', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -3463,6 +4039,21 @@ src/Makefileに変更はありません。
 <div class="org-src-container">
 
 <pre class="src src-c"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+
+# src/Makefile 
 .PHONY: clean
 CFLAGS = -g -c -fPIC -I. 
 LDFLAGS = -lc
@@ -3660,9 +4251,10 @@ Finished in 0.001416 seconds (total: 0.000282 seconds)
 <h2 id="orgheadline79"><span class="section-number-2">11</span> card_display_simple 問題の解の作成</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
-<li>~/progs/card_display/simple/ に，</li>
+<li>~/progs/card_display/simple/ <code>に，</code></li>
 
-<li>作成した src/libcard.a を利用し，</li>
+<li>作成した src/libcard.a <code>を利用し，</code> 
+    の中で提供した関数を利用し，</li>
 
 <li>card_display_simple.c を作成し，</li>
 
@@ -3676,7 +4268,8 @@ Finished in 0.001416 seconds (total: 0.000282 seconds)
 <h2 id="orgheadline80"><span class="section-number-2">12</span> card_display_multi</h2>
 <div class="outline-text-2" id="text-12">
 <p>
-Card cards\[5\]; を使ってみる。
+<code>Card cards[5];</code> を使って, card_display_simple.c
+を書き換えてみましょう。ごく自然にできるはずです。
 </p>
 </div>
 </div>
@@ -3768,6 +4361,7 @@ Card *cards_sort(Card *, int)
 <div class="org-src-container">
 
 <pre class="src src-c">Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
 </pre>
 </div>
 </div>
@@ -3813,7 +4407,15 @@ sorted_cards = cards_sort(cards, 5);
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card test_cards[5];
+{
+  test_cards[0] = card_new(SPADE,ACE);
+  test_cards[1] = card_new(HEART,ACE);
+  test_cards[2] = card_new(CLUB,2);
+  test_cards[3] = card_new(DIAMOND,10);
+  test_cards[4] = card_new(SPADE,2);
+}
+</pre>
 </div>
 
 <p>
@@ -3831,7 +4433,15 @@ sorted_cards = cards_sort(cards, 5);
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card expected_cards[5];
+{
+  expected_cards[4] = card_new(SPADE,ACE);
+  expected_cards[3] = card_new(HEART,ACE);
+  expected_cards[2] = card_new(DIAMOND,10);
+  expected_cards[1] = card_new(SPADE,2);
+  expected_cards[0] = card_new(CLUB,2);
+}
+</pre>
 </div>
 
 
@@ -3901,6 +4511,7 @@ card_compare の宣言は次となります:
 <div class="org-src-container">
 
 <pre class="src src-c">int card_compare(Card, Card);
+int card_compare(Card, Card);
 </pre>
 </div>
 
@@ -3933,8 +4544,46 @@ test/test_sort.cは次のようになります:
 
 <div class="org-src-container">
 
-<pre class="src src-c">int card_compare(Card, Card);
+<pre class="src src-c">// test/test_sort.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+int card_compare(Card, Card);
+int card_compare(Card, Card);
 Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
+void
+test_cards_sort(void)
+{
+  Card test_cards[5];
+  {
+    test_cards[0] = card_new(SPADE,ACE);
+    test_cards[1] = card_new(HEART,ACE);
+    test_cards[2] = card_new(CLUB,2);
+    test_cards[3] = card_new(DIAMOND,10);
+    test_cards[4] = card_new(SPADE,2);
+  }
+
+  Card expected_cards[5];
+  {
+    expected_cards[4] = card_new(SPADE,ACE);
+    expected_cards[3] = card_new(HEART,ACE);
+    expected_cards[2] = card_new(DIAMOND,10);
+    expected_cards[1] = card_new(SPADE,2);
+    expected_cards[0] = card_new(CLUB,2);
+  }
+
+  Card *cards, *sorted_cards;
+  {
+    cards = test_cards; // 2015.12.08 fixed
+    sorted_cards = cards_sort(cards, 5);
+  }
+
+  int i;
+  for (i=0; i&lt;5; i++)
+    {
+      cut_assert(card_compare(expected_cards[i], sorted_cards[i])==0 );
+    }
+}
 </pre>
 </div>
 </div>
@@ -3951,6 +4600,27 @@ test/Makefile の目的は変わりました。Makefile を更新します:
 <div class="org-src-container">
 
 <pre class="src src-c"># test/Makefile
+.PHONY: clean
+CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
+LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
+
+all: test_card.so test_sort.so
+
+test_card.so: test_card.o 
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_card.o: test_card.c
+	gcc -c $&lt; $(CFLAGS)
+
+test_sort.so: test_sort.o 
+	gcc -o $@ --shared $^ $(LDFLAGS)
+
+test_sort.o: test_sort.c
+	gcc -c $&lt; $(CFLAGS)
+
+clean:
+	rm -f *.o *.so *~ \#* *.gch
+# test/Makefile
 .PHONY: clean
 CFLAGS = -fPIC -I../src `pkg-config cutter --cflags`
 LDFLAGS = -L../src/ -lcard `pkg-config cutter --libs`
@@ -4054,7 +4724,11 @@ src/card.h に移します。
 
 <pre class="src src-c">// src/card.h
 # include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
 
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
 enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
 enum e_Suit card_suit_new_from_string(char *);
 
@@ -4062,7 +4736,15 @@ enum e_No { TWO=2, THREE, FOUR, FIVE,
 	    SIX, SEVEN, EIGHT, NINE, TEN,
 	    JACK, QUEEN, KING, ACE};
 enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
 
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
 struct _Card {
   enum e_Suit suit;
   enum e_No no;
@@ -4073,10 +4755,64 @@ typedef struct _Card Card;
 enum e_Suit card_suit(Card);
 enum e_No card_no(Card);
 Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
 
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
 char *card_to_string(Card);
 
 int card_compare(Card, Card);
+int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
+// src/card.h
+# include &lt;string.h&gt;
+// src/card.h
+# include &lt;string.h&gt;
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+struct _Card {
+  enum e_Suit suit;
+  enum e_No no;
+};
+
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+typedef struct _Card Card;
+
+enum e_Suit card_suit(Card);
+enum e_No card_no(Card);
+Card card_new(enum e_Suit, enum e_No);
+
+char *card_to_string(Card);
+char *card_to_string(Card);
+
+int card_compare(Card, Card);
+int card_compare(Card, Card);
+Card *cards_sort(Card *, int);
 Card *cards_sort(Card *, int);
 </pre>
 </div>
@@ -4097,6 +4833,7 @@ cards_sort関数の使い方は決まっています。
 <div class="org-src-container">
 
 <pre class="src src-c">Card *cards_sort(Card *, int);
+Card *cards_sort(Card *, int);
 </pre>
 </div>
 
@@ -4115,7 +4852,31 @@ cards_sort関数の使い方は決まっています。
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card *                                                                                         
+cards_sort(Card *cards, int no_of_cards)
+{
+  int i;
+  Card *pos;
+
+  for(pos=cards, i=0; i&lt;no_of_cards; i++, pos++)
+    {
+      Card *cur;
+      int j;
+
+      for(j=i+1,cur=pos+1; j&lt;no_of_cards; j++, cur++)
+	{
+//        if (card_compare(*pos,*cur)&lt;=0)  2015.12.08 fixed
+	  if (card_compare(*pos,*cur)&gt;=0)
+	    {
+	      Card temp = *pos;
+	      *pos = *cur;
+	      *cur = temp;
+	    }
+	}
+    }
+  return cards;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -4130,6 +4891,7 @@ card_compare の使い方も決まっています:
 <div class="org-src-container">
 
 <pre class="src src-c">int card_compare(Card, Card);
+int card_compare(Card, Card);
 </pre>
 </div>
 
@@ -4139,7 +4901,20 @@ card_compare の使い方も決まっています:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">int
+card_compare(Card a, Card b)
+{
+  if (card_no(a)&gt;card_no(b))
+    return 1;
+  if (card_no(a)&lt;card_no(b))
+    return -1;
+  if (card_suit(a)&gt;card_suit(b))
+    return 1;
+  if (card_suit(a)&lt;card_suit(b))
+    return -1;
+  return 0;
+}
+</pre>
 </div>
 </div>
 </div>
@@ -4154,6 +4929,50 @@ card_compare の使い方も決まっています:
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
 # include &lt;card.h&gt;
+// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdlib.h&gt;
+# include &lt;card.h&gt;
+
+int
+card_compare(Card a, Card b)
+{
+  if (card_no(a)&gt;card_no(b))
+    return 1;
+  if (card_no(a)&lt;card_no(b))
+    return -1;
+  if (card_suit(a)&gt;card_suit(b))
+    return 1;
+  if (card_suit(a)&lt;card_suit(b))
+    return -1;
+  return 0;
+}
+
+Card *                                                                                         
+cards_sort(Card *cards, int no_of_cards)
+{
+  int i;
+  Card *pos;
+
+  for(pos=cards, i=0; i&lt;no_of_cards; i++, pos++)
+    {
+      Card *cur;
+      int j;
+
+      for(j=i+1,cur=pos+1; j&lt;no_of_cards; j++, cur++)
+	{
+//        if (card_compare(*pos,*cur)&lt;=0)  2015.12.08 fixed
+	  if (card_compare(*pos,*cur)&gt;=0)
+	    {
+	      Card temp = *pos;
+	      *pos = *cur;
+	      *cur = temp;
+	    }
+	}
+    }
+  return cards;
+}
 </pre>
 </div>
 </div>
@@ -4170,6 +4989,25 @@ libcard.a を作る時，cards.o も取り込むように規則を変更しま�
 <div class="org-src-container">
 
 <pre class="src src-c"># src/Makefile 
+.PHONY: clean
+CFLAGS = -g -c -fPIC -I. 
+LDFLAGS = -lc
+
+libcard.a: card.o cards.o
+	rm -f $@
+	ar r $@ $^
+
+card.o: card.c card.h
+	gcc $&lt; $(CFLAGS)
+
+# (2015.12.08) cards.o: cards.o card.h 
+cards.o: cards.c card.h 
+	gcc $&lt; $(CFLAGS)
+
+clean: 
+	rm -f *.o *.so *~ \#* *.gch
+
+# src/Makefile 
 .PHONY: clean
 CFLAGS = -g -c -fPIC -I. 
 LDFLAGS = -lc
@@ -4319,7 +5157,7 @@ cutter -v v test
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: m</p>
-<p class="date">Created: 2016-11-08 火 10:56</p>
+<p class="date">Created: 2016-11-29 火 03:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

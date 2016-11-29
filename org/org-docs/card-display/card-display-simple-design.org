@@ -1,5 +1,5 @@
 # origin: COMM/Lects/prog/srcs/CardDisplay/card_display_simple.org
-# Time-stamp: <2015-12-05 17:41:57 m>
+# Time-stamp: <2016-11-28 21:03:54 m>
 
 * card_display_simple 問題
 
@@ -218,7 +218,7 @@ main(int argc, char *argv[])
 この設計変更を受け入れれば，card_new_from_string を開発することになり
 ます。
 
-* card_display_sort (準備中@<2015-12-01 火>)
+* card_display_sort 
 
 ** 複数のカードをソートする機能
 

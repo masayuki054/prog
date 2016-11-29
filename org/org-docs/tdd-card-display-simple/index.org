@@ -1,4 +1,4 @@
-#+Time-stamp: <2015-12-15 09:25:14 suzuki>
+open #+Time-stamp: <2016-11-28 22:41:39 m>
 #+SETUPFILE: ~/COMM/public_html/org-html-theme/index-bigblow-header.setup
 #+include: ~/COMM/Lects/prog/site/info/common-header.org
 

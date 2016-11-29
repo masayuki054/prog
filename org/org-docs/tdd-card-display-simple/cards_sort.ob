@@ -1,11 +1,11 @@
 # * カードのソート
 
-#+babel_include: Makefile.org
-#+babel_include: card.h.org
-#+babel_include: test_card.c.org
-#+babel_include: test_sort.c.org
-#+babel_include: card.c.org
-#+babel_include: cards.c.org
+# #+babel_include: Makefile.org
+# #+babel_include: card.h.org
+# #+babel_include: test_card.c.org
+# #+babel_include: test_sort.c.org
+# #+babel_include: card.c.org
+# #+babel_include: cards.c.org
 
 #+BEGIN_SRC sh :exports none
 rm -rf babel/simple/cards_sort/Makefile babel/simple/cards_sort/test babel/simple/cards_sort/src
@@ -39,11 +39,6 @@ mkdir -p babel/simple/cards_sort/src babel/simple/cards_sort/test
 <<test_card.c#no_new>>
 <<test_card.c#card_new>>
 #+END_SRC
-
-** Doing checks [1/3]
-   - [X] document structure check
-   - [ ] tangle check
-   - [ ] shell check
 
 ** 複数のカードをソートする機能
 

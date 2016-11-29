@@ -1,6 +1,14 @@
-# Time-stamp: <2016-11-15 10:33:54 m>
+# Time-stamp: <2016-11-29 04:05:26 m>
 #+startup: overview
 #+options: ^:{}
+
+#+include: Makefile.org
+#+include: card.h.org
+#+include: test_card.c.org
+#+include: test_sort.c.org
+#+include: card.c.org
+#+include: cards.c.org
+
 
 * はじめに
 
@@ -148,7 +156,8 @@
 
 * card_display_multi
 
-  Card cards[5]; を使ってみる。
+  =Card cards[5];= を使って, card_display_simple.c
+  を書き換えてみましょう。ごく自然にできるはずです。
 
 * card_display_sort 
 #+include: cards_sort.org

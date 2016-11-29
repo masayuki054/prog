@@ -1,4 +1,15 @@
 * 7回目 (11/29) の講義内容
+
+** 今日の予定
+
+   [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
+   - [ ] cards_sort 機能の開発
+   - [ ] card_display_sort.c の作成 
+
+   [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]] に入り，
+   - [ ] カードモジュールの作成 
+    
+
 ** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
    SCHEDULED: <2016-10-09 日>
     
@@ -43,7 +54,7 @@
      - [X] test_card_suit_to_char, =test_card_suit_to_string=
      - [X] test_card_to_string
      - [X] card_display_simple
-     - [ ] card_display_multi
+     - [ ] card_display_multi 自分でやって
      - [-] cards_sort <2016-11-28 月>
      - [-] card_display_sort <2016-11-28 月>
 

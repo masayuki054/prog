@@ -3,7 +3,7 @@
 "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-11-08 火 10:56 -->
+<!-- 2016-11-29 火 04:12 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>カード表示問題のテストによる開発</title>
@@ -154,28 +154,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -315,34 +293,33 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgheadline79">11. card_display_simple 問題の解の作成</a></li>
 <li><a href="#orgheadline80">12. card_display_multi</a></li>
-<li><a href="#orgheadline100">13. card_display_sort</a>
+<li><a href="#orgheadline99">13. card_display_sort</a>
 <ul>
-<li><a href="#orgheadline81">13.1. Doing checks <code>[1/3]</code></a></li>
-<li><a href="#orgheadline82">13.2. 複数のカードをソートする機能</a></li>
-<li><a href="#orgheadline87">13.3. 機能の追加とテストの作成</a>
+<li><a href="#orgheadline81">13.1. 複数のカードをソートする機能</a></li>
+<li><a href="#orgheadline86">13.2. 機能の追加とテストの作成</a>
 <ul>
-<li><a href="#orgheadline83">cards_sort のテストを書く</a></li>
-<li><a href="#orgheadline84">テスト全体プログラムの確認</a></li>
-<li><a href="#orgheadline85">test/Makefile の確認</a></li>
-<li><a href="#orgheadline86">test/test_sort.o の作成</a></li>
+<li><a href="#orgheadline82">cards_sort のテストを書く</a></li>
+<li><a href="#orgheadline83">テスト全体プログラムの確認</a></li>
+<li><a href="#orgheadline84">test/Makefile の確認</a></li>
+<li><a href="#orgheadline85">test/test_sort.o の作成</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline95">13.4. cards_sort，card_compare の実装</a>
+<li><a href="#orgheadline94">13.3. cards_sort，card_compare の実装</a>
 <ul>
-<li><a href="#orgheadline88">card/card.h の更新</a></li>
-<li><a href="#orgheadline89">cards_sort の実装 (src/cards.cの作成)</a></li>
-<li><a href="#orgheadline90">card_compare の実装</a></li>
-<li><a href="#orgheadline91">cards.c の確認</a></li>
-<li><a href="#orgheadline92">src/Makefile</a></li>
-<li><a href="#orgheadline93">src/cards.o の作成</a></li>
-<li><a href="#orgheadline94">src/libcard.a の作成</a></li>
+<li><a href="#orgheadline87">card/card.h の更新</a></li>
+<li><a href="#orgheadline88">cards_sort の実装 (src/cards.cの作成)</a></li>
+<li><a href="#orgheadline89">card_compare の実装</a></li>
+<li><a href="#orgheadline90">cards.c の確認</a></li>
+<li><a href="#orgheadline91">src/Makefile</a></li>
+<li><a href="#orgheadline92">src/cards.o の作成</a></li>
+<li><a href="#orgheadline93">src/libcard.a の作成</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline99">13.5. テスト</a>
+<li><a href="#orgheadline98">13.4. テスト</a>
 <ul>
-<li><a href="#orgheadline96">test/test_sort.so のビルド</a></li>
-<li><a href="#orgheadline97">テストの実行</a></li>
-<li><a href="#orgheadline98">テストと再設計</a></li>
+<li><a href="#orgheadline95">test/test_sort.so のビルド</a></li>
+<li><a href="#orgheadline96">テストの実行</a></li>
+<li><a href="#orgheadline97">テストと再設計</a></li>
 </ul>
 </li>
 </ul>
@@ -2853,8 +2830,7 @@ card_no_new_from_string や card_new の開発をまねして，
 </p>
 
 <p>
-開発の過程を，ドキュメントとしてまとめ，レポート提出
-してください。
+<code>開発の過程をドキュメントとしてまとめ</code> <code>レポート提出してください</code> 。
 </p>
 </div>
 </div>
@@ -3062,11 +3038,6 @@ make test_card.o
 </pre>
 </div>
 
-<pre class="example">
-gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
-</pre>
-
-
 <p>
 test_card.o ができれば，ひとまず，成功です。
 </p>
@@ -3087,40 +3058,6 @@ test_card.o ができれば，ひとまず，成功です。
 nm test_card.o
 </pre>
 </div>
-
-<pre class="example">
-		 U _GLOBAL_OFFSET_TABLE_
-0000000000000540 r __PRETTY_FUNCTION__.3268
-0000000000000560 r __PRETTY_FUNCTION__.3284
-000000000000057d r __PRETTY_FUNCTION__.3304
-0000000000000590 r __PRETTY_FUNCTION__.3317
-		 U _setjmp
-		 U card_new
-		 U card_no
-		 U card_no_new_from_string
-		 U card_suit
-		 U card_suit_new_from_string
-		 U card_to_string
-		 U cut_assert_helper
-		 U cut_assert_true_helper
-		 U cut_test_context_current_peek
-		 U cut_test_context_finish_user_message_jump
-		 U cut_test_context_get_have_current_result
-		 U cut_test_context_get_jump_buffer
-		 U cut_test_context_in_user_message_jump
-		 U cut_test_context_long_jump
-		 U cut_test_context_pop_backtrace
-		 U cut_test_context_process_current_result
-		 U cut_test_context_push_backtrace
-		 U cut_test_context_set_jump_buffer
-		 U cut_test_context_set_user_message
-		 U cut_test_context_start_user_message_jump
-		 U strcmp
-0000000000000a1b T test_card_new
-0000000000000482 T test_card_no_new_from_string
-0000000000000000 T test_card_suit_new_from_string
-0000000000000c8b T test_card_to_string
-</pre>
 
 <p>
 card_to_stringが未定義で，
@@ -3542,20 +3479,14 @@ nm libcard.a
 
 <pre class="example">
 card.o:
-0000000000000005 d NoChars
-0000000000000000 d SuitChars
                  U _GLOBAL_OFFSET_TABLE_
                  U atoi
 00000000000000e6 T card_new
 000000000000010f T card_no
 000000000000008b T card_no_new_from_string
-00000000000001a2 T card_no_to_char
 0000000000000102 T card_suit
 0000000000000000 T card_suit_new_from_string
-000000000000018b T card_suit_to_char
-000000000000011c T card_to_string
                  U fprintf
-                 U malloc
                  U stderr
                  U strcmp
 </pre>
@@ -3586,12 +3517,6 @@ make test_card.so
 </pre>
 </div>
 
-<pre class="example">
-rm -f *.o *.so *~ \#* *.gch
-gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
-gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
-</pre>
-
 
 <p>
 test/test_card.so ができればテストの実行に移ります。
@@ -3617,19 +3542,6 @@ test/test_card.so ができればテストの実行に移ります。
 cutter -v v test
 </pre>
 </div>
-
-<pre class="example">
-test_card:
-  test_card_to_string:					.: (0.000067)
-  test_card_new:					.: (0.000044)
-  test_card_suit_new_from_string:			.: (0.000078)
-  test_card_no_new_from_string:				.: (0.000093)
-
-Finished in 0.001416 seconds (total: 0.000282 seconds)
-
-4 test(s), 12 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
-100% passed
-</pre>
 </div>
 </div>
 
@@ -3660,9 +3572,10 @@ Finished in 0.001416 seconds (total: 0.000282 seconds)
 <h2 id="orgheadline79"><span class="section-number-2">11</span> card_display_simple 問題の解の作成</h2>
 <div class="outline-text-2" id="text-11">
 <ul class="org-ul">
-<li>~/progs/card_display/simple/ に，</li>
+<li>~/progs/card_display/simple/ <code>に，</code></li>
 
-<li>作成した src/libcard.a を利用し，</li>
+<li>作成した src/libcard.a <code>を利用し，</code> 
+    の中で提供した関数を利用し，</li>
 
 <li>card_display_simple.c を作成し，</li>
 
@@ -3676,28 +3589,18 @@ Finished in 0.001416 seconds (total: 0.000282 seconds)
 <h2 id="orgheadline80"><span class="section-number-2">12</span> card_display_multi</h2>
 <div class="outline-text-2" id="text-12">
 <p>
-Card cards\[5\]; を使ってみる。
+<code>Card cards[5];</code> を使って, card_display_simple.c
+を書き換えてみましょう。ごく自然にできるはずです。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline100" class="outline-2">
-<h2 id="orgheadline100"><span class="section-number-2">13</span> card_display_sort</h2>
+<div id="outline-container-orgheadline99" class="outline-2">
+<h2 id="orgheadline99"><span class="section-number-2">13</span> card_display_sort</h2>
 <div class="outline-text-2" id="text-13">
 </div><div id="outline-container-orgheadline81" class="outline-3">
-<h3 id="orgheadline81"><span class="section-number-3">13.1</span> Doing checks <code>[1/3]</code></h3>
+<h3 id="orgheadline81"><span class="section-number-3">13.1</span> 複数のカードをソートする機能</h3>
 <div class="outline-text-3" id="text-13-1">
-<ul class="org-ul">
-<li class="on"><code>[X]</code> document structure check</li>
-<li class="off"><code>[&#xa0;]</code> tangle check</li>
-<li class="off"><code>[&#xa0;]</code> shell check</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline82" class="outline-3">
-<h3 id="orgheadline82"><span class="section-number-3">13.2</span> 複数のカードをソートする機能</h3>
-<div class="outline-text-3" id="text-13-2">
 <p>
 複数のカードを <b>Card型配列へのポインタ</b> で表すことにする:
 </p>
@@ -3773,17 +3676,17 @@ Card *cards_sort(Card *, int)
 </div>
 </div>
 
-<div id="outline-container-orgheadline87" class="outline-3">
-<h3 id="orgheadline87"><span class="section-number-3">13.3</span> 機能の追加とテストの作成</h3>
-<div class="outline-text-3" id="text-13-3">
+<div id="outline-container-orgheadline86" class="outline-3">
+<h3 id="orgheadline86"><span class="section-number-3">13.2</span> 機能の追加とテストの作成</h3>
+<div class="outline-text-3" id="text-13-2">
 <p>
 カードを作る機能のテストは，test/test_sort.c を新たに作成することにします。
 </p>
 </div>
 
-<div id="outline-container-orgheadline83" class="outline-4">
-<h4 id="orgheadline83">cards_sort のテストを書く</h4>
-<div class="outline-text-4" id="text-orgheadline83">
+<div id="outline-container-orgheadline82" class="outline-4">
+<h4 id="orgheadline82">cards_sort のテストを書く</h4>
+<div class="outline-text-4" id="text-orgheadline82">
 <p>
 機能の名前を cards_sort とし, cards_sortが満たすテストを書きます。
 </p>
@@ -3813,7 +3716,15 @@ sorted_cards = cards_sort(cards, 5);
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card test_cards[5];
+{
+  test_cards[0] = card_new(SPADE,ACE);
+  test_cards[1] = card_new(HEART,ACE);
+  test_cards[2] = card_new(CLUB,2);
+  test_cards[3] = card_new(DIAMOND,10);
+  test_cards[4] = card_new(SPADE,2);
+}
+</pre>
 </div>
 
 <p>
@@ -3831,7 +3742,15 @@ sorted_cards = cards_sort(cards, 5);
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card expected_cards[5];
+{
+  expected_cards[4] = card_new(SPADE,ACE);
+  expected_cards[3] = card_new(HEART,ACE);
+  expected_cards[2] = card_new(DIAMOND,10);
+  expected_cards[1] = card_new(SPADE,2);
+  expected_cards[0] = card_new(CLUB,2);
+}
+</pre>
 </div>
 
 
@@ -3924,25 +3843,61 @@ card_compare の宣言は次となります:
 </div>
 </div>
 
-<div id="outline-container-orgheadline84" class="outline-4">
-<h4 id="orgheadline84">テスト全体プログラムの確認</h4>
-<div class="outline-text-4" id="text-orgheadline84">
+<div id="outline-container-orgheadline83" class="outline-4">
+<h4 id="orgheadline83">テスト全体プログラムの確認</h4>
+<div class="outline-text-4" id="text-orgheadline83">
 <p>
 test/test_sort.cは次のようになります:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-c">int card_compare(Card, Card);
+<pre class="src src-c">// test/test_sort.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+int card_compare(Card, Card);
 Card *cards_sort(Card *, int);
+void
+test_cards_sort(void)
+{
+  Card test_cards[5];
+  {
+    test_cards[0] = card_new(SPADE,ACE);
+    test_cards[1] = card_new(HEART,ACE);
+    test_cards[2] = card_new(CLUB,2);
+    test_cards[3] = card_new(DIAMOND,10);
+    test_cards[4] = card_new(SPADE,2);
+  }
+
+  Card expected_cards[5];
+  {
+    expected_cards[4] = card_new(SPADE,ACE);
+    expected_cards[3] = card_new(HEART,ACE);
+    expected_cards[2] = card_new(DIAMOND,10);
+    expected_cards[1] = card_new(SPADE,2);
+    expected_cards[0] = card_new(CLUB,2);
+  }
+
+  Card *cards, *sorted_cards;
+  {
+    cards = test_cards; // 2015.12.08 fixed
+    sorted_cards = cards_sort(cards, 5);
+  }
+
+  int i;
+  for (i=0; i&lt;5; i++)
+    {
+      cut_assert(card_compare(expected_cards[i], sorted_cards[i])==0 );
+    }
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline85" class="outline-4">
-<h4 id="orgheadline85">test/Makefile の確認</h4>
-<div class="outline-text-4" id="text-orgheadline85">
+<div id="outline-container-orgheadline84" class="outline-4">
+<h4 id="orgheadline84">test/Makefile の確認</h4>
+<div class="outline-text-4" id="text-orgheadline84">
 <p>
 test_sort.c を用意したことで，
 test/Makefile の目的は変わりました。Makefile を更新します:
@@ -3976,9 +3931,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-orgheadline86" class="outline-4">
-<h4 id="orgheadline86">test/test_sort.o の作成</h4>
-<div class="outline-text-4" id="text-orgheadline86">
+<div id="outline-container-orgheadline85" class="outline-4">
+<h4 id="orgheadline85">test/test_sort.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline85">
 <div class="org-src-container">
 
 <pre class="src src-sh"># ~/progs/card_display/simple/test
@@ -4015,9 +3970,9 @@ cards_sortが未定義で，test_cards_sort が定義されているのがわか
 </div>
 </div>
 
-<div id="outline-container-orgheadline95" class="outline-3">
-<h3 id="orgheadline95"><span class="section-number-3">13.4</span> cards_sort，card_compare の実装</h3>
-<div class="outline-text-3" id="text-13-4">
+<div id="outline-container-orgheadline94" class="outline-3">
+<h3 id="orgheadline94"><span class="section-number-3">13.3</span> cards_sort，card_compare の実装</h3>
+<div class="outline-text-3" id="text-13-3">
 <p>
 さて次は，機能 cards_sort, card_compare の実装です。
 </p>
@@ -4038,9 +3993,9 @@ src/{card.h，libcard.a} で機能を提供する
 </p>
 </div>
 
-<div id="outline-container-orgheadline88" class="outline-4">
-<h4 id="orgheadline88">card/card.h の更新</h4>
-<div class="outline-text-4" id="text-orgheadline88">
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87">card/card.h の更新</h4>
+<div class="outline-text-4" id="text-orgheadline87">
 <p>
 test/test_card.c から cards_sort等に関するインタフェース宣言を，
 src/card.h に移します。
@@ -4087,9 +4042,9 @@ test/test_sort.c からは削除してください。
 </div>
 </div>
 
-<div id="outline-container-orgheadline89" class="outline-4">
-<h4 id="orgheadline89">cards_sort の実装 (src/cards.cの作成)</h4>
-<div class="outline-text-4" id="text-orgheadline89">
+<div id="outline-container-orgheadline88" class="outline-4">
+<h4 id="orgheadline88">cards_sort の実装 (src/cards.cの作成)</h4>
+<div class="outline-text-4" id="text-orgheadline88">
 <p>
 cards_sort関数の使い方は決まっています。
 </p>
@@ -4115,14 +4070,38 @@ cards_sort関数の使い方は決まっています。
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">Card *                                                                                         
+cards_sort(Card *cards, int no_of_cards)
+{
+  int i;
+  Card *pos;
+
+  for(pos=cards, i=0; i&lt;no_of_cards; i++, pos++)
+    {
+      Card *cur;
+      int j;
+
+      for(j=i+1,cur=pos+1; j&lt;no_of_cards; j++, cur++)
+	{
+//        if (card_compare(*pos,*cur)&lt;=0)  2015.12.08 fixed
+	  if (card_compare(*pos,*cur)&gt;=0)
+	    {
+	      Card temp = *pos;
+	      *pos = *cur;
+	      *cur = temp;
+	    }
+	}
+    }
+  return cards;
+}
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline90" class="outline-4">
-<h4 id="orgheadline90">card_compare の実装</h4>
-<div class="outline-text-4" id="text-orgheadline90">
+<div id="outline-container-orgheadline89" class="outline-4">
+<h4 id="orgheadline89">card_compare の実装</h4>
+<div class="outline-text-4" id="text-orgheadline89">
 <p>
 card_compare の使い方も決まっています:
 </p>
@@ -4139,14 +4118,27 @@ card_compare の使い方も決まっています:
 
 <div class="org-src-container">
 
-<pre class="src src-c"></pre>
+<pre class="src src-c">int
+card_compare(Card a, Card b)
+{
+  if (card_no(a)&gt;card_no(b))
+    return 1;
+  if (card_no(a)&lt;card_no(b))
+    return -1;
+  if (card_suit(a)&gt;card_suit(b))
+    return 1;
+  if (card_suit(a)&lt;card_suit(b))
+    return -1;
+  return 0;
+}
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline91" class="outline-4">
-<h4 id="orgheadline91">cards.c の確認</h4>
-<div class="outline-text-4" id="text-orgheadline91">
+<div id="outline-container-orgheadline90" class="outline-4">
+<h4 id="orgheadline90">cards.c の確認</h4>
+<div class="outline-text-4" id="text-orgheadline90">
 <div class="org-src-container">
 
 <pre class="src src-c">// src/card.c
@@ -4154,14 +4146,53 @@ card_compare の使い方も決まっています:
 # include &lt;string.h&gt;
 # include &lt;stdlib.h&gt;
 # include &lt;card.h&gt;
+
+int
+card_compare(Card a, Card b)
+{
+  if (card_no(a)&gt;card_no(b))
+    return 1;
+  if (card_no(a)&lt;card_no(b))
+    return -1;
+  if (card_suit(a)&gt;card_suit(b))
+    return 1;
+  if (card_suit(a)&lt;card_suit(b))
+    return -1;
+  return 0;
+}
+
+Card *                                                                                         
+cards_sort(Card *cards, int no_of_cards)
+{
+  int i;
+  Card *pos;
+
+  for(pos=cards, i=0; i&lt;no_of_cards; i++, pos++)
+    {
+      Card *cur;
+      int j;
+
+      for(j=i+1,cur=pos+1; j&lt;no_of_cards; j++, cur++)
+	{
+//        if (card_compare(*pos,*cur)&lt;=0)  2015.12.08 fixed
+	  if (card_compare(*pos,*cur)&gt;=0)
+	    {
+	      Card temp = *pos;
+	      *pos = *cur;
+	      *cur = temp;
+	    }
+	}
+    }
+  return cards;
+}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline92" class="outline-4">
-<h4 id="orgheadline92">src/Makefile</h4>
-<div class="outline-text-4" id="text-orgheadline92">
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91">src/Makefile</h4>
+<div class="outline-text-4" id="text-orgheadline91">
 <p>
 src/Makefileには，src/cards.o を作成する規則が追加になり，
 libcard.a を作る時，cards.o も取り込むように規則を変更します:
@@ -4192,9 +4223,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-orgheadline93" class="outline-4">
-<h4 id="orgheadline93">src/cards.o の作成</h4>
-<div class="outline-text-4" id="text-orgheadline93">
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92">src/cards.o の作成</h4>
+<div class="outline-text-4" id="text-orgheadline92">
 <p>
 src/cards.o を make し, ソースコードにエラーがないか確かめます:
 </p>
@@ -4213,9 +4244,9 @@ src/cards.o ができれば文法や宣言の食い違いはなくなったこ�
 </div>
 </div>
 
-<div id="outline-container-orgheadline94" class="outline-4">
-<h4 id="orgheadline94">src/libcard.a の作成</h4>
-<div class="outline-text-4" id="text-orgheadline94">
+<div id="outline-container-orgheadline93" class="outline-4">
+<h4 id="orgheadline93">src/libcard.a の作成</h4>
+<div class="outline-text-4" id="text-orgheadline93">
 <p>
 src/cards.o ができれば，次は， src/libcard.a を make します。
 </p>
@@ -4249,12 +4280,12 @@ src/libcard.a が更新できたので，次はtest_card.so を更新します�
 </div>
 </div>
 
-<div id="outline-container-orgheadline99" class="outline-3">
-<h3 id="orgheadline99"><span class="section-number-3">13.5</span> テスト</h3>
-<div class="outline-text-3" id="text-13-5">
-</div><div id="outline-container-orgheadline96" class="outline-4">
-<h4 id="orgheadline96">test/test_sort.so のビルド</h4>
-<div class="outline-text-4" id="text-orgheadline96">
+<div id="outline-container-orgheadline98" class="outline-3">
+<h3 id="orgheadline98"><span class="section-number-3">13.4</span> テスト</h3>
+<div class="outline-text-3" id="text-13-4">
+</div><div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95">test/test_sort.so のビルド</h4>
+<div class="outline-text-4" id="text-orgheadline95">
 <p>
 test/test_sort.so を作り直します。
 </p>
@@ -4277,9 +4308,9 @@ test/test_card.so ができればテストの実行に移ります。
 </div>
 </div>
 
-<div id="outline-container-orgheadline97" class="outline-4">
-<h4 id="orgheadline97">テストの実行</h4>
-<div class="outline-text-4" id="text-orgheadline97">
+<div id="outline-container-orgheadline96" class="outline-4">
+<h4 id="orgheadline96">テストの実行</h4>
+<div class="outline-text-4" id="text-orgheadline96">
 <p>
 テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
 めるためにテストする:
@@ -4294,9 +4325,9 @@ cutter -v v test
 </div>
 </div>
 
-<div id="outline-container-orgheadline98" class="outline-4">
-<h4 id="orgheadline98">テストと再設計</h4>
-<div class="outline-text-4" id="text-orgheadline98">
+<div id="outline-container-orgheadline97" class="outline-4">
+<h4 id="orgheadline97">テストと再設計</h4>
+<div class="outline-text-4" id="text-orgheadline97">
 <p>
 テストが成功すれば，テストによる開発の1サイクルが完結したことにな
 ります。
@@ -4319,7 +4350,7 @@ cutter -v v test
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: m</p>
-<p class="date">Created: 2016-11-08 火 10:56</p>
+<p class="date">Created: 2016-11-29 火 04:12</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

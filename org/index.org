@@ -11,7 +11,4 @@
 
 #+include: lects/06/resume.org
 
-# #+include: lects/06/response.org
-
-
-
+#+include: lects/06/response.org

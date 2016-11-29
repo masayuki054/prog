@@ -1,4 +1,20 @@
 # * トランプ・カードを文字列に
+# #+babel_include: Makefile.org
+# #+babel_include: card.h.org
+# #+babel_include: test_card.c.org
+# #+babel_include: card.c.org
+
+#+BEGIN_SRC sh :exports none
+mkdir -p babel/simple/card_to_string/src babel/simple/card_to_string/test
+rm -f babel/simple/card_to_string/src babel/simple/card_to_string/*
+rm -f babel/simple/card_to_string/src babel/simple/card_to_string/src/*
+rm -f babel/simple/card_to_string/src babel/simple/card_to_string/test/*
+#+END_SRC
+
+
+#+BEGIN_SRC c :noweb yes :tangle babel/simple/card_to_string/Makefile :exports none
+<<Makefile>>
+#+END_SRC
 
 ** 機能の追加とテストの作成
    
@@ -92,10 +108,6 @@ cp test_card.0.c test_card.c
 # ~/progs/card_display/simple/test
 make test_card.o
     #+END_SRC
-
-    #+RESULTS:
-    : gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
-
     
     test_card.o ができれば，ひとまず，成功です。
     
@@ -109,41 +121,6 @@ make test_card.o
 # ~/progs/card_display/simple/test
 nm test_card.o
     #+END_SRC
-
-    #+RESULTS:
-    #+begin_example
-		     U _GLOBAL_OFFSET_TABLE_
-    0000000000000540 r __PRETTY_FUNCTION__.3268
-    0000000000000560 r __PRETTY_FUNCTION__.3284
-    000000000000057d r __PRETTY_FUNCTION__.3304
-    0000000000000590 r __PRETTY_FUNCTION__.3317
-		     U _setjmp
-		     U card_new
-		     U card_no
-		     U card_no_new_from_string
-		     U card_suit
-		     U card_suit_new_from_string
-		     U card_to_string
-		     U cut_assert_helper
-		     U cut_assert_true_helper
-		     U cut_test_context_current_peek
-		     U cut_test_context_finish_user_message_jump
-		     U cut_test_context_get_have_current_result
-		     U cut_test_context_get_jump_buffer
-		     U cut_test_context_in_user_message_jump
-		     U cut_test_context_long_jump
-		     U cut_test_context_pop_backtrace
-		     U cut_test_context_process_current_result
-		     U cut_test_context_push_backtrace
-		     U cut_test_context_set_jump_buffer
-		     U cut_test_context_set_user_message
-		     U cut_test_context_start_user_message_jump
-		     U strcmp
-    0000000000000a1b T test_card_new
-    0000000000000482 T test_card_no_new_from_string
-    0000000000000000 T test_card_suit_new_from_string
-    0000000000000c8b T test_card_to_string
-#+end_example
 
     card_to_stringが未定義で，
     test_card_to_string が定義されているのがわかります。
@@ -310,20 +287,14 @@ nm libcard.a
 #+begin_example
 
 card.o:
-0000000000000005 d NoChars
-0000000000000000 d SuitChars
                  U _GLOBAL_OFFSET_TABLE_
                  U atoi
 00000000000000e6 T card_new
 000000000000010f T card_no
 000000000000008b T card_no_new_from_string
-00000000000001a2 T card_no_to_char
 0000000000000102 T card_suit
 0000000000000000 T card_suit_new_from_string
-000000000000018b T card_suit_to_char
-000000000000011c T card_to_string
                  U fprintf
-                 U malloc
                  U stderr
                  U strcmp
 #+end_example
@@ -343,11 +314,6 @@ make clean
 make test_card.so
 #+END_SRC
 
-#+RESULTS:
-: rm -f *.o *.so *~ \#* *.gch
-: gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
-: gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
-
 
     test/test_card.so ができればテストの実行に移ります。
 
@@ -362,20 +328,6 @@ make test_card.so
 # ~/progs/card_display/simple
 cutter -v v test
 #+END_SRC
-
-#+RESULTS:
-#+begin_example
-test_card:
-  test_card_to_string:					.: (0.000067)
-  test_card_new:					.: (0.000044)
-  test_card_suit_new_from_string:			.: (0.000078)
-  test_card_no_new_from_string:				.: (0.000093)
-
-Finished in 0.001416 seconds (total: 0.000282 seconds)
-
-4 test(s), 12 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
-100% passed
-#+end_example
 
 *** テストと再設計
 

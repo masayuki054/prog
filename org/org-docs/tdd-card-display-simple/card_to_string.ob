@@ -1,8 +1,8 @@
 # * トランプ・カードを文字列に
-#+babel_include: Makefile.org
-#+babel_include: card.h.org
-#+babel_include: test_card.c.org
-#+babel_include: card.c.org
+# #+babel_include: Makefile.org
+# #+babel_include: card.h.org
+# #+babel_include: test_card.c.org
+# #+babel_include: card.c.org
 
 #+BEGIN_SRC sh :exports none
 mkdir -p babel/simple/card_to_string/src babel/simple/card_to_string/test

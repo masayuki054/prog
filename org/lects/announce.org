@@ -1,10 +1,51 @@
 * お知らせ
+** 2回目のレポートの予定
+
+   カード・モジュールの開発が終った後に，2回目のレポートを予定していま
+   す。
+
+*** 提出してもらうもの
+
+    1. ~/progs/card_display/simple 
+       
+       - Makefile
+       - card_display_simple.c
+       - card_display_multi.c
+       - card_display_sort.c
+       - test/{Makefile, test_card.c, test_sort.c}
+       - src/{Makefile, card.h, card.c, cards.c}
+
+       このディレクトリで，=make test= すると，
+       
+       - =src/libcard.a= と全てのテストをビルドし，
+       - テストを実行し，
+       - すべてのテストが通る
+
+       ようにしておいて下さい。
+
+    2. card_display 問題の開発に関するレポート
+
+       ~/progs/reports/1.org に下記の内容を
+
+
+       - 「開発の目的」は何だったのか？
+       - 重要な知識や技術のまとめ
+       - 感想
+
+   
+
+** 1回目のレポートの仮成績をつけました。
+
+   ~suzuki/progss/collected_srcs/1.org を確認してください。
+
+   評価への，不平不満等は，レスポンスカードに書いてください。
+
 ** wiki の設置 <2016-11-28 月>
 
    github のページに，[[https://masayuki054.github.io/prog/wiki][wiki]] を設置しました。
 
-   誰でも書き込めるようにしたので，org-mode のプレビューに使ってみてく
-   ださい。
+   誰でも書き込めるように設定したので，org-mode のプレビューに使ってみ
+   てください。
 
    講義中のリアルタイムなお知らせにも，使うかもしれません。
 

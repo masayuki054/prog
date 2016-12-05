@@ -4,6 +4,11 @@
 
 #+include: story.org 
 
+* 開発の決まり
+
+#+include: develop.org
+
+
 * Card モジュールの開発
 
 #+include: card.org 

@@ -1,0 +1,27 @@
+
+* モジュールの開発場所
+
+  1. ~/progs/game がプロジェクトのホーム。以後，$(PROJ_HOME)と書く。
+
+  2. モジュールの開発は，モジュールの名前を card とすると，
+     $(PROJ_HOME)/card/ ディレクトリでおこなう。
+
+  3. モジュール開発でできたヘッダファイルとライブラリファイルは，
+     それぞれ，$(PROJ_HOME)/include/ と $(PROJ_HOME)/lib/  ディレクト
+     リに置くことにします。
+
+     cardモジュールの，card.h は ~/progs/game/include/card.h
+     cardモジュールの，libcard.a は ~/progs/game/libcard.a, となります。
+
+
+* ~/prog/game/Makefile
+
+  1. 必要なモジュールをビルドする。
+
+  2. モジュール毎の成果物を，配置する。
+
+
+     
+     
+
+

@@ -1,0 +1,99 @@
+* 8回目 (12/05) の講義内容
+
+** 今日の予定
+
+   [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
+   - [X] cards_sort 機能の開発 
+
+     完成していない人は，14：30以降に相談にのります
+     
+   - [ ] card_display_sort.c の解説
+
+     ~suzuki/progs/card_display/simple/card_display_sort.c 他
+
+   [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]] に入り，
+
+   - [ ] ポーカーゲームの説明
+   - [ ] カードモジュールの作成 
+    
+
+** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
+   SCHEDULED: <2016-10-09 日>
+    
+   - [X] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
+     - [X] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
+     - [X] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
+     - [X] simple.org (雑メモの中) の解説  SCHEDULED: <2016-10-25 火>
+
+   - [X] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
+
+   - [X] cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <2016-11-01 火>
+   - [X] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
+   - [-] カードモジュールの作成 SCHEDULED: <2016-11-15 火>
+
+** Doing テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
+
+何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
+
+- [X] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
+
+  *テスト* とは何か, その大切さ，を理解しましょう。
+
+- [X] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+
+  大きな問題を，小さな機能に分け，テストにより設計しと確認し，
+  段階的に，開発を進める方法を知りましょう。
+
+  この文書も段階的に読み進めましょう。
+   
+- [X] [[./org-docs/cutter.org][cutterの使い方]] 
+
+  Cutter によるテストを体験しましょう。
+
+** Doing card_display問題のテストによる開発 [9/10] SCHEDULED: <2016-11-01 火>
+
+    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
+
+     - [X] test_card_suit_new_from_string
+     - [X] test_card_no_new_from_string
+     - [X] test_card_new, suit, no
+     - [X] test_card_no_to_char, =test_card_no_to_string=
+     - [X] test_card_suit_to_char, =test_card_suit_to_string=
+     - [X] test_card_to_string
+     - [X] card_display_simple
+     - [X] card_display_multi 自分でやって
+     - [X] cards_sort <2016-11-28 月>
+     - [-] card_display_sort <2016-11-28 月>
+
+** [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]]  
+
+    ポーカーゲームに入り，カードモジュールの作成をやります。
+  
+** ((:-s)) のつぶやき [/]
+
+- [ ] 画面のストリーミング配信 講義開始前に
+- [ ] 画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず
+- レスポンス (10/10 min.)
+
+- テストと開発の話 (10/70 min.)
+
+  すこし先へ進む
+
+- テストによるカード表示問題の開発
+  - [ ] card_display_first問題の解が不適切
+  - [ ] card_display_sort まわりの説明
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+

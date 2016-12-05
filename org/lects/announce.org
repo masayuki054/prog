@@ -32,8 +32,6 @@
        - 重要な知識や技術のまとめ
        - 感想
 
-   
-
 ** 1回目のレポートの仮成績をつけました。
 
    ~suzuki/progss/collected_srcs/1.org を確認してください。
@@ -42,7 +40,7 @@
 
 ** wiki の設置 <2016-11-28 月>
 
-   github のページに，[[https://masayuki054.github.io/prog/wiki][wiki]] を設置しました。
+   github のページに，[[https://github.com/masayuki054/prog/wiki][wiki]] を設置しました。
 
    誰でも書き込めるように設定したので，org-mode のプレビューに使ってみ
    てください。

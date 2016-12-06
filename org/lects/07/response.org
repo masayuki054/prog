@@ -1,4 +1,4 @@
-* レスポンス.06
+* レスポンス.07
 
 ** カード
 [[http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-07.pdf][card-07.pdf]]
@@ -7,15 +7,13 @@
 
    - libcard.a が何のためのものか分らない
 
-     [[./supplement.org][説明]] に libcard.a を書きました。
+     今日の講義の補足に libcard.a を書きました。
      
    - makefile にわからないところあり
 
      Makefile の文法ですか？ それとも，コンパイラへの指示の意味？ それ
      とも，コマンドの意味？
-
-
-     [[./supplement.org][説明]] に deck/src/Makefile とかではだめです
+     [[./supplement.org][説明]] の deck/src/Makefile とかではだめです
      か？
 
    - .gch ができたが，その説明をして
@@ -29,6 +27,7 @@
 
    - 用語のまとめがほしい
    - レポートの範囲があいまい
+
    - 一回目のレポート再提出再評価してくれますか？
 
 *** 気になった人

@@ -1,4 +1,4 @@
-#+setupfile: info/index-bigblow-header.setup
+#+setupfile: info/index-sos-header.setup
 #+include: info/common-header.org
 #+title: 講義資料 (リンク集)
 # #+include: org-docs/contents.org
@@ -10,7 +10,7 @@
 [[./org-docs/simple.org][card_display/first]]
 
 ** テストと開発
-- [[./org-docs/software-test/index.org][ソフトウェア・テスト]]
+- [[./org-docs/software-test.org][ソフトウェア・テスト]]
 - [[./org-docs/what-is-tdd.org][テストによる開発とは]]
 - [[./org-docs/cutter.org][cutter]]
 

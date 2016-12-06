@@ -1,5 +1,59 @@
 * 補足
 
+** libcard.a 
+
+   ~card_new()~ 関数は，ソース・ファイル，オブジェクト・ファイル
+   ライブラリ・ファイルの中に存在します:
+   
+   - card.c の中の card_new 関数
+
+   - card.o の中の card_new 関数
+
+     : nm card.o
+
+   - libcard.a の中の card.o の中の card_new 関数
+
+     : nm libcard.a
+
+   前に作った関数を使いたい時に
+   - card.c の中の card_new 関数を使うには，
+
+     エディタでファイルを開いて，こぴぺ
+
+     面倒だし，ミスが起こる可能性大です
+
+   - card.o の中の card_new 関数
+
+     gcc に card.o の在処を教えて，リンクします。
+
+   - libcard.a の中の card.o の中の card_new 関数
+
+     gcc に libcard.a の在処を教えて，リンクします。
+
+     libcard.a にはたくさんの オブジェクト・ファイルを格納できるので，
+     モジュールごとに使いわけられて便利。
+
+     Makefile で， ライブラリの場所と名前を，
+     ~LDFLAGS = -Ldirecotry -lcard~ で指定します。
+
+** card.h   
+
+   card.o や libcard.a の中の ~card_new()~ の使い方を教えるるために，
+
+   - card.h に ~card_new()~ の使い方 (プロトタイプ宣言) を書き，
+
+   - card.h を公けの場 (ディレクトリ) に置きます。
+
+   ~card_new()~ を使うには，
+
+   - card.h に ~card_new()~ の使い方 (プロトタイプ宣言) を書き，
+
+   - card.h がどこにあるのかを知り，使い方を確認し，
+
+   - Makefile に ~CFLAGS = -Idirecotry~ で指定し
+
+   - ~# include <card.h># 
+
 ** emacs は1つだけ起動して，ウィンドウを沢山使う <2016-11-08 火>
 
 : C-x C-f で emacs の中からファイルを開く

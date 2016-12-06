@@ -118,7 +118,7 @@
     を，コピーする規則を付け加える。
 
     - [[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments.html][講義補足]] (([[file+emacs:~suzuki/lects/prog/lects/supplyments.org][@cis.org]] [[file+emacs:~/COMM/Lects/prog/site/lects/supplyments.org][@s.org]])) のMakefileを参考にしてください。
-    - [[http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/Makefiel][card/src/Makefile]] を参考にしてください。
+    - [[http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/Makefile][card/src/Makefile]] を参考にしてください。
     - card/src/Makefileが修正できたら，make install して，
       card.h, libcard.a がコピーできたことを確認してください。
 

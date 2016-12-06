@@ -11,4 +11,4 @@
 
 #+include: lects/07/resume.org
 
-# #+include: lects/07/response.org
+#+include: lects/07/response.org

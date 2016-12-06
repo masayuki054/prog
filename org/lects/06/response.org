@@ -1,7 +1,7 @@
 * レスポンス.06
 
 ** カード
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-05.pdf][card-06.pdf]]
+[[http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-06.pdf][card-06.pdf]]
 
 ** response
 

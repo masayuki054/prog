@@ -1,5 +1,14 @@
 * 8回目 (12/06) の講義内容
 
+** 来週までに
+
+     来週までに，山の機能について考えて，~/progs/game/deck/deck.org にまとめ
+     てください。
+
+     構造化プログラミングのページとStrategic Choiceのページを来週ま
+     でに読んできて下さい。自分の理解をまとめ始めてください。そのうち
+     レポートにするつもりです。
+
 ** 今日の予定
 
    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
@@ -9,16 +18,30 @@
      
    - [ ] card_display_sort.c の解説
 
-     ~suzuki/progs/card_display/simple/card_display_sort.c 他
+     - ~suzuki/progs/card_display/simple/card_display_sort.c
+     - https://wiki.cis.iwate-u.ac.jp/svn/prog/2016/card_display/ に先
+       生のソースがあります。
 
-   [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]] に入り，
+   - [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]] に入り，
 
-   - [ ] ポーカーゲームの説明
-   - [ ] カードモジュールの作成
-   - [ ] 山の機能について考える
+     - [ ] ポーカーゲームの説明
+
+     - [ ] カードモジュールの作成
+       - [ ] ~/progs/card_display/simple => ~/progs/game/card へ移動
+       - [ ] プロジェクトの決まりに従って，Makefile を書き換え
+
+     - [ ] 山の機能について考える
 
      来週までに，山の機能について考えて，~/progs/game/deck/deck.org にまとめ
      てください。
+
+     - [ ] モジュラープログラミングについて紹介
+
+       補足タブの中にあるモジュラープログラミングについて紹介します。
+
+       構造化プログラミングのページとStrategic Choiceのページを来週ま
+       でに読んできて下さい。
+       
 
 ** カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
    SCHEDULED: <2016-10-09 日>

@@ -1,6 +1,6 @@
 * 補足
 
-** libcard.a 
+** libcard.a を 作る/使う 意味
 
    ~card_new()~ 関数は，ソース・ファイル，オブジェクト・ファイル
    ライブラリ・ファイルの中に存在します:
@@ -38,15 +38,14 @@
 
 ** card.h   
 
-   card.o や libcard.a の中の ~card_new()~ の使い方を教えるるために，
+   card.o や libcard.a の中の ~card_new()~ の使い方を教えるには:
 
    - card.h に ~card_new()~ の使い方 (プロトタイプ宣言) を書き，
 
    - card.h を公けの場 (ディレクトリ) に置きます。
 
-   ~card_new()~ を使うには，
 
-   - card.h に ~card_new()~ の使い方 (プロトタイプ宣言) を書き，
+   ~card_new()~ を使うには，
 
    - card.h がどこにあるのかを知り，使い方を確認し，
 

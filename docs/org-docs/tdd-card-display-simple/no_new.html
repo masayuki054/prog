@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>no_new</title>
+<!-- 2016-12-13 火 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Masayuki Suzuki" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">no_new</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. トランプ番号を数値に</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 機能とテストの追加</a>
+<ul>
+<li><a href="#sec-1-1-1">1.1.1. test/Makefileの更新</a></li>
+<li><a href="#sec-1-1-2">1.1.2. test/test<sub>card</sub>.o の更新</a></li>
+<li><a href="#sec-1-1-3">1.1.3. テスト (test/test<sub>card</sub>.so) のビルド</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">1.2. card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> の実装</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. src/card.h の更新</a></li>
+<li><a href="#sec-1-2-2">1.2.2. test/test<sub>card</sub>.cの変更</a></li>
+<li><a href="#sec-1-2-3">1.2.3. card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> の実装 (src/card.c の更新)</a></li>
+<li><a href="#sec-1-2-4">1.2.4. src/Makefile</a></li>
+<li><a href="#sec-1-2-5">1.2.5. テスト test/test<sub>card</sub>.so の再ビルド</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. テスト</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. テストと再設計</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> トランプ番号を数値に</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+次は，文字列で表された番号を，プログラム内部での数値に変換す
+る機能のテストです。
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 機能とテストの追加</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+番号のテストは，test/test<sub>card</sub>.c に追加作成することにします。
+</p>
+
+<p>
+機能の名前を card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> とし,
+card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> を呼び出してみます：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c
+
+  card_no_new_from_string("13")==KING;
+</pre>
+</div>
+
+<p>
+よさそうです。card<sub>no</sub><sub>new</sub><sub>from</sub><sub>stringを関数の形で書けたので，テス</sub>
+トを書きます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c
+
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+</pre>
+</div>
+
+<p>
+card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> 関数の型を決めます。
+</p>
+
+<p>
+戻り値の型は enum e<sub>No，与える引数は番号を示す文字列なので</sub>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c
+
+  enum e_No card_no_new_from_string(char *);
+</pre>
+</div>
+
+<p>
+テストに使う定数は，列挙型で書いてみます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c
+
+  enum e_No {JACK=11, QUEEN, KING, ACE};
+</pre>
+</div>
+
+<p>
+テストを関数にします。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c
+
+void
+test_card_suit_no_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+</pre>
+</div>
+
+<p>
+ここまでで，test/test<sub>card</sub>.c の中身は:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+
+enum e_No {JACK=11, QUEEN, KING, ACE};
+enum e_No card_no_new_from_string(char *);
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("スーツから数値への変換のテスト");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert(card_suit_new_from_string("HEART")==HEART);
+  cut_assert(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> test/Makefileの更新</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+test/Makefile の目的は変わっていませんので，更新の必要はありません。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> test/test<sub>card</sub>.o の更新</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+test/ で makeしてみましょう。
+</p>
+
+<p>
+まずは，test/test<sub>card</sub>.o の作成です:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test
+make test_card.o
+</pre>
+</div>
+
+<pre class="example">
+gcc -c test_card.c -fPIC -I../src `pkg-config cutter --cflags`
+</pre>
+
+<p>
+test<sub>card</sub>.o ができれば，ひとまず，成功です。
+</p>
+
+<p>
+できない時は，test<sub>card</sub>.c に間違いがあるか，Makefile に間違いがあり
+ます。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+う。
+</p>
+
+<p>
+成功したら，test/test<sub>card</sub>.o の中身を見て確認しましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test
+nm test_card.o
+</pre>
+</div>
+
+<pre class="example">
+                 U _GLOBAL_OFFSET_TABLE_
+0000000000000200 r __PRETTY_FUNCTION__.3239
+                 U _setjmp
+                 U card_suit_new_from_string
+                 U cut_assert_helper
+                 U cut_test_context_current_peek
+                 U cut_test_context_finish_user_message_jump
+\\                 U cut_test_context_get_have_current_result
+                 U cut_test_context_get_jump_buffer
+                 U cut_test_context_in_user_message_jump
+                 U cut_test_context_long_jump
+                 U cut_test_context_pop_backtrace
+                 U cut_test_context_process_current_result
+                 U cut_test_context_push_backtrace
+                 U cut_test_context_set_jump_buffer
+                 U cut_test_context_set_user_message
+                 U cut_test_context_start_user_message_jump
+0000000000000000 T test_card_suit_new_from_string
+</pre>
+
+<p>
+card<sub>no</sub><sub>from</sub><sub>stringが未定義で，</sub>
+test<sub>card</sub><sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> が定義されているのがわかります。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> テスト (test/test<sub>card</sub>.so) のビルド</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+つづいて，test/test<sub>card</sub>.so を作りましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test
+make test_card.so
+</pre>
+</div>
+
+<pre class="example">
+gcc -o test_card.so --shared test_card.o -L../src/ -lcard `pkg-config cutter --libs`
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> の実装</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+さて次は，機能 card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> の実装です。
+以下のように実装しましょう:
+</p>
+
+<ul class="org-ul">
+<li>test/test<sub>card</sub>.c を作成するときに決めたインタフェースをとりだし，
+src/card.hに追加する。
+</li>
+
+<li>test/test<sub>card</sub>.c の対応部分は # include &lt;card.h&gt; に含まれることに
+なる。
+</li>
+
+<li>src/card.hを遵守し，src/card.c に機能(関数)を追加する。
+</li>
+
+<li>提供する機能を入れた src/libcard.a を作成する，Makefileを作成す
+る
+</li>
+</ul>
+
+<p>
+<b>src/{card.h，libcard.a} で機能を提供します</b>
+</p>
+</div>
+
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> src/card.h の更新</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+test/test<sub>card</sub>.c で宣言した card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> に関する
+インタフェースの定義を，src/card.h に移し，定義の責任を src/ に移
+します。
+</p>
+
+<p>
+enum e<sub>No</sub> の値も TWO~ACEまでにします.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// src/card.h (追加)
+
+enum e_Suit {CLUB=1,DIAMOND,HEART,SPADE};
+enum e_Suit card_suit_new_from_string(char *);
+
+enum e_No { TWO=2, THREE, FOUR, FIVE,
+	    SIX, SEVEN, EIGHT, NINE, TEN,
+	    JACK, QUEEN, KING, ACE};
+
+enum e_No card_no_new_from_string(char *);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> test/test<sub>card</sub>.cの変更</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+test/test<sub>card</sub>.c から card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> に関する宣言を消しま
+す。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_card.c.1
+# include &lt;cutter.h&gt;
+# include &lt;card.h&gt;
+
+void
+test_card_suit_new_from_string(void)
+{
+  cut_set_message("文字列からスーツを作成する。");
+  cut_assert_true(card_suit_new_from_string("SPADE")==SPADE);
+  cut_assert_true(card_suit_new_from_string("HEART")==HEART);
+  cut_assert_true(card_suit_new_from_string("DIAMOND")==DIAMOND);
+  cut_assert_true(card_suit_new_from_string("CLUB")==CLUB);
+}
+
+void
+test_card_no_new_from_string(void)
+{
+  cut_set_message("番号から数値への変換のテスト");
+  cut_assert(card_no_new_from_string("1")==ACE);
+  cut_assert(card_no_new_from_string("13")==KING);
+  cut_assert(card_no_new_from_string("12")==QUEEN);
+  cut_assert(card_no_new_from_string("11")==JACK);
+  cut_assert(card_no_new_from_string("10")==10);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> の実装 (src/card.c の更新)</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+番号を表す文字列から，内部番号にする関数 card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub>
+を実装します.
+</p>
+
+<ul class="org-ul">
+<li>src/card.h 中の，下記インタフェースの宣言
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-C">// src/card.h
+enum e_No card_no_new_from_string(char *);
+</pre>
+</div>
+
+<p>
+から入口と出口コードを書きます.
+</p>
+
+<p>
+引数に名前をつけ， 戻り値の型を指定し，戻り値をリターンするコード
+を書きます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no;
+
+  return (enum e_No) no;
+}
+</pre>
+</div>
+
+<p>
+番号を表す文字列から数値を計算するコードは，例えば，つぎのように
+なります。
+</p>
+
+<ul class="org-ul">
+<li>整数値文字列を整数にするためのライブラリ関数 int atoi(char *) を使
+います:
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-c">int no = atoi(no_str);
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>1~13 の数値を，2~14 の数値に変換し，おかしな値がないかチェックし
+ます
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-c">if (no==1)  no = ACE;
+
+if ( no &lt; TWO || ACE &lt; no )
+  {
+    fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+  };
+</pre>
+</div>
+
+<p>
+全体を合わせて:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// src/card.c
+# include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;card.h&gt;
+
+enum e_Suit
+card_suit_new_from_string(char *suit_str)
+{
+  if (strcmp("CLUB",suit_str)==0)
+    return CLUB;
+  if (strcmp("DIAMOND",suit_str)==0)
+    return DIAMOND;
+  if (strcmp("HEART",suit_str)==0)
+    return HEART;
+  if (strcmp("SPADE",suit_str)==0)
+    return SPADE;
+  return 0;
+}
+
+enum e_No
+card_no_new_from_string(char *no_str)
+{
+  int no = atoi(no_str);
+
+  if (no==1)  no = ACE;
+
+  if ( no &lt; TWO || ACE &lt; no )
+    {
+      fprintf(stderr, "不適な数値 (%s)!\n", no_str);
+    };
+  return (enum e_No) no;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> src/Makefile</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+src/card.h と src/card.c から src/card.o を作成し，src/card.o から
+src/libcard.a を作成するルールに変更はありません。
+</p>
+
+<p>
+なので，Makefileにルール変更はありません。
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/src
+make card.o
+</pre>
+</div>
+
+<pre class="example">
+gcc card.c -g -c -fPIC -I. 
+</pre>
+
+<p>
+実装コードに間違いがなければ， src/card.o ができて成功します。
+</p>
+
+<p>
+src/card.o ができない場合，src/card.c に間違いあるか，Makefile に
+間違いがあります。エラー箇所を特定し，エラーを取り除いてください。
+</p>
+
+<p>
+src/card.o ができれば， src/libcard.a を作成します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/CardDisplay/simple/src
+make libcard.a
+</pre>
+</div>
+
+<p>
+Makefileが正しければ，これは成功します。libcard.a の中身を確かめてみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/CardDisplay/simple/src
+nm libcard.a
+</pre>
+</div>
+
+<pre class="example">
+card.o:
+                 U _GLOBAL_OFFSET_TABLE_
+                 U atoi
+000000000000008b T card_no_new_from_string
+0000000000000000 T card_suit_new_from_string
+                 U fprintf
+                 U stderr
+                 U strcmp
+</pre>
+
+
+<p>
+T card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string，</sub> T card<sub>suit</sub><sub>new</sub><sub>from</sub><sub>string</sub> で関数が定
+義されているのがわかります。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> テスト test/test<sub>card</sub>.so の再ビルド</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<p>
+src/libcard.a が更新できたので，次は libcard.a をリンクし直して，
+test/test<sub>card</sub>.so を更新します。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+</pre>
+</div>
+
+<p>
+rm -f <b>.o *.so *~ \#</b> *.gch
+gcc -c test<sub>card</sub>.c -fPIC -I../src `pkg-config cutter &#x2013;cflags`
+gcc -o test<sub>card</sub>.so &#x2013;shared test<sub>card</sub>.o -L../src/ -lcard `pkg-config cutter &#x2013;libs`
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> テスト</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+機能の実装が終り，テストもビルドできました。
+</p>
+
+<p>
+これからは，機能が要求を満たすことを確かめるためにテストし，テスト
+が失敗した場合は，test/test<sub>card</sub>.c, src/{card.h, card.c} を修正
+していくことになります。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple
+make
+</pre>
+</div>
+
+<pre class="example">
+(cd src; make)
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/src' に入ります
+make[1]: `libcard.a' は更新済みです
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/src' から出ます
+(cd test; make)	
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/test' に入ります
+make[1]: `test_card.so' は更新済みです
+make[1]: ディレクトリ `/home/staff/suzuki/COMM/Lects/prog/site/org-docs/tdd-card-display-simple/babel/simple/no_new/test' から出ます
+cutter -v v test/
+test_card:
+  test_card_no_new_from_string:				.: (0.000075)
+  test_card_suit_new_from_string:			.: (0.000038)
+
+Finished in 0.000531 seconds (total: 0.000113 seconds)
+
+2 test(s), 9 assertion(s), 0 failure(s), 0 error(s), 0 pending(s), 0 omission(s), 0 notification(s)
+100% passed
+</pre>
+
+<p>
+となればテスト成功です。
+</p>
+
+<p>
+失敗した場合，失敗した関数を特定し，原因がテスト側
+(test/test<sub>card</sub>.c) なのか， 実装側 (src/card.c) なのか，
+インタフェース (src/card.h) なのか，特定してし，
+失敗の原因を取り 除いてください。
+</p>
+</div>
+
+
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> テストと再設計</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+この節でおこなったこと:
+</p>
+
+<ul class="org-ul">
+<li>新たな機能の要求 card<sub>no</sub><sub>new</sub><sub>from</sub><sub>string</sub> があり，
+</li>
+<li>test/test<sub>card</sub>.c に新らしいテスト関数を作成し，
+</li>
+<li>src/card.h に新たな機能のインターフェイス宣言を付け加え，
+</li>
+<li>src/card.c にその機能の実装を付け加えた
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2016-12-13 火 15:16</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="https://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>cards_sort</title>
+<!-- 2016-12-13 火 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Masayuki Suzuki" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">cards_sort</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 複数のカードをソートする機能</a></li>
+<li><a href="#sec-2">2. 機能の追加とテストの作成</a>
+<ul>
+<li><a href="#sec-2-1">2.1. cards<sub>sort</sub> のテストを書く</a></li>
+<li><a href="#sec-2-2">2.2. テスト全体プログラムの確認</a></li>
+<li><a href="#sec-2-3">2.3. test/Makefile の確認</a></li>
+<li><a href="#sec-2-4">2.4. test/test<sub>sort</sub>.o の作成</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. cards<sub>sort，card</sub><sub>compare</sub> の実装</a>
+<ul>
+<li><a href="#sec-3-1">3.1. card/card.h の更新</a></li>
+<li><a href="#sec-3-2">3.2. cards<sub>sort</sub> の実装 (src/cards.cの作成)</a></li>
+<li><a href="#sec-3-3">3.3. card<sub>compare</sub> の実装</a></li>
+<li><a href="#sec-3-4">3.4. cards.c の確認</a></li>
+<li><a href="#sec-3-5">3.5. src/Makefile</a></li>
+<li><a href="#sec-3-6">3.6. src/cards.o の作成</a></li>
+<li><a href="#sec-3-7">3.7. src/libcard.a の作成</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. テスト</a>
+<ul>
+<li><a href="#sec-4-1">4.1. test/test<sub>sort</sub>.so のビルド</a></li>
+<li><a href="#sec-4-2">4.2. テストの実行</a></li>
+<li><a href="#sec-4-3">4.3. テストと再設計</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 複数のカードをソートする機能</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+複数のカードを <b>Card型配列へのポインタ</b> で表すことにする:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">Card *cards;
+</pre>
+</div>
+
+<p>
+Card * が型で，cards が変数名。
+</p>
+
+<p>
+ソートの機能は，関数で表す。
+</p>
+
+<p>
+名前を cards<sub>sort</sub> とする。cards_ は複数のカードを扱う関数の接頭詞と
+した。
+</p>
+
+<p>
+次に，関数 cards<sub>sort</sub> の型を決める。cards<sub>sort</sub> へ何を与え，
+cards<sub>sort</sub> が何を返すかを考える:
+</p>
+
+
+<ul class="org-ul">
+<li>cards<sub>sort</sub> は関数である:
+
+<pre class="example">
+cards_sort()
+</pre>
+</li>
+
+<li>複数のカードをもらう:
+
+<pre class="example">
+cards_sort(Card *)
+</pre>
+</li>
+
+<li>複数のカードの枚数ももらう:
+
+<pre class="example">
+cards_sort(Card *, int)
+</pre>
+</li>
+
+<li>返す値は， (ソートした) 複数のカード:
+
+<pre class="example">
+Card *cards_sort(Card *, int)
+</pre>
+</li>
+</ul>
+
+<p>
+ということで，関数の宣言全体は下記となります:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 機能の追加とテストの作成</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+カードを作る機能のテストは，test/test<sub>sort</sub>.c を新たに作成することにします。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> cards<sub>sort</sub> のテストを書く</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+機能の名前を cards<sub>sort</sub> とし, cards<sub>sortが満たすテストを書きます。</sub>
+</p>
+
+<p>
+まずは，試し書きしてみます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">// test/test_sort.c
+
+Card *cards, *sorted_cards;
+
+sorted_cards = cards_sort(cards, 5);
+</pre>
+</div>
+
+<p>
+関数として書けますね。
+</p>
+
+<p>
+まだテストにはなっていません。まず，テストのためのデータを用意して
+みます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+
+<p>
+よさそうです。
+</p>
+
+<p>
+テストにするために，期待されるデータを用意し，ソート後のデータと比
+較し，等しいことでテストにすることにします。
+</p>
+
+<p>
+期待されるデータを用意します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+
+
+<p>
+つぎにテストを書きます。テストの基本は，2枚のカードが等しいかです。
+</p>
+
+<p>
+2枚のカードが等しいかを次のように書きたいところです:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">expected_cards[0]==sorted_cards[0]
+</pre>
+</div>
+
+<p>
+Card型の比較は == ではできません。関数で行なうことします:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">card_compare(expected_cards[0], sorted_cards[0])
+</pre>
+</div>
+
+
+<p>
+二枚のカードの比較を関数 card<sub>compare</sub> で書けたので，
+card<sub>compare</sub> のインタフェースと機能を決めましょう：
+</p>
+
+<ul class="org-ul">
+<li>card<sub>compare</sub> は，2枚のカードを与え，それが等しいか大きいか小さい
+かを0，1，-1で返す関数とします：
+</li>
+
+<li>card<sub>compare</sub> は関数:
+
+<pre class="example">
+card_compare()
+</pre>
+</li>
+
+<li>二枚のカードをもらって:
+
+<pre class="example">
+card_compare(Card, Card)
+</pre>
+</li>
+
+<li>1,0,-1 の整数値を返す
+
+<pre class="example">
+int card_compare(Card, Card)
+</pre>
+</li>
+</ul>
+
+<p>
+card<sub>compare</sub> の宣言は次となります:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+
+<p>
+では，表明にしてみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">cut_assert(card_compare(expected_cards[0], sorted_cards[0])==0 );
+</pre>
+</div>
+
+<p>
+よさそうですね。
+</p>
+
+<p>
+5枚のカードをテストする表明にして，全体を合わせて，関数にします。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> テスト全体プログラムの確認</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+test/test<sub>sort</sub>.cは次のようになります:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> test/Makefile の確認</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+test<sub>sort</sub>.c を用意したことで，
+test/Makefile の目的は変わりました。Makefile を更新します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> test/test<sub>sort</sub>.o の作成</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test
+make test_sort.o
+</pre>
+</div>
+
+<p>
+test<sub>sort</sub>.o ができれば，ひとまず，成功です。
+</p>
+
+<p>
+できない時は，test<sub>sort</sub>.c に間違いがあるか，Makefile に間違いがあ
+ります。エラーメッセージからどちらの間違いなのか特定し，修正しましょ
+う。
+</p>
+
+<p>
+成功したら，test/test<sub>sort</sub>.o の中身を見てみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test
+nm test_sort.o
+</pre>
+</div>
+
+<p>
+cards<sub>sortが未定義で，test</sub><sub>cards</sub><sub>sort</sub> が定義されているのがわかるは
+ずです。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> cards<sub>sort，card</sub><sub>compare</sub> の実装</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+さて次は，機能 cards<sub>sort</sub>, card<sub>compare</sub> の実装です。
+</p>
+
+<p>
+お決まりの手順です:
+</p>
+
+<ul class="org-ul">
+<li>test/test<sub>sort</sub>.c を作成するときに決めたインタフェースをとりだし，
+src/card.h に移す。
+</li>
+<li>src/card.hを遵守し，*src/cards.c* に機能を追加実装する。
+</li>
+<li>提供する機能を入れた src/libcard.a を作成する
+</li>
+</ul>
+
+<p>
+src/{card.h，libcard.a} で機能を提供する
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> card/card.h の更新</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+test/test<sub>card</sub>.c から cards<sub>sort等に関するインタフェース宣言を，</sub>
+src/card.h に移します。
+</p>
+
+<p>
+ここまでで，src/card.h は次のようになります:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+
+<p>
+test/test<sub>sort</sub>.c からは削除してください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> cards<sub>sort</sub> の実装 (src/cards.cの作成)</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+cards<sub>sort関数の使い方は決まっています。</sub>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+
+<p>
+ことでした。ソートのプログラムを書いた経験をもとにします。
+</p>
+
+<p>
+単純ソートは，選択範囲中で，最も小さいものを見付け範囲の先頭に動か
+すことを，範囲をせばめながら行いことで，ソートを行います。
+</p>
+
+<p>
+実装は次のようになるでしょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> card<sub>compare</sub> の実装</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+card<sub>compare</sub> の使い方も決まっています:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+
+<p>
+カードの番号の大小，スーツの大小をから，カードの大小を決めます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> cards.c の確認</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> src/Makefile</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+src/Makefileには，src/cards.o を作成する規則が追加になり，
+libcard.a を作る時，cards.o も取り込むように規則を変更します:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> src/cards.o の作成</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+src/cards.o を make し, ソースコードにエラーがないか確かめます:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/src
+make cards.o
+</pre>
+</div>
+
+<p>
+src/cards.o ができれば文法や宣言の食い違いはなくなったことになりま
+す。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> src/libcard.a の作成</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+src/cards.o ができれば，次は， src/libcard.a を make します。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/src
+make libcard.a
+</pre>
+</div>
+
+<p>
+Makefile が正しければ，これは成功するはずです。
+</p>
+
+<p>
+libcard.a の中身を確かめてみましょう:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/src
+nm libcard.a
+</pre>
+</div>
+
+<p>
+src/libcard.a が更新できたので，次はtest<sub>card</sub>.so を更新します。    
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> テスト</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> test/test<sub>sort</sub>.so のビルド</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+test/test<sub>sort</sub>.so を作り直します。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple/test/
+make clean
+make test_card.so
+</pre>
+</div>
+
+<p>
+test/test<sub>card</sub>.so ができればテストの実行に移ります。
+</p>
+
+<p>
+できない時は，多分，Makefile に間違いがあります。Makefile を修正してください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> テストの実行</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+テストの作成と機能の実装が終ったので，機能が要求を満たすことを確か
+めるためにテストする:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># ~/progs/card_display/simple
+cutter -v v test
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> テストと再設計</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+テストが成功すれば，テストによる開発の1サイクルが完結したことにな
+ります。
+</p>
+
+<p>
+テストが失敗した場合は，test/test<sub>sort</sub>.c, src/{card.h, cards.c} を
+修正していくことになります。
+</p>
+
+<p>
+ソースコードを修正した後は，Makefileに間違いがなけれ
+ば，~/progs/card<sub>display</sub>/simpleで make すれば，全自動でテストまで
+実行してくれます。テストが成功するまで繰り返してください。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2016-12-13 火 15:16</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="https://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

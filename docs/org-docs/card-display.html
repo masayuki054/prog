@@ -4,7 +4,7 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>トランプカードの表示問題</title>
-<!-- 2016-12-13 火 12:10 -->
+<!-- 2016-12-13 火 15:18 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Masayuki Suzuki" />
@@ -156,66 +156,54 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. CardDisplay問題</a>
+<li><a href="#sec-1">1. CardDisplay問題</a></li>
+<li><a href="#sec-2">2. 目的</a></li>
+<li><a href="#sec-3">3. トランプ・カード表示問題</a>
 <ul>
-<li><a href="#sec-1-1">1.1. 目的</a></li>
-<li><a href="#sec-1-2">1.2. トランプ・カード表示問題</a>
-<ul>
-<li><a href="#sec-1-2-1">1.2.1. card_display_simple 問題</a></li>
-<li><a href="#sec-1-2-2">1.2.2. card_display_multi 問題</a></li>
-<li><a href="#sec-1-2-3">1.2.3. card_display_sort 問題</a></li>
+<li><a href="#sec-3-1">3.1. card_display_simple 問題</a></li>
+<li><a href="#sec-3-2">3.2. card_display_multi 問題</a></li>
+<li><a href="#sec-3-3">3.3. card_display_sort 問題</a></li>
 </ul>
 </li>
+<li><a href="#sec-4">4. card_display_simple 問題への解法</a></li>
+<li><a href="#sec-5">5. card_display_simple 問題</a></li>
+<li><a href="#sec-6">6. プログラムの設計</a>
+<ul>
+<li><a href="#sec-6-1">6.1. 設計方針</a></li>
+<li><a href="#sec-6-2">6.2. card_display_simple の設計</a></li>
+<li><a href="#sec-6-3">6.3. 入力と出力例と内部トランプ表現</a></li>
+<li><a href="#sec-6-4">6.4. スーツ入力文字列からスーツ内部表現へ</a></li>
+<li><a href="#sec-6-5">6.5. カードの数から内部表現へ</a></li>
+<li><a href="#sec-6-6">6.6. カードを作る</a></li>
+<li><a href="#sec-6-7">6.7. カードの内部表現を文字列へ</a></li>
+<li><a href="#sec-6-8">6.8. 関数の名前</a>
+<ul>
+<li><a href="#sec-6-8-1">6.8.1. スーツ入力文字列からスーツ内部表現へ</a></li>
+<li><a href="#sec-6-8-2">6.8.2. カードの数から内部表現へ</a></li>
+<li><a href="#sec-6-8-3">6.8.3. カードを作る</a></li>
+<li><a href="#sec-6-8-4">6.8.4. カードの内部表現を文字列へ</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">2. card_display_simple 問題への解法</a>
-<ul>
-<li><a href="#sec-2-1">2.1. card_display_simple 問題</a></li>
-<li><a href="#sec-2-2">2.2. プログラムの設計</a>
-<ul>
-<li><a href="#sec-2-2-1">2.2.1. 設計方針</a></li>
-<li><a href="#sec-2-2-2">2.2.2. card_display_simple の設計</a></li>
-<li><a href="#sec-2-2-3">2.2.3. 入力と出力例と内部トランプ表現</a></li>
-<li><a href="#sec-2-2-4">2.2.4. スーツ入力文字列からスーツ内部表現へ</a></li>
-<li><a href="#sec-2-2-5">2.2.5. カードの数から内部表現へ</a></li>
-<li><a href="#sec-2-2-6">2.2.6. カードを作る</a></li>
-<li><a href="#sec-2-2-7">2.2.7. カードの内部表現を文字列へ</a></li>
-<li><a href="#sec-2-2-8">2.2.8. 関数の名前</a>
-<ul>
-<li><a href="#sec-2-2-8-1">2.2.8.1. スーツ入力文字列からスーツ内部表現へ</a></li>
-<li><a href="#sec-2-2-8-2">2.2.8.2. カードの数から内部表現へ</a></li>
-<li><a href="#sec-2-2-8-3">2.2.8.3. カードを作る</a></li>
-<li><a href="#sec-2-2-8-4">2.2.8.4. カードの内部表現を文字列へ</a></li>
+<li><a href="#sec-6-9">6.9. 関数の引数と戻り値の型 (APIの設計)</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-2-9">2.2.9. 関数の引数と戻り値の型 (APIの設計)</a></li>
-</ul>
-</li>
-<li><a href="#sec-2-3">2.3. card_display_simple 問題のテストによる開発</a>
+<li><a href="#sec-7">7. card_display_simple 問題のテストによる開発</a>
 <ul>
-<li><a href="#sec-2-3-1">2.3.1. テストによる開発から設計へのフィードバック</a></li>
-<li><a href="#sec-2-3-2">2.3.2. card_display_simple の解</a></li>
+<li><a href="#sec-7-1">7.1. テストによる開発から設計へのフィードバック</a></li>
+<li><a href="#sec-7-2">7.2. card_display_simple の解</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-4">2.4. card_display_sort</a>
+<li><a href="#sec-8">8. card_display_sort</a>
 <ul>
-<li><a href="#sec-2-4-1">2.4.1. 複数のカードをソートする機能</a></li>
+<li><a href="#sec-8-1">8.1. 複数のカードをソートする機能</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#sec-3">3. card_display_multi 問題への解法</a>
+<li><a href="#sec-9">9. card_display_multi 問題への解法</a></li>
+<li><a href="#sec-10">10. card_display_multi</a></li>
+<li><a href="#sec-11">11. card_display_sort 問題への解法</a></li>
+<li><a href="#sec-12">12. card_display_sort</a>
 <ul>
-<li><a href="#sec-3-1">3.1. card_display_multi</a></li>
-</ul>
-</li>
-<li><a href="#sec-4">4. card_display_sort 問題への解法</a>
-<ul>
-<li><a href="#sec-4-1">4.1. card_display_sort</a>
-<ul>
-<li><a href="#sec-4-1-1">4.1.1. 複数のカードをソートする機能</a></li>
-</ul>
-</li>
+<li><a href="#sec-12-1">12.1. 複数のカードをソートする機能</a></li>
 </ul>
 </li>
 </ul>
@@ -225,10 +213,11 @@ for the JavaScript code in this tag.
 <h2 id="sec-1"><span class="section-number-2">1</span> CardDisplay問題</h2>
 <div class="outline-text-2" id="text-1">
 </div>
+</div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 目的</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 目的</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 トランプ・カードをプログラムしてみよう。プログラムするとはどういうこと
 かについて，考える。トランプ・カードの機能とは何かを考える。
@@ -259,9 +248,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> トランプ・カード表示問題</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> トランプ・カード表示問題</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 一枚のカードを表示するプログラム (card_display_simple) から始めて，
 復数のトランプカードを表示 (card_display_multi) し，
@@ -275,9 +264,9 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-sec-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> card_display_simple 問題</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> card_display_simple 問題</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 コマンドラインからトランプカードの札種（スーツ）と番号を指定すると，
 そのカードを表す文字列を表示するプログラムを作成する
@@ -300,9 +289,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> card_display_multi 問題</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> card_display_multi 問題</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 複数のカードを指定して，そのカード達を表示する
 </p>
@@ -318,9 +307,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> card_display_sort 問題</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> card_display_sort 問題</h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 複数のカードを入力し，ソートして表示するプログラム
 </p>
@@ -332,19 +321,19 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> card_display_simple 問題への解法</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> card_display_simple 問題への解法</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 大きな要求を，細かな機能への要求に分解していきましょう。
 </p>
 </div>
+</div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> card_display_simple 問題</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> card_display_simple 問題</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 コマンドラインからトランプカードの札種（スーツ）と番号を指定すると，
 </p>
@@ -355,12 +344,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> プログラムの設計</h3>
-<div class="outline-text-3" id="text-2-2">
-</div><div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> 設計方針</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> プログラムの設計</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 設計方針</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 もっとも難しく，大切なこと。*構造化プログラミング*とか，*抽象データ型*とか，
 *オブジェクト指向設計*とか，いろいろある。
@@ -381,9 +370,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> card_display_simple の設計</h4>
-<div class="outline-text-4" id="text-2-2-2">
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> card_display_simple の設計</h3>
+<div class="outline-text-3" id="text-6-2">
 <p>
 設計し易いよう，部分に分ける
 </p>
@@ -410,9 +399,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-3" class="outline-4">
-<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> 入力と出力例と内部トランプ表現</h4>
-<div class="outline-text-4" id="text-2-2-3">
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> 入力と出力例と内部トランプ表現</h3>
+<div class="outline-text-3" id="text-6-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -459,9 +448,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-4" class="outline-4">
-<h4 id="sec-2-2-4"><span class="section-number-4">2.2.4</span> スーツ入力文字列からスーツ内部表現へ</h4>
-<div class="outline-text-4" id="text-2-2-4">
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> スーツ入力文字列からスーツ内部表現へ</h3>
+<div class="outline-text-3" id="text-6-4">
 <p>
 要求
 </p>
@@ -511,9 +500,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-5" class="outline-4">
-<h4 id="sec-2-2-5"><span class="section-number-4">2.2.5</span> カードの数から内部表現へ</h4>
-<div class="outline-text-4" id="text-2-2-5">
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> カードの数から内部表現へ</h3>
+<div class="outline-text-3" id="text-6-5">
 <p>
 要求(ポーカの場合)
 </p>
@@ -534,9 +523,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-6" class="outline-4">
-<h4 id="sec-2-2-6"><span class="section-number-4">2.2.6</span> カードを作る</h4>
-<div class="outline-text-4" id="text-2-2-6">
+<div id="outline-container-sec-6-6" class="outline-3">
+<h3 id="sec-6-6"><span class="section-number-3">6.6</span> カードを作る</h3>
+<div class="outline-text-3" id="text-6-6">
 <p>
 要求
 </p>
@@ -553,9 +542,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-7" class="outline-4">
-<h4 id="sec-2-2-7"><span class="section-number-4">2.2.7</span> カードの内部表現を文字列へ</h4>
-<div class="outline-text-4" id="text-2-2-7">
+<div id="outline-container-sec-6-7" class="outline-3">
+<h3 id="sec-6-7"><span class="section-number-3">6.7</span> カードの内部表現を文字列へ</h3>
+<div class="outline-text-3" id="text-6-7">
 <p>
 設計
 </p>
@@ -578,9 +567,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-8" class="outline-4">
-<h4 id="sec-2-2-8"><span class="section-number-4">2.2.8</span> 関数の名前</h4>
-<div class="outline-text-4" id="text-2-2-8">
+<div id="outline-container-sec-6-8" class="outline-3">
+<h3 id="sec-6-8"><span class="section-number-3">6.8</span> 関数の名前</h3>
+<div class="outline-text-3" id="text-6-8">
 <p>
 この講義では，基本，対象とするデータの型，データの属性，データの処理を下線でつな
 げて命名することにする。
@@ -591,27 +580,27 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-sec-2-2-8-1" class="outline-5">
-<h5 id="sec-2-2-8-1"><span class="section-number-5">2.2.8.1</span> スーツ入力文字列からスーツ内部表現へ</h5>
-<div class="outline-text-5" id="text-2-2-8-1">
+<div id="outline-container-sec-6-8-1" class="outline-4">
+<h4 id="sec-6-8-1"><span class="section-number-4">6.8.1</span> スーツ入力文字列からスーツ内部表現へ</h4>
+<div class="outline-text-4" id="text-6-8-1">
 <p>
 card_suit_new_from_string
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-8-2" class="outline-5">
-<h5 id="sec-2-2-8-2"><span class="section-number-5">2.2.8.2</span> カードの数から内部表現へ</h5>
-<div class="outline-text-5" id="text-2-2-8-2">
+<div id="outline-container-sec-6-8-2" class="outline-4">
+<h4 id="sec-6-8-2"><span class="section-number-4">6.8.2</span> カードの数から内部表現へ</h4>
+<div class="outline-text-4" id="text-6-8-2">
 <p>
 card_no_new_from_string
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-8-3" class="outline-5">
-<h5 id="sec-2-2-8-3"><span class="section-number-5">2.2.8.3</span> カードを作る</h5>
-<div class="outline-text-5" id="text-2-2-8-3">
+<div id="outline-container-sec-6-8-3" class="outline-4">
+<h4 id="sec-6-8-3"><span class="section-number-4">6.8.3</span> カードを作る</h4>
+<div class="outline-text-4" id="text-6-8-3">
 <p>
 card_new
 </p>
@@ -638,9 +627,9 @@ card_no
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-8-4" class="outline-5">
-<h5 id="sec-2-2-8-4"><span class="section-number-5">2.2.8.4</span> カードの内部表現を文字列へ</h5>
-<div class="outline-text-5" id="text-2-2-8-4">
+<div id="outline-container-sec-6-8-4" class="outline-4">
+<h4 id="sec-6-8-4"><span class="section-number-4">6.8.4</span> カードの内部表現を文字列へ</h4>
+<div class="outline-text-4" id="text-6-8-4">
 <p>
 card_to_string
 </p>
@@ -655,9 +644,9 @@ card_to_string
 </div>
 
 
-<div id="outline-container-sec-2-2-9" class="outline-4">
-<h4 id="sec-2-2-9"><span class="section-number-4">2.2.9</span> 関数の引数と戻り値の型 (APIの設計)</h4>
-<div class="outline-text-4" id="text-2-2-9">
+<div id="outline-container-sec-6-9" class="outline-3">
+<h3 id="sec-6-9"><span class="section-number-3">6.9</span> 関数の引数と戻り値の型 (APIの設計)</h3>
+<div class="outline-text-3" id="text-6-9">
 <ul class="org-ul">
 <li>int card_suit_new_from_string(char *);
 </li>
@@ -685,9 +674,9 @@ card_to_string
 </div>
 
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> card_display_simple 問題のテストによる開発</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> card_display_simple 問題のテストによる開発</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 前章の設計を頭に入れて，プログラムの開発にとりかかりましょう。
 </p>
@@ -699,9 +688,9 @@ card_to_string
 </div>
 
 
-<div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> テストによる開発から設計へのフィードバック</h4>
-<div class="outline-text-4" id="text-2-3-1">
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> テストによる開発から設計へのフィードバック</h3>
+<div class="outline-text-3" id="text-7-1">
 <p>
 スーツと番号のデータ構造に設計上の下記の変更がありました:
 </p>
@@ -713,9 +702,9 @@ enum e_No card_no_new_from_string (char *)
 </div>
 </div>
 
-<div id="outline-container-sec-2-3-2" class="outline-4">
-<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> card_display_simple の解</h4>
-<div class="outline-text-4" id="text-2-3-2">
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> card_display_simple の解</h3>
+<div class="outline-text-3" id="text-7-2">
 <p>
 このプログラムの作成はレポート問題の一部になりましたので，
 自分で考えて，作成してください。
@@ -812,12 +801,12 @@ main(int argc, char *argv[])
 </div>
 </div>
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> card_display_sort</h3>
-<div class="outline-text-3" id="text-2-4">
-</div><div id="outline-container-sec-2-4-1" class="outline-4">
-<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> 複数のカードをソートする機能</h4>
-<div class="outline-text-4" id="text-2-4-1">
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> card_display_sort</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> 複数のカードをソートする機能</h3>
+<div class="outline-text-3" id="text-8-1">
 <p>
 一枚のカードの機能をもとに，
 </p>
@@ -860,14 +849,13 @@ main(int argc, char *argv[])
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> card_display_multi 問題への解法</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> card_display_multi</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> card_display_multi 問題への解法</h2>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> card_display_multi</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 card_display_multi の解の例
 </p>
@@ -957,17 +945,16 @@ main(int argc, char *argv[])
 </p>
 </div>
 </div>
-</div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> card_display_sort 問題への解法</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> card_display_sort</h3>
-<div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-sec-4-1-1" class="outline-4">
-<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> 複数のカードをソートする機能</h4>
-<div class="outline-text-4" id="text-4-1-1">
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> card_display_sort 問題への解法</h2>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> card_display_sort</h2>
+<div class="outline-text-2" id="text-12">
+</div><div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1"><span class="section-number-3">12.1</span> 複数のカードをソートする機能</h3>
+<div class="outline-text-3" id="text-12-1">
 <p>
 一枚のカードの機能をもとに，
 </p>
@@ -1016,10 +1003,9 @@ main(int argc, char *argv[])
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
 <p class="author">Author: Masayuki Suzuki</p>
-<p class="date">Created: 2016-12-13 火 12:10</p>
+<p class="date">Created: 2016-12-13 火 15:18</p>
 <p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="https://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

@@ -5,10 +5,10 @@
 
 #+include: lects/announce.org 
 
-#+include: lects/08/plan.org
+#+include: lects/09/plan.org
 
 #+include: lects/supplement.org
 
-#+include: lects/07/resume.org 
+#+include: lects/08/resume.org 
 
-#+include: lects/07/response.org
+#+include: lects/08/response.org

@@ -35,14 +35,14 @@
 
 * テスト駆動開発の一サイクルのテンプレート
   
-  モジュールの機能をテストします。
+  モジュールの機能をテストにより開発する際の，お決まりのやり方です。
 
   まず，機能の名前を決めます。
 
 ** 機能の設計
 
 *** インタフェースの設計
-**** インタフェースを考える
+   - インタフェースを考える
 
      機能が操作の場合
      - 機能は箱，箱への入力と，箱からの出力を考える
@@ -52,32 +52,30 @@
      - 機能は箱，箱の中身を考える。
      - 何からできているかを決める
 
-**** テスト test_... () を書く
+  - テスト test_... () を書く
 
-**** test/test_deck.o を作る (test/Makefile)
+  - test/test_deck.o を作る (test/Makefile)
      
+
 ** 機能の実装
 
-*** deck_new，deck_size の実装
+   たとえば，deck_new，deck_size を実装する場合
 
-**** インタフェースの確定 (src/deck.h)
+   - インタフェースの確定 (src/deck.h)
 
-**** Deck を作る (src/deck.c)
+   - Deck型 を作る (src/deck.c)
      
-**** deck_new と deck_size を作る (src/deck.c)
+   - deck_new と deck_size を作る (src/deck.c)
 
-**** deck_new.o, deck_size.o を作る (src/Makefile)
+   - deck_new.o, deck_size.o を作る (src/Makefile)
 
-**** libdeck.a を作る (src/Makefile)
-
+   - libdeck.a を作る (src/Makefile)
 
 ** 機能テスト
 
-*** テスト
+   - テスト test_deck.so のビルド
 
-**** テスト test_deck.so のビルド
-
-**** テストの実行とデバッグ
+   - テストの実行とデバッグ
 
 
 * 山のテスト駆動開発
@@ -94,6 +92,7 @@
 ** 開発リポジトリ
 
    [[http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck][deck]]
+
    ソースコードの提示用に用意しました:
 
    - [[http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test][deck/test]]

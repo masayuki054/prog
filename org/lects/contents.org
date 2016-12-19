@@ -1,29 +1,32 @@
-#* お知らせ
-#+include: announce.org 
-#* はじめに
-#+include: preface.org
-#* 8回目
-#+include: 08/plan.org
-#* 7回目
-#+include: 07/resume.org
-#+include: 07/response.org
-#* 6回目
-#+include: 06/resume.org
-#+include: 06/response.org
-#* 5回目
-#+include: 05/resume.org
-#+include: 05/response.org
-#* 4回目
-#+include: 04/plan.org
-#+include: 04/response.org
-#* 3回目
-#+include: 03/resume.org
-#+include: 03/response.org
-#* 2回目
-#+include: 02/resume.org
-#+include: 02/response.org
-#* 1回目
-#+include: 01/resume.org 
-#+include: 01/response.org 
+# #* お知らせ
+#+include: announce.org :minlevel 1
+# #* はじめに
+#+include: preface.org :minlevel 1
+# * 9回目
+#+include: 09/plan.org :minlevel 1
+# * 8回目
+#+include: 08/resume.org :minlevel 1
+#+include: 08/response.org :minlevel 1
+# * 7回目
+#+include: 07/resume.org :minlevel 1
+#+include: 07/response.org :minlevel 1
+# * 6回目
+#+include: 06/resume.org :minlevel 1
+#+include: 06/response.org :minlevel 1
+# * 5回目
+#+include: 05/resume.org :minlevel 1
+#+include: 05/response.org :minlevel 1
+# * 4回目
+#+include: 04/plan.org :minlevel 1
+#+include: 04/response.org :minlevel 1
+# * 3回目
+#+include: 03/resume.org :minlevel 1
+#+include: 03/response.org :minlevel 1
+# * 2回目
+#+include: 02/resume.org :minlevel 1
+#+include: 02/response.org :minlevel 1
+# * 1回目
+#+include: 01/resume.org :minlevel 1
+#+include: 01/response.org :minlevel 1
 
 

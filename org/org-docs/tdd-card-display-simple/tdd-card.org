@@ -1,13 +1,13 @@
-# Time-stamp: <2016-11-29 04:05:26 m>
+# Time-stamp: <2016-12-13 15:13:27 suzuki>
 #+startup: overview
 #+options: ^:{}
 
-#+include: Makefile.org
-#+include: card.h.org
-#+include: test_card.c.org
-#+include: test_sort.c.org
-#+include: card.c.org
-#+include: cards.c.org
+#+include: Makefile.org 
+#+include: card.h.org 
+#+include: test_card.c.org 
+#+include: test_sort.c.org 
+#+include: card.c.org 
+#+include: cards.c.org 
 
 
 * はじめに
@@ -22,12 +22,12 @@
   みましょう。
 
 * ディレクトリ構成
-#+include: 01-directory.org 
+#+include: 01-directory.org :minlevel 1
 
 * Makefileを作る
-#+include: 02-makefile.org
+#+include: 02-makefile.org :minlevel 1
 
-* 開発を機能に分ける
+* 開発を機能に分ける 
 
   さて次は，card_display_simpleを，機能に分け，機能をテストしな
   がら開発します。(file:card-display/)
@@ -100,13 +100,13 @@
 
 * スーツを数値にする機能のテストと実装 
 
-#+include: suit_new.org 
+#+include: suit_new.org :minlevel 1
 
 * トランプ番号を数値に
-#+include: no_new.org 
+#+include: no_new.org :minlevel 1
 
 * トランプ・カードを作成
-#+include: card_new.org
+#+include: card_new.org :minlevel 1
 
 * トランプ・カードを文字列に
 
@@ -140,7 +140,7 @@
    =開発の過程をドキュメントとしてまとめ= =レポート提出してください= 。
 
 * トランプ・カードを文字列に
-#+include: card_to_string.org
+#+include: card_to_string.org :minlevel 1
 
 * card_display_simple 問題の解の作成
   
@@ -160,4 +160,4 @@
   を書き換えてみましょう。ごく自然にできるはずです。
 
 * card_display_sort 
-#+include: cards_sort.org
+#+include: cards_sort.org :minlevel 1

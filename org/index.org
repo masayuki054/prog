@@ -3,12 +3,12 @@
 #+include: info/common-header.org
 #+title: 今日の講義
 
-#+include: lects/announce.org 
+#+include: lects/announce.org :minlevel 1
 
-#+include: lects/09/plan.org
+#+include: lects/09/plan.org :minlevel 1
 
-#+include: lects/supplement.org
+#+include: lects/supplement.org :minlevel 1
 
-#+include: lects/08/resume.org 
+#+include: lects/08/resume.org :minlevel 1
 
-#+include: lects/08/response.org
+#+include: lects/08/response.org :minlevel 1

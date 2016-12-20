@@ -1,0 +1,135 @@
+* 9回目 (12/13) の講義内容
+
+** 来週までに
+
+** 今日の予定
+
+
+     - [ ] 先生が考える山の機能
+       - ~/progs/game/deck/deck.org
+
+     - [ ] 山のテスト駆動開発の始まり
+
+       - 来週の講義終了時までの完成を目差します。
+       - やり残しは，冬休みに。
+
+     - [ ] モジュラープログラミングについて紹介 
+
+       - 補足タブの中にあるモジュラープログラミングについて紹介します。
+
+         - Acroquest プログラミング講座
+
+           [[http://www.acroquest.co.jp/webworkshop/programing_course/index1.html][目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？]]
+
+           - [[http://www.acroquest.co.jp/webworkshop/programing_course/index18.html][目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念]]
+
+         - 構造化プログラミングについて
+
+           [[http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html][構造化プログラミング]] がいい。
+
+          「大規模なプログラムを書くとき，どうしたら良いプログラムに仕上げること
+           ができるか？」という問いに対して与えられた回答。
+
+         - Strategic Choice の役に立ちそうなコンテンツ
+
+           オブジェクト指向についてのサイトですが，モジュール化について
+           考えるときの拠り所について参考にしてください:
+
+           - [[http://d.hatena.ne.jp/asakichy/20090216/1234765854][構造化プログラミング入門 - Strategic Choice]]
+
+           - [[http://d.hatena.ne.jp/asakichy/20090217/1234830611][段階的詳細化 - Strategic Choice]]
+
+           - [[http://d.hatena.ne.jp/asakichy/20090218/1234990542][凝集度 - Strategic Choice]]
+
+           - [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
+
+** [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]]  
+
+   先週，ポーカーゲームに入り，カードモジュールの作成をやりました。
+
+   そして，ゲームの説明から，モジュール分けを行いました。~/progs/game/game.org
+
+   山モジュールの機能について，自分で考え，~/progs/game/deck/deck.org
+   に書いてもらうことになっていました。
+
+   先生の案を説明し，テストによる開発を行ないます。
+
+** Doing テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
+
+何回かかけて，下記の3つの資料を使って，テストによる開発を経験します。
+
+- [X] [[./org-docs/software-test.org][ソフトウェア・テストについて]]
+
+  *テスト* とは何か, その大切さ，を理解しましょう。
+
+- [X] [[./org-docs/what-is-tdd.org][テストによる開発とは]]
+
+  大きな問題を，小さな機能に分け，テストにより設計しと確認し，
+  段階的に，開発を進める方法を知りましょう。
+
+  この文書も段階的に読み進めましょう。
+   
+- [X] [[./org-docs/cutter.org][cutterの使い方]] 
+
+  Cutter によるテストを体験しましょう。
+
+
+** Done カードモジュール作成までの講義の進み SCHEDULED: <2016-10-09 日>
+   CLOSED: [2016-12-06 火 14:15] SCHEDULED: <2016-10-09 日>
+    
+   - [X] カード表示問題へ解プログラムの作成 SCHEDULED: <2016-10-04 火>
+     - [X] 自分なりのプログラムと開発ドキュメント作成  SCHEDULED: <2016-10-04 火>
+     - [X] 先生のプログラム解説  SCHEDULED: <2016-10-11 火>
+     - [X] simple.org (雑メモの中) の解説  SCHEDULED: <2016-10-25 火>
+
+   - [X] テストとcutterの使い方 SCHEDULED: <2016-10-25 火>
+
+   - [X] cutter を使ったカード表示問題のテストによる開発(1) SCHEDULED: <2016-11-01 火>
+   - [X] cutter を使ったカード表示問題のテストによる開発(2) SCHEDULED: <2016-11-08 火>
+   - [X] カードモジュールの作成 SCHEDULED: <2016-11-15 火>
+
+** Done card_display問題のテストによる開発 [10/10] SCHEDULED: <2016-11-01 火>
+   CLOSED: [2016-12-06 火 14:16]
+
+    [[./org-docs/tdd-card-display-simple.org][CardDisplaySimple問題のテストによる開発]] 
+
+     - [X] test_card_suit_new_from_string
+     - [X] test_card_no_new_from_string
+     - [X] test_card_new, suit, no
+     - [X] test_card_no_to_char, =test_card_no_to_string=
+     - [X] test_card_suit_to_char, =test_card_suit_to_string=
+     - [X] test_card_to_string
+     - [X] card_display_simple
+     - [X] card_display_multi 自分でやって
+     - [X] cards_sort <2016-11-28 月>
+     - [X] card_display_sort <2016-11-28 月>
+
+  
+** ((:-s)) のつぶやき [/]
+
+- [ ] 画面のストリーミング配信 講義開始前に
+- [ ] 画面のキャプチャ simple_screen_capture  講義開始前に, mic 忘れず
+- レスポンス (10/10 min.)
+
+- テストと開発の話 (10/70 min.)
+
+  すこし先へ進む
+
+- テストによるカード表示問題の開発
+  - [ ] card_display_first問題の解が不適切
+  - [ ] card_display_sort まわりの説明
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+

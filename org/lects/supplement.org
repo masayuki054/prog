@@ -1,5 +1,36 @@
 * 補足
 
+** deck モジュール開発の構造
+
+   [[https://workflowy.com/s/H3egIJyvcA][workflowyのメモ]]
+
+   https://masayuki054.github.io/prog/Figs/deck_dev.png
+
+** キーワードからぺージを探す
+
+     .htmlを探すなら
+     : ag キーワード ~suzuki/prog.git/docs
+
+     .org文書を探すなら
+     : ag 構造化 ~suzuki/prog.git/org
+
+** gnu make のマニュアル
+
+   [[http://jr4qpv.hatenablog.com/entry/2016/08/28/124801][「GNU Make 第3版 日本語版（オライリー）」の無料PDF - Around the modern stone age.]]
+
+    http://www.ecoop.net/coop/translated/GNUMake3.77/make_toc.jp.html
+
+** emacs org-mode 
+
+** 「構造化プログラム」のページがどこにあるかわからない
+
+     .htmlを探すなら
+     : ag 構造化 ~suzuki/prog.git/docs
+
+     .orgを探すなら
+     : ag 構造化 ~suzuki/prog.git/org
+
+
 ** libcard.a を 作る/使う 意味
 
    ~card_new()~ 関数は，ソース・ファイル，オブジェクト・ファイル
@@ -228,12 +259,6 @@ drwxr-xr-x 2 root root  4096  9月  8  2015 soupcutter
 
 **** #10 巨大なオーガナイズシステム「org-mode」の世界 (Software Design 2015年2月号掲載記事) Emacs org-mode インストール 設定 使い方
      http://emacs.rubikitch.com/sd1502-org-mode/
-
-
-
-
-  ~suzuki/meta-ruby.git/org/  
-
 
 *** org-mode babel の紹介
 

@@ -2,8 +2,10 @@
 #+author: suzuki@cis.iwate-u.ac.jp
 [[./][ホーム]] /
 [[./lects.org][講義]] / 
+[[./org-docs/poker.org][ポーカー開発]] /
 [[./supplement.org][説明]] / 
 [[./org-docs.org][資料]] / 
 [[./memos.org][雑メモ]] /
-[[https://github.com/masayuki054/prog/wiki][prog Wiki]]/
-[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][2015]]
+[[https://workflowy.com/s/H3egIJyvcA][workflowyのメモ]] /
+[[https://github.com/masayuki054/prog/wiki][prog Wiki]] /
+[[http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/][2015]]の講義内容

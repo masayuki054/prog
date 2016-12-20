@@ -1,19 +1,35 @@
-* 9回目 (12/13) の講義内容
+* 10回目 (12/20) の講義内容
 
-** 来週までに
+** 前回から今日にかけての予定
 
-** 今日の予定
-
-
-     - [ ] 先生が考える山の機能
+     - [X] 先生が考える山の機能 再び
+       
        - ~/progs/game/deck/deck.org
 
-     - [ ] 山のテスト駆動開発の始まり
+     - [X] 山のテスト駆動開発の始まり
 
        - 来週の講義終了時までの完成を目差します。
        - やり残しは，冬休みに。
 
-     - [ ] モジュラープログラミングについて紹介 
+	 - [ ] Deck
+
+	 - [ ] 
+	   - [ ] deck/test/test_deck.c#test_deck_new
+	   - [ ] deck/test/Makefile#test_deck.o
+	   - [ ] deck/src/test_deck.h
+	   - [ ] deck/src/deck.c#deck_{new,size}
+	   - [ ] deck/src/Makefile#libdeck.a
+	   - [ ] deck/test/Makefile#test_deck.o
+
+	 - [ ] deck_new, deck_size
+
+	 - [ ] deck_draw, deck_discard
+
+	 - [ ] deck_renew
+
+	 - [ ] deck_shuffle
+
+     - [X] モジュラープログラミングについて紹介 
 
        - 補足タブの中にあるモジュラープログラミングについて紹介します。
 
@@ -45,14 +61,20 @@
 
 ** [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]]  
 
-   先週，ポーカーゲームに入り，カードモジュールの作成をやりました。
+   先々週，ポーカーゲームに入り，カードモジュールの作成をやりました。
 
    そして，ゲームの説明から，モジュール分けを行いました。~/progs/game/game.org
 
    山モジュールの機能について，自分で考え，~/progs/game/deck/deck.org
    に書いてもらうことになっていました。
 
-   先生の案を説明し，テストによる開発を行ないます。
+   先週，先生の案を説明し，テストによる開発を始めました。
+
+   機能の一つづつについて，テストを書いて，インタフェースを決めて，実
+   装して，テストを成功させるまでデバッグし，開発を進めましょう。
+
+   https://workflowy.com/s/H3egIJyvcA も参考にしてください。
+
 
 ** Doing テストとテストによる開発とは SCHEDULED: <2016-10-25 火>
 

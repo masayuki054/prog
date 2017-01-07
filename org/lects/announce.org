@@ -25,7 +25,7 @@
     - 〆切 :: 2017.01.10
     - 提出物 :: 
       1. ~/progs/game/deck
-      2. ~/progs/report/3.org 
+      2. ~/progs/reports/3.org 
 
 ** プロジェクタに表示しているページのURLを知らせたい
 

@@ -4,11 +4,7 @@
 #+title: 今日の講義
 
 #+include: lects/announce.org :minlevel 1
-
 #+include: lects/10/plan.org :minlevel 1
-
 #+include: lects/supplement.org :minlevel 1
-
 #+include: lects/09/resume.org :minlevel 1
-
 #+include: lects/09/response.org :minlevel 1

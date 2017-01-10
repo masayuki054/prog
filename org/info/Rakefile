@@ -1,18 +1,7 @@
 # coding:utf-8
 # coding:utf-8
 require 'date'
-
-SUBDIRS = ["lects", "org-docs", "memos", "supplement"]
-EXCLS = ["log.org", "contents.org", "Makefile.org", "Rakefile.org"]
-ORGS = FileList["*.org"] - EXCLS
-HTMLS = ORGS.ext(".html")
-NOW = DateTime.now.to_s
-
-ORGS.each do |org|
-  html = File.basename(org, ".org")+".html"
-  depends = `org_dependency.rb #{org}`.split(",")
-  rule html => depends 
-end
+require 'rake/clean'
 
 def myhome
   path = `pwd`.chomp.split("/").reverse
@@ -21,8 +10,44 @@ def myhome
 end
 
 def org_sub_dir
-  (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
+  if File.exist?("Rakefile.setup.rb")
+    puts "loading Rakefile.setup.rb."
+    load "./Rakefile.setup.rb"
+    SUBDIRS
+  else
+    (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
+  end
 end
+
+if File.exist?("Rakefile.setup.rb")
+  puts "loading Rakefile.setup.rb."
+  load "./Rakefile.setup.rb"
+else
+  SUBDIRS = org_sub_dir
+  EXCLUDES = FileList ["Makefile.org", "Rakefile.org", "log.org", "0*.org"]
+  ORGS = FileList["*.org"] - EXCLUDES
+  HTMLS = ORGS.ext(".html")
+end
+
+NOW = DateTime.now.to_s
+
+puts "HTMLS: #{HTMLS}"
+puts "SUBDIRS: #{SUBDIRS}"
+
+CLEAN.include(FileList["*~","#*"])
+CLOBBER.include(HTMLS)
+
+ORGS.each do |org|
+  html = File.basename(org, ".org")+".html"
+  @depends = `~/COMM/bin/org_dependency.rb #{org}`.chomp.split(", ")
+  if @depends.size!=0 
+    file html => @depends.push(org) do |t|
+      sh "org2html #{org}"
+      deploy(t.name, "#{SITE}/#{DIR}")
+    end
+  end
+end
+
   
 depth,path = myhome
 
@@ -36,8 +61,11 @@ def deploy(file, dir)
   p "deploying #{dir}#{file}"
   sh "mkdir -p #{dir}"
   File.open("#{dir}/#{file}", "w") do |target| 
-    all = File.read(file).gsub("http://", "https://")
-    all.gsub!('//www.pirilampo.org', '//wiki.cis.iwate-u.ac.jp/~suzuki/org-html-theme')
+    all = File.read(file).gsub("http:\/\/", "https:\/\/")
+#    all.gsub!("\/\/www.pirilampo.org", "\/\/wiki.cis.iwate-u.ac.jp\/~suzuki\/org-html-theme")
+#    all.gsub!("\/\/orgmode.org\/mathjax\/MathJax.js", "\/\/cdn.mathjax.org\/mathjax\/latest\/MathJax.js?config=TeX-MML-AM_CHTML")
+    all.gsub!("https:\/\/www.pirilampo.org", ".")
+    all.gsub!("https:\/\/wiki.cis.iwate-u.ac.jp\/~suzuki\/org-html-theme", ".")
     target.write(all)
   end
 
@@ -47,17 +75,15 @@ def deploy(file, dir)
 end
 
 rule ".html" => ".org" do |t|
-  sh "org2html #{t.prerequisites.join(' ')}"
+  sh "~/bin/org2html #{t.prerequisites.join(' ')}"
   deploy(t.name, "#{SITE}/#{DIR}")
 end
 
-task :default => [:org2html, :subdirs]
+task :default => [:org2html]
 
 task :org2html => HTMLS do
-
-  p "git push"
+  puts "git push"
   sh "git push"
-  
 end
 
 task :subdirs do

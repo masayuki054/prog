@@ -10,7 +10,13 @@ def myhome
 end
 
 def org_sub_dir
-  (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
+  if File.exist?("Rakefile.setup.rb")
+    puts "loading Rakefile.setup.rb."
+    load "./Rakefile.setup.rb"
+    SUBDIRS
+  else
+    (Dir.glob("*/*.org").map do |f| File.dirname(f) end).uniq
+  end
 end
 
 if File.exist?("Rakefile.setup.rb")
@@ -18,7 +24,7 @@ if File.exist?("Rakefile.setup.rb")
   load "./Rakefile.setup.rb"
 else
   SUBDIRS = org_sub_dir
-  EXCLUDES = FielList ["Makefile.org", "Rakefile.org", "log.org", "0*.org"]
+  EXCLUDES = FileList ["Makefile.org", "Rakefile.org", "log.org", "0*.org"]
   ORGS = FileList["*.org"] - EXCLUDES
   HTMLS = ORGS.ext(".html")
 end
@@ -33,7 +39,7 @@ CLOBBER.include(HTMLS)
 
 ORGS.each do |org|
   html = File.basename(org, ".org")+".html"
-  @depends = `org_dependency.rb #{org}`.chomp.split(", ")
+  @depends = `~/COMM/bin/org_dependency.rb #{org}`.chomp.split(", ")
   if @depends.size!=0 
     file html => @depends.push(org) do |t|
       sh "org2html #{org}"

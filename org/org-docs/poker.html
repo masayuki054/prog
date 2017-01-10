@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>ポーカーゲームの開発</title>
-<!-- 2016-12-13 火 06:44 -->
+<!-- 2017-01-08 日 04:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>ポーカーゲームの開発</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Masayuki Suzuki" />
+<meta  name="author" content="m" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -58,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -156,292 +162,265 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Pokerゲーム開発の始まり</a>
+<li><a href="#orgheadline11">1. Pokerゲーム開発の始まり</a>
 <ul>
-<li><a href="#sec-1-1">1.1. はじまり</a>
+<li><a href="#orgheadline10">1.1. はじまり</a>
 <ul>
-<li><a href="#sec-1-1-1">1.1.1. <span class="done Done">Done</span> ポーカーゲーム作りの始まり</a>
+<li><a href="#orgheadline6">1.1.1. Done ポーカーゲーム作りの始まり</a>
 <ul>
-<li><a href="#sec-1-1-1-1">1.1.1.1. カードモジュールつくってよ (@カードモジュールつくってよ)</a></li>
-<li><a href="#sec-1-1-1-2">1.1.1.2. 講義で考えているポーカーゲーム</a></li>
-<li><a href="#sec-1-1-1-3">1.1.1.3. ゲーム説明とモジュールわけ</a></li>
-<li><a href="#sec-1-1-1-4">1.1.1.4. ゲーム説明の分析 (課題)</a></li>
-<li><a href="#sec-1-1-1-5">1.1.1.5. モジュール分け</a></li>
+<li><a href="#orgheadline1">1.1.1.1. カードモジュールつくってよ (@カードモジュールつくってよ)</a></li>
+<li><a href="#orgheadline2">1.1.1.2. 講義で考えているポーカーゲーム</a></li>
+<li><a href="#orgheadline3">1.1.1.3. ゲーム説明とモジュールわけ</a></li>
+<li><a href="#orgheadline4">1.1.1.4. ゲーム説明の分析 (課題)</a></li>
+<li><a href="#orgheadline5">1.1.1.5. モジュール分け</a></li>
 </ul>
 </li>
-<li><a href="#sec-1-1-2">1.1.2. テストの意味</a>
+<li><a href="#orgheadline9">1.1.2. テストの意味</a>
 <ul>
-<li><a href="#sec-1-1-2-1">1.1.2.1. 「まずテストを書く」こと</a></li>
-<li><a href="#sec-1-1-2-2">1.1.2.2. フィードバック</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-2">2. 開発の決まり</a>
-<ul>
-<li><a href="#sec-2-1">2.1. モジュールの開発場所</a></li>
-<li><a href="#sec-2-2">2.2. ~/prog/game/Makefile</a></li>
-</ul>
-</li>
-<li><a href="#sec-3">3. Card モジュールの開発</a>
-<ul>
-<li><a href="#sec-3-1">3.1. Cardモジュール</a></li>
-</ul>
-</li>
-<li><a href="#sec-4">4. Deck モジュールの開発</a>
-<ul>
-<li><a href="#sec-4-1">4.1. 山について考える</a>
-<ul>
-<li><a href="#sec-4-1-1">4.1.1. 山の機能</a>
-<ul>
-<li><a href="#sec-4-1-1-1">4.1.1.1. ゲームの説明から山に関する部分を取り出す</a></li>
-<li><a href="#sec-4-1-1-2">4.1.1.2. 山モジュールの機能</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-4-2">4.2. テスト駆動開発の一サイクルのテンプレート</a>
-<ul>
-<li><a href="#sec-4-2-1">4.2.1. 機能の設計</a>
-<ul>
-<li><a href="#sec-4-2-1-1">4.2.1.1. インタフェースの設計</a>
-<ul>
-<li><a href="#sec-4-2-1-1-1">インタフェースを考える</a></li>
-<li><a href="#sec-4-2-1-1-2">テスト test_&#x2026; () を書く</a></li>
-<li><a href="#sec-4-2-1-1-3">test/test_deck.o を作る (test/Makefile)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-4-2-2">4.2.2. 機能の実装</a>
-<ul>
-<li><a href="#sec-4-2-2-1">4.2.2.1. deck_new，deck_size の実装</a>
-<ul>
-<li><a href="#sec-4-2-2-1-1">インタフェースの確定 (src/deck.h)</a></li>
-<li><a href="#sec-4-2-2-1-2">Deck を作る (src/deck.c)</a></li>
-<li><a href="#sec-4-2-2-1-3">deck_new と deck_size を作る (src/deck.c)</a></li>
-<li><a href="#sec-4-2-2-1-4">deck_new.o, deck_size.o を作る (src/Makefile)</a></li>
-<li><a href="#sec-4-2-2-1-5">libdeck.a を作る (src/Makefile)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-4-2-3">4.2.3. 機能テスト</a>
-<ul>
-<li><a href="#sec-4-2-3-1">4.2.3.1. テスト</a>
-<ul>
-<li><a href="#sec-4-2-3-1-1">テスト test_deck.so のビルド</a></li>
-<li><a href="#sec-4-2-3-1-2">テストの実行とデバッグ</a></li>
+<li><a href="#orgheadline7">1.1.2.1. 「まずテストを書く」こと</a></li>
+<li><a href="#orgheadline8">1.1.2.2. フィードバック</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-4-3">4.3. 山のテスト駆動開発</a>
+<li><a href="#orgheadline14">2. 開発の決まり</a>
 <ul>
-<li><a href="#sec-4-3-1">4.3.1. 開発ディレクトリ</a></li>
-<li><a href="#sec-4-3-2">4.3.2. 開発リポジトリ</a></li>
-<li><a href="#sec-4-3-3">4.3.3. card モジュールを利用するための決まり</a></li>
-<li><a href="#sec-4-3-4">4.3.4. 山 (Deck) の機能の設計・実装・テスト</a>
-<ul>
-<li><a href="#sec-4-3-4-1">4.3.4.1. インタフェースの設計</a>
-<ul>
-<li><a href="#sec-4-3-4-1-1">インタフェースを考える</a></li>
+<li><a href="#orgheadline12">2.1. モジュールの開発場所</a></li>
+<li><a href="#orgheadline13">2.2. ~/prog/game/Makefile</a></li>
 </ul>
 </li>
-<li><a href="#sec-4-3-4-2">4.3.4.2. テスト test_deck_new() を書く</a>
+<li><a href="#orgheadline16">3. Card モジュールの開発</a>
 <ul>
-<li><a href="#sec-4-3-4-2-1">test/test_deck.o を作る</a></li>
+<li><a href="#orgheadline15">3.1. Cardモジュール</a></li>
 </ul>
 </li>
-<li><a href="#sec-4-3-4-3">4.3.4.3. deck_new，deck_size の実装</a>
+<li><a href="#orgheadline66">4. Deck モジュールの開発</a>
 <ul>
-<li><a href="#sec-4-3-4-3-1">インタフェースの確定 (src/deck.h)</a></li>
-<li><a href="#sec-4-3-4-3-2">Deck を作る (src/deck.c)</a></li>
-<li><a href="#sec-4-3-4-3-3"><span class="todo Todo">Todo</span> new と size を作る (src/deck.c)</a></li>
-<li><a href="#sec-4-3-4-3-4"><span class="todo Todo">Todo</span> deck.o を作る (src/deck.o)</a>
+<li><a href="#orgheadline20">4.1. 山について考える</a>
 <ul>
-<li><a href="#sec-4-3-4-3-4-1"><span class="todo Todo">Todo</span> deck/src/Makefile の変更</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-3-4-3-5"><span class="todo Todo">Todo</span> libdeck.a を作る</a></li>
-</ul>
-</li>
-<li><a href="#sec-4-3-4-4">4.3.4.4. <span class="todo Todo">Todo</span> テスト</a>
+<li><a href="#orgheadline19">4.1.1. 山の機能</a>
 <ul>
-<li><a href="#sec-4-3-4-4-1"><span class="todo Todo">Todo</span> テスト test_deck.so のビルド</a></li>
-<li><a href="#sec-4-3-4-4-2"><span class="todo Todo">Todo</span> テストの実行とデバッグ</a></li>
+<li><a href="#orgheadline17">4.1.1.1. ゲームの説明から山に関する部分を取り出す</a></li>
+<li><a href="#orgheadline18">4.1.1.2. 山モジュールの機能</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-4-3-5">4.3.5. <span class="todo Todo">Todo</span> 山から引く機能の設計・実装・テスト</a>
+<li><a href="#orgheadline25">4.2. テスト駆動開発の一サイクルのテンプレート</a>
+<ul>
+<li><a href="#orgheadline22">4.2.1. 機能の設計</a>
+<ul>
+<li><a href="#orgheadline21">4.2.1.1. インタフェースの設計</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline23">4.2.2. 機能の実装</a></li>
+<li><a href="#orgheadline24">4.2.3. 機能テスト</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline65">4.3. 山のテスト駆動開発</a>
+<ul>
+<li><a href="#orgheadline26">4.3.1. 開発ディレクトリ</a></li>
+<li><a href="#orgheadline27">4.3.2. 開発リポジトリ</a></li>
+<li><a href="#orgheadline28">4.3.3. card モジュールを利用するための決まり</a></li>
+<li><a href="#orgheadline43">4.3.4. 山 (Deck) の機能の設計・実装・テスト</a>
+<ul>
+<li><a href="#orgheadline30">4.3.4.1. インタフェースの設計</a>
+<ul>
+<li><a href="#orgheadline29">4.3.4.1.1. インタフェースを考える</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline32">4.3.4.2. テスト test_deck_new() を書く</a>
+<ul>
+<li><a href="#orgheadline31">4.3.4.2.1. test/test_deck.o を作る</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline39">4.3.4.3. deck_new，deck_size の実装</a>
+<ul>
+<li><a href="#orgheadline33">4.3.4.3.1. インタフェースの確定 (src/deck.h)</a></li>
+<li><a href="#orgheadline34">4.3.4.3.2. Deck を作る (src/deck.c)</a></li>
+<li><a href="#orgheadline35">4.3.4.3.3. Todo new と size を作る (src/deck.c)</a></li>
+<li><a href="#orgheadline37">4.3.4.3.4. Todo deck.o を作る (src/deck.o)</a>
+<ul>
+<li><a href="#orgheadline36">4.3.4.3.4.1. Todo deck/src/Makefile の変更</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline38">4.3.4.3.5. Todo libdeck.a を作る</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline42">4.3.4.4. Todo テスト</a>
+<ul>
+<li><a href="#orgheadline40">4.3.4.4.1. Todo テスト test_deck.so のビルド</a></li>
+<li><a href="#orgheadline41">4.3.4.4.2. Todo テストの実行とデバッグ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline53">4.3.5. Todo 山から引く機能の設計・実装・テスト</a>
 <ul>
 <li>
 <ul>
-<li><a href="#sec-4-3-5-0-1">インタフェースの設計</a></li>
-<li><a href="#sec-4-3-5-0-2">テスト</a></li>
+<li><a href="#orgheadline44">4.3.5.0.1. インタフェースの設計</a></li>
+<li><a href="#orgheadline45">4.3.5.0.2. テスト</a></li>
 </ul>
 </li>
-<li><a href="#sec-4-3-5-1">4.3.5.1. deck_draw をテストする:</a></li>
-<li><a href="#sec-4-3-5-2">4.3.5.2. deck.h への追加変更</a></li>
-<li><a href="#sec-4-3-5-3">4.3.5.3. deck.c への追加変更</a></li>
-<li><a href="#sec-4-3-5-4">4.3.5.4. deck.o の作成</a></li>
-<li><a href="#sec-4-3-5-5">4.3.5.5. libdeck.a の作成</a></li>
-<li><a href="#sec-4-3-5-6">4.3.5.6. test_deck.so の作成</a></li>
-<li><a href="#sec-4-3-5-7">4.3.5.7. test</a></li>
+<li><a href="#orgheadline46">4.3.5.1. deck_draw をテストする:</a></li>
+<li><a href="#orgheadline47">4.3.5.2. deck.h への追加変更</a></li>
+<li><a href="#orgheadline48">4.3.5.3. deck.c への追加変更</a></li>
+<li><a href="#orgheadline49">4.3.5.4. deck.o の作成</a></li>
+<li><a href="#orgheadline50">4.3.5.5. libdeck.a の作成</a></li>
+<li><a href="#orgheadline51">4.3.5.6. test_deck.so の作成</a></li>
+<li><a href="#orgheadline52">4.3.5.7. test</a></li>
 </ul>
 </li>
-<li><a href="#sec-4-3-6">4.3.6. <span class="todo Todo">Todo</span> カードを捨てる (test_deck.c#test_discard)</a></li>
-<li><a href="#sec-4-3-7">4.3.7. <span class="todo Todo">Todo</span> 山の再構成 (deck_renew)</a>
+<li><a href="#orgheadline54">4.3.6. Todo カードを捨てる (test_deck.c#test_discard)</a></li>
+<li><a href="#orgheadline62">4.3.7. Todo 山の再構成 (deck_renew)</a>
 <ul>
-<li><a href="#sec-4-3-7-1">4.3.7.1. 機能</a></li>
-<li><a href="#sec-4-3-7-2">4.3.7.2. テストする</a></li>
-<li><a href="#sec-4-3-7-3">4.3.7.3. renewの実装 (src/deck.c#renew)</a></li>
-<li><a href="#sec-4-3-7-4">4.3.7.4. deck.o の作成</a></li>
-<li><a href="#sec-4-3-7-5">4.3.7.5. libdeck.a の作成</a></li>
-<li><a href="#sec-4-3-7-6">4.3.7.6. test_deck.so の作成</a></li>
-<li><a href="#sec-4-3-7-7">4.3.7.7. test</a></li>
+<li><a href="#orgheadline55">4.3.7.1. 機能</a></li>
+<li><a href="#orgheadline56">4.3.7.2. テストする</a></li>
+<li><a href="#orgheadline57">4.3.7.3. renewの実装 (src/deck.c#renew)</a></li>
+<li><a href="#orgheadline58">4.3.7.4. deck.o の作成</a></li>
+<li><a href="#orgheadline59">4.3.7.5. libdeck.a の作成</a></li>
+<li><a href="#orgheadline60">4.3.7.6. test_deck.so の作成</a></li>
+<li><a href="#orgheadline61">4.3.7.7. test</a></li>
 </ul>
 </li>
-<li><a href="#sec-4-3-8">4.3.8. <span class="todo Todo">Todo</span> シャッフル</a></li>
-<li><a href="#sec-4-3-9">4.3.9. 山を印刷</a></li>
+<li><a href="#orgheadline63">4.3.8. Todo シャッフル</a></li>
+<li><a href="#orgheadline64">4.3.9. 山を印刷</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Hand モジュールの開発</a>
+<li><a href="#orgheadline139">5. Hand モジュールの開発</a>
 <ul>
-<li><a href="#sec-5-1">5.1. 手札について考える</a>
+<li><a href="#orgheadline88">5.1. 手札について考える</a>
 <ul>
-<li><a href="#sec-5-1-1">5.1.1. 手札の機能</a>
+<li><a href="#orgheadline69">5.1.1. 手札の機能</a>
 <ul>
-<li><a href="#sec-5-1-1-1">5.1.1.1. ゲームの説明から手札に関する部分を取り出す</a></li>
-<li><a href="#sec-5-1-1-2">5.1.1.2. 手札モジュールの機能</a></li>
+<li><a href="#orgheadline67">5.1.1.1. ゲームの説明から手札に関する部分を取り出す</a></li>
+<li><a href="#orgheadline68">5.1.1.2. 手札モジュールの機能</a></li>
 </ul>
 </li>
-<li><a href="#sec-5-1-2">5.1.2. 機能の設計</a>
+<li><a href="#orgheadline87">5.1.2. 機能の設計</a>
 <ul>
-<li><a href="#sec-5-1-2-1">5.1.2.1. 機能の名前</a>
+<li><a href="#orgheadline74">5.1.2.1. 機能の名前</a>
 <ul>
-<li><a href="#sec-5-1-2-1-1">手札を作ることに関する機能達</a></li>
-<li><a href="#sec-5-1-2-1-2">手札に一枚加える/引く機能達</a></li>
-<li><a href="#sec-5-1-2-1-3">手札の全カードを扱う機能達</a></li>
-<li><a href="#sec-5-1-2-1-4">役に関する機能達</a></li>
+<li><a href="#orgheadline70">5.1.2.1.1. 手札を作ることに関する機能達</a></li>
+<li><a href="#orgheadline71">5.1.2.1.2. 手札に一枚加える/引く機能達</a></li>
+<li><a href="#orgheadline72">5.1.2.1.3. 手札の全カードを扱う機能達</a></li>
+<li><a href="#orgheadline73">5.1.2.1.4. 役に関する機能達</a></li>
 </ul>
 </li>
-<li><a href="#sec-5-1-2-2">5.1.2.2. インタフェースを考える (deckと同じ)</a></li>
-<li><a href="#sec-5-1-2-3">5.1.2.3. 機能のインタフェース</a>
+<li><a href="#orgheadline75">5.1.2.2. インタフェースを考える (deckと同じ)</a></li>
+<li><a href="#orgheadline86">5.1.2.3. 機能のインタフェース</a>
 <ul>
-<li><a href="#sec-5-1-2-3-1">手札</a></li>
-<li><a href="#sec-5-1-2-3-2">hand_new</a></li>
-<li><a href="#sec-5-1-2-3-3">hand_size</a></li>
-<li><a href="#sec-5-1-2-3-4">hand_add</a></li>
-<li><a href="#sec-5-1-2-3-5">hand_draw</a></li>
-<li><a href="#sec-5-1-2-3-6">hand_sort</a></li>
-<li><a href="#sec-5-1-2-3-7">hand_to_string</a></li>
-<li><a href="#sec-5-1-2-3-8">hand_calc</a></li>
-<li><a href="#sec-5-1-2-3-9">PokerHand (物)</a></li>
-<li><a href="#sec-5-1-2-3-10">poker_hand_to_string</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#sec-5-2">5.2. 開発の決まり (deckとほぼ同じ)</a>
-<ul>
-<li><a href="#sec-5-2-1">5.2.1. 開発ディレクトリ</a></li>
-<li><a href="#sec-5-2-2">5.2.2. 開発リポジトリ</a></li>
-<li><a href="#sec-5-2-3">5.2.3. 他のモジュールを利用するための決まり</a></li>
-<li><a href="#sec-5-2-4">5.2.4. Makefileの準備</a></li>
-<li><a href="#sec-5-2-5">5.2.5. テスト駆動開発の一サイクルのテンプレート</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-3">5.3. 手札のテスト駆動開発</a></li>
-<li><a href="#sec-5-4">5.4. 作成された手札モジュールの解説</a>
-<ul>
-<li><a href="#sec-5-4-1">5.4.1. src/hand.h</a>
-<ul>
-<li><a href="#sec-5-4-1-1">5.4.1.1. 一回だけしか，include できなくする</a></li>
-<li><a href="#sec-5-4-1-2">5.4.1.2. 依存するモジュールのインタフェースを読む</a></li>
-<li><a href="#sec-5-4-1-3">5.4.1.3. hand 型の定義</a></li>
-<li><a href="#sec-5-4-1-4">5.4.1.4. 手札の作成と状態を知る機能</a></li>
-<li><a href="#sec-5-4-1-5">5.4.1.5. 手札の出し入れ</a></li>
-<li><a href="#sec-5-4-1-6">5.4.1.6. ソート</a></li>
-<li><a href="#sec-5-4-1-7">5.4.1.7. 手札の表示（用文字列の生成）</a></li>
-<li><a href="#sec-5-4-1-8">5.4.1.8. 役に関する定義</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-4-2">5.4.2. test_hand.c</a>
-<ul>
-<li><a href="#sec-5-4-2-1">5.4.2.1. test_hand header</a></li>
-<li><a href="#sec-5-4-2-2">5.4.2.2. 手札の生成のテスト</a></li>
-<li><a href="#sec-5-4-2-3">5.4.2.3. 手札へのカードの追加</a></li>
-<li><a href="#sec-5-4-2-4">5.4.2.4. 手札の no 番目のカードのテスト</a></li>
-<li><a href="#sec-5-4-2-5">5.4.2.5. 手札から1枚引く</a></li>
-<li><a href="#sec-5-4-2-6">5.4.2.6. 手札のソート</a></li>
-<li><a href="#sec-5-4-2-7">5.4.2.7. 手札の文字列化のテスト</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-4-3">5.4.3. hand/src/hand.c</a>
-<ul>
-<li><a href="#sec-5-4-3-1">5.4.3.1. Cの標準ラブラリを使う</a></li>
-<li><a href="#sec-5-4-3-2">5.4.3.2. hand のインタフェースを遵守</a></li>
-<li><a href="#sec-5-4-3-3">5.4.3.3. hand_new, hand_size</a></li>
-<li><a href="#sec-5-4-3-4">5.4.3.4. hand_add</a></li>
-<li><a href="#sec-5-4-3-5">5.4.3.5. hand_card</a></li>
-<li><a href="#sec-5-4-3-6">5.4.3.6. hand_draw</a></li>
-<li><a href="#sec-5-4-3-7">5.4.3.7. 文字列化</a></li>
-<li><a href="#sec-5-4-3-8">5.4.3.8. hand_sort</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-4-4">5.4.4. test/test_judge.c</a>
-<ul>
-<li><a href="#sec-5-4-4-1">5.4.4.1. 必要なライブラリのヘッ</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-4-5">5.4.5. hand/src/judge.c</a>
-<ul>
-<li><a href="#sec-5-4-5-1">5.4.5.1. 必要なシステムライブラリのインタフェースを読む (定跡)</a></li>
-<li><a href="#sec-5-4-5-2">5.4.5.2. 依存するモジュールのインタフェースを読む(定跡)</a></li>
-<li><a href="#sec-5-4-5-3">5.4.5.3. 定数の宣言 (定跡)</a></li>
-<li><a href="#sec-5-4-5-4">5.4.5.4. このファイル内でのみ有効な関数の宣言 (定跡)</a></li>
-<li><a href="#sec-5-4-5-5">5.4.5.5. 役の計算</a></li>
-</ul>
-</li>
-<li><a href="#sec-5-4-6">5.4.6. hand/test/hand_test.h</a></li>
-<li><a href="#sec-5-4-7">5.4.7. hand/test/hand_test_data.c</a>
-<ul>
-<li><a href="#sec-5-4-7-1">5.4.7.1. 利用ライブライのヘッダを読む</a></li>
-<li><a href="#sec-5-4-7-2">5.4.7.2. 利用モジュールのヘッダを読む</a></li>
-<li><a href="#sec-5-4-7-3">5.4.7.3. 手札テストデータ操作用ヘッダを読む</a></li>
-<li><a href="#sec-5-4-7-4">5.4.7.4. 5枚のカードの組のデータ定義</a></li>
-<li><a href="#sec-5-4-7-5">5.4.7.5. テストデータの初期化</a></li>
-<li><a href="#sec-5-4-7-6">5.4.7.6. テストデータから Hand型データを生成する機能</a></li>
+<li><a href="#orgheadline76">5.1.2.3.1. 手札</a></li>
+<li><a href="#orgheadline77">5.1.2.3.2. hand_new</a></li>
+<li><a href="#orgheadline78">5.1.2.3.3. hand_size</a></li>
+<li><a href="#orgheadline79">5.1.2.3.4. hand_add</a></li>
+<li><a href="#orgheadline80">5.1.2.3.5. hand_draw</a></li>
+<li><a href="#orgheadline81">5.1.2.3.6. hand_sort</a></li>
+<li><a href="#orgheadline82">5.1.2.3.7. hand_to_string</a></li>
+<li><a href="#orgheadline83">5.1.2.3.8. hand_calc</a></li>
+<li><a href="#orgheadline84">5.1.2.3.9. PokerHand (物)</a></li>
+<li><a href="#orgheadline85">5.1.2.3.10. poker_hand_to_string</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-6">6. Pokerモジュールの開発</a>
+<li><a href="#orgheadline94">5.2. 開発の決まり (deckとほぼ同じ)</a>
 <ul>
-<li><a href="#sec-6-1">6.1. ゲームモジュール</a>
-<ul>
-<li><a href="#sec-6-1-1">6.1.1. 機能、設計，実装</a>
-<ul>
-<li><a href="#sec-6-1-1-1">6.1.1.1. ゲームの説明からゲームに関する部分を取り出す</a></li>
-<li><a href="#sec-6-1-1-2">6.1.1.2. poker モジュールの機能</a></li>
-<li><a href="#sec-6-1-1-3">6.1.1.3. poker モジュールの機能の名前</a></li>
-<li><a href="#sec-6-1-1-4">6.1.1.4. poker モジュールの機能のインタフェース</a></li>
+<li><a href="#orgheadline89">5.2.1. 開発ディレクトリ</a></li>
+<li><a href="#orgheadline90">5.2.2. 開発リポジトリ</a></li>
+<li><a href="#orgheadline91">5.2.3. 他のモジュールを利用するための決まり</a></li>
+<li><a href="#orgheadline92">5.2.4. Makefileの準備</a></li>
+<li><a href="#orgheadline93">5.2.5. テスト駆動開発の一サイクルのテンプレート</a></li>
 </ul>
 </li>
-<li><a href="#sec-6-1-2">6.1.2. ~/progs/game/poker が開発ディレクトリ</a></li>
-<li><a href="#sec-6-1-3">6.1.3. ~/progs/game/Makefile</a></li>
+<li><a href="#orgheadline95">5.3. 手札のテスト駆動開発</a></li>
+<li><a href="#orgheadline138">5.4. 作成された手札モジュールの解説</a>
+<ul>
+<li><a href="#orgheadline104">5.4.1. src/hand.h</a>
+<ul>
+<li><a href="#orgheadline96">5.4.1.1. 一回だけしか，include できなくする</a></li>
+<li><a href="#orgheadline97">5.4.1.2. 依存するモジュールのインタフェースを読む</a></li>
+<li><a href="#orgheadline98">5.4.1.3. hand 型の定義</a></li>
+<li><a href="#orgheadline99">5.4.1.4. 手札の作成と状態を知る機能</a></li>
+<li><a href="#orgheadline100">5.4.1.5. 手札の出し入れ</a></li>
+<li><a href="#orgheadline101">5.4.1.6. ソート</a></li>
+<li><a href="#orgheadline102">5.4.1.7. 手札の表示（用文字列の生成）</a></li>
+<li><a href="#orgheadline103">5.4.1.8. 役に関する定義</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline112">5.4.2. test_hand.c</a>
+<ul>
+<li><a href="#orgheadline105">5.4.2.1. test_hand header</a></li>
+<li><a href="#orgheadline106">5.4.2.2. 手札の生成のテスト</a></li>
+<li><a href="#orgheadline107">5.4.2.3. 手札へのカードの追加</a></li>
+<li><a href="#orgheadline108">5.4.2.4. 手札の no 番目のカードのテスト</a></li>
+<li><a href="#orgheadline109">5.4.2.5. 手札から1枚引く</a></li>
+<li><a href="#orgheadline110">5.4.2.6. 手札のソート</a></li>
+<li><a href="#orgheadline111">5.4.2.7. 手札の文字列化のテスト</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline121">5.4.3. hand/src/hand.c</a>
+<ul>
+<li><a href="#orgheadline113">5.4.3.1. Cの標準ラブラリを使う</a></li>
+<li><a href="#orgheadline114">5.4.3.2. hand のインタフェースを遵守</a></li>
+<li><a href="#orgheadline115">5.4.3.3. hand_new, hand_size</a></li>
+<li><a href="#orgheadline116">5.4.3.4. hand_add</a></li>
+<li><a href="#orgheadline117">5.4.3.5. hand_card</a></li>
+<li><a href="#orgheadline118">5.4.3.6. hand_draw</a></li>
+<li><a href="#orgheadline119">5.4.3.7. 文字列化</a></li>
+<li><a href="#orgheadline120">5.4.3.8. hand_sort</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline123">5.4.4. test/test_judge.c</a>
+<ul>
+<li><a href="#orgheadline122">5.4.4.1. 必要なライブラリのヘッ</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline129">5.4.5. hand/src/judge.c</a>
+<ul>
+<li><a href="#orgheadline124">5.4.5.1. 必要なシステムライブラリのインタフェースを読む (定跡)</a></li>
+<li><a href="#orgheadline125">5.4.5.2. 依存するモジュールのインタフェースを読む(定跡)</a></li>
+<li><a href="#orgheadline126">5.4.5.3. 定数の宣言 (定跡)</a></li>
+<li><a href="#orgheadline127">5.4.5.4. このファイル内でのみ有効な関数の宣言 (定跡)</a></li>
+<li><a href="#orgheadline128">5.4.5.5. 役の計算</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline130">5.4.6. hand/test/hand_test.h</a></li>
+<li><a href="#orgheadline137">5.4.7. hand/test/hand_test_data.c</a>
+<ul>
+<li><a href="#orgheadline131">5.4.7.1. 利用ライブライのヘッダを読む</a></li>
+<li><a href="#orgheadline132">5.4.7.2. 利用モジュールのヘッダを読む</a></li>
+<li><a href="#orgheadline133">5.4.7.3. 手札テストデータ操作用ヘッダを読む</a></li>
+<li><a href="#orgheadline134">5.4.7.4. 5枚のカードの組のデータ定義</a></li>
+<li><a href="#orgheadline135">5.4.7.5. テストデータの初期化</a></li>
+<li><a href="#orgheadline136">5.4.7.6. テストデータから Hand型データを生成する機能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline148">6. Pokerモジュールの開発</a>
+<ul>
+<li><a href="#orgheadline147">6.1. ゲームモジュール</a>
+<ul>
+<li><a href="#orgheadline144">6.1.1. 機能、設計，実装</a>
+<ul>
+<li><a href="#orgheadline140">6.1.1.1. ゲームの説明からゲームに関する部分を取り出す</a></li>
+<li><a href="#orgheadline141">6.1.1.2. poker モジュールの機能</a></li>
+<li><a href="#orgheadline142">6.1.1.3. poker モジュールの機能の名前</a></li>
+<li><a href="#orgheadline143">6.1.1.4. poker モジュールの機能のインタフェース</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline145">6.1.2. ~/progs/game/poker が開発ディレクトリ</a></li>
+<li><a href="#orgheadline146">6.1.3. ~/progs/game/Makefile</a></li>
 </ul>
 </li>
 </ul>
@@ -449,16 +428,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Pokerゲーム開発の始まり</h2>
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11"><span class="section-number-2">1</span> Pokerゲーム開発の始まり</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi">prog-wiki</a> を参考にしてください。
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> はじまり</h3>
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">1.1</span> はじまり</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7%BE%A9%E5%86%85%E5%AE%B9">Prog Wikky - 講義内容</a> の内容を，テストによる開発に会わせ
@@ -466,19 +445,17 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 </p>
 </div>
 
-<div id="outline-container-sec-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> <span class="done Done">Done</span> ポーカーゲーム作りの始まり</h4>
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.1.1</span> Done ポーカーゲーム作りの始まり</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
-<li>あるゲームソフト会社で，無口な上司からの仕事依頼
-</li>
-<li>今のあなたなら、どんな情報があれば考えられますか? 作れますか?
-</li>
+<li>あるゲームソフト会社で，無口な上司からの仕事依頼</li>
+<li>今のあなたなら、どんな情報があれば考えられますか? 作れますか?</li>
 </ul>
 </div>
 
-<div id="outline-container-sec-1-1-1-1" class="outline-5">
-<h5 id="sec-1-1-1-1"><span class="section-number-5">1.1.1.1</span> カードモジュールつくってよ (@カードモジュールつくってよ)</h5>
+<div id="outline-container-orgheadline1" class="outline-5">
+<h5 id="orgheadline1"><span class="section-number-5">1.1.1.1</span> カードモジュールつくってよ (@カードモジュールつくってよ)</h5>
 <div class="outline-text-5" id="text-1-1-1-1">
 <p>
 口数少ない上司:
@@ -519,29 +496,24 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 </div>
 
 
-<div id="outline-container-sec-1-1-1-2" class="outline-5">
-<h5 id="sec-1-1-1-2"><span class="section-number-5">1.1.1.2</span> 講義で考えているポーカーゲーム</h5>
+<div id="outline-container-orgheadline2" class="outline-5">
+<h5 id="orgheadline2"><span class="section-number-5">1.1.1.2</span> 講義で考えているポーカーゲーム</h5>
 <div class="outline-text-5" id="text-1-1-1-2">
 <p>
 ここで想定しているポーカーとは以下を繰り返すことです：
 </p>
 
 <ul class="org-ul">
-<li>山を作り直し，
-</li>
+<li>山を作り直し，</li>
 
-<li>5人のプレーヤに，
-</li>
+<li>5人のプレーヤに，</li>
 
-<li>手札(5枚のカード) を配り，
-</li>
+<li>手札(5枚のカード) を配り，</li>
 
-<li>2回までの手札の交換後，
-</li>
+<li>2回までの手札の交換後，</li>
 
 <li>手札役の強い順にプレーヤ名を表示する．
-役については <a href="http://www6.airnet.ne.jp/spade/poker/rule/yaku.html">ポーカーの役についての説明</a> を参考にします。
-</li>
+役については <a href="http://www6.airnet.ne.jp/spade/poker/rule/yaku.html">ポーカーの役についての説明</a> を参考にします。</li>
 </ul>
 
 <p>
@@ -551,19 +523,17 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 
 <ul class="org-ul">
 <li>この中に含まれる「もの」と「操作」が洗い出せますか？
-それらがプログラムする対象となります。
-</li>
+それらがプログラムする対象となります。</li>
 
 <li>「もの」や「操作」を表す言葉は抽象化されていて，その中には隠され
-た情報があることがわかりますか？
-</li>
+た情報があることがわかりますか？</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-sec-1-1-1-3" class="outline-5">
-<h5 id="sec-1-1-1-3"><span class="section-number-5">1.1.1.3</span> ゲーム説明とモジュールわけ</h5>
+<div id="outline-container-orgheadline3" class="outline-5">
+<h5 id="orgheadline3"><span class="section-number-5">1.1.1.3</span> ゲーム説明とモジュールわけ</h5>
 <div class="outline-text-5" id="text-1-1-1-3">
 <p>
 ゲーム説明を仕様と考えます。
@@ -574,16 +544,12 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 
 <ul class="org-ul">
 <li>ものの間には関係があり，依存関係で大きなものにまとめられるもの
-もあります。
-</li>
-</ul>
-</li>
+もあります。</li>
+</ul></li>
 
-<li>主体や対象は，機能を行なうものや機能により処理されるもの，です。
-</li>
+<li>主体や対象は，機能を行なうものや機能により処理されるもの，です。</li>
 
-<li>仕様中に現れた <b>もの</b> 達を機能のまとめ役と考えます。
-</li>
+<li>仕様中に現れた <b>もの</b> 達を機能のまとめ役と考えます。</li>
 </ul>
 
 <p>
@@ -603,21 +569,17 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-1-4" class="outline-5">
-<h5 id="sec-1-1-1-4"><span class="section-number-5">1.1.1.4</span> ゲーム説明の分析 (課題)</h5>
+<div id="outline-container-orgheadline4" class="outline-5">
+<h5 id="orgheadline4"><span class="section-number-5">1.1.1.4</span> ゲーム説明の分析 (課題)</h5>
 <div class="outline-text-5" id="text-1-1-1-4">
 <p>
 ゲーム説明を読んで次の事を行なってみてください:
 </p>
 <ul class="org-ul">
-<li>ものを取り出してください。
-</li>
-<li>機能を取り出して下さい。
-</li>
-<li>機能をもので分類してください。
-</li>
-<li>機能の対象と結果が何かを分析してください。
-</li>
+<li>ものを取り出してください。</li>
+<li>機能を取り出して下さい。</li>
+<li>機能をもので分類してください。</li>
+<li>機能の対象と結果が何かを分析してください。</li>
 </ul>
 
 <p>
@@ -628,46 +590,39 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 </div>
 
 
-<div id="outline-container-sec-1-1-1-5" class="outline-5">
-<h5 id="sec-1-1-1-5"><span class="section-number-5">1.1.1.5</span> モジュール分け</h5>
+<div id="outline-container-orgheadline5" class="outline-5">
+<h5 id="orgheadline5"><span class="section-number-5">1.1.1.5</span> モジュール分け</h5>
 <div class="outline-text-5" id="text-1-1-1-5">
 <p>
 ここでは下記のように分けて考えます
 </p>
 
 <ul class="org-ul">
-<li>カード
-</li>
+<li>カード</li>
 
-<li>山
-</li>
+<li>山</li>
 
 <li>手札
 <ul class="org-ul">
-<li>役
-</li>
-</ul>
-</li>
+<li>役</li>
+</ul></li>
 
 <li>プレーヤー
 <ul class="org-ul">
-<li>プレーヤー名
-</li>
-</ul>
-</li>
+<li>プレーヤー名</li>
+</ul></li>
 
-<li>ゲームモジュール
-</li>
+<li>ゲームモジュール</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> テストの意味</h4>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.1.2</span> テストの意味</h4>
 <div class="outline-text-4" id="text-1-1-2">
-</div><div id="outline-container-sec-1-1-2-1" class="outline-5">
-<h5 id="sec-1-1-2-1"><span class="section-number-5">1.1.2.1</span> 「まずテストを書く」こと</h5>
+</div><div id="outline-container-orgheadline7" class="outline-5">
+<h5 id="orgheadline7"><span class="section-number-5">1.1.2.1</span> 「まずテストを書く」こと</h5>
 <div class="outline-text-5" id="text-1-1-2-1">
 <p>
 プログラム化することで問題が <b>現実化</b> され，プログラミング上の検討
@@ -681,19 +636,17 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 </div>
 </div>
 
-<div id="outline-container-sec-1-1-2-2" class="outline-5">
-<h5 id="sec-1-1-2-2"><span class="section-number-5">1.1.2.2</span> フィードバック</h5>
+<div id="outline-container-orgheadline8" class="outline-5">
+<h5 id="orgheadline8"><span class="section-number-5">1.1.2.2</span> フィードバック</h5>
 <div class="outline-text-5" id="text-1-1-2-2">
 <p>
 テストが 書けない/書きにくい なら，機能への分割が悪いかもしれません:
 </p>
 
 <ul class="org-ul">
-<li>機能が粗く考えられている
-</li>
+<li>機能が粗く考えられている</li>
 
-<li>機能への入力出力が明確でない
-</li>
+<li>機能への入力出力が明確でない</li>
 </ul>
 
 <p>
@@ -714,54 +667,51 @@ Wikiサイト <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E8%AC%9B%E7
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> 開発の決まり</h2>
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14"><span class="section-number-2">2</span> 開発の決まり</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> モジュールの開発場所</h3>
+</div><div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">2.1</span> モジュールの開発場所</h3>
 <div class="outline-text-3" id="text-2-1">
 <ol class="org-ol">
-<li>~/progs/game がプロジェクトのホーム。以後，$(PROJ_HOME)と書く。
-</li>
+<li>~/progs/game がプロジェクトのホーム。以後，$(PROJ_HOME)と書く。</li>
 
 <li>モジュールの開発は，モジュールの名前を card とすると，
-$(PROJ_HOME)/card/ ディレクトリでおこなう。
-</li>
+$(PROJ_HOME)/card/ ディレクトリでおこなう。</li>
 
-<li>モジュール開発でできたヘッダファイルとライブラリファイルは，
+<li><p>
+モジュール開発でできたヘッダファイルとライブラリファイルは，
 それぞれ，$(PROJ_HOME)/include/ と $(PROJ_HOME)/lib/  ディレクト
 リに置くことにします。
+</p>
 
 <p>
 cardモジュールの，card.h は ~/progs/game/include/card.h
 cardモジュールの，libcard.a は ~/progs/game/libcard.a, となります。
-</p>
-</li>
+</p></li>
 </ol>
 </div>
 </div>
 
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> ~/prog/game/Makefile</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">2.2</span> ~/prog/game/Makefile</h3>
 <div class="outline-text-3" id="text-2-2">
 <ol class="org-ol">
-<li>必要なモジュールをビルドする。
-</li>
+<li>必要なモジュールをビルドする。</li>
 
-<li>モジュール毎の成果物を，配置する。
-</li>
+<li>モジュール毎の成果物を，配置する。</li>
 </ol>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Card モジュールの開発</h2>
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16"><span class="section-number-2">3</span> Card モジュールの開発</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Cardモジュール</h3>
+</div><div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">3.1</span> Cardモジュール</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 card_display 問題をやったことで，カードの機能はほぼ
@@ -781,10 +731,10 @@ pokerゲームの開発は，~/progs/game/の下で行いますので，
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span style="color: #99968b;"># </span><span style="color: #99968b;">~/progs/card_display/simple</span>
+<pre class="src src-sh"># ~/progs/card_display/simple
 mkdir  ~/progs/game/card/
 cp -Rp * ~/progs/game/card/
-<span style="color: #e5786d;">cd</span> ~/progs/game/card/
+cd ~/progs/game/card/
 </pre>
 </div>
 
@@ -811,61 +761,51 @@ make
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Deck モジュールの開発</h2>
+<div id="outline-container-orgheadline66" class="outline-2">
+<h2 id="orgheadline66"><span class="section-number-2">4</span> Deck モジュールの開発</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 山について考える</h3>
+</div><div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">4.1</span> 山について考える</h3>
 <div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-sec-4-1-1" class="outline-4">
-<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> 山の機能</h4>
+</div><div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">4.1.1</span> 山の機能</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E5%B1%B1%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E6%A9%9F%E8%83%BD%E3%81%AE%E6%A4%9C%E8%A8%8E">山モジュールの機能の検討</a> (prog-wiki) も参考にしてください。
 </p>
 </div>
 
-<div id="outline-container-sec-4-1-1-1" class="outline-5">
-<h5 id="sec-4-1-1-1"><span class="section-number-5">4.1.1.1</span> ゲームの説明から山に関する部分を取り出す</h5>
+<div id="outline-container-orgheadline17" class="outline-5">
+<h5 id="orgheadline17"><span class="section-number-5">4.1.1.1</span> ゲームの説明から山に関する部分を取り出す</h5>
 <div class="outline-text-5" id="text-4-1-1-1">
 <ul class="org-ul">
 <li>*山*を作り直し，
 <ul class="org-ul">
-<li>カードをシャッフルし、
-</li>
-<li>カードを積み上げる
-</li>
-</ul>
-</li>
+<li>カードをシャッフルし、</li>
+<li>カードを積み上げる</li>
+</ul></li>
 
 <li>手札(5枚のカード) を配り，
 <ul class="org-ul">
-<li>*山*の一番上のカードを引く
-</li>
-</ul>
-</li>
+<li>*山*の一番上のカードを引く</li>
+</ul></li>
 
 <li>2回までの手札の交換後，
 <ul class="org-ul">
-<li>*山*の一番上のカードを引く
-</li>
+<li>*山*の一番上のカードを引く</li>
 <li>（手札の）カードを捨てる
 <ul class="org-ul">
-<li>*ステ山*に積む
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>*ステ山*に積む</li>
+</ul></li>
+</ul></li>
 
-<li>手札役の強い順にプレーヤ名を表示する 
-</li>
+<li>手札役の強い順にプレーヤ名を表示する</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-1-1-2" class="outline-5">
-<h5 id="sec-4-1-1-2"><span class="section-number-5">4.1.1.2</span> 山モジュールの機能</h5>
+<div id="outline-container-orgheadline18" class="outline-5">
+<h5 id="orgheadline18"><span class="section-number-5">4.1.1.2</span> 山モジュールの機能</h5>
 <div class="outline-text-5" id="text-4-1-1-2">
 <p>
 モジュールはトランプの山(という概念／機能) を提供する． 
@@ -877,35 +817,28 @@ make
 <ul class="org-ul">
 <li>山はカードの集まり．
 <ul class="org-ul">
-<li>カードを一列に積み上げる．
-</li>
-</ul>
-</li>
+<li>カードを一列に積み上げる．</li>
+</ul></li>
 <li>山からカードを一枚引く.
 <ul class="org-ul">
-<li>山が空になったら，捨て札の山から，山を作り直す．
-</li>
-</ul>
-</li>
+<li>山が空になったら，捨て札の山から，山を作り直す．</li>
+</ul></li>
 <li>(新しいトランプの組から)山を作り直す．
 <ul class="org-ul">
-<li>山を作り直すとき，シャッフルする．
-</li>
-</ul>
-</li>
-<li>捨て札を捨てる．つまり、捨て山に積む。
-</li>
+<li>山を作り直すとき，シャッフルする．</li>
+</ul></li>
+<li>捨て札を捨てる．つまり、捨て山に積む。</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> テスト駆動開発の一サイクルのテンプレート</h3>
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25"><span class="section-number-3">4.2</span> テスト駆動開発の一サイクルのテンプレート</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-モジュールの機能をテストします。
+モジュールの機能をテストにより開発する際の，お決まりのやり方です。
 </p>
 
 <p>
@@ -913,104 +846,86 @@ make
 </p>
 </div>
 
-<div id="outline-container-sec-4-2-1" class="outline-4">
-<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> 機能の設計</h4>
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">4.2.1</span> 機能の設計</h4>
 <div class="outline-text-4" id="text-4-2-1">
-</div><div id="outline-container-sec-4-2-1-1" class="outline-5">
-<h5 id="sec-4-2-1-1"><span class="section-number-5">4.2.1.1</span> インタフェースの設計</h5>
+</div><div id="outline-container-orgheadline21" class="outline-5">
+<h5 id="orgheadline21"><span class="section-number-5">4.2.1.1</span> インタフェースの設計</h5>
 <div class="outline-text-5" id="text-4-2-1-1">
-</div><div id="outline-container-sec-4-2-1-1-1" class="outline-6">
-<h6 id="sec-4-2-1-1-1">インタフェースを考える</h6>
-<div class="outline-text-6" id="text-4-2-1-1-1">
+<ul class="org-ul">
+<li><p>
+インタフェースを考える
+</p>
+
 <p>
 機能が操作の場合
 </p>
 <ul class="org-ul">
-<li>機能は箱，箱への入力と，箱からの出力を考える
-</li>
-<li>入力と出力が何であるか決める
-</li>
+<li>機能は箱，箱への入力と，箱からの出力を考える</li>
+<li>入力と出力が何であるか決める</li>
 </ul>
-
 <p>
 機能が物の場合
 </p>
 <ul class="org-ul">
-<li>機能は箱，箱の中身を考える。
-</li>
-<li>何からできているかを決める
-</li>
+<li>機能は箱，箱の中身を考える。</li>
+<li>何からできているかを決める</li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li>テスト test_&#x2026; () を書く</li>
+
+<li>test/test_deck.o を作る (test/Makefile)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">4.2.2</span> 機能の実装</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+たとえば，deck_new，deck_size を実装する場合
+</p>
+
+<ul class="org-ul">
+<li>インタフェースの確定 (src/deck.h)</li>
+
+<li>Deck型 を作る (src/deck.c)</li>
+
+<li>deck_new と deck_size を作る (src/deck.c)</li>
+
+<li>deck_new.o, deck_size.o を作る (src/Makefile)</li>
+
+<li>libdeck.a を作る (src/Makefile)</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-2-1-1-2" class="outline-6">
-<h6 id="sec-4-2-1-1-2">テスト test_&#x2026; () を書く</h6>
-</div>
-
-<div id="outline-container-sec-4-2-1-1-3" class="outline-6">
-<h6 id="sec-4-2-1-1-3">test/test_deck.o を作る (test/Makefile)</h6>
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-4-2-2" class="outline-4">
-<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> 機能の実装</h4>
-<div class="outline-text-4" id="text-4-2-2">
-</div><div id="outline-container-sec-4-2-2-1" class="outline-5">
-<h5 id="sec-4-2-2-1"><span class="section-number-5">4.2.2.1</span> deck_new，deck_size の実装</h5>
-<div class="outline-text-5" id="text-4-2-2-1">
-</div><div id="outline-container-sec-4-2-2-1-1" class="outline-6">
-<h6 id="sec-4-2-2-1-1">インタフェースの確定 (src/deck.h)</h6>
-</div>
-
-<div id="outline-container-sec-4-2-2-1-2" class="outline-6">
-<h6 id="sec-4-2-2-1-2">Deck を作る (src/deck.c)</h6>
-</div>
-
-<div id="outline-container-sec-4-2-2-1-3" class="outline-6">
-<h6 id="sec-4-2-2-1-3">deck_new と deck_size を作る (src/deck.c)</h6>
-</div>
-
-<div id="outline-container-sec-4-2-2-1-4" class="outline-6">
-<h6 id="sec-4-2-2-1-4">deck_new.o, deck_size.o を作る (src/Makefile)</h6>
-</div>
-
-<div id="outline-container-sec-4-2-2-1-5" class="outline-6">
-<h6 id="sec-4-2-2-1-5">libdeck.a を作る (src/Makefile)</h6>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-sec-4-2-3" class="outline-4">
-<h4 id="sec-4-2-3"><span class="section-number-4">4.2.3</span> 機能テスト</h4>
+<div id="outline-container-orgheadline24" class="outline-4">
+<h4 id="orgheadline24"><span class="section-number-4">4.2.3</span> 機能テスト</h4>
 <div class="outline-text-4" id="text-4-2-3">
-</div><div id="outline-container-sec-4-2-3-1" class="outline-5">
-<h5 id="sec-4-2-3-1"><span class="section-number-5">4.2.3.1</span> テスト</h5>
-<div class="outline-text-5" id="text-4-2-3-1">
-</div><div id="outline-container-sec-4-2-3-1-1" class="outline-6">
-<h6 id="sec-4-2-3-1-1">テスト test_deck.so のビルド</h6>
-</div>
+<ul class="org-ul">
+<li>テスト test_deck.so のビルド</li>
 
-<div id="outline-container-sec-4-2-3-1-2" class="outline-6">
-<h6 id="sec-4-2-3-1-2">テストの実行とデバッグ</h6>
-</div>
+<li>テストの実行とデバッグ</li>
+</ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 山のテスト駆動開発</h3>
+<div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65"><span class="section-number-3">4.3</span> 山のテスト駆動開発</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 山に名前をつけます。deck にします。
 </p>
 </div>
 
-<div id="outline-container-sec-4-3-1" class="outline-4">
-<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> 開発ディレクトリ</h4>
+<div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">4.3.1</span> 開発ディレクトリ</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <p>
 ~/progs/game/deck/{./, src/, test/} が開発に必要なディレクトリです。
@@ -1020,39 +935,34 @@ make
 Makefile を作っておきましょう。
 </p>
 <ul class="org-ul">
-<li>card_display/simple/Makefile がそのまま使えるはずですよね。
-</li>
+<li>card_display/simple/Makefile がそのまま使えるはずですよね。</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-2" class="outline-4">
-<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> 開発リポジトリ</h4>
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">4.3.2</span> 開発リポジトリ</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck">deck</a>
+</p>
+
+<p>
 ソースコードの提示用に用意しました:
 </p>
 
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test">deck/test</a>
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/Makefile">deck/test/Makefile</a>
-</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/test_deck.c">deck/test/test_deck.c</a>
-</li>
-</ul>
-</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/Makefile">deck/test/Makefile</a></li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/test_deck.c">deck/test/test_deck.c</a></li>
+</ul></li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src">deck/src</a>
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/Makefiel">deck/src/Makefile</a>
-</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.h">deck/src/deck.h</a>
-</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.c">deck/src/deck.c</a>
-</li>
-</ul>
-</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/Makefiel">deck/src/Makefile</a></li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.h">deck/src/deck.h</a></li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.c">deck/src/deck.c</a></li>
+</ul></li>
 </ul>
 
 <p>
@@ -1062,17 +972,15 @@ Makefile を作っておきましょう。
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-3" class="outline-4">
-<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> card モジュールを利用するための決まり</h4>
+<div id="outline-container-orgheadline28" class="outline-4">
+<h4 id="orgheadline28"><span class="section-number-4">4.3.3</span> card モジュールを利用するための決まり</h4>
 <div class="outline-text-4" id="text-4-3-3">
 <p>
 モジュール利用規則を決めておく
 </p>
 <ul class="org-ul">
-<li>game/inlcude にヘッダファイルを置くことにする
-</li>
-<li>game/lib にライブラリファイルを置くことにする
-</li>
+<li>game/inlcude にヘッダファイルを置くことにする</li>
+<li>game/lib にライブラリファイルを置くことにする</li>
 </ul>
 
 <p>
@@ -1082,19 +990,16 @@ make install でgame/include に card.h を，game/lib に libcard.a
 </p>
 
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments.html">講義補足</a> ((<i>@cis.org</i> <i>@s.org</i>)) のMakefileを参考にしてください。
-</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/Makefile">card/src/Makefile</a> を参考にしてください。
-</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/lects/supplyments.html">講義補足</a> ((<a href="file:///users/home/masayuki/lects/prog/lects/supplyments.html">@cis.org</a> <a href="file:///users/home/masayuki/COMM/Lects/prog/site/lects/supplyments.html">@s.org</a>)) のMakefileを参考にしてください。</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/card/src/Makefile">card/src/Makefile</a> を参考にしてください。</li>
 <li>card/src/Makefileが修正できたら，make install して，
-card.h, libcard.a がコピーできたことを確認してください。
-</li>
+card.h, libcard.a がコピーできたことを確認してください。</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4" class="outline-4">
-<h4 id="sec-4-3-4"><span class="section-number-4">4.3.4</span> 山 (Deck) の機能の設計・実装・テスト</h4>
+<div id="outline-container-orgheadline43" class="outline-4">
+<h4 id="orgheadline43"><span class="section-number-4">4.3.4</span> 山 (Deck) の機能の設計・実装・テスト</h4>
 <div class="outline-text-4" id="text-4-3-4">
 <p>
 山はこのモジュールの主体である <b>もの*。*もの</b> はデータ構造となり，
@@ -1115,11 +1020,11 @@ card.h, libcard.a がコピーできたことを確認してください。
 </p>
 </div>
 
-<div id="outline-container-sec-4-3-4-1" class="outline-5">
-<h5 id="sec-4-3-4-1"><span class="section-number-5">4.3.4.1</span> インタフェースの設計</h5>
+<div id="outline-container-orgheadline30" class="outline-5">
+<h5 id="orgheadline30"><span class="section-number-5">4.3.4.1</span> インタフェースの設計</h5>
 <div class="outline-text-5" id="text-4-3-4-1">
-</div><div id="outline-container-sec-4-3-4-1-1" class="outline-6">
-<h6 id="sec-4-3-4-1-1">インタフェースを考える</h6>
+</div><div id="outline-container-orgheadline29" class="outline-6">
+<h6 id="orgheadline29"><span class="section-number-6">4.3.4.1.1</span> インタフェースを考える</h6>
 <div class="outline-text-6" id="text-4-3-4-1-1">
 <p>
 頭の中や，紙と鉛筆や，Emacs org-mode を使って，考える。
@@ -1128,18 +1033,12 @@ card.h, libcard.a がコピーできたことを確認してください。
 <ul class="org-ul">
 <li>52枚のカードから山を作る:
 <ul class="org-ul">
-<li>引き札の山に52枚のカードが積まれ，
-</li>
-<li>捨て札の山は0枚のカードが積まれている，状態を作る
-</li>
-<li>二つの山は，山モジュールの中に隠れていて，プレーヤに見えてなくてもいい
-</li>
-<li>引き札の山から一枚のカードが引かれ，
-</li>
-<li>捨て札の山に一枚のカードが捨てらればいい。
-</li>
-</ul>
-</li>
+<li>引き札の山に52枚のカードが積まれ，</li>
+<li>捨て札の山は0枚のカードが積まれている，状態を作る</li>
+<li>二つの山は，山モジュールの中に隠れていて，プレーヤに見えてなくてもいい</li>
+<li>引き札の山から一枚のカードが引かれ，</li>
+<li>捨て札の山に一枚のカードが捨てらればいい。</li>
+</ul></li>
 </ul>
 
 <p>
@@ -1151,8 +1050,7 @@ deck_new();
 </pre>
 
 <ul class="org-ul">
-<li>テストにするため，検査の式を書く:
-</li>
+<li>テストにするため，検査の式を書く:</li>
 </ul>
 
 <pre class="example">
@@ -1160,14 +1058,18 @@ deck_size(deck)==52
 </pre>
 
 <ul class="org-ul">
-<li>deck_size()は山のカードの枚数を返す関数。新たな機能の登場。
+<li><p>
+deck_size()は山のカードの枚数を返す関数。新たな機能の登場。
+</p>
 
 <p>
 良さそう
+</p></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+インタフェースを書く
 </p>
-</li>
-
-<li>インタフェースを書く
 
 <pre class="example">
 void deck_new (void);
@@ -1176,23 +1078,22 @@ int deck_size (void);
 
 <p>
 良さそう。
-</p>
-</li>
+</p></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-2" class="outline-5">
-<h5 id="sec-4-3-4-2"><span class="section-number-5">4.3.4.2</span> テスト test_deck_new() を書く</h5>
+<div id="outline-container-orgheadline32" class="outline-5">
+<h5 id="orgheadline32"><span class="section-number-5">4.3.4.2</span> テスト test_deck_new() を書く</h5>
 <div class="outline-text-5" id="text-4-3-4-2">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/test/test_deck.c">deck/test/test_deck.c</a>  #+name:test-deck#new に当たるテスト関数です。
 </p>
 </div>
 
-<div id="outline-container-sec-4-3-4-2-1" class="outline-6">
-<h6 id="sec-4-3-4-2-1">test/test_deck.o を作る</h6>
+<div id="outline-container-orgheadline31" class="outline-6">
+<h6 id="orgheadline31"><span class="section-number-6">4.3.4.2.1</span> test/test_deck.o を作る</h6>
 <div class="outline-text-6" id="text-4-3-4-2-1">
 <p>
 test/test_deck.c から test/test_deck.o を作りたいです。
@@ -1211,11 +1112,11 @@ copy して，変更してもいい。
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-3" class="outline-5">
-<h5 id="sec-4-3-4-3"><span class="section-number-5">4.3.4.3</span> deck_new，deck_size の実装</h5>
+<div id="outline-container-orgheadline39" class="outline-5">
+<h5 id="orgheadline39"><span class="section-number-5">4.3.4.3</span> deck_new，deck_size の実装</h5>
 <div class="outline-text-5" id="text-4-3-4-3">
-</div><div id="outline-container-sec-4-3-4-3-1" class="outline-6">
-<h6 id="sec-4-3-4-3-1">インタフェースの確定 (src/deck.h)</h6>
+</div><div id="outline-container-orgheadline33" class="outline-6">
+<h6 id="orgheadline33"><span class="section-number-6">4.3.4.3.1</span> インタフェースの確定 (src/deck.h)</h6>
 <div class="outline-text-6" id="text-4-3-4-3-1">
 <p>
 deck/test/test_deck.c にあったインタフェースを
@@ -1226,16 +1127,14 @@ deck/src/deck.h に移します。
 <a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.h">deck/src/deck.h</a> 中の下記部分になります。
 </p>
 <ul class="org-ul">
-<li>#+name:deck.h#include
-</li>
-<li>#+name:deck.h#new
-</li>
+<li>#+name:deck.h#include</li>
+<li>#+name:deck.h#new</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-3-2" class="outline-6">
-<h6 id="sec-4-3-4-3-2">Deck を作る (src/deck.c)</h6>
+<div id="outline-container-orgheadline34" class="outline-6">
+<h6 id="orgheadline34"><span class="section-number-6">4.3.4.3.2</span> Deck を作る (src/deck.c)</h6>
 <div class="outline-text-6" id="text-4-3-4-3-2">
 <p>
 山の型と実体を作ります。
@@ -1244,60 +1143,57 @@ deck/src/deck.h に移します。
 <ul class="org-ul">
 <li>52枚のカードから山を作る:
 <ul class="org-ul">
-<li>引き札の山に52枚のカードが積まれ，
-</li>
-<li>捨て札の山は0枚のカードが積まれている，状態を作る
-</li>
-<li>二つの山は，山モジュールの中に隠れていて，プレーヤに見えてなくてもいい
-</li>
-</ul>
-</li>
+<li>引き札の山に52枚のカードが積まれ，</li>
+<li>捨て札の山は0枚のカードが積まれている，状態を作る</li>
+<li>二つの山は，山モジュールの中に隠れていて，プレーヤに見えてなくてもいい</li>
+</ul></li>
 </ul>
 
 <p>
 なので，
 </p>
 <ul class="org-ul">
-<li>山は構造体 
+<li><p>
+山は構造体 
+</p>
 <pre class="example">
 struct _Deck {};
-</pre>
-</li>
-<li>52枚のカードが積まれ
+</pre></li>
+<li><p>
+52枚のカードが積まれ
+</p>
 <pre class="example">
 # include &lt;Card&gt;
 struct _Deck {Card cards[52];};
-</pre>
-</li>
-<li>0枚のカードが積まれている，状態
+</pre></li>
+<li><p>
+0枚のカードが積まれている，状態
+</p>
 <pre class="example">
 # include &lt;Card&gt;
 struct _Deck {Card cards[52]; int size};
-</pre>
-</li>
+</pre></li>
 
-<li>引き札の山, 捨て札の山,
-</li>
-<li>二つの山は，山モジュールの中に隠れていて，プレーヤに見えてなく
+<li>引き札の山, 捨て札の山,</li>
+<li><p>
+二つの山は，山モジュールの中に隠れていて，プレーヤに見えてなく
 てもいい
+</p>
 <pre class="example">
 # include &lt;Card&gt;
 struct _Deck {Card cards[52]; int size};
 typedef struct _Deck Deck;
 static Deck using;
 static Deck used;
-</pre>
-</li>
+</pre></li>
 </ul>
 
 <p>
 ということで， <a href="http://wiki.cis.iwate-u.ac.jp/svn/prog/2015/progs/game/deck/src/deck.c">deck/src/deck.c</a> の
 </p>
 <ul class="org-ul">
-<li>#+name:deck.c#include
-</li>
-<li>#+name:deck.c#Deck 
-</li>
+<li>#+name:deck.c#include</li>
+<li>#+name:deck.c#Deck</li>
 </ul>
 <p>
 ができあがります。
@@ -1305,8 +1201,8 @@ static Deck used;
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-3-3" class="outline-6">
-<h6 id="sec-4-3-4-3-3"><span class="todo Todo">Todo</span> new と size を作る (src/deck.c)</h6>
+<div id="outline-container-orgheadline35" class="outline-6">
+<h6 id="orgheadline35"><span class="section-number-6">4.3.4.3.3</span> Todo new と size を作る (src/deck.c)</h6>
 <div class="outline-text-6" id="text-4-3-4-3-3">
 <p>
 deck_new, deck_size を自分で実装してみましょう。
@@ -1314,22 +1210,21 @@ deck_new, deck_size を自分で実装してみましょう。
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-3-4" class="outline-6">
-<h6 id="sec-4-3-4-3-4"><span class="todo Todo">Todo</span> deck.o を作る (src/deck.o)</h6>
+<div id="outline-container-orgheadline37" class="outline-6">
+<h6 id="orgheadline37"><span class="section-number-6">4.3.4.3.4</span> Todo deck.o を作る (src/deck.o)</h6>
 <div class="outline-text-6" id="text-4-3-4-3-4">
-</div><div id="outline-container-sec-4-3-4-3-4-1" class="outline-7">
-<h7 id="sec-4-3-4-3-4-1"><span class="todo Todo">Todo</span> deck/src/Makefile の変更</h7>
+</div><div id="outline-container-orgheadline36" class="outline-7">
+<h7 id="orgheadline36"><span class="section-number-7">4.3.4.3.4.1</span> Todo deck/src/Makefile の変更</h7>
 <div class="outline-text-7" id="text-4-3-4-3-4-1">
 <ul class="org-ul">
-<li>~/progs/game/include/card.h が使えるようにする
-</li>
+<li>~/progs/game/include/card.h が使えるようにする</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-3-5" class="outline-6">
-<h6 id="sec-4-3-4-3-5"><span class="todo Todo">Todo</span> libdeck.a を作る</h6>
+<div id="outline-container-orgheadline38" class="outline-6">
+<h6 id="orgheadline38"><span class="section-number-6">4.3.4.3.5</span> Todo libdeck.a を作る</h6>
 <div class="outline-text-6" id="text-4-3-4-3-5">
 <p>
 ただ make すればよいでしょう。
@@ -1339,35 +1234,34 @@ deck_new, deck_size を自分で実装してみましょう。
 </div>
 
 
-<div id="outline-container-sec-4-3-4-4" class="outline-5">
-<h5 id="sec-4-3-4-4"><span class="section-number-5">4.3.4.4</span> <span class="todo Todo">Todo</span> テスト</h5>
+<div id="outline-container-orgheadline42" class="outline-5">
+<h5 id="orgheadline42"><span class="section-number-5">4.3.4.4</span> Todo テスト</h5>
 <div class="outline-text-5" id="text-4-3-4-4">
-</div><div id="outline-container-sec-4-3-4-4-1" class="outline-6">
-<h6 id="sec-4-3-4-4-1"><span class="todo Todo">Todo</span> テスト test_deck.so のビルド</h6>
+</div><div id="outline-container-orgheadline40" class="outline-6">
+<h6 id="orgheadline40"><span class="section-number-6">4.3.4.4.1</span> Todo テスト test_deck.so のビルド</h6>
 <div class="outline-text-6" id="text-4-3-4-4-1">
 <ul class="org-ul">
-<li>~/progs/game/lib/libcard.a が使えるようにする
-</li>
+<li>~/progs/game/lib/libcard.a が使えるようにする</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-4-4-2" class="outline-6">
-<h6 id="sec-4-3-4-4-2"><span class="todo Todo">Todo</span> テストの実行とデバッグ</h6>
+<div id="outline-container-orgheadline41" class="outline-6">
+<h6 id="orgheadline41"><span class="section-number-6">4.3.4.4.2</span> Todo テストの実行とデバッグ</h6>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-5" class="outline-4">
-<h4 id="sec-4-3-5"><span class="section-number-4">4.3.5</span> <span class="todo Todo">Todo</span> 山から引く機能の設計・実装・テスト</h4>
+<div id="outline-container-orgheadline53" class="outline-4">
+<h4 id="orgheadline53"><span class="section-number-4">4.3.5</span> Todo 山から引く機能の設計・実装・テスト</h4>
 <div class="outline-text-4" id="text-4-3-5">
 <p>
 山 (積み重ねられたカード) の一番上のカードを引く
 </p>
 </div>
 
-<div id="outline-container-sec-4-3-5-0-1" class="outline-6">
-<h6 id="sec-4-3-5-0-1">インタフェースの設計</h6>
+<div id="outline-container-orgheadline44" class="outline-6">
+<h6 id="orgheadline44"><span class="section-number-6">4.3.5.0.1</span> インタフェースの設計</h6>
 <div class="outline-text-6" id="text-4-3-5-0-1">
 <p>
 Card c = deck_draw();
@@ -1375,8 +1269,8 @@ Card c = deck_draw();
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-5-0-2" class="outline-6">
-<h6 id="sec-4-3-5-0-2">テスト</h6>
+<div id="outline-container-orgheadline45" class="outline-6">
+<h6 id="orgheadline45"><span class="section-number-6">4.3.5.0.2</span> テスト</h6>
 <div class="outline-text-6" id="text-4-3-5-0-2">
 <p>
 deck_size()==51     
@@ -1384,8 +1278,8 @@ deck_size()==51
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-5-1" class="outline-5">
-<h5 id="sec-4-3-5-1"><span class="section-number-5">4.3.5.1</span> deck_draw をテストする:</h5>
+<div id="outline-container-orgheadline46" class="outline-5">
+<h5 id="orgheadline46"><span class="section-number-5">4.3.5.1</span> deck_draw をテストする:</h5>
 <div class="outline-text-5" id="text-4-3-5-1">
 <p>
 test_deck.c#deck_draw)
@@ -1399,8 +1293,8 @@ cut_assert(deck_size(stock) == 51)
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-5-2" class="outline-5">
-<h5 id="sec-4-3-5-2"><span class="section-number-5">4.3.5.2</span> deck.h への追加変更</h5>
+<div id="outline-container-orgheadline47" class="outline-5">
+<h5 id="orgheadline47"><span class="section-number-5">4.3.5.2</span> deck.h への追加変更</h5>
 <div class="outline-text-5" id="text-4-3-5-2">
 <p>
 src/deck.h
@@ -1411,36 +1305,36 @@ Card deck_draw(void);
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-5-3" class="outline-5">
-<h5 id="sec-4-3-5-3"><span class="section-number-5">4.3.5.3</span> deck.c への追加変更</h5>
+<div id="outline-container-orgheadline48" class="outline-5">
+<h5 id="orgheadline48"><span class="section-number-5">4.3.5.3</span> deck.c への追加変更</h5>
 <div class="outline-text-5" id="text-4-3-5-3">
 <div class="org-src-container">
 
-<pre class="src src-nillangnilswitchesnilflags" id="deck.c-deck_draw">nilbody
+<pre class="src src-nillangnilswitchesnilflags" id="orgsrcblock1">nilbody
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-5-4" class="outline-5">
-<h5 id="sec-4-3-5-4"><span class="section-number-5">4.3.5.4</span> deck.o の作成</h5>
+<div id="outline-container-orgheadline49" class="outline-5">
+<h5 id="orgheadline49"><span class="section-number-5">4.3.5.4</span> deck.o の作成</h5>
 </div>
 
-<div id="outline-container-sec-4-3-5-5" class="outline-5">
-<h5 id="sec-4-3-5-5"><span class="section-number-5">4.3.5.5</span> libdeck.a の作成</h5>
+<div id="outline-container-orgheadline50" class="outline-5">
+<h5 id="orgheadline50"><span class="section-number-5">4.3.5.5</span> libdeck.a の作成</h5>
 </div>
 
-<div id="outline-container-sec-4-3-5-6" class="outline-5">
-<h5 id="sec-4-3-5-6"><span class="section-number-5">4.3.5.6</span> test_deck.so の作成</h5>
+<div id="outline-container-orgheadline51" class="outline-5">
+<h5 id="orgheadline51"><span class="section-number-5">4.3.5.6</span> test_deck.so の作成</h5>
 </div>
 
-<div id="outline-container-sec-4-3-5-7" class="outline-5">
-<h5 id="sec-4-3-5-7"><span class="section-number-5">4.3.5.7</span> test</h5>
+<div id="outline-container-orgheadline52" class="outline-5">
+<h5 id="orgheadline52"><span class="section-number-5">4.3.5.7</span> test</h5>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-6" class="outline-4">
-<h4 id="sec-4-3-6"><span class="section-number-4">4.3.6</span> <span class="todo Todo">Todo</span> カードを捨てる (test_deck.c#test_discard)</h4>
+<div id="outline-container-orgheadline54" class="outline-4">
+<h4 id="orgheadline54"><span class="section-number-4">4.3.6</span> Todo カードを捨てる (test_deck.c#test_discard)</h4>
 <div class="outline-text-4" id="text-4-3-6">
 <p>
 書いてみる
@@ -1450,14 +1344,10 @@ n = deck_discard(c);
 </pre>
 
 <ul class="org-ul">
-<li>カードを一枚捨てる
-</li>
-<li>捨てられたカードの枚数が帰ってくる
-</li>
-<li>ちょっと不自然か？
-</li>
-<li>捨て山の枚数を取得する関数を用意したほうがいいかも
-</li>
+<li>カードを一枚捨てる</li>
+<li>捨てられたカードの枚数が帰ってくる</li>
+<li>ちょっと不自然か？</li>
+<li>捨て山の枚数を取得する関数を用意したほうがいいかも</li>
 </ul>
 
 <p>
@@ -1471,16 +1361,14 @@ int deck_discard(Card);
 draw.c への変更追加
 </p>
 <ul class="org-ul">
-<li>捨て山
-</li>
+<li>捨て山</li>
 </ul>
 <pre class="example">
 static Deck used;
 </pre>
 
 <ul class="org-ul">
-<li>捨てる
-</li>
+<li>捨てる</li>
 </ul>
 <pre class="example">
 int deck_discard(Card a)
@@ -1492,11 +1380,11 @@ int deck_discard(Card a)
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-7" class="outline-4">
-<h4 id="sec-4-3-7"><span class="section-number-4">4.3.7</span> <span class="todo Todo">Todo</span> 山の再構成 (deck_renew)</h4>
+<div id="outline-container-orgheadline62" class="outline-4">
+<h4 id="orgheadline62"><span class="section-number-4">4.3.7</span> Todo 山の再構成 (deck_renew)</h4>
 <div class="outline-text-4" id="text-4-3-7">
-</div><div id="outline-container-sec-4-3-7-1" class="outline-5">
-<h5 id="sec-4-3-7-1"><span class="section-number-5">4.3.7.1</span> 機能</h5>
+</div><div id="outline-container-orgheadline55" class="outline-5">
+<h5 id="orgheadline55"><span class="section-number-5">4.3.7.1</span> 機能</h5>
 <div class="outline-text-5" id="text-4-3-7-1">
 <p>
 引き山がなくなり，捨て山から引き山を作り直す。
@@ -1512,8 +1400,8 @@ deck_renew
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-7-2" class="outline-5">
-<h5 id="sec-4-3-7-2"><span class="section-number-5">4.3.7.2</span> テストする</h5>
+<div id="outline-container-orgheadline56" class="outline-5">
+<h5 id="orgheadline56"><span class="section-number-5">4.3.7.2</span> テストする</h5>
 <div class="outline-text-5" id="text-4-3-7-2">
 <p>
 53枚引いて捨てて，山の枚数を確かめる。
@@ -1530,8 +1418,8 @@ cut_assert(n == 1)
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-7-3" class="outline-5">
-<h5 id="sec-4-3-7-3"><span class="section-number-5">4.3.7.3</span> renewの実装 (src/deck.c#renew)</h5>
+<div id="outline-container-orgheadline57" class="outline-5">
+<h5 id="orgheadline57"><span class="section-number-5">4.3.7.3</span> renewの実装 (src/deck.c#renew)</h5>
 <div class="outline-text-5" id="text-4-3-7-3">
 <pre class="example">
 using = used
@@ -1540,40 +1428,37 @@ used.size = 0
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-7-4" class="outline-5">
-<h5 id="sec-4-3-7-4"><span class="section-number-5">4.3.7.4</span> deck.o の作成</h5>
+<div id="outline-container-orgheadline58" class="outline-5">
+<h5 id="orgheadline58"><span class="section-number-5">4.3.7.4</span> deck.o の作成</h5>
 </div>
 
-<div id="outline-container-sec-4-3-7-5" class="outline-5">
-<h5 id="sec-4-3-7-5"><span class="section-number-5">4.3.7.5</span> libdeck.a の作成</h5>
+<div id="outline-container-orgheadline59" class="outline-5">
+<h5 id="orgheadline59"><span class="section-number-5">4.3.7.5</span> libdeck.a の作成</h5>
 </div>
 
-<div id="outline-container-sec-4-3-7-6" class="outline-5">
-<h5 id="sec-4-3-7-6"><span class="section-number-5">4.3.7.6</span> test_deck.so の作成</h5>
+<div id="outline-container-orgheadline60" class="outline-5">
+<h5 id="orgheadline60"><span class="section-number-5">4.3.7.6</span> test_deck.so の作成</h5>
 </div>
 
-<div id="outline-container-sec-4-3-7-7" class="outline-5">
-<h5 id="sec-4-3-7-7"><span class="section-number-5">4.3.7.7</span> test</h5>
+<div id="outline-container-orgheadline61" class="outline-5">
+<h5 id="orgheadline61"><span class="section-number-5">4.3.7.7</span> test</h5>
 </div>
 </div>
-<div id="outline-container-sec-4-3-8" class="outline-4">
-<h4 id="sec-4-3-8"><span class="section-number-4">4.3.8</span> <span class="todo Todo">Todo</span> シャッフル</h4>
+<div id="outline-container-orgheadline63" class="outline-4">
+<h4 id="orgheadline63"><span class="section-number-4">4.3.8</span> Todo シャッフル</h4>
 <div class="outline-text-4" id="text-4-3-8">
 <ul class="org-ul">
 <li>0~stock.top-1 のカードを
 <ul class="org-ul">
-<li>適当な回数
-</li>
-<li>適当な2枚を入れ替える
-</li>
-</ul>
-</li>
+<li>適当な回数</li>
+<li>適当な2枚を入れ替える</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-4-3-9" class="outline-4">
-<h4 id="sec-4-3-9"><span class="section-number-4">4.3.9</span> 山を印刷</h4>
+<div id="outline-container-orgheadline64" class="outline-4">
+<h4 id="orgheadline64"><span class="section-number-4">4.3.9</span> 山を印刷</h4>
 <div class="outline-text-4" id="text-4-3-9">
 <p>
 test_print.cの作成
@@ -1605,58 +1490,45 @@ void Deck_print(Deck deck)
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Hand モジュールの開発</h2>
+<div id="outline-container-orgheadline139" class="outline-2">
+<h2 id="orgheadline139"><span class="section-number-2">5</span> Hand モジュールの開発</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 手札について考える</h3>
+</div><div id="outline-container-orgheadline88" class="outline-3">
+<h3 id="orgheadline88"><span class="section-number-3">5.1</span> 手札について考える</h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-sec-5-1-1" class="outline-4">
-<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> 手札の機能</h4>
+</div><div id="outline-container-orgheadline69" class="outline-4">
+<h4 id="orgheadline69"><span class="section-number-4">5.1.1</span> 手札の機能</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E6%89%8B%E6%9C%AD%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E8%A8%AD%E8%A8%88">Prog Wikky - 手札モジュールの設計</a> も参考にしてください。
 </p>
 </div>
 
-<div id="outline-container-sec-5-1-1-1" class="outline-5">
-<h5 id="sec-5-1-1-1"><span class="section-number-5">5.1.1.1</span> ゲームの説明から手札に関する部分を取り出す</h5>
+<div id="outline-container-orgheadline67" class="outline-5">
+<h5 id="orgheadline67"><span class="section-number-5">5.1.1.1</span> ゲームの説明から手札に関する部分を取り出す</h5>
 <div class="outline-text-5" id="text-5-1-1-1">
 <ul class="org-ul">
 <li>手札(5枚のカード) を配り，
 <ul class="org-ul">
-<li>山から引いたカードを (ここは手札には関係ないが)
-</li>
-<li>手札に入れ，
-</li>
-<li>手札をソートする
-</li>
-</ul>
-</li>
+<li>山から引いたカードを (ここは手札には関係ないが)</li>
+<li>手札に入れ，</li>
+<li>手札をソートする</li>
+</ul></li>
 
 <li>2回までの手札の交換後，
 <ul class="org-ul">
-<li>手札のカードを引き，
-</li>
-<li>そのカードを捨て，
-</li>
-<li>山から引いたカードを (ここは手札には関係ないが)
-</li>
-<li>手札に入れ，
-</li>
-<li>手札をソートする
-</li>
-</ul>
-</li>
+<li>手札のカードを引き，</li>
+<li>そのカードを捨て，</li>
+<li>山から引いたカードを (ここは手札には関係ないが)</li>
+<li>手札に入れ，</li>
+<li>手札をソートする</li>
+</ul></li>
 
 <li>手札役の強い順にプレーヤ名を表示する 
 <ul class="org-ul">
-<li>手札の <b>役</b> 判定
-</li>
-<li>プレーヤーは関係なし
-</li>
-</ul>
-</li>
+<li>手札の <b>役</b> 判定</li>
+<li>プレーヤーは関係なし</li>
+</ul></li>
 </ul>
 
 <p>
@@ -1670,8 +1542,8 @@ void Deck_print(Deck deck)
 </div>
 
 
-<div id="outline-container-sec-5-1-1-2" class="outline-5">
-<h5 id="sec-5-1-1-2"><span class="section-number-5">5.1.1.2</span> 手札モジュールの機能</h5>
+<div id="outline-container-orgheadline68" class="outline-5">
+<h5 id="orgheadline68"><span class="section-number-5">5.1.1.2</span> 手札モジュールの機能</h5>
 <div class="outline-text-5" id="text-5-1-1-2">
 <p>
 モジュールはポーカーの手札(という概念／機能) を提供する． 
@@ -1681,26 +1553,19 @@ void Deck_print(Deck deck)
 それは以下：
 </p>
 <ul class="org-ul">
-<li>手札は5枚のカードの集まり．
-</li>
-<li>手札に一枚加える
-</li>
-<li>手札から選んだ一枚を引き抜く
-</li>
-<li>手札のソート
-</li>
-<li>手札の役を計算する
-</li>
+<li>手札は5枚のカードの集まり．</li>
+<li>手札に一枚加える</li>
+<li>手札から選んだ一枚を引き抜く</li>
+<li>手札のソート</li>
+<li>手札の役を計算する</li>
 </ul>
 
 <p>
 入出力に関する機能
 </p>
 <ul class="org-ul">
-<li>手札の表示
-</li>
-<li>役の名前
-</li>
+<li>手札の表示</li>
+<li>役の名前</li>
 </ul>
 
 <p>
@@ -1712,11 +1577,11 @@ void Deck_print(Deck deck)
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2" class="outline-4">
-<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> 機能の設計</h4>
+<div id="outline-container-orgheadline87" class="outline-4">
+<h4 id="orgheadline87"><span class="section-number-4">5.1.2</span> 機能の設計</h4>
 <div class="outline-text-4" id="text-5-1-2">
-</div><div id="outline-container-sec-5-1-2-1" class="outline-5">
-<h5 id="sec-5-1-2-1"><span class="section-number-5">5.1.2.1</span> 機能の名前</h5>
+</div><div id="outline-container-orgheadline74" class="outline-5">
+<h5 id="orgheadline74"><span class="section-number-5">5.1.2.1</span> 機能の名前</h5>
 <div class="outline-text-5" id="text-5-1-2-1">
 <p>
 先ず，機能の説明から，その機能に名前をつけましょう。
@@ -1727,8 +1592,8 @@ void Deck_print(Deck deck)
 </p>
 </div>
 
-<div id="outline-container-sec-5-1-2-1-1" class="outline-6">
-<h6 id="sec-5-1-2-1-1">手札を作ることに関する機能達</h6>
+<div id="outline-container-orgheadline70" class="outline-6">
+<h6 id="orgheadline70"><span class="section-number-6">5.1.2.1.1</span> 手札を作ることに関する機能達</h6>
 <div class="outline-text-6" id="text-5-1-2-1-1">
 <p>
 手札はこのモジュールの主体である <b>もの*。
@@ -1748,88 +1613,68 @@ void Deck_print(Deck deck)
 <ul class="org-ul">
 <li>手札 - <b>Hand</b>
 <ul class="org-ul">
-<li>手札は最大5枚のカードの集まり。
-</li>
-</ul>
-</li>
+<li>手札は最大5枚のカードの集まり。</li>
+</ul></li>
 
 <li>空の手札を作る - <b>hand_new</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 空の手札を作る new
-</li>
-</ul>
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 空の手札を作る new</li>
+</ul></li>
 
 <li>手札の枚数を計算する - <b>hand_size</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 手札の枚数 size
-</li>
-</ul>
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 手札の枚数 size</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-1-2" class="outline-6">
-<h6 id="sec-5-1-2-1-2">手札に一枚加える/引く機能達</h6>
+<div id="outline-container-orgheadline71" class="outline-6">
+<h6 id="orgheadline71"><span class="section-number-6">5.1.2.1.2</span> 手札に一枚加える/引く機能達</h6>
 <div class="outline-text-6" id="text-5-1-2-1-2">
 <ul class="org-ul">
 <li>手札に一枚加える - <b>hand_add</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： カードを加える add
-</li>
-</ul>
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： カードを加える add</li>
+</ul></li>
 
 <li>手札から選んだ一枚を引き抜く - <b>hand_draw</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： カードを引く draw
-</li>
-</ul>
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： カードを引く draw</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-1-3" class="outline-6">
-<h6 id="sec-5-1-2-1-3">手札の全カードを扱う機能達</h6>
+<div id="outline-container-orgheadline72" class="outline-6">
+<h6 id="orgheadline72"><span class="section-number-6">5.1.2.1.3</span> 手札の全カードを扱う機能達</h6>
 <div class="outline-text-6" id="text-5-1-2-1-3">
 <ul class="org-ul">
 <li>手札のソート - <b>hand_sort</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 手札をソート sort
-</li>
-</ul>
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 手札をソート sort</li>
+</ul></li>
 </ul>
 
 
 <ul class="org-ul">
 <li>手札を文字列に - <b>hand_to_string</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
+<li>主体 ： 手札 hand</li>
 <li>操作 ： 手札を文字列に (convert_)to_string. 長いし，曖昧性がないの
-で，convert_を省略します。
-</li>
-</ul>
-</li>
+で，convert_を省略します。</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-1-4" class="outline-6">
-<h6 id="sec-5-1-2-1-4">役に関する機能達</h6>
+<div id="outline-container-orgheadline73" class="outline-6">
+<h6 id="orgheadline73"><span class="section-number-6">5.1.2.1.4</span> 役に関する機能達</h6>
 <div class="outline-text-6" id="text-5-1-2-1-4">
 <p>
 役の英語訳は，poker hand.
@@ -1840,81 +1685,66 @@ void Deck_print(Deck deck)
 <ul class="org-ul">
 <li>手札の役を計算する - <b>hand_calc</b>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 役の計算 calc
+<li>主体 ： 手札 hand</li>
+<li><p>
+操作 ： 役の計算 calc
+</p>
 
 <p>
 下請けの関数として，が考えられるが，今は詳細として，隠しておき，
 hand_calc のテスト駆動開発の時に，検討しましょう:
 </p>
 <ul class="org-ul">
-<li>hand_is_straight &#x2013; 手札はストレートか？
-</li>
-<li>hand_is_flush &#x2013; 手札はフラッシュか？
-</li>
-<li>hand_calc_pairs &#x2013; ペアを計算する
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>hand_is_straight &#x2013; 手札はストレートか？</li>
+<li>hand_is_flush &#x2013; 手札はフラッシュか？</li>
+<li>hand_calc_pairs &#x2013; ペアを計算する</li>
+</ul></li>
+</ul></li>
 
 <li>役 <b>PokerHand</b> (物)
 <ul class="org-ul">
-<li>役のこと，いくつか具体的な役の名前の集まり
-</li>
-<li>なので型
-</li>
-<li>型は capital words で表すので，_P_oker_H_and.
-</li>
-</ul>
-</li>
+<li>役のこと，いくつか具体的な役の名前の集まり</li>
+<li>なので型</li>
+<li>型は capital words で表すので，_P_oker_H_and.</li>
+</ul></li>
 </ul>
 
 
 <ul class="org-ul">
 <li>役を文字列に - <b>hand_pokerhand_to_string</b>
 <ul class="org-ul">
-<li>主体 ： hand? 
-</li>
-<li>操作 ： 役を文字列に pokerhand_to_string
-</li>
-</ul>
-</li>
+<li>主体 ： hand?</li>
+<li>操作 ： 役を文字列に pokerhand_to_string</li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-5-1-2-2" class="outline-5">
-<h5 id="sec-5-1-2-2"><span class="section-number-5">5.1.2.2</span> インタフェースを考える (deckと同じ)</h5>
+<div id="outline-container-orgheadline75" class="outline-5">
+<h5 id="orgheadline75"><span class="section-number-5">5.1.2.2</span> インタフェースを考える (deckと同じ)</h5>
 <div class="outline-text-5" id="text-5-1-2-2">
 <p>
 機能が操作の場合
 </p>
 <ul class="org-ul">
-<li>機能は箱，箱への入力と，箱からの出力を考える
-</li>
-<li>入力と出力が何であるか決める
-</li>
+<li>機能は箱，箱への入力と，箱からの出力を考える</li>
+<li>入力と出力が何であるか決める</li>
 </ul>
 
 <p>
 機能が物の場合
 </p>
 <ul class="org-ul">
-<li>機能は箱，箱の中身を考える。
-</li>
-<li>何からできているかを決める
-</li>
+<li>機能は箱，箱の中身を考える。</li>
+<li>何からできているかを決める</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3" class="outline-5">
-<h5 id="sec-5-1-2-3"><span class="section-number-5">5.1.2.3</span> 機能のインタフェース</h5>
+<div id="outline-container-orgheadline86" class="outline-5">
+<h5 id="orgheadline86"><span class="section-number-5">5.1.2.3</span> 機能のインタフェース</h5>
 <div class="outline-text-5" id="text-5-1-2-3">
 <p>
 主体，操作から機能の名前は決まっています。あとは，対象物と，操作の
@@ -1922,22 +1752,19 @@ hand_calc のテスト駆動開発の時に，検討しましょう:
 </p>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-1" class="outline-6">
-<h6 id="sec-5-1-2-3-1">手札</h6>
+<div id="outline-container-orgheadline76" class="outline-6">
+<h6 id="orgheadline76"><span class="section-number-6">5.1.2.3.1</span> 手札</h6>
 <div class="outline-text-6" id="text-5-1-2-3-1">
 <p>
 手札とは
 </p>
 <ul class="org-ul">
-<li>カードと枚数からなる。したがって，手札は構造体。
-</li>
+<li>カードと枚数からなる。したがって，手札は構造体。</li>
 <li>ゲーム中，手札は，いくつも存在する。変数ではなく，型となる。型
 名は，最初の一文字を大文字で表す (capital word) ことにしていま
-す。 Hand とします。
-</li>
+す。 Hand とします。</li>
 <li>構造体の中身は，テスト駆動開発時の機能の実装を行なうときに，考
-えることにします。
-</li>
+えることにします。</li>
 </ul>
 
 <p>
@@ -1947,14 +1774,14 @@ hand_calc のテスト駆動開発の時に，検討しましょう:
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">typedef</span> <span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">_Hand</span> <span style="color: #92a65e; font-weight: bold;">Hand</span>;
+<pre class="src src-c">typedef struct _Hand Hand;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-2" class="outline-6">
-<h6 id="sec-5-1-2-3-2">hand_new</h6>
+<div id="outline-container-orgheadline77" class="outline-6">
+<h6 id="orgheadline77"><span class="section-number-6">5.1.2.3.2</span> hand_new</h6>
 <div class="outline-text-6" id="text-5-1-2-3-2">
 <p>
 空の手札を作る     
@@ -1962,176 +1789,148 @@ hand_calc のテスト駆動開発の時に，検討しましょう:
 
 
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 空の手札を作る new
-</li>
-<li>対象物 ： なし
-</li>
-<li>結果 ： Hand
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 空の手札を作る new</li>
+<li>対象物 ： なし</li>
+<li>結果 ： Hand</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_new</span>(<span style="color: #92a65e; font-weight: bold;">void</span>);
+<pre class="src src-c">Hand hand_new(void);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-3" class="outline-6">
-<h6 id="sec-5-1-2-3-3">hand_size</h6>
+<div id="outline-container-orgheadline78" class="outline-6">
+<h6 id="orgheadline78"><span class="section-number-6">5.1.2.3.3</span> hand_size</h6>
 <div class="outline-text-6" id="text-5-1-2-3-3">
 <p>
 手札の枚数を計算する
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 手札の枚数 size
-</li>
-<li>対象物 ： 手札
-</li>
-<li>結果 ： 枚数 int
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 手札の枚数 size</li>
+<li>対象物 ： 手札</li>
+<li>結果 ： 枚数 int</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_size</span>(Hand);
+<pre class="src src-c">int hand_size(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-4" class="outline-6">
-<h6 id="sec-5-1-2-3-4">hand_add</h6>
+<div id="outline-container-orgheadline79" class="outline-6">
+<h6 id="orgheadline79"><span class="section-number-6">5.1.2.3.4</span> hand_add</h6>
 <div class="outline-text-6" id="text-5-1-2-3-4">
 <p>
 手札に一枚カードを加える
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： カードを加える add
-</li>
-<li>対象物 ： 手札に，カードを (Hand, Card)
-</li>
-<li>結果 ： 一枚カードが付加えられた手札 Hand
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： カードを加える add</li>
+<li>対象物 ： 手札に，カードを (Hand, Card)</li>
+<li>結果 ： 一枚カードが付加えられた手札 Hand</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_add</span> (<span style="color: #92a65e; font-weight: bold;">Hand</span>, Card);
+<pre class="src src-c">Hand hand_add (Hand, Card);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-5" class="outline-6">
-<h6 id="sec-5-1-2-3-5">hand_draw</h6>
+<div id="outline-container-orgheadline80" class="outline-6">
+<h6 id="orgheadline80"><span class="section-number-6">5.1.2.3.5</span> hand_draw</h6>
 <div class="outline-text-6" id="text-5-1-2-3-5">
 <p>
 手札から選んだ一枚を引き抜く
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： カードを引く draw
-</li>
-<li>対象物 ： 手札から，指定したカードを (Hand, どの手札か)
-</li>
-<li>結果 ： 一枚カードが引かれた手札 Hand
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： カードを引く draw</li>
+<li>対象物 ： 手札から，指定したカードを (Hand, どの手札か)</li>
+<li>結果 ： 一枚カードが引かれた手札 Hand</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_draw</span> (<span style="color: #92a65e; font-weight: bold;">Hand</span>, <span style="color: #92a65e; font-weight: bold;">int</span>);
+<pre class="src src-c">Hand hand_draw (Hand, int);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-6" class="outline-6">
-<h6 id="sec-5-1-2-3-6">hand_sort</h6>
+<div id="outline-container-orgheadline81" class="outline-6">
+<h6 id="orgheadline81"><span class="section-number-6">5.1.2.3.6</span> hand_sort</h6>
 <div class="outline-text-6" id="text-5-1-2-3-6">
 <p>
 手札の5枚のカードをソート
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 手札の全カードをソート sort
-</li>
-<li>対象物 ： 手札 (Hand)
-</li>
-<li>結果 ： ソートされた手札 Hand
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 手札の全カードをソート sort</li>
+<li>対象物 ： 手札 (Hand)</li>
+<li>結果 ： ソートされた手札 Hand</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_sort</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span>);
+<pre class="src src-c">Hand hand_sort(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-7" class="outline-6">
-<h6 id="sec-5-1-2-3-7">hand_to_string</h6>
+<div id="outline-container-orgheadline82" class="outline-6">
+<h6 id="orgheadline82"><span class="section-number-6">5.1.2.3.7</span> hand_to_string</h6>
 <div class="outline-text-6" id="text-5-1-2-3-7">
 <p>
 手札を文字列に
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 手札を表す文字列を作る to_string
-</li>
-<li>対象物 ： 手札 (Hand)
-</li>
-<li>結果 ： 文字列 char *
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 手札を表す文字列を作る to_string</li>
+<li>対象物 ： 手札 (Hand)</li>
+<li>結果 ： 文字列 char *</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hand_to_string</span>(Hand);
+<pre class="src src-c">char *hand_to_string(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-8" class="outline-6">
-<h6 id="sec-5-1-2-3-8">hand_calc</h6>
+<div id="outline-container-orgheadline83" class="outline-6">
+<h6 id="orgheadline83"><span class="section-number-6">5.1.2.3.8</span> hand_calc</h6>
 <div class="outline-text-6" id="text-5-1-2-3-8">
 <p>
 手札の役を計算する
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 手札のソート sort
-</li>
-<li>対象物 ： 手札 (Hand)
-</li>
-<li>結果 ： 役 PokerHand
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 手札のソート sort</li>
+<li>対象物 ： 手札 (Hand)</li>
+<li>結果 ： 役 PokerHand</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">PokerHand</span> <span style="color: #cae682;">hand_calc</span>(Hand);
+<pre class="src src-c">PokerHand hand_calc(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-9" class="outline-6">
-<h6 id="sec-5-1-2-3-9">PokerHand (物)</h6>
+<div id="outline-container-orgheadline84" class="outline-6">
+<h6 id="orgheadline84"><span class="section-number-6">5.1.2.3.9</span> PokerHand (物)</h6>
 <div class="outline-text-6" id="text-5-1-2-3-9">
 <p>
 役(値)の集まり
@@ -2139,39 +1938,34 @@ hand_calc のテスト駆動開発の時に，検討しましょう:
 
 <ul class="org-ul">
 <li>HighCards, OnePair, TwoPairs, ThreeCards, Straight, Flush,
-FullHouse, FourCards, StraightFlush
-</li>
+FullHouse, FourCards, StraightFlush</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">PokerHand</span> { <span style="color: #cae682;">HighCards</span>, <span style="color: #cae682;">OnePair</span>, <span style="color: #cae682;">TwoPairs</span>, <span style="color: #cae682;">ThreeCards</span>, <span style="color: #cae682;">Straight</span>, <span style="color: #cae682;">Flush</span>,
-                 <span style="color: #cae682;">FullHouse</span>, <span style="color: #cae682;">FourCards</span>, <span style="color: #cae682;">StraightFlush</span> };
+<pre class="src src-c">enum PokerHand { HighCards, OnePair, TwoPairs, ThreeCards, Straight, Flush,
+		 FullHouse, FourCards, StraightFlush };
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-1-2-3-10" class="outline-6">
-<h6 id="sec-5-1-2-3-10">poker_hand_to_string</h6>
+<div id="outline-container-orgheadline85" class="outline-6">
+<h6 id="orgheadline85"><span class="section-number-6">5.1.2.3.10</span> poker_hand_to_string</h6>
 <div class="outline-text-6" id="text-5-1-2-3-10">
 <p>
 役値を文字列に
 </p>
 <ul class="org-ul">
-<li>主体 ： 手札 hand
-</li>
-<li>操作 ： 役を表す文字列を作る pokerhand_to_string
-</li>
-<li>対象物 ： 役 (PokerHand)
-</li>
-<li>結果 ： 文字列 char *
-</li>
+<li>主体 ： 手札 hand</li>
+<li>操作 ： 役を表す文字列を作る pokerhand_to_string</li>
+<li>対象物 ： 役 (PokerHand)</li>
+<li>結果 ： 文字列 char *</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hand_pokerhand_to_string</span> (PokerHand);
+<pre class="src src-c">char *hand_pokerhand_to_string (PokerHand);
 </pre>
 </div>
 </div>
@@ -2181,11 +1975,11 @@ FullHouse, FourCards, StraightFlush
 </div>
 
 
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> 開発の決まり (deckとほぼ同じ)</h3>
+<div id="outline-container-orgheadline94" class="outline-3">
+<h3 id="orgheadline94"><span class="section-number-3">5.2</span> 開発の決まり (deckとほぼ同じ)</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-sec-5-2-1" class="outline-4">
-<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> 開発ディレクトリ</h4>
+</div><div id="outline-container-orgheadline89" class="outline-4">
+<h4 id="orgheadline89"><span class="section-number-4">5.2.1</span> 開発ディレクトリ</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <p>
 ~/progs/game/hand/{./, src/, test/} が開発に必要なディレクトリです。
@@ -2194,8 +1988,8 @@ FullHouse, FourCards, StraightFlush
 </div>
 
 
-<div id="outline-container-sec-5-2-2" class="outline-4">
-<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> 開発リポジトリ</h4>
+<div id="outline-container-orgheadline90" class="outline-4">
+<h4 id="orgheadline90"><span class="section-number-4">5.2.2</span> 開発リポジトリ</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <p>
 hand の内容は，来週の講義後，アップします。
@@ -2203,8 +1997,8 @@ hand の内容は，来週の講義後，アップします。
 </div>
 </div>
 
-<div id="outline-container-sec-5-2-3" class="outline-4">
-<h4 id="sec-5-2-3"><span class="section-number-4">5.2.3</span> 他のモジュールを利用するための決まり</h4>
+<div id="outline-container-orgheadline91" class="outline-4">
+<h4 id="orgheadline91"><span class="section-number-4">5.2.3</span> 他のモジュールを利用するための決まり</h4>
 <div class="outline-text-4" id="text-5-2-3">
 <p>
 deckと同じ
@@ -2212,32 +2006,26 @@ deckと同じ
 </div>
 </div>
 
-<div id="outline-container-sec-5-2-4" class="outline-4">
-<h4 id="sec-5-2-4"><span class="section-number-4">5.2.4</span> Makefileの準備</h4>
+<div id="outline-container-orgheadline92" class="outline-4">
+<h4 id="orgheadline92"><span class="section-number-4">5.2.4</span> Makefileの準備</h4>
 <div class="outline-text-4" id="text-5-2-4">
 <ul class="org-ul">
 <li>hand/Makefile
 <ul class="org-ul">
-<li>deck/Makefile がそのまま使えるはずですよね。
-</li>
-</ul>
-</li>
+<li>deck/Makefile がそのまま使えるはずですよね。</li>
+</ul></li>
 
 <li>hand/test/Makefile
 <ul class="org-ul">
 <li>deck/test/Makefile の deck を hand に置き換えれば，そのまま使え
-そうです。
-</li>
-</ul>
-</li>
+そうです。</li>
+</ul></li>
 
 <li>hand/src/Makefile
 <ul class="org-ul">
 <li>deck/src/Makefile の deck を hand に置き換えれば，そのまま使え
-そうです。
-</li>
-</ul>
-</li>
+そうです。</li>
+</ul></li>
 </ul>
 
 <p>
@@ -2246,8 +2034,8 @@ deckと同じ
 </div>
 </div>
 
-<div id="outline-container-sec-5-2-5" class="outline-4">
-<h4 id="sec-5-2-5"><span class="section-number-4">5.2.5</span> テスト駆動開発の一サイクルのテンプレート</h4>
+<div id="outline-container-orgheadline93" class="outline-4">
+<h4 id="orgheadline93"><span class="section-number-4">5.2.5</span> テスト駆動開発の一サイクルのテンプレート</h4>
 <div class="outline-text-4" id="text-5-2-5">
 <p>
 deckとほぼ同じ
@@ -2257,8 +2045,8 @@ deckとほぼ同じ
 </div>
 
 
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> 手札のテスト駆動開発</h3>
+<div id="outline-container-orgheadline95" class="outline-3">
+<h3 id="orgheadline95"><span class="section-number-3">5.3</span> 手札のテスト駆動開発</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 deck モジュールを参考に，一つづつテスト駆動開発してみましょう。
@@ -2279,46 +2067,44 @@ deck モジュールを参考に，一つづつテスト駆動開発してみま
 </div>
 </div>
 
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> 作成された手札モジュールの解説</h3>
+<div id="outline-container-orgheadline138" class="outline-3">
+<h3 id="orgheadline138"><span class="section-number-3">5.4</span> 作成された手札モジュールの解説</h3>
 <div class="outline-text-3" id="text-5-4">
-</div><div id="outline-container-sec-5-4-1" class="outline-4">
-<h4 id="sec-5-4-1"><span class="section-number-4">5.4.1</span> src/hand.h</h4>
+</div><div id="outline-container-orgheadline104" class="outline-4">
+<h4 id="orgheadline104"><span class="section-number-4">5.4.1</span> src/hand.h</h4>
 <div class="outline-text-4" id="text-5-4-1">
-</div><div id="outline-container-sec-5-4-1-1" class="outline-5">
-<h5 id="sec-5-4-1-1"><span class="section-number-5">5.4.1.1</span> 一回だけしか，include できなくする</h5>
+</div><div id="outline-container-orgheadline96" class="outline-5">
+<h5 id="orgheadline96"><span class="section-number-5">5.4.1.1</span> 一回だけしか，include できなくする</h5>
 <div class="outline-text-5" id="text-5-4-1-1">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># pragma</span> once
+<pre class="src src-c"># pragma once
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-2" class="outline-5">
-<h5 id="sec-5-4-1-2"><span class="section-number-5">5.4.1.2</span> 依存するモジュールのインタフェースを読む</h5>
+<div id="outline-container-orgheadline97" class="outline-5">
+<h5 id="orgheadline97"><span class="section-number-5">5.4.1.2</span> 依存するモジュールのインタフェースを読む</h5>
 <div class="outline-text-5" id="text-5-4-1-2">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
+<pre class="src src-c"># include &lt;card.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-3" class="outline-5">
-<h5 id="sec-5-4-1-3"><span class="section-number-5">5.4.1.3</span> hand 型の定義</h5>
+<div id="outline-container-orgheadline98" class="outline-5">
+<h5 id="orgheadline98"><span class="section-number-5">5.4.1.3</span> hand 型の定義</h5>
 <div class="outline-text-5" id="text-5-4-1-3">
 <p>
 hand モジュールの主体 Hand型を定義する.
 </p>
 
 <ul class="org-ul">
-<li>最大5枚のカード
-</li>
-<li>手札の枚数。出し入れがあるため。
-</li>
+<li>最大5枚のカード</li>
+<li>手札の枚数。出し入れがあるため。</li>
 </ul>
 
 <p>
@@ -2327,96 +2113,96 @@ hand モジュールの主体 Hand型を定義する.
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># define</span> <span style="color: #cae682;">CardsInHand</span> 5 <span style="color: #99968b;">//</span><span style="color: #99968b;">02.01 added</span>
+<pre class="src src-c"># define CardsInHand 5 //02.01 added
 
-<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">_Hand</span> {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">cards</span>[5];
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">size</span>;
+struct _Hand {
+  Card cards[5];
+  int size;
 };
 
-<span style="color: #8ac6f2; font-weight: bold;">typedef</span> <span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">_Hand</span> <span style="color: #92a65e; font-weight: bold;">Hand</span>;
+typedef struct _Hand Hand;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-4" class="outline-5">
-<h5 id="sec-5-4-1-4"><span class="section-number-5">5.4.1.4</span> 手札の作成と状態を知る機能</h5>
+<div id="outline-container-orgheadline99" class="outline-5">
+<h5 id="orgheadline99"><span class="section-number-5">5.4.1.4</span> 手札の作成と状態を知る機能</h5>
 <div class="outline-text-5" id="text-5-4-1-4">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_new</span>(<span style="color: #92a65e; font-weight: bold;">void</span>);
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_size</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span>);
+<pre class="src src-c">Hand hand_new(void);
+int hand_size(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-5" class="outline-5">
-<h5 id="sec-5-4-1-5"><span class="section-number-5">5.4.1.5</span> 手札の出し入れ</h5>
+<div id="outline-container-orgheadline100" class="outline-5">
+<h5 id="orgheadline100"><span class="section-number-5">5.4.1.5</span> 手札の出し入れ</h5>
 <div class="outline-text-5" id="text-5-4-1-5">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_add</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span>, Card); <span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12395;&#19968;&#26522;&#12459;&#12540;&#12489;&#12434;&#21152;&#12360;&#12427;</span>
-<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_draw</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span>, <span style="color: #92a65e; font-weight: bold;">int</span>); <span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12363;&#12425;&#19968;&#26522;&#12459;&#12540;&#12489;&#12434;&#25244;&#12367;</span>
-<span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">hand_card</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span>, <span style="color: #92a65e; font-weight: bold;">int</span>); <span style="color: #99968b;">// </span><span style="color: #99968b;">02.02 added &#25163;&#26413;&#20013;&#12398;&#12459;&#12540;&#12489;&#12434;&#35211;&#12427;</span>
-                           <span style="color: #99968b;">// </span><span style="color: #99968b;">&#30058;&#21495;&#12398;&#25351;&#23450;&#12399; 1..5</span>
+<pre class="src src-c">Hand hand_add(Hand, Card); // 手札に一枚カードを加える
+Hand hand_draw(Hand, int); // 手札から一枚カードを抜く
+Card hand_card(Hand, int); // 02.02 added 手札中のカードを見る
+			   // 番号の指定は 1..5
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-6" class="outline-5">
-<h5 id="sec-5-4-1-6"><span class="section-number-5">5.4.1.6</span> ソート</h5>
+<div id="outline-container-orgheadline101" class="outline-5">
+<h5 id="orgheadline101"><span class="section-number-5">5.4.1.6</span> ソート</h5>
 <div class="outline-text-5" id="text-5-4-1-6">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_sort</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span>); <span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12398;&#12477;&#12540;&#12488;</span>
+<pre class="src src-c">Hand hand_sort(Hand); // 手札のソート
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-7" class="outline-5">
-<h5 id="sec-5-4-1-7"><span class="section-number-5">5.4.1.7</span> 手札の表示（用文字列の生成）</h5>
+<div id="outline-container-orgheadline102" class="outline-5">
+<h5 id="orgheadline102"><span class="section-number-5">5.4.1.7</span> 手札の表示（用文字列の生成）</h5>
 <div class="outline-text-5" id="text-5-4-1-7">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12398;&#34920;&#31034;&#65288;&#29992;&#25991;&#23383;&#21015;&#12398;&#29983;&#25104;&#65289;</span>
-<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hand_to_string</span>(Hand);
+<pre class="src src-c">// 手札の表示（用文字列の生成）
+char *hand_to_string(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-1-8" class="outline-5">
-<h5 id="sec-5-4-1-8"><span class="section-number-5">5.4.1.8</span> 役に関する定義</h5>
+<div id="outline-container-orgheadline103" class="outline-5">
+<h5 id="orgheadline103"><span class="section-number-5">5.4.1.8</span> 役に関する定義</h5>
 <div class="outline-text-5" id="text-5-4-1-8">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#24441;&#12395;&#38306;&#12377;&#12427;&#23450;&#32681;</span>
-<span style="color: #8ac6f2; font-weight: bold;">typedef</span> 
- <span style="color: #8ac6f2; font-weight: bold;">enum</span> {
-  <span style="color: #cae682;">HighCard</span> = 1,
-  <span style="color: #cae682;">OnePair</span>,
-  <span style="color: #cae682;">TwoPairs</span>,
-  <span style="color: #cae682;">ThreeCards</span>,
-  <span style="color: #cae682;">Straight</span>,
-  <span style="color: #cae682;">Flush</span>,
-  <span style="color: #cae682;">FullHouse</span>,
-  <span style="color: #cae682;">FourCards</span>,
-  <span style="color: #cae682;">StraightFlush</span>
+<pre class="src src-c">// 役に関する定義
+typedef 
+ enum {
+  HighCard = 1,
+  OnePair,
+  TwoPairs,
+  ThreeCards,
+  Straight,
+  Flush,
+  FullHouse,
+  FourCards,
+  StraightFlush
 }
-  <span style="color: #92a65e; font-weight: bold;">PokerHand</span>;
+  PokerHand;
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#24441;&#12398;&#35336;&#31639;</span>
-<span style="color: #92a65e; font-weight: bold;">PokerHand</span> <span style="color: #cae682;">hand_judge</span>(Hand);
-<span style="color: #99968b;">// </span><span style="color: #99968b;">&#24441;&#12398;&#21517;&#21069;</span>
-<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hand_pokerhand_to_string</span>(<span style="color: #92a65e; font-weight: bold;">PokerHand</span>);
+<pre class="src src-c">// 役の計算
+PokerHand hand_judge(Hand);
+// 役の名前
+char *hand_pokerhand_to_string(PokerHand);
 </pre>
 </div>
 
@@ -2427,43 +2213,42 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-4-2" class="outline-4">
-<h4 id="sec-5-4-2"><span class="section-number-4">5.4.2</span> test_hand.c</h4>
+<div id="outline-container-orgheadline112" class="outline-4">
+<h4 id="orgheadline112"><span class="section-number-4">5.4.2</span> test_hand.c</h4>
 <div class="outline-text-4" id="text-5-4-2">
-</div><div id="outline-container-sec-5-4-2-1" class="outline-5">
-<h5 id="sec-5-4-2-1"><span class="section-number-5">5.4.2.1</span> test_hand header</h5>
+</div><div id="outline-container-orgheadline105" class="outline-5">
+<h5 id="orgheadline105"><span class="section-number-5">5.4.2.1</span> test_hand header</h5>
 <div class="outline-text-5" id="text-5-4-2-1">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">//</span><span style="color: #99968b;">~/progs/game/hand/test/test_hand.c</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;string.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
+<pre class="src src-c">//~/progs/game/hand/test/test_hand.c
+# include &lt;cutter.h&gt;
+# include &lt;hand.h&gt;
+# include &lt;string.h&gt;
+# include &lt;stdio.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-2-2" class="outline-5">
-<h5 id="sec-5-4-2-2"><span class="section-number-5">5.4.2.2</span> 手札の生成のテスト</h5>
+<div id="outline-container-orgheadline106" class="outline-5">
+<h5 id="orgheadline106"><span class="section-number-5">5.4.2.2</span> 手札の生成のテスト</h5>
 <div class="outline-text-5" id="text-5-4-2-2">
 <p>
 テスト項目
 </p>
 <ul class="org-ul">
-<li>手札ができ，枚数が0枚であること
-</li>
+<li>手札ができ，枚数が0枚であること</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_new</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+<pre class="src src-c">void
+test_hand_new(void)
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
+  Hand h = hand_new();
 
-  cut_set_message(<span style="color: #95e454;">"hand_new"</span>);
+  cut_set_message("hand_new");
   cut_assert(hand_size(h)==0);
 }
 </pre>
@@ -2471,27 +2256,26 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-2-3" class="outline-5">
-<h5 id="sec-5-4-2-3"><span class="section-number-5">5.4.2.3</span> 手札へのカードの追加</h5>
+<div id="outline-container-orgheadline107" class="outline-5">
+<h5 id="orgheadline107"><span class="section-number-5">5.4.2.3</span> 手札へのカードの追加</h5>
 <div class="outline-text-5" id="text-5-4-2-3">
 <p>
 テスト項目
 </p>
 <ul class="org-ul">
-<li>カードを2枚追加し，手札の枚数が1づつ増えること
-</li>
+<li>カードを2枚追加し，手札の枚数が1づつ増えること</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_add</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+<pre class="src src-c">void
+test_hand_add(void)
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c1</span> = card_new(SPADE,ACE);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c2</span> = card_new(HEART,KING);
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE,ACE);
+  Card c2 = card_new(HEART,KING);
 
-  cut_set_message(<span style="color: #95e454;">"hand_add"</span>);
+  cut_set_message("hand_add");
   h = hand_add(h, c1);
   cut_assert(hand_size(h)==1);
   h = hand_add(h, c2);
@@ -2502,30 +2286,29 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-2-4" class="outline-5">
-<h5 id="sec-5-4-2-4"><span class="section-number-5">5.4.2.4</span> 手札の no 番目のカードのテスト</h5>
+<div id="outline-container-orgheadline108" class="outline-5">
+<h5 id="orgheadline108"><span class="section-number-5">5.4.2.4</span> 手札の no 番目のカードのテスト</h5>
 <div class="outline-text-5" id="text-5-4-2-4">
 <p>
 テスト項目
 </p>
 <ul class="org-ul">
-<li>手札にカードを加え，手札がそのカードからなっていること
-</li>
+<li>手札にカードを加え，手札がそのカードからなっていること</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_card</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+<pre class="src src-c">void
+test_hand_card(void)
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c1</span> = card_new(SPADE,ACE);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c2</span> = card_new(HEART,KING);
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE,ACE);
+  Card c2 = card_new(HEART,KING);
 
-  cut_set_message(<span style="color: #95e454;">"hand_card"</span>);
+  cut_set_message("hand_card");
   h = hand_add(h, c1);
   h = hand_add(h, c2);
-  
+
   cut_assert(card_compare(c1, hand_card(h, 0))==0);
   cut_assert(card_compare(c2, hand_card(h, 1))==0);
 }
@@ -2534,32 +2317,30 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-2-5" class="outline-5">
-<h5 id="sec-5-4-2-5"><span class="section-number-5">5.4.2.5</span> 手札から1枚引く</h5>
+<div id="outline-container-orgheadline109" class="outline-5">
+<h5 id="orgheadline109"><span class="section-number-5">5.4.2.5</span> 手札から1枚引く</h5>
 <div class="outline-text-5" id="text-5-4-2-5">
 <p>
 テスト項目
 </p>
 <ul class="org-ul">
-<li>手札にカードを加え，
-</li>
-<li>加えた順でカードの情報が得られること
-</li>
+<li>手札にカードを加え，</li>
+<li>加えた順でカードの情報が得られること</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_draw</span>()
+<pre class="src src-c">void
+test_hand_draw()
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c1</span> = card_new(SPADE, QUEEN);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c2</span> = card_new(HEART, QUEEN);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c3</span> = card_new(CLUB, QUEEN);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c4</span> = card_new(DIAMOND, QUEEN);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c5</span> = card_new(SPADE, JACK);
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE, QUEEN);
+  Card c2 = card_new(HEART, QUEEN);
+  Card c3 = card_new(CLUB, QUEEN);
+  Card c4 = card_new(DIAMOND, QUEEN);
+  Card c5 = card_new(SPADE, JACK);
 
-  cut_set_message(<span style="color: #95e454;">"hand_draw"</span>);
+  cut_set_message("hand_draw");
   h = hand_add(h, c1);
   h = hand_add(h, c2);
   h = hand_add(h, c3);
@@ -2567,7 +2348,7 @@ hand モジュールの主体 Hand型を定義する.
   h = hand_add(h, c5);
 
   cut_assert(hand_size(h)==5);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">d</span> = hand_card(h, 1);
+  Card d = hand_card(h, 1);
   h = hand_draw(h, 1);
   cut_assert(hand_size(h)==4);
   cut_assert(card_compare(d, c2)==0);
@@ -2576,32 +2357,30 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5-4-2-6" class="outline-5">
-<h5 id="sec-5-4-2-6"><span class="section-number-5">5.4.2.6</span> 手札のソート</h5>
+<div id="outline-container-orgheadline110" class="outline-5">
+<h5 id="orgheadline110"><span class="section-number-5">5.4.2.6</span> 手札のソート</h5>
 <div class="outline-text-5" id="text-5-4-2-6">
 <p>
 テスト項目
 </p>
 <ul class="org-ul">
-<li>手札に5枚のカードを加え，
-</li>
-<li>ソート後，昇順に並んでいること
-</li>
+<li>手札に5枚のカードを加え，</li>
+<li>ソート後，昇順に並んでいること</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_sort</span>()
+<pre class="src src-c">void
+test_hand_sort()
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c1</span> = card_new(SPADE, 2);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c2</span> = card_new(HEART, 3);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c3</span> = card_new(CLUB, 4);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c4</span> = card_new(DIAMOND, 5);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c5</span> = card_new(SPADE, 6);
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE, 2);
+  Card c2 = card_new(HEART, 3);
+  Card c3 = card_new(CLUB, 4);
+  Card c4 = card_new(DIAMOND, 5);
+  Card c5 = card_new(SPADE, 6);
 
-  cut_set_message(<span style="color: #95e454;">"hand_sort"</span>);
+  cut_set_message("hand_sort");
 
   h = hand_add(h, c2);
   h = hand_add(h, c1);
@@ -2622,32 +2401,30 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-2-7" class="outline-5">
-<h5 id="sec-5-4-2-7"><span class="section-number-5">5.4.2.7</span> 手札の文字列化のテスト</h5>
+<div id="outline-container-orgheadline111" class="outline-5">
+<h5 id="orgheadline111"><span class="section-number-5">5.4.2.7</span> 手札の文字列化のテスト</h5>
 <div class="outline-text-5" id="text-5-4-2-7">
 <p>
 テスト項目
 </p>
 <ul class="org-ul">
-<li>手札に5枚のカードを加え，
-</li>
-<li>その通りに文字列化されること
-</li>
+<li>手札に5枚のカードを加え，</li>
+<li>その通りに文字列化されること</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_to_string</span>()
+<pre class="src src-c">void
+test_hand_to_string()
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c1</span> = card_new(SPADE, 2);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c2</span> = card_new(HEART, 3);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c3</span> = card_new(CLUB, 4);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c4</span> = card_new(DIAMOND, 5);
-  <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c5</span> = card_new(SPADE, 6);
+  Hand h = hand_new();
+  Card c1 = card_new(SPADE, 2);
+  Card c2 = card_new(HEART, 3);
+  Card c3 = card_new(CLUB, 4);
+  Card c4 = card_new(DIAMOND, 5);
+  Card c5 = card_new(SPADE, 6);
 
-  cut_set_message(<span style="color: #95e454;">"hand_to_string"</span>);
+  cut_set_message("hand_to_string");
 
   h = hand_add(h, c1);
   h = hand_add(h, c2);
@@ -2655,9 +2432,9 @@ hand モジュールの主体 Hand型を定義する.
   h = hand_add(h, c4);
   h = hand_add(h, c5);
 
-  <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">s</span> = hand_to_string(h);
+  char *s = hand_to_string(h);
   cut_assert(strlen(s)==15);
-  cut_assert(strcmp(<span style="color: #95e454;">"S2.H3.C4.D5.S6."</span>, s)==0);
+  cut_assert(strcmp("S2.H3.C4.D5.S6.", s)==0);
 }
 </pre>
 </div>
@@ -2665,54 +2442,52 @@ hand モジュールの主体 Hand型を定義する.
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3" class="outline-4">
-<h4 id="sec-5-4-3"><span class="section-number-4">5.4.3</span> hand/src/hand.c</h4>
+<div id="outline-container-orgheadline121" class="outline-4">
+<h4 id="orgheadline121"><span class="section-number-4">5.4.3</span> hand/src/hand.c</h4>
 <div class="outline-text-4" id="text-5-4-3">
-</div><div id="outline-container-sec-5-4-3-1" class="outline-5">
-<h5 id="sec-5-4-3-1"><span class="section-number-5">5.4.3.1</span> Cの標準ラブラリを使う</h5>
-<div class="outline-text-5" id="text-5-4-3-1">
-</div>
+</div><div id="outline-container-orgheadline113" class="outline-5">
+<h5 id="orgheadline113"><span class="section-number-5">5.4.3.1</span> Cの標準ラブラリを使う</h5>
 </div>
 
-<div id="outline-container-sec-5-4-3-2" class="outline-5">
-<h5 id="sec-5-4-3-2"><span class="section-number-5">5.4.3.2</span> hand のインタフェースを遵守</h5>
+<div id="outline-container-orgheadline114" class="outline-5">
+<h5 id="orgheadline114"><span class="section-number-5">5.4.3.2</span> hand のインタフェースを遵守</h5>
 <div class="outline-text-5" id="text-5-4-3-2">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand.h&gt;</span>
+<pre class="src src-c"># include &lt;hand.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3-3" class="outline-5">
-<h5 id="sec-5-4-3-3"><span class="section-number-5">5.4.3.3</span> hand_new, hand_size</h5>
+<div id="outline-container-orgheadline115" class="outline-5">
+<h5 id="orgheadline115"><span class="section-number-5">5.4.3.3</span> hand_new, hand_size</h5>
 <div class="outline-text-5" id="text-5-4-3-3">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">//</span><span style="color: #99968b;">&#26032;&#12425;&#12375;&#12356;&#25163;&#26413;&#12434;&#20316;&#12427;</span>
-<span style="color: #92a65e; font-weight: bold;">Hand</span>
-<span style="color: #cae682;">hand_new</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+<pre class="src src-c">//新らしい手札を作る
+Hand
+hand_new(void)
 {
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>;  <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#25163;&#26413;&#12434;&#20316;&#12427;&#12290;size, cards[5]&#12399;&#21021;&#26399;&#21270;&#12373;&#12428;&#12390;&#12356;&#12394;&#12356;&#12290;</span>
+  Hand h;  //** 手札を作る。size, cards[5]は初期化されていない。
 
-  h.size=0; <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#26522;&#25968;&#12434;0&#12395;&#21021;&#26399;&#21270;&#12377;&#12427;&#12290;</span>
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h; <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#21021;&#26399;&#21270;&#12373;&#12428;&#12383;&#25163;&#26413;&#12434;&#20516;&#12392;&#12375;&#12390;&#36820;&#12377;&#12290;</span>
+  h.size=0; //** 枚数を0に初期化する。
+  return h; //** 初期化された手札を値として返す。
 }
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12398;&#26522;&#25968;&#12434;&#27714;&#12417;&#12427;</span>
-<span style="color: #92a65e; font-weight: bold;">int</span>
-<span style="color: #cae682;">hand_size</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+// 手札の枚数を求める
+int
+hand_size(Hand h)
 {
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h.size; <span style="color: #99968b;">//</span><span style="color: #99968b;">&#33258;&#26126;</span>
+  return h.size; //自明
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3-4" class="outline-5">
-<h5 id="sec-5-4-3-4"><span class="section-number-5">5.4.3.4</span> hand_add</h5>
+<div id="outline-container-orgheadline116" class="outline-5">
+<h5 id="orgheadline116"><span class="section-number-5">5.4.3.4</span> hand_add</h5>
 <div class="outline-text-5" id="text-5-4-3-4">
 <p>
 手札にカードを一枚加える。
@@ -2720,19 +2495,19 @@ hand モジュールの主体 Hand型を定義する.
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12395;&#12459;&#12540;&#12489;&#12434;&#19968;&#26522;&#21152;&#12360;&#12427;</span>
-<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_add</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>, <span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">c</span>)
+<pre class="src src-c">// 手札にカードを一枚加える
+Hand hand_add(Hand h, Card c)
 {
-  h.cards[h.size++] = c; <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#33258;&#26126;</span>
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h;
+  h.cards[h.size++] = c; //** 自明
+  return h;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3-5" class="outline-5">
-<h5 id="sec-5-4-3-5"><span class="section-number-5">5.4.3.5</span> hand_card</h5>
+<div id="outline-container-orgheadline117" class="outline-5">
+<h5 id="orgheadline117"><span class="section-number-5">5.4.3.5</span> hand_card</h5>
 <div class="outline-text-5" id="text-5-4-3-5">
 <p>
 手札の no 番目のカード情報を得る。no は 0~4。
@@ -2742,25 +2517,23 @@ hand モジュールの主体 Hand型を定義する.
 手札から1枚カードを捨てる時，つぎのことが必要である:
 </p>
 <ul class="org-ul">
-<li>そのカードを捨て山に積むためのカードの情報 (hand_cardの戻り値)
-</li>
-<li>一枚少なくなった手札自身 (hand_drawの戻り値)
-</li>
+<li>そのカードを捨て山に積むためのカードの情報 (hand_cardの戻り値)</li>
+<li>一枚少なくなった手札自身 (hand_drawの戻り値)</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Card</span> <span style="color: #cae682;">hand_card</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no</span>)
+<pre class="src src-c">Card hand_card(Hand h, int no)
 {
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h.cards[no];
+  return h.cards[no];
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3-6" class="outline-5">
-<h5 id="sec-5-4-3-6"><span class="section-number-5">5.4.3.6</span> hand_draw</h5>
+<div id="outline-container-orgheadline118" class="outline-5">
+<h5 id="orgheadline118"><span class="section-number-5">5.4.3.6</span> hand_draw</h5>
 <div class="outline-text-5" id="text-5-4-3-6">
 <p>
 手札から， no 番目のカードを抜く。
@@ -2768,28 +2541,28 @@ hand モジュールの主体 Hand型を定義する.
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_draw</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>, <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">no</span>)
+<pre class="src src-c">Hand hand_draw(Hand h, int no)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+  int i;
 
-  <span style="color: #8ac6f2; font-weight: bold;">if</span> (no&gt;h.size)
-    <span style="color: #8ac6f2; font-weight: bold;">return</span> h;
+  if (no&gt;h.size)
+    return h;
 
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">no&#20197;&#38477;&#12434;&#12388;&#12417;&#12427;</span>
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=no; i&lt;h.size; i++) 
+  // no以降をつめる
+  for(i=no; i&lt;h.size; i++) 
     {
       h.cards[i]=h.cards[i+1];
     }
   h.size--;
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h;
+  return h;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3-7" class="outline-5">
-<h5 id="sec-5-4-3-7"><span class="section-number-5">5.4.3.7</span> 文字列化</h5>
+<div id="outline-container-orgheadline119" class="outline-5">
+<h5 id="orgheadline119"><span class="section-number-5">5.4.3.7</span> 文字列化</h5>
 <div class="outline-text-5" id="text-5-4-3-7">
 <p>
 カードの文字列化をもとに，手札を文字列化する。
@@ -2797,27 +2570,27 @@ hand モジュールの主体 Hand型を定義する.
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hand_to_string</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+<pre class="src src-c">char *hand_to_string(Hand h)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-  <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">s</span> = (<span style="color: #92a65e; font-weight: bold;">char</span> *) malloc(<span style="color: #92a65e; font-weight: bold;">CardsInHand</span>*3+1); <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#25991;&#23383;&#21015;&#38936;&#22495;&#30906;&#20445;</span>
+  int i;
+  char *s = (char *) malloc(CardsInHand*3+1); //** 文字列領域確保
 
-  bzero(s,<span style="color: #92a65e; font-weight: bold;">CardsInHand</span>*3+1);   <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#38936;&#22495;&#12398;0&#12463;&#12522;&#12450;</span>
+  bzero(s,CardsInHand*3+1);   //** 領域の0クリア
 
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;hand_size(h); i++)
+  for(i=0; i&lt;hand_size(h); i++)
     {
-      strcat(s, card_to_string(hand_card(h,i))); <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#12459;&#12540;&#12489;&#25991;&#23383;&#21015;&#12434;&#35440;&#12417;&#12427;</span>
-      strcat(s, <span style="color: #95e454;">"."</span>); <span style="color: #99968b;">//</span><span style="color: #99968b;">** &#21306;&#20999;&#12426;&#12398; . &#12434;&#35440;&#12417;&#12427;</span>
+      strcat(s, card_to_string(hand_card(h,i))); //** カード文字列を詰める
+      strcat(s, "."); //** 区切りの . を詰める
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> s;
+  return s;
 }
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-3-8" class="outline-5">
-<h5 id="sec-5-4-3-8"><span class="section-number-5">5.4.3.8</span> hand_sort</h5>
+<div id="outline-container-orgheadline120" class="outline-5">
+<h5 id="orgheadline120"><span class="section-number-5">5.4.3.8</span> hand_sort</h5>
 <div class="outline-text-5" id="text-5-4-3-8">
 <p>
 cardモジュールで作った cards_sort の機能がほぼそのまま使える:
@@ -2825,12 +2598,12 @@ cardモジュールで作った cards_sort の機能がほぼそのまま使え�
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_sort</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+<pre class="src src-c">Hand hand_sort(Hand h)
 {
-  <span style="color: #92a65e; font-weight: bold;">Card</span> *<span style="color: #cae682;">cards</span> = h.cards;
+  Card *cards = h.cards;
 
   cards = cards_sort(cards, hand_size(h));
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h;
+  return h;
 }
 </pre>
 </div>
@@ -2838,48 +2611,48 @@ cardモジュールで作った cards_sort の機能がほぼそのまま使え�
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-4" class="outline-4">
-<h4 id="sec-5-4-4"><span class="section-number-4">5.4.4</span> test/test_judge.c</h4>
+<div id="outline-container-orgheadline123" class="outline-4">
+<h4 id="orgheadline123"><span class="section-number-4">5.4.4</span> test/test_judge.c</h4>
 <div class="outline-text-4" id="text-5-4-4">
-</div><div id="outline-container-sec-5-4-4-1" class="outline-5">
-<h5 id="sec-5-4-4-1"><span class="section-number-5">5.4.4.1</span> 必要なライブラリのヘッ</h5>
+</div><div id="outline-container-orgheadline122" class="outline-5">
+<h5 id="orgheadline122"><span class="section-number-5">5.4.4.1</span> 必要なライブラリのヘッ</h5>
 <div class="outline-text-5" id="text-5-4-4-1">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;string.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;cutter.h&gt;</span>
+<pre class="src src-c"># include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+# include &lt;cutter.h&gt;
 </pre>
 </div>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand_test.h&gt;</span>
+<pre class="src src-c"># include &lt;hand.h&gt;
+# include &lt;hand_test.h&gt;
 
-<span style="color: #92a65e; font-weight: bold;">void</span>
-<span style="color: #cae682;">test_hand_judge</span>(<span style="color: #92a65e; font-weight: bold;">void</span>)
+void
+test_hand_judge(void)
 {
-  <span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">Hand_test</span> *<span style="color: #cae682;">tests</span> = hand_test_data;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">while</span> ( tests-&gt;y != 0 )
+  struct Hand_test *tests = hand_test_data;
+
+  while ( tests-&gt;y != 0 )
     {
-      <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_test_hand_new(tests-&gt;h);
-      <span style="color: #92a65e; font-weight: bold;">PokerHand</span> <span style="color: #cae682;">y</span> = tests-&gt;y;;
-      <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">s</span> = tests-&gt;s;
+      Hand h = hand_test_hand_new(tests-&gt;h);
+      PokerHand y = tests-&gt;y;;
+      char *s = tests-&gt;s;
 
       h = hand_sort(h);
 
       {
-        <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hj</span> = hand_judge(h);
-        <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hs</span> = hand_to_string(h);
-      
-        cut_set_message
-          (<span style="color: #95e454;">"test_judge: hand = %s, PokerHand = %s, y = %d, judge = %d"</span>,
-           hs, s, y, hj);
-        cut_assert(hj==y);
-        cut_assert(strcmp(hand_pokerhand_to_string(y), s)==0);
-        tests++;
+	int hj = hand_judge(h);
+	char *hs = hand_to_string(h);
+
+	cut_set_message
+	  ("test_judge: hand = %s, PokerHand = %s, y = %d, judge = %d",
+	   hs, s, y, hj);
+	cut_assert(hj==y);
+	cut_assert(strcmp(hand_pokerhand_to_string(y), s)==0);
+	tests++;
       }
     }
 }
@@ -2889,46 +2662,46 @@ cardモジュールで作った cards_sort の機能がほぼそのまま使え�
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-5" class="outline-4">
-<h4 id="sec-5-4-5"><span class="section-number-4">5.4.5</span> hand/src/judge.c</h4>
+<div id="outline-container-orgheadline129" class="outline-4">
+<h4 id="orgheadline129"><span class="section-number-4">5.4.5</span> hand/src/judge.c</h4>
 <div class="outline-text-4" id="text-5-4-5">
-</div><div id="outline-container-sec-5-4-5-1" class="outline-5">
-<h5 id="sec-5-4-5-1"><span class="section-number-5">5.4.5.1</span> 必要なシステムライブラリのインタフェースを読む (定跡)</h5>
+</div><div id="outline-container-orgheadline124" class="outline-5">
+<h5 id="orgheadline124"><span class="section-number-5">5.4.5.1</span> 必要なシステムライブラリのインタフェースを読む (定跡)</h5>
 <div class="outline-text-5" id="text-5-4-5-1">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;stdio.h&gt;</span>
+<pre class="src src-c"># include &lt;stdio.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-5-2" class="outline-5">
-<h5 id="sec-5-4-5-2"><span class="section-number-5">5.4.5.2</span> 依存するモジュールのインタフェースを読む(定跡)</h5>
+<div id="outline-container-orgheadline125" class="outline-5">
+<h5 id="orgheadline125"><span class="section-number-5">5.4.5.2</span> 依存するモジュールのインタフェースを読む(定跡)</h5>
 <div class="outline-text-5" id="text-5-4-5-2">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand.h&gt;</span>
+<pre class="src src-c"># include &lt;card.h&gt;
+# include &lt;hand.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-5-3" class="outline-5">
-<h5 id="sec-5-4-5-3"><span class="section-number-5">5.4.5.3</span> 定数の宣言 (定跡)</h5>
+<div id="outline-container-orgheadline126" class="outline-5">
+<h5 id="orgheadline126"><span class="section-number-5">5.4.5.3</span> 定数の宣言 (定跡)</h5>
 <div class="outline-text-5" id="text-5-4-5-3">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># define</span> <span style="color: #cae682;">TRUE</span> 1
-<span style="color: #e5786d;"># define</span> <span style="color: #cae682;">FALSE</span> 0
+<pre class="src src-c"># define TRUE 1
+# define FALSE 0
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-5-4" class="outline-5">
-<h5 id="sec-5-4-5-4"><span class="section-number-5">5.4.5.4</span> このファイル内でのみ有効な関数の宣言 (定跡)</h5>
+<div id="outline-container-orgheadline127" class="outline-5">
+<h5 id="orgheadline127"><span class="section-number-5">5.4.5.4</span> このファイル内でのみ有効な関数の宣言 (定跡)</h5>
 <div class="outline-text-5" id="text-5-4-5-4">
 <p>
 hand_calc_pairs, hand_is_stright, hand_is_flush は hand_judge だけ
@@ -2937,143 +2710,143 @@ hand_calc_pairs, hand_is_stright, hand_is_flush は hand_judge だけ
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#12506;&#12450;&#12363;&#12473;&#12488;&#12524;&#12540;&#12488;&#12289;&#12501;&#12521;&#12483;&#12471;&#12517;&#12434;&#21028;&#23450;&#12377;&#12427;</span>
+<pre class="src src-c">// ペアかストレート、フラッシュを判定する
 
-<span style="color: #8ac6f2; font-weight: bold;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_calc_pairs</span>(Hand); 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">5: high card</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">7: one pair</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">9: two pair</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">11: three cards</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">13: full house</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">17: four cards</span>
-<span style="color: #8ac6f2; font-weight: bold;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_is_straight</span>(Hand);
-<span style="color: #8ac6f2; font-weight: bold;">static</span> <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_is_flush</span>(Hand);
+static int hand_calc_pairs(Hand); 
+// 5: high card
+// 7: one pair
+// 9: two pair
+// 11: three cards
+// 13: full house
+// 17: four cards
+static int hand_is_straight(Hand);
+static int hand_is_flush(Hand);
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-5-5" class="outline-5">
-<h5 id="sec-5-4-5-5"><span class="section-number-5">5.4.5.5</span> 役の計算</h5>
+<div id="outline-container-orgheadline128" class="outline-5">
+<h5 id="orgheadline128"><span class="section-number-5">5.4.5.5</span> 役の計算</h5>
 <div class="outline-text-5" id="text-5-4-5-5">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">//</span><span style="color: #99968b;">&#25163;&#26413;&#12398;&#24441;&#12398;&#35336;&#31639;</span>
-<span style="color: #92a65e; font-weight: bold;">PokerHand</span> <span style="color: #cae682;">hand_judge</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+<pre class="src src-c">//手札の役の計算
+PokerHand hand_judge(Hand h)
 {
   {
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">s</span>, <span style="color: #cae682;">f</span>;
+    int s, f;
 
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">&#12473;&#12488;&#12524;&#12540;&#12488;&#12392;&#12501;&#12521;&#12483;&#12471;&#12517;&#12398;&#21028;&#23450;</span>
+    // ストレートとフラッシュの判定
 
     s = hand_is_straight(h);
     f = hand_is_flush(h);
 
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (s)
+    if (s)
       {
-        <span style="color: #8ac6f2; font-weight: bold;">if</span> (f) 
-          {
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> StraightFlush;
-          }
-        <span style="color: #8ac6f2; font-weight: bold;">else</span>
-          {
-            <span style="color: #8ac6f2; font-weight: bold;">return</span> Straight;
-          }
+	if (f) 
+	  {
+	    return StraightFlush;
+	  }
+	else
+	  {
+	    return Straight;
+	  }
       }
-    <span style="color: #8ac6f2; font-weight: bold;">if</span> (f)
+    if (f)
       {
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> Flush;
+	return Flush;
       }
   }
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">&#12506;&#12450;&#31995;&#12398;&#21028;&#23450;</span>
+  // ペア系の判定
   {
-    <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">p</span> = hand_calc_pairs(h);
-    <span style="color: #8ac6f2; font-weight: bold;">switch</span>(p)
+    int p = hand_calc_pairs(h);
+    switch(p)
       {
-      <span style="color: #8ac6f2; font-weight: bold;">case</span> 5:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> HighCard;
-      <span style="color: #8ac6f2; font-weight: bold;">case</span> 7:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> OnePair;
-      <span style="color: #8ac6f2; font-weight: bold;">case</span> 9:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> TwoPairs;
-      <span style="color: #8ac6f2; font-weight: bold;">case</span> 11:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> ThreeCards;
-      <span style="color: #8ac6f2; font-weight: bold;">case</span> 13:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> FullHouse;
-      <span style="color: #8ac6f2; font-weight: bold;">case</span> 17:
-        <span style="color: #8ac6f2; font-weight: bold;">return</span> FourCards;
-      <span style="color: #8ac6f2; font-weight: bold;">default</span>:
-        printf(<span style="color: #95e454;">"No such pairs (%d)!\n"</span>, p);
+      case 5:
+	return HighCard;
+      case 7:
+	return OnePair;
+      case 9:
+	return TwoPairs;
+      case 11:
+	return ThreeCards;
+      case 13:
+	return FullHouse;
+      case 17:
+	return FourCards;
+      default:
+	printf("No such pairs (%d)!\n", p);
       }
   }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> 0;
+  return 0;
 }
 
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_calc_pairs</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+int hand_calc_pairs(Hand h)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">p</span>=0;
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>, <span style="color: #cae682;">j</span>;
+  int p=0;
+  int i, j;
 
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0; i&lt;CardsInHand; i++) 
+  for(i=0; i&lt;CardsInHand; i++) 
     {
-      <span style="color: #8ac6f2; font-weight: bold;">for</span>(j=0; j&lt;CardsInHand; j++)
-        {
-          <span style="color: #8ac6f2; font-weight: bold;">if</span> (card_no(hand_card(h, i))==card_no(hand_card(h, j)))
-            {
-              p++;
-            }
-        }
+      for(j=0; j&lt;CardsInHand; j++)
+	{
+	  if (card_no(hand_card(h, i))==card_no(hand_card(h, j)))
+	    {
+	      p++;
+	    }
+	}
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> p;
+  return p;
 }
-  
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_is_straight</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+
+int hand_is_straight(Hand h)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-  
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (i=0; i&lt;4; i++)
+  int i;
+
+  for (i=0; i&lt;4; i++)
     {
-      <span style="color: #8ac6f2; font-weight: bold;">if</span> (card_no(hand_card(h, i))!=(card_no(hand_card(h, i+1))-1))
-        {
-          <span style="color: #8ac6f2; font-weight: bold;">return</span> FALSE;
-        }
+      if (card_no(hand_card(h, i))!=(card_no(hand_card(h, i+1))-1))
+	{
+	  return FALSE;
+	}
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> TRUE;
+  return TRUE;
 }
 
-<span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">hand_is_flush</span>(<span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span>)
+int hand_is_flush(Hand h)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
+  int i;
 
-  <span style="color: #8ac6f2; font-weight: bold;">for</span> (i=0; i&lt;(CardsInHand-1); i++)
+  for (i=0; i&lt;(CardsInHand-1); i++)
     {
-      <span style="color: #8ac6f2; font-weight: bold;">if</span> (card_suit(hand_card(h, i))!=card_suit(hand_card(h, i+1)))
-        {
-          <span style="color: #8ac6f2; font-weight: bold;">return</span> FALSE;
-        }
+      if (card_suit(hand_card(h, i))!=card_suit(hand_card(h, i+1)))
+	{
+	  return FALSE;
+	}
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> TRUE;
+  return TRUE;
 }
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">&#24441;&#12434;&#25991;&#23383;&#21015;&#12391;&#34920;&#12377;</span>
+// 役を文字列で表す
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">&#24441;&#21517;&#25991;&#23383;&#21015;&#12398;&#37197;&#21015;</span>
-<span style="color: #8ac6f2; font-weight: bold;">static</span> <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">PokerHandNames</span>[] = 
-  { <span style="color: #95e454;">""</span>,
-  <span style="color: #95e454;">"HighCard"</span>,
-  <span style="color: #95e454;">"OnePair"</span>,
-  <span style="color: #95e454;">"TwoPairs"</span>,
-  <span style="color: #95e454;">"ThreeCards"</span>,
-  <span style="color: #95e454;">"Straight"</span>,
-  <span style="color: #95e454;">"Flush"</span>,
-  <span style="color: #95e454;">"FullHouse"</span>,
-  <span style="color: #95e454;">"FourCards"</span>,
-  <span style="color: #95e454;">"StraightFlush"</span>
+// 役名文字列の配列
+static char *PokerHandNames[] = 
+  { "",
+  "HighCard",
+  "OnePair",
+  "TwoPairs",
+  "ThreeCards",
+  "Straight",
+  "Flush",
+  "FullHouse",
+  "FourCards",
+  "StraightFlush"
   };
 
-<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">hand_pokerhand_to_string</span>(<span style="color: #92a65e; font-weight: bold;">PokerHand</span> <span style="color: #cae682;">yaku</span>)
+char *hand_pokerhand_to_string(PokerHand yaku)
 {
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> PokerHandNames[yaku];
+  return PokerHandNames[yaku];
 }
 </pre>
 </div>
@@ -3081,8 +2854,8 @@ hand_calc_pairs, hand_is_stright, hand_is_flush は hand_judge だけ
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-6" class="outline-4">
-<h4 id="sec-5-4-6"><span class="section-number-4">5.4.6</span> hand/test/hand_test.h</h4>
+<div id="outline-container-orgheadline130" class="outline-4">
+<h4 id="orgheadline130"><span class="section-number-4">5.4.6</span> hand/test/hand_test.h</h4>
 <div class="outline-text-4" id="text-5-4-6">
 <p>
 hand_test_data.c はテスト用の手札データを生成するための機能で，
@@ -3092,68 +2865,61 @@ hand_test.h はそのための宣言をおこなっています。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand.h&gt;</span>
+<pre class="src src-c"># include &lt;hand.h&gt;
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>hand のインタフェースを読みます。
-</li>
+<li>hand のインタフェースを読みます。</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#24441;&#12398;&#12486;&#12473;&#12488;&#12398;&#32068;&#12434;&#20316;&#12427;&#12383;&#12417;&#12398;&#12487;&#12540;&#12479;&#27083;&#36896;&#12392;&#38306;&#25968;</span>
+<pre class="src src-c">// 役のテストの組を作るためのデータ構造と関数
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">card</span>
-<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">t_card</span> {<span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">suit</span>; <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">no</span>;} ;
+// card
+struct t_card {char *suit; char *no;} ;
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">hand </span>
-<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">t_hand</span> {<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">t_card</span> <span style="color: #cae682;">c</span>[5];};
+// hand 
+struct t_hand {struct t_card c[5];};
 </pre>
 </div>
 
 <ul class="org-ul">
 <li>card, hand の機能を使わず，テスト側で独自にカードや5枚のカードを
-表現するための構造たいです。
-</li>
+表現するための構造たいです。</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #99968b;">// </span><span style="color: #99968b;">&#25163;&#26413;&#12392;&#24441;&#12392;&#24441;&#12398;&#21517;&#21069;</span>
-<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">Hand_test</span> { <span style="color: #92a65e; font-weight: bold;">PokerHand</span> <span style="color: #cae682;">y</span>; <span style="color: #92a65e; font-weight: bold;">char</span> *<span style="color: #cae682;">s</span>; <span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">t_hand</span> <span style="color: #cae682;">h</span>; };
+<pre class="src src-c">// 手札と役と役の名前
+struct Hand_test { PokerHand y; char *s; struct t_hand h; };
 </pre>
 </div>
 
 <ul class="org-ul">
 <li>手札 (h) に対し，期待される役 (y), と 手札文字列 (s) を構造体でまと
-めたものです。
-</li>
-<li>テストデータをみやすく管理しやすくします。
-</li>
+めたものです。</li>
+<li>テストデータをみやすく管理しやすくします。</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">extern</span> <span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">Hand_test</span> <span style="color: #cae682;">hand_test_data</span>[];;
+<pre class="src src-c">extern struct Hand_test hand_test_data[];;
 </pre>
 </div>
 <ul class="org-ul">
-<li>テスト用の Hand_test の配列です。
-</li>
-<li>実際の値は，hand_test_data.c で与えられます。
-</li>
+<li>テスト用の Hand_test の配列です。</li>
+<li>実際の値は，hand_test_data.c で与えられます。</li>
 </ul>
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_test_hand_new</span>(<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">t_hand</span> <span style="color: #cae682;">hs</span>);
+<pre class="src src-c">Hand hand_test_hand_new(struct t_hand hs);
 </pre>
 </div>
 <ul class="org-ul">
-<li>5枚のカードから手札を作る関数です。
-</li>
+<li>5枚のカードから手札を作る関数です。</li>
 </ul>
 </div>
 </div>
@@ -3162,45 +2928,45 @@ hand_test.h はそのための宣言をおこなっています。
 
 
 
-<div id="outline-container-sec-5-4-7" class="outline-4">
-<h4 id="sec-5-4-7"><span class="section-number-4">5.4.7</span> hand/test/hand_test_data.c</h4>
+<div id="outline-container-orgheadline137" class="outline-4">
+<h4 id="orgheadline137"><span class="section-number-4">5.4.7</span> hand/test/hand_test_data.c</h4>
 <div class="outline-text-4" id="text-5-4-7">
-</div><div id="outline-container-sec-5-4-7-1" class="outline-5">
-<h5 id="sec-5-4-7-1"><span class="section-number-5">5.4.7.1</span> 利用ライブライのヘッダを読む</h5>
+</div><div id="outline-container-orgheadline131" class="outline-5">
+<h5 id="orgheadline131"><span class="section-number-5">5.4.7.1</span> 利用ライブライのヘッダを読む</h5>
 <div class="outline-text-5" id="text-5-4-7-1">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;string.h&gt;</span>
+<pre class="src src-c"># include &lt;string.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-7-2" class="outline-5">
-<h5 id="sec-5-4-7-2"><span class="section-number-5">5.4.7.2</span> 利用モジュールのヘッダを読む</h5>
+<div id="outline-container-orgheadline132" class="outline-5">
+<h5 id="orgheadline132"><span class="section-number-5">5.4.7.2</span> 利用モジュールのヘッダを読む</h5>
 <div class="outline-text-5" id="text-5-4-7-2">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;card.h&gt;</span>
-<span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand.h&gt;</span>
+<pre class="src src-c"># include &lt;card.h&gt;
+# include &lt;hand.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-7-3" class="outline-5">
-<h5 id="sec-5-4-7-3"><span class="section-number-5">5.4.7.3</span> 手札テストデータ操作用ヘッダを読む</h5>
+<div id="outline-container-orgheadline133" class="outline-5">
+<h5 id="orgheadline133"><span class="section-number-5">5.4.7.3</span> 手札テストデータ操作用ヘッダを読む</h5>
 <div class="outline-text-5" id="text-5-4-7-3">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># include</span> <span style="color: #95e454;">&lt;hand_test.h&gt;</span>
+<pre class="src src-c"># include &lt;hand_test.h&gt;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-7-4" class="outline-5">
-<h5 id="sec-5-4-7-4"><span class="section-number-5">5.4.7.4</span> 5枚のカードの組のデータ定義</h5>
+<div id="outline-container-orgheadline134" class="outline-5">
+<h5 id="orgheadline134"><span class="section-number-5">5.4.7.4</span> 5枚のカードの組のデータ定義</h5>
 <div class="outline-text-5" id="text-5-4-7-4">
 <p>
 5枚のカードの組の初期化データに名前をつける
@@ -3208,34 +2974,34 @@ hand_test.h はそのための宣言をおこなっています。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #e5786d;"># define</span> <span style="color: #cae682;">TEST_HIGHCARD</span> \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"4"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"5"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"7"</span>}}}
+<pre class="src src-c"># define TEST_HIGHCARD \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"CLUB", "5"}, {"DIAMOND", "7"}}}
 
-<span style="color: #e5786d;"># define</span> <span style="color: #cae682;">TEST_ONEPAIR</span>                                                   \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"4"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"1"</span>}, {<span style="color: #95e454;">"SPADE"</span>, <span style="color: #95e454;">"1"</span>}}}
+# define TEST_ONEPAIR                                                   \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"CLUB", "1"}, {"SPADE", "1"}}}
 
-<span style="color: #e5786d;"># define</span>  <span style="color: #cae682;">TEST_TWOPAIRS</span> \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"4"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"3"</span>}}}
-   
-<span style="color: #e5786d;"># define</span>  <span style="color: #cae682;">TEST_THREECARDS</span> \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"4"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"HEART"</span>, <span style="color: #95e454;">"2"</span>}}}
+# define  TEST_TWOPAIRS \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"DIAMOND", "2"}, {"DIAMOND", "3"}}}
 
-<span style="color: #e5786d;"># define</span>  <span style="color: #cae682;">TEST_FULLHOUSE</span> \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"HEART"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"3"</span>}}}
+# define  TEST_THREECARDS \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"DIAMOND", "2"}, {"HEART", "2"}}}
 
-<span style="color: #e5786d;"># define</span>  <span style="color: #cae682;">TEST_FOURCARDS</span> \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"DIAMOND"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"HEART"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"SPADE"</span>, <span style="color: #95e454;">"2"</span>}}}
+# define  TEST_FULLHOUSE \
+  {{{"CLUB", "2"}, {"DIAMOND", "2"}, {"HEART", "2"}, {"CLUB", "3"}, {"DIAMOND", "3"}}}
 
-<span style="color: #e5786d;"># define</span> <span style="color: #cae682;">TEST_STRAIGHTFLUSH</span> \
-  {{{<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"2"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"3"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"4"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"5"</span>}, {<span style="color: #95e454;">"CLUB"</span>, <span style="color: #95e454;">"6"</span>}}}
+# define  TEST_FOURCARDS \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"DIAMOND", "2"}, {"HEART", "2"}, {"SPADE", "2"}}}
+
+# define TEST_STRAIGHTFLUSH \
+  {{{"CLUB", "2"}, {"CLUB", "3"}, {"CLUB", "4"}, {"CLUB", "5"}, {"CLUB", "6"}}}
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-5-4-7-5" class="outline-5">
-<h5 id="sec-5-4-7-5"><span class="section-number-5">5.4.7.5</span> テストデータの初期化</h5>
+<div id="outline-container-orgheadline135" class="outline-5">
+<h5 id="orgheadline135"><span class="section-number-5">5.4.7.5</span> テストデータの初期化</h5>
 <div class="outline-text-5" id="text-5-4-7-5">
 <p>
 構造体の配列の初期化データを書く:
@@ -3243,38 +3009,38 @@ hand_test.h はそのための宣言をおこなっています。
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">Hand_test</span> <span style="color: #cae682;">hand_test_data</span>[10] = {
-  { .y = HighCard, .s = <span style="color: #95e454;">"HighCard"</span>,   .h = TEST_HIGHCARD},
-  { .y = OnePair, .s = <span style="color: #95e454;">"OnePair"</span>, .h = TEST_ONEPAIR},
-  { .y = TwoPairs, .s = <span style="color: #95e454;">"TwoPairs"</span>,  .h = TEST_TWOPAIRS},
-  { .y = ThreeCards, .s = <span style="color: #95e454;">"ThreeCards"</span>, .h = TEST_THREECARDS}, 
-  { .y = FullHouse, .s =  <span style="color: #95e454;">"FullHouse"</span>, .h = TEST_FULLHOUSE}, 
-  { .y = FourCards, .s = <span style="color: #95e454;">"FourCards"</span>, .h = TEST_FOURCARDS },
-  { .y = StraightFlush, .s = <span style="color: #95e454;">"StraightFlush"</span>, .h = TEST_STRAIGHTFLUSH}
+<pre class="src src-c">struct Hand_test hand_test_data[10] = {
+  { .y = HighCard, .s = "HighCard",   .h = TEST_HIGHCARD},
+  { .y = OnePair, .s = "OnePair", .h = TEST_ONEPAIR},
+  { .y = TwoPairs, .s = "TwoPairs",  .h = TEST_TWOPAIRS},
+  { .y = ThreeCards, .s = "ThreeCards", .h = TEST_THREECARDS}, 
+  { .y = FullHouse, .s =  "FullHouse", .h = TEST_FULLHOUSE}, 
+  { .y = FourCards, .s = "FourCards", .h = TEST_FOURCARDS },
+  { .y = StraightFlush, .s = "StraightFlush", .h = TEST_STRAIGHTFLUSH}
 };
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4-7-6" class="outline-5">
-<h5 id="sec-5-4-7-6"><span class="section-number-5">5.4.7.6</span> テストデータから Hand型データを生成する機能</h5>
+<div id="outline-container-orgheadline136" class="outline-5">
+<h5 id="orgheadline136"><span class="section-number-5">5.4.7.6</span> テストデータから Hand型データを生成する機能</h5>
 <div class="outline-text-5" id="text-5-4-7-6">
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">hand_test_hand_new</span>(<span style="color: #8ac6f2; font-weight: bold;">struct</span> <span style="color: #92a65e; font-weight: bold;">t_hand</span> <span style="color: #cae682;">hs</span>)
+<pre class="src src-c">Hand hand_test_hand_new(struct t_hand hs)
 {
-  <span style="color: #92a65e; font-weight: bold;">int</span> <span style="color: #cae682;">i</span>;
-  <span style="color: #92a65e; font-weight: bold;">Hand</span> <span style="color: #cae682;">h</span> = hand_new();
+  int i;
+  Hand h = hand_new();
 
-  <span style="color: #8ac6f2; font-weight: bold;">for</span>(i=0;i&lt;CardsInHand;i++)
+  for(i=0;i&lt;CardsInHand;i++)
     {
-      <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_Suit</span> <span style="color: #cae682;">s</span> = card_suit_new_from_string(hs.c[i].suit);
-      <span style="color: #8ac6f2; font-weight: bold;">enum</span> <span style="color: #92a65e; font-weight: bold;">e_No</span> <span style="color: #cae682;">n</span> = card_no_new_from_string(hs.c[i].no);
+      enum e_Suit s = card_suit_new_from_string(hs.c[i].suit);
+      enum e_No n = card_no_new_from_string(hs.c[i].no);
 
       h = hand_add(h, card_new(s, n));
     }
-  <span style="color: #8ac6f2; font-weight: bold;">return</span> h;
+  return h;
 }
 </pre>
 </div>
@@ -3284,129 +3050,101 @@ hand_test.h はそのための宣言をおこなっています。
 </div>
 </div>
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Pokerモジュールの開発</h2>
+<div id="outline-container-orgheadline148" class="outline-2">
+<h2 id="orgheadline148"><span class="section-number-2">6</span> Pokerモジュールの開発</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> ゲームモジュール</h3>
+</div><div id="outline-container-orgheadline147" class="outline-3">
+<h3 id="orgheadline147"><span class="section-number-3">6.1</span> ゲームモジュール</h3>
 <div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-sec-6-1-1" class="outline-4">
-<h4 id="sec-6-1-1"><span class="section-number-4">6.1.1</span> 機能、設計，実装</h4>
+</div><div id="outline-container-orgheadline144" class="outline-4">
+<h4 id="orgheadline144"><span class="section-number-4">6.1.1</span> 機能、設計，実装</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
 <a href="http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB">http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB</a>
 </p>
 </div>
 
-<div id="outline-container-sec-6-1-1-1" class="outline-5">
-<h5 id="sec-6-1-1-1"><span class="section-number-5">6.1.1.1</span> ゲームの説明からゲームに関する部分を取り出す</h5>
+<div id="outline-container-orgheadline140" class="outline-5">
+<h5 id="orgheadline140"><span class="section-number-5">6.1.1.1</span> ゲームの説明からゲームに関する部分を取り出す</h5>
 <div class="outline-text-5" id="text-6-1-1-1">
 <ul class="org-ul">
-<li>(5人のプレーヤーに) 手札を配り，
-</li>
+<li>(5人のプレーヤーに) 手札を配り，</li>
 
-<li>2回までの，(5人のプレーヤーの)手札の交換後，
-</li>
+<li>2回までの，(5人のプレーヤーの)手札の交換後，</li>
 
-<li>(5人のプレーヤーの手札役を判定し)
-</li>
+<li>(5人のプレーヤーの手札役を判定し)</li>
 
-<li>(5人のプレーヤーの)手札役の強い順に，プレーヤ名を表示する
-</li>
+<li>(5人のプレーヤーの)手札役の強い順に，プレーヤ名を表示する</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-6-1-1-2" class="outline-5">
-<h5 id="sec-6-1-1-2"><span class="section-number-5">6.1.1.2</span> poker モジュールの機能</h5>
+<div id="outline-container-orgheadline141" class="outline-5">
+<h5 id="orgheadline141"><span class="section-number-5">6.1.1.2</span> poker モジュールの機能</h5>
 <div class="outline-text-5" id="text-6-1-1-2">
 <ul class="org-ul">
 <li>ゲームの流れを作る
 <ul class="org-ul">
-<li>手札を配る 
-</li>
-<li>手札の何枚かを交換する 
-</li>
-<li>役の判定 
-</li>
-<li>表示 
-</li>
-</ul>
-</li>
+<li>手札を配る</li>
+<li>手札の何枚かを交換する</li>
+<li>役の判定</li>
+<li>表示</li>
+</ul></li>
 <li>プレーヤーを管理する 
 <ul class="org-ul">
-<li>手札 
-</li>
-<li>名前 
-</li>
-</ul>
-</li>
+<li>手札</li>
+<li>名前</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-sec-6-1-1-3" class="outline-5">
-<h5 id="sec-6-1-1-3"><span class="section-number-5">6.1.1.3</span> poker モジュールの機能の名前</h5>
+<div id="outline-container-orgheadline142" class="outline-5">
+<h5 id="orgheadline142"><span class="section-number-5">6.1.1.3</span> poker モジュールの機能の名前</h5>
 <div class="outline-text-5" id="text-6-1-1-3">
 <ul class="org-ul">
 <li>ゲームの流れを作る poker()
 <ul class="org-ul">
-<li>手札を配る  poker_deal()
-</li>
-<li>手札の何枚かを交換する  poker_exchange()
-</li>
-<li>役の判定  poker_judge()
-</li>
-<li>表示  poker_display()
-</li>
-</ul>
-</li>
+<li>手札を配る  poker_deal()</li>
+<li>手札の何枚かを交換する  poker_exchange()</li>
+<li>役の判定  poker_judge()</li>
+<li>表示  poker_display()</li>
+</ul></li>
 <li>プレーヤーを管理する Player
 <ul class="org-ul">
-<li>手札 .hand
-</li>
-<li>名前 .name
-</li>
-</ul>
-</li>
+<li>手札 .hand</li>
+<li>名前 .name</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-sec-6-1-1-4" class="outline-5">
-<h5 id="sec-6-1-1-4"><span class="section-number-5">6.1.1.4</span> poker モジュールの機能のインタフェース</h5>
+<div id="outline-container-orgheadline143" class="outline-5">
+<h5 id="orgheadline143"><span class="section-number-5">6.1.1.4</span> poker モジュールの機能のインタフェース</h5>
 <div class="outline-text-5" id="text-6-1-1-4">
 <ul class="org-ul">
 <li>ゲームの流れを作る void poker(void)
 <ul class="org-ul">
-<li>手札を配る  void poker_deal(void)
-</li>
-<li>手札の何枚かを交換する  void poker_exchange(void)
-</li>
-<li>役の判定  poker_judge(void)
-</li>
-<li>表示  poker_display(void)
-</li>
-</ul>
-</li>
+<li>手札を配る  void poker_deal(void)</li>
+<li>手札の何枚かを交換する  void poker_exchange(void)</li>
+<li>役の判定  poker_judge(void)</li>
+<li>表示  poker_display(void)</li>
+</ul></li>
 
 <li>プレーヤーを管理する Player players[NO_PLAYERS]
 <ul class="org-ul">
-<li>手札 .hand
-</li>
-<li>名前 .name
-</li>
-</ul>
-</li>
+<li>手札 .hand</li>
+<li>名前 .name</li>
+</ul></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-6-1-2" class="outline-4">
-<h4 id="sec-6-1-2"><span class="section-number-4">6.1.2</span> ~/progs/game/poker が開発ディレクトリ</h4>
+<div id="outline-container-orgheadline145" class="outline-4">
+<h4 id="orgheadline145"><span class="section-number-4">6.1.2</span> ~/progs/game/poker が開発ディレクトリ</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <p>
 ここからは，テストを書かずに，実行プログラムを作っていきましょう。
@@ -3415,42 +3153,30 @@ hand_test.h はそのための宣言をおこなっています。
 <ul class="org-ul">
 <li>game/poker/poker.h
 <ul class="org-ul">
-<li>Player の宣言
-</li>
-<li>pokerの機能を表す関数の宣言
-</li>
-</ul>
-</li>
+<li>Player の宣言</li>
+<li>pokerの機能を表す関数の宣言</li>
+</ul></li>
 
 <li>game/poker/poker.c  
 <ul class="org-ul">
-<li>main
-</li>
-<li>poker_init
-</li>
-<li>poker_deal
-</li>
-<li>poker_exchange
-</li>
-<li>poker_judge
-</li>
-<li>poker_display
-</li>
-</ul>
-</li>
+<li>main</li>
+<li>poker_init</li>
+<li>poker_deal</li>
+<li>poker_exchange</li>
+<li>poker_judge</li>
+<li>poker_display</li>
+</ul></li>
 
 <li>game/poker/Makefile
 <ul class="org-ul">
-<li>pokerプログラムを作成することが目的
-</li>
-</ul>
-</li>
+<li>pokerプログラムを作成することが目的</li>
+</ul></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-6-1-3" class="outline-4">
-<h4 id="sec-6-1-3"><span class="section-number-4">6.1.3</span> ~/progs/game/Makefile</h4>
+<div id="outline-container-orgheadline146" class="outline-4">
+<h4 id="orgheadline146"><span class="section-number-4">6.1.3</span> ~/progs/game/Makefile</h4>
 <div class="outline-text-4" id="text-6-1-3">
 <p>
 各モジュールの管理方法を Makefile に書きましょう。
@@ -3461,9 +3187,8 @@ hand_test.h はそのための宣言をおこなっています。
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Masayuki Suzuki</p>
-<p class="date">Created: 2016-12-13 火 06:44</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="author">Author: m</p>
+<p class="date">Created: 2017-01-08 日 04:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

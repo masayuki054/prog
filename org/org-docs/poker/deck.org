@@ -299,7 +299,7 @@ deck_draw(void)
    deck.h
    : int deck_discard(Card);
 
-   draw.c への変更追加
+   deck.c への変更追加
    - 捨て山
    : static Deck used;
 
@@ -343,12 +343,15 @@ deck_draw(void)
 *** test_deck.so の作成
 
 *** test
+
 ** Todo シャッフル
+
    - 0~stock.top-1 のカードを
      - 適当な回数
      - 適当な2枚を入れ替える
 
 ** 山を印刷
+
    test_print.cの作成
    : # include <deck.h>
    : Deck_newしてDeck_topが０になるまで，
@@ -357,13 +360,12 @@ deck_draw(void)
 
    デバッグ用
    print.c の作成 
-   : void Deck_print(Deck deck)
+   : void deck_print(Deck deck)
    : {
-   :     for (i=0; i<deck.top; i++)
+   :     for (i=0; i<deck.size; i++)
    :       printf("%s\n", Card_to_string(deck.cards[i]))
    : }
 
-   インターフェイスへの変更はない．test_deck の一部と考えられる．
 
 
 

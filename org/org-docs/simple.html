@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-31 月 15:39 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>初めてのcard_display_simple</title>
+<!-- 2017-01-10 火 15:21 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="m" />
+<meta  name="author" content="Masayuki Suzuki" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -65,14 +58,15 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -154,28 +148,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -184,56 +156,56 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline30">1. card_display/first</a>
+<li><a href="#sec-1">1. card_display/first</a>
 <ul>
-<li><a href="#orgheadline1">1.1. 問題</a></li>
-<li><a href="#orgheadline29">1.2. 解プログラムの作成の流れ</a>
+<li><a href="#sec-1-1">1.1. 問題</a></li>
+<li><a href="#sec-1-2">1.2. 解プログラムの作成の流れ</a>
 <ul>
-<li><a href="#orgheadline12">simple_-1.c</a>
+<li><a href="#sec-1-2-1">1.2.1. simple_-1.c</a>
 <ul>
-<li><a href="#orgheadline2">やるべきこと</a>
+<li><a href="#sec-1-2-1-1">1.2.1.1. やるべきこと</a>
 <ul>
-<li><a href="#orgheadline3">部分的にプログラムを書いてみる:</a></li>
-<li><a href="#orgheadline4">よさそうなので，コマンドラインから文字列もらうように書く</a></li>
+<li><a href="#sec-1-2-1-1-1">1.2.1.1.1. 部分的にプログラムを書いてみる:</a></li>
+<li><a href="#sec-1-2-1-1-2">1.2.1.1.2. よさそうなので，コマンドラインから文字列もらうように書く</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5"><code>card_string</code> 関数について考える</a></li>
-<li><a href="#orgheadline6"><code>card_string</code> 関数を使うmainを書く</a></li>
-<li><a href="#orgheadline7"><code>char *card_string(char *, char *)</code> の入口出口ついて考える</a></li>
-<li><a href="#orgheadline8">simple_-1.c</a></li>
-<li><a href="#orgheadline9">simple_-1.c をコンパイルする Makefile</a></li>
-<li><a href="#orgheadline10">make</a></li>
-<li><a href="#orgheadline11">実行</a></li>
+<li><a href="#sec-1-2-1-2">1.2.1.2. <code>card_string</code> 関数について考える</a></li>
+<li><a href="#sec-1-2-1-3">1.2.1.3. <code>card_string</code> 関数を使うmainを書く</a></li>
+<li><a href="#sec-1-2-1-4">1.2.1.4. <code>char *card_string(char *, char *)</code> の入口出口ついて考える</a></li>
+<li><a href="#sec-1-2-1-5">1.2.1.5. simple_-1.c</a></li>
+<li><a href="#sec-1-2-1-6">1.2.1.6. simple_-1.c をコンパイルする Makefile</a></li>
+<li><a href="#sec-1-2-1-7">1.2.1.7. make</a></li>
+<li><a href="#sec-1-2-1-8">1.2.1.8. 実行</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline13">simple_0.c</a>
+<li><a href="#sec-1-2-2">1.2.2. simple_0.c</a>
 <ul>
-<li><a href="#orgheadline14">suit_char 関数</a></li>
-<li><a href="#orgheadline15">no_char 関数</a></li>
-<li><a href="#orgheadline16">simple_0.c</a></li>
-<li><a href="#orgheadline17">make</a></li>
+<li><a href="#sec-1-2-2-1">1.2.2.1. suit_char 関数</a></li>
+<li><a href="#sec-1-2-2-2">1.2.2.2. no_char 関数</a></li>
+<li><a href="#sec-1-2-2-3">1.2.2.3. simple_0.c</a></li>
+<li><a href="#sec-1-2-2-4">1.2.2.4. make</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline18">card_string をテストするコード</a>
+<li><a href="#sec-1-2-3">1.2.3. card_string をテストするコード</a>
 <ul>
-<li><a href="#orgheadline19">make</a></li>
-<li><a href="#orgheadline20">simple_0.1.c のまとめ</a></li>
+<li><a href="#sec-1-2-3-1">1.2.3.1. make</a></li>
+<li><a href="#sec-1-2-3-2">1.2.3.2. simple_0.1.c のまとめ</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline21">simple_1.c カードの作成</a>
+<li><a href="#sec-1-2-4">1.2.4. simple_1.c カードの作成</a>
 <ul>
-<li><a href="#orgheadline22">リファクタリング (プログラミング) - Wikipedia とは</a></li>
-<li><a href="#orgheadline23">card_string関数のリファクタリング</a></li>
-<li><a href="#orgheadline24">カード構造体を作る</a>
+<li><a href="#sec-1-2-4-1">1.2.4.1. リファクタリング (プログラミング) - Wikipedia とは</a></li>
+<li><a href="#sec-1-2-4-2">1.2.4.2. card_string関数のリファクタリング</a></li>
+<li><a href="#sec-1-2-4-3">1.2.4.3. カード構造体を作る</a>
 <ul>
-<li><a href="#orgheadline25">文字列で与えられたスーツ(文字列)を整数にする関数</a></li>
-<li><a href="#orgheadline26">番号文字列を数字にする関数</a></li>
+<li><a href="#sec-1-2-4-3-1">1.2.4.3.1. 文字列で与えられたスーツ(文字列)を整数にする関数</a></li>
+<li><a href="#sec-1-2-4-3-2">1.2.4.3.2. 番号文字列を数字にする関数</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline27">カードを文字列にする関数 card_to_string</a></li>
+<li><a href="#sec-1-2-4-4">1.2.4.4. カードを文字列にする関数 card_to_string</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline28">simple_1.c</a></li>
+<li><a href="#sec-1-2-5">1.2.5. simple_1.c</a></li>
 </ul>
 </li>
 </ul>
@@ -242,11 +214,11 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-2">
-<h2 id="orgheadline30"><span class="section-number-2">1</span> card_display/first</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> card_display/first</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> 問題</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 問題</h3>
 <div class="outline-text-3" id="text-1-1">
 <pre class="example">
 % card_display heart 10 
@@ -271,25 +243,28 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgheadline29" class="outline-3">
-<h3 id="orgheadline29"><span class="section-number-3">1.2</span> 解プログラムの作成の流れ</h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 解プログラムの作成の流れ</h3>
 <div class="outline-text-3" id="text-1-2">
-</div><div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12">simple_-1.c</h4>
-<div class="outline-text-4" id="text-orgheadline12">
-</div><div id="outline-container-orgheadline2" class="outline-5">
-<h5 id="orgheadline2">やるべきこと</h5>
-<div class="outline-text-5" id="text-orgheadline2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> simple_-1.c</h4>
+<div class="outline-text-4" id="text-1-2-1">
+</div><div id="outline-container-sec-1-2-1-1" class="outline-5">
+<h5 id="sec-1-2-1-1"><span class="section-number-5">1.2.1.1</span> やるべきこと</h5>
+<div class="outline-text-5" id="text-1-2-1-1">
 <ul class="org-ul">
-<li>コマンドラインとのやり取りは一旦忘れる (後で)。</li>
-<li>スーツと番号の文字列から表示用文字列を作る。</li>
-<li>表示用文字列を画面に表示する。</li>
+<li>コマンドラインとのやり取りは一旦忘れる (後で)。
+</li>
+<li>スーツと番号の文字列から表示用文字列を作る。
+</li>
+<li>表示用文字列を画面に表示する。
+</li>
 </ul>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-6">
-<h6 id="orgheadline3">部分的にプログラムを書いてみる:</h6>
-<div class="outline-text-6" id="text-orgheadline3">
+<div id="outline-container-sec-1-2-1-1-1" class="outline-6">
+<h6 id="sec-1-2-1-1-1"><span class="section-number-6">1.2.1.1.1</span> 部分的にプログラムを書いてみる:</h6>
+<div class="outline-text-6" id="text-1-2-1-1-1">
 <pre class="example">
 str = card_string("heart", "10");
 puts(str);
@@ -297,9 +272,9 @@ puts(str);
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-6">
-<h6 id="orgheadline4">よさそうなので，コマンドラインから文字列もらうように書く</h6>
-<div class="outline-text-6" id="text-orgheadline4">
+<div id="outline-container-sec-1-2-1-1-2" class="outline-6">
+<h6 id="sec-1-2-1-1-2"><span class="section-number-6">1.2.1.1.2</span> よさそうなので，コマンドラインから文字列もらうように書く</h6>
+<div class="outline-text-6" id="text-1-2-1-1-2">
 <div class="org-src-container">
 
 <pre class="src src-c">// 入力
@@ -317,13 +292,16 @@ puts(str);
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-5">
-<h5 id="orgheadline5"><code>card_string</code> 関数について考える</h5>
-<div class="outline-text-5" id="text-orgheadline5">
+<div id="outline-container-sec-1-2-1-2" class="outline-5">
+<h5 id="sec-1-2-1-2"><span class="section-number-5">1.2.1.2</span> <code>card_string</code> 関数について考える</h5>
+<div class="outline-text-5" id="text-1-2-1-2">
 <ul class="org-ul">
-<li><code>card_string</code> という名前をもった処理</li>
-<li>スーツと番号の文字列をもらって，</li>
-<li>表示用文字列を作って返す</li>
+<li><code>card_string</code> という名前をもった処理
+</li>
+<li>スーツと番号の文字列をもらって，
+</li>
+<li>表示用文字列を作って返す
+</li>
 </ul>
 
 <p>
@@ -337,9 +315,9 @@ puts(str);
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-5">
-<h5 id="orgheadline6"><code>card_string</code> 関数を使うmainを書く</h5>
-<div class="outline-text-5" id="text-orgheadline6">
+<div id="outline-container-sec-1-2-1-3" class="outline-5">
+<h5 id="sec-1-2-1-3"><span class="section-number-5">1.2.1.3</span> <code>card_string</code> 関数を使うmainを書く</h5>
+<div class="outline-text-5" id="text-1-2-1-3">
 <p>
 忘れないうちに，main関数を書いてみます:
 </p>
@@ -371,16 +349,18 @@ main(int argc, char *argv[])
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-5">
-<h5 id="orgheadline7"><code>char *card_string(char *, char *)</code> の入口出口ついて考える</h5>
-<div class="outline-text-5" id="text-orgheadline7">
+<div id="outline-container-sec-1-2-1-4" class="outline-5">
+<h5 id="sec-1-2-1-4"><span class="section-number-5">1.2.1.4</span> <code>char *card_string(char *, char *)</code> の入口出口ついて考える</h5>
+<div class="outline-text-5" id="text-1-2-1-4">
 <p>
 入力引数の型と戻り値の型は既に決っているので，変数の名前を決めます:
 </p>
 
 <ul class="org-ul">
-<li>最初の引数の名前は，~suit_string~ (札種を表す文字列の意)</li>
-<li>最初の引数の名前は，~no_string~ (札番号を表す文字列の意)</li>
+<li>最初の引数の名前は，~suit_string~ (札種を表す文字列の意)
+</li>
+<li>最初の引数の名前は，~no_string~ (札番号を表す文字列の意)
+</li>
 </ul>
 
 <p>
@@ -402,9 +382,9 @@ main(int argc, char *argv[])
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-5">
-<h5 id="orgheadline8">simple_-1.c</h5>
-<div class="outline-text-5" id="text-orgheadline8">
+<div id="outline-container-sec-1-2-1-5" class="outline-5">
+<h5 id="sec-1-2-1-5"><span class="section-number-5">1.2.1.5</span> simple_-1.c</h5>
+<div class="outline-text-5" id="text-1-2-1-5">
 <p>
 simple0.c の要件を満しませんが，一応コンパイルして実行できるものがで
 きました。
@@ -443,9 +423,9 @@ char *card_string(char *suit_string, char *no_string)
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-5">
-<h5 id="orgheadline9">simple_-1.c をコンパイルする Makefile</h5>
-<div class="outline-text-5" id="text-orgheadline9">
+<div id="outline-container-sec-1-2-1-6" class="outline-5">
+<h5 id="sec-1-2-1-6"><span class="section-number-5">1.2.1.6</span> simple_-1.c をコンパイルする Makefile</h5>
+<div class="outline-text-5" id="text-1-2-1-6">
 <div class="org-src-container">
 
 <pre class="src src-makefile">.PHONY: clean
@@ -460,32 +440,36 @@ clean:
 
 <ul class="org-ul">
 <li><code>.PHONY:</code> は，~clean~ がまぼろしのターゲットであることを定
-義しています。</li>
+義しています。
+</li>
 
 <li><code>simple_-1</code> ターゲットは，実行プログラム(ファイル)名で，
 <ul class="org-ul">
-<li><code>: simple_-1.c</code> に依存していて，</li>
+<li><code>: simple_-1.c</code> に依存していて，
+</li>
 
-<li><code>simple_-1.c</code> が <code>simple_-1</code> より新らしければ，</li>
+<li><code>simple_-1.c</code> が <code>simple_-1</code> より新らしければ，
+</li>
 
-<li>~        gcc -o $@ $^ ~ が <b>シュルコマンド</b> として実行されます。</li>
+<li>~        gcc -o $@ $^ ~ が <b>シュルコマンド</b> として実行されます。
+</li>
 
-<li><p>
-実行の前に，~\(@~ はターゲット(の名前)に，~\)^~ はソースに置き換えら
+<li>実行の前に，~$@~ はターゲット(の名前)に，~$^~ はソースに置き換えら
 れ, 次のコマンドとなります:
-</p>
 
 <pre class="example">
 gcc -o simple_-1 simple_-1.c
-</pre></li>
-</ul></li>
+</pre>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-5">
-<h5 id="orgheadline10">make</h5>
-<div class="outline-text-5" id="text-orgheadline10">
+<div id="outline-container-sec-1-2-1-7" class="outline-5">
+<h5 id="sec-1-2-1-7"><span class="section-number-5">1.2.1.7</span> make</h5>
+<div class="outline-text-5" id="text-1-2-1-7">
 <div class="org-src-container">
 
 <pre class="src src-sh">make -f Makefile_-1
@@ -498,9 +482,9 @@ gcc -o simple_-1 simple_-1.c
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-5">
-<h5 id="orgheadline11">実行</h5>
-<div class="outline-text-5" id="text-orgheadline11">
+<div id="outline-container-sec-1-2-1-8" class="outline-5">
+<h5 id="sec-1-2-1-8"><span class="section-number-5">1.2.1.8</span> 実行</h5>
+<div class="outline-text-5" id="text-1-2-1-8">
 <div class="org-src-container">
 
 <pre class="src src-sh">./simple_-1 "hoge" "hoge"
@@ -515,9 +499,9 @@ SA
 </div>
 
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13">simple_0.c</h4>
-<div class="outline-text-4" id="text-orgheadline13">
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> simple_0.c</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <p>
 これから要件を満たすように変更していきましょう。
 </p>
@@ -559,9 +543,9 @@ result = "SA";
 </p>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-5">
-<h5 id="orgheadline14">suit_char 関数</h5>
-<div class="outline-text-5" id="text-orgheadline14">
+<div id="outline-container-sec-1-2-2-1" class="outline-5">
+<h5 id="sec-1-2-2-1"><span class="section-number-5">1.2.2.1</span> suit_char 関数</h5>
+<div class="outline-text-5" id="text-1-2-2-1">
 <div class="org-src-container">
 
 <pre class="src src-c">char suit_char(char *);
@@ -584,9 +568,9 @@ result = "SA";
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-5">
-<h5 id="orgheadline15">no_char 関数</h5>
-<div class="outline-text-5" id="text-orgheadline15">
+<div id="outline-container-sec-1-2-2-2" class="outline-5">
+<h5 id="sec-1-2-2-2"><span class="section-number-5">1.2.2.2</span> no_char 関数</h5>
+<div class="outline-text-5" id="text-1-2-2-2">
 <div class="org-src-container">
 
 <pre class="src src-c">char no_char(char *);
@@ -612,9 +596,9 @@ result = "SA";
 </div>
 
 
-<div id="outline-container-orgheadline16" class="outline-5">
-<h5 id="orgheadline16">simple_0.c</h5>
-<div class="outline-text-5" id="text-orgheadline16">
+<div id="outline-container-sec-1-2-2-3" class="outline-5">
+<h5 id="sec-1-2-2-3"><span class="section-number-5">1.2.2.3</span> simple_0.c</h5>
+<div class="outline-text-5" id="text-1-2-2-3">
 <p>
 まとめると:
 </p>
@@ -700,9 +684,9 @@ clean:
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-5">
-<h5 id="orgheadline17">make</h5>
-<div class="outline-text-5" id="text-orgheadline17">
+<div id="outline-container-sec-1-2-2-4" class="outline-5">
+<h5 id="sec-1-2-2-4"><span class="section-number-5">1.2.2.4</span> make</h5>
+<div class="outline-text-5" id="text-1-2-2-4">
 <div class="org-src-container">
 
 <pre class="src src-sh">make -f Makefile_0
@@ -726,23 +710,23 @@ cc     simple_0.c   -o simple_0
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left">H0</td>
+<td class="left">H0</td>
 </tr>
 
 <tr>
-<td class="org-left">SA</td>
+<td class="left">SA</td>
 </tr>
 
 <tr>
-<td class="org-left">DK</td>
+<td class="left">DK</td>
 </tr>
 
 <tr>
-<td class="org-left">C2</td>
+<td class="left">C2</td>
 </tr>
 </tbody>
 </table>
@@ -755,9 +739,9 @@ simple_0.c 完成です。
 </div>
 
 
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18">card_string をテストするコード</h4>
-<div class="outline-text-4" id="text-orgheadline18">
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> card_string をテストするコード</h4>
+<div class="outline-text-4" id="text-1-2-3">
 <p>
 card_string は関数で，満すべき性質は下記のように書くことができます:
 </p>
@@ -863,9 +847,9 @@ char no_char(char *no)
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-5">
-<h5 id="orgheadline19">make</h5>
-<div class="outline-text-5" id="text-orgheadline19">
+<div id="outline-container-sec-1-2-3-1" class="outline-5">
+<h5 id="sec-1-2-3-1"><span class="section-number-5">1.2.3.1</span> make</h5>
+<div class="outline-text-5" id="text-1-2-3-1">
 <div class="org-src-container">
 
 <pre class="src src-sh">make -f Makefile_0.1
@@ -888,32 +872,32 @@ OKですね。
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20">simple_0.1.c のまとめ</h5>
-<div class="outline-text-5" id="text-orgheadline20">
+<div id="outline-container-sec-1-2-3-2" class="outline-5">
+<h5 id="sec-1-2-3-2"><span class="section-number-5">1.2.3.2</span> simple_0.1.c のまとめ</h5>
+<div class="outline-text-5" id="text-1-2-3-2">
 <p>
 次の関数を作った:
 </p>
 <dl class="org-dl">
-<dt><code>char * card_string(char *suit_string, char *no_string);</code></dt><dd></dd>
+<dt> <code>char * card_string(char *suit_string, char *no_string);</code> </dt><dd>     
+</dd>
 
+<dt> <code>char suit_char(char *suit);</code> </dt><dd>     
+</dd>
 
-<dt><code>char suit_char(char *suit);</code></dt><dd></dd>
+<dt> <code>char no_char(char *no);</code> </dt><dd>
+</dd>
 
-
-<dt><code>char no_char(char *no);</code></dt><dd></dd>
-
-
-<dt><code>void test_card_string(void);</code></dt><dd></dd>
+<dt> <code>void test_card_string(void);</code> </dt><dd></dd>
 </dl>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline21" class="outline-4">
-<h4 id="orgheadline21">simple_1.c カードの作成</h4>
-<div class="outline-text-4" id="text-orgheadline21">
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> simple_1.c カードの作成</h4>
+<div class="outline-text-4" id="text-1-2-4">
 <p>
 simple_0.1.c では，カードという <b>物</b> が現われていません。
 </p>
@@ -924,9 +908,9 @@ simple_0.1.c では，カードという <b>物</b> が現われていません�
 </p>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-5">
-<h5 id="orgheadline22"><a href="https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">リファクタリング (プログラミング) - Wikipedia</a> とは</h5>
-<div class="outline-text-5" id="text-orgheadline22">
+<div id="outline-container-sec-1-2-4-1" class="outline-5">
+<h5 id="sec-1-2-4-1"><span class="section-number-5">1.2.4.1</span> <a href="https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%95%E3%82%A1%E3%82%AF%E3%82%BF%E3%83%AA%E3%83%B3%E3%82%B0_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0)">リファクタリング (プログラミング) - Wikipedia</a> とは</h5>
+<div class="outline-text-5" id="text-1-2-4-1">
 <blockquote>
 <p>
 リファクタリング (refactoring) とは、コンピュータプログラミングにおい
@@ -937,9 +921,9 @@ simple_0.1.c では，カードという <b>物</b> が現われていません�
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-5">
-<h5 id="orgheadline23">card_string関数のリファクタリング</h5>
-<div class="outline-text-5" id="text-orgheadline23">
+<div id="outline-container-sec-1-2-4-2" class="outline-5">
+<h5 id="sec-1-2-4-2"><span class="section-number-5">1.2.4.2</span> card_string関数のリファクタリング</h5>
+<div class="outline-text-5" id="text-1-2-4-2">
 <p>
 入力の suit_string と no_string から，表示文字列を作る前に，
 いったん一枚のカードを作ることにします。
@@ -951,21 +935,19 @@ simple_0.1.c では，カードという <b>物</b> が現われていません�
 </p>
 
 <ul class="org-ul">
-<li><p>
-あるカード = カードの作成(suit_string, no_string)
-</p>
+<li>あるカード = カードの作成(suit_string, no_string)
 
 <p>
 <code>Card a_card = card_new_from_string(suit_string, no_string);</code>
-</p></li>
-
-<li><p>
-result = カードの表示文字列を作る(あるカード)
 </p>
+</li>
+
+<li>result = カードの表示文字列を作る(あるカード)
 
 <p>
 <code>result = card_to_string(a_card);</code>
-</p></li>
+</p>
+</li>
 </ul>
 
 <p>
@@ -976,16 +958,18 @@ result = カードの表示文字列を作る(あるカード)
 </div>
 
 
-<div id="outline-container-orgheadline24" class="outline-5">
-<h5 id="orgheadline24">カード構造体を作る</h5>
-<div class="outline-text-5" id="text-orgheadline24">
+<div id="outline-container-sec-1-2-4-3" class="outline-5">
+<h5 id="sec-1-2-4-3"><span class="section-number-5">1.2.4.3</span> カード構造体を作る</h5>
+<div class="outline-text-5" id="text-1-2-4-3">
 <p>
 取り敢えず，カードが持つ情報は次の2つとします:
 </p>
 
 <ul class="org-ul">
-<li>スーツを表わす整数値</li>
-<li>番号を表わす整数値</li>
+<li>スーツを表わす整数値
+</li>
+<li>番号を表わす整数値
+</li>
 </ul>
 
 <p>
@@ -1067,9 +1051,9 @@ Card card_new_from_string(char *suit_str, char *no_str)
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-6">
-<h6 id="orgheadline25">文字列で与えられたスーツ(文字列)を整数にする関数</h6>
-<div class="outline-text-6" id="text-orgheadline25">
+<div id="outline-container-sec-1-2-4-3-1" class="outline-6">
+<h6 id="sec-1-2-4-3-1"><span class="section-number-6">1.2.4.3.1</span> 文字列で与えられたスーツ(文字列)を整数にする関数</h6>
+<div class="outline-text-6" id="text-1-2-4-3-1">
 <p>
 <code>card_new_from_string</code> 関数では次のように書きました:
 </p>
@@ -1106,9 +1090,9 @@ if (card_suit_from_string("club") != 1) puts("error");
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-6">
-<h6 id="orgheadline26">番号文字列を数字にする関数</h6>
-<div class="outline-text-6" id="text-orgheadline26">
+<div id="outline-container-sec-1-2-4-3-2" class="outline-6">
+<h6 id="sec-1-2-4-3-2"><span class="section-number-6">1.2.4.3.2</span> 番号文字列を数字にする関数</h6>
+<div class="outline-text-6" id="text-1-2-4-3-2">
 <p>
 続いて，カード番号について，プログラム内部表現への変換を，スーツ同様に，
 書いてみましょう:
@@ -1135,9 +1119,9 @@ if (card_no_from_string("1") == 14 ) puts("OK"); else puts("NG");
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-5">
-<h5 id="orgheadline27">カードを文字列にする関数 card_to_string</h5>
-<div class="outline-text-5" id="text-orgheadline27">
+<div id="outline-container-sec-1-2-4-4" class="outline-5">
+<h5 id="sec-1-2-4-4"><span class="section-number-5">1.2.4.4</span> カードを文字列にする関数 card_to_string</h5>
+<div class="outline-text-5" id="text-1-2-4-4">
 <p>
 <code>card_to_string</code> の使われかたは，次でした:
 </p>
@@ -1152,8 +1136,10 @@ if (card_no_from_string("1") == 14 ) puts("OK"); else puts("NG");
 </p>
 
 <ul class="org-ul">
-<li><code>card_suit_to_char(card)</code></li>
-<li><code>card_no_to_string(card)</code></li>
+<li><code>card_suit_to_char(card)</code>
+</li>
+<li><code>card_no_to_string(card)</code>
+</li>
 </ul>
 
 <p>
@@ -1181,9 +1167,9 @@ return result;
 </div>
 
 
-<div id="outline-container-orgheadline28" class="outline-4">
-<h4 id="orgheadline28">simple_1.c</h4>
-<div class="outline-text-4" id="text-orgheadline28">
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> simple_1.c</h4>
+<div class="outline-text-4" id="text-1-2-5">
 <div class="org-src-container">
 
 <pre class="src src-c">// simple_1.c
@@ -1406,8 +1392,9 @@ HA
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: m</p>
-<p class="date">Created: 2016-10-31 月 15:39</p>
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2017-01-10 火 15:21</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

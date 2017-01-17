@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-31 月 15:27 -->
+<title>cis-programming-lects</title>
+<!-- 2017-01-10 火 15:21 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title></title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="m" />
+<meta  name="author" content="Masayuki Suzuki" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -65,14 +58,15 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -154,74 +148,88 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
+<h1 class="title">cis-programming-lects</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. プログラミング関連のサイト</a></li>
-<li><a href="#orgheadline2">2. プログラム言語入門の資料</a></li>
-<li><a href="#orgheadline3">3. プログラミング演習I 実施順</a></li>
-<li><a href="#orgheadline11">4. プログラミング演習I 内容のまとめ</a>
+<li><a href="#sec-1">1. プログラミング関連のサイト</a></li>
+<li><a href="#sec-2">2. プログラム言語入門の資料</a></li>
+<li><a href="#sec-3">3. プログラミング演習I 実施順</a></li>
+<li><a href="#sec-4">4. プログラミング演習I 内容のまとめ</a>
 <ul>
-<li><a href="#orgheadline4">4.1. プログラミングのはじまり</a></li>
-<li><a href="#orgheadline5">4.2. コンピュータとプログラム</a></li>
-<li><a href="#orgheadline6">4.3. 名前(変数と関数)</a></li>
-<li><a href="#orgheadline7">4.4. 値と式(計算)と型</a></li>
-<li><a href="#orgheadline8">4.5. 文と流れの制御 ー 実行順序の制御</a></li>
-<li><a href="#orgheadline9">4.6. 関数</a></li>
-<li><a href="#orgheadline10">4.7. ポインタ</a></li>
+<li><a href="#sec-4-1">4.1. プログラミングのはじまり</a></li>
+<li><a href="#sec-4-2">4.2. コンピュータとプログラム</a></li>
+<li><a href="#sec-4-3">4.3. 名前(変数と関数)</a></li>
+<li><a href="#sec-4-4">4.4. 値と式(計算)と型</a></li>
+<li><a href="#sec-4-5">4.5. 文と流れの制御 ー 実行順序の制御</a></li>
+<li><a href="#sec-4-6">4.6. 関数</a></li>
+<li><a href="#sec-4-7">4.7. ポインタ</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">5. プログラムの構成要素</a></li>
-<li><a href="#orgheadline13">6. プログラム言語及び演習II 実施順</a></li>
-<li><a href="#orgheadline23">7. プログラム言語及び演習II 項目順</a>
+<li><a href="#sec-5">5. プログラムの構成要素</a></li>
+<li><a href="#sec-6">6. プログラム言語及び演習II 実施順</a></li>
+<li><a href="#sec-7">7. プログラム言語及び演習II 項目順</a>
 <ul>
-<li><a href="#orgheadline14">7.1. 配列</a></li>
-<li><a href="#orgheadline15">7.2. 構造体</a></li>
-<li><a href="#orgheadline16">7.3. ポインタ</a></li>
-<li><a href="#orgheadline17">7.4. 型の定義</a></li>
-<li><a href="#orgheadline18">7.5. ファイル入出力</a></li>
-<li><a href="#orgheadline19">7.6. 動的メモリ確保</a></li>
-<li><a href="#orgheadline20">7.7. 分割コンパイル</a></li>
-<li><a href="#orgheadline21">7.8. make</a></li>
-<li><a href="#orgheadline22">7.9. 実践的なデータ処理プログラム</a></li>
+<li><a href="#sec-7-1">7.1. 配列</a></li>
+<li><a href="#sec-7-2">7.2. 構造体</a></li>
+<li><a href="#sec-7-3">7.3. ポインタ</a></li>
+<li><a href="#sec-7-4">7.4. 型の定義</a></li>
+<li><a href="#sec-7-5">7.5. ファイル入出力</a></li>
+<li><a href="#sec-7-6">7.6. 動的メモリ確保</a></li>
+<li><a href="#sec-7-7">7.7. 分割コンパイル</a></li>
+<li><a href="#sec-7-8">7.8. make</a></li>
+<li><a href="#sec-7-9">7.9. 実践的なデータ処理プログラム</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> プログラミング関連のサイト</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> プログラミング関連のサイト</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
-<li><a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/jkiso/index.html">情報基礎</a></li>
+<li><a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/jkiso/index.html">情報基礎</a>
+</li>
 
-<li><a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/index.html">プログラム言語入門</a></li>
+<li><a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/index.html">プログラム言語入門</a>
+</li>
 
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/">プログラム言語及び演習１</a></li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/">プログラム言語及び演習１</a>
+</li>
 
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/">プログラム言語及び演習２</a></li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/">プログラム言語及び演習２</a>
+</li>
 
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">ソフトウェア構成論</a> 2015</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">ソフトウェア構成論</a> 2015
+</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> プログラム言語入門の資料</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> プログラム言語入門の資料</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 平成26年度 教材と今後の授業予定
 </p>
 <ul class="org-ul">
-<li>第1回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-01.pdf">Emacsの復習</a></li>
-<li>第2回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-02.pdf">Mewの復習と発展</a></li>
-<li>第3回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-03.pdf">Emacsの発展</a></li>
-<li>第4回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-04.pdf">コマンドの復習</a></li>
-<li>第5回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-05.pdf">コマンドの発展</a></li>
-<li>第6回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-06.pdf">正規表現の基礎</a></li>
-<li>第7回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-07.pdf">制御構文とシェルスクリプトの基礎</a></li>
-<li>第e回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-14.pdf">Processing 6 (オブジェクト指向プログラミングの入り口)</a></li>
+<li>第1回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-01.pdf">Emacsの復習</a>
+</li>
+<li>第2回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-02.pdf">Mewの復習と発展</a>
+</li>
+<li>第3回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-03.pdf">Emacsの発展</a>
+</li>
+<li>第4回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-04.pdf">コマンドの復習</a>
+</li>
+<li>第5回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-05.pdf">コマンドの発展</a>
+</li>
+<li>第6回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-06.pdf">正規表現の基礎</a>
+</li>
+<li>第7回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-07.pdf">制御構文とシェルスクリプトの基礎</a>
+</li>
+<li>第e回 <a href="http://www.kono.cis.iwate-u.ac.jp/~hirayama/local/pnyumon/2014/note-14.pdf">Processing 6 (オブジェクト指向プログラミングの入り口)</a>
+</li>
 </ul>
 
 <p>
@@ -229,286 +237,355 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> プログラミング演習I 実施順</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> プログラミング演習I 実施順</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC1%E5%9B%9E">第1回</a> &#x2013; 作業ディレクトリの作成，カレントディレクトリを移動する，ソー
 スファイルの作成，プログラミングの流れ，Emacsの使い方，コンパイルと実行
 <ul class="org-ul">
-<li>emacs::エラー箇所を表示</li>
-<li>emacs::c言語モード</li>
-</ul></li>
+<li>emacs::エラー箇所を表示
+</li>
+<li>emacs::c言語モード
+</li>
+</ul>
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC2%E5%9B%9E">第2回</a> &#x2013; コンピュータの仕組み，コンピュータの5大機能，プログラムがで
 きるまで（用語の意味），プログラムの基本事項 (include，main，return)，
-printf関数，エスケープシーケンス</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC3%E5%9B%9E">第3回</a> &#x2013; 3.1 変数とは，3.2 データ型，3.3 変数の宣言，3.4 変数の値の表</li>
+printf関数，エスケープシーケンス
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC3%E5%9B%9E">第3回</a> &#x2013; 3.1 変数とは，3.2 データ型，3.3 変数の宣言，3.4 変数の値の表
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC4%E5%9B%9E">第4回</a> &#x2013; フローチャートの書き方，4.1 式と演算子，4.2 データ型と計算，
-4.3 各種演算子，4.4 インクリメント・デクリメント演算子</li>
+4.3 各種演算子，4.4 インクリメント・デクリメント演算子
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC5%E5%9B%9E">第5回</a> &#x2013; 4.5 sizeof演算子，4.6 不等号演算子，4.7 等価演算子と非等価
-演算子，4.8 代入演算子，4.9 キャスト演算子</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC6%E5%9B%9E">第6回</a> &#x2013; 4.10 ビット演算子，4.11 条件演算子，5.1 if文</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC7%E5%9B%9E">第7回</a> &#x2013; 5.2 関係演算子と論理演算子，5.3 switch文，5.4 for文</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC8%E5%9B%9E">第8回</a> &#x2013; 5.5 while文</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC9%E5%9B%9E">第9回</a> &#x2013; 5.6 do～while文，5.7 break文とcontinue文，5.8 goto文</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E">第a回</a> &#x2013; 6.1 関数の基本，6.2 引数と戻り値</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E">第b回</a> &#x2013; 6.3 変数の寿命とスコープ，6.4 再帰呼び出し</li>
+演算子，4.8 代入演算子，4.9 キャスト演算子
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC6%E5%9B%9E">第6回</a> &#x2013; 4.10 ビット演算子，4.11 条件演算子，5.1 if文
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC7%E5%9B%9E">第7回</a> &#x2013; 5.2 関係演算子と論理演算子，5.3 switch文，5.4 for文
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC8%E5%9B%9E">第8回</a> &#x2013; 5.5 while文
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC9%E5%9B%9E">第9回</a> &#x2013; 5.6 do～while文，5.7 break文とcontinue文，5.8 goto文
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E">第a回</a> &#x2013; 6.1 関数の基本，6.2 引数と戻り値
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E">第b回</a> &#x2013; 6.3 変数の寿命とスコープ，6.4 再帰呼び出し
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC12%E5%9B%9E">第c回</a> &#x2013; 7.1 メモリのアドレス，7.2 ポインタの基本，7.3 ポインタへの
-値代入，7.4 ポインタと引数，7.5 ポインタのポインタ</li>
+値代入，7.4 ポインタと引数，7.5 ポインタのポインタ
+</li>
 </ul>
 
 <p>
-<a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?plugin=attach&amp;pcmd=list">添付ファイル一覧</a>
+<a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?plugin=attach&pcmd=list">添付ファイル一覧</a>
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11"><span class="section-number-2">4</span> プログラミング演習I 内容のまとめ</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> プログラミング演習I 内容のまとめ</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">4.1</span> プログラミングのはじまり</h3>
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> プログラミングのはじまり</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC1%E5%9B%9E">第1回</a> &#x2013; 作業ディレクトリの作成，カレントディレクトリを移動する，ソー
 スファイルの作成，プログラミングの流れ，Emacsの使い方，コンパイルと実行
 <ul class="org-ul">
-<li>emacs::エラー箇所を表示</li>
-<li>emacs::c言語モード</li>
-</ul></li>
+<li>emacs::エラー箇所を表示
+</li>
+<li>emacs::c言語モード
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">4.2</span> コンピュータとプログラム</h3>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> コンピュータとプログラム</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC2%E5%9B%9E">第2回</a> &#x2013; コンピュータの仕組み，コンピュータの5大機能，プログラムがで
 きるまで（用語の意味），プログラムの基本事項 (include，main，return)，
-printf関数，エスケープシーケンス</li>
+printf関数，エスケープシーケンス
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">4.3</span> 名前(変数と関数)</h3>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 名前(変数と関数)</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC3%E5%9B%9E">第3回</a> &#x2013; 3.1 変数とは，3.2 データ型，3.3 変数の宣言，3.4 変数の値の表</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC3%E5%9B%9E">第3回</a> &#x2013; 3.1 変数とは，3.2 データ型，3.3 変数の宣言，3.4 変数の値の表
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">4.4</span> 値と式(計算)と型</h3>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> 値と式(計算)と型</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC4%E5%9B%9E">第4回</a> &#x2013; フローチャートの書き方，4.1 式と演算子，4.2 データ型と計算，
-4.3 各種演算子，4.4 インクリメント・デクリメント演算子</li>
+4.3 各種演算子，4.4 インクリメント・デクリメント演算子
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC5%E5%9B%9E">第5回</a> &#x2013; 4.5 sizeof演算子，4.6 不等号演算子，4.7 等価演算子と非等価
-演算子，4.8 代入演算子，4.9 キャスト演算子</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC6%E5%9B%9E">第6回</a> &#x2013; 4.10 ビット演算子，4.11 条件演算子，5.1 if文</li>
+演算子，4.8 代入演算子，4.9 キャスト演算子
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC6%E5%9B%9E">第6回</a> &#x2013; 4.10 ビット演算子，4.11 条件演算子，5.1 if文
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">4.5</span> 文と流れの制御 ー 実行順序の制御</h3>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> 文と流れの制御 ー 実行順序の制御</h3>
 <div class="outline-text-3" id="text-4-5">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC7%E5%9B%9E">第7回</a> &#x2013; 5.2 関係演算子と論理演算子，5.3 switch文，5.4 for文</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC8%E5%9B%9E">第8回</a> &#x2013; 5.5 while文</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC9%E5%9B%9E">第9回</a> &#x2013; 5.6 do～while文，5.7 break文とcontinue文，5.8 goto文</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC7%E5%9B%9E">第7回</a> &#x2013; 5.2 関係演算子と論理演算子，5.3 switch文，5.4 for文
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC8%E5%9B%9E">第8回</a> &#x2013; 5.5 while文
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC9%E5%9B%9E">第9回</a> &#x2013; 5.6 do～while文，5.7 break文とcontinue文，5.8 goto文
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">4.6</span> 関数</h3>
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> 関数</h3>
 <div class="outline-text-3" id="text-4-6">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC10%E5%9B%9E">第a回</a> &#x2013; 6.1 関数の基本，6.2 引数と戻り値
 <ul class="org-ul">
-<li>プロトタイプ宣言</li>
-</ul></li>
+<li>プロトタイプ宣言
+</li>
+</ul>
+</li>
 
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC11%E5%9B%9E">第b回</a> &#x2013; 6.3 変数の寿命とスコープ，6.4 再帰呼び出し
 <ul class="org-ul">
-<li>ローカル, グローバル</li>
-<li>extern</li>
-<li>ブロック { &#x2026; }</li>
-</ul></li>
+<li>ローカル, グローバル
+</li>
+<li>extern
+</li>
+<li>ブロック { &#x2026; }
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">4.7</span> ポインタ</h3>
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> ポインタ</h3>
 <div class="outline-text-3" id="text-4-7">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?%E7%AC%AC12%E5%9B%9E">第c回</a> &#x2013; 7.1 メモリのアドレス，7.2 ポインタの基本，7.3 ポインタへの
-値代入，7.4 ポインタと引数，7.5 ポインタのポインタ</li>
+値代入，7.4 ポインタと引数，7.5 ポインタのポインタ
+</li>
 </ul>
 
 <p>
-<a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?plugin=attach&amp;pcmd=list">添付ファイル一覧</a>
+<a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog1/pukiwiki/index.php?plugin=attach&pcmd=list">添付ファイル一覧</a>
 </p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12"><span class="section-number-2">5</span> プログラムの構成要素</h2>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> プログラムの構成要素</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
-<li>型と値</li>
-<li>式 (値の計算)</li>
-<li>変数 (値の記憶)</li>
-<li>文 (実行順序の制御)</li>
-<li><b>関数</b> (文のまとめ)</li>
-<li><b>名前</b> (変数と関数) のスコープ</li>
+<li>型と値
+</li>
+<li>式 (値の計算)
+</li>
+<li>変数 (値の記憶)
+</li>
+<li>文 (実行順序の制御)
+</li>
+<li><b>関数</b> (文のまとめ)
+</li>
+<li><b>名前</b> (変数と関数) のスコープ
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="section-number-2">6</span> プログラム言語及び演習II 実施順</h2>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> プログラム言語及び演習II 実施順</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?1%E5%9B%9E%E7%9B%AE">1回目</a> &#x2013; 7 ポインタ</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?2%E5%9B%9E%E7%9B%AE">2回目</a> &#x2013; 8.1 配列の基本，8.2 配列とアドレス, 8.3 多次元配列</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?3%E5%9B%9E%E7%9B%AE">3回目</a> &#x2013; 8.4 文字と文字列，8.5 文字配列，8.6 文字の入力</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?1%E5%9B%9E%E7%9B%AE">1回目</a> &#x2013; 7 ポインタ
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?2%E5%9B%9E%E7%9B%AE">2回目</a> &#x2013; 8.1 配列の基本，8.2 配列とアドレス, 8.3 多次元配列
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?3%E5%9B%9E%E7%9B%AE">3回目</a> &#x2013; 8.4 文字と文字列，8.5 文字配列，8.6 文字の入力
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?4%E5%9B%9E%E7%9B%AE">4回目</a> &#x2013; 8.6 文字の入力, 8.7 文字列の加工, 8.8 文字列ポインタを配列
-にする，8.9 コマンド・ライン引数，</li>
+にする，8.9 コマンド・ライン引数，
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?5%E5%9B%9E%E7%9B%AE">5回目</a> &#x2013; 8.10 関数に配列を渡す，9.1 構造体の宣言，9.2 構造体メンバ
-へのアクセス方法，9.3 構造体の配列</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?6%E5%9B%9E%E7%9B%AE">6回目</a> &#x2013; ポインタの復習</li>
+へのアクセス方法，9.3 構造体の配列
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?6%E5%9B%9E%E7%9B%AE">6回目</a> &#x2013; ポインタの復習
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?7%E5%9B%9E%E7%9B%AE">7回目</a> &#x2013; 9.4 構造体へのポインタ, 9.5 新しい型を定義する，9.6 メンバ
-に同じ型へのポインタを持つ構造体, 9.7 共用体</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?8%E5%9B%9E%E7%9B%AE">8回目</a> &#x2013; 10 ファイル入出力</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?9%E5%9B%9E%E7%9B%AE">9回目</a> &#x2013; 10 ファイル入出力 (ランダムアクセス)</li>
+に同じ型へのポインタを持つ構造体, 9.7 共用体
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?8%E5%9B%9E%E7%9B%AE">8回目</a> &#x2013; 10 ファイル入出力
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?9%E5%9B%9E%E7%9B%AE">9回目</a> &#x2013; 10 ファイル入出力 (ランダムアクセス)
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE">a回目</a> &#x2013; 11 高度なプロラミング，11.1 ポインタを返す関数， 11.2 関数
 へのポインタ，11.3 可変個の引数を持つ関数, 11.4 メモリの動的確保，
-11.5 確保領域の大きさを変更する</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?11%E5%9B%9E%E7%9B%AE">b回目</a> &#x2013; 11.6 分割コンパイル，ヘッダファイル</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE">c回目</a> &#x2013; 11.7 プリプロセッサ, make</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?13%E5%9B%9E%E7%9B%AE">d回目</a> &#x2013; 応用プログラミング</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?14%E5%9B%9E%E7%9B%AE">e回目</a> &#x2013; 応用プログラミング</li>
+11.5 確保領域の大きさを変更する
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?11%E5%9B%9E%E7%9B%AE">b回目</a> &#x2013; 11.6 分割コンパイル，ヘッダファイル
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE">c回目</a> &#x2013; 11.7 プリプロセッサ, make
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?13%E5%9B%9E%E7%9B%AE">d回目</a> &#x2013; 応用プログラミング
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?14%E5%9B%9E%E7%9B%AE">e回目</a> &#x2013; 応用プログラミング
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline23" class="outline-2">
-<h2 id="orgheadline23"><span class="section-number-2">7</span> プログラム言語及び演習II 項目順</h2>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> プログラム言語及び演習II 項目順</h2>
 <div class="outline-text-2" id="text-7">
-</div><div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">7.1</span> 配列</h3>
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> 配列</h3>
 <div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?2%E5%9B%9E%E7%9B%AE">2回目</a> &#x2013; 8.1 配列の基本，8.2 配列とアドレス, 8.3 多次元配列</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?3%E5%9B%9E%E7%9B%AE">3回目</a> &#x2013; 8.4 文字と文字列，8.5 文字配列，8.6 文字の入力</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?2%E5%9B%9E%E7%9B%AE">2回目</a> &#x2013; 8.1 配列の基本，8.2 配列とアドレス, 8.3 多次元配列
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?3%E5%9B%9E%E7%9B%AE">3回目</a> &#x2013; 8.4 文字と文字列，8.5 文字配列，8.6 文字の入力
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?4%E5%9B%9E%E7%9B%AE">4回目</a> &#x2013; 8.6 文字の入力, 8.7 文字列の加工, 8.8 文字列ポインタを配列
-にする，8.9 コマンド・ライン引数，</li>
+にする，8.9 コマンド・ライン引数，
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">7.2</span> 構造体</h3>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> 構造体</h3>
 <div class="outline-text-3" id="text-7-2">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?5%E5%9B%9E%E7%9B%AE">5回目</a> &#x2013; 8.10 関数に配列を渡す，9.1 構造体の宣言，9.2 構造体メンバ
-へのアクセス方法，9.3 構造体の配列</li>
+へのアクセス方法，9.3 構造体の配列
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">7.3</span> ポインタ</h3>
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> ポインタ</h3>
 <div class="outline-text-3" id="text-7-3">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?1%E5%9B%9E%E7%9B%AE">1回目</a> &#x2013; 7 ポインタ</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?6%E5%9B%9E%E7%9B%AE">6回目</a> &#x2013; ポインタの復習</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?1%E5%9B%9E%E7%9B%AE">1回目</a> &#x2013; 7 ポインタ
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?6%E5%9B%9E%E7%9B%AE">6回目</a> &#x2013; ポインタの復習
+</li>
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE">a回目</a> &#x2013; 11.1 ポインタを返す関数， 11.2 関数
-へのポインタ，11.3 可変個の引数を持つ関数,</li>
+へのポインタ，11.3 可変個の引数を持つ関数, 
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">7.4</span> 型の定義</h3>
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> 型の定義</h3>
 <div class="outline-text-3" id="text-7-4">
 <ul class="org-ul">
 <li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?7%E5%9B%9E%E7%9B%AE">7回目</a> &#x2013; 9.4 構造体へのポインタ, 9.5 新しい型を定義する，9.6 メンバ
-に同じ型へのポインタを持つ構造体, 9.7 共用体</li>
+に同じ型へのポインタを持つ構造体, 9.7 共用体
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">7.5</span> ファイル入出力</h3>
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5"><span class="section-number-3">7.5</span> ファイル入出力</h3>
 <div class="outline-text-3" id="text-7-5">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?8%E5%9B%9E%E7%9B%AE">8回目</a> &#x2013; 10 ファイル入出力</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?9%E5%9B%9E%E7%9B%AE">9回目</a> &#x2013; 10 ファイル入出力 (ランダムアクセス)</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?8%E5%9B%9E%E7%9B%AE">8回目</a> &#x2013; 10 ファイル入出力
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?9%E5%9B%9E%E7%9B%AE">9回目</a> &#x2013; 10 ファイル入出力 (ランダムアクセス)
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">7.6</span> 動的メモリ確保</h3>
+<div id="outline-container-sec-7-6" class="outline-3">
+<h3 id="sec-7-6"><span class="section-number-3">7.6</span> 動的メモリ確保</h3>
 <div class="outline-text-3" id="text-7-6">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE">a回目</a> &#x2013; 11.4 メモリの動的確保，11.5 確保領域の大きさを変更する</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?10%E5%9B%9E%E7%9B%AE">a回目</a> &#x2013; 11.4 メモリの動的確保，11.5 確保領域の大きさを変更する
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">7.7</span> 分割コンパイル</h3>
+<div id="outline-container-sec-7-7" class="outline-3">
+<h3 id="sec-7-7"><span class="section-number-3">7.7</span> 分割コンパイル</h3>
 <div class="outline-text-3" id="text-7-7">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?11%E5%9B%9E%E7%9B%AE">b回目</a> &#x2013; 11.6 分割コンパイル，ヘッダファイル</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE">c回目</a> &#x2013; 11.7 プリプロセッサ,</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?11%E5%9B%9E%E7%9B%AE">b回目</a> &#x2013; 11.6 分割コンパイル，ヘッダファイル
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE">c回目</a> &#x2013; 11.7 プリプロセッサ,
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">7.8</span> make</h3>
+<div id="outline-container-sec-7-8" class="outline-3">
+<h3 id="sec-7-8"><span class="section-number-3">7.8</span> make</h3>
 <div class="outline-text-3" id="text-7-8">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE">c回目</a> &#x2013; make</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?12%E5%9B%9E%E7%9B%AE">c回目</a> &#x2013; make
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">7.9</span> 実践的なデータ処理プログラム</h3>
+<div id="outline-container-sec-7-9" class="outline-3">
+<h3 id="sec-7-9"><span class="section-number-3">7.9</span> 実践的なデータ処理プログラム</h3>
 <div class="outline-text-3" id="text-7-9">
 <ul class="org-ul">
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?13%E5%9B%9E%E7%9B%AE">d回目</a> &#x2013; 応用プログラミング</li>
-<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?14%E5%9B%9E%E7%9B%AE">e回目</a> &#x2013; 応用プログラミング</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?13%E5%9B%9E%E7%9B%AE">d回目</a> &#x2013; 応用プログラミング
+</li>
+<li><a href="http://wiki.cis.iwate-u.ac.jp/~cis/prog2/pukiwiki/index.php?14%E5%9B%9E%E7%9B%AE">e回目</a> &#x2013; 応用プログラミング
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: m</p>
-<p class="date">Created: 2016-10-31 月 15:27</p>
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2017-01-10 火 15:21</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

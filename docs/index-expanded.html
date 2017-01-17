@@ -3,30 +3,23 @@
 "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-01-08 日 04:57 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>2016 今日の講義</title>
+<!-- 2017-01-17 火 13:25 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="suzuki@cis.iwate-u.ac.jp" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -65,14 +58,15 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -162,61 +156,61 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline7">1. 講義のねらい</a>
+<li><a href="#sec-1">1. 講義のねらい</a>
 <ul>
-<li><a href="#orgheadline5">1.1. 動機 (説明/ガイダンスより)</a>
+<li><a href="#sec-1-1">1.1. 動機 (説明/ガイダンスより)</a>
 <ul>
-<li><a href="#orgheadline1">1.1.1. プログラムがかけるようになりたい</a></li>
-<li><a href="#orgheadline2">1.1.2. 面白いプログラムがかきたい</a></li>
-<li><a href="#orgheadline3">1.1.3. 正しいプログラムを書きたい</a></li>
-<li><a href="#orgheadline4">1.1.4. 大規模なプログラム開発ができるようになりたい</a></li>
+<li><a href="#sec-1-1-1">1.1.1. プログラムがかけるようになりたい</a></li>
+<li><a href="#sec-1-1-2">1.1.2. 面白いプログラムがかきたい</a></li>
+<li><a href="#sec-1-1-3">1.1.3. 正しいプログラムを書きたい</a></li>
+<li><a href="#sec-1-1-4">1.1.4. 大規模なプログラム開発ができるようになりたい</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">1.2. 思い</a></li>
+<li><a href="#sec-1-2">1.2. 思い</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline8">2. 講義の実施時間について</a></li>
-<li><a href="#orgheadline9">3. ホームディレクトリのパーミションについて</a></li>
-<li><a href="#orgheadline32">4. 1回目 (10/04) の講義内容</a>
+<li><a href="#sec-2">2. 講義の実施時間について</a></li>
+<li><a href="#sec-3">3. ホームディレクトリのパーミションについて</a></li>
+<li><a href="#sec-4">4. 1回目 (10/04) の講義内容</a>
 <ul>
-<li><a href="#orgheadline11">4.1. 講義紹介</a>
+<li><a href="#sec-4-1">4.1. 講義紹介</a>
 <ul>
-<li><a href="#orgheadline10">4.1.1. 講義コンテンツ</a></li>
+<li><a href="#sec-4-1-1">4.1.1. 講義コンテンツ</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline12">4.2. 講師</a></li>
-<li><a href="#orgheadline23">4.3. prog2016 導入</a>
+<li><a href="#sec-4-2">4.2. 講師</a></li>
+<li><a href="#sec-4-3">4.3. prog2016 導入</a>
 <ul>
-<li><a href="#orgheadline16">4.3.1. モジュラープログラミングについて</a>
+<li><a href="#sec-4-3-1">4.3.1. モジュラープログラミングについて</a>
 <ul>
-<li><a href="#orgheadline13">4.3.1.1. Acroquest プログラミング講座</a></li>
-<li><a href="#orgheadline14">4.3.1.2. 構造化プログラミングについて</a></li>
-<li><a href="#orgheadline15">4.3.1.3. Strategic Choice の役に立ちそうなコンテンツ</a></li>
+<li><a href="#sec-4-3-1-1">4.3.1.1. Acroquest プログラミング講座</a></li>
+<li><a href="#sec-4-3-1-2">4.3.1.2. 構造化プログラミングについて</a></li>
+<li><a href="#sec-4-3-1-3">4.3.1.3. Strategic Choice の役に立ちそうなコンテンツ</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">4.3.2. テストによる開発の説明</a></li>
-<li><a href="#orgheadline18">4.3.3. (ソフトウェア) テストについての説明</a></li>
-<li><a href="#orgheadline19">4.3.4. プログラミング関連の講義と演習</a></li>
-<li><a href="#orgheadline22">4.3.5. Emacs for progs (検討中)</a>
+<li><a href="#sec-4-3-2">4.3.2. テストによる開発の説明</a></li>
+<li><a href="#sec-4-3-3">4.3.3. (ソフトウェア) テストについての説明</a></li>
+<li><a href="#sec-4-3-4">4.3.4. プログラミング関連の講義と演習</a></li>
+<li><a href="#sec-4-3-5">4.3.5. Emacs for progs (検討中)</a>
 <ul>
-<li><a href="#orgheadline20">4.3.5.1. 何に使うか</a></li>
-<li><a href="#orgheadline21">4.3.5.2. わかりやすサイトを見つけた</a></li>
+<li><a href="#sec-4-3-5-1">4.3.5.1. 何に使うか</a></li>
+<li><a href="#sec-4-3-5-2">4.3.5.2. わかりやすサイトを見つけた</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline31">4.4. はじまり</a>
+<li><a href="#sec-4-4">4.4. はじまり</a>
 <ul>
-<li><a href="#orgheadline26">4.4.1. ~/progs の作成 <code>[/]</code></a>
+<li><a href="#sec-4-4-1">4.4.1. ~/progs の作成 <code>[/]</code></a>
 <ul>
-<li><a href="#orgheadline24">4.4.1.1. emacs</a></li>
-<li><a href="#orgheadline25">4.4.1.2. 先生のprogs/</a></li>
+<li><a href="#sec-4-4-1-1">4.4.1.1. emacs</a></li>
+<li><a href="#sec-4-4-1-2">4.4.1.2. 先生のprogs/</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline27">4.4.2. テストとテストによる開発とは <code>[0/2]</code></a></li>
-<li><a href="#orgheadline28">4.4.3. card_display問題 <code>[0/3]</code></a></li>
-<li><a href="#orgheadline29">4.4.4. card_display_simple の解プログラムと開発ドキュメントを作成してください。</a></li>
-<li><a href="#orgheadline30">4.4.5. card_display問題のテストによる開発 <code>[0/7]</code></a></li>
+<li><a href="#sec-4-4-2">4.4.2. テストとテストによる開発とは <code>[0/2]</code></a></li>
+<li><a href="#sec-4-4-3">4.4.3. card_display問題 <code>[0/3]</code></a></li>
+<li><a href="#sec-4-4-4">4.4.4. card_display_simple の解プログラムと開発ドキュメントを作成してください。</a></li>
+<li><a href="#sec-4-4-5">4.4.5. card_display問題のテストによる開発 <code>[0/7]</code></a></li>
 </ul>
 </li>
 </ul>
@@ -236,58 +230,68 @@ for the JavaScript code in this tag.
 #+BEGIN_SRC org :tangle lects/objective.org
 </p>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">1</span> 講義のねらい</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 講義のねらい</h2>
 <div class="outline-text-2" id="text-1">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">1.1</span> 動機 (<a href="./supplements.html">説明/ガイダンス</a>より)</h3>
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 動機 (<a href="./supplements.html">説明/ガイダンス</a>より)</h3>
 <div class="outline-text-3" id="text-1-1">
-</div><div id="outline-container-orgheadline1" class="outline-4">
-<h4 id="orgheadline1"><span class="section-number-4">1.1.1</span> プログラムがかけるようになりたい</h4>
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> プログラムがかけるようになりたい</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
-<li>プログラムが思うようにかけるようになりたい</li>
-<li>プログラムが正確にかけるようになりたい</li>
-<li>プログラムが素早くかけるようになりたい</li>
-<li>きれいなプログラムがかけるようになりたい</li>
-<li>簡潔なプログラムが書けるようになりたい</li>
+<li>プログラムが思うようにかけるようになりたい
+</li>
+<li>プログラムが正確にかけるようになりたい
+</li>
+<li>プログラムが素早くかけるようになりたい
+</li>
+<li>きれいなプログラムがかけるようになりたい
+</li>
+<li>簡潔なプログラムが書けるようになりたい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2"><span class="section-number-4">1.1.2</span> 面白いプログラムがかきたい</h4>
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> 面白いプログラムがかきたい</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <ul class="org-ul">
-<li>思っていることをプログラムできる力が欲しい</li>
+<li>思っていることをプログラムできる力が欲しい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">1.1.3</span> 正しいプログラムを書きたい</h4>
+<div id="outline-container-sec-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> 正しいプログラムを書きたい</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <ul class="org-ul">
-<li>プログラムの正しさがわかる力が欲しい</li>
-<li>プログラムをデバッグする力が欲しい</li>
+<li>プログラムの正しさがわかる力が欲しい
+</li>
+<li>プログラムをデバッグする力が欲しい
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">1.1.4</span> 大規模なプログラム開発ができるようになりたい</h4>
+<div id="outline-container-sec-1-1-4" class="outline-4">
+<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> 大規模なプログラム開発ができるようになりたい</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <ul class="org-ul">
-<li>わかりやすいプログラム</li>
-<li>協同作業しやすいプログラム</li>
+<li>わかりやすいプログラム
+</li>
+<li>協同作業しやすいプログラム
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">1.2</span> 思い</h3>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 思い</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 <a href="https://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?1%E5%9B%9E%E7%9B%AE.14_2">Prog Wikky - 1回目.14_2</a> の説明より
@@ -338,8 +342,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">2</span> 講義の実施時間について</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 講義の実施時間について</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 演習を伴なう (むしろ演習が主な) 講義なので，90分の時間内で，
@@ -347,13 +351,16 @@ for the JavaScript code in this tag.
 </p>
 
 <ul class="org-ul">
-<li>講義内容の説明は，2:30 までに終りにします。</li>
+<li>講義内容の説明は，2:30 までに終りにします。
+</li>
 
-<li>講義中の課題は次週までの宿題とします。</li>
+<li>講義中の課題は次週までの宿題とします。
+</li>
 
 <li>2:30~ 自主的に課題に取り組む時間とし，
 3:00 までは TA さんが対応してくれ，
-それ以降は，((s-:)) が適宜対応します。</li>
+それ以降は，((s-:)) が適宜対応します。
+</li>
 </ul>
 
 <p>
@@ -362,8 +369,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9"><span class="section-number-2">3</span> ホームディレクトリのパーミションについて</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> ホームディレクトリのパーミションについて</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 進行状況の確認や，レポート提出のために，~/progs の中を閲覧，回収したい
@@ -390,31 +397,35 @@ chmod -R o+rx ~/progs
 
 
 
-<div id="outline-container-orgheadline32" class="outline-2">
-<h2 id="orgheadline32"><span class="section-number-2">4</span> 1回目 (10/04) の講義内容</h2>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 1回目 (10/04) の講義内容</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">4.1</span> 講義紹介</h3>
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 講義紹介</h3>
 <div class="outline-text-3" id="text-4-1">
-</div><div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">4.1.1</span> 講義コンテンツ</h4>
+</div><div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1"><span class="section-number-4">4.1.1</span> 講義コンテンツ</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <dl class="org-dl">
-<dt>学科のサイト</dt><dd><a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016">https://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016</a> 
-         講義中の変更を反映する予定です。</dd>
+<dt> 学科のサイト </dt><dd>         <a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016">https://wiki.cis.iwate-u.ac.jp/~suzuki/prog2016</a> 
+         講義中の変更を反映する予定です。
+</dd>
 
-<dt>publicサイト</dt><dd><a href="https://masayuki054.github.io/prog">https://masayuki054.github.io/prog</a></dd>
+<dt> publicサイト </dt><dd>      <a href="https://masayuki054.github.io/prog">https://masayuki054.github.io/prog</a>
+</dd>
 
-<dt>リポジトリ</dt><dd><a href="https://github.com/masayuki054/prog/">https://github.com/masayuki054/prog/</a></dd>
+<dt> リポジトリ </dt><dd><a href="https://github.com/masayuki054/prog/">https://github.com/masayuki054/prog/</a> 
+</dd>
 
-<dt>ワーキングコピー</dt><dd><a href="file:///users/home/masayuki/prog.git/">file:///users/home/masayuki/prog.git/</a> <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></dd>
+<dt> ワーキングコピー </dt><dd><a href="file:///home/staff/suzuki/prog.git/">file:///home/staff/suzuki/prog.git/</a> <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</dd>
 </dl>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">4.2</span> 講師</h3>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 講師</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 <a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/">自己紹介</a>
@@ -422,19 +433,19 @@ chmod -R o+rx ~/progs
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">4.3</span> prog2016 導入</h3>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> prog2016 導入</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 progs の導入に関連する内容
 </p>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16"><span class="section-number-4">4.3.1</span> モジュラープログラミングについて</h4>
+<div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> モジュラープログラミングについて</h4>
 <div class="outline-text-4" id="text-4-3-1">
-</div><div id="outline-container-orgheadline13" class="outline-5">
-<h5 id="orgheadline13"><span class="section-number-5">4.3.1.1</span> Acroquest プログラミング講座</h5>
+</div><div id="outline-container-sec-4-3-1-1" class="outline-5">
+<h5 id="sec-4-3-1-1"><span class="section-number-5">4.3.1.1</span> Acroquest プログラミング講座</h5>
 <div class="outline-text-5" id="text-4-3-1-1">
 <p>
 <a href="https://www.acroquest.co.jp/webworkshop/programing_course/index1.html">目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？</a>
@@ -447,8 +458,8 @@ progs の導入に関連する内容
 </div>
 
 
-<div id="outline-container-orgheadline14" class="outline-5">
-<h5 id="orgheadline14"><span class="section-number-5">4.3.1.2</span> 構造化プログラミングについて</h5>
+<div id="outline-container-sec-4-3-1-2" class="outline-5">
+<h5 id="sec-4-3-1-2"><span class="section-number-5">4.3.1.2</span> 構造化プログラミングについて</h5>
 <div class="outline-text-5" id="text-4-3-1-2">
 <p>
 <a href="https://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html">構造化プログラミング</a> がいい。
@@ -462,8 +473,8 @@ progs の導入に関連する内容
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-5">
-<h5 id="orgheadline15"><span class="section-number-5">4.3.1.3</span> Strategic Choice の役に立ちそうなコンテンツ</h5>
+<div id="outline-container-sec-4-3-1-3" class="outline-5">
+<h5 id="sec-4-3-1-3"><span class="section-number-5">4.3.1.3</span> Strategic Choice の役に立ちそうなコンテンツ</h5>
 <div class="outline-text-5" id="text-4-3-1-3">
 <p>
 オブジェクト指向についてのサイトですが，モジュール化について考えるとき
@@ -471,37 +482,43 @@ progs の導入に関連する内容
 </p>
 
 <ul class="org-ul">
-<li><a href="https://d.hatena.ne.jp/asakichy/20090216/1234765854">構造化プログラミング入門 - Strategic Choice</a></li>
+<li><a href="https://d.hatena.ne.jp/asakichy/20090216/1234765854">構造化プログラミング入門 - Strategic Choice</a>
+</li>
 
-<li><a href="https://d.hatena.ne.jp/asakichy/20090217/1234830611">段階的詳細化 - Strategic Choice</a></li>
+<li><a href="https://d.hatena.ne.jp/asakichy/20090217/1234830611">段階的詳細化 - Strategic Choice</a>
+</li>
 
-<li><a href="https://d.hatena.ne.jp/asakichy/20090218/1234990542">凝集度 - Strategic Choice</a></li>
+<li><a href="https://d.hatena.ne.jp/asakichy/20090218/1234990542">凝集度 - Strategic Choice</a>
+</li>
 
-<li><a href="https://d.hatena.ne.jp/asakichy/20090219/1234936956">結合度 - Strategic Choice</a></li>
+<li><a href="https://d.hatena.ne.jp/asakichy/20090219/1234936956">結合度 - Strategic Choice</a>
+</li>
 </ul>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17"><span class="section-number-4">4.3.2</span> テストによる開発の説明</h4>
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> テストによる開発の説明</h4>
 <div class="outline-text-4" id="text-4-3-2">
 <p>
 TDD (Test Driven Development) テスト駆動開発といいます。
 </p>
 
 <ul class="org-ul">
-<li><a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA">テスト駆動開発 - Wikipedia</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA">テスト駆動開発 - Wikipedia</a>
+</li>
 
-<li><a href="./org-docs/what-is-tdd.html">資料/テストによる開発とは</a> (この中にもリンクがあります)</li>
+<li><a href="./org-docs/what-is-tdd.html">資料/テストによる開発とは</a> (この中にもリンクがあります)
+</li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18"><span class="section-number-4">4.3.3</span> (ソフトウェア) テストについての説明</h4>
+<div id="outline-container-sec-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> (ソフトウェア) テストについての説明</h4>
 <div class="outline-text-4" id="text-4-3-3">
 <p>
 <a href="./org-docs/software-test.html">資料/ソフトウェア・テスト</a>
@@ -514,8 +531,8 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 </div>
 
 
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19"><span class="section-number-4">4.3.4</span> プログラミング関連の講義と演習</h4>
+<div id="outline-container-sec-4-3-4" class="outline-4">
+<h4 id="sec-4-3-4"><span class="section-number-4">4.3.4</span> プログラミング関連の講義と演習</h4>
 <div class="outline-text-4" id="text-4-3-4">
 <p>
 <a href="https://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/org-docs/cis-programming-lects/">プログラム関連演習@cis.iwate-u.ac.jp</a> 振り返りましょう.
@@ -527,74 +544,99 @@ TDD (Test Driven Development) テスト駆動開発といいます。
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 重要なプログラムの構成要素 <code>[0/3]</code>
+<li><code>[&#xa0;]</code> 重要なプログラムの構成要素 <code>[0/3]</code>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 関数と抽象化，情報隠蔽</li>
-<li class="off"><code>[&#xa0;]</code> ヘッダファイルの役割，インタフェース遵守</li>
-<li class="off"><code>[&#xa0;]</code> 名前と実体の管理</li>
-</ul></li>
+<li><code>[&#xa0;]</code> 関数と抽象化，情報隠蔽
+</li>
+<li><code>[&#xa0;]</code> ヘッダファイルの役割，インタフェース遵守
+</li>
+<li><code>[&#xa0;]</code> 名前と実体の管理
+</li>
+</ul>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> コンパイル過程のこと <code>[0/6]</code>
+<li><code>[&#xa0;]</code> コンパイル過程のこと <code>[0/6]</code>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> #include の意味</li>
-<li class="off"><code>[&#xa0;]</code> gcc がおこなうこと</li>
-<li class="off"><code>[&#xa0;]</code> .o (オブジェクト・ファイル)</li>
-<li class="off"><code>[&#xa0;]</code> .a (静的ライブラリ), .so(動的ライブラリ)</li>
-<li class="off"><code>[&#xa0;]</code> ld (ローダ，リンケージ・エディタ)</li>
-<li class="off"><code>[&#xa0;]</code> a.out (実行プログラム)</li>
-</ul></li>
+<li><code>[&#xa0;]</code> #include の意味
+</li>
+<li><code>[&#xa0;]</code> gcc がおこなうこと
+</li>
+<li><code>[&#xa0;]</code> .o (オブジェクト・ファイル)
+</li>
+<li><code>[&#xa0;]</code> .a (静的ライブラリ), .so(動的ライブラリ)
+</li>
+<li><code>[&#xa0;]</code> ld (ローダ，リンケージ・エディタ)
+</li>
+<li><code>[&#xa0;]</code> a.out (実行プログラム)
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-4">
-<h4 id="orgheadline22"><span class="section-number-4">4.3.5</span> Emacs for progs (検討中)</h4>
+<div id="outline-container-sec-4-3-5" class="outline-4">
+<h4 id="sec-4-3-5"><span class="section-number-4">4.3.5</span> Emacs for progs (検討中)</h4>
 <div class="outline-text-4" id="text-4-3-5">
 <p>
 emacs@progs でどんな内容を教えるか？
 </p>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20"><span class="section-number-5">4.3.5.1</span> 何に使うか</h5>
+<div id="outline-container-sec-4-3-5-1" class="outline-5">
+<h5 id="sec-4-3-5-1"><span class="section-number-5">4.3.5.1</span> 何に使うか</h5>
 <div class="outline-text-5" id="text-4-3-5-1">
 <ul class="org-ul">
 <li>programming
 <ul class="org-ul">
-<li>source coding</li>
-<li>Makefile, make</li>
-</ul></li>
-<li>terminal/shell execution</li>
-<li>全文検索</li>
+<li>source coding
+</li>
+<li>Makefile, make
+</li>
+</ul>
+</li>
+<li>terminal/shell execution
+</li>
+<li>全文検索
+</li>
 <li>Document 作成 
 <ul class="org-ul">
-<li>org-mode</li>
-</ul></li>
+<li>org-mode
+</li>
+</ul>
+</li>
 <li>文芸的プログラミング
 <ul class="org-ul">
-<li>org-mode + babel</li>
-</ul></li>
+<li>org-mode + babel 
+</li>
+</ul>
+</li>
 
-<li>eww (emacs ブラウザ)</li>
+<li>eww (emacs ブラウザ)
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21"><span class="section-number-5">4.3.5.2</span> わかりやすサイトを見つけた</h5>
+<div id="outline-container-sec-4-3-5-2" class="outline-5">
+<h5 id="sec-4-3-5-2"><span class="section-number-5">4.3.5.2</span> わかりやすサイトを見つけた</h5>
 <div class="outline-text-5" id="text-4-3-5-2">
 <p>
 参考にしてください。
 </p>
 
 <ul class="org-ul">
-<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333883641">Diredの基本操作を覚える - CLOVER</a></li>
+<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333883641">Diredの基本操作を覚える - CLOVER</a>
+</li>
 
-<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333885399">Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER</a></li>
+<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333885399">Emacsのバッファ・ウィンドウ操作の基本を覚える - CLOVER</a>
+</li>
 
-<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333890311">Emacsで矩形編集を行う - CLOVER</a></li>
+<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333890311">Emacsで矩形編集を行う - CLOVER</a>
+</li>
 
-<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333891517">Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER</a></li>
+<li><a href="https://d.hatena.ne.jp/Kazuhira/20120408/1333891517">Emacsでのファイルの再読み込み・文字コード指定関連のTips - CLOVER</a>
+</li>
 </ul>
 </div>
 </div>
@@ -602,14 +644,15 @@ emacs@progs でどんな内容を教えるか？
 </div>
 
 
-<div id="outline-container-orgheadline31" class="outline-3">
-<h3 id="orgheadline31"><span class="section-number-3">4.4</span> はじまり</h3>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> はじまり</h3>
 <div class="outline-text-3" id="text-4-4">
-</div><div id="outline-container-orgheadline26" class="outline-4">
-<h4 id="orgheadline26"><span class="section-number-4">4.4.1</span> ~/progs の作成 <code>[/]</code></h4>
+</div><div id="outline-container-sec-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1"><span class="section-number-4">4.4.1</span> ~/progs の作成 <code>[/]</code></h4>
 <div class="outline-text-4" id="text-4-4-1">
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 講義用のディレクトリを作成します：</li>
+<li><code>[&#xa0;]</code> 講義用のディレクトリを作成します：
+</li>
 </ul>
 
 <div class="org-src-container">
@@ -624,7 +667,8 @@ ls -R
 </div>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> ~/progs/README.org を作成します:</li>
+<li><code>[&#xa0;]</code> ~/progs/README.org を作成します:
+</li>
 </ul>
 
 <div class="org-src-container">
@@ -639,64 +683,76 @@ ls -R
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-5">
-<h5 id="orgheadline24"><span class="section-number-5">4.4.1.1</span> emacs</h5>
+<div id="outline-container-sec-4-4-1-1" class="outline-5">
+<h5 id="sec-4-4-1-1"><span class="section-number-5">4.4.1.1</span> emacs</h5>
 <div class="outline-text-5" id="text-4-4-1-1">
 <ul class="org-ul">
-<li><a href="Emacs.html#Top">Emacs</a>, <a href="org-mode.html#Top">org-mode</a> を教え,</li>
+<li><a href="Emacs">Emacs</a>, <a href="org-mode">org-mode</a> を教え,
+</li>
 <li>org-mode のことを少し説明する，かな
 <dl class="org-dl">
-<dt>見出しの書き方</dt><dd>行頭に*</dd>
-<dt>箇条書き</dt><dd>行頭に-, あるいは段落の始まりに-</dd>
-<dt>折りたたみ/展開</dt><dd>タブ，またはシフト+タブ</dd>
-</dl></li>
+<dt> 見出しの書き方 </dt><dd>       行頭に*
+</dd>
+<dt> 箇条書き </dt><dd>       行頭に-, あるいは段落の始まりに-
+</dd>
+<dt> 折りたたみ/展開 </dt><dd>       タブ，またはシフト+タブ
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-5">
-<h5 id="orgheadline25"><span class="section-number-5">4.4.1.2</span> 先生のprogs/</h5>
+<div id="outline-container-sec-4-4-1-2" class="outline-5">
+<h5 id="sec-4-4-1-2"><span class="section-number-5">4.4.1.2</span> 先生のprogs/</h5>
 <div class="outline-text-5" id="text-4-4-1-2">
 <ul class="org-ul">
-<li><a href="file:///users/home/masayuki/progs">file:///users/home/masayuki/progs</a> がお手本です。</li>
+<li><a href="file:///home/staff/suzuki/progs">file:///home/staff/suzuki/progs</a> がお手本です。
+</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-4">
-<h4 id="orgheadline27"><span class="section-number-4">4.4.2</span> テストとテストによる開発とは <code>[0/2]</code></h4>
+<div id="outline-container-sec-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2"><span class="section-number-4">4.4.2</span> テストとテストによる開発とは <code>[0/2]</code></h4>
 <div class="outline-text-4" id="text-4-4-2">
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a></li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/software-test.html">ソフトウェア・テストについて</a>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a></li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/what-is-tdd.html">テストによる開発とは</a>
+</li>
 
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> テストの体験</li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/cutter.html">cutterの使い方</a> テストの体験
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-4">
-<h4 id="orgheadline28"><span class="section-number-4">4.4.3</span> card_display問題 <code>[0/3]</code></h4>
+<div id="outline-container-sec-4-4-3" class="outline-4">
+<h4 id="sec-4-4-3"><span class="section-number-4">4.4.3</span> card_display問題 <code>[0/3]</code></h4>
 <div class="outline-text-4" id="text-4-4-3">
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> <a href="./org-docs/card-display.html">カード表示問題の始まり</a></li>
-<li class="off"><code>[&#xa0;]</code> 自分なりにプログラムを作ってみる (今日)</li>
-<li class="off"><code>[&#xa0;]</code> 機能分解して，テストによる開発してみる (来週)</li>
+<li><code>[&#xa0;]</code> <a href="./org-docs/card-display.html">カード表示問題の始まり</a>
+</li>
+<li><code>[&#xa0;]</code> 自分なりにプログラムを作ってみる (今日)
+</li>
+<li><code>[&#xa0;]</code> 機能分解して，テストによる開発してみる (来週)
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline29" class="outline-4">
-<h4 id="orgheadline29"><span class="section-number-4">4.4.4</span> card_display_simple の解プログラムと開発ドキュメントを作成してください。</h4>
+<div id="outline-container-sec-4-4-4" class="outline-4">
+<h4 id="sec-4-4-4"><span class="section-number-4">4.4.4</span> card_display_simple の解プログラムと開発ドキュメントを作成してください。</h4>
 <div class="outline-text-4" id="text-4-4-4">
 <p>
 これは最初のレポート課題になります。
 </p>
 
 <dl class="org-dl">
-<dt>~/progs/card_display/first/ の作成</dt><dd></dd>
+<dt> ~/progs/card_display/first/ の作成 </dt><dd></dd>
 </dl>
 <div class="org-src-container">
 
@@ -706,31 +762,41 @@ mkdir card_display/first
 </div>
 
 <dl class="org-dl">
-<dt>~/progs/card_display/first/simple.org</dt><dd><ul class="org-ul">
+<dt> ~/progs/card_display/first/simple.org </dt><dd><ul class="org-ul">
 <li>ソース・プログラムを作成する前にどんなふうに何を作るかを，
-できれば org-mode で書いてください。</li>
+できれば org-mode で書いてください。
+</li>
 <li>プログラムの作成中に考えた事，決めた事，疑問など，箇条書きで書
-いてください。</li>
-</ul></dd>
+いてください。
+</li>
+</ul>
+</dd>
 
-<dt>~/progs/card_display/first/simple.c</dt><dd><ol class="org-ol">
-<li>できれば関数を多用してください。</li>
-<li>できれば分りやく書いてください。</li>
-<li>正しく動くプログラムをsimple.c を作成してください。</li>
+<dt> ~/progs/card_display/first/simple.c </dt><dd><ol class="org-ol">
+<li>できれば関数を多用してください。
+</li>
+<li>できれば分りやく書いてください。
+</li>
+<li>正しく動くプログラムをsimple.c を作成してください。
+</li>
 <li>正しく動くプログラムをsimple.0.c にし，
 1と2の2つの観点から書き直してみてください。
-改良し, 正しく動く simple.c にしてください。</li>
+改良し, 正しく動く simple.c にしてください。
+</li>
 <li>納得できるまで上記の改良を繰り返し，繰り返しごとに番号を
-0-&gt;1-&gt;2-&gt; &#x2026; と増やしてください。</li>
-</ol></dd>
+0-&gt;1-&gt;2-&gt; &#x2026; と増やしてください。
+</li>
+</ol>
+</dd>
 
-<dt>~/progs/card_display/first/Makefile</dt><dd>simple.c をコンパイルするための規則を書いてください。</dd>
+<dt> ~/progs/card_display/first/Makefile </dt><dd>      simple.c をコンパイルするための規則を書いてください。
+</dd>
 </dl>
 </div>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-4">
-<h4 id="orgheadline30"><span class="section-number-4">4.4.5</span> card_display問題のテストによる開発 <code>[0/7]</code></h4>
+<div id="outline-container-sec-4-4-5" class="outline-4">
+<h4 id="sec-4-4-5"><span class="section-number-4">4.4.5</span> card_display問題のテストによる開発 <code>[0/7]</code></h4>
 <div class="outline-text-4" id="text-4-4-5">
 <p>
 この内容は，次々回からになると思います。
@@ -740,13 +806,20 @@ mkdir card_display/first
 <a href="./org-docs/tdd-card-display-simple.html">CardDisplaySimple問題のテストによる開発</a> [ ]
 </p>
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> test_card_suit_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_new_from_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_new, suit, no</li>
-<li class="off"><code>[&#xa0;]</code> test_card_no_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_suit_to_string</li>
-<li class="off"><code>[&#xa0;]</code> test_card_to_string</li>
-<li class="off"><code>[&#xa0;]</code> card_display_single</li>
+<li><code>[&#xa0;]</code> test_card_suit_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_no_new_from_string
+</li>
+<li><code>[&#xa0;]</code> test_card_new, suit, no
+</li>
+<li><code>[&#xa0;]</code> test_card_no_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_suit_to_string
+</li>
+<li><code>[&#xa0;]</code> test_card_to_string
+</li>
+<li><code>[&#xa0;]</code> card_display_single
+</li>
 </ul>
 </div>
 </div>
@@ -756,20 +829,22 @@ mkdir card_display/first
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
 'file:'はファイルへのリンクを表すURLです。
 </p>
 
 <ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> 講義の目的など <code>[0/0]</code></li>
-</ul></div></div>
+<li><code>[&#xa0;]</code> 講義の目的など <code>[0/0]</code>
+</li>
+</ul></div>
 
 
 </div>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: suzuki@cis.iwate-u.ac.jp</p>
-<p class="date">Created: 2017-01-08 日 04:57</p>
+<p class="date">Created: 2017-01-17 火 13:25</p>
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="https://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

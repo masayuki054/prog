@@ -1,5 +1,9 @@
 * 山について考える
 
+文中， ~test_deck.c#test_discard~  という書き方がでてきますが，
+ファイル test_deck.c の中の， ~test_discard~ 関数を意味しています。
+
+
 ** 山の機能
  
    [[http://wiki.cis.iwate-u.ac.jp/~wiki/prog.cgi?山モジュールの機能の検討][山モジュールの機能の検討]] (prog-wiki) も参考にしてください。
@@ -348,22 +352,27 @@ deck_draw(void)
      - 適当な回数
      - 適当な2枚を入れ替える
 
-** 山を印刷
-   test_print.cの作成
-   : # include <deck.h>
-   : Deck_newしてDeck_topが０になるまで，
-   : while (Deck_top()>0)
-   :   printf("%s\n", Card_to_str(Deck_draw());
+* 山の印刷の機能
 
-   デバッグ用
-   print.c の作成 
-   : void Deck_print(Deck deck)
+以下は，古い内容でした。2016年度は，作る必要がありません。
+
+印刷などは，テストが書きにくく，テストによる開発の枠組みに入れにくいのですが，
+作っておくと便利な機能です:
+  
+** 山を印刷 (test/test_deck.c#test_deck_print)
+
+   : Deck_newしてDeck_topが０になるまで，
+   : while (deck_size()>0)
+   :   printf("%s\n", Card_to_str(deck_draw());
+
+** デバッグ用の関数 (src/deck.c#deck_print)
+*** deck_print関数
+   : void deck_print(Deck deck)
    : {
-   :     for (i=0; i<deck.top; i++)
+   :     for (i=0; i<deck.size; i++)
    :       printf("%s\n", Card_to_string(deck.cards[i]))
    : }
 
-   インターフェイスへの変更はない．test_deck の一部と考えられる．
 
 
 

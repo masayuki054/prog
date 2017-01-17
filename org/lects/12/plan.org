@@ -1,57 +1,18 @@
-* 11回目 (01/10) の講義実施内容
+* 12回目 (01/17) の講義実施内容
 
 ** 今日の予定
-
-     - [X] モジュラープログラミングについて紹介  [3/3]
-
-       補足タブの中にあるモジュラープログラミングについて紹介します。
-
-       - [X] Acroquest プログラミング講座 [2/2]
-
-	 - [X] [[http://www.acroquest.co.jp/webworkshop/programing_course/index1.html][」目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？]]
-
-	 - [X] [[http://www.acroquest.co.jp/webworkshop/programing_course/index18.html][目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念]]
-
-       - [X] 構造化プログラミングについて [1/1]
-
-	 - [X]  [[http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html][構造化プログラミング]] がいい。
-
-          「大規模なプログラムを書くとき，どうしたら良いプログラムに
-           仕上げることができるか？」という問いに対して与えられた回
-           答。
-
-       - [X] Strategic Choice の役に立ちそうなコンテンツ [4/4]
-
-         オブジェクト指向についてのサイトですが，モジュール化について
-         考えるときの拠り所について参考にしてください:
-
-	 - [X] [[http://d.hatena.ne.jp/asakichy/20090216/1234765854][構造化プログラミング入門 - Strategic Choice]]
-
-	 - [X] [[http://d.hatena.ne.jp/asakichy/20090217/1234830611][段階的詳細化 - Strategic Choice]]
-
-	 - [X] [[http://d.hatena.ne.jp/asakichy/20090218/1234990542][凝集度 - Strategic Choice]]
-
-	 - [X]
-           [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
-
-     - [X] 三回目のレポート作成
-
-       停電によるシステム停止のためレポート作成ができなかった人が多い
-       にではと思います。今日の講義時間は，レポートを作成してください。
-
-     - [ ]  レポート完成している人は，手札モジュールの開発を始めてください。
-
-** [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]] [2/6]
+   
+** [[./org-docs/poker.org][モジュール開発によるポーカーゲームの作成]] [3/5]
 
    - [X] カードモジュールの作成
 
    - [X] ゲームの説明から，モジュール分けを行いました。~/progs/game/game.org
 
-   - [-] 山モジュールの開発
+   - [X] 山モジュールの開発
 
      - https://workflowy.com/s/H3egIJyvcA も参考にしてください。
 
-   - [ ] 手札モジュールの開発 (1/10, 1/17, 1/24)
+   - [-] 手札モジュールの開発 (1/10, 1/17, 1/24)
 
    - [ ] プレーヤーモジュールの開発, ポーカーゲームの開発 (1/31, 2/7)
 
@@ -104,6 +65,39 @@
      - [X] card_display_multi 自分でやって
      - [X] cards_sort <2016-11-28 月>
      - [X] card_display_sort <2016-11-28 月>
+
+*** DONE モジュラープログラミングについて紹介  [3/3]
+
+       補足タブの中にあるモジュラープログラミングについて紹介します。
+
+       - [X] Acroquest プログラミング講座 [2/2]
+
+	 - [X] [[http://www.acroquest.co.jp/webworkshop/programing_course/index1.html][」目から鱗が落ちるように分かるプログラミング講座 プログラミングとは？]]
+
+	 - [X] [[http://www.acroquest.co.jp/webworkshop/programing_course/index18.html][目から鱗が落ちるように分かるプログラミング講座 モジュール化の概念]]
+
+       - [X] 構造化プログラミングについて [1/1]
+
+	 - [X]  [[http://www2.cc.niigata-u.ac.jp/~takeuchi/tbasic/Intro2Basic/Structure.html][構造化プログラミング]] がいい。
+
+          「大規模なプログラムを書くとき，どうしたら良いプログラムに
+           仕上げることができるか？」という問いに対して与えられた回
+           答。
+
+       - [X] Strategic Choice の役に立ちそうなコンテンツ [4/4]
+
+         オブジェクト指向についてのサイトですが，モジュール化について
+         考えるときの拠り所について参考にしてください:
+
+	 - [X] [[http://d.hatena.ne.jp/asakichy/20090216/1234765854][構造化プログラミング入門 - Strategic Choice]]
+
+	 - [X] [[http://d.hatena.ne.jp/asakichy/20090217/1234830611][段階的詳細化 - Strategic Choice]]
+
+	 - [X] [[http://d.hatena.ne.jp/asakichy/20090218/1234990542][凝集度 - Strategic Choice]]
+
+	 - [X]
+           [[http://d.hatena.ne.jp/asakichy/20090219/1234936956][結合度 - Strategic Choice]]
+
 
   
 ** ((:-s)) のつぶやき [2/2]

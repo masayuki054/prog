@@ -104,9 +104,9 @@
 役は手札に関する付加情報と考え，モジュールを構成する主体とは考えなかっ
 た。
 
-- 手札の役を計算する - *hand_calc*
+- 手札の役を計算する - *hand_judge* +*hand_calc*+
   - 主体 ： 手札 hand
-  - 操作 ： 役の計算 calc
+  - 操作 ： 役の判定 +計算+ ~judge~ +calc+
 
     下請けの関数として，が考えられるが，今は詳細として，隠しておき，
     hand_calc のテスト駆動開発の時に，検討しましょう:
@@ -238,7 +238,7 @@ char *hand_to_string(Hand);
 
 #+END_SRC
 
-**** hand_calc
+**** hand_judge +hand_calc+
 手札の役を計算する
 - 主体 ： 手札 hand
 - 操作 ： 手札のソート sort
@@ -247,7 +247,7 @@ char *hand_to_string(Hand);
 
 #+BEGIN_SRC c
 
-PokerHand hand_calc(Hand);
+PokerHand hand_judge(Hand);
 
 #+END_SRC
 
@@ -264,7 +264,7 @@ enum PokerHand { HighCards, OnePair, TwoPairs, ThreeCards, Straight, Flush,
 
 #+END_SRC
 
-**** poker_hand_to_string
+**** hand_pokerhand_to_string
 役値を文字列に
 - 主体 ： 手札 hand
 - 操作 ： 役を表す文字列を作る pokerhand_to_string

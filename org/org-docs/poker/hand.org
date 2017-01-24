@@ -109,7 +109,7 @@
   - 操作 ： 役の判定 +計算+ ~judge~ +calc+
 
     下請けの関数として，が考えられるが，今は詳細として，隠しておき，
-    hand_calc のテスト駆動開発の時に，検討しましょう:
+    hand_judge のテスト駆動開発の時に，検討しましょう:
     - hand_is_straight -- 手札はストレートか？
     - hand_is_flush -- 手札はフラッシュか？
     - hand_calc_pairs -- ペアを計算する
@@ -117,8 +117,7 @@
 - 役 *PokerHand* (物)
   - 役のこと，いくつか具体的な役の名前の集まり
   - なので型
-  - 型は capital words で表すので，_P_oker_H_and.
-
+  - 型は，キャメルケースで表すので，_P_oker_H_and.
 
 - 役を文字列に - *hand_pokerhand_to_string*
   - 主体 ： hand? 

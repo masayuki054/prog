@@ -2,8 +2,24 @@
 #+include: announce.org :minlevel 1
 # #* はじめに
 #+include: preface.org :minlevel 1
+# * 14回目
+#+include: 14/plan.org :minlevel 1
+#+include: 14/response.org :minlevel 1
+# * 13回目
+#+include: 13/plan.org :minlevel 1
+#+include: 13/response.org :minlevel 1
+# * 12回目
+#+include: 12/plan.org :minlevel 1
+#+include: 12/response.org :minlevel 1
+# * 11回目
+#+include: 11/resume.org :minlevel 1
+#+include: 11/response.org :minlevel 1
+# * 10回目
+#+include: 10/resume.org :minlevel 1
+#+include: 10/response.org :minlevel 1
 # * 9回目
-#+include: 09/plan.org :minlevel 1
+#+include: 09/resume.org :minlevel 1
+#+include: 09/response.org :minlevel 1
 # * 8回目
 #+include: 08/resume.org :minlevel 1
 #+include: 08/response.org :minlevel 1

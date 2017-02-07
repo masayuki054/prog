@@ -1,0 +1,6 @@
+* レスポンス.14
+
+** カード
+
+   [[http://wiki.cis.iwate-u.ac.jp/~suzuki/Documents/prog2016/card-13.pdf][card-14.pdf]]
+

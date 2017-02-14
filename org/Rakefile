@@ -1,3 +1,4 @@
+
 # coding:utf-8
 # coding:utf-8
 require 'date'
@@ -39,7 +40,7 @@ CLOBBER.include(HTMLS)
 
 ORGS.each do |org|
   html = File.basename(org, ".org")+".html"
-  @depends = `~/COMM/bin/org_dependency.rb #{org}`.chomp.split(",")
+  @depends = `~/COMM/bin/org_dependency.rb #{org}`.chomp.gsub(' ','').split(",")
   if @depends.size!=0 
     file html => @depends.push(org) do |t|
       sh "org2html #{org}"

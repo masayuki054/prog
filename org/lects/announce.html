@@ -1,0 +1,1255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-02-14 火 22:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Masayuki Suzuki" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline53">1. お知らせ</a>
+<ul>
+<li><a href="#orgheadline1">1.1. 最終講義以降の連絡方法 2017-02-14 火</a></li>
+<li><a href="#orgheadline2">1.2. 2/15, 2/16 質問等受け付け 2017-02-14 火</a></li>
+<li><a href="#orgheadline3">1.3. 2/14 補講します 2017-02-07 火</a></li>
+<li><a href="#orgheadline6">1.4. 最終レポートについて <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-07 火&gt;</span></span></a>
+<ul>
+<li><a href="#orgheadline4">1.4.1. 課題内容</a></li>
+<li><a href="#orgheadline5">1.4.2. 提出</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline7">1.5. 3回目のレポート回収についてのお知らせ 2017-02-10 金</a></li>
+<li><a href="#orgheadline8">1.6. 講義終了後のお知らせ <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-07 火&gt;</span></span></a></li>
+<li><a href="#orgheadline9">1.7. 2/14 補講します <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-07 火&gt;</span></span></a></li>
+<li><a href="#orgheadline10">1.8. 良いレポートの書き方について / 2回目のレポートの評価について <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-31 火&gt;</span></span></a></li>
+<li><a href="#orgheadline11">1.9. 2回目のレポートの成績をつけました。<span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-24 火&gt;</span></span></a></li>
+<li><a href="#orgheadline12">1.10. 2017.01.10提出の課題(3回目のレポート)の回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-24 火&gt;</span></span></a></li>
+<li><a href="#orgheadline13">1.11. 2017.01.10提出の課題(3回目のレポート)の回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-17 火&gt;</span></span></a></li>
+<li><a href="#orgheadline14">1.12. 2回目のレポート再回収します  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-17 火&gt;</span></span></a></li>
+<li><a href="#orgheadline15">1.13. 2017.01.10提出の課題(レポート)の〆切延期のお知らせ  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-08 日&gt;</span></span></a></li>
+<li><a href="#orgheadline18">1.14. 次回冬休み開け(2017.01.10) までの課題(レポート)</a>
+<ul>
+<li><a href="#orgheadline16">1.14.1. 課題内容</a></li>
+<li><a href="#orgheadline17">1.14.2. 提出</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline19">1.15. プロジェクタに表示しているページのURLを知らせたい</a></li>
+<li><a href="#orgheadline23">1.16. 2回目のレポート出題 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-06 火&gt;</span></span></a>
+<ul>
+<li><a href="#orgheadline20">1.16.1. 提出期限</a></li>
+<li><a href="#orgheadline21">1.16.2. 提出してもらうもの</a></li>
+<li><a href="#orgheadline22">1.16.3. 注意点</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline24">1.17. 1回目のレポートの成績をつけました。<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-06 火&gt;</span></span></a></li>
+<li><a href="#orgheadline26">1.18. 2回目のレポートの予定</a>
+<ul>
+<li><a href="#orgheadline25">1.18.1. 提出してもらうもの</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline27">1.19. 1回目のレポートの仮成績をつけました。</a></li>
+<li><a href="#orgheadline28">1.20. wiki の設置 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-28 月&gt;</span></span></a></li>
+<li><a href="#orgheadline29">1.21. if文とセミコロン <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#orgheadline30">1.22. あっているのでしょうか？ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#orgheadline31">1.23. card<sub>display</sub><sub>simple</sub> の開発に関する絵 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#orgheadline32">1.24. 回収レポートの評価  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></a></li>
+<li><a href="#orgheadline35">1.25. レポートの回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a>
+<ul>
+<li><a href="#orgheadline33">1.25.1. 「課題:card<sub>display問題を始める</sub>」のレポートを回収します。</a></li>
+<li><a href="#orgheadline34">1.25.2. 確認方法</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline36">1.26. 講義サイト のタブに補足を追加しました <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a></li>
+<li><a href="#orgheadline40">1.27. リアルタイムストリーミングを試してみましょう  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></a>
+<ul>
+<li><a href="#orgheadline37">1.27.1. 3.1. 送信側 (先生)</a></li>
+<li><a href="#orgheadline38">1.27.2. 3.2. 受信側 (学生)</a></li>
+<li><a href="#orgheadline39">1.27.3. キャプチャのみ(先生)</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline41">1.28. card<sub>display</sub>/first/simple.c の解説 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
+<li><a href="#orgheadline42">1.29. org-mode の文書の見方 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
+<li><a href="#orgheadline43">1.30. 講義サイトの雑メモが開かなかったわけ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></a></li>
+<li><a href="#orgheadline47">1.31. ガイダンスの説明について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a>
+<ul>
+<li><a href="#orgheadline44">1.31.1. 講義で教えること <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
+<li><a href="#orgheadline45">1.31.2. 前提とする知識</a></li>
+<li><a href="#orgheadline46">1.31.3. 講義資料</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline48">1.32. 講義の実施時間について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
+<li><a href="#orgheadline49">1.33. 講義資料について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></a></li>
+<li><a href="#orgheadline50">1.34. ホームディレクトリのパーミションについて</a></li>
+<li><a href="#orgheadline51">1.35. 2016-10-18 休講します。</a></li>
+<li><a href="#orgheadline52">1.36. 2016-10-04 開講します。</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline53" class="outline-2">
+<h2 id="orgheadline53"><span class="section-number-2">1</span> お知らせ</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> 最終講義以降の連絡方法 2017-02-14 火</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+このサイトに，レポートや成績のことなど，お知らせします。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> 2/15, 2/16 質問等受け付け 2017-02-14 火</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+13:30頃~15：00頃まで，端末室にて質問等受け付けます。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> 2/14 補講します 2017-02-07 火</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+13:15頃~，端末室にて質問等受け付けます。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">1.4</span> 最終レポートについて <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-07 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+課題内容確定させました。<span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-09 木&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.4.1</span> 課題内容</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li>game を完成させてください
+
+<ul class="org-ul">
+<li>~/progs/game/hand</li>
+<li>~/progs/game/poker</li>
+<li><p>
+~/progs/game/
+</p>
+
+<p>
+gameの下で下記コマンドを実行すると，poker ゲームができあがるよ
+うにしてください。
+</p>
+
+<pre class="example">
+make clean; make 
+</pre></li>
+</ul></li>
+
+<li><p>
+「poker ゲームのモジュールによる開発」に関するレポート
+</p>
+
+<p>
+ ~/progs/reports/4.org に下記の項目について，
+重要な知識や技術のまとめ, poker自己評価を書いてください:
+</p>
+
+<ul class="org-ul">
+<li>「モジュール化による開発」の what, why, how</li>
+<li>「機能とインタフェース」の what, why, how</li>
+<li>「テストによる開発」の what, why, how</li>
+<li>「make とコンパイル」の what, why, how</li>
+<li>自己評価，自己アピール</li>
+<li>講義の評価と感想</li>
+</ul>
+<p>
+書き方:
+</p>
+
+<ul class="org-ul">
+<li>できれば，見出しを付けてください。</li>
+<li>できれば，箇条書きを多用してください。</li>
+<li>できれば，org-mode で書いてください。</li>
+</ul></li>
+
+<li>既出のレポート，card.org, 2.org, 3.org を再提出したい人は，
+4.org の後ろに含めてください。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.4.2</span> 提出</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<dl class="org-dl">
+<dt>〆切</dt><dd>2017.02.21</dd>
+<dt>提出物</dt><dd><ol class="org-ol">
+<li>~/progs/game/</li>
+<li>~/progs/reports/4.org</li>
+</ol></dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">1.5</span> 3回目のレポート回収についてのお知らせ 2017-02-10 金</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+回収時に下記のエラーが出ました。
+</p>
+
+<p>
+3.org がないか，directory の許可がない，かのエラーです。
+</p>
+
+<p>
+対応をお願いします。
+</p>
+
+<p>
+対応後は，suzuki@cis.iwate-u.ac.jp 宛にメールしてください。'
+</p>
+
+<pre class="example">
+h24j096/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h25j022/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h25j083/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h25j122/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h26j016/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h26j057/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h26j063/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j002/progs/game/' を stat できません: そのようなファイルやディレクトリはありません
+h27j002/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j008/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j021/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j042/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j048/progs/game/poker' にアクセスできません: 許可がありません
+h27j055/progs/game/hand/test' にアクセスできません: 許可がありません
+h27j055/progs/game/hand/src' にアクセスできません: 許可がありません
+h27j082/progs/game/card/test' にアクセスできません: 許可がありません
+h27j082/progs/game/card/src' にアクセスできません: 許可がありません
+h27j086/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j096/progs/game/hand' にアクセスできません: 許可がありません
+h27j100/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+h27j101/progs/game/' を stat できません: そのようなファイルやディレクトリはありません
+h27j101/progs/report*//3.org' を stat できません: そのようなファイルやディレクトリはありません
+</pre>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.6</span> 講義終了後のお知らせ <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-07 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+このサイトに，レポートや成績のことなど，お知らせします。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">1.7</span> 2/14 補講します <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-02-07 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+2/14 13:15頃から，質問等に答えるため，端末室にいる予定です。
+端末室も，予約しました。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">1.8</span> 良いレポートの書き方について / 2回目のレポートの評価について <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-31 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+補足にレポートの書き方について書きました。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">1.9</span> 2回目のレポートの成績をつけました。<span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-24 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+~suzuki/progss/reports/2/2-1.org を確認してください。
+</p>
+
+<p>
+評価への，不平不満等は，レスポンスカードに書いてください。
+</p>
+
+<p>
+レポートに書いてあった質問にはできるだけ回答しました。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">1.10</span> 2017.01.10提出の課題(3回目のレポート)の回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-24 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+前回の回収でエラー (~suzuki/progss/reports/3/error-3-1.log) が起っ
+ていたので，再度回収します。
+</p>
+
+<dl class="org-dl">
+<dt>〆切</dt><dd>2017.01.24 14：00頃を予定</dd>
+
+<dt>提出物</dt><dd><ol class="org-ol">
+<li>~/progs/game</li>
+<li>~/progs/reports/3.org</li>
+</ol></dd>
+</dl>
+
+<p>
+make を実行するため，~/progs/game をまるごと回収しますの
+で，~/progs/game の下には，ポーカーゲーム開発関連のものだけにしてく
+ださい。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">1.11</span> 2017.01.10提出の課題(3回目のレポート)の回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-17 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-11">
+<dl class="org-dl">
+<dt>〆切</dt><dd>2017.01.17 15：00頃を予定</dd>
+<dt>提出物</dt><dd><ol class="org-ol">
+<li>~/progs/game/deck</li>
+<li>~/progs/reports/3.org</li>
+</ol></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">1.12</span> 2回目のレポート再回収します  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-17 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+本日(1/17 14：00頃)，再回収します。
+</p>
+
+<p>
+= make clean; make card<sub>test</sub> = でテストが通るようにしておいてくださ
+い。
+</p>
+
+<p>
+回収後，回収確認お願いします。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">1.13</span> 2017.01.10提出の課題(レポート)の〆切延期のお知らせ  <span class="timestamp-wrapper"><span class="timestamp">&lt;2017-01-08 日&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+1/6~1/9 の間，学科の計算機システムが止まるそうです。
+</p>
+
+<p>
+1/10 提出予定のレポートをやるための時間が少なそうなため，
+1/10の講義時間中にレポート作成を行なうことにします。
+新たな〆切は，相談して決めましょう。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">1.14</span> 次回冬休み開け(2017.01.10) までの課題(レポート)</h3>
+<div class="outline-text-3" id="text-1-14">
+</div><div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">1.14.1</span> 課題内容</h4>
+<div class="outline-text-4" id="text-1-14-1">
+<ul class="org-ul">
+<li><p>
+deckモジュールを完成させてください
+</p>
+
+<p>
+~/progs/game/deck
+</p></li>
+
+<li><p>
+手札モジュールの機能を洗い出してください 
+</p>
+
+<p>
+~/progs/game/hand/hand.org にまとめてください。
+</p></li>
+
+<li><p>
+洗い出した手札モジュールの機能のインタフェースを考えてください
+</p>
+
+<p>
+上と同じく，~/progs/game/hand/hand.org にまとめてください。
+</p></li>
+
+<li>~/progs/game/hand/hand.org は自分用のメモでかまいません。作成し
+た hang.org から，提出用に，必要最小限に，読みやすく，わかりやす
+く，まとめ直した内容を，~/progs/reports/3.org に置いてください。</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">1.14.2</span> 提出</h4>
+<div class="outline-text-4" id="text-1-14-2">
+<dl class="org-dl">
+<dt>〆切</dt><dd>2017.01.10</dd>
+<dt>提出物</dt><dd><ol class="org-ol">
+<li>~/progs/game/deck</li>
+<li>~/progs/reports/3.org</li>
+</ol></dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">1.15</span> プロジェクタに表示しているページのURLを知らせたい</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+方法を模索中です。とりあえず，下記の方法を試してみようかなと思い
+ます:
+</p>
+
+<pre class="example">
+% ~suzuki/bin/recent_pages prog
+</pre>
+
+<p>
+実行してみてください。
+</p>
+
+<p>
+書き込みを忘れているときは，注意してください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">1.16</span> 2回目のレポート出題 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-06 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+レポートを提出してもらいます。
+</p>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-4">
+<h4 id="orgheadline20"><span class="section-number-4">1.16.1</span> 提出期限</h4>
+<div class="outline-text-4" id="text-1-16-1">
+<p>
+2016.12.19
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-4">
+<h4 id="orgheadline21"><span class="section-number-4">1.16.2</span> 提出してもらうもの</h4>
+<div class="outline-text-4" id="text-1-16-2">
+<ol class="org-ol">
+<li><p>
+~/progs/card<sub>display</sub>/simple 
+</p>
+
+<ul class="org-ul">
+<li>Makefile</li>
+<li>card<sub>display</sub><sub>simple.c</sub></li>
+<li>card<sub>display</sub><sub>multi.c</sub></li>
+<li>card<sub>display</sub><sub>sort.c</sub></li>
+<li>test/{Makefile, test<sub>card.c</sub>, test<sub>sort.c</sub>}</li>
+<li>src/{Makefile, card.h, card.c, cards.c}</li>
+</ul>
+<p>
+このディレクトリで，=make test= すると，
+</p>
+
+<ul class="org-ul">
+<li><code>src/libcard.a</code> と全てのテストをビルドし，</li>
+<li>テストを実行し，</li>
+<li>すべてのテストが通る</li>
+</ul>
+<p>
+ようにしておいて下さい。
+</p></li>
+
+<li><p>
+card<sub>display</sub> 問題の開発に関するレポート
+</p>
+
+<p>
+~/progs/reports/2.org に下記の項目についてまとめてください:
+</p>
+
+<ul class="org-ul">
+<li>開発の意味や目的は何だったのか？</li>
+<li>開発における重要な知識や技術のまとめと自己評価</li>
+<li>質問や感想</li>
+</ul>
+<p>
+書き方:
+</p>
+
+<ul class="org-ul">
+<li>できれば，見出しを付けてください。</li>
+<li>できれば，箇条書きを多用してください。</li>
+<li>できれば，org-mode で書いてください。</li>
+</ul></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">1.16.3</span> 注意点</h4>
+<div class="outline-text-4" id="text-1-16-3">
+<ul class="org-ul">
+<li>グループで取りくんだ場合は，その旨とメンバー名とそれぞれの貢献度
+を書いてください。</li>
+
+<li>他の人のプログラムを参考にした場合は，誰のをどの程度参考にしたの
+か，書いてください。</li>
+
+<li>他の人の文書を参考にした場合は，誰のをどの程度参考にしたのか，書
+いてください。文書は，最終的には，自分の言葉や論理で組立ててくだ
+さい。</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">1.17</span> 1回目のレポートの成績をつけました。<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-12-06 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-17">
+<p>
+~suzuki/progss/collected<sub>srcs</sub>/1.org を確認してください。
+</p>
+
+<p>
+評価が？は，評価保留の意味です。
+</p>
+
+<p>
+評価への，不平不満等は，レスポンスカードに書いてください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">1.18</span> 2回目のレポートの予定</h3>
+<div class="outline-text-3" id="text-1-18">
+<p>
+カード・モジュールの開発が終った後に，2回目のレポートを予定していま
+す。
+</p>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-4">
+<h4 id="orgheadline25"><span class="section-number-4">1.18.1</span> 提出してもらうもの</h4>
+<div class="outline-text-4" id="text-1-18-1">
+<ol class="org-ol">
+<li><p>
+~/progs/card<sub>display</sub>/simple 
+</p>
+
+<ul class="org-ul">
+<li>Makefile</li>
+<li>card<sub>display</sub><sub>simple.c</sub></li>
+<li>card<sub>display</sub><sub>multi.c</sub></li>
+<li>card<sub>display</sub><sub>sort.c</sub></li>
+<li>test/{Makefile, test<sub>card.c</sub>, test<sub>sort.c</sub>}</li>
+<li>src/{Makefile, card.h, card.c, cards.c}</li>
+</ul>
+<p>
+このディレクトリで，=make test= すると，
+</p>
+
+<ul class="org-ul">
+<li><code>src/libcard.a</code> と全てのテストをビルドし，</li>
+<li>テストを実行し，</li>
+<li>すべてのテストが通る</li>
+</ul>
+<p>
+ようにしておいて下さい。
+</p></li>
+
+<li><p>
+card<sub>display</sub> 問題の開発に関するレポート
+</p>
+
+<p>
+~/progs/reports/1.org に下記の内容を
+</p></li>
+</ol>
+
+
+<ul class="org-ul">
+<li>「開発の目的」は何だったのか？</li>
+<li>重要な知識や技術のまとめ</li>
+<li>感想</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">1.19</span> 1回目のレポートの仮成績をつけました。</h3>
+<div class="outline-text-3" id="text-1-19">
+<p>
+~suzuki/progss/collected<sub>srcs</sub>/1.org を確認してください。
+</p>
+
+<p>
+評価への，不平不満等は，レスポンスカードに書いてください。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">1.20</span> wiki の設置 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-28 月&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-20">
+<p>
+github のページに，<a href="https://github.com/masayuki054/prog/wiki">wiki</a> を設置しました。
+</p>
+
+<p>
+誰でも書き込めるように設定したので，org-mode のプレビューに使ってみ
+てください。
+</p>
+
+<p>
+講義中のリアルタイムなお知らせにも，使うかもしれません。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">1.21</span> if文とセミコロン <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-21">
+<p>
+<a href="http://kmaebashi.com/programmer/c_yota/semicolon.html">SEMICOLON</a> 
+</p>
+
+<p>
+「if文で余計な;を書いていましたよ」との指摘を受けました。下記のような
+箇所のセミコロンだと思います:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">  <span style="color: #8ac6f2; font-weight: bold;">if</span> (1) 
+    {
+      <span style="color: #99968b;">//</span>
+    };
+</pre>
+</div>
+
+<p>
+((s-:)) は，then 節で if 文が終了していることを, 積極的に示すために，セミ
+コロンを書いてしまいます。
+</p>
+
+<p>
+else節があるときも書いているかもしれません。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30"><span class="section-number-3">1.22</span> あっているのでしょうか？ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-22">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #8ac6f2; font-weight: bold;">if</span> ( no&lt;TWO &amp;&amp; ACE&lt;no )
+  {
+    <span style="color: #99968b;">//</span>
+  };
+</pre>
+</div>
+
+<p>
+すみません。明らかに，間違っています。 &amp;&amp; は || の間違いです。指摘あ
+りとう。
+</p>
+
+<p>
+それから，card<sub>new</sub> の中に，ポーカゲームの決まりが入っているのも，良
+くありませんね。どうすればいいのか，考えてみます。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">1.23</span> card<sub>display</sub><sub>simple</sub> の開発に関する絵 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-23">
+<p>
+参考にしてください：
+</p>
+
+<ul class="org-ul">
+<li><p>
+<a href="./Figs/card_display_simple_structure.png">card<sub>string機能の構造</sub></a> 
+</p>
+
+<p>
+card<sub>string</sub> 機能の構造・流れを描きました。四角い箱がデータで，下が波
+うっている箱が処理です。
+</p></li>
+
+<li><p>
+<a href="./Figs/card_display_simple.png">card<sub>display</sub><sub>simple問題の開発木構造</sub></a>
+</p>
+
+<p>
+テストによる開発で用いるディレクトリ構造とファイル(.h, .c, .o, .a)の
+関係を描きました。矢印は依存関係を表わしています。
+</p></li>
+
+<li><p>
+<a href="./Figs/deck_dev.png">deckモジュールの開発木構造</a>
+</p>
+
+<p>
+カードモジュールの開発終了後，山(deck)モジュールの開発を行ないます。
+その際の，山(deck)モジュールの開発構造と，カードモジュールの機能提供
+の構造を描きました。
+</p></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">1.24</span> 回収レポートの評価  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-08 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-24">
+<p>
+未だ少ししか見られていませんが，
+~suzuki/progss/collected<sub>srcs</sub>/1.org に評価と感想を書いています。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><span class="section-number-3">1.25</span> レポートの回収  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-25">
+</div><div id="outline-container-orgheadline33" class="outline-4">
+<h4 id="orgheadline33"><span class="section-number-4">1.25.1</span> 「課題:card<sub>display問題を始める</sub>」のレポートを回収します。</h4>
+<div class="outline-text-4" id="text-1-25-1">
+<p>
+各自の，~/progs/card<sub>display</sub>/first/ を回収します。そこには，
+下記のファイルがあることを想定しています：
+</p>
+
+<ul class="org-ul">
+<li><p>
+~/progs/card<sub>display</sub>/first/simple.org
+</p>
+
+<p>
+simple<sub>*</sub>.c を作成する際に考えたことをまとめる。
+</p></li>
+
+<li><p>
+~/progs/card<sub>display</sub>/first/simple<sub>*</sub>.c
+</p>
+
+<p>
+段階的に作成したソースプログラム達。
+</p></li>
+
+<li><p>
+~/progs/card<sub>display</sub>/first/Makefile<sub>*</sub>
+</p>
+
+<p>
+各段階のソースプログラムをコンパイルするためのMakefile達。
+</p></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline34" class="outline-4">
+<h4 id="orgheadline34"><span class="section-number-4">1.25.2</span> 確認方法</h4>
+<div class="outline-text-4" id="text-1-25-2">
+<p>
+今回のレポートは，~suzuki/progss/collected<sub>srcs</sub>/1/の下に回収します。
+</p>
+
+<p>
+~suzuki/progss/collected<sub>srcs</sub>/1/自分のログイン名/first の下を確認
+してください。
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">1.26</span> <a href="./index.html">講義サイト</a> のタブに補足を追加しました <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-26">
+<p>
+Emacs や Org-mode のこと，ガイダンスでふれたプログラム開発に関すること
+を，<a href="./index.html">講義サイト</a> の補足タブとして追加しました。
+</p>
+
+<p>
+とりあえずの処置です。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline40" class="outline-3">
+<h3 id="orgheadline40"><span class="section-number-3">1.27</span> リアルタイムストリーミングを試してみましょう  <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-25 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-27">
+<p>
+萩原さんが，調べてくれました。試してみましょう:   
+</p>
+</div>
+
+<div id="outline-container-orgheadline37" class="outline-4">
+<h4 id="orgheadline37"><span class="section-number-4">1.27.1</span> 3.1. 送信側 (先生)</h4>
+<div class="outline-text-4" id="text-1-27-1">
+<div class="org-src-container">
+
+<pre class="src src-sh">ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 -c:v libx264 -preset fast -pix_fmt yuv420p -s 1280x720 -threads 0 -f sap sap://224.0.0.255 &amp;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline38" class="outline-4">
+<h4 id="orgheadline38"><span class="section-number-4">1.27.2</span> 3.2. 受信側 (学生)</h4>
+<div class="outline-text-4" id="text-1-27-2">
+<ul class="org-ul">
+<li>vlcを起動します:
+： % vlc</li>
+
+<li>「表示」-&gt;「プレイリスト」-&gt;「ローカルネットワーク」-&gt;「ネットワークス</li>
+</ul>
+<p>
+トリーム(SAP)」-&gt;「No Name」をダブルクリック
+</p>
+
+<ul class="org-ul">
+<li>そこそこ待つ</li>
+
+<li>表示サイズは受信側でも変更可能</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-4">
+<h4 id="orgheadline39"><span class="section-number-4">1.27.3</span> キャプチャのみ(先生)</h4>
+<div class="outline-text-4" id="text-1-27-3">
+<div class="org-src-container">
+
+<pre class="src src-sh">ffmpeg -f x11grab -s 1920x1080 -framerate 15 -i :0.0 ~suzuki/progs/lects/03.mp4
+</pre>
+</div>
+
+<p>
+二番目のモニタをキャプチャしたい場合はオプションを"-i :0.0+1920,0"にしてください． 
+キャプチャの終了はC-cです．
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">1.28</span> card<sub>display</sub>/first/simple.c の解説 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-28">
+<p>
+<a href="./index.html">講義サイト</a> の <a href="./memos.html">雑メモ</a> タブから見られるようにしました。
+</p>
+
+<p>
+Emacs で見るには，~suzuki/prog.git/org/memos/simple.org が最新です。
+</p>
+
+<p>
+~suzuki/progs/card<sub>display</sub>/first/ に下に，C のソースとMakefileがありま す。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">1.29</span> org-mode の文書の見方 <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-29">
+<p>
+simple.org は org-mode で書いてあります。 Emacs で開いて，見出しで，
+TAB または SHIFT+TAB を打つと，下位の文書 構造を展開縮小されます。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="orgheadline43"><span class="section-number-3">1.30</span> 講義サイトの雑メモが開かなかったわけ <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-12 水&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-30">
+<p>
+org-mode 文書を HTML に変換すると，数式マークアップのレンダリングのた
+めに， MathML.js を使いますが，昨日 は何故か <a href="https://orgmode.org">https://orgmode.org</a> から
+ダウンロードできなかったようです。
+</p>
+
+<p>
+mathml.org おすすめの
+<a href="https://cdn.mathjax.org/mathjax/latest/MathJax.js">https://cdn.mathjax.org/mathjax/latest/MathJax.js</a> からダウンロードする
+よう書き換えました。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline47" class="outline-3">
+<h3 id="orgheadline47"><span class="section-number-3">1.31</span> ガイダンスの説明について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-31">
+<p>
+初回のガイダンスがわかりにくかったようです。すみません。
+</p>
+
+<p>
+説明を省いたと感じた人も多
+かたようですが，ガイダンスでは，こんな事をやりますと，項目とその入口へ
+の情報を羅列したにすぎません。省略したのではありません。
+</p>
+</div>
+
+<div id="outline-container-orgheadline44" class="outline-4">
+<h4 id="orgheadline44"><span class="section-number-4">1.31.1</span> 講義で教えること <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h4>
+<div class="outline-text-4" id="text-1-31-1">
+<p>
+重要なことをまとめると, 次のようになります:
+</p>
+
+<p>
+主テーマは，*プログラムの設計と開発のこと* です。
+</p>
+
+<p>
+そのために次のことを，体験的に学びます:
+</p>
+
+<ul class="org-ul">
+<li>モジュラー・プログラミングのこと</li>
+<li>テストとテストによる開発のこと</li>
+<li>設計，開発について文書を作成すること (このために，org-mode を使うこ
+とを <b>推奨</b> しています。)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-4">
+<h4 id="orgheadline45"><span class="section-number-4">1.31.2</span> 前提とする知識</h4>
+<div class="outline-text-4" id="text-1-31-2">
+<p>
+そのためには，次の知識が必要です:
+</p>
+<ul class="org-ul">
+<li>プログラム言語とプログラミング</li>
+<li>コンパイルと実行のこと，</li>
+<li>ライブラリのこと，</li>
+<li>make と Makefileのこと，</li>
+<li>Emacs のこと</li>
+<li>シェルと Linux のこと</li>
+</ul>
+
+<p>
+これらは，講義にとっては，副次的なことですが，
+プログラミングにとっては，全て必須のことです。
+しかし，教えられていなかったり，難かしかったり，経験不足などで，
+知識が不足していますよね。
+</p>
+
+<p>
+僕(先生)は，どの知識が不足しているのか，はっきりとは把握していませんが，
+基本的なことは，教えられていて，わかっている (いてほしい) と考えています。
+そういう立場で講義を作っています。
+</p>
+
+<p>
+わかっていない事，わからない事は，僕に伝えてください。講義中に指摘して
+ください。歓迎します。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline46" class="outline-4">
+<h4 id="orgheadline46"><span class="section-number-4">1.31.3</span> 講義資料</h4>
+<div class="outline-text-4" id="text-1-31-3">
+<p>
+新らしいカリキュラムになって，3回目の講義です。皆さんの状況が，だいぶ
+分ってきましたが，講義のための資料作りにはかなり時間がかかります。
+講義内容全部を整合させるのには，もっと時間がかかります。
+</p>
+
+<p>
+状況に対応した資料を作る努力はしているつもりですが，配慮や時間や技術が
+足りません。
+</p>
+
+<p>
+不足している資料やおかしな所は，指摘してください。
+</p>
+
+<p>
+不足している情報は，自分で調べるようにも，してください。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline48" class="outline-3">
+<h3 id="orgheadline48"><span class="section-number-3">1.32</span> 講義の実施時間について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-32">
+<blockquote>
+<p>
+金先生とお話して，2:30 以降も端末室を使えることになりました。
+</p>
+</blockquote>
+
+<p>
+あらためて提案します。
+</p>
+
+<p>
+演習を伴なう (むしろ演習が主な) 講義なので，90分の時間内で，
+講義と演習を終ることが，例年，できません。
+</p>
+
+<ul class="org-ul">
+<li>講義内容の説明は，2:30 までに終りにします。</li>
+
+<li>講義中の課題は次週までの宿題とします。</li>
+
+<li>2:30~ 自主的に課題に取り組む時間とし，
+3:00 までは TA さんが対応してくれ，
+それ以降は，((s-:)) が適宜対応します。</li>
+</ul>
+
+<p>
+どうでしょうか？
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline49" class="outline-3">
+<h3 id="orgheadline49"><span class="section-number-3">1.33</span> 講義資料について <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 火&gt;</span></span></h3>
+<div class="outline-text-3" id="text-1-33">
+<dl class="org-dl">
+<dt><a href="./org-docs.html">資料</a></dt><dd>基本，講義する内容です。教科書的な資料です。</dd>
+
+<dt><a href="./supplement.html">説明</a></dt><dd>資料への補足説明です。昨年度，徐々に書いたもので，今年度，資料に反映させ
+た方がいいかもしれませんが，まだ見直していません。</dd>
+
+<dt><a href="./memos.html">雑メモ</a></dt><dd>昨年の講義の進行中に，思い付いて書いたメモです。要整理です。</dd>
+
+<dt><a href="./lects.html">講義</a></dt><dd>おしらせ，講義の情報，講義の記録などです。</dd>
+</dl>
+
+
+
+<dl class="org-dl">
+<dt><a href="http://wiki.cis.iwate-u.ac.jp/~suzuki/lects/prog/">2015</a></dt><dd>2015年度のソフトウェア構成論の講義の全てです。</dd>
+</dl>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline50" class="outline-3">
+<h3 id="orgheadline50"><span class="section-number-3">1.34</span> ホームディレクトリのパーミションについて</h3>
+<div class="outline-text-3" id="text-1-34">
+<p>
+進行状況の確認や，レポート提出のために，~/progs の中を閲覧，回収したい
+と思っています。
+</p>
+
+<p>
+~/progs の中を，鈴木 (((s-:))) が見られるように設定してもらえませんか？
+</p>
+
+<pre class="example">
+chmod o+rx ~
+chmod -R o+rx ~/progs
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline51" class="outline-3">
+<h3 id="orgheadline51"><span class="section-number-3">1.35</span> 2016-10-18 休講します。</h3>
+<div class="outline-text-3" id="text-1-35">
+<p>
+((s-:)) ネンリンピック長崎 サッカー出場のため
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="orgheadline52"><span class="section-number-3">1.36</span> 2016-10-04 開講します。</h3>
+<div class="outline-text-3" id="text-1-36">
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Masayuki Suzuki</p>
+<p class="date">Created: 2017-02-14 火 22:02</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
